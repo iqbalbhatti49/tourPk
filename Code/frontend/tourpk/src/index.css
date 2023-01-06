@@ -37,7 +37,12 @@ body {
   font-family: var(--fontPrimary);
   font-size: var(--fontSizeNormal);
   color: var(--secondaryColor);
+  font-family: var(--fontPrimary);
+  font-size: var(--fontSizeNormal);
+  color: var(--secondaryColor);
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   padding: 0;
   box-sizing: border-box;
 }

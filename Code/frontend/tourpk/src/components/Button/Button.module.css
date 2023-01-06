@@ -7,3 +7,12 @@
 .buttonSecondary {
    @apply --buttonSecondary;
 }
+@import "../../styles/variables.css";
+
+.buttonPrimary {
+   @apply --buttonPrimary;
+}
+
+.buttonSecondary {
+   @apply --buttonSecondary;
+}
