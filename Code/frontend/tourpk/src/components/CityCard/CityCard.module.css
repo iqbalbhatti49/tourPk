@@ -1,0 +1,36 @@
+.body {
+   text-align: left;
+   line-height: 1.5rem;
+   font-weight: 400;
+   letter-spacing: 0.5px;
+}
+
+.body p {
+   margin-block: 5px;
+}
+
+.title {
+   font-weight: 500;
+   font-size: 1.1rem;
+   line-height: 1.4rem;
+   letter-spacing: 0.5px;
+   color: var(--textColor);
+}
+
+.stats {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-top: 10px;
+   margin-bottom: 10px;
+}
+
+.place {
+   color: var(--primaryColor);
+   font-weight: 600;
+   padding-block: 8px;
+}
+
+.reviews {
+   color: var(--assistColor);
+}
