@@ -17,9 +17,12 @@
 
   /* Colors */
   --assistColor: #508991;
+  --assistColorLight: #eef3f4;
   --primaryColor: #004346;
   --whiteColor: #fff;
   --secondaryColor: #172a3a;
+  --yellowColor: #f2c94c;
+  /* To show the rating star color */
 
   /* Gaps */
   /* Paddings */
@@ -34,7 +37,12 @@ body {
   font-family: var(--fontPrimary);
   font-size: var(--fontSizeNormal);
   color: var(--secondaryColor);
+  font-family: var(--fontPrimary);
+  font-size: var(--fontSizeNormal);
+  color: var(--secondaryColor);
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   padding: 0;
   box-sizing: border-box;
 }

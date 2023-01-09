@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../Button/Button';
 import styles from './NavBar.module.css';
+import { Logo } from '../Logo/Logo';
 
 export const NavBar = () => {
    const location = useLocation();
@@ -9,12 +10,7 @@ export const NavBar = () => {
    return (
       <div className={styles.container}>
          <nav className={styles.nav}>
-            <img
-               className={styles.logo}
-               alt="logo"
-               loading="eager"
-               src="../static/images/logo-1@2x.png"
-            />
+            <Logo width={100} height={50} rootClassName="dark" />
             <div className={styles.navLinks}>
                <Link className={location.pathname === '/' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/">Home</Link>
                <Link className={location.pathname === '/about' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/about">About</Link>

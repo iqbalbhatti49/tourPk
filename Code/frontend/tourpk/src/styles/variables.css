@@ -29,3 +29,34 @@
       }
    }
 }
+:root {
+   --buttonPrimary : {
+      padding: 12px 24px;
+      height: 50px;
+      background-color: var(--primaryColor);
+      border-radius: 30px;
+      color: var(--whiteColor);
+      border: none;
+
+      &:hover {
+         background: var(--whiteColor);
+         border: 2px solid var(--primaryColor);
+         color: var(--primaryColor);
+      }
+   }
+
+   --buttonSecondary : {
+      padding: 12px 24px;
+      height: 50px;
+      background-color: var(--whiteColor);
+      border-radius: 30px;
+      color: var(--primaryColor);
+      border: 2px solid var(--primaryColor);
+
+      &:hover {
+         background: var(--primaryColor);
+         color: var(--whiteColor);
+         border: 2px solid var(--whiteColor);
+      }
+   }
+}

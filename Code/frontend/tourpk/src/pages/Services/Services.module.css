@@ -4,26 +4,30 @@
 
 .header {
    display: flex;
-   justify-content: space-between;
-   padding-block: 50px;
-   gap: 100px;
-}
-
-.header img {
-   border-top-left-radius: 50%;
-   border-top-right-radius: 50%;
-   height: 340px;
+   flex-direction: column;
+   place-items: center;
+   padding: 50px 0px 10px 0px;
 }
 
 .header h1 {
-   font-size: 3.2rem;
-   line-height: 4.5rem;
+   margin-bottom: 8px;
+   margin-top: 0;
 }
 
-.header p {
-   max-width: 550px;
-   color: var(--assistColor);
-   line-height: 1.7rem;
+.subHeading {
+   letter-spacing: 0.1em;
+   line-height: 20px;
+   text-transform: uppercase;
+   color: var(--primaryColor);
+   font-weight: 600;
+}
+
+.tabs p {
+   margin: 2px;
+}
+
+.tabs {
+   text-align: center;
 }
 
 :global(.react-tabs__tab--selected) {
@@ -35,4 +39,17 @@
 
 :global(.react-tabs__tab-list) {
    border-bottom: none !important;
+}
+
+:global(.react-tabs__tab:first-child) {
+   margin-right: 20px;
+}
+
+.tabCards {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   padding: 0 5vw;
 }

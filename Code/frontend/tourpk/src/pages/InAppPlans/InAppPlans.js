@@ -3,6 +3,7 @@ import Switch from "react-switch";
 import styles from "./InAppPlans.module.css";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { PriceCard } from "../../components/PriceCard/PriceCard";
+import { Footer } from "../../components/Footer/Footer";
 
 const InAppPlans = () => {
   const [checked, setChecked] = useState(false);
@@ -38,6 +39,7 @@ const InAppPlans = () => {
           <PriceCard theme="light" subTitle="For big companies" mainTitle="Enterprise" description="Lorem ipsum dolor sit amet consectetur adipiscing elit dolor" price="$999" period="annually" features={["All anaylytic features", "upto 1,000,000 tracked visits", "Dedicated Support"]} />
         </div>}
       </div>
+      <Footer />
     </>
   );
 };

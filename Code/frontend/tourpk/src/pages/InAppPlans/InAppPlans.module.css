@@ -19,6 +19,7 @@
   line-height: 20px;
   text-transform: uppercase;
   color: var(--primaryColor);
+  font-weight: 600;
 }
 
 .switchWrapper {
