@@ -10,55 +10,23 @@ import InAppPlans from "./pages/InAppPlans/InAppPlans";
 import About from "./pages/About/About";
 import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
+import Login from "./pages/Login/Login";
+import SignupTourist from "./pages/SignupTourist/SignupTourist";
 
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
 
-  useEffect(() => {
-    if (action !== "POP") {
-      window.scrollTo(0, 0);
+  //Scroll to top on new page navigation, except for back button
+  useEffect(() => { 
+    if (action !== "POP") { 
+      window.scrollTo(0, 0); 
     }
   }, [action]);
 
-  useEffect(() => {
-    let title = "";
-    let metaDescription = "";
-
-    //TODO: Update meta titles and descriptions below
-    switch (pathname) {
-      case "/":
-        title = "";
-        metaDescription = "";
-        break;
-    }
-
-    if (title) {
-      document.title = title;
-    }
-
-    if (metaDescription) {
-      const metaDescriptionTag = document.querySelector(
-        'head > meta[name="description"]'
-      );
-      if (metaDescriptionTag) {
-        metaDescriptionTag.content = metaDescription;
-      }
-    }
-  }, [pathname]);
-
-  const action = useNavigationType();
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  useEffect(() => {
-    if (action !== "POP") {
-      window.scrollTo(0, 0);
-    }
-  }, [action]);
-
-  useEffect(() => {
+  //Update meta title and description on route change
+  useEffect(() => { 
     let title = "";
     let metaDescription = "";
 
@@ -91,10 +59,10 @@ function App() {
       <Route path="/pricing" element={<InAppPlans />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contract />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignupTourist />} />
     </Routes>
-    /* <Route exact path="/" component={Home} />*/
   );
-};
 };
 
 export default App;
