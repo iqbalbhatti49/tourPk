@@ -20,7 +20,10 @@ export const NavBar = () => {
             </div>
             <div className={styles.navButtons}>
                <Link className={styles.navLink} to="/login">Login</Link>
-               <Button value="Register" type="primary" />
+
+               <Link to="/signup">
+                  <Button value="Register" type="primary" />
+               </Link>
             </div>
          </nav>
       </div>
