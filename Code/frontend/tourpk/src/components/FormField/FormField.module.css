@@ -31,9 +31,13 @@
   top: 11px;
 }
 
+.light{
+  border: 1px solid #b5b5b588;
+  box-shadow: 0px 0px 3px 1px rgb(0,0,0,0.1);
+}
 
-/* TODO: Make this property of input fields global->pdding, backgrnd etc  
-  TODO: Make field generic as having icons.. but in some cases, icon is not there  */
+/* TODO: Make this property of input fields global->pdding, backgrnd etc  -> For other fields like Phone etc 
+  */
 
   .field {
     position: relative;
