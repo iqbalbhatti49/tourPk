@@ -5,7 +5,7 @@ import styles from './FormField.module.css';
 let classWrapper = classNames.bind(styles);
 
 const FormField = (props) => {
-  const { name, type, placeholder, validate, theme, renderIcon } = props;
+  const { name, type, placeholder, validate, theme, renderIcon, handleChange } = props;
   let classes = classWrapper({ formField: true, iconInput: renderIcon() != null, noIconInput: renderIcon() == null, light: theme=='light' });
   return (
     <Field
@@ -21,13 +21,11 @@ const FormField = (props) => {
       {({ input, meta }) => (
         <div className={styles.field}>
           {renderIcon() != null && <div className={styles.fieldIcon}>{renderIcon()}</div>}
-               <input className={classes} {...input} placeholder={placeholder} type={type} />
+               <input className={classes} {...input} placeholder={placeholder} type={type} onChange={e => {name, e.target.value} } />
                {meta.error && meta.touched && <span className={styles.errors}>{meta.error}</span>}
         </div>
       )}
     </Field>
   );
 };
-
-
 export default FormField;
