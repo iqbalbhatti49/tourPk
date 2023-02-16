@@ -1,5 +1,5 @@
 import React from 'react'
-import serviceCategories from '../../serviceCategories'
+import {services} from '../../serviceCategories'
 
 export default function Dropdown() {
 
@@ -7,13 +7,13 @@ export default function Dropdown() {
  const handleChange = (event) => {
    setValue(event.target.value);
  };
-
+ console.log(services);
  return (
    <div>
        <select value={value} onChange={handleChange}>
          <option disabled default>Select</option>
-         {serviceCategories.map((option) => (
-           <option value={option} key={option}>{option}</option>
+         {services.map((option) => (
+           <option value={option.id} key={option.id}>{option.name}</option>
          ))}
        </select>
    </div>

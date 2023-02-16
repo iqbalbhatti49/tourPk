@@ -24,8 +24,8 @@ export const Footer = () => {
                   </div>
                   <div className={styles.links}>
                      <p className={styles.subHeading}>Services</p>
-                     <Link className={styles.navLink} to="/">Home</Link>
-                     <Link className={styles.navLink} to="/about">About</Link>
+                     <Link className={styles.navLink} to="/addpackage">Add Package</Link>
+                     <Link className={styles.navLink} to="/bookings">Bookings</Link>
                      <Link className={styles.navLink} to="/services">Services</Link>
                      <Link className={styles.navLink} to="/pricing">Pricing</Link>
                      <Link className={styles.navLink} to="/contact">Contact</Link>

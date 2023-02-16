@@ -1,16 +1,12 @@
 import React from 'react';
-import { useState } from 'react';
-import PhoneInput from 'react-phone-input-2';
 import classNames from 'classnames/bind';
 import { Field } from 'react-final-form';
 import styles from './FormField.module.css';
 let classWrapper = classNames.bind(styles);
 
 const FormField = (props) => {
-  const { name, label, type, placeholder, validate, value, renderIcon } = props;
-  let classes = classWrapper({ formField: true, iconInput: renderIcon() != null, noIconInput: renderIcon() == null });
-  const [phone, setPhone] = useState('');
-
+  const { name, type, placeholder, validate, theme, renderIcon } = props;
+  let classes = classWrapper({ formField: true, iconInput: renderIcon() != null, noIconInput: renderIcon() == null, light: theme=='light' });
   return (
     <Field
       name={name}
