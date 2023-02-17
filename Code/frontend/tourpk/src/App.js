@@ -12,12 +12,9 @@ import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
 import Login from "./pages/Login/Login";
 import SignupTourist from "./pages/SignupTourist/SignupTourist";
-<<<<<<< HEAD
 import CheckOut from "./pages/CheckOut/CheckOut";
 // import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
-=======
 import AddPackage from "./pages/AddPackage/AddPackage";
->>>>>>> 3fa5b0dd7b645bc76619aa6600307f37ba87404c
 
 function App() {
   const action = useNavigationType();
@@ -66,14 +63,11 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contract />} />
       <Route path="/login" element={<Login />} />
-<<<<<<< HEAD
       <Route path="/signup" element={<SignupTourist />} />
       <Route path="/checkout" element={<CheckOut />} />
       {/* <Route path="/signup" element={<SignupServiceProvider />} /> */}
-=======
       <Route path="/signup" element={<SignupTourist />} />F
       <Route path="/addpackage" element={<AddPackage />} />
->>>>>>> 3fa5b0dd7b645bc76619aa6600307f37ba87404c
     </Routes>
   );
 };
