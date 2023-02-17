@@ -51,7 +51,8 @@ export default function AddPackage() {
                                     <FormField name="Description" type="text" placeholder="Additional description of package and why its amazing" theme="light" handleChange={handleFormData} renderIcon={() => null} />
                                     <label htmlFor="Validity" className={styles.label}>Validity</label>
                                     <FormField name="Validity" type="text" placeholder="No of days for this offer lasts eg. 25 days" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
-                                    <Dropdown />
+                                    {/* <Dropdown /> */}
+                                    <br />
                                     <h2>What's included</h2>
                                     <div className={styles.form}>
                                         {sections.map((section, index) => {
