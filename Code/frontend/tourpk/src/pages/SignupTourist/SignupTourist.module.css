@@ -2,7 +2,7 @@
 
 .formImage{
 display: table-cell;
-width: auto;
+width: 40%;
 background: url(https://bahriatown.com/wp-content/uploads/2020/06/BT_September_21_09-A.jpg);
 background-size: cover;
 border-radius: 20px 0px 0px 20px;
@@ -14,19 +14,23 @@ padding: 20px 0;
 
 .tableContainer{
     display: table;
-    max-width: 900px;
+    max-width: 1000px;
     width: 90%;
     margin: 0 auto;
     border-radius: 25px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1)
+    box-shadow: 0px 4px 3px 5px rgb(0,0,0,0.1);
     }
+
+.form h1{
+    margin-top: 0px;
+}
 
 .form{
 display: table-cell;
 border-radius: 0px 20px 20px 0px;
-width: 400px;
+width: 55%;
 background-color: var(--primaryColor);
-padding: 40px 60px;
+padding: 15px 60px;
 color: #505e6c;
 
 @media (max-width:991px) {

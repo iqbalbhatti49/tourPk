@@ -12,6 +12,7 @@ import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
 import Login from "./pages/Login/Login";
 import SignupTourist from "./pages/SignupTourist/SignupTourist";
+import AddPackage from "./pages/AddPackage/AddPackage";
 import AddResturant from "./pages/AddResturantService/AddResturantService";
 
 function App() {
@@ -20,14 +21,14 @@ function App() {
   const pathname = location.pathname;
 
   //Scroll to top on new page navigation, except for back button
-  useEffect(() => { 
-    if (action !== "POP") { 
-      window.scrollTo(0, 0); 
+  useEffect(() => {
+    if (action !== "POP") {
+      window.scrollTo(0, 0);
     }
   }, [action]);
 
   //Update meta title and description on route change
-  useEffect(() => { 
+  useEffect(() => {
     let title = "";
     let metaDescription = "";
 
@@ -61,7 +62,8 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contract />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignupTourist />} />
+      <Route path="/signup" element={<SignupTourist />} />F
+      <Route path="/addpackage" element={<AddPackage />} />
       <Route path="/addresturant" element={<AddResturant />} />
     </Routes>
   );
