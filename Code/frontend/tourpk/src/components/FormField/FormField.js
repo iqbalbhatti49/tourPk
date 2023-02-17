@@ -21,7 +21,7 @@ const FormField = (props) => {
       {({ input, meta }) => (
         <div className={styles.field}>
           {renderIcon() != null && <div className={styles.fieldIcon}>{renderIcon()}</div>}
-               <input className={classes} {...input} placeholder={placeholder} type={type} onChange={e => {name, e.target.value} } />
+               <input className={classes} {...input} placeholder={placeholder} type={type} onChange={e => handleChange(name, e.target.value)} />
                {meta.error && meta.touched && <span className={styles.errors}>{meta.error}</span>}
         </div>
       )}

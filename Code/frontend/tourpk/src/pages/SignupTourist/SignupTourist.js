@@ -16,6 +16,8 @@ const SignupTourist = () => {
     const handleFormData = (fieldName, value) => {
         setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
     };
+    console.log(formData);
+
     const required = value => (value ? undefined : 'Required')
     const showResults = values => {
         window.alert("submitted");
