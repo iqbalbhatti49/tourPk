@@ -26,7 +26,7 @@ export const Footer = () => {
                      <p className={styles.subHeading}>Services</p>
                      <Link className={styles.navLink} to="/">Home</Link>
                      <Link className={styles.navLink} to="/about">About</Link>
-                     <Link className={styles.navLink} to="/services">Services</Link>
+                     <Link className={styles.navLink} to="/addresturant">Add Resturant</Link>
                      <Link className={styles.navLink} to="/pricing">Pricing</Link>
                      <Link className={styles.navLink} to="/contact">Contact</Link>
                   </div>
