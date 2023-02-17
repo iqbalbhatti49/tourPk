@@ -65,7 +65,7 @@ function App() {
       <Route path="/signup" element={<SignupTourist />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/addpackage" element={<AddPackage />} />
-    </Routes >
+    </Routes>
   );
 };
 
