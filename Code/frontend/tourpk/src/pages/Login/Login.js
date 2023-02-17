@@ -14,6 +14,7 @@ const Login = () => {
     const handleFormData = (fieldName, value) => {
         setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
     };
+    console.log(formData);
     const required = value => (value ? undefined : 'Required') // ****** move
     const showResults = values => {
         window.alert("submitted");
@@ -31,8 +32,8 @@ const Login = () => {
                     {({ handleSubmit, submitting, values }) => (
                         <form onSubmit={handleSubmit}>
                             <h1 className={styles.loginTitle}>Welcome back!</h1>
-                            <FormField name="Email" type="email" placeholder="abc@email.com" validate={required} value={values} theme="dark"handleChange={handleFormData} renderIcon={() => <IconEmail />} />
-                            <FormField name="Password" type="text" placeholder="Your Password" validate={required} value={values} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} />
+                            <FormField name="Email" type="email" placeholder="abc@email.com" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconEmail />} />
+                            <FormField name="Password" type="text" placeholder="Your Password" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} />
                             <a href="" className={styles.forget}>Forgot Password</a>
                             <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
                             <div className={styles.text}>OR</div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { NavBar } from '../../components/NavBar/NavBar'
 import { Footer } from '../../components/Footer/Footer'
 import { Form as FormFinal } from 'react-final-form'
@@ -8,9 +8,20 @@ import Dropdown from '../../components/Dropdown/Dropdown'
 
 export default function AddPackage() {
     const required = value => (value ? undefined : 'Required') // ****** move
+    const optionalField = value => (value ? 'undefined' : '') // ****** move ******************
     const showResult = values => {
         window.alert("submitted");
     }
+    const [formData, setFormData] = useState({});
+    const handleFormData = (fieldName, value) => {
+        setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
+    };
+    
+    const [sections, setSections] = useState([1, 2]);
+    const addSection = () => {    
+         setSections([...sections, sections.length + 1]);
+        };
+
     return (
         <>
             <NavBar />
@@ -21,19 +32,47 @@ export default function AddPackage() {
                 <h1>Add Services Package</h1>
                 <h2>Name and Description</h2>
                 <div className={styles.formBorder}>
-                  <div className={styles.formContainer}>
-                    <FormFinal onSubmit={showResult} subscription={{ submitted: true }} >
-                        {({ handleSubmit, submitting, values }) => (
-                            <form onSubmit={handleSubmit}>
-                                <FormField name="PackageName" type="text" placeholder="Package Name" validate={required}  theme="light" renderIcon={() => null} />
-                                <FormField name="Price" type="number" placeholder="Price of package" validate={required}  theme="light" renderIcon={() => null} />
-                                <FormField name="Description" type="text" placeholder="Additional description of package and why its amazing"  theme="light" renderIcon={() => null} />
-                                <FormField name="Validity" type="text" placeholder="No of days for this offer lasts eg. 25 days" validate={required}  theme="light" renderIcon={() => null} />
-                                <Dropdown />
-                            </form>
-                        )}
-                    </FormFinal>
-                </div>
+                    <div className={styles.formContainer}>
+                        <FormFinal onSubmit={showResult} subscription={{ submitted: true }} >
+                            {({ handleSubmit, submitting, values }) => (
+                                <form onSubmit={handleSubmit}>
+                                    <div className={styles.flexContainer}>
+                                    <div>
+                                    <label htmlFor="name" className={styles.label}>PackageName</label>
+                                    <FormField name="PackageName" type="text" placeholder="Package Name" validate={required}  theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    </div>
+                                    <div>
+                                    <label htmlFor="price" className={styles.label}>Price</label>
+                                    <FormField name="Price" type="number" placeholder="Price of package" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    </div>
+                                    </div>
+                                    <label htmlFor="desc" className={styles.label}>Description</label>
+                                    <FormField name="Description" type="text" placeholder="Additional description of package and why its amazing" theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    <label htmlFor="Validity" className={styles.label}>Validity</label>
+                                    <FormField name="Validity" type="text" placeholder="No of days for this offer lasts eg. 25 days" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    <Dropdown />
+                                    <h2>What's included</h2>
+                                    <div className={styles.form}>
+                                        {sections.map((section, index) => {
+                                            const validate = index < 2 ? required : optionalField;
+                                            return (
+                                                <div key={index} className={styles.sectionContainer}>
+                                                     <h3>Section {index+1}</h3>
+                                                     {/* <FormField name="servicedescription" type="text" placeholder="Description of service added in this package" validate={optionalField} theme="light" handleChange={} renderIcon={() => null} />     */}
+                                                     {/* <Dropdown/>                         */}
+                                                </div>
+                                            );
+                                        })}
+                                        <div className={styles.addButtonContainer}>
+                                            <button className={styles.addButton} onClick={addSection}>
+                                                Add More
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            )}
+                        </FormFinal>
+                    </div>
                 </div>
             </div>
             <Footer />
