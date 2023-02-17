@@ -1,5 +1,6 @@
 import React from 'react'
 import {services} from '../../serviceCategories'
+import styles from './Dropdown.module.css'
 
 export default function Dropdown() {
 
@@ -9,7 +10,7 @@ export default function Dropdown() {
  };
  console.log(services);
  return (
-   <div>
+   <div className={styles.dropdown}>
        <select value={value} onChange={handleChange}>
          <option disabled default>Select</option>
          {services.map((option) => (

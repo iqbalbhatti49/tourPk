@@ -12,8 +12,9 @@ import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
 import Login from "./pages/Login/Login";
 import SignupTourist from "./pages/SignupTourist/SignupTourist";
+import CheckOut from "./pages/CheckOut/CheckOut";
+// import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
 import AddPackage from "./pages/AddPackage/AddPackage";
-import AddResturant from "./pages/AddResturantService/AddResturantService";
 
 function App() {
   const action = useNavigationType();
@@ -62,9 +63,11 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contract />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<SignupTourist />} />
+      <Route path="/checkout" element={<CheckOut />} />
+      {/* <Route path="/signup" element={<SignupServiceProvider />} /> */}
       <Route path="/signup" element={<SignupTourist />} />F
       <Route path="/addpackage" element={<AddPackage />} />
-      <Route path="/addresturant" element={<AddResturant />} />
     </Routes>
   );
 };
