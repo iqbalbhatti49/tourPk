@@ -1,0 +1,319 @@
+.orderReviewChild {
+   position: absolute;
+   top: 0;
+   left: 0;
+   border-radius: 4px;
+   background-color: #fff;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+   width: 23.13rem;
+   height: 26.88rem;
+}
+
+.itemsInCard,
+.orderReview1 {
+   position: absolute;
+   left: 1.25rem;
+   line-height: 1.25rem;
+}
+
+.orderReview1 {
+   top: 1.19rem;
+   font-size: 1rem;
+}
+
+.itemsInCard {
+   top: 2.69rem;
+}
+
+.orderReviewItem {
+   position: absolute;
+   top: 1.6rem;
+   left: 21.19rem;
+   border-radius: 1px;
+   width: 0.81rem;
+   height: 0.56rem;
+}
+
+.frameChild {
+   position: relative;
+   width: 5rem;
+   height: 5rem;
+   flex-shrink: 0;
+}
+
+.ametNuncTincidunt {
+   position: relative;
+   line-height: 1.25rem;
+   display: inline-block;
+   width: 9.75rem;
+}
+
+.div,
+.rectangle {
+   position: absolute;
+   left: 0;
+}
+
+.rectangle {
+   height: 100%;
+   width: 32.52%;
+   top: 0;
+   right: 67.48%;
+   bottom: 0;
+   border-radius: 3px;
+   box-shadow: 0 2px 40px rgba(133, 133, 133, 0.08);
+   border: 1px solid #b2bcca;
+   box-sizing: border-box;
+}
+
+.div {
+   height: 51.72%;
+   width: 100%;
+   top: 24.14%;
+   line-height: 1.25rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.rectangleCopy13 {
+   position: absolute;
+   height: 100%;
+   width: 32.52%;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 67.48%;
+   border-radius: 3px;
+   border: 1px solid #b2bcca;
+   box-sizing: border-box;
+}
+
+.component71Child,
+.path7Copy6 {
+   position: absolute;
+   height: 30.36%;
+   width: 9.87%;
+   top: 34.95%;
+   right: 11.28%;
+   bottom: 34.69%;
+   left: 78.85%;
+   max-width: 100%;
+   overflow: hidden;
+   max-height: 100%;
+}
+
+.path7Copy6 {
+   height: 3.45%;
+   width: 9.76%;
+   top: 48.28%;
+   right: 78.86%;
+   bottom: 48.28%;
+   left: 11.38%;
+}
+
+.component71 {
+   position: relative;
+   box-shadow: 0 2px 40px rgba(133, 133, 133, 0.08);
+   width: 5.56rem;
+   height: 1.81rem;
+   flex-shrink: 0;
+   text-align: center;
+   color: #4f4f4f;
+}
+
+.ametNuncTinciduntInterdumParent,
+.frameGroup {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: flex-start;
+   gap: 0.63rem;
+}
+
+.frameGroup {
+   flex-direction: row;
+   gap: 0.88rem;
+}
+
+.div1 {
+   position: relative;
+   line-height: 1.5rem;
+   font-weight: 500;
+}
+
+.div2,
+.div3 {
+   position: relative;
+   line-height: 1.25rem;
+   display: flex;
+   align-items: center;
+   flex-shrink: 0;
+}
+
+.div2 {
+   text-decoration: line-through;
+   width: 2.81rem;
+   height: 1rem;
+}
+
+.div3 {
+   font-size: 0.94rem;
+   font-weight: 600;
+   color: #000;
+   width: 3.5rem;
+   height: 1.25rem;
+}
+
+.group {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   justify-content: center;
+   text-align: left;
+   color: #b2bcca;
+   font-family: "Open Sans";
+}
+
+.frameParent,
+.parent {
+   display: flex;
+   justify-content: flex-start;
+   gap: 1.5rem;
+}
+
+.parent {
+   flex: 1;
+   height: 5rem;
+   flex-direction: column;
+   align-items: flex-end;
+   text-align: center;
+   font-family: Montserrat;
+}
+
+.frameParent {
+   align-self: stretch;
+   flex-direction: row;
+   align-items: flex-start;
+}
+
+.image35Icon {
+   position: relative;
+   width: 2.19rem;
+   height: 3.88rem;
+   flex-shrink: 0;
+   object-fit: cover;
+   display: none;
+}
+
+.component72Child {
+   align-self: stretch;
+   position: relative;
+   max-width: 100%;
+   overflow: hidden;
+   height: 0.06rem;
+   flex-shrink: 0;
+}
+
+.component72,
+.component75,
+.component76 {
+   position: absolute;
+   top: 4.94rem;
+   left: 1.25rem;
+   width: 20.63rem;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   justify-content: flex-start;
+   gap: 1.25rem;
+}
+
+.component75,
+.component76 {
+   top: 12.19rem;
+}
+
+.component76 {
+   top: 19.44rem;
+}
+
+.orderReview {
+   position: absolute;
+   top: 7.69rem;
+   left: 67rem;
+   width: 23.13rem;
+   height: 26.88rem;
+   font-size: 0.75rem;
+   color: #000;
+}
+
+.discountCodesChild,
+.formsChild {
+   position: absolute;
+   width: 100%;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   border-radius: 4px;
+   background-color: #fff;
+}
+
+.discountCodesChild {
+   height: 100%;
+   top: 0;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14);
+}
+
+.formsChild {
+   height: 75.86%;
+   top: 24.14%;
+   border: 1px solid #1660cf;
+   box-sizing: border-box;
+}
+
+.formsInner,
+.formsItem {
+   position: absolute;
+   top: 1.81rem;
+   right: 0.81rem;
+   width: 0.88rem;
+   height: 0.88rem;
+}
+
+.formsInner {
+   top: 2.13rem;
+   right: 0.88rem;
+   width: 0.56rem;
+   height: 0.28rem;
+   display: none;
+}
+
+.usernamegmailcom {
+   position: absolute;
+   width: calc(100% - 55px);
+   top: 1.63rem;
+   left: 0.88rem;
+   line-height: 1.25rem;
+   font-weight: 600;
+   display: inline-block;
+}
+
+.emailAddress {
+   position: relative;
+   line-height: 1.25rem;
+}
+
+.emailAddressWrapper {
+   position: absolute;
+   top: 0;
+   left: 0.38rem;
+   background-color: #fff;
+   display: flex;
+   flex-direction: row;
+   padding: 0 0.5rem;
+   align-items: center;
+   justify-content: center;
+   font-size: 0.75rem;
+   color: #828282;
+}

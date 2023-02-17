@@ -7,8 +7,9 @@ import styles from './FormField.module.css';
 let classWrapper = classNames.bind(styles);
 
 const FormField = (props) => {
-  const { name, label, type, placeholder, validate, value, renderIcon } = props;
+  const { name, label, type, placeholder, validate, value, renderIcon, labelClass } = props;
   let classes = classWrapper({ formField: true, iconInput: renderIcon() != null, noIconInput: renderIcon() == null });
+  let labelClassName = classWrapper({ noLabel: labelClass == 'noLabel', showLabel: labelClass != 'noLabel' });
   const [phone, setPhone] = useState('');
 
   return (
@@ -25,8 +26,9 @@ const FormField = (props) => {
       {({ input, meta }) => (
         <div className={styles.field}>
           {renderIcon() != null && <div className={styles.fieldIcon}>{renderIcon()}</div>}
-               <input className={classes} {...input} placeholder={placeholder} type={type} />
-               {meta.error && meta.touched && <span className={styles.errors}>{meta.error}</span>}
+          <label className={labelClassName}>{label}</label>
+          <input className={classes} {...input} placeholder={placeholder} type={type} />
+          {meta.error && meta.touched && <span className={styles.errors}>{meta.error}</span>}
         </div>
       )}
     </Field>

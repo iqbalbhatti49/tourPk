@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, Field, FormButtons } from './components';
+import FormButton  from '../../components/FormButton/FormButton';
+import FormField from '../../components/FormField/FormField';
 import { validateForm } from './validation';
 
 const SignupServiceProvider = () => {
@@ -21,11 +22,11 @@ const SignupServiceProvider = () => {
 
   return (
     <Form onSubmit={handleSubmit} validate={validateForm}>
-      <Field name="name" label="Name" type="text" required />
-      <Field name="email" label="Email" type="email" required />
-      <Field name="password" label="Password" type="password" required />
-      <Field name="storename" label="Store Name" type="text" required />
-      <FormButtons isSubmitting={isSubmitting} serverError={serverError} />
+      <FormField name="name" label="Name" type="text" required />
+      <FormField name="email" label="Email" type="email" required />
+      <FormField name="password" label="Password" type="password" required />
+      <FormField name="storename" label="Store Name" type="text" required />
+      <FormButton isSubmitting={isSubmitting} serverError={serverError} />
     </Form>
   );
 }

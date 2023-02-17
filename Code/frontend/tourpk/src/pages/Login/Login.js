@@ -23,16 +23,17 @@ const Login = () => {
                 <FormFinal
                     onSubmit={showResults}
                     subscription={{
-                        submitted: true }} >
+                        submitted: true
+                    }} >
                     {({ handleSubmit, submitting, values }) => (
                         <form onSubmit={handleSubmit}>
                             <h1 className={styles.white}>Welcome back!</h1>
-                            <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={required} value={values} renderIcon={() => <IconEmail />} />
-                            <FormField name="Password" label="Password" type="text" placeholder="Your Password" validate={required} value={values} renderIcon={() => <IconPassword />} />
+                            <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={required} value={values} renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                            <FormField name="Password" label="Password" type="text" placeholder="Your Password" validate={required} value={values} renderIcon={() => <IconPassword />} labelClass="noLabel" />
                             <a href="" className={styles.forget}>Forgot Password</a>
-                            <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
+                            <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
                             <div className={styles.text}>OR</div>
-                            <FormButton type="button" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
+                            <FormButton type="button" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} labelClass="noLabel" />
                             <div className={styles.text}>Don't have an account? <a href="" className={styles.white}>Login</a></div>
                         </form>
                     )}

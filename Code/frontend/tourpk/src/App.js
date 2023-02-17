@@ -12,6 +12,8 @@ import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
 import Login from "./pages/Login/Login";
 import SignupTourist from "./pages/SignupTourist/SignupTourist";
+import CheckOut from "./pages/CheckOut/CheckOut";
+// import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
 
 function App() {
   const action = useNavigationType();
@@ -61,6 +63,8 @@ function App() {
       <Route path="/contact" element={<Contract />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignupTourist />} />
+      <Route path="/checkout" element={<CheckOut />} />
+      {/* <Route path="/signup" element={<SignupServiceProvider />} /> */}
     </Routes>
   );
 };
