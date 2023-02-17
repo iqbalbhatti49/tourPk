@@ -10,6 +10,10 @@ import IconPassword from '../../components/IconPassword/IconPassword';
 import IconGoogle from '../../components/IconGoogle/IconGoogle';
 
 const Login = () => {
+    const [formData, setFormData] = useState({});
+    const handleFormData = (fieldName, value) => {
+        setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
+    };
     const required = value => (value ? undefined : 'Required') // ****** move
     const showResults = values => {
         window.alert("submitted");
@@ -27,14 +31,14 @@ const Login = () => {
                     }} >
                     {({ handleSubmit, submitting, values }) => (
                         <form onSubmit={handleSubmit}>
-                            <h1 className={styles.white}>Welcome back!</h1>
-                            <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={required} value={values} renderIcon={() => <IconEmail />} labelClass="noLabel" />
-                            <FormField name="Password" label="Password" type="text" placeholder="Your Password" validate={required} value={values} renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                            <h1 className={styles.loginTitle}>Welcome back!</h1>
+                            <FormField name="Email" type="email" placeholder="abc@email.com" validate={required} value={values} theme="dark" handleChange={handleFormData} renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                            <FormField name="Password" type="text" placeholder="Your Password" validate={required} value={values} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} labelClass="noLabel" />
                             <a href="" className={styles.forget}>Forgot Password</a>
                             <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
                             <div className={styles.text}>OR</div>
-                            <FormButton type="button" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} labelClass="noLabel" />
-                            <div className={styles.text}>Don't have an account? <a href="" className={styles.white}>Login</a></div>
+                            <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
+                            <div className={styles.text}>Don't have an account? <a href="/login" className={styles.white}>Login</a></div>
                         </form>
                     )}
                 </FormFinal>

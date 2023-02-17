@@ -12,7 +12,11 @@ import IconPerson from '../../components/IconPerson/IconPerson';
 import PhoneNumber from "../../components/PhoneNumber/PhoneNumber";
 
 const SignupTourist = () => {
-    const required = value => (value ? undefined : 'Required') // ****** move
+    const [formData, setFormData] = useState({});
+    const handleFormData = (fieldName, value) => {
+        setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
+    };
+    const required = value => (value ? undefined : 'Required')
     const showResults = values => {
         window.alert("submitted");
     }
@@ -30,14 +34,14 @@ const SignupTourist = () => {
                     {({ handleSubmit, submitting, values }) => (
                         <form onSubmit={handleSubmit}>
                             <h1 className={styles.white}>Sign Up</h1>
-                            <FormField name="FullName" label="Full Name" type="text" placeholder="Your Full Name" validate={required} value={values} renderIcon={() => <IconPerson />} labelClass="noLabel" />
-                            <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={required} value={values} renderIcon={() => <IconEmail />} labelClass="noLabel" />
-                            <PhoneNumber />
-                            <FormField name="Password" label="Password" type="text" placeholder="Your Password" validate={required} value={values} renderIcon={() => <IconPassword />} labelClass="noLabel" />
-                            <FormField name="confirmPassword" label="Confirm Password" type="text" placeholder="Confirm Password" validate={required} value={values} renderIcon={() => <IconPassword />} labelClass="noLabel" />
-                            <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
+                            <FormField name="FullName" label="Full Name" type="text" placeholder="Your Full Name" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPerson />} labelClass="noLabel" />
+                            <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                            <PhoneNumber handleChange={setFormData} />
+                            <FormField name="Password" type="text" placeholder="Your Password" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                            <FormField name="confirmPassword" type="text" placeholder="Confirm Password" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                            <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
                             <div className={styles.text}>OR</div>
-                            <FormButton type="button" disabled={submitting} text="Signup with Google" renderIcon={() => <IconGoogle />} labelClass="noLabel" />
+                            <FormButton type="submit" disabled={submitting} text="Signup with Google" renderIcon={() => <IconGoogle />} />
                             <div className={styles.text}>Already have an account? <a href="" className={styles.white}>Login</a></div>
                         </form>
                     )}
@@ -48,5 +52,4 @@ const SignupTourist = () => {
     </>
     );
 }
-
 export default SignupTourist;
