@@ -5,6 +5,7 @@ import { Form as FormFinal } from 'react-final-form'
 import FormField from '../../components/FormField/FormField'
 import styles from './AddPackage.module.css'
 import Dropdown from '../../components/Dropdown/Dropdown'
+import Button from '../../components/Button/Button';
 
 export default function AddPackage() {
     const required = value => (value ? undefined : 'Required') // ****** move
@@ -57,16 +58,20 @@ export default function AddPackage() {
                                             const validate = index < 2 ? required : optionalField;
                                             return (
                                                 <div key={index} className={styles.sectionContainer}>
-                                                     <h3>Section {index+1}</h3>
-                                                     {/* <FormField name="servicedescription" type="text" placeholder="Description of service added in this package" validate={optionalField} theme="light" handleChange={} renderIcon={() => null} />     */}
-                                                     {/* <Dropdown/>                         */}
+                                                     <h3>Service {index+1}</h3>
+                                                     <div className={styles.section}>
+                                                     <label htmlFor="serviceTitle" className={styles.label}>Service Title</label>
+                                                     <FormField name="serviceTitle" type="text" placeholder="Select service to add in this package" validate={validate} theme="light" handleChange={handleFormData} renderIcon={() => null} />     
+                                                     </div>
+                                                     <div className={styles.section}>
+                                                     <label htmlFor="servicedescription" className={styles.label}>Service Description</label>                       
+                                                     <FormField name="servicedescription" type="text" placeholder="Description of service added in this package" validate={optionalField} theme="light" handleChange={handleFormData} renderIcon={() => null} />    
+                                                    </div>
                                                 </div>
                                             );
                                         })}
                                         <div className={styles.addButtonContainer}>
-                                            <button className={styles.addButton} onClick={addSection}>
-                                                Add More
-                                            </button>
+                                        <Button value="Add more" type="primary" />
                                         </div>
                                     </div>
                                 </form>
