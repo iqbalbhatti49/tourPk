@@ -40,18 +40,14 @@ export default function AddPackage() {
                                 <form onSubmit={handleSubmit}>
                                     <div className={styles.flexContainer}>
                                     <div>
-                                    <label htmlFor="name" className={styles.label}>PackageName</label>
-                                    <FormField name="PackageName" type="text" placeholder="Package Name" validate={required}  theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    <FormField name="PackageName" label="Package Name" type="text" placeholder="Package Name" validate={required} value={values} theme="light" handleChange={handleFormData} renderIcon={() => null} />
                                     </div>
                                     <div>
-                                    <label htmlFor="price" className={styles.label}>Price</label>
-                                    <FormField name="Price" type="number" placeholder="Price of package" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    <FormField name="Price" label="Price" type="number" placeholder="Price of package" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
                                     </div>
                                     </div>
-                                    <label htmlFor="desc" className={styles.label}>Description</label>
-                                    <FormField name="Description" type="text" placeholder="Additional description of package and why its amazing" theme="light" handleChange={handleFormData} renderIcon={() => null} />
-                                    <label htmlFor="Validity" className={styles.label}>Validity</label>
-                                    <FormField name="Validity" type="text" placeholder="No of days for this offer lasts eg. 25 days" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    <FormField name="Description" label="Description" type="text" placeholder="Additional description of package and why its amazing" theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                    <FormField name="Validity" label="Validity" type="text" placeholder="No of days for this offer lasts eg. 25 days" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
                                     {/* <Dropdown /> */}
                                     <br />
                                     <h2>What's included</h2>
