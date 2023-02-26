@@ -14,6 +14,7 @@ import Login from "./pages/Login/Login";
 import SignupTourist from "./pages/SignupTourist/SignupTourist";
 import AddPackage from "./pages/AddPackage/AddPackage";
 import CheckOut from "./pages/CheckOut/CheckOut";
+import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
 
 function App() {
   const action = useNavigationType();
@@ -65,6 +66,7 @@ function App() {
       <Route path="/signup" element={<SignupTourist />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/addpackage" element={<AddPackage />} />
+      <Route path="/addrestaurant" element={<AddRestaurant />} />
     </Routes>
   );
 };
