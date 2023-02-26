@@ -12,9 +12,8 @@ import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
 import Login from "./pages/Login/Login";
 import SignupTourist from "./pages/SignupTourist/SignupTourist";
-import CheckOut from "./pages/CheckOut/CheckOut";
-// import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
 import AddPackage from "./pages/AddPackage/AddPackage";
+import CheckOut from "./pages/CheckOut/CheckOut";
 import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
 
 function App() {
@@ -66,8 +65,6 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignupTourist />} />
       <Route path="/checkout" element={<CheckOut />} />
-      {/* <Route path="/signup" element={<SignupServiceProvider />} /> */}
-      <Route path="/signup" element={<SignupTourist />} />F
       <Route path="/addpackage" element={<AddPackage />} />
       <Route path="/addrestaurant" element={<AddRestaurant />} />
     </Routes>
