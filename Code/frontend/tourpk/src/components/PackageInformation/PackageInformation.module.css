@@ -1,0 +1,12 @@
+.flexContainer {
+    display: flex;
+  }
+  
+  .flexContainer > * {
+    flex: 1;
+    margin-right: 16px;
+  }
+  
+  .flexContainer > *:last-child {
+    margin-right: 0;
+  }

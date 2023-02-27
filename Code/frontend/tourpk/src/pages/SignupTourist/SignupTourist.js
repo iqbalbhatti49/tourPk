@@ -10,18 +10,15 @@ import IconPassword from '../../components/IconPassword/IconPassword';
 import IconGoogle from '../../components/IconGoogle/IconGoogle';
 import IconPerson from '../../components/IconPerson/IconPerson';
 import PhoneNumber from "../../components/PhoneNumber/PhoneNumber";
+import { validateAlpha ,validateEmail, validatePassword, validateEquality } from '../../validations'
 
 const SignupTourist = () => {
-    const [formData, setFormData] = useState({});
-    const handleFormData = (fieldName, value) => {
-        setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
-    };
-    console.log(formData);
-
     const required = value => (value ? undefined : 'Required')
-    const showResults = values => {
-        window.alert("submitted");
-    }
+    const onSubmit = (values, form) => {
+        console.log('Form submitted with values:', values);
+        form.reset(); // Reset the form's state after submission
+       // TODO: manage redux -> dispatch redux...
+      };
     return (<>
         <NavBar />
         <div className={styles.formContainer}></div>
@@ -29,18 +26,18 @@ const SignupTourist = () => {
             <div className={styles.formImage}> </div>
             <div className={styles.form}>
                 <FormFinal
-                    onSubmit={showResults}
+                    onSubmit={onSubmit}
                     subscription={{
                         submitted: true
                     }} >
                     {({ handleSubmit, submitting, values }) => (
                         <form onSubmit={handleSubmit}>
                             <h1 className={styles.white}>Sign Up</h1>
-                            <FormField name="FullName" label="Full Name" type="text" placeholder="Your Full Name" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPerson />} labelClass="noLabel" />
-                            <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconEmail />} labelClass="noLabel" />
-                            <PhoneNumber handleChange={setFormData} />
-                            <FormField name="Password" type="text" placeholder="Your Password" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} labelClass="noLabel" />
-                            <FormField name="confirmPassword" type="text" placeholder="Confirm Password" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                            <FormField name="FullName" label="Full Name" type="text" placeholder="Your Full Name" validate={validateAlpha} theme="dark"   renderIcon={() => <IconPerson />} labelClass="noLabel" />
+                            <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                            <PhoneNumber/>
+                            <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark"   renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                            <FormField name="confirmPassword" type="text" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark"   renderIcon={() => <IconPassword />} labelClass="noLabel" />
                             <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
                             <div className={styles.text}>OR</div>
                             <FormButton type="submit" disabled={submitting} text="Signup with Google" renderIcon={() => <IconGoogle />} />
@@ -55,3 +52,5 @@ const SignupTourist = () => {
     );
 }
 export default SignupTourist;
+
+//When a validation function is passed to a form field, final-form library automatically passes two arguments to that function: the current field value and entire form values object

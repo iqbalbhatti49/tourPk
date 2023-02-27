@@ -6,16 +6,18 @@ import IconEmail from '../../components/IconEmail/IconEmail';
 import PhoneNumber from '../PhoneNumber/PhoneNumber';
 export const BillingAddress = (props) => {
    const required = value => (value ? undefined : 'Required');
-   const showResults = values => {
-      window.alert("submitted");
-   }
+   const onSubmit = (values, form) => {
+      console.log('Form submitted with values:', values);
+      form.reset(); // Reset the form's state after submission
+     // TODO: manage redux -> dispatch redux...
+    };
 
    return (
       <div className={styles.container} >
          <p className={styles.heading}>Billing Address</p>
          <div className={styles.form}>
             <FormFinal
-               onSubmit={showResults}
+               onSubmit={onSubmit}
                subscription={{
                   submitted: true
                }} >
