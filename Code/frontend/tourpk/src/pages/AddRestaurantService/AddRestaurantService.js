@@ -15,16 +15,19 @@ import Button from "../../components/Button/Button";
 
 const AddRestaurant = () => {
     const required = value => (value ? undefined : 'Required') // ****** move
-    const showResults = values => {
-        window.alert("submitted");
-    }
+    const onSubmit = (values, form) => {
+        console.log('Form submitted with values:', values);
+        form.reset(); // Reset the form's state after submission
+       // TODO: manage redux -> dispatch redux --> "value"
+      };
+
     return (<>
         <NavBar />
         <div className={styles.formContainer}></div>
         <div className={styles.tableContainer}>
             <div >
                 <FormFinal
-                    onSubmit={showResults}
+                    onSubmit={onSubmit}
                     subscription={{
                         submitted: true
                     }} >

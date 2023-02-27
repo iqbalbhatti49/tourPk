@@ -8,17 +8,16 @@ import FormButton from '../../components/FormButton/FormButton';
 import IconEmail from '../../components/IconEmail/IconEmail';
 import IconPassword from '../../components/IconPassword/IconPassword';
 import IconGoogle from '../../components/IconGoogle/IconGoogle';
+import { validateEmail, validatePassword } from '../../validations'
 
 const Login = () => {
-    const [formData, setFormData] = useState({});
-    const handleFormData = (fieldName, value) => {
-        setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
-    };
-    console.log(formData);
-    const required = value => (value ? undefined : 'Required') // ****** move
-    const showResults = values => {
-        window.alert("submitted");
-    }
+   
+    const onSubmit = (values, form) => {
+        console.log('Form submitted with values:', values);
+        form.reset(); // Reset the form's state after submission
+       // TODO: manage redux -> dispatch redux...
+      };
+    
     return (<>
         <NavBar />
         <div className={styles.formContainer}></div>
@@ -26,15 +25,15 @@ const Login = () => {
             <div className={styles.formImage}> </div>
             <div className={styles.form}>
                 <FormFinal
-                    onSubmit={showResults}
+                    onSubmit={onSubmit}
                     subscription={{
                         submitted: true
                     }} >
                     {({ handleSubmit, submitting, values }) => (
                         <form onSubmit={handleSubmit}>
                             <h1 className={styles.loginTitle}>Welcome back!</h1>
-                            <FormField name="Email" type="email" placeholder="abc@email.com" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconEmail />} labelClass="noLabel" />
-                            <FormField name="Password" type="text" placeholder="Your Password" validate={required} theme="dark" handleChange={handleFormData} renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                            <FormField name="Email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark"  renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                            <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark"  renderIcon={() => <IconPassword />} labelClass="noLabel" />
                             <a href="" className={styles.forget}>Forgot Password</a>
                             <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
                             <div className={styles.text}>OR</div>
