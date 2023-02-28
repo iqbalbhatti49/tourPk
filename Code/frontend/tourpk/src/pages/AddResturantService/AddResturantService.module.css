@@ -1,54 +1,63 @@
-@import "../../styles/variables.css";
-
-.formImage{
-display: table-cell;
-width: auto;
-background: url(https://bahriatown.com/wp-content/uploads/2020/06/BT_September_21_09-A.jpg);
-background-size: cover;
-border-radius: 20px 0px 0px 20px;
-}
-
-.formContainer{
-padding: 20px 0;
-}
-
-.tableContainer{
-    display: table;
-    max-width: 900px;
-    width: 90%;
-    margin: 0 auto;
-    border-radius: 25px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1)
-    }
-
-.form{
-display: table-cell;
-border-radius: 0px 20px 20px 0px;
-width: 400px;
-background-color: var(--primaryColor);
-padding: 40px 60px;
-color: #505e6c;
-
-@media (max-width:991px) {
-    .form {
-    padding: 40px; }
-}
-}
-
-.text{
-    text-align: center;
-    color: var(--formLight);
-    margin-top: 15px;
-}
-
-.forget{
-    color: var(--formLight);
-    text-align: end;
+.container{
+    padding: 2vh 7vw;
+  }
+  
+  .formBorder{
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px 3px rgb(0,0,0,0.1);
+  }
+  
+  .formContainer{
+    padding: 2vh 1vw;
+  }
+  
+  .container img{
+    width: 60%;
+    margin: auto;
     display: block;
-    margin-bottom: 20px;
-    margin-top: -10px;
-}
-
-.white{
-    color: var(--whiteColor);
-}
+    border-radius: 12px;
+  }
+  
+  .container h1 {
+    font-size: 2.3rem;
+  }
+  
+  .flexContainer {
+    display: flex;
+  }
+  
+  .flexContainer > * {
+    flex: 1;
+    margin-right: 16px;
+  }
+  
+  .flexContainer > *:last-child {
+    margin-right: 0;
+  }
+  
+  
+  
+  
+  .form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .addButtonContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .addButton {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
