@@ -7,6 +7,7 @@ import { useState } from 'react';
 import PhoneNumber from '../PhoneNumber/PhoneNumber';
 export const BillingAddress = (props) => {
    const required = value => (value ? undefined : 'Required');
+<<<<<<< HEAD
    const showResults = values => {
       window.alert("submitted");
    }
@@ -14,13 +15,20 @@ export const BillingAddress = (props) => {
    const handleFormData = (fieldName, value) => {
       setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
    };
+=======
+   const onSubmit = (values, form) => {
+      console.log('Form submitted with values:', values);
+      form.reset(); // Reset the form's state after submission
+     // TODO: manage redux -> dispatch redux...
+    };
+>>>>>>> 29d8ced032a73bb33b80ed8e438b16597a399b82
 
    return (
       <div className={styles.container} >
          <p className={styles.heading}>Billing Address</p>
          <div className={styles.form}>
             <FormFinal
-               onSubmit={showResults}
+               onSubmit={onSubmit}
                subscription={{
                   submitted: true
                }} >

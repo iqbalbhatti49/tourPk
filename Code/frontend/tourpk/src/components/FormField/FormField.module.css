@@ -59,9 +59,14 @@
 
 .showLabel {
   position: absolute;
+<<<<<<< HEAD
   top: 0px;
+=======
+  top: -11px;
+>>>>>>> 29d8ced032a73bb33b80ed8e438b16597a399b82
   left: 10px;
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: 600;
   background-color: var(--whiteColor);
   padding: 0 5px;
 }
