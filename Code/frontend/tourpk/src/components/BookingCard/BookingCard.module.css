@@ -1,0 +1,38 @@
+  .card {
+    display: flex;
+    width: 63%;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ccc;
+    column-gap: 15px;
+    margin: 20px 0px;
+    border-radius: 15px;
+    box-shadow: 0px 2px 4px 3px rgb(0,0,0,0.1);
+  }
+  
+  .image {
+    flex: 1;
+    max-width: 150px;
+  }
+  
+  .details {
+    flex: 2;
+  }
+  
+  .row {
+    margin-bottom: 10px;
+  }
+  
+  .row h2 {
+    margin: 0;
+  }
+  
+  .row p {
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .hide{
+    visibility: hidden;
+  }
