@@ -26,7 +26,7 @@ const FormField = (props) => {
           {renderIcon() != null && <div className={styles.fieldIcon}>{renderIcon()}</div>}
           <label className={labelClassName}>{label}</label>
           <input className={classes} {...input} placeholder={placeholder} type={type} />
-          {meta.error && meta.touched && <span className={styles.errors}>{meta.error}</span>}
+          {meta.error && meta.touched && <span className={props.theme === 'dark' ? styles.error : styles.errorRed}>{meta.error}</span>}
         </div>
       )}
     </Field>

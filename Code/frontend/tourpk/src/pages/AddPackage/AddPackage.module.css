@@ -68,3 +68,13 @@
   color: #fff;
   cursor: pointer;
 }
+#heading2{
+  margin: 30px 0px 0px 0px !important;
+}
+
+.headingContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  column-gap: 1rem;
+}
