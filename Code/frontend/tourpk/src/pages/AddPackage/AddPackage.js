@@ -18,11 +18,11 @@ export default function AddPackage() {
     const handleFormData = (fieldName, value) => {
         setFormData((prevData) => ({ [fieldName]: value, ...prevData }));
     };
-    
+
     const [sections, setSections] = useState([1, 2]);
-    const addSection = () => {    
-         setSections([...sections, sections.length + 1]);
-        };
+    const addSection = () => {
+        setSections([...sections, sections.length + 1]);
+    };
 
     return (
         <>
@@ -39,14 +39,14 @@ export default function AddPackage() {
                             {({ handleSubmit, submitting, values }) => (
                                 <form onSubmit={handleSubmit}>
                                     <div className={styles.flexContainer}>
-                                    <div>
-                                    <label htmlFor="name" className={styles.label}>PackageName</label>
-                                    <FormField name="PackageName" type="text" placeholder="Package Name" validate={required}  theme="light" handleChange={handleFormData} renderIcon={() => null} />
-                                    </div>
-                                    <div>
-                                    <label htmlFor="price" className={styles.label}>Price</label>
-                                    <FormField name="Price" type="number" placeholder="Price of package" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
-                                    </div>
+                                        <div>
+                                            <label htmlFor="name" className={styles.label}>PackageName</label>
+                                            <FormField name="PackageName" type="text" placeholder="Package Name" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="price" className={styles.label}>Price</label>
+                                            <FormField name="Price" type="number" placeholder="Price of package" validate={required} theme="light" handleChange={handleFormData} renderIcon={() => null} />
+                                        </div>
                                     </div>
                                     <label htmlFor="desc" className={styles.label}>Description</label>
                                     <FormField name="Description" type="text" placeholder="Additional description of package and why its amazing" theme="light" handleChange={handleFormData} renderIcon={() => null} />
@@ -63,7 +63,7 @@ export default function AddPackage() {
                                             );
                                         })}
                                         <div className={styles.addButtonContainer}>
-                                        <Button value="Add more" type="primary" />
+                                            <Button value="Add more" type="primary" />
                                         </div>
                                     </div>
                                 </form>

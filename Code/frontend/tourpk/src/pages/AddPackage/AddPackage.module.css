@@ -1,17 +1,17 @@
-.container{
+.container {
   padding: 2vh 7vw;
 }
 
-.formBorder{
-border-radius: 5px;
-box-shadow: 0px 2px 4px 3px rgb(0,0,0,0.1);
+.formBorder {
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px 3px rgb(0, 0, 0, 0.1);
 }
 
-.formContainer{
+.formContainer {
   padding: 2vh 1vw;
 }
 
-.container img{
+.container img {
   width: 60%;
   margin: auto;
   display: block;
@@ -26,12 +26,12 @@ box-shadow: 0px 2px 4px 3px rgb(0,0,0,0.1);
   display: flex;
 }
 
-.flexContainer > * {
+.flexContainer>* {
   flex: 1;
   margin-right: 16px;
 }
 
-.flexContainer > *:last-child {
+.flexContainer>*:last-child {
   margin-right: 0;
 }
 
