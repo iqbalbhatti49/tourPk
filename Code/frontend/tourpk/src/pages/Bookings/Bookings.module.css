@@ -1,7 +1,7 @@
 .container{
     display: flex;
     column-gap: 30px;
-    padding: 2vh 7vw;
+    padding: 2vh 8vw;
   }
 
 .container h1 {
@@ -14,25 +14,3 @@
     text-justify: inter-word;
     width: 90%;
   }
-
-#earning{
-    width: 200px;
-}
-
-.icons{
-    margin-top: 150px;
-}
-
-.imgContainer
-{
-    position: relative;
-}
-.count{
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--primaryColor);
-    font-size: 1.2rem;
-    font-weight: 500;
-}

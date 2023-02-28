@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import ServiceSection from '../../components/ServiceSection/ServiceSection';
 import PackageInformation from '../../components/PackageInformation/PackageInformation';
 import { validateAlpha ,mustBeNumber} from '../../validations'
+import IconAdd from '../../components/IconAdd/IconAdd';
 
 export default function AddPackage() {
     const required = value => (value ? undefined : 'Required') // ****** move
@@ -18,7 +19,8 @@ export default function AddPackage() {
       };
   
     const [sections, setSections] = useState([1, 2]);
-    const addSection = () => {    
+    const addSection = (e) => {    
+        e.preventDefault()
          setSections([...sections, sections.length + 1]);
         };
 
@@ -39,7 +41,13 @@ export default function AddPackage() {
                             {({ handleSubmit, submitting, values }) => (
                                 <form onSubmit={handleSubmit}>
                                     <PackageInformation values={values}  /> 
-                                    <h2>What's included</h2>
+                                    <div className={styles.headingContainer}>
+                                        <h2 id={styles.heading2}>What's included</h2>
+                                        <a href="#" onClick={addSection}>
+                                        <IconAdd/>
+                                        </a>
+                                    </div>
+
                                     <div className={styles.form}>
                                         {sections.map((section, index) => {
                                             const validate = index < 2 ? required : optionalField;
@@ -48,7 +56,7 @@ export default function AddPackage() {
                                             );
                                         })}
                                         <div className={styles.addButtonContainer}>
-                                        <Button value="Add more" type="primary" />
+                                        <Button value="Add Package" type="primary" />
                                         </div>
                                     </div>
                                 </form>

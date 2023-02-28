@@ -53,8 +53,14 @@
   width: 95%;
 }
 
-.errors {
+.error {
   color: var(--formLight);
+  padding-left: 10px;
+}
+
+.errorRed {
+  color: red;
+  padding-left: 10px;
 }
 
 .showLabel {
