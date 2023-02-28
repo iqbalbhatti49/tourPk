@@ -17,13 +17,13 @@ export default function AddPackage() {
         form.reset(); // Reset the form's state after submission
        // TODO: manage redux -> dispatch redux...
       };
-  
+
     const [sections, setSections] = useState([1, 2]);
     const addSection = (e) => {    
         e.preventDefault()
          setSections([...sections, sections.length + 1]);
         };
-
+        
     return (
         <>
             <NavBar />
