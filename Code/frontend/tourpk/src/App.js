@@ -12,10 +12,10 @@ import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
 import Login from "./pages/Login/Login";
 import SignupTourist from "./pages/SignupTourist/SignupTourist";
-import CheckOut from "./pages/CheckOut/CheckOut";
-// import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
 import AddPackage from "./pages/AddPackage/AddPackage";
-import AddResturant from "./pages/AddResturantService/AddResturantService";
+import CheckOut from "./pages/CheckOut/CheckOut";
+import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
+import Bookings from "./pages/Bookings/Bookings";
 
 function App() {
   const action = useNavigationType();
@@ -66,10 +66,9 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignupTourist />} />
       <Route path="/checkout" element={<CheckOut />} />
-      {/* <Route path="/signup" element={<SignupServiceProvider />} /> */}
-      <Route path="/signup" element={<SignupTourist />} />
       <Route path="/addpackage" element={<AddPackage />} />
-      <Route path="/addresturant" element={<AddResturant />} />
+      <Route path="/addrestaurant" element={<AddRestaurant />} />
+      <Route path="/bookings" element={<Bookings />} />
     </Routes>
   );
 };

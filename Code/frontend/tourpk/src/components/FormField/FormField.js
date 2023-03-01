@@ -5,7 +5,7 @@ import styles from './FormField.module.css';
 let classWrapper = classNames.bind(styles);
 
 const FormField = (props) => {
-  const { name, type, placeholder, validate, theme, renderIcon, handleChange, label, labelClass } = props;
+  const { name, type, placeholder, validate, theme, renderIcon, label, labelClass } = props; 
   let classes = classWrapper({ formField: true, iconInput: renderIcon() != null, noIconInput: renderIcon() == null, light: theme == 'light' });
   let labelClassName = classWrapper({ noLabel: labelClass == 'noLabel', showLabel: labelClass != 'noLabel' });
 
@@ -13,6 +13,7 @@ const FormField = (props) => {
     <Field
       name={name}
       validate={validate}
+      //re-render the component whenever: field becomes active, field has been touched, field's error state or field value changes
       subscription={{
         value: true,
         active: true,
@@ -24,8 +25,8 @@ const FormField = (props) => {
         <div className={styles.field}>
           {renderIcon() != null && <div className={styles.fieldIcon}>{renderIcon()}</div>}
           <label className={labelClassName}>{label}</label>
-          <input className={classes} {...input} placeholder={placeholder} type={type} onChange={e => handleChange(name, e.target.value)} />
-          {meta.error && meta.touched && <span className={styles.errors}>{meta.error}</span>}
+          <input className={classes} {...input} placeholder={placeholder} type={type} />
+          {meta.error && meta.touched && <span className={props.theme === 'dark' ? styles.error : styles.errorRed}>{meta.error}</span>}
         </div>
       )}
     </Field>
