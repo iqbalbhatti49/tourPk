@@ -7,13 +7,8 @@
   box-shadow: 0px 2px 4px 3px rgb(0, 0, 0, 0.1);
 }
 
-<<<<<<< HEAD
 .formContainer {
-  padding: 2vh 1vw;
-=======
-.formContainer{
   padding: 1rem 2rem;
->>>>>>> 29d8ced032a73bb33b80ed8e438b16597a399b82
 }
 
 .container img {
@@ -27,30 +22,10 @@
   font-size: 2.3rem;
 }
 
-<<<<<<< HEAD
 .flexContainer {
   display: flex;
 }
 
-.flexContainer>* {
-  flex: 1;
-  margin-right: 16px;
-}
-
-.flexContainer>*:last-child {
-  margin-right: 0;
-}
-
-
-
-
-=======
->>>>>>> 29d8ced032a73bb33b80ed8e438b16597a399b82
-.form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 
 .addButtonContainer {
   width: 100%;
@@ -68,11 +43,12 @@
   color: #fff;
   cursor: pointer;
 }
-#heading2{
+
+#heading2 {
   margin: 30px 0px 0px 0px !important;
 }
 
-.headingContainer{
+.headingContainer {
   display: flex;
   flex-direction: row;
   align-items: baseline;

@@ -6,6 +6,7 @@ import { OrderReview } from "../../components/OrderReview/OrderReview";
 import { BillingAddress } from "../../components/BillingAddress/BillingAddress";
 import { DiscountCodes } from "../../components/DiscountCodes/DiscountCodes";
 import { BillingSummary } from "../../components/BillingSummary/BillingSummary";
+import { ShippingMethod } from "../../components/ShippingMethod/ShippingMethod"
 
 const CheckOut = () => {
    return (
@@ -16,11 +17,22 @@ const CheckOut = () => {
                <p className={styles.subHeading}>BOOK YOUR DREAM VACATIONS WITH CONFIDENCE</p>
                <h1 className={styles.Heading}>Checkout in a few Clicks</h1>
             </div>
-            <BillingAddress />
-            {/* <PaymentMethod />
-            <OrderReview />
-            <DiscountCodes />
-            <BillingSummary /> */}
+            <div className={styles.information}>
+               <div>
+                  <BillingAddress />
+                  <ShippingMethod />
+                  <ShippingMethod />
+                  {/* <PaymentMethod /> */}
+               </div>
+               <div>
+                  {/* <OrderReview />
+                  <DiscountCodes />
+                  <BillingSummary /> */}
+                  <BillingAddress />
+                  <ShippingMethod />
+                  <ShippingMethod />
+               </div>
+            </div>
          </div>
          <Footer />
       </div>

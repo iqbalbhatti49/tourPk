@@ -1,23 +1,15 @@
-.phoneField > input{
-    width: 100% !important;  
-    height: 49px !important;;  
-    background-color: var(--whiteColor);
-    border-radius: 12px !important;
-    font-size: 17px !important;
-}
-.react-tel-input {
-    border-radius: 12px !important;
+@import "../../styles/variables.css";
+
+.phoneField>input {
+    @apply --inputField;
+    width: 424px !important;
 }
 
-.phoneField > div{
-    border-radius: 12px 0px 0px 12px !important;
-}
-
-.phoneContainer{
+.phoneContainer {
     margin-bottom: 15px;
 }
 
-.phoneField > input::placeholder{
+.phoneField>input::placeholder {
     font-weight: 400;
     color: #747688;
 }
