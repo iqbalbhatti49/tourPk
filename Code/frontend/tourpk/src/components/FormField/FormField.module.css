@@ -33,7 +33,7 @@
 
 .light{
   border: 1px solid #b5b5b588;
-  /* box-shadow: 0px 0px 3px 1px rgb(0,0,0,0.1); */
+  box-shadow: 0px 0px 3px 1px rgb(0,0,0,0.1); 
 }
 
 /* TODO: Make this property of input fields global->pdding, backgrnd etc  -> For other fields like Phone etc
@@ -65,11 +65,7 @@
 
 .showLabel {
   position: absolute;
-<<<<<<< HEAD
-  top: 0px;
-=======
-  top: -11px;
->>>>>>> 29d8ced032a73bb33b80ed8e438b16597a399b82
+  top: -11px; 
   left: 10px;
   font-size: 15px;
   font-weight: 600;
