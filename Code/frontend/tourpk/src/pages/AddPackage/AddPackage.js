@@ -6,23 +6,21 @@ import styles from './AddPackage.module.css'
 import Button from '../../components/Button/Button';
 import ServiceSection from '../../components/ServiceSection/ServiceSection';
 import PackageInformation from '../../components/PackageInformation/PackageInformation';
-import { validateAlpha ,mustBeNumber} from '../../validations'
+import { validateAlpha, optionalField } from '../../validations'
 import IconAdd from '../../components/IconAdd/IconAdd';
 
 export default function AddPackage() {
-    const required = value => (value ? undefined : 'Required') // ****** move
-    const optionalField = value => (value ? 'undefined' : '') // ****** move ******************
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
-       // TODO: manage redux -> dispatch redux...
-      };
-  
+        // TODO: manage redux -> dispatch redux...
+    };
+
     const [sections, setSections] = useState([1, 2]);
-    const addSection = (e) => {    
+    const addSection = (e) => {
         e.preventDefault()
-         setSections([...sections, sections.length + 1]);
-        };
+        setSections([...sections, sections.length + 1]);
+    };
 
     return (
         <>
@@ -34,29 +32,23 @@ export default function AddPackage() {
                 <h1>Add Services Package</h1>
                 <div className={styles.formBorder}>
                     <div className={styles.formContainer}>
-                        <FormFinal
-                         onSubmit={onSubmit}
-                         subscription={{ submitted: true }}
-                          >
+                        <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >
                             {({ handleSubmit, submitting, values }) => (
                                 <form onSubmit={handleSubmit}>
-                                    <PackageInformation values={values}  /> 
+                                    <PackageInformation values={values} />
                                     <div className={styles.headingContainer}>
                                         <h2 id={styles.heading2}>What's included</h2>
-                                        <a href="#" onClick={addSection}>
-                                        <IconAdd/>
-                                        </a>
+                                        <a href="#" onClick={addSection}> <IconAdd /> </a>
                                     </div>
-
                                     <div className={styles.form}>
                                         {sections.map((section, index) => {
-                                            const validate = index < 2 ? required : optionalField;
+                                            const validate = index < 2 ? validateAlpha : optionalField;
                                             return (
-                                                <ServiceSection key={index} index={index} validate={validate}   />
+                                                <ServiceSection key={index} index={index} validate={validate} />
                                             );
                                         })}
                                         <div className={styles.addButtonContainer}>
-                                        <Button value="Add Package" type="primary" />
+                                            <Button value="Add Package" type="primary" />
                                         </div>
                                     </div>
                                 </form>

@@ -16,6 +16,7 @@ import AddPackage from "./pages/AddPackage/AddPackage";
 import CheckOut from "./pages/CheckOut/CheckOut";
 import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
 import Bookings from "./pages/Bookings/Bookings";
+import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
 
 function App() {
   const action = useNavigationType();
@@ -64,11 +65,12 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contract />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignupTourist />} />
+      <Route path="/signupTourist" element={<SignupTourist />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/addpackage" element={<AddPackage />} />
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/bookings" element={<Bookings />} />
+      <Route path="/signupSeller" element={<SignupServiceProvider />} />
     </Routes>
   );
 };
