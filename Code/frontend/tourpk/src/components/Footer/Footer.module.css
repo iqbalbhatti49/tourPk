@@ -8,7 +8,7 @@
 .header {
    display: flex;
    justify-content: space-evenly;
-   margin: 50px 5vw 0px 5vw;
+   margin: 0px 5vw 0px 5vw;
 }
 
 .content {
@@ -27,7 +27,7 @@
 }
 
 .links a {
-   margin-block: 10px;
+   margin-block: 7px;
 }
 
 .navLink {

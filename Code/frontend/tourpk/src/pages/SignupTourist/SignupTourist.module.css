@@ -9,7 +9,11 @@ border-radius: 20px 0px 0px 20px;
 }
 
 .formContainer{
-padding: 20px 0;
+    padding: 0px 0px 75px 0;
+}
+
+.formContainer h1{
+   @apply --headerHeading;
 }
 
 .tableContainer{

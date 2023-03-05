@@ -1,5 +1,7 @@
+@import "../../styles/variables.css";
+
 .container {
-  padding: 2vh 7vw;
+  padding: 0vh 7vw;
 }
 
 .formBorder {
@@ -20,6 +22,8 @@
 
 .container h1 {
   font-size: 2.3rem;
+  margin: 0px;
+  @apply --headerHeading;
 }
 
 .flexContainer {

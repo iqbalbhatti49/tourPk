@@ -26,10 +26,10 @@ export default function AddPackage() {
         <>
             <NavBar />
             <div className={styles.container}>
+                <h1>Add Services Package</h1>
                 <div>
                     <img src="../static/images/packagehead.png" alt="packages" />
                 </div>
-                <h1>Add Services Package</h1>
                 <div className={styles.formBorder}>
                     <div className={styles.formContainer}>
                         <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >
