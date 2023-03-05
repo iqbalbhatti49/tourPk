@@ -1,16 +1,16 @@
-#earning{
+#earning {
     width: 200px;
 }
 
-.icons{
+.icons {
     margin-top: 130px;
 }
 
-.imgContainer
-{
+.imgContainer {
     position: relative;
 }
-.count{
+
+.count {
     position: absolute;
     top: 70%;
     left: 50%;
