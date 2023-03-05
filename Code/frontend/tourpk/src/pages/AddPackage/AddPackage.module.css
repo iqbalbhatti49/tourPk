@@ -7,9 +7,9 @@
   box-shadow: 0px 2px 4px 3px rgb(0, 0, 0, 0.1);
 }
 
-.formContainer {
+.formContainer{
   padding: 1rem 2rem;
-}
+} 
 
 .container img {
   width: 60%;
@@ -26,6 +26,20 @@
   display: flex;
 }
 
+.flexContainer>* {
+  flex: 1;
+  margin-right: 16px;
+}
+
+.flexContainer>*:last-child {
+  margin-right: 0;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
 .addButtonContainer {
   width: 100%;

@@ -11,7 +11,6 @@ import IconGoogle from '../../components/IconGoogle/IconGoogle';
 import { validateEmail, validatePassword } from '../../validations'
 
 const Login = () => {
-   
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
