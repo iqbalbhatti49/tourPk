@@ -12,8 +12,6 @@ export const BillingAddress = (props) => {
       form.reset(); // Reset the form's state after submission
       // TODO: manage redux -> dispatch redux...
    };
-     // TODO: manage redux -> dispatch redux...
-    };
 
    return (
       <div className={styles.container} >
@@ -45,4 +43,4 @@ export const BillingAddress = (props) => {
          </div>
       </div>
    );
-};
+}
