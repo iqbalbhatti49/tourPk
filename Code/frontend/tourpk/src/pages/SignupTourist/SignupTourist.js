@@ -21,7 +21,8 @@ const SignupTourist = () => {
       };
     return (<>
         <NavBar />
-        <div className={styles.formContainer}></div>
+        <div className={styles.formContainer}>
+        <h1>SignUp For Next Tour!</h1>
         <div className={styles.tableContainer}>
             <div className={styles.formImage}> </div>
             <div className={styles.form}>
@@ -46,6 +47,7 @@ const SignupTourist = () => {
                     )}
                 </FormFinal>
             </div>
+        </div>
         </div>
         <Footer />
     </>

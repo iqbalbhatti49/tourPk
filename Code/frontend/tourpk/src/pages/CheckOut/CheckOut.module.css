@@ -21,3 +21,9 @@
    color: var(--primaryColor);
    font-weight: 600;
 }
+
+.information {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}

@@ -11,7 +11,6 @@ import IconGoogle from '../../components/IconGoogle/IconGoogle';
 import { validateEmail, validatePassword } from '../../validations'
 
 const Login = () => {
-   
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
@@ -20,7 +19,8 @@ const Login = () => {
     
     return (<>
         <NavBar />
-        <div className={styles.formContainer}></div>
+        <div className={styles.formContainer}>
+        <h1>Login Account</h1>
         <div className={styles.tableContainer}>
             <div className={styles.formImage}> </div>
             <div className={styles.form}>
@@ -43,6 +43,7 @@ const Login = () => {
                     )}
                 </FormFinal>
             </div>
+        </div>
         </div>
         <Footer />
     </>

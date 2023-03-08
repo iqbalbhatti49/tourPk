@@ -62,5 +62,7 @@ export const validatePassportNumber = (value) => {
 
 export const required = (value) => (value ? '' : 'Required')
 
+export const optionalField = (value) => (value ? '' : '') 
+
 //const minValue = min => value =>
 //  isNaN(value) || value >= min ? '' : `Should be greater than ${min}`

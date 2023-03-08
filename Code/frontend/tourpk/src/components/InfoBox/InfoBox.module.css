@@ -1,0 +1,17 @@
+.infoBox {
+    display: flex;
+    padding: 10px 0 0 0;
+  }
+  
+.infoIcon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+.infoText {
+    margin: 0;
+  }
+  

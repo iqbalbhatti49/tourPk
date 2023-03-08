@@ -18,7 +18,7 @@ export default function PackageInformation(props) {
                 </div>
             </div>
             <FormField name="Description" label="Description" type="text" placeholder="Additional description of package and why its amazing" validate={validateAlpha}  theme="light" renderIcon={() => null} />
-            <FormField name="Validity" label="Validity" placeholder="No of days for this offer lasts eg. 25 days" validate={mustBeNumber} theme="light" renderIcon={() => null} />
+            <FormField name="Validity" label="Validity (in days)" placeholder="No of days for this offer lasts eg. 25 days" validate={mustBeNumber} theme="light" renderIcon={() => null} />
             {/* <Dropdown /> */}
         </div>
     )
