@@ -17,6 +17,7 @@ import CheckOut from "./pages/CheckOut/CheckOut";
 import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
 import Bookings from "./pages/Bookings/Bookings";
 import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
+import Listing from "./pages/Listing/Listing";
 
 function App() {
   const action = useNavigationType();
@@ -71,6 +72,7 @@ function App() {
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/signupSeller" element={<SignupServiceProvider />} />
+      <Route path="/listing" element={<Listing />} />
     </Routes>
   );
 };

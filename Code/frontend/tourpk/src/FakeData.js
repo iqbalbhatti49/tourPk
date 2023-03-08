@@ -282,3 +282,72 @@ export const cities = [
       reviews: 150
    }
 ];
+
+export const ListingHotel = [
+   {
+            name: 'Marriott Hotel',
+            location: 'Lahore, Pakistan',
+            pictures: [
+               {
+                  src:'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600',
+                  width: 320, 
+                  height: 174
+               },
+               {
+                  src:'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=600',
+                  width: 320, 
+                  height: 174
+               },
+               {
+                  src:'https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                  width: 320, 
+                  height: 174
+               },
+               {
+                  src:'https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+                  width: 320, 
+                  height: 174
+               },
+               {
+                  src:'https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=600',
+                  width: 320, 
+                  height: 174
+               }
+            ],
+            tagline: 'Luxury Rooms & Suites by Marriott',
+            rating: 4.5,
+            reviews: 300,
+            price:{
+               per_day: 45,
+               cleaning_fee: 130,
+               service_Fee: 45
+            },
+            Accomodation: [
+               "2 guests",
+               "1 bedroom",
+               "1 bed",
+               "1 bath"
+            ],
+            About_place: {
+               About_space: ["About space","ZenDacha Luxury Retreat, nestled in an elevated private community, bordered by untouched nature. Designed by award-winning architect, providing expansive indoor/outdoor living, with up to six bedroom (by prior agreement), each with en-suite facilities.Relax by the 19-metre infinity-edge pool after a serene yoga session in the elevated outdoor sala, whilst listening to the magical sounds of the jungle that embraces the villa"],
+               The_space: ["The space","This villa will appeal to those seeking to unwind, recharge and be in a tranquil environment. We expect guest to maintain that tranquility and accordingly adhere to house rules including the quiet hours. If you're wanting to party this is not the place for you.The main building hosts one bedroom suite, plus an open plan living, dining and kitchen, all with access to large terrace areas with stunning coastal and forest views.From the main building you reach the extensive pool deck, with covered open kitchen, and further to the individual bedroom pavilions each with their own terrace."]
+            },
+            things_to_know: [
+               "Check in: 4:00pm", "No pets", "No smoking",  "Check out: 5:00pm", "Quiet hours after 10:00pm", "Self check-in with lock box", "No parties or event", "No outside visitor allowed"
+            ],
+            reviews: [
+               {
+                  name: "John",
+                  date: "2021-01-01",
+                  comment: "This is a great place to stay. The host is very friendly and helpful. The place is very clean and comfortable. The location is great. I would definitely stay here again.",
+                  rating: 5
+               }
+             ],
+            offers: [
+               "garden view", "wifi", "Swimming pool", "Central air conditioning", "32`` TV", "Heater", "Kitchen", "hangers", "hair dryer", "Swimming pool", "Laptop friendly workspace"
+            ],
+            bedrooms: ["king size bed", "standard size bed" ]
+
+
+   }
+];
