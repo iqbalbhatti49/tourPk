@@ -5,7 +5,12 @@
     width: 424px !important;
 }
 
-.phoneContainer {
+.phoneField > div{
+    border-radius: 12px 0px 0px 12px !important;
+}
+
+.phoneContainer{
+    margin-top: 40px;
     margin-bottom: 15px;
 }
 
