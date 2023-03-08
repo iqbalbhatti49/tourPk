@@ -1,0 +1,50 @@
+@import "../../styles/variables.css";
+
+.profile {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+
+.profile p {
+    color: var(--assistColor);
+}
+
+#date {
+    margin: -5px 0 10px 0;
+    font-size: 14px;
+}
+
+.profile_image {
+    margin-right: 20px;
+}
+
+.profile_image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    top: -88px;
+    position: relative;
+}
+
+.profile_info {
+    flex: 1;
+}
+
+.profile_response p {
+    margin-bottom: 5px;
+}
+
+.profile_button {
+    margin-top: 10px;
+    @apply --buttonPrimary;
+}
+
+.profile_tagline {
+    font-weight: 700;
+}
+
+.profilestar {
+    position: relative;
+    top: 3px;
+}
