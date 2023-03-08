@@ -11,6 +11,9 @@
     padding: 2vh 1vw;
   }
   
+  .tableContainer{
+    margin-left: 80px;
+  }
   .container img{
     width: 60%;
     margin: auto;
@@ -60,4 +63,55 @@
     color: #fff;
     cursor: pointer;
   }
+
+
+  input[name="RestaurantName"] {
+    margin-top: 40px;
+  }
+
+  input[name="Description"] {
+    margin-top: 40px;
+    margin-bottom: 90px;
+  }
+
+  input[name="Email"] {
+    margin-top: 40px;
+  }
+
+  input[name="WebsiteURL"] {
+    margin-top: 40px;
+    margin-bottom: -10px;
+  }
+
+  .address
+  {
+    margin-top: 100px;
+    margin-bottom: 40px;
+  }
+
+  input[name="addr"] {
+    margin-top: 40px;
+  }
+
+  input[name="City"] {
+    margin-top: 40px;
+  }
+
+  input[name="Province"] {
+    margin-top: 40px;
+  }
+
+  input[name="Country"] {
+    margin-top: 40px;
+  }
+
+  input[name="Street"] {
+    margin-top: 40px;
+  }
+
+  input[name="PostalCode"] {
+    margin-top: 40px;
+  }
+
+
   
