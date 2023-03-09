@@ -15,7 +15,12 @@ import SignupTourist from "./pages/SignupTourist/SignupTourist";
 import AddPackage from "./pages/AddPackage/AddPackage";
 import CheckOut from "./pages/CheckOut/CheckOut";
 import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
+import ViewRestaurant from "./pages/ViewRestaurantService/ViewRestaurantService";
 import Bookings from "./pages/Bookings/Bookings";
+import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport" 
+import GenericInfoAboutService from "./pages/GenericInfoAboutService/GenericInfoAboutService"
+import SignupServiceProvider from "./pages/SignupServiceProvider/SignupServiceProvider";
+import Listing from "./pages/Listing/Listing";
 
 function App() {
   const action = useNavigationType();
@@ -64,11 +69,16 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contract />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignupTourist />} />
+      <Route path="/signupTourist" element={<SignupTourist />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/addpackage" element={<AddPackage />} />
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/bookings" element={<Bookings />} />
+      <Route path="/viewrestaurant" element={<ViewRestaurant />} />
+      <Route path="/helpandsupport" element={<HelpAndSupport />} />
+      <Route path="/genericinfo" element={<GenericInfoAboutService />} />
+      <Route path="/signupSeller" element={<SignupServiceProvider />} />
+      <Route path="/listing" element={<Listing />} />
     </Routes>
   );
 };

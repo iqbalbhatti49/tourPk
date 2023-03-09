@@ -1,0 +1,30 @@
+.faqDropdown {
+    margin-bottom: 10px;
+  }
+  
+  .faqDropdown button {
+    background-color: #CBDBDC;
+    border: none;
+    color: #555;
+    padding: 10px 20px;
+    font-size: 18px;
+    width: 80%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+  }
+  
+  .faqDropdown button:hover {
+    background-color: #ddd;
+    
+  }
+  
+  .faqDropdown .answer {
+    background-color: #e9fafc;
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    width: 75%;
+  }

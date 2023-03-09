@@ -19,7 +19,7 @@ const FormField = (props) => {
         value: true,
         active: true,
         error: true,
-        touched: true,
+        touched: true
       }}
     >
       {({ input, meta }) => (

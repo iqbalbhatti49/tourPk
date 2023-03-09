@@ -1,0 +1,25 @@
+.uploadMedia {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.uploadMedia input[type="file"] {
+  font-size: 15px;
+}
+
+.uploadMedia button {
+  font-size: 14px;
+  color: #fff;
+  background-color: #004346;
+  border: none;
+  border-radius:20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-left: -70px;
+}
+
+.uploadMedia button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
