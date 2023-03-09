@@ -1,0 +1,7 @@
+.light {
+   color: var(--whiteColor);
+}
+
+.dark {
+   color: (--yellowColor);
+}

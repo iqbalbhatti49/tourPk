@@ -63,3 +63,15 @@
 .noLabel {
   display: none;
 }
+
+.checkBoxField {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 16px;
+}
+
+.checkBoxField label {
+  width: 100vw !important;
+}

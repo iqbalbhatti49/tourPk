@@ -5,10 +5,11 @@ import styles from './FormField.module.css';
 let classWrapper = classNames.bind(styles);
 
 const FormField = (props) => {
-  const { name, type, placeholder, validate, theme, renderIcon, label, labelClass } = props; 
-  let classes = classWrapper({ formField: true, iconInput: renderIcon() != null, noIconInput: renderIcon() == null, light: theme == 'light' });
+  const { name, type, placeholder, validate, theme, renderIcon, label, labelClass } = props;
+  let classes = classWrapper({ formField: type != 'checkbox', iconInput: renderIcon() != null, noIconInput: renderIcon() == null, light: theme == 'light' });
   let labelClassName = classWrapper({ noLabel: labelClass == 'noLabel', showLabel: labelClass != 'noLabel' });
-
+  labelClassName = type == 'checkbox' ? classWrapper({ checkBoxLabel: true }) : labelClassName;
+  let wrapperClass = classWrapper({ field: type != 'checkbox', checkBoxField: type == 'checkbox' });
   return (
     <Field
       name={name}
@@ -22,7 +23,7 @@ const FormField = (props) => {
       }}
     >
       {({ input, meta }) => (
-        <div className={styles.field}>
+        <div className={wrapperClass}>
           {renderIcon() != null && <div className={styles.fieldIcon}>{renderIcon()}</div>}
           <label className={labelClassName}>{label}</label>
           <input className={classes} {...input} placeholder={placeholder} type={type} />

@@ -1,144 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './PaymentMethod.module.css';
+import RadioGroup from "../../components/RadioGroup/RadioGroup";
+import { IconShipping, IconShipping1 } from '../IconShipping/IconShipping';
+import FormField from '../FormField/FormField';
+import { Form as FormFinal } from 'react-final-form'
 
-export const PaymentMethod = (props) => {
+export const PaymentMethod = () => {
+   const [cardType, setCardType] = useState('visa');
+   const [cardNumber, setCardNumber] = useState('');
+   const [cardSecurityNumber, setCardSecurityNumber] = useState('');
+   const [cardExpiration, setCardExpiration] = useState('');
+
+   const handleCardTypeChange = (event) => {
+      setCardType(event.target.value);
+   };
+
+   const handleCardNumberChange = (event) => {
+      setCardNumber(event.target.value);
+   };
+
+   const handleCardSecurityNumberChange = (event) => {
+      setCardSecurityNumber(event.target.value);
+   };
+
+   const handleCardExpirationChange = (event) => {
+      setCardExpiration(event.target.value);
+   };
+
+   const required = value => (value ? undefined : 'Required');
+   const onSubmit = (values, form) => {
+      console.log('Form submitted with values:', values);
+      form.reset(); // Reset the form's state after submission
+      // TODO: manage redux -> dispatch redux...
+   };
 
    return (
-      <div className={styles.checkout4} >
-         <div className={styles.paymentMethod}>
-            <div className={styles.discountCodesChild} />
-            <b className={styles.paymentMethod1}>Payment Method</b>
-            <div className={styles.weProtectYourPaymentInformParent}>
-               <div className={styles.weProtectYour}>
-                  We protect your payment information using encryption to provide
-                  bank-level security.
-               </div>
-               <img className={styles.groupItem} alt="" src="../frame-1507.svg" />
-            </div>
-            <div className={styles.rectangleParent}>
-               <div className={styles.groupInner} />
-               <div className={styles.groupChild1} />
-               <img className={styles.groupChild2} alt="" src="../group-1455.svg" />
-               <div className={styles.radioParent}>
-                  <div className={styles.radio}>
-                     <img
-                        className={styles.radioButtonIcon}
-                        alt=""
-                        src="../radio-button.svg"
-                     />
-                     <div className={styles.payWithCredit}>Pay with Credit Card</div>
-                  </div>
-                  <div className={styles.forms10}>
-                     <div className={styles.formsChild6} />
-                     <img
-                        className={styles.formsItem}
-                        alt=""
-                        src="../group-1492.svg"
-                     />
-                     <img className={styles.formsInner} alt="" src="../vector-5.svg" />
-                     <div className={styles.usernamegmailcom}>1234 5678 9101 3456</div>
-                     <div className={styles.emailAddressFrame}>
-                        <div className={styles.emailAddress}>Card number</div>
+      <div className={styles.container}>
+         <p className={styles.heading}>Payment Method</p>
+         <RadioGroup
+            options={[
+               { value: 'visa', icon: <img className={styles.image} alt="card" src="../../static/images/visa.png" /> },
+               { value: 'mastercard', icon: <img className={styles.image} alt="card" src="../../static/images/mastercard.png" /> },
+               { value: 'amex', icon: <img className={styles.image} alt="card" src="../../static/images/amex.png" /> }
+            ]}
+            onChange={handleCardTypeChange}
+            inline={true}
+         />
+         <div className={styles.form}>
+            <FormFinal
+               onSubmit={onSubmit}
+               subscription={{
+                  submitted: true
+               }} >
+               {({ handleSubmit, submitting, values }) => (
+                  <form className={styles.form} onSubmit={handleSubmit}>
+                     <div className={styles.row}>
+                        <FormField name="Card Number" label="Card Number" type="text" placeholder="1234 5678 9012 3456" value={cardNumber} validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
+                        <FormField name="Expiration Date" label="Expiration Date" type="text" placeholder="MM/YY" value={cardExpiration} validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
                      </div>
-                  </div>
-                  <div className={styles.forms11}>
-                     <div className={styles.box6} />
-                     <div className={styles.text5}>MM/YY</div>
-                     <div className={styles.label6}>
-                        <div className={styles.emailAddress}>Expiration Date</div>
-                     </div>
-                  </div>
-               </div>
-               <div className={styles.groupDiv}>
-                  <div className={styles.forms12}>
-                     <div className={styles.box6} />
-                     <div className={styles.text}>***</div>
-                     <div className={styles.emailAddressFrame}>
-                        <div className={styles.emailAddress}>Card Security Code</div>
-                     </div>
-                  </div>
-                  <div className={styles.whatIsThis}>What is this?</div>
-               </div>
-            </div>
-            <div className={styles.component80}>
-               <div className={styles.component80Child} />
-               <div className={styles.youWillBe}>
-                  You will be redirected to the PayPal website after submitting your
-                  order
-               </div>
-               <img className={styles.paypalIcon} alt="" src="../paypal.svg" />
-               <div className={styles.radio1}>
-                  <img
-                     className={styles.radioButtonIcon}
-                     alt=""
-                     src="../radio-button1.svg"
-                  />
-                  <div className={styles.payWithCredit}>PayPal</div>
-               </div>
-            </div>
+                     <FormField name="Security Number" label="Security Number" type="text" placeholder="123" value={cardSecurityNumber} validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
+                  </form>
+               )}
+            </FormFinal>
          </div>
-         <div className={styles.shippingMethod}>
-            <div className={styles.discountCodesChild} />
-            <b className={styles.shippingMethod1}>Shipping Method</b>
-            <div className={styles.rectangleGroup}>
-               <div className={styles.groupInner} />
-               <div className={styles.groupChild1} />
-               <div className={styles.usps1stClassContainer}>
-                  <span className={styles.usps1stClassContainer1}>
-                     <p className={styles.usps1stClass}>
-                        USPS 1st Class With Tracking
-                     </p>
-                     <p className={styles.daysCovid19Delay}>
-                        (5 - 13 days) COVID19 Delay
-                     </p>
-                  </span>
-               </div>
-               <div className={styles.radio2}>
-                  <img
-                     className={styles.radioButtonIcon}
-                     alt=""
-                     src="../radio-button.svg"
-                  />
-                  <div className={styles.payWithCredit}>$2.99</div>
-               </div>
-               <img className={styles.image36Icon} alt="" src="../image-36@2x.png" />
-            </div>
-            <div className={styles.rectangleContainer}>
-               <div className={styles.frameChild3} />
-               <div className={styles.frameChild4} />
-               <div className={styles.usps1stClassContainer}>
-                  <span className={styles.usps1stClassContainer1}>
-                     <p className={styles.usps1stClass}>USPS PRIORITY With Tracking</p>
-                     <p className={styles.daysCovid19Delay}>
-                        (5 - 10 days) COVID19 Delay
-                     </p>
-                  </span>
-               </div>
-               <div className={styles.radio2}>
-                  <img
-                     className={styles.radioButtonIcon}
-                     alt=""
-                     src="../radio-button1.svg"
-                  />
-                  <div className={styles.payWithCredit}>$9.00</div>
-               </div>
-               <div className={styles.logo}>
-                  <img
-                     className={styles.image36Icon1}
-                     alt=""
-                     src="../image-36@2x.png"
-                  />
-                  <div className={styles.logoChild} />
-                  <div className={styles.faster}>faster</div>
-               </div>
-            </div>
-         </div>
-         <div className={styles.header}>
-            <img className={styles.logoIcon} alt="" src="../logo.svg" />
-            <div className={styles.alreadyHaveAnAccountParent}>
-               <div className={styles.emailAddress}>Already have an account?</div>
-               <div className={styles.signIn}>Sign In</div>
-            </div>
+         <div className={styles.securityMessage}>
+            <img src="../../static/images/lock.png" />
+            <span>Your payment information is secure.</span>
          </div>
       </div>
    );

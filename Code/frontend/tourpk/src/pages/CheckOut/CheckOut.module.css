@@ -25,5 +25,6 @@
 .information {
    display: flex;
    flex-direction: row;
-   justify-content: space-between;
+   align-items: space-between;
+   justify-content: space-evenly;
 }

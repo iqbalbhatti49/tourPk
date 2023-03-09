@@ -2,7 +2,7 @@ import styles from "./Services.module.css";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { LahoreHotles } from "../../FakeData";
+import { LahoreHotles, LahoreResturants } from "../../FakeData";
 import { IconHotel } from "../../components/IconHotel/IconHotel";
 import { IconResturant } from "../../components/IconResturant/IconResturant";
 import { IconGuide } from "../../components/IconGide/IconGuide";
@@ -51,7 +51,7 @@ const Services = () => {
                   </TabPanel>
                   <TabPanel>
                      <div className={styles.tabCards}>
-                        {LahoreHotles.map((item, index) => {
+                        {LahoreResturants.map((item, index) => {
                            return (
                               <HotelCard
                                  key={index}
