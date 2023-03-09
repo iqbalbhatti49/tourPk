@@ -1,0 +1,81 @@
+.orderReview {
+   display: flex;
+   align-items: center;
+   gap: 4px;
+   padding: 4px;
+   border-radius: 4px;
+}
+
+.imageWrapper {
+   margin-right: 0.4rem;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+}
+
+.count {
+   display: flex;
+   align-items: center;
+   margin-bottom: 0.5rem;
+}
+
+.countValue {
+   display: inline-block;
+   margin: 0 0.5rem;
+   font-weight: bold;
+}
+
+.button {
+   width: 30px;
+   height: 30px;
+   margin: 0;
+   padding: 0;
+   font-size: 1rem;
+   line-height: 1;
+   text-align: center;
+   border: 1px solid var(--assistColorLight);
+   border-radius: 4%;
+   background-color: var(--whiteColor);
+   cursor: pointer;
+}
+
+.button:hover {
+   background-color: var(--whiteColor);
+}
+
+.prices {
+   display: flex;
+   flex-direction: column;
+}
+
+.originalPrice {
+   text-decoration: line-through;
+   color: var(--assistColor);
+   margin-right: 0.5rem;
+}
+
+.discountedPrice {
+   font-size: 1.25rem;
+   font-weight: bold;
+}
+
+.remove {
+   flex: 0 0 30px;
+   font-size: 1.5rem;
+   font-weight: bold;
+   line-height: 1;
+   text-align: center;
+   cursor: pointer;
+}
+
+.remove:hover {
+   color: #f00;
+}
+
+.content {
+   display: flex;
+   flex-direction: column;
+   gap: 16px;
+}

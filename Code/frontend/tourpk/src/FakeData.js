@@ -93,7 +93,7 @@ const Faisalabad = [
    {
       name: 'Faisalabad Clock Tower',
       location: 'Faisalabad, Pakistan',
-      picture: 'https://faisalabadinfo.com/wp-content/uploads/2020/06/clock-tower-1024x512.jpg',
+      picture: 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2021/03/Body-Image-1440x900-2-1024x640.jpg',
       tagline: 'A distinctive clock tower located in the heart of the city',
       rating: 4.0,
       reviews: 200
@@ -109,7 +109,7 @@ const Faisalabad = [
    {
       name: 'Faisalabad Wildlife Park',
       location: 'Faisalabad, Pakistan',
-      picture: 'https://lh5.googleusercontent.com/p/AF1QipNtjx5PxjPL1fsTY4mxc4mAV11fO7EGpMH24O8F=w296-h202-n-k-no-v1',
+      picture: 'https://flypakistan.pk/assets/img/attractions/Gutwala%20Park.jpg',
       tagline: 'A wildlife park featuring tigers, lions, bears, and others',
       rating: 4.0,
       reviews: 200
@@ -247,6 +247,71 @@ export const LahoreHotles = [
       rating: 4.0,
       reviews: 170
    }
+];
+export const LahoreResturants = [
+   {
+      name: 'Regent Plaza Hotel',
+      location: 'Shahrah-e-Quaid-e-Azam, Lahore',
+      picture: 'https://pix8.agoda.net/hotelImages/116/1164345/1164345_16021914510040031942.jpg?ca=6&ce=1&s=800x',
+      rating: 4.0,
+      reviews: 165
+   },
+   {
+      name: 'Park Plaza Hotel',
+      location: 'Multan Road, Lahore',
+      picture: 'https://ak-d.tripcdn.com/images/0222k1200084amt9u5416_R_800_525.jpg',
+      rating: 4.5,
+      reviews: 190
+   },
+   {
+      name: 'Shalimar Hotel Lahore',
+      location: 'The Mall, Lahore',
+      picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxGfVIH2rGmjsRhdqA2lQQuCjdgBl7wnY-rw&usqp=CAU',
+      rating: 4.0,
+      reviews: 170
+   },
+   {
+      name: 'Avari Lahore Hotel',
+      location: 'Shahrah-e-Quaid-e-Azam, Lahore',
+      picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/27/16/b5/28/avari-hotel-lahore.jpg?w=700&h=-1&s=1',
+      rating: 4.5,
+      reviews: 245
+   },
+   {
+      name: 'Pearl Continental Hotel',
+      location: 'The Mall, Lahore',
+      picture: 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/278504590.jpg?k=2d6676b5981e1fafc018b5d092375e37656a136a18b08e07acebf39a6b395ae1&o=&hp=1',
+      rating: 4.0,
+      reviews: 180
+   },
+   {
+      name: 'Marriott Hotel Lahore',
+      location: 'Marriott Road, Lahore',
+      picture: 'https://netmag.pk/wp-content/uploads/2017/09/unnamed-41.jpg',
+      rating: 4.5,
+      reviews: 215
+   },
+   {
+      name: 'The Nishat Hotel',
+      location: 'The Mall, Lahore',
+      picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/d1/4c/56/getlstd-property-photo.jpg?w=700&h=-1&s=1',
+      rating: 4.0,
+      reviews: 180
+   },
+   {
+      name: 'Lahore Serena Hotel',
+      location: 'Shahrah-e-Quaid-e-Azam, Lahore',
+      picture: 'https://lh3.googleusercontent.com/p/AF1QipNzS8Q-_S-1az_ul1XPM2MDkwGkfao1yD70AfHV=s1600-w372',
+      rating: 4.0,
+      reviews: 155
+   },
+   {
+      name: 'Ramada Plaza Hotel',
+      location: 'Multan Road, Lahore',
+      picture: 'https://q-xx.bstatic.com/xdata/images/hotel/max500/256462901.jpg?k=87fe3ea8fa6655a58e6060c148686d524938372b285547e856626ad229b9057a&o=',
+      rating: 4.5,
+      reviews: 180
+   },
 ];
 export const cities = [
    {

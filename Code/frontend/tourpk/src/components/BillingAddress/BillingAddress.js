@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './BillingAddress.module.css';
 import FormField from '../FormField/FormField';
 import { Form as FormFinal } from 'react-final-form'
-import IconEmail from '../../components/IconEmail/IconEmail';
-import { useState } from 'react';
 import PhoneNumber from '../PhoneNumber/PhoneNumber';
 export const BillingAddress = (props) => {
    const required = value => (value ? undefined : 'Required');

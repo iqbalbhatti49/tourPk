@@ -21,16 +21,12 @@ const CheckOut = () => {
                <div>
                   <BillingAddress />
                   <ShippingMethod />
-                  <ShippingMethod />
-                  {/* <PaymentMethod /> */}
+                  <PaymentMethod />
                </div>
                <div>
-                  {/* <OrderReview />
+                  <OrderReview />
                   <DiscountCodes />
-                  <BillingSummary /> */}
-                  <BillingAddress />
-                  <ShippingMethod />
-                  <ShippingMethod />
+                  <BillingSummary />
                </div>
             </div>
          </div>
