@@ -35,9 +35,6 @@ const GenericInfoAboutService = () => {
          </div>
       </div>
 
-
-
-
       <div className={styles.formContainer}></div>
       <div className={styles.tableContainer}>
         <div className={styles.quesForm}>
