@@ -1,10 +1,12 @@
+@import "../../styles/variables.css";
+
 .container{
   padding: 2vh 7vw;
 }
 
 .formBorder{
 border-radius: 5px;
-box-shadow: 0px 2px 4px 3px rgb(0,0,0,0.1);
+@apply --boxShadow;
 }
 
 .formContainer{

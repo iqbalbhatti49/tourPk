@@ -6,14 +6,12 @@
     padding: 2vh 8vw;
   }
 
-.container h1 {
-    font-size: 2.3rem;
-    margin: 0px;
+  .heading1 {
     @apply --headerHeading;
   }
 
   .bookingText{
     text-align: justify;
-    text-justify: inter-word;
     width: 90%;
+    margin: 0px;
   }
