@@ -22,7 +22,9 @@ const Login = () => {
         <div className={styles.formContainer}>
         <h1>Login Account</h1>
         <div className={styles.tableContainer}>
-            <div className={styles.formImage}> </div>
+            <div className={styles.formImage}>
+            <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600&h=500" alt="" />    
+            </div>
             <div className={styles.form}>
                 <FormFinal
                     onSubmit={onSubmit}
@@ -38,7 +40,7 @@ const Login = () => {
                             <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
                             <div className={styles.text}>OR</div>
                             <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
-                            <div className={styles.text}>Don't have an account? <a href="/login" className={styles.white}>Login</a></div>
+                            <div className={styles.text}>Don't have an account? <a href="/SignupTourist" className={styles.white}>Signup</a></div>
                         </form>
                     )}
                 </FormFinal>

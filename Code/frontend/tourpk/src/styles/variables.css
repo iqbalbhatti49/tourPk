@@ -45,6 +45,10 @@
       }
    }
 
+   heading1{
+      font-size: 2.3rem
+   }
+
    --headerHeading : {
       font-size: 2.3rem;
       padding: 50px 0px 15px 0px;
