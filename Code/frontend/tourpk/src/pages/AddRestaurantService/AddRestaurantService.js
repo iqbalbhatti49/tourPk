@@ -18,8 +18,7 @@ const AddRestaurant = () => {
 
     return (<>
         <NavBar />
-        <div className={styles.formContainer}></div>
-        <div className={styles.tableContainer}>
+        <div id={styles.restaurantContainer}>
             <div >
                 <FormFinal
                     onSubmit={onSubmit}
@@ -36,7 +35,7 @@ const AddRestaurant = () => {
                             <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={required} theme="light" value={values} renderIcon={() => null} />
                             <FormField name="WebsiteURL" label="Website URL" type="text" placeholder="Enter website URL" validate={required} theme="light" value={values} renderIcon={() => null} />
                             <PhoneNumber/>
-                            <h3 className={styles.address}>Address</h3>
+                            <h3>Address</h3>
                             <FormField name="City" label="City" type="text" placeholder="Enter city name" validate={required} theme="light" value={values} renderIcon={() => null} />
                             <FormField name="Province" label="State/Province" type="text" placeholder="Enter province name" validate={required} theme="light" value={values} renderIcon={() => null} />
                             <FormField name="Country" label="Country" type="text" placeholder="Enter country name" validate={required} theme="light" value={values} renderIcon={() => null} />
