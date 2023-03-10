@@ -1,32 +1,26 @@
-@import "../../styles/variables.css";
+@import "../../styles/checkout.css";
 
- .container {
-    border-radius: 4px;
-    @apply --boxShadow;
-    width: 30rem;
-    padding: 1rem 2rem;
-    margin-block: 3rem;
- }
+.container {
+   @apply --container;
+}
 
- .heading {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 2rem;
- }
+.heading {
+   @apply --heading;
+}
 
- .form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
- }
+.form {
+   display: flex;
+   flex-direction: column;
+   gap: 18px;
+}
 
- .row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 20px;
- }
+.row {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   gap: 20px;
+}
 
- .row input {
-    width: 90%;
- }
+.row input {
+   width: 90%;
+}
