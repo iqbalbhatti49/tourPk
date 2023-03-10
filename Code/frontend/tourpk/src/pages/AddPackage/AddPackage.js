@@ -48,7 +48,7 @@ export default function AddPackage() {
                                             );
                                         })}
                                         <div className={styles.addButtonContainer}>
-                                            <Button value="Add Package" type="primary" />
+                                            <Button value="Add Package" type="primary" btnType="submit" />
                                         </div>
                                     </div>
                                 </form>

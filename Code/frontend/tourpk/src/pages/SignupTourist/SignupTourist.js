@@ -24,7 +24,9 @@ const SignupTourist = () => {
         <div className={styles.formContainer}>
         <h1>SignUp For Next Tour!</h1>
         <div className={styles.tableContainer}>
-            <div className={styles.formImage}> </div>
+            <div className={styles.formImage}>
+            <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600&h=500" alt="" />    
+            </div>
             <div className={styles.form}>
                 <FormFinal
                     onSubmit={onSubmit}
