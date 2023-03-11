@@ -1,76 +1,14 @@
 @import "../../styles/variables.css";
 
-.container{
-  padding: 2vh 7vw;
-}
-
-.formBorder{
-border-radius: 5px;
-@apply --boxShadow;
-}
-
-.formContainer{
-  padding: 2vh 1vw;
-}
-
 .tableContainer{
   margin-left: 140px;
 }
-
-
-.container h1 {
-  font-size: 2.3rem;
-}
-
-.flexContainer {
-  display: flex;
-}
-
-.flexContainer > * {
-  flex: 1;
-  margin-right: 16px;
-}
-
-.flexContainer > *:last-child {
-  margin-right: 0;
-}
-
-
-
-
-.form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.addButtonContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-}
-
 
 .container {
  padding: 50px 5vw;
  display: flex;
  align-items: center;
  gap: 100px;
-}
-
-
-.containerButtons {
-  padding: 40px 5vw 100px 0.5vw;
-  display: grid;
-   grid-template-columns: 1fr 1fr 1fr;
-   grid-template-rows: 1fr;
-   align-content: start;
-   gap: 40px;
-}
-
-.image {
- height: 500px;
 }
 
 .heading {
