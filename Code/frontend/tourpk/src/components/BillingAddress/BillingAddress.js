@@ -3,12 +3,12 @@ import styles from './BillingAddress.module.css';
 import FormField from '../FormField/FormField';
 import { Form as FormFinal } from 'react-final-form'
 import PhoneNumber from '../PhoneNumber/PhoneNumber';
-export const BillingAddress = (props) => {
+
+export const BillingAddress = () => {
    const required = value => (value ? undefined : 'Required');
    const onSubmit = (values, form) => {
       console.log('Form submitted with values:', values);
-      form.reset(); // Reset the form's state after submission
-      // TODO: manage redux -> dispatch redux...
+      form.reset();
    };
 
    return (
@@ -20,7 +20,7 @@ export const BillingAddress = (props) => {
                subscription={{
                   submitted: true
                }} >
-               {({ handleSubmit, submitting, values }) => (
+               {({ handleSubmit }) => (
                   <form className={styles.form} onSubmit={handleSubmit}>
                      <div className={styles.row}>
                         <FormField name="First Name" label="First Name" type="text" placeholder="Jhon" validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
@@ -33,8 +33,6 @@ export const BillingAddress = (props) => {
                      <FormField name="City" label="City" type="text" placeholder="Lahore" validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
                      <FormField name="Zip Code" label="Zip Code" type="number" placeholder="2234" validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
                      <PhoneNumber />
-                     {/* <FormField name="Same Address" label="My billing and shipping address are the same." type="checkbox" placeholder="Same Address" validate={required} value={values} renderIcon={() => null} labelClass="showLabel" />
-                     <FormField name="Account" label="Create an account for later use." type="checkbox" placeholder="Account" validate={required} value={values} renderIcon={() => null} labelClass="showLabel" /> */}
                   </form>
                )}
             </FormFinal>

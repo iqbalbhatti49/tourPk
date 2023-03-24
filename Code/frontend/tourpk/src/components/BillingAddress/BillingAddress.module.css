@@ -9,18 +9,9 @@
 }
 
 .form {
-   display: flex;
-   flex-direction: column;
-   gap: 18px;
+   @apply --form;
 }
 
 .row {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   gap: 20px;
-}
-
-.row input {
-   width: 90%;
+   @apply --row;
 }

@@ -1,4 +1,5 @@
 @import "../../styles/checkout.css";
+@import "../../styles/variables.css";
 
 .container {
    @apply --container;
@@ -6,6 +7,10 @@
 
 .heading {
    @apply --heading;
+}
+
+.hr {
+   @apply --hr;
 }
 
 .summaryItem {
@@ -16,11 +21,4 @@
 .total {
    font-size: 1.2rem;
    font-weight: 500;
-}
-
-.hr {
-   border: 0;
-   height: 1px;
-   background-color: var(--assistColor);
-   margin: 10px 0;
 }

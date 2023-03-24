@@ -13,4 +13,21 @@
       margin-bottom: 2rem;
    }
 
+   --form : {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+   }
+
+   --row : {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 20px;
+
+      &:input {
+         width: 90%;
+      }
+
+   }
 }

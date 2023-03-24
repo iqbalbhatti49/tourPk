@@ -4,7 +4,7 @@ import FormField from '../FormField/FormField';
 import { Form as FormFinal } from 'react-final-form'
 import Button from '../Button/Button';
 
-export const BillingSummary = (props) => {
+export const BillingSummary = () => {
    const required = value => (value ? undefined : 'Required');
    const onSubmit = (values, form) => {
       console.log('Form submitted with values:', values);
@@ -32,6 +32,7 @@ export const BillingSummary = (props) => {
          value: '$ 259.00'
       }
    ];
+
    return (
       <div className={styles.container} >
          <p className={styles.heading}>Billing Summary</p>
@@ -53,14 +54,13 @@ export const BillingSummary = (props) => {
                   subscription={{
                      submitted: true
                   }} >
-                  {({ handleSubmit, submitting, values }) => (
+                  {({ handleSubmit }) => (
                      <form className={styles.form} onSubmit={handleSubmit}>
                         <FormField name="copuncode" label="Order Comment" type="text" placeholder="Type Here...." validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
                         <FormField name="terms" label="I agree to the Terms & Conditions." type="checkbox" renderIcon={() => null} labelClass="showLabel" theme="light" />
                      </form>
                   )}
                </FormFinal>
-
                <Button value="Pay $1259.00" type="primary" width={400} />
             </div>
          </div>
