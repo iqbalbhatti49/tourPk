@@ -21,7 +21,7 @@ export const NavBar = () => {
             <div className={styles.navButtons}>
                <Link className={styles.navLink} to="/login">Login</Link>
 
-               <Link to="/signupTourist">
+               <Link to="/signupAsTourist">
                   <Button value="Register" type="primary" />
                </Link>
             </div>

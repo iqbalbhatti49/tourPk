@@ -77,7 +77,6 @@ export default function () {
               }
             </div>
             <hr className={styles.divider} />
-            <br/> <br/>
           </div>
 
           <div className={styles.summary}>
@@ -89,5 +88,4 @@ export default function () {
       </div>
       <Footer />
     </>
-  )
-}
+  )}

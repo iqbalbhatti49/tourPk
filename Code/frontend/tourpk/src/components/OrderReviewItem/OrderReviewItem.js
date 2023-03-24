@@ -21,7 +21,7 @@ const OrderReview = ({ imageSrc, title, count, price, discountedPrice, onIncreas
    return (
       <div className={styles.orderReview}>
          <div>
-            <img src={imageSrc} alt={title} />
+            <img className={styles.OrderReview_img} src={imageSrc} alt={title} />
          </div>
          <div>
             <p>{title}</p>
