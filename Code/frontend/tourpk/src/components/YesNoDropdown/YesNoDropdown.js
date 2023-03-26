@@ -1,5 +1,5 @@
 import React from 'react'
-import {flags} from '../../flags'
+import {flags} from '../../FakeData'
 import styles from './YesNoDropdown.module.css'
 
 export default function Dropdown() {

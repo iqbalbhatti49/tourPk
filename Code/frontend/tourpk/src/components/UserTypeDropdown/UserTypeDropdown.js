@@ -1,5 +1,5 @@
 import React from 'react'
-import {types} from '../../userTypes'
+import {types} from '../../FakeData'
 import styles from './UserTypeDropdown.module.css'
 
 export default function Dropdown() {
