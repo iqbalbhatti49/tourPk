@@ -1,17 +1,12 @@
-@import "../../styles/variables.css";
+@import "../../styles/checkout.css";
 
 .container {
-   border-radius: 4px;
-   @apply --boxShadow;
+   @apply --container;
    width: 24rem;
-   padding: 1rem 2rem;
-   margin-block: 3rem;
 }
 
 .heading {
-   font-size: 1.5rem;
-   font-weight: 500;
-   margin-bottom: 0.5rem;
+   @apply --heading;
 }
 
 .subtitle {

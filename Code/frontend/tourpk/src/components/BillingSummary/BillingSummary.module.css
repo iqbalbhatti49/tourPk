@@ -3,6 +3,7 @@
 
 .container {
    @apply --container;
+   width: 24rem;
 }
 
 .heading {

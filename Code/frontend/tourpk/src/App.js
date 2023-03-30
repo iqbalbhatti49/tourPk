@@ -17,7 +17,7 @@ import CheckOut from "./pages/CheckOut/CheckOut";
 import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
 import ViewRestaurant from "./pages/ViewRestaurantService/ViewRestaurantService";
 import Bookings from "./pages/Bookings/Bookings";
-import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport" 
+import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport"
 import GenericInfoAboutService from "./pages/GenericInfoAboutService/GenericInfoAboutService"
 import Listing from "./pages/Listing/Listing";
 
