@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 import styles from './OrderReviewItem.module.css';
 
 const OrderReview = ({ imageSrc, title, count, price, discountedPrice, onIncrease, onDecrease, onRemove }) => {
-   const [itemCount, setItemCount] = useState(count);
-
    const handleIncrease = () => {
-      setItemCount(itemCount + 1);
       onIncrease();
    };
 
    const handleDecrease = () => {
-      setItemCount(itemCount - 1);
       onDecrease();
    };
 
@@ -27,7 +23,7 @@ const OrderReview = ({ imageSrc, title, count, price, discountedPrice, onIncreas
             <p>{title}</p>
             <div className={styles.count}>
                <button className={styles.button} onClick={handleDecrease}>-</button>
-               <span className={styles.countValue}>{itemCount}</span>
+               <span className={styles.countValue}>{count}</span>
                <button className={styles.button} onClick={handleIncrease}>+</button>
             </div>
          </div>
