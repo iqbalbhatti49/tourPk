@@ -441,7 +441,6 @@ export const blogPosts = [
    },
 ];
 
-
 export const commentData = [
    {
       id: 1,
