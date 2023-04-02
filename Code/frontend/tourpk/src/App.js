@@ -17,9 +17,10 @@ import CheckOut from "./pages/CheckOut/CheckOut";
 import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
 import ViewRestaurant from "./pages/ViewRestaurantService/ViewRestaurantService";
 import Bookings from "./pages/Bookings/Bookings";
-import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport" 
+import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport"
 import GenericInfoAboutService from "./pages/GenericInfoAboutService/GenericInfoAboutService"
 import Listing from "./pages/Listing/Listing";
+import BlogPage from "./pages/BlogPage/BlogPage";
 
 function App() {
   const action = useNavigationType();
@@ -78,6 +79,7 @@ function App() {
       <Route path="/helpandsupport" element={<HelpAndSupport />} />
       <Route path="/genericinfo" element={<GenericInfoAboutService />} />
       <Route path="/listing" element={<Listing />} />
+      <Route path="/Blog" element={<BlogPage />} />
     </Routes>
   );
 };

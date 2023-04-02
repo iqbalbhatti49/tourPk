@@ -41,8 +41,7 @@
 }
 
 .noIconInput {
-  padding-left: 20px;
-  width: 95%;
+  @apply --input;
 }
 
 .error {

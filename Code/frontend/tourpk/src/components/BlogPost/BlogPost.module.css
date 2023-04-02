@@ -1,0 +1,44 @@
+@import "../../styles/variables.css";
+
+.container {
+  margin-bottom: 30px;
+}
+
+.title {
+  font-weight: bold;
+  @apply --headerHeading;
+}
+
+.content {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.info {
+  font-size: 14px;
+  color: var(--assistColor);
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+/*   
+  .container {
+    margin: 40px 0;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  
+  .content {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .info {
+    font-size: 14px;
+    color: #666;
+  }
+   */
