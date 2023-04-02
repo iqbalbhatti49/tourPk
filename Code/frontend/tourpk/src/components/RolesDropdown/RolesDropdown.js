@@ -1,5 +1,5 @@
 import React from 'react'
-import {roles} from '../../roles'
+import {roles} from '../../FakeData'
 import styles from './RolesDropdown.module.css'
 
 export default function Dropdown() {

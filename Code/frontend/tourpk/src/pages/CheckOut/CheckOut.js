@@ -3,10 +3,8 @@ import { NavBar } from "../../components/NavBar/NavBar";
 import { Footer } from "../../components/Footer/Footer";
 import { PaymentMethod } from "../../components/PaymentMethod/PaymentMethod";
 import { OrderReview } from "../../components/OrderReview/OrderReview";
-import { BillingAddress } from "../../components/BillingAddress/BillingAddress";
 import { DiscountCodes } from "../../components/DiscountCodes/DiscountCodes";
 import { BillingSummary } from "../../components/BillingSummary/BillingSummary";
-import { ShippingMethod } from "../../components/ShippingMethod/ShippingMethod"
 
 const CheckOut = () => {
    return (
@@ -18,14 +16,14 @@ const CheckOut = () => {
                <h1 className={styles.Heading}>Checkout in a few Clicks</h1>
             </div>
             <div className={styles.information}>
+               <OrderReview />
+            </div>
+            <div className={styles.information}>
                <div>
-                  <BillingAddress />
-                  <ShippingMethod />
                   <PaymentMethod />
+                  <DiscountCodes />
                </div>
                <div>
-                  <OrderReview />
-                  <DiscountCodes />
                   <BillingSummary />
                </div>
             </div>

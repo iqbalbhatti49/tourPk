@@ -1,32 +1,26 @@
 import React from 'react';
 import OrderReviewItem from '../OrderReviewItem/OrderReviewItem';
 import styles from './OrderReview.module.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { removeItem, increaseItem, decreaseItem } from '../../app/features/cart/cartSlice'
 
 export const OrderReview = () => {
-   const items = [
-      {
-         imageSrc: '../../static/images/booking.png',
-         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-         count: 2,
-         price: '$19.99',
-         discountedPrice: '$14.99',
-      },
-      {
-         imageSrc: '../../static/images/booking.png',
-         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-         count: 1,
-         price: '$29.99',
-         discountedPrice: '$24.99',
-      },
-      {
-         imageSrc: '../../static/images/booking.png',
-         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-         count: 1,
-         price: '$29.99',
-         discountedPrice: '$24.99',
-      },
-   ];
+   const items = useSelector((state) => state.cart.items);
+
    const totalCount = items.reduce((total, item) => total + item.count, 0);
+   const dispatch = useDispatch();
+
+   const handleIncrease = (index) => {
+      dispatch(increaseItem(index));
+   };
+
+   const handleDecrease = (index) => {
+      dispatch(decreaseItem(index));
+   };
+
+   const handleRemove = (index) => {
+      dispatch(removeItem(index));
+   };
 
    return (
       <div className={styles.container}>
@@ -38,20 +32,21 @@ export const OrderReview = () => {
             {items.map((item, index) => (
                <React.Fragment key={index}>
                   <OrderReviewItem
+                     key={index}
                      imageSrc={item.imageSrc}
                      title={item.title}
                      count={item.count}
                      price={item.price}
+                     id={item.id}
                      discountedPrice={item.discountedPrice}
-                     onIncrease={() => { }}
-                     onDecrease={() => { }}
-                     onRemove={() => { }}
+                     onIncrease={() => handleIncrease(item.id)}
+                     onDecrease={() => handleDecrease(item.id)}
+                     onRemove={() => handleRemove(item.id)}
                   />
-                  {index !== items.length - 1 && <hr className={styles.separator} />}
+                  {index !== items.length - 1 && <hr key={index + items.length} className={styles.separator} />}
                </React.Fragment>
             ))}
          </div>
       </div>
    );
 };
-

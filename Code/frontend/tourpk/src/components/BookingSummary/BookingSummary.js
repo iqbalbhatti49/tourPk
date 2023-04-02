@@ -14,12 +14,12 @@ export const BookingSummary = (props) => {
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [days, setDays] = useState(1);
-    
+
 
     useEffect(() => {
        setDays(calculateDays());
     }, [endDate])
-    
+
 
     const calculateDays = () => {
         const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
@@ -52,7 +52,6 @@ export const BookingSummary = (props) => {
     return (
         <div className={styles.container} >
             <h3> 75$ / night</h3>
-
             <div className={styles.calendar}>
                 <div id={styles.checkin}>
                     <span> <b>Check-In</b> </span>
@@ -62,7 +61,7 @@ export const BookingSummary = (props) => {
                     <span> <b>Check-Out</b> </span>
                     <DatePicker showIcon selected={endDate} onChange={(date) => setEndDate(date)} />
                 </div>
-               
+
             </div>
             <div>
                 <div className={styles.summary}>
