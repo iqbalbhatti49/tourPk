@@ -1,7 +1,5 @@
 import styles from "./Contract.module.css";
-import { NavBar } from "../../components/NavBar/NavBar";
-import { Footer } from "../../components/Footer/Footer";
-import Button from "../../components/Button/Button";
+import { NavBar, Footer, Button } from "../../components/index";
 
 const Services = () => {
    return (

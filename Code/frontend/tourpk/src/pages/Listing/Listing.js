@@ -1,14 +1,7 @@
 import React from 'react'
 import styles from './Listing.module.css'
 import { ListingHotel } from "../../FakeData.js"
-import { IconStar } from '../../components/IconStar/IconStar';
-import InfoBox from '../../components/InfoBox/InfoBox';
-import { NavBar } from '../../components/NavBar/NavBar';
-import { Footer } from '../../components/Footer/Footer';
-import ImageGallery from '../../components/ImageGallery/ImageGallery';
-import ServiceBox from '../../components/ServiceBox/ServiceBox';
-import SellerProfile from '../../components/SellerProfile/SellerProfile';
-import { BookingSummary } from '../../components/BookingSummary/BookingSummary';
+import { IconStar, InfoBox, NavBar, Footer, ImageGallery, ServiceBox, SellerProfile, BookingSummary } from '../../components/index';
 
 export default function () {
   const hotelData = ListingHotel[0];
@@ -32,7 +25,8 @@ export default function () {
               {(hotelData.Accomodation).map((item, index) => {
                 return (
                   <span key={index} className={styles.separator}>&#8226; {item} </span>
-                )})}
+                )
+              })}
             </p>
             <hr className={styles.divider} />
 
@@ -41,39 +35,42 @@ export default function () {
               {hotelData.offers.map((item, index) => {
                 return (
                   <InfoBox key={index} text={item} />
-                )})}              
+                )
+              })}
             </div>
 
             <hr className={styles.divider} />
-              {Object.entries(hotelData.About_place).map(([key, value]) => (
-                <div key={key}>
-                  <h3>{value[0]}</h3>
-                  <p>{value[1]}</p>
-                </div>
-              ))}
-
-              <hr className={styles.divider} />
-              <h3>Accomodation</h3>
-              <div className={styles.box}>
-                {
-                  hotelData.bedrooms.map((item, index) => {
-                    return (
-                      <ServiceBox key={index} heading={`Bedroom ${index+1}`} description={item} />
-                    )})
-                }
+            {Object.entries(hotelData.About_place).map(([key, value]) => (
+              <div key={key}>
+                <h3>{value[0]}</h3>
+                <p>{value[1]}</p>
               </div>
+            ))}
 
-              <hr className={styles.divider} />
-              <SellerProfile />
-              <hr className={styles.divider} />
+            <hr className={styles.divider} />
+            <h3>Accomodation</h3>
+            <div className={styles.box}>
+              {
+                hotelData.bedrooms.map((item, index) => {
+                  return (
+                    <ServiceBox key={index} heading={`Bedroom ${index + 1}`} description={item} />
+                  )
+                })
+              }
+            </div>
+
+            <hr className={styles.divider} />
+            <SellerProfile />
+            <hr className={styles.divider} />
 
             <h3>Things to know</h3>
             <div className={styles.infoBoxContainer}>
               {
-                hotelData.things_to_know.map((item, index)=> {
+                hotelData.things_to_know.map((item, index) => {
                   return (
                     <InfoBox key={index} text={item} />
-                  )})
+                  )
+                })
               }
             </div>
             <hr className={styles.divider} />
@@ -88,4 +85,5 @@ export default function () {
       </div>
       <Footer />
     </>
-  )}
+  )
+}

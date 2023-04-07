@@ -1,10 +1,5 @@
 import styles from "./CheckOut.module.css";
-import { NavBar } from "../../components/NavBar/NavBar";
-import { Footer } from "../../components/Footer/Footer";
-import { PaymentMethod } from "../../components/PaymentMethod/PaymentMethod";
-import { OrderReview } from "../../components/OrderReview/OrderReview";
-import { DiscountCodes } from "../../components/DiscountCodes/DiscountCodes";
-import { BillingSummary } from "../../components/BillingSummary/BillingSummary";
+import { NavBar, Footer, PaymentMethod, OrderReview, DiscountCodes, BillingSummary } from "../../components/index";
 
 const CheckOut = () => {
    return (

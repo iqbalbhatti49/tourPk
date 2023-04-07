@@ -1,11 +1,8 @@
 import React from "react";
 import Switch from "react-switch";
 import styles from "./InAppPlans.module.css";
-import { NavBar } from "../../components/NavBar/NavBar";
-import { PriceCard } from "../../components/PriceCard/PriceCard";
-import { Footer } from "../../components/Footer/Footer";
+import { NavBar, PriceCard, Footer, toggleChecked } from "../../components/index";
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleChecked } from '../../app/features/pricing/pricingSlice';
 
 const InAppPlans = () => {
 

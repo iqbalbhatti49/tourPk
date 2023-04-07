@@ -4,42 +4,24 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Services from "./pages/Services/Services";
-import InAppPlans from "./pages/InAppPlans/InAppPlans";
-import About from "./pages/About/About";
-import Contract from "./pages/Contract/Contract";
 import { useEffect } from "react";
-import Login from "./pages/Login/Login";
-import SignupTourist from "./pages/SignupTourist/SignupTourist";
-import AddPackage from "./pages/AddPackage/AddPackage";
-import CheckOut from "./pages/CheckOut/CheckOut";
-import AddRestaurant from "./pages/AddRestaurantService/AddRestaurantService";
-import ViewRestaurant from "./pages/ViewRestaurantService/ViewRestaurantService";
-import Bookings from "./pages/Bookings/Bookings";
-import HelpAndSupport from "./pages/HelpAndSupport/HelpAndSupport"
-import GenericInfoAboutService from "./pages/GenericInfoAboutService/GenericInfoAboutService"
-import Listing from "./pages/Listing/Listing";
-import BlogPage from "./pages/BlogPage/BlogPage";
+import { Home, Services, InAppPlans, About, Contract, Login, SignupTourist, AddPackage, CheckOut, AddRestaurant, ViewRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage } from "./pages/index";
 
 function App() {
   const action = useNavigationType();
   const location = useLocation();
   const pathname = location.pathname;
 
-  //Scroll to top on new page navigation, except for back button
   useEffect(() => {
     if (action !== "POP") {
       window.scrollTo(0, 0);
     }
   }, [action]);
 
-  //Update meta title and description on route change
   useEffect(() => {
     let title = "";
     let metaDescription = "";
 
-    //TODO: Update meta titles and descriptions below
     switch (pathname) {
       case "/":
         title = "";

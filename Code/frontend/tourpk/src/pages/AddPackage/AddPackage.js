@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavBar } from '../../components/NavBar/NavBar'
-import { Footer } from '../../components/Footer/Footer'
-import { Form as FormFinal } from 'react-final-form'
+import { NavBar, Footer, Button, ServiceSection, PackageInformation, IconAdd, addPackage } from '../../components/index'
 import styles from './AddPackage.module.css'
-import Button from '../../components/Button/Button';
-import ServiceSection from '../../components/ServiceSection/ServiceSection';
-import PackageInformation from '../../components/PackageInformation/PackageInformation';
+import { Form as FormFinal } from 'react-final-form'
 import { validateAlpha, optionalField } from '../../validations'
-import IconAdd from '../../components/IconAdd/IconAdd';
-import { addPackage } from '../../app/features/pacakage/pacakageSlice';
 
 export default function AddPackage() {
     const dispatch = useDispatch();
