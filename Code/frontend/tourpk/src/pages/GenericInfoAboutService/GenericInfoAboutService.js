@@ -1,17 +1,15 @@
 import styles from './GenericInfoAboutService.module.css'
-import Button from '../../components/Button/Button';
-import Dropdown from "../../components/Dropdown/Dropdown";
 import { Form as FormFinal } from "react-final-form";
-import YesNoDropdown from "../../components/YesNoDropdown/YesNoDropdown";
-import RolesDropdown from "../../components/RolesDropdown/RolesDropdown";
+import { NavBar, Footer, Dropdown, Button, YesNoDropdown, RolesDropdown } from "../../components/index";
+
 const GenericInfoAboutService = () => {
   const onSubmit = (values, form) => {
     console.log('Form submitted with values:', values);
-    form.reset(); // Reset the form's state after submission
-    // TODO: manage redux -> dispatch redux --> "value"
+    form.reset();
   };
 
   return (<>
+    <NavBar />
     <div className={styles.container}>
       <img className={styles.image} alt="Cities" src="../../static/images/sectionHero.png" />
       <div className={styles.content}>
@@ -67,6 +65,8 @@ const GenericInfoAboutService = () => {
         </FormFinal>
       </div>
     </div>
+
+    <Footer />
   </>
   );
 };

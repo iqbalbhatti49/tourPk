@@ -1,20 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./SignupTourist.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import FormField from '../../components/FormField/FormField'
-import FormButton from '../../components/FormButton/FormButton';
-import IconEmail from '../../components/IconEmail/IconEmail';
-import IconPassword from '../../components/IconPassword/IconPassword';
-import IconGoogle from '../../components/IconGoogle/IconGoogle';
-import IconPerson from '../../components/IconPerson/IconPerson';
-import PhoneNumber from "../../components/PhoneNumber/PhoneNumber";
+import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, PhoneNumber } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality } from '../../validations';
 
 const SignupTourist = (props) => {
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
-        // TODO: manage redux -> dispatch redux...
     };
     return (
         <div className={styles.formContainer}>

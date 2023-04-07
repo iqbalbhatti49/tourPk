@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './BlogPage.module.css';
-import { blogPosts, commentData } from "../../FakeData.js";
-import BlogPost from '../../components/BlogPost/BlogPost';
-import CommentSection from '../../components/CommentSection/CommentSection';
+import { blogPosts } from "../../FakeData.js";
+import { commentData } from "../../FakeData.js";
+import { NavBar, Footer, BlogPost, CommentSection } from '../../components/index'
 
 const BlogPage = () => {
   const blogId = 1; // Change this to display a different blog post

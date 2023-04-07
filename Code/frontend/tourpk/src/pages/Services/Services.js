@@ -2,11 +2,7 @@ import styles from "./Services.module.css";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { LahoreHotles, LahoreResturants } from "../../FakeData";
-import { IconHotel } from "../../components/IconHotel/IconHotel";
-import { IconResturant } from "../../components/IconResturant/IconResturant";
-import { IconGuide } from "../../components/IconGide/IconGuide";
-import { IconAgent } from "../../components/IconAgent/IconAgent";
-import { HotelCard } from "../../components/HotelCard/HotelCard";
+import { IconHotel, IconResturant, IconGuide, IconAgent, HotelCard } from "../../components/index";
 
 const Services = () => {
    return (

@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import styles from "../SignupTourist/SignupTourist.module.css";
+import { NavBar, FormButton, Footer, IconGoogle, IconEmail, IconPassword, FormField } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
-import FormField from '../../components/FormField/FormField'
-import FormButton from '../../components/FormButton/FormButton';
-import IconEmail from '../../components/IconEmail/IconEmail';
-import IconPassword from '../../components/IconPassword/IconPassword';
-import IconGoogle from '../../components/IconGoogle/IconGoogle';
 import { validateEmail, validatePassword } from '../../validations'
 
 const Login = () => {
@@ -37,12 +33,12 @@ const Login = () => {
                                 <div className={styles.text}>OR</div>
                                 <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
                                 <div className={styles.text}>Don't have an account? <a href="/SignupTourist" className={styles.whiteText}>Signup</a></div>
-                            </form>
+                            </form >
                         )}
-                    </FormFinal>
-                </div>
-            </div>
-        </div>
+                    </FormFinal >
+                </div >
+            </div >
+        </div >
     );
 }
 

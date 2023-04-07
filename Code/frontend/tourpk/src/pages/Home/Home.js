@@ -1,7 +1,5 @@
 import styles from "./Home.module.css";
-import { SectionHero } from "../../components/SectionHero/SectionHero";
-import { SectionSearch } from "../../components/SectionSearch/SectionSearch";
-import { SectionHierarchy } from "../../components/SectionHierarchy/SectionHierarchy";
+import { NavBar, Footer, SectionHero, SectionSearch, SectionHierarchy } from "../../components/index";
 
 const Home = () => {
    return (

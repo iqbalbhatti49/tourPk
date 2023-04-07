@@ -1,12 +1,9 @@
 import styles from "./About.module.css";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { IconKpk } from "../../components/IconKpk/IconKpk";
-import { IconPunjab } from "../../components/IconPunjab/IconPunjab";
-import { IconSindh } from "../../components/IconSindh/IconSindh";
-import { IconBalochistan } from "../../components/IconBalochistan/IconBalochistan";
-import HorizontalScroll from "../../components/HorizontalScroller/HorizontalScroller";
 import { PunjabtouristSpots } from "../../FakeData";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { NavBar, IconKpk, IconPunjab, IconSindh, IconBalochistan, HorizontalScroll, Footer } from "../../components/index";
+
 
 const Services = () => {
    return (
