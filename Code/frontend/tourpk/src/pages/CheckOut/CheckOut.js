@@ -1,5 +1,5 @@
 import styles from "./CheckOut.module.css";
-import { NavBar, Footer, PaymentMethod, OrderReview, DiscountCodes, BillingSummary } from "../../components/index";
+import { PaymentMethod, OrderReview, DiscountCodes, BillingSummary } from "../../components/index";
 
 const CheckOut = () => {
    return (

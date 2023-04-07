@@ -2,8 +2,7 @@ import styles from "./About.module.css";
 import 'react-tabs/style/react-tabs.css';
 import { PunjabtouristSpots } from "../../FakeData";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { NavBar, IconKpk, IconPunjab, IconSindh, IconBalochistan, HorizontalScroll, Footer } from "../../components/index";
-
+import { IconKpk, IconPunjab, IconSindh, IconBalochistan, HorizontalScroll } from "../../components/index";
 
 const Services = () => {
    return (

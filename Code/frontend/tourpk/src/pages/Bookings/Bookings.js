@@ -1,5 +1,5 @@
 import React from 'react'
-import { Footer, NavBar, BookingsSidebar, BookingCard } from '../../components/index'
+import { BookingsSidebar, BookingCard } from '../../components/index'
 import styles from './Bookings.module.css'
 
 export default function Bookings() {
