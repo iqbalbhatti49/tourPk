@@ -1,0 +1,10 @@
+@import "../../styles/variables.css";
+
+.container {
+    margin-top: 16px;
+}
+
+.input {
+    @apply --input;
+    border: 1px solid var(--assistColor);
+}

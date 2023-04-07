@@ -350,123 +350,165 @@ export const cities = [
 
 export const ListingHotel = [
    {
-            name: 'Marriott Hotel',
-            location: 'Lahore, Pakistan',
-            pictures: [
-               {
-                  src:'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600',
-                  width: 320, 
-                  height: 174
-               },
-               {
-                  src:'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=600',
-                  width: 320, 
-                  height: 174
-               },
-               {
-                  src:'https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                  width: 320, 
-                  height: 174
-               },
-               {
-                  src:'https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-                  width: 320, 
-                  height: 174
-               },
-               {
-                  src:'https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=600',
-                  width: 320, 
-                  height: 174
-               }
-            ],
-            tagline: 'Luxury Rooms & Suites by Marriott',
-            rating: 4.5,
-            reviews: 300,
-            price:{
-               per_day: 45,
-               cleaning_fee: 130,
-               service_Fee: 45
-            },
-            Accomodation: [
-               "2 guests",
-               "1 bedroom",
-               "1 bed",
-               "1 bath"
-            ],
-            About_place: {
-               About_space: ["About space","ZenDacha Luxury Retreat, nestled in an elevated private community, bordered by untouched nature. Designed by award-winning architect, providing expansive indoor/outdoor living, with up to six bedroom (by prior agreement), each with en-suite facilities.Relax by the 19-metre infinity-edge pool after a serene yoga session in the elevated outdoor sala, whilst listening to the magical sounds of the jungle that embraces the villa"],
-               The_space: ["The space","This villa will appeal to those seeking to unwind, recharge and be in a tranquil environment. We expect guest to maintain that tranquility and accordingly adhere to house rules including the quiet hours. If you're wanting to party this is not the place for you.The main building hosts one bedroom suite, plus an open plan living, dining and kitchen, all with access to large terrace areas with stunning coastal and forest views.From the main building you reach the extensive pool deck, with covered open kitchen, and further to the individual bedroom pavilions each with their own terrace."]
-            },
-            things_to_know: [
-               "Check in: 4:00pm", "No pets", "No smoking",  "Check out: 5:00pm", "Quiet hours after 10:00pm", "Self check-in with lock box", "No parties or event", "No outside visitor allowed"
-            ],
-            reviews: [
-               {
-                  name: "John",
-                  date: "2021-01-01",
-                  comment: "This is a great place to stay. The host is very friendly and helpful. The place is very clean and comfortable. The location is great. I would definitely stay here again.",
-                  rating: 5
-               }
-             ],
-            offers: [
-               "garden view", "wifi", "Swimming pool", "Central air conditioning", "32`` TV", "Heater", "Kitchen", "hangers", "hair dryer", "Swimming pool", "Laptop friendly workspace"
-            ],
-            bedrooms: ["king size bed", "standard size bed" ]
+      name: 'Marriott Hotel',
+      location: 'Lahore, Pakistan',
+      pictures: [
+         {
+            src: 'https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600',
+            width: 320,
+            height: 174
+         },
+         {
+            src: 'https://images.pexels.com/photos/338504/pexels-photo-338504.jpeg?auto=compress&cs=tinysrgb&w=600',
+            width: 320,
+            height: 174
+         },
+         {
+            src: 'https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            width: 320,
+            height: 174
+         },
+         {
+            src: 'https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            width: 320,
+            height: 174
+         },
+         {
+            src: 'https://images.pexels.com/photos/2467285/pexels-photo-2467285.jpeg?auto=compress&cs=tinysrgb&w=600',
+            width: 320,
+            height: 174
+         }
+      ],
+      tagline: 'Luxury Rooms & Suites by Marriott',
+      rating: 4.5,
+      reviews: 300,
+      price: {
+         per_day: 45,
+         cleaning_fee: 130,
+         service_Fee: 45
+      },
+      Accomodation: [
+         "2 guests",
+         "1 bedroom",
+         "1 bed",
+         "1 bath"
+      ],
+      About_place: {
+         About_space: ["About space", "ZenDacha Luxury Retreat, nestled in an elevated private community, bordered by untouched nature. Designed by award-winning architect, providing expansive indoor/outdoor living, with up to six bedroom (by prior agreement), each with en-suite facilities.Relax by the 19-metre infinity-edge pool after a serene yoga session in the elevated outdoor sala, whilst listening to the magical sounds of the jungle that embraces the villa"],
+         The_space: ["The space", "This villa will appeal to those seeking to unwind, recharge and be in a tranquil environment. We expect guest to maintain that tranquility and accordingly adhere to house rules including the quiet hours. If you're wanting to party this is not the place for you.The main building hosts one bedroom suite, plus an open plan living, dining and kitchen, all with access to large terrace areas with stunning coastal and forest views.From the main building you reach the extensive pool deck, with covered open kitchen, and further to the individual bedroom pavilions each with their own terrace."]
+      },
+      things_to_know: [
+         "Check in: 4:00pm", "No pets", "No smoking", "Check out: 5:00pm", "Quiet hours after 10:00pm", "Self check-in with lock box", "No parties or event", "No outside visitor allowed"
+      ],
+      reviews: [
+         {
+            name: "John",
+            date: "2021-01-01",
+            comment: "This is a great place to stay. The host is very friendly and helpful. The place is very clean and comfortable. The location is great. I would definitely stay here again.",
+            rating: 5
+         }
+      ],
+      offers: [
+         "garden view", "wifi", "Swimming pool", "Central air conditioning", "32`` TV", "Heater", "Kitchen", "hangers", "hair dryer", "Swimming pool", "Laptop friendly workspace"
+      ],
+      bedrooms: ["king size bed", "standard size bed"]
 
 
    }
 ];
 
-
-
-
-export const flags=[
+export const blogPosts = [
    {
-       "id": 1,
-       "name": "Yes",
+      id: 1,
+      title: 'My trip to Paris',
+      content: 'According to the 2022 Global Peace Index, Uruguay ranks as the continent’s safest country, but it might not immediately leap to mind when you’re envisioning a dream trip to South America. It should—especially the boho-chic beach resort of José Ignacio, a formerly sleepy fishing village that was put on the tourist map when Argentine chef Francis Mallman opened a restaurant on these shores in the 1970s. Today, the culinary standout is Parador La Huella—number 25 on Latin America’s 50 Best Restaurants list—where chef Vanessa González whips up a menu of wood-fired and raw seafood.      José Ignacio has a robust lineup of stays that run the gamut from the laid-back Posada Arenas de José Ignacio, where the warm owners make solo travelers feel like part of the family, to the grand Estancia VIK, where you can take private polo lessons or join a gaucho on a horseback ride across the pampas. If your taste runs more bookish than beachy, consider a stay at the newly opened Rizoma, a wooden-clad bookshop that doubles as a café, ceramics studio, and four-room hotel. Before you go, bask in the solitude of "Skyspace Ta Khut," James Turrell’s art installation located on the grounds of the Posada Ayana resort.  Quebec City     For those looking to take their first step into international solo travel, Quebec City is a bit like a bike with training wheels: You’ll get the experience without needing the expertise. (And while it’s officially Francophone, you can get by easily with English.) Best of all, its warren of cobblestoned streets—some dating back to the 17th-century—hide a Parisian arrondissement’s worth of bistros, fromageries, and patisseries. Noteworthy newcomers on the restaurant scene include Restaurant Alentours, where only three ingredients (salt, milk, and yeast) come from more than 93 miles away, and the playful fine-dining spot Restaurant Le Clan, which brings a touch of whimsy (mounted jackalope heads, a cartoon “Last Supper” painting) to a 17th-century building. Continue your historic exploration at La Monastère des Augustines, a wellness hotel built inside a 1639 monastery that housed the continent’s first hospital north of Mexico. The hotel offers a wide range of spa treatments, but don’t miss your chance to visit the city’s many Nordic spas, such as Sibéria, which sits within a peaceful forest on the outskirts of town. ',
+      datePosted: '2022-02-15',
+      postedBy: 'John Doe',
    },
    {
-       "id": 2,
-       "name": "No",
+      id: 2,
+      title: 'Hiking in the Grand Canyon',
+      content: 'Reykjavík, Iceland Consistently ranked one of the safest cities in the world, the Icelandic capital is so compact that in many ways it feels like a small town: As you make your way around the circuit of must- visit spots, from the famed Bæjarins Beztu Pylsur hot dog stand to the Hallgrimskirkja church to the Harpa Concert Hall, you’ll find yourself running into the same batch of outdoor adventurers, Nordic design lovers, and locals.In other words, it’s quite easy to make fast friends.To that end, a perfect place to start is the Kex Hostel, which occupies a historic biscuit factory and offers both shared bunk dorms and private rooms.But more important are the public spaces: a barbershop, a pop - up bar, and a book - filled lounge, where the Icelandic indie folk band Of Monsters and Men once played. Of course, traveling solo also offers a wonderful excuse to let go of distractions and fully commune with Iceland’s near - mythical natural splendor, including the milky and mineral - rich Blue Lagoon, the hexagonal basalt - rock columns at Reynisfjara Beach, and the geological wonders of the Golden Circle Route drive.',
+      datePosted: '2022-03-01',
+      postedBy: 'Jane Smith',
+   },
+   {
+      id: 3,
+      title: 'My trip to Japan',
+      content: 'With its simple-to-navigate public transit system, welcoming pub culture, and plethora of free museums and galleries such as the Tate Modern and the British Museum, the British capital makes for a great international stop for solo travelers. Going it alone means you can often snag last-minute tickets to West End shows, and at dinnertime, there always seems to be a free seat at the bar no matter how trendy the restaurant. This comes in particularly handy at spots that don’t take reservations, like 40 Maltby Street, a wine bar with small plates where the wait staff is so chatty and informative that you won’t miss traveling with a group.       When it comes time to sleep, London is brimming with smart hotels that offer cozier (read: tinier) room categories designed for solo travelers who’d rather spend money on activities and meals than lodging: Among the finest are The Pilgrm, in the shadow of Paddington Station; Mama Shelter, which is strolling distance from fantastic bars in Bethnal Green and Hackney; and the London-born Hoxton chain, which recently opened its fourth London location in Shepherd’s Bush and features rooms cheekily (and honestly) described as Shoebox, Snug, and Cozy.    ',
+      datePosted: '2022-04-05',
+      postedBy: 'Bob Johnson',
+   },
+];
+
+export const commentData = [
+   {
+      id: 1,
+      comment: 'Great post!',
+      author: 'Mike',
+      date: '2022-02-16'
+   },
+   {
+      id: 2,
+      comment: 'I loved Paris too!',
+      author: 'Sara',
+      date: '2022-03-05'
+   },
+   {
+      id: 3,
+      comment: 'Wow, the Grand Canyon looks amazing!',
+      author: 'Tom',
+      date: '2022-03-02'
+   },
+];
+
+export const flags = [
+   {
+      "id": 1,
+      "name": "Yes",
+   },
+   {
+      "id": 2,
+      "name": "No",
    }
 ];
-export const roles=[
+export const roles = [
    {
-       "id": 1,
-       "name": "Owner",
+      "id": 1,
+      "name": "Owner",
    },
    {
-       "id": 2,
-       "name": "Manager",
+      "id": 2,
+      "name": "Manager",
    },
    {
-       "id": 3,
-       "name": "Consultant",
+      "id": 3,
+      "name": "Consultant",
    },
    {
-       "id": 4,
-       "name": "Marketing",
+      "id": 4,
+      "name": "Marketing",
    },
    {
-       "id": 5,
-       "name": "Sales",
+      "id": 5,
+      "name": "Sales",
    },
    {
-       "id": 6,
-       "name": "Finance",
+      "id": 6,
+      "name": "Finance",
    },
    {
-       "id": 7,
-       "name": "Other",
+      "id": 7,
+      "name": "Other",
    }
 ];
-export const types=[
+export const types = [
    {
-       "id": 1,
-       "name": "Tourist",
+      "id": 1,
+      "name": "Tourist",
    },
    {
-       "id": 2,
-       "name": "Service Provider",
+      "id": 2,
+      "name": "Service Provider",
    }
 ];
