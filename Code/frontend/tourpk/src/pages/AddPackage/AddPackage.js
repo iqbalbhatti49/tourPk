@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavBar } from '../../components/NavBar/NavBar'
-import { Footer } from '../../components/Footer/Footer'
 import { Form as FormFinal } from 'react-final-form'
 import styles from './AddPackage.module.css'
 import Button from '../../components/Button/Button';
@@ -50,7 +48,6 @@ export default function AddPackage() {
 
     return (
         <>
-            <NavBar />
             <div className={styles.container}>
                 <h1>Add Services Package</h1>
                 <div>
@@ -83,7 +80,6 @@ export default function AddPackage() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }

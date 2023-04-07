@@ -1,5 +1,4 @@
 import styles from "./About.module.css";
-import { NavBar } from "../../components/NavBar/NavBar";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { IconKpk } from "../../components/IconKpk/IconKpk";
@@ -8,12 +7,10 @@ import { IconSindh } from "../../components/IconSindh/IconSindh";
 import { IconBalochistan } from "../../components/IconBalochistan/IconBalochistan";
 import HorizontalScroll from "../../components/HorizontalScroller/HorizontalScroller";
 import { PunjabtouristSpots } from "../../FakeData";
-import { Footer } from "../../components/Footer/Footer";
 
 const Services = () => {
    return (
       <>
-         <NavBar />
          <div className={styles.container}>
             <div className={styles.header}>
                <div>
@@ -64,7 +61,6 @@ const Services = () => {
                </Tabs>
             </div>
          </div>
-         <Footer />
       </>
    );
 };

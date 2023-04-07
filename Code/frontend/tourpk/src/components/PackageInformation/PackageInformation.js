@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from '../PackageInformation/PackageInformation.module.css'
 import FormField from '../../components/FormField/FormField'
-import Dropdown from '../../components/Dropdown/Dropdown'
 import { validateAlpha, mustBeNumber } from '../../validations'
 
 export default function PackageInformation(props) {
@@ -19,7 +18,6 @@ export default function PackageInformation(props) {
             </div>
             <FormField name="Description" label="Description" type="text" placeholder="Additional description of package and why its amazing" validate={validateAlpha} theme="light" renderIcon={() => null} />
             <FormField name="Validity" label="Validity (in days)" placeholder="No of days for this offer lasts eg. 25 days" validate={mustBeNumber} theme="light" renderIcon={() => null} />
-            {/* <Dropdown /> */}
         </div>
     )
 }

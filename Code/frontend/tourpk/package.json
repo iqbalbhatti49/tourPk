@@ -20,6 +20,7 @@
         "react-fontawesome": "^1.7.1",
         "react-horizontal-scrolling-menu": "^3.2.3",
         "react-phone-input-2": "^2.15.1",
+        "react-quill": "^2.0.0",
         "react-redux": "^8.0.5",
         "react-router-dom": "^6.6.1",
         "react-scripts": "5.0.1",
