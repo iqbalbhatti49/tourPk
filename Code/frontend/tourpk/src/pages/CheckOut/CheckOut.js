@@ -1,10 +1,9 @@
 import styles from "./CheckOut.module.css";
-import { NavBar, Footer, PaymentMethod, OrderReview, DiscountCodes, BillingSummary } from "../../components/index";
+import { PaymentMethod, OrderReview, DiscountCodes, BillingSummary } from "../../components/index";
 
 const CheckOut = () => {
    return (
       <div>
-         <NavBar />
          <div className={styles.container}>
             <div className={styles.header}>
                <p className={styles.subHeading}>BOOK YOUR DREAM VACATIONS WITH CONFIDENCE</p>
@@ -23,7 +22,6 @@ const CheckOut = () => {
                </div>
             </div>
          </div>
-         <Footer />
       </div>
    );
 };

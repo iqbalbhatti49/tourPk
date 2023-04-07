@@ -3,6 +3,7 @@ import styles from './PaymentMethod.module.css';
 import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import FormField from '../FormField/FormField';
 import { Form as FormFinal } from 'react-final-form'
+import { required } from '../../validations'
 import { useDispatch, useSelector } from 'react-redux'
 import { OnChange } from 'react-final-form-listeners'
 import {
@@ -18,7 +19,6 @@ export const PaymentMethod = () => {
       console.log('Form submitted with values:', values);
       form.reset();
    };
-   const required = value => (value ? undefined : 'Required');
 
    return (
       <div className={styles.container}>

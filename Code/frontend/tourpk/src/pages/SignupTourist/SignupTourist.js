@@ -1,16 +1,15 @@
 import React from "react";
 import styles from "./SignupTourist.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import { NavBar, Footer, FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, PhoneNumber } from "../../components/index";
+import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, PhoneNumber } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality } from '../../validations';
 
 const SignupTourist = (props) => {
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
-        form.reset();
+        form.reset(); // Reset the form's state after submission
     };
-    return (<>
-        <NavBar />
+    return (
         <div className={styles.formContainer}>
             {
                 props.userType == "seller"
@@ -54,8 +53,6 @@ const SignupTourist = (props) => {
                 </div>
             </div>
         </div>
-        <Footer />
-    </>
     );
 }
 export default SignupTourist;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { NavBar, Footer, Button, ServiceSection, PackageInformation, IconAdd, addPackage } from '../../components/index'
+import { Button, ServiceSection, PackageInformation, IconAdd, addPackage } from '../../components/index'
 import styles from './AddPackage.module.css'
 import { Form as FormFinal } from 'react-final-form'
 import { validateAlpha, optionalField } from '../../validations'
@@ -44,7 +44,6 @@ export default function AddPackage() {
 
     return (
         <>
-            <NavBar />
             <div className={styles.container}>
                 <h1>Add Services Package</h1>
                 <div>
@@ -77,7 +76,6 @@ export default function AddPackage() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </>
     )
 }

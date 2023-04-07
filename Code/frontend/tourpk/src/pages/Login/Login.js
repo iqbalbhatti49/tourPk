@@ -8,11 +8,9 @@ const Login = () => {
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
-        // TODO: manage redux -> dispatch redux...
     };
 
-    return (<>
-        <NavBar />
+    return (
         <div className={styles.formContainer}>
             <h1>Login Account</h1>
             <div className={styles.tableContainer}>
@@ -28,21 +26,19 @@ const Login = () => {
                         {({ handleSubmit, submitting, values }) => (
                             <form onSubmit={handleSubmit}>
                                 <h1 className={styles.whiteText}>Welcome back!</h1>
-                                <FormField name="Email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
-                                <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                                <FormField name="L_email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                                <FormField name="L_password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <a href="" className={styles.forget}>Forgot Password</a>
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
                                 <div className={styles.text}>OR</div>
                                 <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
                                 <div className={styles.text}>Don't have an account? <a href="/SignupTourist" className={styles.whiteText}>Signup</a></div>
-                            </form>
+                            </form >
                         )}
-                    </FormFinal>
-                </div>
-            </div>
-        </div>
-        <Footer />
-    </>
+                    </FormFinal >
+                </div >
+            </div >
+        </div >
     );
 }
 

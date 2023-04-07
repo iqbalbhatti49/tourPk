@@ -1,7 +1,7 @@
 @import "../../styles/variables.css";
 
 .container {
-  padding: 0vh 7vw;
+  @apply --pageContainer;
 }
 
 .formBorder {
@@ -9,7 +9,7 @@
   box-shadow: 0px 2px 4px 3px rgb(0, 0, 0, 0.1);
 }
 
-.formContainer{
+.formContainer {
   padding: 1rem 2rem;
 }
 

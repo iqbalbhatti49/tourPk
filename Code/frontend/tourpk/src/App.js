@@ -57,11 +57,11 @@ function App() {
       <Route path="/addpackage" element={<AddPackage />} />
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/bookings" element={<Bookings />} />
-      <Route path="/viewrestaurant" element={<ViewRestaurant />} />
       <Route path="/helpandsupport" element={<HelpAndSupport />} />
       <Route path="/genericinfo" element={<GenericInfoAboutService />} />
       <Route path="/listing" element={<Listing />} />
       <Route path="/Blog" element={<BlogPage />} />
+      <Route path="/AddBlog" element={<AddBlog />} />
     </Routes>
   );
 };

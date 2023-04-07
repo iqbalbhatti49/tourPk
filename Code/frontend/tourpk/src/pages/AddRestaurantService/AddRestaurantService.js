@@ -1,18 +1,18 @@
 import React from "react";
 import { Form as FormFinal } from 'react-final-form'
 import styles from './AddRestaurantService.module.css'
-import { FormField, PhoneNumber, NavBar, Footer, Button, UploadMediaButton } from "../../components/index";
+import { FormField, PhoneNumber, Button, UploadMediaButton } from "../../components/index";
 
 const AddRestaurant = () => {
-    const required = value => (value ? undefined : 'Required') // ****** move
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
         // TODO: manage redux -> dispatch redux --> "value"
     };
+};
 
-    return (<>
-        <NavBar />
+return (
+    <>
         <div id={styles.restaurantContainer}>
             <div >
                 <FormFinal
@@ -43,8 +43,6 @@ const AddRestaurant = () => {
                 </FormFinal>
             </div>
         </div>
-        <Footer />
     </>
-    );
-};
+);
 export default AddRestaurant;

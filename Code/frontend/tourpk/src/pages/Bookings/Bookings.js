@@ -1,11 +1,10 @@
 import React from 'react'
-import { Footer, NavBar, BookingsSidebar, BookingCard } from '../../components/index'
+import { BookingsSidebar, BookingCard } from '../../components/index'
 import styles from './Bookings.module.css'
 
 export default function Bookings() {
     return (
         <>
-            <NavBar />
             <h1 className={styles.heading1}>My Bookings</h1>
             <div className={styles.container}>
                 <div className={styles.bookingsList}>
@@ -14,7 +13,6 @@ export default function Bookings() {
                 </div>
                 <BookingsSidebar />
             </div>
-            <Footer />
         </>
     )
 }
