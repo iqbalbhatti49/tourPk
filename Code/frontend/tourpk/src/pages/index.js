@@ -9,9 +9,9 @@ export { default as SignupTourist } from "./SignupTourist/SignupTourist";
 export { default as AddPackage } from "./AddPackage/AddPackage";
 export { default as CheckOut } from "./CheckOut/CheckOut";
 export { default as AddRestaurant } from "./AddRestaurantService/AddRestaurantService";
-export { default as ViewRestaurant } from "./ViewRestaurantService/ViewRestaurantService";
 export { default as Bookings } from "./Bookings/Bookings";
 export { default as HelpAndSupport } from "./HelpAndSupport/HelpAndSupport"
 export { default as GenericInfoAboutService } from "./GenericInfoAboutService/GenericInfoAboutService"
 export { default as Listing } from "./Listing/Listing";
 export { default as BlogPage } from "./BlogPage/BlogPage";
+export { default as AddBlog } from "./AddBlog/AddBlog";
