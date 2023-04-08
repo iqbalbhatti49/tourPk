@@ -5,7 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, About, Contract, Login, SignupTourist, AddPackage, CheckOut, AddRestaurant, ViewRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage } from "./pages/index";
+import { Home, Services, InAppPlans, About, Contract, Login, SignupTourist, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog } from "./pages/index";
 
 function App() {
   const action = useNavigationType();

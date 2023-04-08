@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./SignupTourist.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, PhoneNumber } from "../../components/index";
-import { validateAlpha, validateEmail, validatePassword, validateEquality } from '../../validations';
+import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson } from "../../components/index";
+import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../validations';
 
 const SignupTourist = (props) => {
+
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
@@ -35,7 +36,7 @@ const SignupTourist = (props) => {
                                     props.userType == "seller" ?
                                         <FormField name="BusinessTitle" label="Business Title" type="text" placeholder="Your BusinessTitle" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" /> : null
                                 }
-                                <PhoneNumber />
+                                <FormField name="PhoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
                                 <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormField name="confirmPassword" type="text" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />

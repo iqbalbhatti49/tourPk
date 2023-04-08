@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Button, ServiceSection, PackageInformation, IconAdd, addPackage } from '../../components/index'
 import styles from './AddPackage.module.css'
 import { Form as FormFinal } from 'react-final-form'
-import { validateAlpha, optionalField } from '../../validations'
+import { validateAlpha } from '../../validations'
 
 export default function AddPackage() {
     const dispatch = useDispatch();
@@ -61,9 +61,9 @@ export default function AddPackage() {
                                     </div>
                                     <div className={styles.form}>
                                         {sections.map((section, index) => {
-                                            const validate = index < 2 ? validateAlpha : optionalField;
+                                            const showRemove = index < 2 ? 0 : 1;
                                             return (
-                                                <ServiceSection key={index} index={index} validate={validate} />
+                                                <ServiceSection key={index} index={index} validate={validateAlpha} showRemove={showRemove} sections={sections} setSections={setSections} />
                                             );
                                         })}
                                         <div className={styles.addButtonContainer}>

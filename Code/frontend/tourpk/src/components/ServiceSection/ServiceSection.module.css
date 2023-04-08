@@ -1,7 +1,13 @@
-.sectionContainer {
-    width: 50%;
-  }
+@import "../../styles/variables.css";
 
-.sectionContainer div{
+.sectionContainer {
+  width: 50%;
+}
+
+.sectionContainer div {
   margin-bottom: 23px;
+}
+
+.headingContainer {
+  @apply --headingContainer;
 }
