@@ -1,12 +1,16 @@
 import React from "react";
-import styles from "./SignupTourist.module.css";
+import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import { NavBar, Footer, FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, PhoneNumber } from "../../components/index";
-import { validateAlpha, validateEmail, validatePassword, validateEquality } from '../../validations';
+import { NavBar, Footer, FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, PhoneNumber, updateUser } from "../../components/index";
+import { validateAlpha, validateEmail, validatePassword, validateEquality } from '../../utils/validations';
+import { useDispatch } from "react-redux";
 
-const SignupTourist = (props) => {
+const Signup = (props) => {
+    const dispatch = useDispatch();
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
+        values.userType = props.userType;
+        dispatch(updateUser(values));
         form.reset();
     };
     return (<>
@@ -30,14 +34,14 @@ const SignupTourist = (props) => {
                         {({ handleSubmit, submitting, values }) => (
                             <form onSubmit={handleSubmit}>
                                 <h1 className={styles.whiteText} id={styles.signupTitle}>Sign Up</h1>
-                                <FormField name="FullName" label="Full Name" type="text" placeholder="Your Full Name" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
-                                <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                                <FormField name="name" label="Full Name" type="text" placeholder="Your Full Name" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
+                                <FormField name="email" label="Email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
                                 {
                                     props.userType == "seller" ?
-                                        <FormField name="BusinessTitle" label="Business Title" type="text" placeholder="Your BusinessTitle" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" /> : null
+                                        <FormField name="businessTitle" label="Business Title" type="text" placeholder="Your BusinessTitle" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" /> : null
                                 }
                                 <PhoneNumber />
-                                <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                                <FormField name="password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormField name="confirmPassword" type="text" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
                                 <div className={styles.text}>OR</div>
@@ -58,6 +62,6 @@ const SignupTourist = (props) => {
     </>
     );
 }
-export default SignupTourist;
+export default Signup;
 
 //When a validation function is passed to a form field, final-form library automatically passes two arguments to that function: the current field value and entire form values object

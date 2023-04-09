@@ -2,7 +2,7 @@ import React from 'react'
 import styles from '../PackageInformation/PackageInformation.module.css'
 import FormField from '../../components/FormField/FormField'
 import Dropdown from '../../components/Dropdown/Dropdown'
-import { validateAlpha, mustBeNumber } from '../../validations'
+import { validateAlpha, mustBeNumber } from '../../utils/validations'
 
 export default function PackageInformation(props) {
     const { values } = props;

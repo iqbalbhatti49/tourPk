@@ -7,7 +7,7 @@ export default function PhoneNumber() {
     const [phone, setPhone] = useState('');
     return (
         <div className={styles.phoneContainer}>
-            <PhoneInput className={styles.phoneField} country={'us'} value={phone} label="Contact No" onChange={phone => setPhone(phone)} />
+            <PhoneInput className={styles.phoneField} name="phoneNumber" country={'us'} value={phone} label="Contact No" onChange={phone => setPhone(phone)} />
         </div>
     )
 }

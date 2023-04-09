@@ -1,7 +1,7 @@
 import styles from "./Services.module.css";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { LahoreHotles, LahoreResturants } from "../../FakeData";
+import { LahoreHotles, LahoreResturants } from "../../utils/FakeData";
 import { NavBar, IconHotel, IconResturant, IconGuide, IconAgent, HotelCard, Footer } from "../../components/index";
 
 const Services = () => {

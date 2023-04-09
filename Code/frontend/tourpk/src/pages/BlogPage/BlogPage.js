@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './BlogPage.module.css';
-import { blogPosts } from "../../FakeData.js";
-import { commentData } from "../../FakeData.js";
+import { blogPosts } from "../../utils/FakeData.js";
+import { commentData } from "../../utils/FakeData.js";
 import { NavBar, Footer, BlogPost, CommentSection } from '../../components/index'
 
 const BlogPage = () => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './Listing.module.css'
-import { ListingHotel } from "../../FakeData.js"
+import { ListingHotel } from "../../utils/FakeData.js"
 import { IconStar, InfoBox, NavBar, Footer, ImageGallery, ServiceBox, SellerProfile, BookingSummary } from '../../components/index';
 
 export default function () {
