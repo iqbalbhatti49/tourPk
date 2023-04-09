@@ -1,9 +1,8 @@
 import styles from "./Cities.module.css";
 import 'react-tabs/style/react-tabs.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { NavBar, IconKpk, IconPunjab, IconSindh, IconBalochistan, HorizontalScroll, Footer } from "../../components/index";
 import { useSelector } from "react-redux";
-
+import { IconKpk, IconPunjab, IconSindh, IconBalochistan, HorizontalScroll } from "../../components/index";
 
 const Cities = () => {
    const data = useSelector((state) => state.cities.provinces);
@@ -15,7 +14,6 @@ const Cities = () => {
 
    return (
       <>
-         <NavBar />
          <div className={styles.container}>
             <div className={styles.header}>
                <div>
@@ -66,7 +64,6 @@ const Cities = () => {
                </Tabs>
             </div>
          </div>
-         <Footer />
       </>
    );
 };

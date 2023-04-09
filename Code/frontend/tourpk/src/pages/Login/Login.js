@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../Signup/Signup.module.css";
-import { NavBar, FormButton, Footer, IconGoogle, IconEmail, IconPassword, FormField, loginUser } from "../../components/index";
+import { FormButton, IconGoogle, IconEmail, IconPassword, FormField, loginUser } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
 import { useDispatch } from "react-redux";
@@ -13,8 +13,7 @@ const Login = () => {
         form.reset();
     };
 
-    return (<>
-        <NavBar />
+    return (
         <div className={styles.formContainer}>
             <h1>Login Account</h1>
             <div className={styles.tableContainer}>
@@ -36,15 +35,13 @@ const Login = () => {
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
                                 <div className={styles.text}>OR</div>
                                 <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
-                                <div className={styles.text}>Don't have an account? <a href="/SignupTourist" className={styles.whiteText}>Signup</a></div>
-                            </form>
+                                <div className={styles.text}>Don't have an account? <a href="/Signup" className={styles.whiteText}>Signup</a></div>
+                            </form >
                         )}
-                    </FormFinal>
-                </div>
-            </div>
-        </div>
-        <Footer />
-    </>
+                    </FormFinal >
+                </div >
+            </div >
+        </div >
     );
 }
 

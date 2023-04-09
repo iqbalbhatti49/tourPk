@@ -76,4 +76,10 @@
       width: 95%;
    }
 
+   --headingContainer: {
+      display: flex;
+      align-items: baseline;
+      column-gap: 1rem;
+   }
+
 }

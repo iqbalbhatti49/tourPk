@@ -1,12 +1,11 @@
 import styles from "./Contract.module.css";
-import { NavBar, Footer, Button } from "../../components/index";
+import { Button } from "../../components/index";
 import { useSelector } from "react-redux";
 
-const Services = () => {
+const Contract = () => {
    const contract = useSelector((state) => state.contract.agreement);
    return (
       <>
-         <NavBar />
          <div className={styles.container}>
             <div className={styles.header}>
                <p className={styles.subHeading}>CONTRACT TAILORED TO FIT YOUR NEEDS</p>
@@ -30,9 +29,8 @@ const Services = () => {
                <Button type="secondary" value="Negotiate" />
             </div>
          </div>
-         <Footer />
       </>
    );
 };
 
-export default Services;
+export default Contract;

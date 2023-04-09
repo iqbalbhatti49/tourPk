@@ -1,7 +1,7 @@
 import React from "react";
 import Switch from "react-switch";
 import styles from "./InAppPlans.module.css";
-import { NavBar, PriceCard, Footer, toggleChecked } from "../../components/index";
+import { PriceCard, toggleChecked } from "../../components/index";
 import { useSelector, useDispatch } from 'react-redux';
 
 const InAppPlans = () => {
@@ -18,7 +18,6 @@ const InAppPlans = () => {
 
   return (
     <>
-      <NavBar />
       <div className={styles.container}>
         <div className={styles.header}>
           <p className={styles.subHeading}>{`Plans & Pricing`}</p>
@@ -39,7 +38,6 @@ const InAppPlans = () => {
           <PriceCard theme="light" subTitle="For big companies" mainTitle={pricing.enterprise.name} description={pricing.enterprise.description} price={pricing.enterprise.price} period={period} features={pricing.enterprise.features} />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

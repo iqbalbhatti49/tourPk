@@ -25,7 +25,7 @@
 }
 
 .light {
-  border: 1px solid #b5b5b588;
+  border: 1px solid lightgray;
 }
 
 /* TODO: Make this property of input fields global->pdding, backgrnd etc  -> For other fields like Phone etc

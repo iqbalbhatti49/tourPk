@@ -6,5 +6,5 @@
 
 .input {
     @apply --input;
-    border: 1px solid var(--assistColor);
+    border: 1px solid lightgray;
 }

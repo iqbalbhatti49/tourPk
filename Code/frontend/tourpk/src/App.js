@@ -5,7 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, ViewRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage } from "./pages/index";
+import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog } from "./pages/index";
 
 function App() {
   const action = useNavigationType();
@@ -57,11 +57,11 @@ function App() {
       <Route path="/addpackage" element={<AddPackage />} />
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/bookings" element={<Bookings />} />
-      <Route path="/viewrestaurant" element={<ViewRestaurant />} />
       <Route path="/helpandsupport" element={<HelpAndSupport />} />
       <Route path="/genericinfo" element={<GenericInfoAboutService />} />
       <Route path="/listing" element={<Listing />} />
       <Route path="/Blog" element={<BlogPage />} />
+      <Route path="/AddBlog" element={<AddBlog />} />
     </Routes>
   );
 };

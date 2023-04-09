@@ -1,20 +1,16 @@
 import React from "react";
 import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import { NavBar, Footer, FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, PhoneNumber, updateUser } from "../../components/index";
+import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality } from '../../utils/validations';
-import { useDispatch } from "react-redux";
 
 const Signup = (props) => {
-    const dispatch = useDispatch();
+
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
-        values.userType = props.userType;
-        dispatch(updateUser(values));
-        form.reset();
+        form.reset(); // Reset the form's state after submission
     };
-    return (<>
-        <NavBar />
+    return (
         <div className={styles.formContainer}>
             {
                 props.userType == "seller"
@@ -40,8 +36,8 @@ const Signup = (props) => {
                                     props.userType == "seller" ?
                                         <FormField name="businessTitle" label="Business Title" type="text" placeholder="Your BusinessTitle" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" /> : null
                                 }
-                                <PhoneNumber />
-                                <FormField name="password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                                <FormField name="PhoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
+                                <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormField name="confirmPassword" type="text" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
                                 <div className={styles.text}>OR</div>
@@ -52,14 +48,12 @@ const Signup = (props) => {
                                         <div className={styles.text}>Are you a Service Seller? <a href="/signupAsSeller" className={styles.whiteText}>Signup as Seller</a></div>
                                         : <div className={styles.text}>Are you a Tourist? <a href="/signupAsTourist" className={styles.whiteText}>Signup as Tourist</a></div>
                                 }
-                            </form>
+                            </form >
                         )}
-                    </FormFinal>
-                </div>
-            </div>
-        </div>
-        <Footer />
-    </>
+                    </FormFinal >
+                </div >
+            </div >
+        </div >
     );
 }
 export default Signup;

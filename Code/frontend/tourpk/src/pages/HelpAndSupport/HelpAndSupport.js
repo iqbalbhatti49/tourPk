@@ -1,7 +1,7 @@
 import React from "react";
 import { Form as FormFinal } from "react-final-form";
 import styles from "./HelpAndSupport.module.css";
-import { Button, NavBar, Footer, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
+import { Button, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
 
 const HelpAndSupport = () => {
   const required = (value) => (value ? undefined : "Required"); // ****** move
@@ -12,7 +12,6 @@ const HelpAndSupport = () => {
 
   return (
     <>
-      <NavBar />
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.heading}>Do You Have Questions?</h1>
@@ -166,7 +165,6 @@ const HelpAndSupport = () => {
           </FormFinal>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

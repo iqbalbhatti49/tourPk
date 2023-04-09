@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './BlogPage.module.css';
-import { blogPosts } from "../../utils/FakeData.js";
-import { commentData } from "../../utils/FakeData.js";
-import { NavBar, Footer, BlogPost, CommentSection } from '../../components/index'
+import { BlogPost, CommentSection } from '../../components/index'
+import { blogPosts, commentData } from "../../utils/FakeData.js";
 
 const BlogPage = () => {
   const blogId = 1; // Change this to display a different blog post
@@ -11,12 +10,10 @@ const BlogPage = () => {
 
   return (
     <>
-      <NavBar />
       <div className={styles.container}>
         <BlogPost post={blogPost} />
         <CommentSection comments={comments} />
       </div>
-      <Footer />
     </>
   );
 };
