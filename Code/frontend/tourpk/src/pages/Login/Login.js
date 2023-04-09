@@ -35,7 +35,7 @@ const Login = () => {
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
                                 <div className={styles.text}>OR</div>
                                 <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
-                                <div className={styles.text}>Don't have an account? <a href="/Signup" className={styles.whiteText}>Signup</a></div>
+                                <div className={styles.text}>Don't have an account? <a href="/SignupAsTourist" className={styles.whiteText}>Signup</a></div>
                             </form >
                         )}
                     </FormFinal >
