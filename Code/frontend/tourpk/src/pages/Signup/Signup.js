@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
 import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson } from "../../components/index";
-import { validateAlpha, validateEmail, validatePassword, validateEquality } from '../../utils/validations';
+import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
 
 const Signup = (props) => {
 
