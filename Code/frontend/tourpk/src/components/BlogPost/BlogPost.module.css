@@ -1,0 +1,24 @@
+@import "../../styles/variables.css";
+
+.container {
+  margin-bottom: 30px;
+}
+
+.title {
+  font-weight: bold;
+  @apply --headerHeading;
+}
+
+.content {
+  text-align: justify;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.info {
+  font-size: 14px;
+  color: var(--assistColor);
+  text-align: center;
+  margin: 0 0 2em 0;
+}

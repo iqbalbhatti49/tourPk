@@ -1,16 +1,20 @@
 import React from 'react'
 import styles from './BookingsSidebar.module.css'
+import { useSelector } from 'react-redux'
 
 export default function BookingsSidebar() {
+    const bookings = useSelector((state) => state.booking.totalBookings);
+    const earnings = useSelector((state) => state.booking.totalEarnings);
+
     return (
         <div className={styles.icons}>
             <div className={styles.imgContainer}>
                 <img id={styles.earning} src="../../static/images/earnings.png" alt="" />
-                <p className={styles.count}>Rs. 5000</p>
+                <p className={styles.count}>Rs. {earnings}</p>
             </div>
             <div className={styles.imgContainer}>
                 <img id={styles.earning} src="../../static/images/totalBookings.png" alt="" />
-                <p className={styles.count}>17</p>
+                <p className={styles.count}>{bookings}</p>
             </div>
         </div>)
 }

@@ -2,10 +2,9 @@ import React from 'react';
 import styles from './BillingAddress.module.css';
 import FormField from '../FormField/FormField';
 import { Form as FormFinal } from 'react-final-form'
-import PhoneNumber from '../PhoneNumber/PhoneNumber';
+import { required, validatePhone } from '../../validations';
 
 export const BillingAddress = () => {
-   const required = value => (value ? undefined : 'Required');
    const onSubmit = (values, form) => {
       console.log('Form submitted with values:', values);
       form.reset();
@@ -32,7 +31,7 @@ export const BillingAddress = () => {
                      <FormField name="Province" label="Province" type="text" placeholder="Punjab" validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
                      <FormField name="City" label="City" type="text" placeholder="Lahore" validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
                      <FormField name="Zip Code" label="Zip Code" type="number" placeholder="2234" validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
-                     <PhoneNumber />
+                     <FormField name="PhoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
                   </form>
                )}
             </FormFinal>
