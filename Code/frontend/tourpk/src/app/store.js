@@ -7,6 +7,7 @@ import bookingsSlice from './features/bookings/bookingsSlice'
 import userSlice from './features/user/userSlice'
 import contractSlice from './features/contract/contractSlice'
 import citiesSlice from './features/cities/citiesSlice'
+import help from './features/help/help'
 import logger from 'redux-logger';
 
 export const store = configureStore({
@@ -18,7 +19,8 @@ export const store = configureStore({
       user: userSlice,
       booking: bookingsSlice,
       contract: contractSlice,
-      cities: citiesSlice
+      cities: citiesSlice,
+      help: help
    },
    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 })
