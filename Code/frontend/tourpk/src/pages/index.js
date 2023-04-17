@@ -5,7 +5,7 @@ export { default as InAppPlans } from "./InAppPlans/InAppPlans";
 export { default as About } from "./About/About";
 export { default as Contract } from "./Contract/Contract";
 export { default as Login } from "./Login/Login";
-export { default as SignupTourist } from "./SignupTourist/SignupTourist";
+export { default as Signup } from "./Signup/Signup";
 export { default as AddPackage } from "./AddPackage/AddPackage";
 export { default as CheckOut } from "./CheckOut/CheckOut";
 export { default as AddRestaurant } from "./AddRestaurantService/AddRestaurantService";

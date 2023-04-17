@@ -430,7 +430,7 @@ export const blogPosts = [
       title: 'Hiking in the Grand Canyon',
       content: 'Reykjavík, Iceland Consistently ranked one of the safest cities in the world, the Icelandic capital is so compact that in many ways it feels like a small town: As you make your way around the circuit of must- visit spots, from the famed Bæjarins Beztu Pylsur hot dog stand to the Hallgrimskirkja church to the Harpa Concert Hall, you’ll find yourself running into the same batch of outdoor adventurers, Nordic design lovers, and locals.In other words, it’s quite easy to make fast friends.To that end, a perfect place to start is the Kex Hostel, which occupies a historic biscuit factory and offers both shared bunk dorms and private rooms.But more important are the public spaces: a barbershop, a pop - up bar, and a book - filled lounge, where the Icelandic indie folk band Of Monsters and Men once played. Of course, traveling solo also offers a wonderful excuse to let go of distractions and fully commune with Iceland’s near - mythical natural splendor, including the milky and mineral - rich Blue Lagoon, the hexagonal basalt - rock columns at Reynisfjara Beach, and the geological wonders of the Golden Circle Route drive.',
       datePosted: '2022-03-01',
-      postedBy: 'Jane Smith',
+      username: 'Jane Smith',
    },
    {
       id: 3,
@@ -509,6 +509,6 @@ export const types = [
    },
    {
       "id": 2,
-      "name": "Service Provider",
+      "name": "Seller",
    }
 ];
