@@ -1,18 +1,20 @@
 import React from "react";
 import { Form as FormFinal } from "react-final-form";
 import styles from "./HelpAndSupport.module.css";
-import { Button, NavBar, Footer, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
-
+import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
+import { helpRequest } from "../../app/features/help/help";
+import { useDispatch, useSelector } from "react-redux";
 const HelpAndSupport = () => {
   const required = (value) => (value ? undefined : "Required"); // ****** move
+  const dispatch = useDispatch();
   const onSubmit = (values, form) => {
     console.log("Form submitted with values:", values);
     form.reset();
+    dispatch(helpRequest(values));
   };
 
   return (
     <>
-      <NavBar />
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.heading}>Do You Have Questions?</h1>
@@ -119,7 +121,7 @@ const HelpAndSupport = () => {
 
                 <div className={styles.formFields}>
                   <FormField
-                    name="generalField"
+                    name="username"
                     label="Username"
                     type="text"
                     placeholder="Enter your username"
@@ -129,7 +131,7 @@ const HelpAndSupport = () => {
                     renderIcon={() => null}
                   />
                   <FormField
-                    name="generalField"
+                    name="email"
                     label="Email"
                     type="email"
                     placeholder="abc@email.com"
@@ -139,7 +141,7 @@ const HelpAndSupport = () => {
                     renderIcon={() => null}
                   />
                   <FormField
-                    name="generalField"
+                    name="questionTitle"
                     label="Question Title"
                     type="text"
                     placeholder="Enter your question title"
@@ -149,7 +151,7 @@ const HelpAndSupport = () => {
                     renderIcon={() => null}
                   />
                   <FormField
-                    name="generalField"
+                    name="questionDescription"
                     label="Question Description"
                     type="paragraph"
                     placeholder="Describe your question"
@@ -160,13 +162,12 @@ const HelpAndSupport = () => {
                   />
                 </div>
                 <UploadMediaButton />
-                <Button value="Submit" />
+                <FormButton type="submit" disabled={false} text="Submit" renderIcon={() => null} labelClass="noLabel" />
               </form>
             )}
           </FormFinal>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

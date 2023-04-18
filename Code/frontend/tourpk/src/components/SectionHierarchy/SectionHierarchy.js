@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../Button/Button';
 import styles from './SectionHierarchy.module.css';
 import { CityCard } from "../../components/CityCard/CityCard";
-import { cities } from "../../FakeData.js"
+import { cities } from "../../utils/FakeData.js"
 
 export const SectionHierarchy = () => {
    return (

@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Button, ServiceSection, PackageInformation, IconAdd, addPackage } from '../../components/index'
 import styles from './AddPackage.module.css'
 import { Form as FormFinal } from 'react-final-form'
-import { validateAlpha } from '../../validations'
+import { validateAlpha } from '../../utils/validations'
 
 export default function AddPackage() {
     const dispatch = useDispatch();

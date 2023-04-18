@@ -181,6 +181,7 @@ const Rawalpindi = [
       reviews: 152
    }
 ]
+
 export const PunjabtouristSpots = [Lahore, Faisalabad, Rawalpindi];
 
 export const LahoreHotles = [

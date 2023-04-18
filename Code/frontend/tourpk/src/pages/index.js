@@ -2,7 +2,7 @@
 export { default as Home } from "./Home/Home";
 export { default as Services } from "./Services/Services";
 export { default as InAppPlans } from "./InAppPlans/InAppPlans";
-export { default as About } from "./About/About";
+export { default as Cities } from "./Cities/Cities";
 export { default as Contract } from "./Contract/Contract";
 export { default as Login } from "./Login/Login";
 export { default as Signup } from "./Signup/Signup";

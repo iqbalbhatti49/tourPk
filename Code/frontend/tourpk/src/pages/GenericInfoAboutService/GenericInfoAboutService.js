@@ -1,6 +1,6 @@
 import styles from './GenericInfoAboutService.module.css'
 import { Form as FormFinal } from "react-final-form";
-import { NavBar, Footer, Dropdown, Button, YesNoDropdown, RolesDropdown } from "../../components/index";
+import { Dropdown, Button, YesNoDropdown, RolesDropdown } from "../../components/index";
 
 const GenericInfoAboutService = () => {
   const onSubmit = (values, form) => {
@@ -9,7 +9,6 @@ const GenericInfoAboutService = () => {
   };
 
   return (<>
-    <NavBar />
     <div className={styles.container}>
       <img className={styles.image} alt="Cities" src="../../static/images/sectionHero.png" />
       <div className={styles.content}>
@@ -65,8 +64,6 @@ const GenericInfoAboutService = () => {
         </FormFinal>
       </div>
     </div>
-
-    <Footer />
   </>
   );
 };

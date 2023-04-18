@@ -99,7 +99,3 @@ export const validateExpirationDate = (value) => {
     return 'Expired date';
   }
 };
-
-
-//const minValue = min => value =>
-//  isNaN(value) || value >= min ? '' : `Should be greater than ${min}`

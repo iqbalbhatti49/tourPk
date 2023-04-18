@@ -1,10 +1,9 @@
 import React from 'react'
 import styles from '../PackageInformation/PackageInformation.module.css'
 import FormField from '../../components/FormField/FormField'
-import { validateAlpha, mustBeNumber } from '../../validations'
+import { validateAlpha, mustBeNumber } from '../../utils/validations'
 
-export default function PackageInformation(props) {
-    const { values } = props;
+export default function PackageInformation() {
     return (
         <div>
             <h2>Name and Description</h2>

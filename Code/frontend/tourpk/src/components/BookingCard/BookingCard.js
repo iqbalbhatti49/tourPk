@@ -1,8 +1,10 @@
 import React from 'react'
 import styles from './BookingCard.module.css'
-import { bookings } from '../../bookingsDetails'
+import { useSelector } from 'react-redux'
 
 export default function BookingCard() {
+  const bookings = useSelector((state) => state.booking.currentBookings);
+
   return (
     <>
       {bookings.map((item) => {

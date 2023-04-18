@@ -2,7 +2,7 @@ import React from "react";
 import { Form as FormFinal } from 'react-final-form'
 import styles from './AddRestaurantService.module.css'
 import { FormField, UploadMediaButton, Button } from "../../components/index";
-import { required, validatePhone, validateEmail, validateAlpha, validateURL } from '../../validations';
+import { required, validatePhone, validateEmail, validateAlpha, validateURL } from '../../utils/validations';
 
 const AddRestaurant = () => {
     const onSubmit = (values, form) => {

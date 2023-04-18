@@ -1,10 +1,17 @@
-import styles from "./About.module.css";
+import styles from "./Cities.module.css";
 import 'react-tabs/style/react-tabs.css';
-import { PunjabtouristSpots } from "../../FakeData";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { useSelector } from "react-redux";
 import { IconKpk, IconPunjab, IconSindh, IconBalochistan, HorizontalScroll } from "../../components/index";
 
-const Services = () => {
+const Cities = () => {
+   const data = useSelector((state) => state.cities.provinces);
+
+   const punjabSpots = data.find(p => p.name === 'Punjab').cities.map(c => c.spots);
+   const kpkSpots = data.find(c => c.name === 'Khyber Pakhtunkhwa').cities.map(c => c.spots);
+   const balochistanSpots = data.find(p => p.name === 'Balochistan').cities.map(c => c.spots);
+   const sindhSpots = data.find(p => p.name === 'Sindh').cities.map(c => c.spots);
+
    return (
       <>
          <div className={styles.container}>
@@ -35,22 +42,22 @@ const Services = () => {
                      </Tab>
                   </TabList>
                   <TabPanel>
-                     {PunjabtouristSpots.map((e, index) => (
+                     {punjabSpots.map((e, index) => (
                         < HorizontalScroll key={index} spots={e} />
                      ))}
                   </TabPanel>
                   <TabPanel>
-                     {PunjabtouristSpots.map((e, index) => (
+                     {kpkSpots.map((e, index) => (
                         < HorizontalScroll key={index} spots={e} />
                      ))}
                   </TabPanel>
                   <TabPanel>
-                     {PunjabtouristSpots.map((e, index) => (
+                     {sindhSpots.map((e, index) => (
                         < HorizontalScroll key={index} spots={e} />
                      ))}
                   </TabPanel>
                   <TabPanel>
-                     {PunjabtouristSpots.map((e, index) => (
+                     {balochistanSpots.map((e, index) => (
                         < HorizontalScroll key={index} spots={e} />
                      ))}
                   </TabPanel>
@@ -61,4 +68,4 @@ const Services = () => {
    );
 };
 
-export default Services;
+export default Cities;

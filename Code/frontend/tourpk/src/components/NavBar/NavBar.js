@@ -13,7 +13,7 @@ export const NavBar = () => {
             <Logo width={100} height={50} rootClassName="dark" />
             <div className={styles.navLinks}>
                <Link className={location.pathname === '/' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/">Home</Link>
-               <Link className={location.pathname === '/about' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/about">About</Link>
+               <Link className={location.pathname === '/cities' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/cities">Cities</Link>
                <Link className={location.pathname === '/services' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/services">Services</Link>
                <Link className={location.pathname === '/pricing' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/pricing">Pricing</Link>
                <Link className={location.pathname === '/contact' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/contact">Contact</Link>

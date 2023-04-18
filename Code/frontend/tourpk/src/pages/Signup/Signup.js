@@ -45,11 +45,11 @@ const Signup = (props) => {
                         {({ handleSubmit, submitting, values }) => (
                             <form onSubmit={handleSubmit}>
                                 <h1 className={styles.whiteText} id={styles.signupTitle}>Sign Up</h1>
-                                <FormField name="FullName" label="Full Name" type="text" placeholder="Your Full Name" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
-                                <FormField name="Email" label="Email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
+                                <FormField name="name" label="Full Name" type="text" placeholder="Your Full Name" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
+                                <FormField name="email" label="Email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
                                 {
                                     props.userType == "seller" ?
-                                        <FormField name="BusinessTitle" label="Business Title" type="text" placeholder="Your BusinessTitle" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" /> : null
+                                        <FormField name="businessTitle" label="Business Title" type="text" placeholder="Your BusinessTitle" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" /> : null
                                 }
                                 <FormField name="PhoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
                                 <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
@@ -64,12 +64,12 @@ const Signup = (props) => {
                                         <div className={styles.text}>Are you a Service Seller? <a href="/signupAsSeller" className={styles.whiteText}>Signup as Seller</a></div>
                                         : <div className={styles.text}>Are you a Tourist? <a href="/signupAsTourist" className={styles.whiteText}>Signup as Tourist</a></div>
                                 }
-                            </form>
+                            </form >
                         )}
-                    </FormFinal>
-                </div>
-            </div>
-        </div>
+                    </FormFinal >
+                </div >
+            </div >
+        </div >
     );
 }
 export default Signup;
