@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../Signup/Signup.module.css";
-import { NavBar, FormButton, Footer, IconGoogle, IconEmail, IconPassword, FormField } from "../../components/index";
+import { FormButton, IconGoogle, IconEmail, IconPassword, FormField } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
 import { useDispatch } from "react-redux";

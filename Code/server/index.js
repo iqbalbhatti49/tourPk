@@ -17,5 +17,5 @@ app.use("/help", helpRouter);
 
 // const PORT = process.env.PORT || 3000;  --> for production
 db.sequelize.sync().then(() => {
-  app.listen(3001, console.log(`Server running on port 3001`))
+  app.listen(8080, console.log(`Server running on port 8080`))
 });
