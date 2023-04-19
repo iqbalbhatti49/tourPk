@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../Signup/Signup.module.css";
-import { FormButton, IconGoogle, IconEmail, IconPassword, FormField, loginUser } from "../../components/index";
+import { FormButton, IconGoogle, IconEmail, IconPassword, FormField } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
+    const [errormsg, setErrormsg] = useState(null);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
-    const onSubmit = (values, form) => {
+
+    const onSubmit = async (values, form) => {
         console.log('Form submitted with values:', values);
         dispatch(loginUser(values));
-        form.reset();
+        try {
+            res = await axios.post("/auth/login", values);
+            navigate("/");
+        }
+        catch (error) {
+            setErrormsg(error.message);
+        }
+        form.reset(); // Reset the form's state after submission
     };
 
     return (
@@ -33,6 +45,7 @@ const Login = () => {
                                 <FormField name="password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <a href="" className={styles.forget}>Forgot Password</a>
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} labelClass="noLabel" />
+                                {errormsg && <div className={styles.error}>{errormsg}</div>}
                                 <div className={styles.text}>OR</div>
                                 <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
                                 <div className={styles.text}>Don't have an account? <a href="/SignupAsTourist" className={styles.whiteText}>Signup</a></div>

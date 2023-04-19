@@ -55,5 +55,6 @@
     "devDependencies": {
         "postcss": "^8.4.20",
         "postcss-import": "^15.1.0"
-    }
+    },
+    "proxy": "http://localhost:8080/tourpk/" 
 }

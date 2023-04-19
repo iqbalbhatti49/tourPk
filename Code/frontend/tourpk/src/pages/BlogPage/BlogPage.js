@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './BlogPage.module.css';
 import { BlogPost, CommentSection } from '../../components/index'
+import axios from 'axios';
 import { blogPosts, commentData } from "../../utils/FakeData.js";
 
 const BlogPage = () => {
