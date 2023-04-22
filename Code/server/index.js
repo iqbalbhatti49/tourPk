@@ -10,7 +10,7 @@ app.use(express.json()); // To parse the incoming requests with JSON payloads
 app.use(cors());
 
 // set up router for handling HTTP requests related to each route
-app.use("/tourpk/blogs", blogRouter); //middleware to handle requests to /Blogs route
+app.use("/tourpk", blogRouter); //middleware to handle requests to /Blogs route
 app.use("/tourpk/auth", authRoutes);
 app.use("/help", helpRouter);
 
@@ -18,4 +18,5 @@ app.use("/help", helpRouter);
 // const PORT = process.env.PORT || 3000;  --> for production
 db.sequelize.sync().then(() => {
   app.listen(8080, console.log(`Server running on port 8080`))
+  console.log("aaaaaaaaaaaaa");
 });

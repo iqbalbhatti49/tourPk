@@ -11,7 +11,8 @@ h3 {
     margin-top: 16px;
     padding: 14px 2px;
     border-bottom: 1px solid var(--assistColor);
-    width: 60%;
+    width: 100%;
+    overflow-wrap: break-word;
 }
 
 .commentAuthor {

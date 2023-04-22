@@ -1,34 +1,22 @@
-const { Tourist } = require('../models');
-const { Seller } = require('../models');
+const { User } = require('../models');
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
+require('dotenv').config();
 
-exports.signupAsSeller = async (req, res) => {
+
+exports.signup = async (req, res, data) => {
     try {
-        const existingUser = await Seller.findOne({
-            where: {
-                [Op.or]: [
-                    { email: req.body.Email },
-                    { phoneNumber: req.body.PhoneNumber },
-                    { businessTitle: req.body.BusinessTitle }
-                ]
-            }
-        });
-
-        if (existingUser)
-            return res.status(409).json("User already exists!");
-
         //Hash the password and create a user
         const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(req.body.Password, salt);
+        const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-        await Seller.create({
-            name: req.body.FullName,
+        await User.create({
+            name: req.body.name,
             password: hashedPassword,
-            email: req.body.Email,
-            phoneNumber: req.body.PhoneNumber,
-            businessTitle: req.body.BusinessTitle
+            email: req.body.email,
+            phoneNumber: req.body.phoneNumber,
+            ...data
         });
         return res.status(200).json("User has been created."); // 200: the request was successful
     }
@@ -37,30 +25,43 @@ exports.signupAsSeller = async (req, res) => {
     }
 };
 
-exports.signupAsTourist = async (req, res) => {
+exports.signupAsSeller = async (req, res) => {
+
     try {
-        existingUser = await Tourist.findOne({
+        const existingUser = await User.findOne({
             where: {
                 [Op.or]: [
-                    { email: req.body.Email },
-                    { phoneNumber: req.body.PhoneNumber }
+                    { email: req.body.email },
+                    { phoneNumber: req.body.phoneNumber },
+                    { businessTitle: req.body.businessTitle }
+                ]
+            }
+        });
+
+        if (existingUser)
+            return res.status(409).json("User/ Business already exists!");
+
+        this.signup(req, res, { role: "seller", businessTitle: req.body.businessTitle });
+    }
+    catch (err) {
+        return res.status(500).json(err); //500 -> Internal Server Error:something is wrong
+    }
+}
+
+exports.signupAsTourist = async (req, res) => {
+    try {
+        const existingUser = await User.findOne({
+            where: {
+                [Op.or]: [
+                    { email: req.body.email },
+                    { phoneNumber: req.body.phoneNumber }
                 ]
             }
         });
         if (existingUser)
             return res.status(409).json("User already exists!");
 
-        //Hash the password and create a user
-        const salt = bcrypt.genSaltSync(10);
-        const hashedPassword = bcrypt.hashSync(req.body.Password, salt);
-
-        await Tourist.create({
-            name: req.body.FullName,
-            password: hashedPassword,
-            email: req.body.Email,
-            phoneNumber: req.body.PhoneNumber,
-        });
-        return res.status(200).json("User has been created."); // 200: the request was successful
+        this.signup(req, res, { role: "tourist" });
     }
     catch (err) {
         return res.status(500).json(err); //500 -> Internal Server Error:something is wrong
@@ -70,54 +71,39 @@ exports.signupAsTourist = async (req, res) => {
 exports.login = async (req, res) => {
     try {
         console.log("aaaaaaaaaaaa 1");
-        const sellerUser = await Seller.findOne({
+        const user = await User.findOne({
             where: {
-                email: req.body.Email
+                email: req.body.email
             }
         });
         console.log("aaaaaaaaaaaaaa 2");
 
-        if (!sellerUser) //its a tourist login..
-        {
-            console.log("aaaaaaaaaaaa 3");
-            const buyerUser = await Tourist.findOne({
-                where: {
-                    email: req.body.Email
-                }
-            })
-            console.log("aaaaaaaaaaaa 4");
-            if (!buyerUser)
-                return res.status(404).json("User not found");
-
-            console.log("aaaaaaaaaaaa 5");
-
-            // Verify the password for the buyer user
-            const validPassword = await bcrypt.compare(req.body.Password, buyerUser.password);
-            console.log("aaaaaaaaaaaa 6");
-            if (!validPassword) {
-                return res.status(401).json("Invalid credentials"); //client request has not been completed because it lacks valid authentication credentials for the requested resource.
-            }
-            console.log("aaaaaaaaaaaa 7");
+        // Verify the password
+        const validPassword = await bcrypt.compare(req.body.password, sellerUser.password);
+        console.log("aaaaaaaaaaaa 3....");
+        if (!validPassword) {
+            return res.status(401).json("Invalid credentials"); //client request has not been completed because it lacks valid authentication credentials for the requested resource.
         }
-        else //its a seller login..
-        {
-            console.log("aaaaaaaaaaaa 8....");
-            // Verify the password for the seller user
-            const validPassword = await bcrypt.compare(req.body.Password, sellerUser.password);
-            console.log("aaaaaaaaaaaa 9....");
-            if (!validPassword) {
-                return res.status(401).json("Invalid credentials"); //client request has not been completed because it lacks valid authentication credentials for the requested resource.
-            }
-            console.log("aaaaaaaaaaaa 10");
-        }
-        console.log("...done with login stuff...");
+        console.log("aaaaaaaaaaaa 4");
 
+        console.log(process.env.JWT_EXPIRE);
+
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+            expiresIn: process.env.JWT_EXPIRE,
+        });
+
+        const { password, ...other } = user;
+
+        res.status(201).json({
+            status: 'success',
+            token,
+            data: other
+        });
     }
     catch (err) {
         console.error(err);
         return res.status(500).json(err);
     }
-
 };
 
 exports.logout = (req, res) => {
