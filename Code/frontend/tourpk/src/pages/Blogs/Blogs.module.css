@@ -1,0 +1,38 @@
+.container {
+    padding: 0 5vw;
+}
+
+.blogheader {
+    font-size: 2.8rem;
+    text-align: center;
+}
+
+.header p {
+    max-width: 550px;
+    color: var(--assistColor);
+    line-height: 1.7rem;
+}
+
+.tabs p {
+    margin: 2px;
+}
+
+.tabs {
+    text-align: center;
+}
+
+:global(.react-tabs__tab--selected) {
+    background: none !important;
+    border: none !important;
+    color: var(--primaryColor) !important;
+    border-bottom: 2.5px solid var(--primaryColor) !important;
+}
+
+:global(.react-tabs__tab-list) {
+    border-bottom: none !important;
+}
+
+.blogHeading {
+    margin-bottom: 0px;
+    color: var(--primaryColor);
+}

@@ -5,8 +5,8 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, About, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog } from "./pages/index";
 import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog } from "./pages/index";
+import Blogs from "./pages/Blogs/Blogs";
 
 function App() {
   const action = useNavigationType();
@@ -63,8 +63,9 @@ function App() {
       <Route path="/helpandsupport" element={<HelpAndSupport />} />
       <Route path="/genericinfo" element={<GenericInfoAboutService />} />
       <Route path="/listing" element={<Listing />} />
-      <Route path="/Blog" element={<BlogPage />} />
+      <Route path="/Blog/:id" element={<BlogPage />} />
       <Route path="/AddBlog" element={<AddBlog />} />
+      <Route path="/allBlogs" element={<Blogs />} />
     </Routes>
   );
 };

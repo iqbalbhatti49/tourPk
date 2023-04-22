@@ -19,3 +19,7 @@
    color: var(--primaryColor);
    transform: translate(0px, 1.8rem);
 }
+
+.blogscroll {
+   margin: 0px 0px 0px 0px;
+}
