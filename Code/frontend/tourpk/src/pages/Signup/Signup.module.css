@@ -4,7 +4,7 @@
     flex: 0.5;
 }
 
-#signupTitle{
+#signupTitle {
     padding: 20px !important;
 }
 
@@ -13,8 +13,8 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
-  }
-  
+}
+
 .formContainer h1 {
     @apply --headerHeading;
 }
@@ -33,6 +33,7 @@
     padding: 10px 60px;
     color: #505e6c;
     margin: auto;
+
     @media (max-width:991px) {
         .form {
             padding: 40px;
@@ -43,6 +44,12 @@
 .text {
     text-align: center;
     color: var(--formLight);
+    margin-top: 15px;
+}
+
+.error {
+    text-align: center;
+    color: rgba(228, 22, 22, 0.877);
     margin-top: 15px;
 }
 

@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
 import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const Signup = (props) => {
+    const [errormsg, setErrormsg] = useState(null);
+    const navigate = useNavigate();
 
-    const onSubmit = (values, form) => {
+    const onSubmit = async (values, form) => {
         console.log('Form submitted with values:', values);
         form.reset(); // Reset the form's state after submission
+        try {
+            let res;
+            if (props.userType === "seller")
+                res = await axios.post("auth/signupAsSeller", values);
+            else
+                res = await axios.post("auth/signupAsTourist", values);
+            navigate("/Login");
+        }
+        catch (error) {
+            setErrormsg(error.message);
+        }
     };
     return (
         <div className={styles.formContainer}>
             {
-                props.userType == "seller"
+                props.userType === "seller"
                     ? <h1>SignUp As Seller!</h1>
                     : <h1>SignUp for Your Next Tour!</h1>
             }
@@ -36,15 +51,16 @@ const Signup = (props) => {
                                     props.userType == "seller" ?
                                         <FormField name="businessTitle" label="Business Title" type="text" placeholder="Your BusinessTitle" validate={validateAlpha} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" /> : null
                                 }
-                                <FormField name="PhoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
-                                <FormField name="Password" type="text" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
-                                <FormField name="confirmPassword" type="text" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                                <FormField name="phoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
+                                <FormField name="password" type="password" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                                <FormField name="confirmPassword" type="password" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
                                 <div className={styles.text}>OR</div>
+                                {errormsg && <div className={styles.error}>{errormsg}</div>}
                                 <FormButton type="submit" disabled={submitting} text="Signup with Google" renderIcon={() => <IconGoogle />} />
                                 <div className={styles.text}>Already have an account? <a href="" className={styles.whiteText}>Login</a></div>
                                 {
-                                    props.userType == "tourist" ?
+                                    props.userType === "tourist" ?
                                         <div className={styles.text}>Are you a Service Seller? <a href="/signupAsSeller" className={styles.whiteText}>Signup as Seller</a></div>
                                         : <div className={styles.text}>Are you a Tourist? <a href="/signupAsTourist" className={styles.whiteText}>Signup as Tourist</a></div>
                                 }
