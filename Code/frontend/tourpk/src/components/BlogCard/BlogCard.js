@@ -4,6 +4,7 @@ import styles from './BlogCard.module.css';
 
 export const BlogCard = (props) => {
    const { blog } = props;
+   // console.log(blog)
    return (
       <a href="/Blog/:id" className={styles.card}>
          <Card>
