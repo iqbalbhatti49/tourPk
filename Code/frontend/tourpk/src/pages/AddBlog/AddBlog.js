@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import styles from "./AddBlog.module.css";
-import "react-quill/dist/quill.snow.css";
 import CategoryContainer from "../../components/CategoryContainer/CategoryContainer";
 
 const AddBlog = () => {
