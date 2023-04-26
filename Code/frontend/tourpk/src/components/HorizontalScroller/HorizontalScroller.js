@@ -1,4 +1,4 @@
-import { React, useEffect, useState } from 'react';
+import { React, useState } from 'react';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { Arrows } from '../Arrows/Arrows';
 import { PlaceCard } from '../PlaceCard/PlaceCard';
@@ -9,11 +9,11 @@ const HorizontalScroll = (props) => {
    const { spots, blogs, title } = props;
    // const [items, setItems] = React.useState(getItems);
    const [selected, setSelected] = useState([]);
-
+   
    const isItemSelected = (id) => !!selected.find((el) => el === id);
    const handleClick =
       (id) =>
-         ({ getItemById, scrollToItem }) => {
+         () => {
             const itemSelected = isItemSelected(id);
             setSelected((currentSelected) =>
                itemSelected
