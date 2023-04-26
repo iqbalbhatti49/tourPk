@@ -5,21 +5,10 @@ import { PlaceCard } from '../PlaceCard/PlaceCard';
 import styles from './HorizontalScroller.module.css';
 import { BlogCard } from '../BlogCard/BlogCard';
 
-// const getItems = () =>
-//    Array(20)
-//       .fill(0)
-//       .map((_, ind) => ({ id: `element-${ind}` }));
-
 const HorizontalScroll = (props) => {
-   const { spots, blogs } = props;
+   const { spots, blogs, title } = props;
    // const [items, setItems] = React.useState(getItems);
    const [selected, setSelected] = useState([]);
-
-   useEffect(() => {
-      console.log("-----  -----");
-      console.log(blogs);
-   }, [])
-
 
    const isItemSelected = (id) => !!selected.find((el) => el === id);
    const handleClick =
@@ -51,6 +40,7 @@ const HorizontalScroll = (props) => {
             </>
          ) : blogs ? (
             <div className={styles.blogscroll}>
+               <p className={styles.title}>{title}</p>
                <ScrollMenu Header={Arrows}>
                   {blogs.map((blog, index) => (
                      <BlogCard
