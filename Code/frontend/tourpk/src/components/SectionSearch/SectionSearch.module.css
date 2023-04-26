@@ -45,29 +45,52 @@
 }
 
 label {
-   margin-left: 5px;
+   color: var(--primaryColor);
+   font-size: 1.1rem;
+   font-weight: 600;
 }
 
-input {
+.content input {
    border: none;
    outline: none;
-   border-radius: 5px;
-   padding: 15px 5px;
-   margin-top: 8px;
+   margin-top: 10px;
 
    &:focus,
    &:hover {
-      outline: 2px solid var(--assistColorLight);
+      border-bottom: 2px solid var(--primaryColor);
    }
 
    &::placeholder {
-      color: var(--primaryColor);
-      font-size: 1rem;
-      font-weight: 600;
+      color: var(--secondaryColor) !important;
+      font-size: 0.9rem;
+      font-weight: 400;
    }
 }
 
 .divider {
    border-left: 3px solid var(--assistColorLight);
    height: 50px;
+}
+
+.popUp {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 70%;
+   z-index: 9999;
+   background-color: #ffffff;
+   padding: 20px;
+}
+
+:global(.react-datepicker__calendar-icon) {
+   display: none;
+}
+
+:global(.react-datepicker__view-calendar-icon) input {
+   padding: 0px !important;
+
+   &::placeholder {
+      color: var(--secondaryColor) !important;
+   }
 }

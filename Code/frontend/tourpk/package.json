@@ -19,6 +19,7 @@
         "react-final-form": "^6.5.9",
         "react-final-form-listeners": "^1.0.3",
         "react-fontawesome": "^1.7.1",
+        "react-google-map-picker": "^1.2.3",
         "react-horizontal-scrolling-menu": "^3.2.3",
         "react-phone-input-2": "^2.15.1",
         "react-quill": "^2.0.0",
@@ -56,5 +57,5 @@
         "postcss": "^8.4.20",
         "postcss-import": "^15.1.0"
     },
-    "proxy": "http://localhost:8080/tourpk/" 
+    "proxy": "http://localhost:8080/tourpk/"
 }

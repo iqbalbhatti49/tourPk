@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import styles from "./AddBlog.module.css";
 import "react-quill/dist/quill.snow.css";
 import CategoryContainer from "../../components/CategoryContainer/CategoryContainer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBlog } from "../../app/features/blogs/blogsSlice";
 
 const AddBlog = () => {
@@ -11,14 +11,16 @@ const AddBlog = () => {
     const [title, setTitle] = useState("");
     const [file, setFile] = useState(null);
     const [category, setCategory] = useState("");
+    const blogCategories = useSelector((state) => state.blogs.blogCategories);
     const categoriesList = [
         "Hotels & Resorts", "Restaurants & Cafes", "Tour Guides", "Mesmerizing Sight Seeing Places", "Must Visit Place in 2023", "Other Blogs of Interest"
     ];
     const dispatch = useDispatch();
     const handleClick = () => {
+        console.log(blogCategories);
         const blog = {
-            //use unique id
-            id: Math.floor(Math.random() * 1000),
+            //use unique id --> uuid
+            //id: Math.floor(Math.random() * 1000), can skip
             title: title,
             postText: value,
             category,
@@ -27,6 +29,7 @@ const AddBlog = () => {
             userId: 1
         };
         dispatch(addBlog(blog));
+        console.log(blogCategories);
     }
 
     return (

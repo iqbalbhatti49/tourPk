@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../Button/Button';
 import styles from './SectionHero.module.css';
+import { Link } from 'react-router-dom';
 export const SectionHero = () => {
    return (
       <div className={styles.container}>
@@ -15,7 +16,9 @@ export const SectionHero = () => {
                or Are you a solo traveler who travels often for a wonderful
                experiences.
             </p>
-            <Button value="Book Now" type="primary" />
+            <Link to="/services">
+               <Button value="Book Now" type="primary" />
+            </Link>
          </div>
       </div>
    );
