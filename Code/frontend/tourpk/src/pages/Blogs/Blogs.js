@@ -4,10 +4,15 @@ import { HorizontalScroll } from "../../components/index";
 import { useEffect, useState } from "react";
 import { categories } from "../../utils/blogsCategories";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchBlogs } from "../../app/features/blogs/blogsSlice";
+
 
 const Blogs = () => {
+//  const blogCategories = useSelector((state) => state.blogs.blogCategories);
     const [blogs, setBlogs] = useState([]);
     const [dataFetched, setDataFetched] = useState(false);
+    const dispatch = useDispatch();
 
     const fetchBlogs = async () => {
         try {
@@ -22,8 +27,8 @@ const Blogs = () => {
         }
     }
     useEffect(() => {
-        fetchBlogs();
-    }, [])
+        dispatch(fetchBlogs());
+    }, [dispatch]);
 
     return (
         <>
@@ -47,4 +52,5 @@ const Blogs = () => {
         </>
     );
 };
+
 export default Blogs;

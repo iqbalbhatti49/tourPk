@@ -3,6 +3,7 @@ import Button from '../Button/Button';
 import styles from './SectionHierarchy.module.css';
 import { CityCard } from "../../components/CityCard/CityCard";
 import { cities } from "../../utils/FakeData.js"
+import { Link } from 'react-router-dom';
 
 export const SectionHierarchy = () => {
    return (
@@ -19,7 +20,9 @@ export const SectionHierarchy = () => {
          <div className={styles.content}>
             <CityCard city={cities[0]} />
             <div className={styles.centralContent}>
-               <Button type="primary" value="Explore Cities" />
+               <Link to="/cities">
+                  <Button type="primary" value="Explore Cities" onClick />
+               </Link>
                <div className={styles.cards}>
                   <CityCard city={cities[1]} />
                   <CityCard city={cities[2]} />
