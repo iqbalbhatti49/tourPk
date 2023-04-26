@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './BillingAddress.module.css';
 import FormField from '../FormField/FormField';
 import { Form as FormFinal } from 'react-final-form'
-import { required, validatePhone } from '../../validations';
+import { required, validatePhone } from '../../utils/validations';
 
 export const BillingAddress = () => {
    const onSubmit = (values, form) => {

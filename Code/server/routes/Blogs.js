@@ -4,9 +4,11 @@ const router = express.Router();
 const { BlogPost } = require("../models");
 
 // GET all blog posts
-router.get("/", async (req, res) => {
+router.get("/allBlogs", async (req, res) => {
     const blogPosts = await BlogPost.findAll();
     res.json(blogPosts);
+    console.log("----- from server -----");
+    console.log(blogPosts);
 });
 
 // GET a blog post by id

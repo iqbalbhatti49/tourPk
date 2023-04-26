@@ -19,9 +19,9 @@ export const Footer = () => {
                      <Link className={styles.navLink} to="/">Home</Link>
                      <Link className={styles.navLink} to="/cities">Cities</Link>
                      <Link className={styles.navLink} to="/services">Services</Link>
-                     <Link className={styles.navLink} to="/pricing">Pricing</Link>
+                     <Link className={styles.navLink} to="/allBlogs">Blogs</Link>
                      <Link className={styles.navLink} to="/genericinfo">Generic Info Service</Link>
-                     <Link className={styles.navLink} to="/Blog">Blog</Link>
+                     <Link className={styles.navLink} to="/Blog/:id">Blog/id</Link>
                      <Link className={styles.navLink} to="/AddBlog">Write Blog</Link>
                   </div>
                   <div className={styles.links}>
