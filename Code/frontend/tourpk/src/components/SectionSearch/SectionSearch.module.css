@@ -54,20 +54,18 @@ label {
    border: none;
    outline: none;
    margin-top: 10px;
- }
- 
- .content input:focus,
- .content input:hover {
-   border-bottom: 2px solid var(--primaryColor);
- }
- 
- .content input::placeholder {
-   color: var(--secondaryColor) !important;
-   font-size: 0.9rem;
-   font-weight: 400;
- }
- 
 
+   &:focus,
+   &:hover {
+      border-bottom: 2px solid var(--primaryColor);
+   }
+
+   &::placeholder {
+      color: var(--secondaryColor) !important;
+      font-size: 0.9rem;
+      font-weight: 400;
+   }
+}
 
 .divider {
    border-left: 3px solid var(--assistColorLight);
@@ -91,8 +89,8 @@ label {
 
 :global(.react-datepicker__view-calendar-icon) input {
    padding: 0px !important;
-}
 
-:global(.react-datepicker__view-calendar-icon) input:placeholder {
+   &::placeholder {
       color: var(--secondaryColor) !important;
+   }
 }
