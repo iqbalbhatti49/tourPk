@@ -3,7 +3,7 @@ import { Form as FormFinal } from 'react-final-form'
 import styles from './AddRestaurantService.module.css'
 import { FormField, UploadMediaButton, Button } from "../../components/index";
 import { required, validatePhone, validateEmail, validateAlpha, validateURL } from '../../utils/validations';
-
+import axios from "axios/dist/axios.js";
 const AddRestaurant = () => {
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
