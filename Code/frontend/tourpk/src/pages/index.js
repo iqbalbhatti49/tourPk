@@ -15,3 +15,4 @@ export { default as GenericInfoAboutService } from "./GenericInfoAboutService/Ge
 export { default as Listing } from "./Listing/Listing";
 export { default as BlogPage } from "./BlogPage/BlogPage";
 export { default as AddBlog } from "./AddBlog/AddBlog";
+export { default as Blogs } from "./Blogs/Blogs";
