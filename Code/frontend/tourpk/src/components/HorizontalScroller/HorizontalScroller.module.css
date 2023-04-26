@@ -18,4 +18,10 @@
    text-transform: capitalize;
    color: var(--primaryColor);
    transform: translate(0px, 1.8rem);
+   position: relative;
+   z-index: -999999;
+}
+
+.blogscroll {
+   margin: 0px 0px 0px 0px;
 }

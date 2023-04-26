@@ -1,24 +1,17 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { ScrollMenu } from 'react-horizontal-scrolling-menu';
 import { Arrows } from '../Arrows/Arrows';
 import { PlaceCard } from '../PlaceCard/PlaceCard';
 import styles from './HorizontalScroller.module.css';
-
-// const getItems = () =>
-//    Array(20)
-//       .fill(0)
-//       .map((_, ind) => ({ id: `element-${ind}` }));
+import { BlogCard } from '../BlogCard/BlogCard';
 
 const HorizontalScroll = (props) => {
-   const { spots } = props;
-   // const [items, setItems] = React.useState(getItems);
-   const [selected, setSelected] = React.useState([]);
-   const [position, setPosition] = React.useState(0);
-
+   const { spots, blogs } = props;
+   const [selected, setSelected] = useState([]);
    const isItemSelected = (id) => !!selected.find((el) => el === id);
    const handleClick =
       (id) =>
-         ({ getItemById, scrollToItem }) => {
+         () => {
             const itemSelected = isItemSelected(id);
             setSelected((currentSelected) =>
                itemSelected
@@ -28,20 +21,39 @@ const HorizontalScroll = (props) => {
          };
    return (
       <>
-         <p className={styles.title}>{spots[0].location}</p>
-         <ScrollMenu Header={Arrows}>
-            {spots.map((e, index) => (
-               <PlaceCard
-                  itemId={index} // NOTE: itemId is required for track items
-                  city={e}
-                  key={index}
-                  onClick={handleClick(index)}
-                  selected={isItemSelected(index)}
-               />
-            ))}
-         </ScrollMenu>
+         {spots ? (
+            <>
+               <p className={styles.title}>{spots[0].location}</p>
+               <ScrollMenu Header={Arrows}>
+                  {spots.map((e, index) => (
+                     <PlaceCard
+                        itemId={index}
+                        city={e}
+                        key={index}
+                        onClick={handleClick(index)}
+                        selected={isItemSelected(index)}
+                     />
+                  ))}
+               </ScrollMenu>
+            </>
+         ) : blogs ? (
+            <div className={styles.blogscroll}>
+               <ScrollMenu Header={Arrows}>
+                  {blogs.map((blog, index) => (
+                     <BlogCard
+                        itemId={index}
+                        blog={blog}
+                        key={blog.id}
+                        onClick={handleClick(index)}
+                        selected={isItemSelected(index)}
+                     />
+                  ))}
+               </ScrollMenu >
+            </div>
+         ) : (
+            <div>No data available</div>
+         )}
       </>
    );
-}
-
+};
 export default HorizontalScroll;

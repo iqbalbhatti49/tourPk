@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const Contract = () => {
    const contract = useSelector((state) => state.contract.agreement);
+   console.log(contract)
    return (
       <>
          <div className={styles.container}>
@@ -17,10 +18,10 @@ const Contract = () => {
             <div className={styles.content}>
                {
                   Object.entries(contract).map(([key, val]) =>
-                     <>
+                     <div key={key}>
                         <h2 key={key}>{key}</h2>
                         <p>{val}</p>
-                     </>
+                     </div>
                   )
                }
             </div>

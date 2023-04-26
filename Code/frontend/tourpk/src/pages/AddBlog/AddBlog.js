@@ -2,17 +2,33 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import styles from "./AddBlog.module.css";
 import CategoryContainer from "../../components/CategoryContainer/CategoryContainer";
+import { useDispatch, useSelector } from "react-redux";
+import { addBlog } from "../../app/features/blogs/blogsSlice";
 
 const AddBlog = () => {
     const [value, setValue] = useState('');
     const [title, setTitle] = useState("");
     const [file, setFile] = useState(null);
     const [category, setCategory] = useState("");
+    const blogCategories = useSelector((state) => state.blogs.blogCategories);
     const categoriesList = [
-        "Food/ Restaurant", "Hotel", "Tour Guide", "Mesmerizing sight", "Must visit place", "Other"
+        "Hotels & Resorts", "Restaurants & Cafes", "Tour Guides", "Mesmerizing Sight Seeing Places", "Must Visit Place in 2023", "Other Blogs of Interest"
     ];
-
+    const dispatch = useDispatch();
     const handleClick = () => {
+        console.log(blogCategories);
+        const blog = {
+            //use unique id --> uuid
+            //id: Math.floor(Math.random() * 1000), can skip
+            title: title,
+            postText: value,
+            category,
+            datePosted: "2022-04-10",
+            username: "Jane Smith",
+            userId: 1
+        };
+        dispatch(addBlog(blog));
+        console.log(blogCategories);
     }
 
     return (
