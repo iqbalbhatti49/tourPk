@@ -6,10 +6,8 @@ import styles from './HorizontalScroller.module.css';
 import { BlogCard } from '../BlogCard/BlogCard';
 
 const HorizontalScroll = (props) => {
-   const { spots, blogs, title } = props;
-   // const [items, setItems] = React.useState(getItems);
+   const { spots, blogs } = props;
    const [selected, setSelected] = useState([]);
-   
    const isItemSelected = (id) => !!selected.find((el) => el === id);
    const handleClick =
       (id) =>
@@ -40,7 +38,6 @@ const HorizontalScroll = (props) => {
             </>
          ) : blogs ? (
             <div className={styles.blogscroll}>
-               <p className={styles.title}>{title}</p>
                <ScrollMenu Header={Arrows}>
                   {blogs.map((blog, index) => (
                      <BlogCard

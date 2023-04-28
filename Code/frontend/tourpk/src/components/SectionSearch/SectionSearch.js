@@ -34,7 +34,7 @@ export const SectionSearch = () => {
                <div className={styles.inputIconed}>
                   <IconLocation />
                   <div className={styles.inputLabeled}>
-                     <label htmlFor="location">Location</label>
+                     <label className={styles.sLabel} htmlFor="location">Location</label>
                      <input name="location" type="text" placeholder="Lahore, Pakistan" onClick={showLocationPicker} value={locationValue} />
                   </div>
                </div>

@@ -21,9 +21,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     datePosted: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW, // set the default value to the current date
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     userId: {
       type: DataTypes.INTEGER,
