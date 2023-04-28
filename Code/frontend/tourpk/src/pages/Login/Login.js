@@ -16,9 +16,7 @@ const Login = () => {
         console.log('Form submitted with values:', values);
         dispatch(loginUser(values));
         try {
-            // console.log("going for axios LOGIN --- ");
-            const res = await axios.post("/auth/login", values);
-            // console.log("res.data LOGIN after axios--- ", res.data);
+            res = await axios.post("/auth/login", values);
             form.reset(); // Reset the form's state after submission
             navigate("/");
         }

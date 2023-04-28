@@ -1,6 +1,5 @@
 import { Hotels, Restaurants, TourGuides, MesmerizingSight, MustVisitPlace, Other } from './Data';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const initialState = {
@@ -35,26 +34,25 @@ const initialState = {
             name: 'Other Blogs of Interest',
             blogs: Other
         }
-    ]
+    ],
+    status: 'idle',
+    error: null
 };
 
 export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
-    //const response = await axios.get('/allBlogs');
-    return { Hotels, Restaurants, TourGuides, MesmerizingSight, MustVisitPlace, Other };
-    //return response.data;
+    const response = await axios.get('/allBlogs');
+    return response.data;
+});
+
+export const addBlog = createAsyncThunk('blogs/addBlog', async (blog) => {
+    const response = await axios.post('/addBlog', blog);
+    return response.data;
 });
 
 const blogsSlice = createSlice({
     name: 'blogs',
     initialState,
     reducers: {
-        addBlog: (state, action) => {
-            state.blogCategories.forEach((category) => {
-                if (category.name === action.payload.category) {
-                    category.blogs.push(action.payload);
-                }
-            });
-        },
         deleteBlog: (state, action) => {
             state.blogCategories.forEach((category) => {
                 if (category.name === action.payload.category) {
@@ -82,15 +80,22 @@ const blogsSlice = createSlice({
             })
             .addCase(fetchBlogs.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                // state.blogs.forEach((category, index) => {
-                //     const blogs = action.payload.filter((blog) => blog.category === category.name);
-                //     state.blogCategories[index].blogs = blogs;
-                // });
+                state.blogCategories.forEach((category, index) => {
+                    const blogs = action.payload.filter((blog) => blog.category === category.name);
+                    state.blogCategories[category.name].blogs.push(blogs);
+                });
             })
             .addCase(fetchBlogs.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
-            });
+            })
+            .addCase(addBlog.fulfilled, (state, action) => {
+                state.blogCategories.forEach((category) => {
+                    if (category.name === action.payload.category) {
+                        category.blogs.push(action.payload);
+                    }
+                });
+            })
     },
 });
 
@@ -98,5 +103,5 @@ export const selectAllBlogs = (state) => state.blogs.blogCategories;
 export const selectBlogById = (state, id) =>
     state.blogs.blogCategories.find((category) => category.id === id);
 
-export const { addBlog, deleteBlog, updateBlog } = blogsSlice.actions;
+export const { deleteBlog, updateBlog } = blogsSlice.actions;
 export default blogsSlice.reducer;
