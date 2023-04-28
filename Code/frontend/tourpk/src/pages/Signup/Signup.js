@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson } from "../../components/index";
+import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, updateUser } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Signup = (props) => {
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const onSubmit = async (values, form) => {
         console.log('Form submitted with values:', values);
-        form.reset(); // Reset the form's state after submission
+        dispatch(updateUser(values));
         try {
             let res;
             if (props.userType === "seller")
                 res = await axios.post("auth/signupAsSeller", values);
             else
                 res = await axios.post("auth/signupAsTourist", values);
+            form.reset(); // Reset the form's state after submission
             navigate("/Login");
         }
         catch (error) {
