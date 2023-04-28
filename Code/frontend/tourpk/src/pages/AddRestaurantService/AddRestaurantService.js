@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form as FormFinal } from 'react-final-form'
 import styles from './AddRestaurantService.module.css'
 import { FormField, UploadMediaButton, Button } from "../../components/index";
 import { required, validatePhone, validateEmail, validateAlpha, validateURL } from '../../utils/validations';
 import axios from 'axios';
 const AddRestaurant = () => {
+    const [formData, setFormData] = useState({});
     const onSubmit = (values, form) => {
         console.log('Form submitted with values:', values);
+        setFormData(values); // Store the form data in state
         form.reset(); // Reset the form's state after submission
     };
-
     return (
         <div id={styles.restaurantContainer}>
             <div >
