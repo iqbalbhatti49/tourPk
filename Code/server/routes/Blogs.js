@@ -19,7 +19,7 @@ router.get("/byId/:id", async (req, res) => {
 });
 
 //Post a new blog post
-router.post("/", async (req, res) => {
+router.post("/addBlog", async (req, res) => {
     const blogPost = req.body;
     await BlogPost.create(blogPost);
     res.json(blogPost);
