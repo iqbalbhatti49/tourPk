@@ -44,7 +44,7 @@
    gap: 32px;
 }
 
-label {
+.sLabel {
    color: var(--primaryColor);
    font-size: 1.1rem;
    font-weight: 600;

@@ -24,8 +24,7 @@
 
 .title {
     padding: 10px;
-    border-bottom: 1px solid lightgray;
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .title::placeholder {

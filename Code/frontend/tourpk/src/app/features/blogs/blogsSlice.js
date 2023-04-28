@@ -1,5 +1,6 @@
 import { Hotels, Restaurants, TourGuides, MesmerizingSight, MustVisitPlace, Other } from './Data';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const initialState = {
