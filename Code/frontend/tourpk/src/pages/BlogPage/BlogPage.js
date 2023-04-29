@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styles from './BlogPage.module.css';
 import { BlogPost, CommentSection } from '../../components/index'
 import { commentData } from "../../utils/FakeData.js";

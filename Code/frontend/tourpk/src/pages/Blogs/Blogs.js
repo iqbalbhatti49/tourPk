@@ -2,28 +2,29 @@ import styles from "./Blogs.module.css";
 import 'react-tabs/style/react-tabs.css';
 import { HorizontalScroll } from "../../components/index";
 import { useEffect, useState } from "react";
-import { categories } from "../../utils/blogsCategories";
 import axios from "axios";
+import { fetchBlogs } from "../../store/actions/blogs";
 import { useSelector, useDispatch } from "react-redux";
 
 const Blogs = () => {
-    //  const blogCategories = useSelector((state) => state.blogs.blogCategories);
+
+    const blogCategories = useSelector((state) => state.blogs.blogCategories);
     const [blogs, setBlogs] = useState([]);
     const [dataFetched, setDataFetched] = useState(false);
     const dispatch = useDispatch();
 
-    const fetchBlogs = async () => {
-        try {
-            const res = await axios.get("/blog/blogs");
-            console.log(res);
-            setBlogs(res.data);
-            setDataFetched(true);
-            console.log(res.data);
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
+    // const fetchBlogs = async () => {
+    //     try {
+    //         const res = await axios.get("/blog/blogs");
+    //         console.log(res);
+    //         setBlogs(res.data);
+    //         setDataFetched(true);
+    //         console.log(res.data);
+    //     }
+    //     catch (err) {
+    //         console.log(err);
+    //     }
+    // }
     useEffect(() => {
         dispatch(fetchBlogs());
     }, [dispatch]);
@@ -36,7 +37,7 @@ const Blogs = () => {
                 {!dataFetched ?
                     <div> Loading...</div>
                     : <div className={styles.tabs}>
-                        {categories.map((category, index) => {
+                        {blogCategories.map((category, index) => {
                             const blog = blogs.filter((categ) => categ.category === category.name);
                             return (
                                 <div key={index}>
