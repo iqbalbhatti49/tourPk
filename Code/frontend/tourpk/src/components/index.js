@@ -54,3 +54,5 @@ export { IconResturant } from "./IconResturant/IconResturant";
 export { IconGuide } from "./IconGide/IconGuide";
 export { IconAgent } from "./IconAgent/IconAgent";
 export { default as IconPerson } from './IconPerson/IconPerson';
+export { default as IconEdit } from './IconEdit/IconEdit';
+export { default as IconDelete } from './IconDelete/IconDelete';

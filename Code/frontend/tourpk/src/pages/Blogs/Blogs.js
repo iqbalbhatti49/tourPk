@@ -6,7 +6,6 @@ import { categories } from "../../utils/blogsCategories";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
-
 const Blogs = () => {
     //  const blogCategories = useSelector((state) => state.blogs.blogCategories);
     const [blogs, setBlogs] = useState([]);

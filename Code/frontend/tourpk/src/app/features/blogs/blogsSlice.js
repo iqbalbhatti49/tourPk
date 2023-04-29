@@ -1,6 +1,5 @@
 import { Hotels, Restaurants, TourGuides, MesmerizingSight, MustVisitPlace, Other } from './Data';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const initialState = {
@@ -12,7 +11,7 @@ const initialState = {
         },
         {
             id: 2,
-            name: 'Restaurants & Cafes',
+            name: 'Food & Restaurants',
             blogs: Restaurants
         },
         {
@@ -27,7 +26,7 @@ const initialState = {
         },
         {
             id: 5,
-            name: 'Must Visit Place in 2023',
+            name: 'Must Visit Places in 2023',
             blogs: MustVisitPlace
         },
         {

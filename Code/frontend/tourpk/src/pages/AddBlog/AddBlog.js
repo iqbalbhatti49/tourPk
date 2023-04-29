@@ -5,6 +5,8 @@ import styles from "./AddBlog.module.css";
 import CategoryContainer from "../../components/CategoryContainer/CategoryContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { addBlog } from "../../app/features/blogs/blogsSlice";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const AddBlog = () => {
     const [value, setValue] = useState("");
@@ -29,33 +31,33 @@ const AddBlog = () => {
         setFile(e.target.files[0]);
     };
 
-    /*
-     const [formValues, setFormValues] = useState({}); // add state to store form values
-    const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setFormValues({
-            title,
-            postText: value,
-            category,
-        });
-        try {
-            // console.log("Form vals----- ", formValues);
-            const res = await axios.post("/blog/addBlog", formValues);
-            // console.log("id fronted addblog: ", res);
-            navigate(`/Blog/${res.data}`);
-        }
-        catch (err) {
-            alert(err.message);
-        }
+    // const [formValues, setFormValues] = useState({}); // add state to store form values
+    // const navigate = useNavigate();
 
-    };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     setFormValues({
+    //         title,
+    //         postText: value,
+    //         category,
+    //     });
+    //     try {
+    //         // console.log("Form vals----- ", formValues);
+    //         const res = await axios.post("/blog/addBlog", formValues);
+    //         // console.log("id fronted addblog: ", res);
+    //         navigate(`/Blog/${res.data}`);
+    //     }
+    //     catch (err) {
+    //         alert(err.message);
+    //     }
 
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    };
-    */
+    // };
+
+    // const handleFileChange = (e) => {
+    //     setFile(e.target.files[0]);
+    // };
+
 
     return (
         <div className={styles.container}>

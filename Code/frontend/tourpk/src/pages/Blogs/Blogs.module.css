@@ -6,8 +6,11 @@
 }
 
 .headingBlogs {
-    color: var(--assistColor);
+    color: var(--primaryColor);
     line-height: 1.7rem;
+    width: 80%;
+    margin: auto;
+    text-align: justify;
 }
 
 .blogheader {

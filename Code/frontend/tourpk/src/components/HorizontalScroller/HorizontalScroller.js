@@ -9,7 +9,7 @@ const HorizontalScroll = (props) => {
    const { spots, blogs, title } = props;
    // const [items, setItems] = React.useState(getItems);
    const [selected, setSelected] = useState([]);
-   
+
    const isItemSelected = (id) => !!selected.find((el) => el === id);
    const handleClick =
       (id) =>
@@ -44,11 +44,8 @@ const HorizontalScroll = (props) => {
                <ScrollMenu Header={Arrows}>
                   {blogs.map((blog, index) => (
                      <BlogCard
-                        itemId={index}
                         blog={blog}
                         key={blog.id}
-                        onClick={handleClick(index)}
-                        selected={isItemSelected(index)}
                      />
                   ))}
                </ScrollMenu >

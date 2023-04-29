@@ -1,4 +1,6 @@
 const { BlogPost } = require("../models");
+const { Op } = require("sequelize");
+const Sequelize = require('sequelize');
 
 exports.showAllBlogs = async (req, res) => {
     const blogPosts = await BlogPost.findAll();
@@ -32,4 +34,27 @@ exports.updateBlogPost = async (req, res) => {
     const blogPost = req.body;
     await BlogPost.update(blogPost, { where: { id } });
     res.json(blogPost);
+}
+
+exports.deleteBlogPost = async (req, res) => {
+    const id = req.params.id;
+    const count = await BlogPost.destroy({ where: { id } });
+    res.json({ message: "Blog deleted successfully" },);
+    console.log("deleted: ", count);
+}
+
+exports.showRandomBlogs = async (req, res) => {
+    const id = req.params.id;
+    const blogPost = await BlogPost.findByPk(id);
+    const blogPosts = await BlogPost.findAll({
+        where: {
+            category: blogPost.category,
+            id: {
+                [Op.ne]: id
+            }
+        },
+        limit: 3,
+        order: Sequelize.literal('rand()')
+    });
+    res.json(blogPosts);
 }
