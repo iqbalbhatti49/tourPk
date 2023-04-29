@@ -9,7 +9,6 @@ const db = require("./models");
 const app = express();
 require('dotenv').config();
 
-
 app.use(bodyParser.json()); // parses the incoming request bodies in a middleware before your handlers, available under the req.body property
 app.use(cookieParser()); // to parse cookies attached to the client request object
 app.use(express.json()); // To parse the incoming requests with JSON payloads

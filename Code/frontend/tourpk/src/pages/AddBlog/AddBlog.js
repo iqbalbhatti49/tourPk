@@ -6,7 +6,6 @@ import CategoryContainer from "../../components/CategoryContainer/CategoryContai
 import { useDispatch, useSelector } from "react-redux";
 import { addBlog } from "../../app/features/blogs/blogsSlice";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const AddBlog = () => {
     const [value, setValue] = useState("");
@@ -16,6 +15,7 @@ const AddBlog = () => {
 
     const blogCategories = useSelector((state) => state.blogs.blogCategories);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const handleSubmit = () => {
         console.log(blogCategories);
         const blog = {
@@ -24,40 +24,16 @@ const AddBlog = () => {
             category,
             userId: 1
         };
+
         dispatch(addBlog(blog));
+        const addedBlogId = action.payload.id;
+        console.log("added blog id: ", addedBlogId);
+        navigate(`/Blog/${addedBlogId}`);
         console.log(blogCategories);
     }
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
     };
-
-
-    // const [formValues, setFormValues] = useState({}); // add state to store form values
-    // const navigate = useNavigate();
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setFormValues({
-    //         title,
-    //         postText: value,
-    //         category,
-    //     });
-    //     try {
-    //         // console.log("Form vals----- ", formValues);
-    //         const res = await axios.post("/blog/addBlog", formValues);
-    //         // console.log("id fronted addblog: ", res);
-    //         navigate(`/Blog/${res.data}`);
-    //     }
-    //     catch (err) {
-    //         alert(err.message);
-    //     }
-
-    // };
-
-    // const handleFileChange = (e) => {
-    //     setFile(e.target.files[0]);
-    // };
-
 
     return (
         <div className={styles.container}>

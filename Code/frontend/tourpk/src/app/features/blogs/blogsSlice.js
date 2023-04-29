@@ -40,12 +40,12 @@ const initialState = {
 };
 
 export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
-    const response = await axios.get('/allBlogs');
+    const response = await axios.get('/blog/blogs');
     return response.data;
 });
 
 export const addBlog = createAsyncThunk('blogs/addBlog', async (blog) => {
-    const response = await axios.post('/addBlog', blog);
+    const response = await axios.post('/blog/addBlog', blog);
     return response.data;
 });
 

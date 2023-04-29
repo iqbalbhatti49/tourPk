@@ -3,13 +3,15 @@ import styles from './BlogMenu.module.css';
 import axios from 'axios';
 import { BlogCard } from '../BlogCard/BlogCard';
 
-export default function BlogMenu({ id }) {
+export default function BlogMenu(props) {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
+            const id = props.id;
             try {
-                const res = await axios.get(`/blog/randomBlogs/:${id}`);
-                console.log(res);
+                // console.log("----------id in blogmenu: ", id);
+                const res = await axios.get(`/blog/randomBlogs/${id}`);
+                // console.log(res);
                 setBlogs(res.data);
             } catch (err) {
                 console.log(err);

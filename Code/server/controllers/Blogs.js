@@ -45,10 +45,11 @@ exports.deleteBlogPost = async (req, res) => {
 
 exports.showRandomBlogs = async (req, res) => {
     const id = req.params.id;
+    // console.log("id blog: ", id);
     const blogPost = await BlogPost.findByPk(id);
+    // console.log("blogPost in server--- : ", blogPost);
     const blogPosts = await BlogPost.findAll({
         where: {
-            category: blogPost.category,
             id: {
                 [Op.ne]: id
             }
