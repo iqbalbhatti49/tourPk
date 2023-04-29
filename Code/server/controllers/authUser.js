@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const { Op } = require("sequelize");
 require('dotenv').config();
 
-
+// common function for signup as seller and tourist
 exports.signup = async (req, res, data) => {
     try {
         //Hash the password and create a user
@@ -26,7 +26,6 @@ exports.signup = async (req, res, data) => {
 };
 
 exports.signupAsSeller = async (req, res) => {
-
     try {
         const existingUser = await User.findOne({
             where: {
@@ -37,7 +36,6 @@ exports.signupAsSeller = async (req, res) => {
                 ]
             }
         });
-
         if (existingUser)
             return res.status(409).json("User/ Business already exists!");
 
@@ -79,26 +77,26 @@ exports.login = async (req, res) => {
         console.log("aaaaaaaaaaaaaa 2");
 
         // Verify the password
-        const validPassword = await bcrypt.compare(req.body.password, sellerUser.password);
+        const validPassword = await bcrypt.compare(req.body.password, user.password);
         console.log("aaaaaaaaaaaa 3....");
         if (!validPassword) {
             return res.status(401).json("Invalid credentials"); //client request has not been completed because it lacks valid authentication credentials for the requested resource.
         }
         console.log("aaaaaaaaaaaa 4");
-
-        console.log(process.env.JWT_EXPIRE);
-
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-            expiresIn: process.env.JWT_EXPIRE,
-        });
-
+        console.log("expires in: ", process.env.JWT_EXPIRE);
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
         const { password, ...other } = user;
+        // req.session.user = other;
+        // res.status(201).json({
+        //     status: 'success',
+        //     token,
+        //     data: other
+        // });
 
-        res.status(201).json({
-            status: 'success',
-            token,
-            data: other
-        });
+        // Set an HTTP-only cookie called "access_token" to the value of `token`, with the `secure` flag true to ensure the cookie can only be transmitted over secure HTTPS connections. Then, send a JSON response with the `other` object.  
+        console.log("aaaaaaaaaaaa 5 GETTING READY TO SEND RESPONSE cookie  bye");
+        res.cookie("tourpk_acessTkn", token, { httpOnly: true, secure: true }).status(200).json(other);
+
     }
     catch (err) {
         console.error(err);
@@ -106,39 +104,11 @@ exports.login = async (req, res) => {
     }
 };
 
-exports.logout = (req, res) => {
-
-};
-
-
-
-
-// import jwt from "jsonwebtoken";
-
-
-exports.loginn = async (req, res) => {
+exports.logout = async (req, res) => {
     try {
-
-        const token = jwt.sign({ id: user.id }, "jwtkey");
-        const { password, ...other } = user.toJSON();
-
-        res.cookie("access_token", token, {
-            httpOnly: true,
-            sameSite: "none",
-            secure: true,
-        }).json(other);
-    } catch (err) {
-        console.error(err);
-        return res.status(500).json(err);
-    }
-};
-
-exports.logoutt = async (req, res) => {
-    try {
-        res.clearCookie("access_token", {
-            sameSite: "none",
-            secure: true,
-        }).json("User has been logged out.");
+        res.clearCookie("tourpk_acessTkn", {
+            secure: true
+        }).status(200).json("User has been logged out.")
     } catch (err) {
         console.error(err);
         return res.status(500).json(err);
