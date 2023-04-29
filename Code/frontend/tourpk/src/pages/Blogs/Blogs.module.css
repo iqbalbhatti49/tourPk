@@ -1,5 +1,3 @@
-@import "../../styles/variables.css";
-
 .container {
     @apply --pageContainer;
     margin-top: 45px;

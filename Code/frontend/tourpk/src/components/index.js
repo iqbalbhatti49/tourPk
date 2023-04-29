@@ -36,8 +36,6 @@ export { HotelCard } from "./HotelCard/HotelCard";
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
 export { toggleChecked } from '../app/features/pricing/pricingSlice';
 export { updateUser, loginUser } from '../app/features/user/userSlice';
-
-
 //Icons
 export { default as IconAdd } from './IconAdd/IconAdd';
 export { default as IconRemove } from './IconRemove/IconRemove';

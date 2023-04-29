@@ -1,10 +1,14 @@
 import styles from './GenericInfoAboutService.module.css'
+import { useState } from 'react';
 import { Form as FormFinal } from "react-final-form";
+import FormButton from '../../components/FormButton/FormButton';
 import { Dropdown, Button, YesNoDropdown, RolesDropdown } from "../../components/index";
 
 const GenericInfoAboutService = () => {
+  const [formData, setFormData] = useState(null);
   const onSubmit = (values, form) => {
     console.log('Form submitted with values:', values);
+    setFormData(values); // Store the form data in state
     form.reset();
   };
 
@@ -58,7 +62,7 @@ const GenericInfoAboutService = () => {
               <br />
               <br />
 
-              <Button value="Continue" />
+              <FormButton type="submit" disabled={false} text="Continue" renderIcon={() => null} labelClass="noLabel" />
             </form>
           )}
         </FormFinal>
