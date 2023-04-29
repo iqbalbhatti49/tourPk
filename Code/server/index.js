@@ -3,9 +3,10 @@ const cors = require("cors");
 const authRoutes = require("./routes/authUser");
 const blogRouter = require("./routes/Blogs");
 const helpRouter = require("./routes/Help");
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const db = require("./models");
 const app = express();
-
 require('dotenv').config();
 
 
