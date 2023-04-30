@@ -11,7 +11,7 @@ const initialState = {
         },
         {
             id: 2,
-            name: 'Restaurants & Cafes',
+            name: 'Food & Restaurants',
             blogs: Restaurants
         },
         {
@@ -26,7 +26,7 @@ const initialState = {
         },
         {
             id: 5,
-            name: 'Must Visit Place in 2023',
+            name: 'Must Visit Places in 2023',
             blogs: MustVisitPlace
         },
         {
@@ -40,12 +40,12 @@ const initialState = {
 };
 
 export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
-    const response = await axios.get('/allBlogs');
+    const response = await axios.get('/blog/blogs');
     return response.data;
 });
 
 export const addBlog = createAsyncThunk('blogs/addBlog', async (blog) => {
-    const response = await axios.post('/addBlog', blog);
+    const response = await axios.post('/blog/addBlog', blog);
     return response.data;
 });
 

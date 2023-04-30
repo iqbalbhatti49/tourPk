@@ -1,5 +1,16 @@
+@import "../../styles/variables.css";
+
 .container {
-    padding: 0 5vw;
+    @apply --pageContainer;
+    margin-top: 45px;
+}
+
+.headingBlogs {
+    color: var(--primaryColor);
+    line-height: 1.7rem;
+    width: 80%;
+    margin: auto;
+    text-align: justify;
 }
 
 .blogheader {
