@@ -69,3 +69,33 @@ Jazzcash.createRequest("PAY").then((res) => {
 //       // An error occurred during the request
 //       console.error('Error:', error.message);
 //    });
+
+
+
+const Jazzcash = require('jazzcash-checkout')
+
+Jazzcash.credentials({
+   config: {
+      merchantId: "MC56301",
+      password: "2v2gybgu29",
+      hashKey: "dyu6w1090w",
+   },
+   environment: 'sandbox'
+});
+
+Jazzcash.setData({
+   pp_Amount: 100,
+   pp_BillReference: "billRef123",
+   pp_Description: "Test Payment",
+   pp_MobileNumber: "03123456789",
+   pp_CNIC: "345678",
+   pp_TxnExpiryDateTime: "20230429205921",
+   pp_TxnDateTime: "20230429205921",
+   pp_TxnType: "MPAY",
+   pp_Version: "2.0",
+});
+
+Jazzcash.createRequest("PAY").then((res) => {
+   res = JSON.parse(res);
+   console.log(res);
+});
