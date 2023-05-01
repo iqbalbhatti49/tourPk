@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './BlogPage.module.css';
 import { BlogPost, CommentSection } from '../../components/index'
+import { commentData } from "../../utils/FakeData.js";
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { blogPosts, commentData } from "../../utils/FakeData.js";
+import BlogMenu from '../../components/BlogMenu/BlogMenu';
 
 const BlogPage = () => {
-  const blogId = 1; // Change this to display a different blog post
-  const blogPost = blogPosts.find(post => post.id === blogId);
-  const comments = commentData.filter(comment => comment.blogId === blogId);
+  const { id } = useParams();
+  const comments = commentData.filter(comment => comment.blogId === id);
+  const [blogPost, setBlogPost] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/blog/${id}`);
+        setBlogPost(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [id]);
+
 
   return (
     <>
       <div className={styles.container}>
-        <BlogPost post={blogPost} />
-        <CommentSection comments={comments} />
+        <div className={styles.content}>
+          <BlogPost post={blogPost} />
+          <CommentSection comments={comments} />
+        </div>
+        <div className={styles.sidebar}>
+          <BlogMenu id={blogPost.id} />
+        </div>
       </div>
     </>
   );
