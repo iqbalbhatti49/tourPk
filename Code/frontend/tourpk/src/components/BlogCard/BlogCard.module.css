@@ -22,6 +22,9 @@
    line-height: 1.5rem;
    font-weight: 400;
    letter-spacing: 0.5px;
+   min-height: 110px;
+   max-height: 110px;
+   word-wrap: break-word;
 }
 
 .imageTitle {

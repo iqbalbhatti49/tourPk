@@ -33,7 +33,7 @@ export const BlogCard = (props) => {
                   <Card>
                      <ImageHeader className={styles.sidebarImg} imageSrc="https://i0.wp.com/www.wonderslist.com/wp-content/uploads/2022/05/Best-Natural-Places-to-Visit-in-Pakistan.jpg" />
                      <CardBody>
-                        <div className={styles.j}>
+                        <div>
                            <div className={styles.sidebarTitle}>{blog.title}</div>
                            <button className={styles.readMore} onClick={readMore} > Read More</button>
                         </div>

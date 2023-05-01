@@ -3,20 +3,18 @@ import styles from './BlogPost.module.css';
 import { IconEdit, IconDelete } from "../../components/index";
 import IconAvatar from '../IconAvatar/IconAvatar';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { deleteBlog } from '../../app/features/blogs/blogsSlice';
 
 const BlogPost = (props) => {
     const { post } = props;
     const navigate = useNavigate();
-
-    const handleDelete = async () => {
-        try {
-            await axios.delete(`/blog/${post.id}`);
-            navigate("/allBlogs");
-        } catch (err) {
-            console.log(err);
-        }
+    const dispatch = useDispatch();
+    const handleDelete = () => {
+        console.log("delete blog of id: ", post.id);
+        dispatch(deleteBlog(post.id));
+        navigate("/allBlogs");
     }
 
     return (
