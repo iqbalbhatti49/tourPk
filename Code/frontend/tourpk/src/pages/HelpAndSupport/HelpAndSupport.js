@@ -52,6 +52,7 @@ const HelpAndSupport = () => {
             {({ handleSubmit, values }) => (
               <form onSubmit={handleSubmit}>
                 <p>Are you a tourist or service provider?</p>
+                
                 <UserTypeDropdown
                   name="TouristOrServiceProvider"
                   label="Tourist or Service Provider"
@@ -111,7 +112,7 @@ const HelpAndSupport = () => {
                     renderIcon={() => null}
                   />
                 </div>
-                <UploadMediaButton />
+                {/* <UploadMediaButton /> */}
                 <FormButton type="submit" disabled={false} text="Submit" renderIcon={() => null} labelClass="noLabel" />
               </form>
             )}
