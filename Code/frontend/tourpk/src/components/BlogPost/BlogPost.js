@@ -11,7 +11,6 @@ const BlogPost = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const handleDelete = () => {
-        console.log("delete blog of id: ", post.id);
         dispatch(deleteBlog(post.id));
         navigate("/allBlogs");
     }
