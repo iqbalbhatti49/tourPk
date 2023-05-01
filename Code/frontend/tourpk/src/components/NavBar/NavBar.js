@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Button from '../Button/Button';
 import styles from './NavBar.module.css';
 import { Logo } from '../Logo/Logo';
+import { logoutUser, Button, IconAvatar } from "../../components/index";
 import { useDispatch, useSelector } from "react-redux";
 
 export const NavBar = () => {
    const location = useLocation();
    const isloggedIn = useSelector((state) => state.user.loggedIn);
-
+   const userName = useSelector((state) => state.user.name);
+   const dispatch = useDispatch();
+   const logout = () => {
+      dispatch(logoutUser());
+   }
+   useEffect(() => {
+      console.log("value of isloggedIn: ", isloggedIn);
+   }, []);
    return (
       <div className={styles.container}>
          <nav className={styles.nav}>
@@ -23,8 +30,15 @@ export const NavBar = () => {
             {
                isloggedIn ? (
                   <div className={styles.navButtons}>
-                     <Button value="Logout" type="primary" />
+                     <div className={styles.navButtons}>
+                        <Button value="Logout" type="primary" handleClick={logout} />
+                        <div className={styles.username}>
+                           <IconAvatar />
+                           {userName}
+                        </div>
+                     </div>
                   </div>
+
                ) : (
                   <div className={styles.navButtons}>
                      <Link className={styles.navLink} to="/login">Login</Link>
