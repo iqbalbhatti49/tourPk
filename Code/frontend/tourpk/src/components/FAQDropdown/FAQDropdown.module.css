@@ -2,11 +2,12 @@
     margin-bottom: 10px;
   }
   
-  .faqDropdown button {
-    background-color: #CBDBDC;
-    border: none;
+  .faqDropdown {
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
     color: #555;
-    padding: 10px 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     font-size: 18px;
     width: 80%;
     text-align: left;
@@ -16,15 +17,36 @@
     border-radius: 10px;
   }
   
-  .faqDropdown button:hover {
-    background-color: #ddd;
-    
+  .faqDropdown .answer {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    margin-top: -5px;
+    font-size: 16px;
+    width: 88%;
+    border-radius: 10px;
+  }
+
+  .faqQuestion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
-  .faqDropdown .answer {
-    background-color: #e9fafc;
-    padding: 10px 20px;
-    margin-top: 10px;
-    font-size: 16px;
-    width: 75%;
+  .faqQuestion p {
+    margin-left: 10px;
   }
+  
+  .faqQuestion svg {
+    height: 20px;
+    width: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .open {
+    transform: rotate(180deg);
+  }
+  
+  .closed {
+    transform: rotate(0deg);
+  }
+  

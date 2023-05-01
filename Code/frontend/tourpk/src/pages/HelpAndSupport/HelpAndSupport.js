@@ -28,7 +28,27 @@ const HelpAndSupport = () => {
           </p>
         </div>
 
-        <div className={styles.faqs}>
+        
+        <div className={styles.faqContainer}>
+          <div className={styles.faqDropdowns}>
+            <h2>Frequently Asked Questions</h2>
+            {
+              questions.map((question, index) => (
+                <FAQDropdown
+                  key={index}
+                  question={question.question}
+                  answer={question.answer}
+                />
+              ))
+            }
+          </div>
+          <div className={styles.imageContainer}>
+            <img src="https://www.transparentpng.com/thumb/question-mark/red-question-mark-with-white-person-illustration-transparent-free-Mchpt4.png" alt="FAQs" />
+          </div>
+        </div>
+        
+
+        {/* <div className={styles.faqs}>
           <h2>Frequently Asked Questions</h2>
           {
             questions.map((question, index) => (
@@ -39,7 +59,7 @@ const HelpAndSupport = () => {
               />
             ))
           }
-        </div>
+        </div> */}
 
       </div>
 
