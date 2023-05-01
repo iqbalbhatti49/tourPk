@@ -4,9 +4,11 @@ import styles from "./HelpAndSupport.module.css";
 import { Form as FormFinal } from "react-final-form";
 import { questions } from "../../utils/Constants/Help";
 import { helpRequest } from "../../app/features/help/help";
-import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton, Button } from "../../components/index";
+import { useState } from "react";
+import { FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton, Button } from "../../components/index";
 
 const HelpAndSupport = () => {
+  const [selectedFile, setSelectedFile] = useState(null);
   const dispatch = useDispatch();
   const required = (value) => (value ? undefined : "Required");
   const onSubmit = (values, form) => {
@@ -14,6 +16,11 @@ const HelpAndSupport = () => {
     form.reset();
     dispatch(helpRequest(values));
   };
+
+  const handleFileSelect = (values, file) => {
+    setSelectedFile(file);
+  };
+
 
   return (
     <>
@@ -112,8 +119,11 @@ const HelpAndSupport = () => {
                     renderIcon={() => null}
                   />
                 </div>
-                {/* <UploadMediaButton /> */}
-                <FormButton type="submit" disabled={false} text="Submit" renderIcon={() => null} labelClass="noLabel" />
+                
+                <UploadMediaButton onChange={handleFileSelect}  value={values}/>
+                {selectedFile && <p>Selected file: {selectedFile.name}</p>}
+
+                <Button id={styles.signupBtn} value={"Submit"} type="primary" width={250} btnType="submit" font={" 600 20px Arial, '' "} />
               </form>
             )}
           </FormFinal>
