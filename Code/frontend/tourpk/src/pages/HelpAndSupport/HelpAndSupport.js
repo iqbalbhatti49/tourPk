@@ -1,13 +1,14 @@
 import React from "react";
-import { Form as FormFinal } from "react-final-form";
+import { useDispatch } from "react-redux";
 import styles from "./HelpAndSupport.module.css";
-import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
-import { helpRequest } from "../../app/features/help/help";
-import { useDispatch, useSelector } from "react-redux";
+import { Form as FormFinal } from "react-final-form";
 import { questions } from "../../utils/Constants/Help";
+import { helpRequest } from "../../app/features/help/help";
+import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
+
 const HelpAndSupport = () => {
-  const required = (value) => (value ? undefined : "Required"); // ****** move
   const dispatch = useDispatch();
+  const required = (value) => (value ? undefined : "Required");
   const onSubmit = (values, form) => {
     console.log("Form submitted with values:", values);
     form.reset();
@@ -27,55 +28,28 @@ const HelpAndSupport = () => {
             provided below!
           </p>
         </div>
-
-        
         <div className={styles.faqContainer}>
           <div className={styles.faqDropdowns}>
             <h2>Frequently Asked Questions</h2>
-            {
-              questions.map((question, index) => (
-                <FAQDropdown
-                  key={index}
-                  question={question.question}
-                  answer={question.answer}
-                />
-              ))
-            }
+            {questions.map((question, index) => (
+              <FAQDropdown
+                key={index}
+                question={question.question}
+                answer={question.answer}
+              />))}
           </div>
           <div className={styles.imageContainer}>
             <img src="https://www.transparentpng.com/thumb/question-mark/red-question-mark-with-white-person-illustration-transparent-free-Mchpt4.png" alt="FAQs" />
           </div>
         </div>
-        
-
-        {/* <div className={styles.faqs}>
-          <h2>Frequently Asked Questions</h2>
-          {
-            questions.map((question, index) => (
-              <FAQDropdown
-                key={index}
-                question={question.question}
-                answer={question.answer}
-              />
-            ))
-          }
-        </div> */}
-
       </div>
-
-
-
-      <div className={styles.formContainer}></div>
       <div className={styles.tableContainer}>
-        <h2>If you still have any questions, contact us by filling the form below:</h2>
+        <h2>If you still have any questions, contact us by filling the form below</h2>
         <div className={styles.quesForm}>
           <FormFinal
             onSubmit={onSubmit}
-            subscription={{
-              submitted: true,
-            }}
           >
-            {({ handleSubmit, submitting, values }) => (
+            {({ handleSubmit, values }) => (
               <form onSubmit={handleSubmit}>
                 <p>Are you a tourist or service provider?</p>
                 <UserTypeDropdown

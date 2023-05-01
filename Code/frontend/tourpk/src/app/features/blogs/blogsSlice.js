@@ -46,6 +46,13 @@ export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
 
 export const addBlog = createAsyncThunk('blogs/addBlog', async (blog) => {
     const response = await axios.post('/blog/addBlog', blog);
+    // console.log("back from add blog api *******");
+    return response.data;
+});
+
+
+export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (blogId) => {
+    const response = await axios.delete(`/blog/${blogId}`);
     return response.data;
 });
 
@@ -53,13 +60,6 @@ const blogsSlice = createSlice({
     name: 'blogs',
     initialState,
     reducers: {
-        deleteBlog: (state, action) => {
-            state.blogCategories.forEach((category) => {
-                if (category.name === action.payload.category) {
-                    category.blogs = category.blogs.filter((blog) => blog.id !== action.payload.id);
-                }
-            });
-        },
         updateBlog: (state, action) => {
             state.blogCategories.forEach((category) => {
                 if (category.name === action.payload.category) {
@@ -82,7 +82,7 @@ const blogsSlice = createSlice({
                 state.status = 'succeeded';
                 state.blogCategories.forEach((category, index) => {
                     const blogs = action.payload.filter((blog) => blog.category === category.name);
-                    state.blogCategories[category.name].blogs.push(blogs);
+                    state.blogCategories[index].blogs.push(...blogs);
                 });
             })
             .addCase(fetchBlogs.rejected, (state, action) => {
@@ -96,6 +96,20 @@ const blogsSlice = createSlice({
                     }
                 });
             })
+            .addCase(deleteBlog.fulfilled, (state, action) => {
+                state.blogCategories.forEach((category) => {
+                    if (category.name === action.payload.category) {
+                        category.blogs = category.blogs.filter((blog) => blog.id !== action.payload.id);
+                    }
+                });
+            })
+            .addCase(deleteBlog.pending, (state, action) => {
+                state.status = 'loading';
+            })
+            .addCase(deleteBlog.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+            });
     },
 });
 
@@ -103,5 +117,5 @@ export const selectAllBlogs = (state) => state.blogs.blogCategories;
 export const selectBlogById = (state, id) =>
     state.blogs.blogCategories.find((category) => category.id === id);
 
-export const { deleteBlog, updateBlog } = blogsSlice.actions;
+export const { updateBlog } = blogsSlice.actions;
 export default blogsSlice.reducer;

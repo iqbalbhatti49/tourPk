@@ -17,19 +17,16 @@ const AddBlog = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const handleSubmit = () => {
-        console.log(blogCategories);
         const blog = {
             title: title,
             postText: value,
             category,
             userId: 1
         };
-
         dispatch(addBlog(blog));
         const addedBlogId = action.payload.id;
         console.log("added blog id: ", addedBlogId);
         navigate(`/Blog/${addedBlogId}`);
-        console.log(blogCategories);
     }
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
