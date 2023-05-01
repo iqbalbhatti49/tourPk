@@ -68,35 +68,18 @@ exports.signupAsTourist = async (req, res) => {
 
 exports.login = async (req, res) => {
     try {
-        console.log("aaaaaaaaaaaa 1");
         const user = await User.findOne({
             where: {
                 email: req.body.email
             }
         });
-        console.log("aaaaaaaaaaaaaa 2");
-
         // Verify the password
         const validPassword = await bcrypt.compare(req.body.password, user.password);
-        console.log("aaaaaaaaaaaa 3....");
         if (!validPassword) {
             return res.status(401).json("Invalid credentials"); //client request has not been completed because it lacks valid authentication credentials for the requested resource.
-        }
-        console.log("aaaaaaaaaaaa 4");
-        console.log("expires in: ", process.env.JWT_EXPIRE);
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
-        const { password, ...other } = user;
-        // req.session.user = other;
-        // res.status(201).json({
-        //     status: 'success',
-        //     token,
-        //     data: other
-        // });
-
-        // Set an HTTP-only cookie called "access_token" to the value of `token`, with the `secure` flag true to ensure the cookie can only be transmitted over secure HTTPS connections. Then, send a JSON response with the `other` object.  
-        console.log("aaaaaaaaaaaa 5 GETTING READY TO SEND RESPONSE cookie  bye");
-        res.cookie("tourpk_acessTkn", token, { httpOnly: true, secure: true }).status(200).json(other);
-
+        } const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
+        user.password = "";
+        res.cookie("tourpk_acessTkn", token, { httpOnly: true, secure: true }).status(200).json(user);
     }
     catch (err) {
         console.error(err);
@@ -109,6 +92,7 @@ exports.logout = async (req, res) => {
         res.clearCookie("tourpk_acessTkn", {
             secure: true
         }).status(200).json("User has been logged out.")
+        console.log("lohout bye");
     } catch (err) {
         console.error(err);
         return res.status(500).json(err);

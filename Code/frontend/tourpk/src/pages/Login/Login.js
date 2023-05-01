@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import styles from "../Signup/Signup.module.css";
-import { FormButton, IconGoogle, IconEmail, IconPassword, FormField, loginUser, Button } from "../../components/index";
+import { IconEmail, IconPassword, FormField, Button, login } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const Login = () => {
     const [errormsg, setErrormsg] = useState(null);
@@ -14,17 +13,9 @@ const Login = () => {
 
     const onSubmit = async (values, form) => {
         console.log('Form submitted with values:', values);
-        dispatch(loginUser(values));
-        try {
-            // console.log("going for axios LOGIN --- ");
-            const res = await axios.post("/auth/login", values);
-            // console.log("res.data LOGIN after axios--- ", res.data);
-            form.reset(); // Reset the form's state after submission
-            navigate("/");
-        }
-        catch (error) {
-            setErrormsg(error.message);
-        }
+        dispatch(login(values));
+        navigate("/");
+        setErrormsg(error.message);
     };
 
     return (
