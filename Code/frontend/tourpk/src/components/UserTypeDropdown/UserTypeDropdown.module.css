@@ -2,12 +2,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 6vh;
+  margin-bottom: 1vh;
 }
 
 .dropdown select {
   padding: 7px 10px 7px 10px;
-  width: 45%;
+  width: 60%;
   border-radius: 12px;
   border: 1px solid #b4b4b4;
   display: flex;
