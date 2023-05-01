@@ -25,7 +25,6 @@ exports.createBlogPost = async (req, res) => {
     // console.log("--------inside server create blog--------");
     // console.log(blogPost);
     const resp = await BlogPost.create(blogPost);
-    // console.log("resp id: ", resp.id);
     res.json(resp.id);
 }
 
