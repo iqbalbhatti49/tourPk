@@ -17,6 +17,7 @@
 
 .formContainer h1 {
     @apply --headerHeading;
+    margin-bottom: 25px
 }
 
 .tableContainer {
@@ -26,11 +27,12 @@
     box-shadow: 0px 4px 3px 5px rgb(0, 0, 0, 0.1);
     border-radius: 15px 15px 15px 15px;
     background-color: var(--primaryColor);
+    margin-top: 25px;
 }
 
 .form {
     flex: 0.6;
-    padding: 10px 60px;
+    padding: 25px 60px 45px 60px;
     color: #505e6c;
     margin: auto;
 
@@ -57,9 +59,18 @@
     color: var(--formLight);
     text-align: end;
     display: block;
-    margin: -10px 0px 10px 0px;
+    margin: -5px 0px 20px 0px;
 }
 
 .whiteText {
     color: var(--whiteColor);
+}
+
+.signupBtn input {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.signupBtn {
+    text-align: center;
 }

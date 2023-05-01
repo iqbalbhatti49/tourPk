@@ -49,7 +49,7 @@ function App() {
       <Route path="/services" element={<Services />} />
       <Route path="/pricing" element={<InAppPlans />} />
       <Route path="/cities" element={<Cities />} />
-      <Route path="/contact" element={<Contract />} />
+      <Route path="/contract" element={<Contract />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signupAsTourist" element={<Signup userType="tourist" />} />
       <Route path="/signupAsSeller" element={<Signup userType="seller" />} />

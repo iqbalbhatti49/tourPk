@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './FAQDropdown.module.css'; 
+import styles from './FAQDropdown.module.css';
 import { FaChevronDown } from 'react-icons/fa';
 
 const FAQDropdown = ({ question, answer }) => {

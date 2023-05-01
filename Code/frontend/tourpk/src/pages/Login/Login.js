@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../Signup/Signup.module.css";
-import { FormButton, IconGoogle, IconEmail, IconPassword, FormField, loginUser } from "../../components/index";
+import { FormButton, IconGoogle, IconEmail, IconPassword, FormField, loginUser, Button } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
 import { useDispatch } from "react-redux";
@@ -46,10 +46,10 @@ const Login = () => {
                                 <FormField name="email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
                                 <FormField name="password" type="password" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <a href="" className={styles.forget}>Forgot Password</a>
-                                <FormButton type="submit" disabled={false} text="Log In" renderIcon={() => null} labelClass="noLabel" />
+                                <div className={styles.signupBtn}>
+                                    <Button className={styles.signupBtn} value={"Sign In"} type="secondary" width={300} btnType="submit" font={" 600 20px Arial, '' "} />
+                                </div>
                                 {errormsg && <div className={styles.error}>{errormsg}</div>}
-                                <div className={styles.text}>OR</div>
-                                <FormButton type="submit" disabled={submitting} text="Login with Google" renderIcon={() => <IconGoogle />} />
                                 <div className={styles.text}>Don't have an account? <a href="/SignupAsTourist" className={styles.whiteText}>Signup</a></div>
                             </form >
                         )}

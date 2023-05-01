@@ -1,10 +1,20 @@
 import styles from "./Contract.module.css";
 import { Button } from "../../components/index";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 
 const Contract = () => {
    const contract = useSelector((state) => state.contract.agreement);
-   console.log(contract)
+   const navigate = useNavigate();
+
+   const acceptContract = () => {
+      navigate('/signupAsSeller');
+   }
+   const rejectContract = () => {
+      swal("Contract is mandatory for registration", "You have to accept and abide by all terms and conditions of contract to register as a service provider on tourPk", "warning");
+   }
+
    return (
       <>
          <div className={styles.container}>
@@ -26,8 +36,8 @@ const Contract = () => {
                }
             </div>
             <div className={styles.buttons}>
-               <Button type="primary" value="Accept" />
-               <Button type="secondary" value="Negotiate" />
+               <Button type="primary" value="Accept" handleClick={acceptContract} />
+               <Button type="secondary" value="Negotiate" handleClick={rejectContract} />
             </div>
          </div>
       </>
