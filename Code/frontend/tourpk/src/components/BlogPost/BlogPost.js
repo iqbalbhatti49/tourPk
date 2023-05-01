@@ -25,7 +25,7 @@ const BlogPost = (props) => {
                 {/* <p className={styles.info}> {post.username}</p> */}
                 <p className={styles.info}> Mano Billi </p>
                 <div className={styles.iconsDelEdit}>
-                    <Link to={`/write?edit=2`} state={post}>
+                    <Link to={`/AddBlog?edit=1`} state={post}> {/* set a stateful value for the new location */}
                         <IconEdit />
                     </Link>
                     <button className={styles.delete} onClick={handleDelete}>

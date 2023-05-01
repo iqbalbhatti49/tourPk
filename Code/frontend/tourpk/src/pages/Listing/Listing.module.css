@@ -1,71 +1,70 @@
 @import "../../styles/variables.css";
 
-.container{
-    @apply --pageContainer;
+.container {
+  @apply --pageContainer;
 }
 
-.headingListing
-{
-    margin-bottom: 0px;
+.headingListing {
+  margin-bottom: 0px;
 }
 
-.listingContent{
- margin-bottom: 20px;
+.listingContent {
+  margin-bottom: 20px;
 }
 
-.listingContent h3{
-    margin: 6px 0 6px 0px;
+.listingContent h3 {
+  margin: 6px 0 6px 0px;
 }
 
-.listingContent p{
-    margin-block-start: 0px;
+.listingContent p {
+  margin-block-start: 0px;
 }
 
 .tourInfo {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-  
-.separator {
-    margin: 0 5px;
- }
-  
-#listingBody {
-    display: flex;
-    column-gap: 50px;
-    margin-top: 20px;
-  }
-  
-  .listingContent {
-    flex: 4.5;
-  }
-  
-  #listingBody .summary {
-    flex: 2;
-    position: sticky;
-    top: 10px;
-    padding: 5px;
-    height: 500px;
-  }  
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-top: 10px;
+}
 
-.box{
-    padding: 10px 0 10px 0;
-    display: flex;
-    column-gap: 20px;
+.separator {
+  margin: 0 5px;
+}
+
+#listingBody {
+  display: flex;
+  column-gap: 50px;
+  margin-top: 20px;
+}
+
+.listingContent {
+  flex: 4.5;
+}
+
+#listingBody .summary {
+  flex: 2;
+  position: sticky;
+  top: 10px;
+  padding: 5px;
+  height: 500px;
+}
+
+.box {
+  padding: 10px 0 10px 0;
+  display: flex;
+  column-gap: 20px;
 }
 
 .divider {
-    margin: 30px 0 30px 0;
-    height: 2px;
-    background-color: var(--assistColorLight);
-    border: none;
- }
+  margin: 30px 0 30px 0;
+  height: 2px;
+  background-color: var(--assistColorLight);
+  border: none;
+}
 
- .infoBoxContainer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5px;
-    padding-top: 20px;
-  }
+.infoBoxContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  padding-top: 20px;
+}
