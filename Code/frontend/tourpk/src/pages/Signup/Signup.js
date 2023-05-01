@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import { FormField, FormButton, IconEmail, IconPassword, IconGoogle, IconPerson, updateUser } from "../../components/index";
+import { FormField, IconEmail, IconPassword, IconGoogle, IconPerson, updateUser, Button } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
@@ -57,14 +57,14 @@ const Signup = (props) => {
                                 <FormField name="phoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
                                 <FormField name="password" type="password" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <FormField name="confirmPassword" type="password" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
-                                <FormButton type="submit" disabled={false} text="Sign Up" renderIcon={() => null} />
-                                <div className={styles.text}>OR</div>
+                                <div className={styles.signupBtn}>
+                                    <Button id={styles.signupBtn} value={"Sign Up"} type="secondary" width={300} btnType="submit" font={" 600 20px Arial, '' "} />
+                                </div>
                                 {errormsg && <div className={styles.error}>{errormsg}</div>}
-                                <FormButton type="submit" disabled={submitting} text="Signup with Google" renderIcon={() => <IconGoogle />} />
                                 <div className={styles.text}>Already have an account? <a href="" className={styles.whiteText}>Login</a></div>
                                 {
                                     props.userType === "tourist" ?
-                                        <div className={styles.text}>Are you a Service Seller? <a href="/signupAsSeller" className={styles.whiteText}>Signup as Seller</a></div>
+                                        <div className={styles.text}>Are you a Service Seller? <a href="/contract" className={styles.whiteText}>Signup as Seller</a></div>
                                         : <div className={styles.text}>Are you a Tourist? <a href="/signupAsTourist" className={styles.whiteText}>Signup as Tourist</a></div>
                                 }
                             </form >

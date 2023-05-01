@@ -4,7 +4,7 @@ import styles from "./HelpAndSupport.module.css";
 import { Form as FormFinal } from "react-final-form";
 import { questions } from "../../utils/Constants/Help";
 import { helpRequest } from "../../app/features/help/help";
-import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
+import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton, Button } from "../../components/index";
 
 const HelpAndSupport = () => {
   const dispatch = useDispatch();
@@ -107,7 +107,7 @@ const HelpAndSupport = () => {
                   />
                 </div>
                 <UploadMediaButton />
-                <FormButton type="submit" disabled={false} text="Submit" renderIcon={() => null} labelClass="noLabel" />
+                <Button id={styles.signupBtn} value={"Submit Request"} type="primary" width={250} btnType="submit" font={" 600 20px Arial, '' "} />
               </form>
             )}
           </FormFinal>

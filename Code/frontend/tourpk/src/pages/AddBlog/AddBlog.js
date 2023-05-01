@@ -27,9 +27,8 @@ const AddBlog = () => {
             userId: 1
         };
         const resultAction = await dispatch(!state ? addBlog(blog) : updateBlog({ ...blog, id: state.id }));
-        const addedBlogId = resultAction.payload;
-        console.log("addedBlog----: ", addedBlogId);
-        // access the addedBlogId from the addedBlog object
+        const addedBlogId = resultAction.payload.id;
+        console.log("addedBlog id----: ", addedBlogId);
         navigate(`/Blog/${addedBlogId}`);
 
     }
