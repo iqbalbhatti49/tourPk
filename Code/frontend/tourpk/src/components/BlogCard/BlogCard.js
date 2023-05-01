@@ -13,13 +13,10 @@ export const BlogCard = (props) => {
       let text = postText.textContent;
       return text.slice(0, length);
    };
-   const { id } = useParams();
    const navigate = useNavigate();
-
 
    const readMore = () => {
       navigate(`/Blog/${blog.id}`);
-
    }
 
    // TODO : Add username --- JOIN blog ON blog.userId = user.id....
