@@ -29,7 +29,7 @@ const UploadMediaButton = () => {
   return (
     <div className={styles.uploadMedia}>
       <input type="file" onChange={handleFileUpload} />
-      <button onClick={handleUpload} disabled={!file}>
+      <button type="submit" onClick={handleUpload} disabled={!file}>
         Upload
       </button>
     </div>

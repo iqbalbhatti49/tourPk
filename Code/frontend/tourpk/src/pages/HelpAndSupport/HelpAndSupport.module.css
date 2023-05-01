@@ -4,8 +4,8 @@
   padding: 2vh 7vw;
 }
 
-.tableContainer {
-  margin-left: 80px;
+.tableContainer{
+  margin-left: 95px;
 }
 
 .container h1 {
@@ -65,4 +65,12 @@ input[name="generalField"] {
   padding-top: 170px;
   max-width: 100%;
   height: 55%;
+}
+.formFields{
+  width: 63%;
+  margin-top: -10px;
+}
+
+form{
+  width:70%;
 }

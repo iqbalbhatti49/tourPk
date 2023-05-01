@@ -51,7 +51,8 @@ const HelpAndSupport = () => {
           >
             {({ handleSubmit, values }) => (
               <form onSubmit={handleSubmit}>
-                <h3>Are you a tourist or service provider?</h3>
+                <p>Are you a tourist or service provider?</p>
+                
                 <UserTypeDropdown
                   name="TouristOrServiceProvider"
                   label="Tourist or Service Provider"
@@ -64,6 +65,8 @@ const HelpAndSupport = () => {
                   value={values}
                   renderIcon={() => null}
                 />
+
+                <br/> <br/>
                 <div className={styles.formFields}>
                   <FormField
                     name="username"
@@ -75,6 +78,7 @@ const HelpAndSupport = () => {
                     value={values}
                     renderIcon={() => null}
                   />
+                  <br/>
                   <FormField
                     name="email"
                     label="Email"
@@ -85,6 +89,7 @@ const HelpAndSupport = () => {
                     value={values}
                     renderIcon={() => null}
                   />
+                  <br/>
                   <FormField
                     name="questionTitle"
                     label="Question Title"
@@ -95,6 +100,7 @@ const HelpAndSupport = () => {
                     value={values}
                     renderIcon={() => null}
                   />
+                  <br/>
                   <FormField
                     name="questionDescription"
                     label="Question Description"
@@ -106,8 +112,8 @@ const HelpAndSupport = () => {
                     renderIcon={() => null}
                   />
                 </div>
-                <UploadMediaButton />
-                <Button id={styles.signupBtn} value={"Submit Request"} type="primary" width={250} btnType="submit" font={" 600 20px Arial, '' "} />
+                {/* <UploadMediaButton /> */}
+                <FormButton type="submit" disabled={false} text="Submit" renderIcon={() => null} labelClass="noLabel" />
               </form>
             )}
           </FormFinal>
