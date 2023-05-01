@@ -4,7 +4,7 @@
   padding: 2vh 7vw;
 }
 
-.tableContainer{
+.tableContainer {
   margin-left: 80px;
 }
 
@@ -17,8 +17,7 @@ input[name="generalField"] {
   width: 92%;
 }
 
-.faqs
-{
+.faqs {
   margin-left: -10px;
   margin-top: -10px;
 }
@@ -30,10 +29,10 @@ input[name="generalField"] {
   padding-block: 50px;
 }
 
-.heading{
+.heading {
   color: var(--primaryColor);
-  }
-  
+}
+
 .subHeading {
   letter-spacing: 0.1em;
   line-height: 10px;
@@ -47,10 +46,6 @@ input[name="generalField"] {
   max-width: 60%;
   margin: 0px 0px 30px 0px;
   text-align: center;
-}
-
-h2 {
-  color: var(--primaryColor);
 }
 
 .faqContainer {
