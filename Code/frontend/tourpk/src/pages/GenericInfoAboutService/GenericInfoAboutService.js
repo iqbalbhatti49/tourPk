@@ -61,8 +61,7 @@ const GenericInfoAboutService = () => {
 
               <br />
               <br />
-
-              <FormButton type="submit" disabled={false} text="Continue" renderIcon={() => null} labelClass="noLabel" />
+              <Button id={styles.signupBtn} value={"Continue"} type="primary" width={150} btnType="submit" font={" 500 20px Arial, '' "} />
             </form>
           )}
         </FormFinal>

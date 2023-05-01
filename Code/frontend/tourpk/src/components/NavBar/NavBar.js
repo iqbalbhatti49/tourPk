@@ -18,7 +18,7 @@ export const NavBar = () => {
                <Link className={location.pathname === '/cities' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/cities">Cities</Link>
                <Link className={location.pathname === '/services' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/services">Services</Link>
                <Link className={location.pathname === '/pricing' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/pricing">Pricing</Link>
-               <Link className={location.pathname === '/contact' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/contact">Contact</Link>
+               <Link className={location.pathname === '/allBlogs' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/allBlogs">Blogs</Link>
             </div>
             {
                isloggedIn ? (

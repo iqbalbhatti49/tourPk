@@ -4,7 +4,7 @@ import styles from "./HelpAndSupport.module.css";
 import { Form as FormFinal } from "react-final-form";
 import { questions } from "../../utils/Constants/Help";
 import { helpRequest } from "../../app/features/help/help";
-import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton } from "../../components/index";
+import { FormButton, FormField, FAQDropdown, UserTypeDropdown, UploadMediaButton, Button } from "../../components/index";
 
 const HelpAndSupport = () => {
   const dispatch = useDispatch();

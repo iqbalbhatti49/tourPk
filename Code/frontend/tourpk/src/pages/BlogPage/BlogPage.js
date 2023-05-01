@@ -32,7 +32,7 @@ const BlogPage = () => {
           <CommentSection comments={comments} />
         </div>
         <div className={styles.sidebar}>
-          <BlogMenu id={blogPost.id} />
+          <BlogMenu id={id} />
         </div>
       </div>
     </>

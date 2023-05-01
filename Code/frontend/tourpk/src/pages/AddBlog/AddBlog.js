@@ -4,30 +4,35 @@ import "react-quill/dist/quill.snow.css";
 import styles from "./AddBlog.module.css";
 import CategoryContainer from "../../components/CategoryContainer/CategoryContainer";
 import { useDispatch, useSelector } from "react-redux";
-import { addBlog } from "../../app/features/blogs/blogsSlice";
-import { useNavigate } from "react-router-dom";
+import { addBlog, updateBlog } from "../../app/features/blogs/blogsSlice";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddBlog = () => {
-    const [value, setValue] = useState("");
-    const [title, setTitle] = useState("");
+    let { state } = useLocation();
+
+    const [value, setValue] = useState(state?.postText || "");
+    const [title, setTitle] = useState(state?.title || "");
     const [file, setFile] = useState(null);
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState(state?.category || "");
 
     const blogCategories = useSelector((state) => state.blogs.blogCategories);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const handleSubmit = () => {
+    const handleSubmit = async (event) => {
+        event.preventDefault();
         const blog = {
             title: title,
             postText: value,
             category,
             userId: 1
         };
-        dispatch(addBlog(blog));
-        const addedBlogId = action.payload.id;
-        console.log("added blog id: ", addedBlogId);
+        const resultAction = await dispatch(!state ? addBlog(blog) : updateBlog({ ...blog, id: state.id }));
+        const addedBlogId = resultAction.payload.id;
+        console.log("addedBlog id----: ", addedBlogId);
         navigate(`/Blog/${addedBlogId}`);
+
     }
+
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
     };
