@@ -17,7 +17,7 @@ exports.showBlogById = async (req, res) => {
 
 exports.createBlogPost = async (req, res) => {
     const blogPost = req.body;
-    blogPost.userId = "4";
+    console.log("in server -------------- blogPost:", blogPost);
     const resp = await BlogPost.create(blogPost);
     res.status(200).json(resp);
 }
