@@ -47,7 +47,6 @@ const AddBlog = () => {
         const addedBlogId = resultAction.payload.id;
         console.log("addedBlog id----: ", addedBlogId);
         navigate(`/Blog/${addedBlogId}`);
-
     }
     return (
         <div className={styles.container}>

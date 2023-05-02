@@ -12,15 +12,13 @@ const HelpAndSupport = () => {
   const dispatch = useDispatch();
   const required = (value) => (value ? undefined : "Required");
   const onSubmit = (values, form) => {
-    console.log("Form submitted with values:", values);
-    form.reset();
-    //add selectedfile in values
-    console.log(selectedFile)
-    values = { ...values, file: selectedFile };
+    if (selectedFile) {
+      values["file"] = selectedFile;
+    }
     console.log("Form submitted with values:", values);
     dispatch(helpRequest(values));
+    form.reset();
   };
-
   const handleInputChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
@@ -53,7 +51,7 @@ const HelpAndSupport = () => {
               </div>
             </div>
             <div className={styles.tableContainer}>
-              <h2>If you still have any questions, contact us by filling the form below</h2>
+              <h2>Still have questions? Fill the form below to contact us</h2>
               <div className={styles.quesForm}>
                 <FormFinal
                   onSubmit={onSubmit}

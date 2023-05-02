@@ -15,6 +15,15 @@ export const helpRequest = createAsyncThunk(
    'help/helpRequest',
    async (formData, thunkAPI) => {
       try {
+         const fd = new FormData();
+         fd.append("file", formData.file);
+         const res = await axios.post("/upload", fd);
+         formData.file = res.data;
+      }
+      catch (err) {
+         console.log(err);
+      }
+      try {
          const response = await axios.post('http://localhost:8080/help/', formData);
          return response.data;
       } catch (error) {
