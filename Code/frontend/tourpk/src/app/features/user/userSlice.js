@@ -19,6 +19,7 @@ export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
 export const login = createAsyncThunk('user/login', async (user) => {
    try {
       const response = await axios.post('/auth/login', user);
+      console.log("user login response: ", response.data);
       return response.data;
    }
    catch (err) {

@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    image: {
+      type: DataTypes.TEXT('long'),
+      allowNull: true,
     }
   }, {
     timestamps: false
