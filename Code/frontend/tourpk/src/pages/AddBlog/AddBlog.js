@@ -19,7 +19,8 @@ const AddBlog = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const upload = async () => {
+    const upload = async (event) => {
+        event.preventDefault();
         try {
             const formData = new FormData();
             formData.append("file", file);
@@ -32,7 +33,7 @@ const AddBlog = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const imgUrl = await upload();
+        const imgUrl = await upload(event);
         console.log("----------------img url: ---------", imgUrl);
         const blog = {
             title: title,

@@ -3,6 +3,7 @@ const cors = require("cors");
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 const multer = require("multer");
+const path = require('path');
 const authRoutes = require("./routes/authUser");
 const blogRouter = require("./routes/Blogs");
 const helpRouter = require("./routes/Help");
@@ -12,6 +13,7 @@ const app = express();
 require('dotenv').config();
 
 app.use(cors());
+app.use(express.static(path.join(__dirname, '../frontend/tourpk/public')));
 app.use(bodyParser.json()); // parses the incoming request bodies in a middleware before your handlers, available under the req.body property
 app.use(cookieParser()); // to parse cookies attached to the client request object
 app.use(express.json()); // To parse the incoming requests with JSON payloadsthan the server-side app (8080)
@@ -20,7 +22,7 @@ app.use(express.json()); // To parse the incoming requests with JSON payloadstha
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "../frontend/tourpk/public/upload");
+    cb(null, "../frontend/tourpk/public/static/images/upload");
   },
   filename: function (req, file, cb) {
     console.log("path", file);

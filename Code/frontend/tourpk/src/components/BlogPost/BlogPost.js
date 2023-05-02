@@ -15,15 +15,13 @@ const BlogPost = (props) => {
         navigate("/allBlogs");
     }
     useEffect(() => {
-        console.log("-------------post: ", post);
     }, [post]);
 
     return (
         <div className={styles.container}>
-            <img className={styles.img} src={`../../public/upload/${post.image}`} alt="" />
+            <img className={styles.img} src={`../static/images/upload/${post.image}`} alt="" />
             <div className={styles.user}>
                 <IconAvatar />
-                {/* <p className={styles.info}> {post.username}</p> */}
                 <p className={styles.info}> Mano Billi </p>
                 <div className={styles.iconsDelEdit}>
                     <Link to={`/AddBlog?edit=1`} state={post}> {/* set a stateful value for the new location */}
