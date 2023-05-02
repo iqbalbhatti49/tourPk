@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './BlogPost.module.css';
 import { IconEdit, IconDelete, IconAvatar } from "../../components/index";
 import { Link } from 'react-router-dom';
@@ -14,10 +14,13 @@ const BlogPost = (props) => {
         dispatch(deleteBlog(post.id));
         navigate("/allBlogs");
     }
+    useEffect(() => {
+        console.log("-------------post: ", post);
+    }, [post]);
 
     return (
         <div className={styles.container}>
-            <img className={styles.img} src="https://venturephotography.com.au/wp-content/uploads/2019/05/DSCF4247.jpg" alt="" />
+            <img className={styles.img} src={`../../public/upload/${post.image}`} alt="" />
             <div className={styles.user}>
                 <IconAvatar />
                 {/* <p className={styles.info}> {post.username}</p> */}
