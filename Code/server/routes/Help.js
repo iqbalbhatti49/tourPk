@@ -23,7 +23,13 @@ router.post("/", async (req) => {
          from: 'iqrasarwarm012@gmail.com',
          to: sendTo,
          subject: "Help Call - TourPk",
-         html: body
+         html: body,
+         attachments: [
+            {
+               filename: req.body.file,
+               path: "../frontend/tourpk/public/upload/" + req.body.file,
+            },
+         ],
       })
       .then(([res]) => {
          console.log('Message delivered with code %s %s', res.statusCode, res.statusMessage);
