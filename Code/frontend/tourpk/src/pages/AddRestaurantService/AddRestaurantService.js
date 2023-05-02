@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form as FormFinal } from 'react-final-form'
 import styles from './AddRestaurantService.module.css'
-import { FormField, UploadMediaButton, Button } from "../../components/index";
+import { FormField, Button } from "../../components/index";
 import { required, validatePhone, validateEmail, validateAlpha, validateURL } from '../../utils/validations';
 import axios from 'axios';
 const AddRestaurant = () => {
@@ -34,7 +34,7 @@ const AddRestaurant = () => {
                             <FormField name="Province" label="State/Province" type="text" placeholder="Enter province name" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
                             <FormField name="Country" label="Country" type="text" placeholder="Enter country name" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
                             <FormField name="Street" label="Street Address" type="text" placeholder="Enter street address" validate={required} theme="light" value={values} renderIcon={() => null} />
-                            <UploadMediaButton />
+                            {/* <UploadMediaButton /> */}
                             <Button value="Add Restaurant" type="submit" btnType="submit" />
                         </form>
                     )}
