@@ -8,7 +8,6 @@ import BlogMenu from '../../components/BlogMenu/BlogMenu';
 
 const BlogPage = () => {
   const { id } = useParams();
-  const comments = commentData.filter(comment => comment.blogId === id);
   const [blogPost, setBlogPost] = useState({});
 
   useEffect(() => {
@@ -29,7 +28,7 @@ const BlogPage = () => {
       <div className={styles.container}>
         <div className={styles.content}>
           <BlogPost post={blogPost} />
-          <CommentSection comments={comments} />
+          <CommentSection blogId={id} />
         </div>
         <div className={styles.sidebar}>
           <BlogMenu id={id} />

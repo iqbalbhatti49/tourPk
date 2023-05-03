@@ -42,17 +42,14 @@ const AddBlog = () => {
             image: file ? imgUrl : "",
             userId: 1
         };
-        console.log("img url before dispatch: ", blog);
         const resultAction = await dispatch(!state ? addBlog(blog) : updateBlog({ ...blog, id: state.id }));
-        console.log("**********img url after dispatch: ", resultAction.payload);
         const addedBlogId = resultAction.payload.id;
-        console.log("addedBlog id----: ", addedBlogId);
         navigate(`/Blog/${addedBlogId}`);
 
     }
     return (
         <div className={styles.container}>
-            <form className={styles.content} onSubmit={handleSubmit} method="post" encType="multipart/form-data">
+            <form className={styles.content} onSubmit={handleSubmit} encType="multipart/form-data">
                 <input
                     className={styles.title}
                     type="text"

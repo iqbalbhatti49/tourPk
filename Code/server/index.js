@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 const multer = require("multer");
 const path = require('path');
 const authRoutes = require("./routes/authUser");
+const commentRoutes = require("./routes/comment");
 const blogRouter = require("./routes/Blogs");
 const helpRouter = require("./routes/Help");
 const db = require("./models");
@@ -37,6 +38,7 @@ app.post("/tourpk/upload", upload.single("file"), function (req, res) {
 
 app.use("/tourpk/blog", blogRouter);
 app.use("/tourpk/auth", authRoutes);
+app.use("/tourpk/comment", commentRoutes);
 app.use("/help", helpRouter);
 
 // const PORT = process.env.PORT || 3000;  --> for production
