@@ -21,7 +21,6 @@ exports.commentByBlogPostId = async (req, res) => {
     //     ],
     //     attributes: ['id', 'commentText', 'datePosted']
     // });
-    console.log("-----------------comments:", comment);
     res.json(comment);
 }
 

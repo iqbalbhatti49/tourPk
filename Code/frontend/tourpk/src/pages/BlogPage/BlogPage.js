@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from './BlogPage.module.css';
 import { BlogPost, CommentSection } from '../../components/index'
-import { commentData } from "../../utils/FakeData.js";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import BlogMenu from '../../components/BlogMenu/BlogMenu';

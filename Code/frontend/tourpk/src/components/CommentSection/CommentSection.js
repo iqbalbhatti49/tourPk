@@ -21,7 +21,9 @@ const CommentSection = ({ blogId }) => {
     // console.log("gonna add this cmnt -----------", comment);
     const addedComment = await dispatch(addComment(comment));
     // console.log("--------------added comment: --", addedComment);
-    setComments(addedComment.payload, ...comments);
+    console.log("----------comments *********** ", comments);
+    setComments(prevState => [...prevState, addedComment.payload]);
+    console.log("----------comments *********** ", comments);
     setNewComment('');
     setisNewComment(!isNewComment); // to re-render the component and show the new comment
   }
@@ -30,7 +32,6 @@ const CommentSection = ({ blogId }) => {
     () => {
       fetchComments();
     }, []);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,29 +42,6 @@ const CommentSection = ({ blogId }) => {
     }
     addComments(comment);
   };
-
-  // return (
-  //   <div className={styles.container}>
-  //     <h2>Comments</h2>
-  //     {comments.length === 0 ? (
-  //       <div>No comments yet.</div>
-  //     ) : (
-  //       comments.map(comment => (
-  //         <div key={comment.id} className={styles.comment}>
-  //           <div> <span className={styles.commentAuthor}>{comment.author}</span> <span className={styles.commentDate}> &#8226; {comment.date}</span>
-  //           </div>
-  //           <div>{comment.comment}</div>
-  //         </div>
-  //       ))
-  //     )}
-  //     <CommentForm
-  //       newComment={newComment}
-  //       setNewComment={setNewComment}
-  //       handleSubmit={handleSubmit}
-  //     />
-  //   </div>
-  // );
-
 
   return (
     <div className={styles.container}>
