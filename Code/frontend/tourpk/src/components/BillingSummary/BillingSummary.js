@@ -3,18 +3,14 @@ import styles from './BillingSummary.module.css';
 import FormField from '../FormField/FormField';
 import { Form as FormFinal } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { intiatePayment } from '../../app/features/checkout/checkoutSlice'
+import { initiatePayment } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
 
 export const BillingSummary = () => {
    const dispatch = useDispatch();
    const required = value => (value ? undefined : 'Required');
-   const onSubmit = (values, form) => {
-      console.log('Form submitted with values:', values);
-      dispatch(intiatePayment(values))
-      form.reset();
-   };
-
+   const cardInfo = useSelector((state) => state.checkout.cardInfo);
+   const billingAddress = useSelector((state) => state.checkout.billingAddress);
    const items = useSelector((state) => state.cart.items);
    let total = items.reduce((acc, item) => {
       const itemPrice = parseFloat(item.price.replace('$', ''));
@@ -54,6 +50,15 @@ export const BillingSummary = () => {
       }
    ];
 
+   const onSubmit = (values, form) => {
+      console.log('Form submitted with values:', values);
+      values.grandTotal = totalWithTax;
+      values.cardInfo = cardInfo;
+      values.billingAddress = billingAddress;
+      dispatch(initiatePayment(values))
+      form.reset();
+   };
+
    return (
       <div className={styles.container} >
          <p className={styles.heading}>Billing Summary</p>
@@ -78,8 +83,7 @@ export const BillingSummary = () => {
                   {({ handleSubmit }) => (
                      <form className={styles.form} onSubmit={handleSubmit}>
                         <FormField name="OrderComment" label="Order Comment" type="text" placeholder="Type Here...." validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
-                        <FormField name="terms" label="I agree to the Terms & Conditions." type="checkbox" renderIcon={() => null} labelClass="showLabel" theme="light" />
-                        <Button value={"Pay " + totalWithTax} type="primary" width={400} btnType="submit" />
+                        <Button value={"Pay " + totalWithTax} type="primary" width={480} btnType="submit" />
                      </form>
                   )}
                </FormFinal>

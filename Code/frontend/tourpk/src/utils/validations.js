@@ -99,3 +99,23 @@ export const validateExpirationDate = (value) => {
     return 'Expired date';
   }
 };
+export const validateExpirationMonth = (value) => {
+  const monthRegex = /^(0[1-9]|1[0-2])$/; // regular expression to match valid month format
+  return monthRegex.test(value); // return true if valid format, false otherwise
+}
+export const validateExpirationYear = (value) => {
+  const yearRegex = /^20[2-9][0-9]$|^30[0-9][0-9]$/; // regular expression to match valid year format
+  return yearRegex.test(value);
+  const currentYear = new Date().getFullYear().toString().substring(2); // get last 2 digits of current year
+  if (value.length === 2) {
+    // if year is in 2-digit format, add current century to compare with current year
+    const expYearWithCentury = parseInt("20" + value);
+    const currentYearWithCentury = parseInt("20" + currentYear);
+    return expYearWithCentury >= currentYearWithCentury; // return true if year is greater than or equal to current year
+  } else {
+    // if year is in 4-digit format, compare with current year
+    const expYearNum = parseInt(value);
+    const currentYearNum = parseInt(currentYear);
+    return expYearNum >= currentYearNum; // return true if year is greater than or equal to current year
+  }
+}

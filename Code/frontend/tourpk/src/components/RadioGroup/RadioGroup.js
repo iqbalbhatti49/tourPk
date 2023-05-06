@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from "./RadioGroup.module.css";
 import classNames from 'classnames/bind';
-import {
-   useDispatch, useSelector
-} from 'react-redux';
-import { updatePaymentMethod } from '../../app/features/checkout/checkoutSlice';
 let classWrapper = classNames.bind(styles);
 
-const RadioGroup = ({ options, onChange, inline }) => {
-   const dispatch = useDispatch();
-   const paymentMethod = useSelector((state) => state.checkout.paymentMethod);
-
+const RadioGroup = ({ options, onChange, inline, value }) => {
    const handleOptionChange = (value) => {
-      dispatch(updatePaymentMethod(value));
+      onChange(value);
    };
    let wrapperClass = classWrapper({ radioGroup: inline != true, inline: inline });
-
    return (
       <div className={wrapperClass}>
          {options.map((option) => (
@@ -24,7 +16,7 @@ const RadioGroup = ({ options, onChange, inline }) => {
                   type="radio"
                   name="radio-group"
                   value={option.value}
-                  checked={paymentMethod === option.value}
+                  checked={value === option.value}
                   onChange={() => handleOptionChange(option.value)}
                   className={styles.radio}
                />

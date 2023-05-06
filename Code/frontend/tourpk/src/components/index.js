@@ -29,7 +29,7 @@ export { default as SellerProfile } from './SellerProfile/SellerProfile';
 export { BookingSummary } from './BookingSummary/BookingSummary';
 export { default as FormButton } from './FormButton/FormButton';
 export { HotelCard } from "./HotelCard/HotelCard";
-
+export { BillingAddress } from './BillingAddress/BillingAddress';
 
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
