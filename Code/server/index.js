@@ -8,6 +8,7 @@ const authRoutes = require("./routes/authUser");
 const commentRoutes = require("./routes/comment");
 const blogRouter = require("./routes/Blogs");
 const helpRouter = require("./routes/Help");
+const paymentRouter = require("./routes/Payment");
 const db = require("./models");
 
 const app = express();
@@ -40,7 +41,7 @@ app.use("/tourpk/blog", blogRouter);
 app.use("/tourpk/auth", authRoutes);
 app.use("/tourpk/comment", commentRoutes);
 app.use("/help", helpRouter);
-
+app.use("/payment", paymentRouter);
 // const PORT = process.env.PORT || 3000;  --> for production
 db.sequelize.sync().then(() => {
   app.listen(8080, console.log(`Server running on port 8080`))

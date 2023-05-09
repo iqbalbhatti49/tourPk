@@ -1,22 +1,23 @@
-import React from 'react'
-import { types } from '../../utils/FakeData'
-import styles from './UserTypeDropdown.module.css'
+import React from 'react';
+import { Field } from 'react-final-form';
+import { types } from '../../utils/FakeData';
+import styles from './UserTypeDropdown.module.css';
 
-export default function Dropdown() {
-
-  const [value, setValue] = React.useState('');
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-  console.log(types);
+export default function UserTypeDropdown() {
   return (
     <div className={styles.dropdown}>
-      <select value={value} onChange={handleChange}>
-        <option disabled default>Select</option>
-        {types.map((option) => (
-          <option value={option.id} key={option.id}>{option.name}</option>
-        ))}
-      </select>
+      <Field name="TouristOrServiceProvider">
+        {({ input }) => (
+          <select value={input.value} onChange={input.onChange}>
+            <option disabled default>Please choose an option</option>
+            {types.map((option) => (
+              <option value={option.name} key={option.id}>
+                {option.name}
+              </option>
+            ))}
+          </select>
+        )}
+      </Field>
     </div>
   );
 }

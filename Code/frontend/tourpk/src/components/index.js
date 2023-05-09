@@ -5,7 +5,6 @@ export { default as Button } from './Button/Button';
 export { default as ServiceSection } from './ServiceSection/ServiceSection';
 export { default as PackageInformation } from './PackageInformation/PackageInformation';
 export { default as FormField } from './FormField/FormField'
-export { default as UploadMediaButton } from "./UploadMediaButton/UploadMediaButton";
 export { default as BlogPost } from './BlogPost/BlogPost';
 export { default as CommentSection } from './CommentSection/CommentSection';
 export { default as BookingCard } from './BookingCard/BookingCard';
@@ -30,7 +29,7 @@ export { default as SellerProfile } from './SellerProfile/SellerProfile';
 export { BookingSummary } from './BookingSummary/BookingSummary';
 export { default as FormButton } from './FormButton/FormButton';
 export { HotelCard } from "./HotelCard/HotelCard";
-
+export { BillingAddress } from './BillingAddress/BillingAddress';
 
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
