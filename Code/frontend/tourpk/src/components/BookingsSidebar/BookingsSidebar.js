@@ -3,8 +3,8 @@ import styles from './BookingsSidebar.module.css'
 import { useSelector } from 'react-redux'
 
 export default function BookingsSidebar() {
-    const bookings = useSelector((state) => state.booking.totalBookings);
-    const earnings = useSelector((state) => state.booking.totalEarnings);
+    const bookings = useSelector((state) => state.bookings.totalBookings);
+    const earnings = useSelector((state) => state.bookings.totalEarnings);
 
     return (
         <div className={styles.icons}>

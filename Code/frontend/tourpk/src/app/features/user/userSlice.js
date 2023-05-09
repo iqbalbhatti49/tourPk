@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
+   id: '',
    name: '',
    email: '',
    password: '',
@@ -51,13 +52,14 @@ const userSlice = createSlice({
          })
          .addCase(logoutUser.rejected, (state, action) => {
             state.status = 'failed';
-            state.error = action.error.message;
+            state.error = action.error.code;
          })
          .addCase(login.pending, (state) => {
             state.status = 'loading';
          })
          .addCase(login.fulfilled, (state, action) => {
             state.loggedIn = true;
+            state.id = action.payload.id;
             state.name = action.payload.name;
             state.email = action.payload.email;
             state.businessTitle = action.payload.businessTitle;

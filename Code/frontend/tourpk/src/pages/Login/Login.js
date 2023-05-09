@@ -12,10 +12,13 @@ const Login = () => {
     const dispatch = useDispatch();
 
     const onSubmit = async (values, form) => {
-        console.log('Form submitted with values:', values);
-        dispatch(login(values));
-        navigate("/");
-        setErrormsg(error.message);
+        try {
+            console.log('Form submitted with values:', values);
+            dispatch(login(values));
+            navigate("/");
+        } catch (error) {
+            setErrormsg(error.response.data);
+        }
     };
 
     return (

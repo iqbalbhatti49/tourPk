@@ -25,7 +25,7 @@ const Signup = (props) => {
             navigate("/Login");
         }
         catch (error) {
-            setErrormsg(error.message);
+            setErrormsg(error.response.data);
         }
     };
     return (

@@ -1,3 +1,4 @@
+// const User = require("./User");
 
 module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define("Comment", {
@@ -14,12 +15,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         datePosted: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
             defaultValue: DataTypes.NOW, // set the default value to the current date
         },
-        username: {
-            type: DataTypes.STRING,
+        userId: {
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         blogPostId: {
@@ -30,5 +31,6 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
     Comment.sync({ alter: true })
+    // Comment.belongsTo(User, { foreignKey: 'userId' });
     return Comment;
 };

@@ -37,7 +37,7 @@ const Contract = () => {
             </div>
             <div className={styles.buttons}>
                <Button type="primary" value="Accept" handleClick={acceptContract} />
-               <Button type="secondary" value="Negotiate" handleClick={rejectContract} />
+               <Button type="secondary" value="Reject" handleClick={rejectContract} />
             </div>
          </div>
       </>

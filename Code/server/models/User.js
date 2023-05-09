@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     });
+    // User.hasMany(Comment, { foreignKey: 'userId' });
     User.sync({ alter: true })
     return User;
 }

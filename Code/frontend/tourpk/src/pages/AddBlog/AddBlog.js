@@ -19,7 +19,10 @@ const AddBlog = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const upload = async () => {
+    console.log("---------update state -----", state);
+
+    const upload = async (event) => {
+        event.preventDefault();
         try {
             const formData = new FormData();
             formData.append("file", file);
@@ -29,11 +32,19 @@ const AddBlog = () => {
             console.log(err);
         }
     };
+    const addOrUpdate = async (blog) => {
+        const resultAction = await dispatch(state ? updateBlog({ ...blog, id: state.id }) : addBlog(blog));
+        console.log("-----------result----", resultAction);
+        const addedBlogId = resultAction.payload;
+        navigate(`/Blog/${addedBlogId}`);
+    }
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = (event) => {
+
         event.preventDefault();
-        const imgUrl = await upload();
+        const imgUrl = state.image ? state.image : upload(event);
         console.log("----------------img url: ---------", imgUrl);
+        // const img = state?.image || imgUrl;
         const blog = {
             title: title,
             postText: value,
@@ -41,16 +52,11 @@ const AddBlog = () => {
             image: file ? imgUrl : "",
             userId: 1
         };
-        console.log("img url before dispatch: ", blog);
-        const resultAction = await dispatch(!state ? addBlog(blog) : updateBlog({ ...blog, id: state.id }));
-        console.log("**********img url after dispatch: ", resultAction.payload);
-        const addedBlogId = resultAction.payload.id;
-        console.log("addedBlog id----: ", addedBlogId);
-        navigate(`/Blog/${addedBlogId}`);
+        addOrUpdate(blog);
     }
     return (
         <div className={styles.container}>
-            <form className={styles.content} onSubmit={handleSubmit} method="post" encType="multipart/form-data">
+            <form className={styles.content} onSubmit={handleSubmit} encType="multipart/form-data">
                 <input
                     className={styles.title}
                     type="text"
