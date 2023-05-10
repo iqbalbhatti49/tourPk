@@ -3,7 +3,7 @@ import styles from './BookingCard.module.css'
 import { useSelector } from 'react-redux'
 
 export default function BookingCard() {
-  const bookings = useSelector((state) => state.booking.currentBookings);
+  const bookings = useSelector((state) => state.bookings.currentBookings);
 
   return (
     <>

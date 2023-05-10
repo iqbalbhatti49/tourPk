@@ -1,5 +1,5 @@
 import styles from "./CheckOut.module.css";
-import { PaymentMethod, OrderReview, DiscountCodes, BillingSummary } from "../../components/index";
+import { PaymentMethod, OrderReview, DiscountCodes, BillingSummary, BillingAddress } from "../../components/index";
 
 const CheckOut = () => {
    return (
@@ -10,13 +10,14 @@ const CheckOut = () => {
                <h1 className={styles.Heading}>Checkout in a few Clicks</h1>
             </div>
             <div className={styles.information}>
-               <OrderReview />
+               <BillingAddress />
+               <div>
+                  <DiscountCodes />
+                  <PaymentMethod />
+               </div>
             </div>
             <div className={styles.information}>
-               <div>
-                  <PaymentMethod />
-                  <DiscountCodes />
-               </div>
+               <OrderReview />
                <div>
                   <BillingSummary />
                </div>

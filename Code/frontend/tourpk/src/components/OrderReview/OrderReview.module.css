@@ -2,7 +2,6 @@
 
 .container {
    @apply --container;
-   width: 60vw;
 }
 
 .heading {

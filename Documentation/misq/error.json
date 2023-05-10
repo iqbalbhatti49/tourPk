@@ -1,0 +1,34 @@
+"Error":{
+   "status":400,
+   "response":{
+      "req":{
+         "method":"POST",
+         "url":"https://apitest.cybersource.com/pts/v2/payments",
+         "data":"{\"clientReferenceInformation\":{\"code\":\"TC50171_3\"},\"processingInformation\":{\"capture\":true},\"paymentInformation\":{\"card\":{\"number\":\"4111111111111111\",\"expirationMonth\":\"12\",\"expirationYear\":\"2031\",\"type\":\"001\"}},\"orderInformation\":{\"amountDetails\":{\"totalAmount\":\"1339\",\"currency\":\"PKR\"},\"billTo\":{\"firstName\":\"iqra\",\"lastName\":\"sarwar\",\"address1\":\"house#2\",\"locality\":\"Lahore\",\"country\":\"PK\",\"email\":\"iqrasarwarm012@gmail.com\",\"phoneNumber\":\"923244670385\"}}}",
+         "headers":{
+            "user-agent":"Mozilla/5.0",
+            "digest":"SHA-256=XzO+l4wVF2Q8ZEmreSyaqBU/g6T52FJGCBId5c7oZwI=",
+            "v-c-merchant-id":"testrest",
+            "date":"Sat, 06 May 2023 17:20:22 GMT",
+            "host":"apitest.cybersource.com",
+            "signature":"keyid=\"08c94330-f618-42a3-b09d-e1e43be5efda\", algorithm=\"HmacSHA256\", headers=\"host date (request-target) digest v-c-merchant-id\", signature=\"eJ8rATsT7CvH1aW/x/EJ/ROGcOGENfK8OY7gHJen/L4=\"",
+            "content-type":"application/json;charset=utf-8",
+            "accept":"application/hal+json;charset=utf-8"
+         }
+      },
+      "header":{
+         "cache-control":"no-cache, no-store, must-revalidate",
+         "pragma":"no-cache",
+         "expires":"-1",
+         "strict-transport-security":"max-age=31536000",
+         "content-type":"application/json",
+         "content-length":"200",
+         "x-response-time":"231ms",
+         "x-opnet-transaction-trace":"564dcd1a-e24a-42dc-95de-120f7334d42c",
+         "connection":"close",
+         "v-c-correlation-id":"e66523e3-6425-4d21-8f97-d7b0d5b49c5d"
+      },
+      "status":400,
+      "text":"{\"id\":\"6833936253376957403954\",\"submitTimeUtc\":\"2023-05-06T17:20:25Z\",\"status\":\"INVALID_REQUEST\",\"reason\":\"INVALID_DATA\",\"message\":\"Declined - One or more fields in the request contains invalid data\"}"
+   }
+}

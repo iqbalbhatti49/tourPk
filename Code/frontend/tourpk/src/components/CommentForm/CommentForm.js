@@ -9,6 +9,7 @@ const CommentForm = ({ newComment, setNewComment, handleSubmit }) => {
             <input
                 className={styles.input}
                 type="text"
+                name='commentText'
                 placeholder="Add a comment..."
                 value={newComment}
                 onChange={e => setNewComment(e.target.value)}
