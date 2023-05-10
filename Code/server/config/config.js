@@ -6,6 +6,13 @@ module.exports = {
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
+  "development": {
+    "username": "root",
+    "password": "Pucit333@",
+    "database": "tourpk",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
   "test": {
     "username": "root",
     "password": null,
