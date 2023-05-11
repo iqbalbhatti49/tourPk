@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { Api, setAuthToken } from '../../../utils/Api';
 
 const initialState = {
    id: '',
@@ -10,6 +11,7 @@ const initialState = {
    role: '',
    businessTitle: '',
    loggedIn: false,
+   token: null,
 };
 
 export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
@@ -49,6 +51,9 @@ const userSlice = createSlice({
             state.name = '';
             state.email = '';
             state.businessTitle = '';
+            // Clear the token from the state and the authorization header
+            state.token = null;
+            setAuthToken(null);
          })
          .addCase(logoutUser.rejected, (state, action) => {
             state.status = 'failed';
@@ -63,6 +68,9 @@ const userSlice = createSlice({
             state.name = action.payload.name;
             state.email = action.payload.email;
             state.businessTitle = action.payload.businessTitle;
+            const { token } = action.payload;
+            state.token = token;
+            setAuthToken(token);
          })
          .addCase(login.rejected, (state, action) => {
             state.status = 'failed';

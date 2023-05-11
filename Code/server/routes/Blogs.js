@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const { authenticateMiddleware } = require("../middleware/auth.js");
 const { showAllBlogs, showBlogById, createBlogPost, updateBlogPost, deleteBlogPost, showRandomBlogs } = require("../controllers/Blogs.js");
 
-router.post("/addBlog", createBlogPost);
-router.get("/blogs", showAllBlogs);
-router.get("/:id", showBlogById);
-router.put("/:id", updateBlogPost);
-router.delete("/:id", deleteBlogPost);
-router.get("/randomBlogs/:id", showRandomBlogs);
+router.post("/addBlog", authenticateMiddleware, createBlogPost);
+router.get("/blogs", authenticateMiddleware, showAllBlogs);
+router.get("/:id", authenticateMiddleware, showBlogById);
+router.put("/:id", authenticateMiddleware, updateBlogPost);
+router.delete("/:id", authenticateMiddleware, deleteBlogPost);
+router.get("/randomBlogs/:id", authenticateMiddleware, showRandomBlogs);
 module.exports = router;

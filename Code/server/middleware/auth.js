@@ -2,7 +2,8 @@ const jwt = require("jsonwebtoken");
 const { User } = require('../models');
 
 // Middleware function for authentication
-module.exports = async (req, res, next) => {
+const authenticateMiddleware = async (req, res, next) => {
+
     // Get the authorization header from the request
     const bearerHeader = req.headers["authorization"];
 
@@ -34,3 +35,5 @@ module.exports = async (req, res, next) => {
         next();
     }
 };
+
+module.exports = authenticateMiddleware;
