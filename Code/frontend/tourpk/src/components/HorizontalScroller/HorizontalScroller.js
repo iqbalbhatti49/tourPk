@@ -4,10 +4,10 @@ import { Arrows } from '../Arrows/Arrows';
 import { PlaceCard } from '../PlaceCard/PlaceCard';
 import styles from './HorizontalScroller.module.css';
 import { BlogCard } from '../BlogCard/BlogCard';
+import { HotelCard } from '../HotelCard/HotelCard';
 
 const HorizontalScroll = (props) => {
-   const { spots, blogs, title } = props;
-   // const [items, setItems] = React.useState(getItems);
+   const { spots, blogs, items, title } = props;
    const [selected, setSelected] = useState([]);
 
    const isItemSelected = (id) => !!selected.find((el) => el === id);
@@ -50,9 +50,18 @@ const HorizontalScroll = (props) => {
                   ))}
                </ScrollMenu >
             </div>
-         ) : (
-            <div>No data available</div>
-         )}
+         ) : items ? (
+            <>
+               <p className={styles.title}>{title}</p>
+               <ScrollMenu Header={Arrows}>
+                  {items.map((e, index) => (
+                     <HotelCard
+                        key={index}
+                        hotel={e}
+                     />
+                  ))}
+               </ScrollMenu></>
+         ) : (<></>)}
       </>
    );
 };

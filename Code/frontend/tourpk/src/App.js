@@ -5,7 +5,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs } from "./pages/index";
+import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing } from "./pages/index";
 
 function App() {
   const action = useNavigationType();
@@ -65,6 +65,7 @@ function App() {
       <Route path="/Blog/:id" element={<BlogPage />} />
       <Route path="/AddBlog" element={<AddBlog />} />
       <Route path="/allBlogs" element={<Blogs />} />
+      <Route path="/spotListing" element={<SpotListing />} />
     </Routes>
   );
 };

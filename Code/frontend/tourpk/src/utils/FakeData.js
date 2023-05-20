@@ -365,7 +365,7 @@ export const ListingHotel = [
             height: 174
          },
          {
-            src: 'https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+            src: 'ps://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=thttinysrgb&w=1260&h=750&dpr=1',
             width: 320,
             height: 174
          },
