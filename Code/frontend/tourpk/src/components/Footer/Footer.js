@@ -5,8 +5,11 @@ import { IconFacebook } from '../IconFacebook/IconFacebook';
 import { IconInstagram } from '../IconInstagram/IconInstagram';
 import { IconLinkedin } from '../IconLinkedin/IconLinkedin';
 import { Logo } from '../Logo/Logo';
+import { useSelector } from "react-redux";
 
 export const Footer = () => {
+   const isLoggedIn = useSelector(state => state.user.loggedIn);
+
    return (
       <div className={styles.container}>
          <div className={styles.header}>
@@ -17,7 +20,7 @@ export const Footer = () => {
                   <div className={styles.links}>
                      <p className={styles.subHeading}>Website Links</p>
                      <Link className={styles.navLink} to="/">Home</Link>
-                     <Link className={styles.navLink} to="/AddBlog">Write Blog</Link>
+                     <Link className={styles.navLink} to={isLoggedIn ? "/AddBlog" : "/login"}>Write Blog</Link>
                      <Link className={styles.navLink} to="/cities">Cities</Link>
                      <Link className={styles.navLink} to="/services">Services</Link>
                      <Link className={styles.navLink} to="/genericinfo">Generic Info Service</Link>
@@ -25,12 +28,12 @@ export const Footer = () => {
                   </div>
                   <div className={styles.links}>
                      <p className={styles.subHeading}>Services</p>
-                     <Link className={styles.navLink} to="/addpackage">Add Package</Link>
+                     <Link className={styles.navLink} to={isLoggedIn ? "/addpackage" : "/login"} >Add Package</Link>
                      <Link className={styles.navLink} to="/bookings">Bookings</Link>
                      <Link className={styles.navLink} to="/addrestaurant">Add Restaurant</Link>
-                     <Link className={styles.navLink} to="/helpandsupport">Help And Support</Link>
+                     <Link className={styles.navLink} to={isLoggedIn ? "/helpandsupport" : "/login"} >Help And Support</Link>
                      <Link className={styles.navLink} to="/listing">Listing</Link>
-                     <Link className={styles.navLink} to="/checkout">Checkout</Link>
+                     <Link className={styles.navLink} to={isLoggedIn ? "/checkout" : "/login"}>Checkout</Link>
                   </div>
                </div>
             </div>
