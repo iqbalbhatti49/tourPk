@@ -1,0 +1,64 @@
+@import "../../styles/variables.css";
+
+.container {
+    border-radius: 4px;
+    @apply --boxShadow;
+    padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+}
+
+.summaryItem .total {
+    margin-top: 0px;
+}
+
+.summaryItem {
+    display: flex;
+    justify-content: space-between;
+    height: 32px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.total {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.hr {
+    border: 0;
+    height: 1px;
+    background-color: var(--assistColor);
+    margin: 20px 0;
+}
+
+.reserveBtn {
+    text-align: center;
+}
+
+.reserveBtn input {
+    width: 200px !important;
+}
+
+.calendar {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.calendar input {
+    width: 100%;
+    padding: 0px;
+    font-size: 15px;
+    color: var(--assistColor);
+}
+
+.calendar input:focus,
+input:hover {
+    outline: none;
+}
+
+#checkin,
+#checkout {
+    border: 1px solid var(--assistColor);
+    border-radius: 2px;
+    padding: 7px;
+}

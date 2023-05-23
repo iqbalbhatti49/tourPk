@@ -1,0 +1,17 @@
+@import "../../styles/checkout.css";
+
+.container {
+   @apply --container;
+}
+
+.heading {
+   @apply --heading;
+}
+
+.form {
+   @apply --form;
+}
+
+.row {
+   @apply --row;
+}

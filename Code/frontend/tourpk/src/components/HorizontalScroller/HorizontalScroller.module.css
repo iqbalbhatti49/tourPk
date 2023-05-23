@@ -1,0 +1,27 @@
+:global(.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar) {
+   display: none;
+}
+
+:global(.react-horizontal-scrolling-menu--scroll-container) {
+   -ms-overflow-style: none;
+   scrollbar-width: none;
+}
+
+:golbal(.react-horizontal-scrolling-menu--item:first-child) {
+   margin-left: 50px;
+}
+
+.title {
+   font-weight: 600;
+   font-size: 1.2rem;
+   text-align: left;
+   text-transform: capitalize;
+   color: var(--primaryColor);
+   transform: translate(0px, 1.8rem);
+   position: relative;
+   z-index: -999999;
+}
+
+.blogscroll {
+   margin: 0px 0px 0px 0px;
+}

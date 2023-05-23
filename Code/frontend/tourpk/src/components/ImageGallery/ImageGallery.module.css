@@ -1,0 +1,39 @@
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .bigImage {
+    width: 47%;
+    height: 350px;
+    margin-bottom: 10px
+  }
+  
+  .bigImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .smallImages {
+    display: flex;
+    flex-wrap: wrap;
+    width: 52%;
+    column-gap: 11px;
+    height: 100%;
+    row-gap: 11px;
+  }
+  
+  .smallImage {
+    width: 49%;
+    height: 170px
+  }
+  
+  .smallImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  

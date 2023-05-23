@@ -1,0 +1,43 @@
+.container {
+   padding: 0px 5vw 100px 5vw;
+}
+
+.header {
+   display: flex;
+   flex-direction: column;
+   place-items: center;
+}
+
+.heading {
+   max-width: 900px;
+   text-align: center;
+   font-size: 3rem;
+   font-weight: 700;
+   line-height: 4rem;
+   margin-bottom: 24px;
+}
+
+.description {
+   margin-bottom: 48px;
+   max-width: 570px;
+   line-height: 1.8rem;
+   text-align: center;
+   color: var(--assistColor);
+}
+
+.content,
+.cards {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+
+.cards {
+   max-width: 600px;
+}
+
+.centralContent {
+   display: flex;
+   flex-direction: column;
+   place-items: center;
+}

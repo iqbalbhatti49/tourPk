@@ -1,0 +1,40 @@
+@import "../../styles/variables.css";
+
+.tableContainer{
+  margin-left: 140px;
+}
+
+.container {
+ padding: 50px 5vw;
+ display: flex;
+ align-items: center;
+ gap: 100px;
+}
+
+.heading {
+ display: flex;
+ flex-wrap: wrap;
+ max-width: 650px;
+ font-size: 3rem;
+ font-weight: 700;
+ line-height: 4rem;
+}
+
+.heading p {
+ margin-bottom: 12px;
+}
+
+.logo {
+ color: var(--primaryColor);
+}
+
+.description {
+ max-width: 600px;
+ line-height: 1.8rem;
+ padding-bottom: 24px;
+}
+
+.G_heading2{
+color: var(--primaryColor);
+margin-top: 70px;
+}

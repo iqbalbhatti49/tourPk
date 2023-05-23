@@ -1,0 +1,76 @@
+@import "../../styles/variables.css";
+
+.formImage {
+    flex: 0.5;
+}
+
+#signupTitle {
+    padding: 20px !important;
+}
+
+.formImage img {
+    border-radius: 15px 0px 0px 15px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.formContainer h1 {
+    @apply --headerHeading;
+    margin-bottom: 25px
+}
+
+.tableContainer {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 3px 5px rgb(0, 0, 0, 0.1);
+    border-radius: 15px 15px 15px 15px;
+    background-color: var(--primaryColor);
+    margin-top: 25px;
+}
+
+.form {
+    flex: 0.6;
+    padding: 25px 60px 45px 60px;
+    color: #505e6c;
+    margin: auto;
+
+    @media (max-width:991px) {
+        .form {
+            padding: 40px;
+        }
+    }
+}
+
+.text {
+    text-align: center;
+    color: var(--formLight);
+    margin-top: 15px;
+}
+
+.error {
+    text-align: center;
+    color: rgba(228, 22, 22, 0.877);
+    margin-top: 15px;
+}
+
+.forget {
+    color: var(--formLight);
+    text-align: end;
+    display: block;
+    margin: -5px 0px 20px 0px;
+}
+
+.whiteText {
+    color: var(--whiteColor);
+}
+
+.signupBtn input {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.signupBtn {
+    text-align: center;
+}

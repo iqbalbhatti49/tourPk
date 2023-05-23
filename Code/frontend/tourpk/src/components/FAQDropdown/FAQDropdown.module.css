@@ -1,0 +1,51 @@
+.faqDropdown {
+    margin-bottom: 10px;
+  }
+
+  .faqDropdown {
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    color: #555;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 18px;
+    width: 90%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+  }
+
+  .faqDropdown .answer {
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    margin-top: -5px;
+    font-size: 16px;
+    width: 88%;
+    border-radius: 10px;
+  }
+
+  .faqQuestion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faqQuestion p {
+    margin-left: 10px;
+  }
+
+  .faqQuestion svg {
+    height: 20px;
+    width: 10px;
+    transition: transform 0.3s;
+  }
+
+  .open {
+    transform: rotate(180deg);
+  }
+
+  .closed {
+    transform: rotate(0deg);
+  }

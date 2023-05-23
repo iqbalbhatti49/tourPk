@@ -1,0 +1,85 @@
+:root {
+   --buttonPrimary : {
+      padding: 12px 24px;
+      height: 50px;
+      background-color: var(--primaryColor);
+      border-radius: 30px;
+      color: var(--whiteColor);
+      border: none;
+
+      &:hover {
+         background: var(--whiteColor);
+         border: 2px solid var(--primaryColor);
+         color: var(--primaryColor);
+      }
+   }
+
+   --buttonSecondary : {
+      padding: 12px 24px;
+      height: 50px;
+      background-color: var(--whiteColor);
+      border-radius: 30px;
+      color: var(--primaryColor);
+      border: 2px solid var(--primaryColor);
+
+      &:hover {
+         background: var(--primaryColor);
+         color: var(--whiteColor);
+         border: 2px solid var(--whiteColor);
+      }
+   }
+
+   --inputField : {
+      display: flex;
+      place-items: center;
+      box-sizing: content-box;
+      padding: 7px 0px;
+      border-radius: 4px;
+      border: 0px;
+      height: 34px;
+
+      &::placeholder {
+         color: var(--assistColor);
+         font-size: 17px;
+         font-weight: var(--fontWeightSmall);
+      }
+   }
+
+   heading1 {
+      font-size: 2.3rem
+   }
+
+   --headerHeading : {
+      font-size: 2.3rem;
+      padding: 50px 0px 15px 0px;
+      text-align: center;
+      margin: 0px;
+   }
+
+   --pageContainer : {
+      padding: 0vh 7vw;
+   }
+
+   --hr: {
+      border: 0;
+      height: 1px;
+      background-color: var(--assistColor);
+      margin: 15px 0;
+   }
+
+   --boxShadow: {
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.16);
+   }
+
+   --input: {
+      padding-left: 20px;
+      width: 95%;
+   }
+
+   --headingContainer: {
+      display: flex;
+      align-items: baseline;
+      column-gap: 1rem;
+   }
+
+}

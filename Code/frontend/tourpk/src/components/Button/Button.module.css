@@ -1,0 +1,9 @@
+@import "../../styles/variables.css";
+
+.buttonPrimary {
+   @apply --buttonPrimary;
+}
+
+.buttonSecondary {
+   @apply --buttonSecondary;
+}

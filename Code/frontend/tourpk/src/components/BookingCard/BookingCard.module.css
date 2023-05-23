@@ -1,0 +1,35 @@
+@import "../../styles/variables.css";
+
+.card {
+  display: flex;
+  width: 63%;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid lightgray;
+  column-gap: 15px;
+  margin: 20px 0px;
+  border-radius: 15px;
+  @apply --boxShadow;
+}
+
+.image {
+  flex: 1;
+  max-width: 150px;
+}
+
+.details {
+  flex: 2;
+}
+
+.row {
+  margin: 10px;
+  font-weight: 500;
+}
+
+.row h2 {
+  margin: 0;
+}
+
+.hide {
+  visibility: hidden;
+}

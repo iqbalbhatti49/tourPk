@@ -1,0 +1,30 @@
+ @import "../../styles/checkout.css";
+
+ .container {
+    @apply --container;
+ }
+
+ .heading {
+    @apply --heading;
+ }
+
+ .form {
+    @apply --form;
+    padding-top: 16px;
+ }
+
+ .row {
+    @apply --row;
+ }
+
+ .securityMessage {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 20px;
+    gap: 20px;
+ }
+
+ .lockIcon {
+    margin-right: 5px;
+ }

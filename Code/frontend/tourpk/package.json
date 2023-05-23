@@ -1,0 +1,73 @@
+{
+    "name": "tourpk",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.3.0",
+        "@fortawesome/free-solid-svg-icons": "^6.4.0",
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "@reduxjs/toolkit": "^1.9.3",
+        "@stripe/react-stripe-js": "^2.1.0",
+        "axios": "^1.3.5",
+        "classnames": "^2.3.2",
+        "final-form": "^4.20.7",
+        "firebase": "^9.21.0",
+        "i": "^0.3.7",
+        "js-cookie": "^3.0.5",
+        "jwt-decode": "^3.1.2",
+        "multer": "^1.4.5-lts.1",
+        "npm": "^9.6.3",
+        "radio-buttons-react-native": "^1.0.4",
+        "react": "^18.2.0",
+        "react-awesome-testimonials": "^1.0.2",
+        "react-datepicker": "^4.10.0",
+        "react-dom": "^18.2.0",
+        "react-final-form": "^6.5.9",
+        "react-final-form-listeners": "^1.0.3",
+        "react-fontawesome": "^1.7.1",
+        "react-google-map-picker": "^1.2.3",
+        "react-horizontal-scrolling-menu": "^3.2.3",
+        "react-icons": "^4.8.0",
+        "react-phone-input-2": "^2.15.1",
+        "react-quill": "^2.0.0",
+        "react-redux": "^8.0.5",
+        "react-responsive-carousel": "^3.2.23",
+        "react-router-dom": "^6.6.1",
+        "react-scripts": "5.0.1",
+        "react-simple-card": "^2.0.2",
+        "react-switch": "^7.0.0",
+        "react-tabs": "^6.0.0",
+        "redux-logger": "^3.0.6",
+        "redux-persist": "^6.0.0",
+        "sharetribe-scripts": "^6.0.1",
+        "stripe": "^12.3.0",
+        "sweetalert": "^2.1.2",
+        "uuid": "^9.0.0",
+        "validator": "^13.9.0",
+        "web-vitals": "^2.1.2"
+    },
+    "scripts": {
+        "start": "sharetribe-scripts start",
+        "build": "sharetribe-scripts build",
+        "test": "sharetribe-scripts test",
+        "eject": "sharetribe-scripts eject"
+    },
+    "eslintConfig": {},
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "postcss": "^8.4.20",
+        "postcss-import": "^15.1.0"
+    },
+    "proxy": "http://localhost:8080/tourpk/"
+}

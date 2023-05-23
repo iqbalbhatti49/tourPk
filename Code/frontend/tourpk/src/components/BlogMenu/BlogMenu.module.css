@@ -1,0 +1,21 @@
+.menu {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.blogImg {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.menu h2 {
+    margin-top: 43px;
+}

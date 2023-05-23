@@ -1,0 +1,24 @@
+@import "../../styles/checkout.css";
+@import "../../styles/variables.css";
+
+.container {
+   @apply --container;
+}
+
+.heading {
+   @apply --heading;
+}
+
+.hr {
+   @apply --hr;
+}
+
+.summaryItem {
+   display: flex;
+   justify-content: space-between;
+}
+
+.total {
+   font-size: 1.2rem;
+   font-weight: 500;
+}

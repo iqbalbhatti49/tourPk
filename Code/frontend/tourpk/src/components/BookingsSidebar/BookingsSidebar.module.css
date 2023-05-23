@@ -1,0 +1,21 @@
+#earning {
+    width: 200px;
+}
+
+.icons {
+    margin-top: 70px;
+}
+
+.imgContainer {
+    position: relative;
+}
+
+.count {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primaryColor);
+    font-size: 1.2rem;
+    font-weight: 500;
+}

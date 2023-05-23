@@ -1,0 +1,17 @@
+@import '../../styles/variables.css';
+
+.container{
+    display: flex;
+    column-gap: 30px;
+    padding: 2vh 8vw;
+  }
+
+  .heading1 {
+    @apply --headerHeading;
+  }
+
+  .bookingText{
+    text-align: justify;
+    width: 90%;
+    margin: 0px;
+  }

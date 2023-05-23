@@ -1,0 +1,60 @@
+.subHeading {
+   font-size: 1.2rem;
+   font-weight: 600;
+   margin-bottom: 1.5rem;
+   font-weight: 600;
+}
+
+.header {
+   display: flex;
+   justify-content: space-evenly;
+   margin: 35px 5vw 0px 5vw;
+}
+
+.content {
+   display: flex;
+   flex-direction: column;
+}
+
+.linksContainer {
+   display: flex;
+   gap: 50px;
+}
+
+.links {
+   display: flex;
+   flex-direction: column;
+}
+
+.links a {
+   margin-block: 7px;
+}
+
+.navLink {
+   color: var(--primaryColor);
+   cursor: pointer;
+   text-decoration: none;
+
+   &:hover {
+      color: var(--secondaryColor);
+   }
+}
+
+.divider {
+   height: 2px;
+   background-color: var(--assistColorLight);
+   border: none;
+}
+
+.foot {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: 0 5vw;
+   color: var(--assistColor);
+}
+
+.socialHandles {
+   display: flex;
+   gap: 32px;
+}

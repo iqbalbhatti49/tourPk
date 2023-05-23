@@ -1,0 +1,81 @@
+@import "../../styles/variables.css";
+
+.formField {
+  @apply --inputField;
+  width: 87%;
+}
+
+.field {
+  margin-bottom: 14px;
+}
+
+.formField::placeholder {
+  font-weight: 400;
+  color: #b0b1bb;
+}
+
+.fieldIcon {
+  position: absolute;
+  padding: 0px 20px;
+  width: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 11px;
+}
+
+.light {
+  border: 1px solid lightgray;
+}
+
+/* TODO: Make this property of input fields global->pdding, backgrnd etc  -> For other fields like Phone etc
+  */
+
+.field {
+  position: relative;
+}
+
+.iconInput {
+  padding-left: calc(1em + 2px + 35px);
+  /* icon width + icon padding-left + desired separation*/
+}
+
+.noIconInput {
+  @apply --input;
+}
+
+.error {
+  color: var(--formLight);
+  padding-left: 10px;
+}
+
+.errorRed {
+  color: red;
+  padding-left: 10px;
+}
+
+.showLabel {
+  position: absolute;
+  top: -11px;
+  left: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: var(--whiteColor);
+  padding: 0 5px;
+}
+
+.noLabel {
+  display: none;
+}
+
+.checkBoxField {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 16px;
+}
+
+.checkBoxField label {
+  width: 100vw !important;
+}

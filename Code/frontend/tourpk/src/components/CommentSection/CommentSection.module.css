@@ -1,0 +1,27 @@
+.container {
+    margin: 40px 0;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.comment {
+    margin-top: 16px;
+    padding: 14px 2px;
+    border-bottom: 1px solid var(--assistColor);
+    overflow-wrap: break-word;
+}
+
+.commentAuthor {
+    color: var(--assistColor);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.commentDate {
+    font-size: 14px;
+    color: var(--assistColor);
+    padding-left: 0.7em;
+}

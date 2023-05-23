@@ -1,0 +1,83 @@
+:global(.card__header--image img) {
+   height: 223px;
+   object-fit: cover;
+}
+
+.card {
+   width: 120px;
+   border: none;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+   background: linear-gradient(to bottom, #f2f2f2, #ffffff);
+   transition: all 0.2s ease-in-out;
+   text-decoration: none;
+}
+
+.card:hover {
+   transform: translateY(-5px);
+   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.body {
+   text-align: left;
+   line-height: 1.5rem;
+   font-weight: 400;
+   letter-spacing: 0.5px;
+   min-height: 110px;
+   max-height: 110px;
+   word-wrap: break-word;
+}
+
+.imageTitle {
+   font: 700 1.4rem/2.2rem '', sans-serif;
+   position: absolute;
+   top: 45%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   max-width: 80%;
+   width: max-content;
+   background: #fff;
+   color: #000;
+   word-wrap: break-word;
+   letter-spacing: -1px;
+   line-height: 1.3rem;
+   padding: 2px;
+}
+
+.postText {
+   line-height: 1.2rem;
+   color: var(--textColor);
+}
+
+.username {
+   color: var(--primaryColor);
+   font-weight: 600;
+   padding-block: 8px;
+}
+
+.sidebarImg img {
+   height: 170px !important;
+}
+
+.sidebarTitle {
+   font-size: 1.2rem;
+   font-weight: 600;
+   color: var(--primaryColor);
+}
+
+#sidebarCard div {
+   max-width: 240px !important;
+}
+
+#sidebarCard>div:first-child {
+   margin-top: 10px;
+}
+
+.readMore {
+   color: var(--assistColor);
+   background-color: transparent;
+   border: var(--assistColor) 1px solid;
+   padding: 4px 10px;
+   border-radius: 15px;
+   margin: 12px 0 10px 0;
+   cursor: pointer;
+}

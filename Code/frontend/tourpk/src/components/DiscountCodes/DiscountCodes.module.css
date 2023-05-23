@@ -1,0 +1,9 @@
+@import "../../styles/checkout.css";
+
+.container {
+   @apply --container;
+}
+
+.heading {
+   @apply --heading;
+}
