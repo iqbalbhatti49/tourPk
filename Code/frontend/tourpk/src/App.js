@@ -6,10 +6,7 @@ import {
   redirect
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing } from "./pages/index";
-import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
-import ResetPassword from "./pages/ResetPassword/ResetPassword";
-
+import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword } from "./pages/index";
 function App() {
   const action = useNavigationType();
   const location = useLocation();
