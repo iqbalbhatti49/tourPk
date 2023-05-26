@@ -6,7 +6,7 @@ import {
   redirect
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs } from "./pages/index";
+import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing } from "./pages/index";
 import ForgetPassword from "./pages/ForgetPassword/ForgetPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 
@@ -69,6 +69,7 @@ function App() {
       <Route path="/listing" element={<Listing />} />
       <Route path="/Blog/:id" element={<BlogPage />} />
       <Route path="/allBlogs" element={<Blogs />} />
+      <Route path="/spotListing" element={<SpotListing />} />
       <Route path="/forgetPassword" element={<ForgetPassword />} />
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
     </Routes>
