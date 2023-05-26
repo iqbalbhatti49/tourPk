@@ -1,6 +1,7 @@
 import { Hotels, Restaurants, TourGuides, MesmerizingSight, MustVisitPlace, Other } from './Data';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axiosInstance from '../../../utils/Api'
+
 
 const initialState = {
     blogCategories: [
@@ -40,13 +41,19 @@ const initialState = {
 };
 
 export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
-    const response = await axios.get('/blog/blogs');
+    const response = await axiosInstance.get('/blog/blogs');
+    return response.data;
+});
+
+export const fetchBlogById = createAsyncThunk('blogs/fetchBlogById', async (id) => {
+    console.log(id);
+    const response = await axiosInstance.get(`/blog/${id}`);
     return response.data;
 });
 
 export const addBlog = createAsyncThunk('blogs/addBlog', async (blog) => {
     try {
-        const response = await axios.post('/blog/addBlog', blog);
+        const response = await axiosInstance.post('/blog/addBlog', blog);
         return response.data;
     }
     catch (err) {
@@ -56,12 +63,12 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (blog) => {
 });
 
 export const deleteBlog = createAsyncThunk('blogs/deleteBlog', async (blogId) => {
-    const response = await axios.delete(`/blog/${blogId}`);
+    const response = await axiosInstance.delete(`/blog/${blogId}`);
     return response.data;
 });
 
 export const updateBlog = createAsyncThunk('blogs/updateBlog', async (blog) => {
-    const response = await axios.put(`/blog/${blog.id}`, blog);
+    const response = await axiosInstance.put(`/blog/${blog.id}`, blog);
     return response.data;
 });
 

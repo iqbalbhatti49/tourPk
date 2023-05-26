@@ -34,7 +34,7 @@ export { BillingAddress } from './BillingAddress/BillingAddress';
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
 export { toggleChecked } from '../app/features/pricing/pricingSlice';
-export { updateUser, login, logoutUser } from '../app/features/user/userSlice';
+export { updateUser, login, logout } from '../app/features/user/userSlice';
 
 
 //Icons

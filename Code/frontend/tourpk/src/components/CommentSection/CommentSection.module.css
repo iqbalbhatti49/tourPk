@@ -18,10 +18,16 @@ h3 {
     color: var(--assistColor);
     font-weight: 500;
     margin-bottom: 8px;
+    font-size: 18px;
 }
 
 .commentDate {
     font-size: 14px;
     color: var(--assistColor);
     padding-left: 0.7em;
+}
+
+.commentText {
+    font-size: 16px;
+    margin-top: 10px;
 }
