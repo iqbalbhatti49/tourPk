@@ -5,6 +5,7 @@ import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [errormsg, setErrormsg] = useState(null);
@@ -13,7 +14,6 @@ const Login = () => {
 
     const onSubmit = async (values, form) => {
         try {
-            console.log('Form submitted with values:', values);
             dispatch(login(values));
             navigate("/");
         } catch (error) {
@@ -39,7 +39,7 @@ const Login = () => {
                                 <h1 className={styles.whiteText}>Welcome back!</h1>
                                 <FormField name="email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
                                 <FormField name="password" type="password" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
-                                <a href="" className={styles.forget}>Forgot Password</a>
+                                <Link className={styles.forget} to="/forgetPassword">Forgot Password</Link>
                                 <div className={styles.signupBtn}>
                                     <Button className={styles.signupBtn} value={"Sign In"} type="secondary" width={300} btnType="submit" font={" 600 20px Arial, '' "} />
                                 </div>

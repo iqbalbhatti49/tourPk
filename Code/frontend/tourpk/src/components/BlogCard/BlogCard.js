@@ -3,7 +3,6 @@ import { Card, ImageHeader, CardBody } from 'react-simple-card';
 import styles from './BlogCard.module.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import { useParams } from 'react-router-dom';
 
 export const BlogCard = (props) => {
    const { blog, usage } = props;
@@ -14,13 +13,9 @@ export const BlogCard = (props) => {
       return text.slice(0, length);
    };
    const navigate = useNavigate();
-
    const readMore = () => {
       navigate(`/Blog/${blog.id}`);
    }
-
-   // TODO : Add username --- JOIN blog ON blog.userId = user.id....
-   // TODO: do above on loc 27
 
    return (
       <>

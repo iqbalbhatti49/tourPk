@@ -1,5 +1,3 @@
-// const User = require("./User");
-
 module.exports = (sequelize, DataTypes) => {
     const Comment = sequelize.define("Comment", {
         id: {
@@ -18,19 +16,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATEONLY,
             allowNull: false,
             defaultValue: DataTypes.NOW, // set the default value to the current date
-        },
-        userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
-        blogPostId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
         }
     }, {
         timestamps: false
     });
-    Comment.sync({ alter: true })
+    Comment.associate = (models) => {
+        Comment.belongsTo(models.User, {
+            onDelete: "cascade",
+        });
+        Comment.belongsTo(models.BlogPost, {
+            onDelete: "cascade",
+        });
+    };
+    // Comment.sync({ alter: true })
     // Comment.belongsTo(User, { foreignKey: 'userId' });
     return Comment;
 };
