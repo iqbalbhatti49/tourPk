@@ -9,7 +9,6 @@ const transport = nodemailer.createTransport(
 );
 
 exports.sendEmail = async (req) => {
-    console.log(req.body);
     const body = '<strong>Name:</strong> ' + req.body.username + '<br><strong>Email:</strong> ' + req.body.email + '<br><strong>Question:</strong> ' + req.body.questionTitle + '<br><strong>Description:</strong> ' + req.body.questionDescription;
     const sendTo = [
         'bsef19m012@pucit.edu.pk',
