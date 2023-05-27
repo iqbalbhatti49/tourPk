@@ -12,10 +12,34 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        city: {
+        experience: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        areas: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        language: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        description: {
+            type: DataTypes.TEXT,
+            allowNull: true
+        },
+        halfDayRate: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        FullDayRate: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
     }, {
         timestamps: false
     });

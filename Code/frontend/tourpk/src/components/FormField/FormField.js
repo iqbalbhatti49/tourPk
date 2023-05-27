@@ -23,11 +23,14 @@ const FormField = (props) => {
       }}
     >
       {({ input, meta }) => (
-        <div className={wrapperClass}>
-          {renderIcon() != null && <div className={styles.fieldIcon}>{renderIcon()}</div>}
-          <label className={labelClassName}>{label}</label>
-          <input className={classes} {...input} placeholder={placeholder} type={type} />
-          {meta.error && meta.touched && <span className={props.theme === 'dark' ? styles.error : styles.errorRed}>{meta.error}</span>}
+        <div className={wrapperClass} >
+          {renderIcon() != null && <div className={styles.fieldIcon} id={styles.tooltip}>{renderIcon()}
+            {meta.error && meta.touched && <span id={styles.tooltiptext} >{meta.error}</span>}
+          </div>}
+          <label className={labelClassName} id={styles.tooltip}>{label}
+            {meta.error && meta.touched && <span id={styles.tooltiptext} className={styles.error}>{meta.error}</span>}
+          </label>
+          <input className={classes} id={`${meta.error && meta.touched ? styles.error : ''}`} {...input} placeholder={placeholder} type={type} />
         </div>
       )}
     </Field>

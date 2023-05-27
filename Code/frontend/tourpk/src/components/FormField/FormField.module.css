@@ -41,16 +41,6 @@
   @apply --input;
 }
 
-.error {
-  color: var(--formLight);
-  padding-left: 10px;
-}
-
-.errorRed {
-  color: red;
-  padding-left: 10px;
-}
-
 .showLabel {
   position: absolute;
   top: -11px;
@@ -75,4 +65,43 @@
 
 .checkBoxField label {
   width: 100vw !important;
+}
+
+#error {
+  border: 1px solid red;
+}
+
+#tooltip {
+  display: inline;
+}
+
+#tooltip #tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: gray;
+  color: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  transition: opacity 0.3s;
+}
+
+#tooltip #tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: gray transparent transparent transparent;
+}
+
+#tooltip:hover #tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
