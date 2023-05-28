@@ -1,4 +1,4 @@
-const { BlogPost } = require("../models");
+const { BlogPost, User } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -9,15 +9,22 @@ exports.showAllBlogs = async (req, res) => {
 
 exports.showBlogById = async (req, res) => {
     const id = req.params.id;
-    // console.log("id:", id);
-    const blogPost = await BlogPost.findByPk(id);
-    //TODO: join with blog and comments table to get all comments
+    const blogPost = await BlogPost.findOne({
+        where: {
+            id: id
+        },
+        include: [
+            {
+                model: User,
+                attributes: ['name', 'id']
+            }
+        ]
+    });
     res.json(blogPost);
 }
 
 exports.createBlogPost = async (req, res) => {
     const blogPost = req.body;
-    console.log("in server -------------- blogPost:", blogPost);
     const resp = await BlogPost.create(blogPost);
     res.status(200).json(resp);
 }
@@ -32,7 +39,6 @@ exports.deleteBlogPost = async (req, res) => {
 
 exports.showRandomBlogs = async (req, res) => {
     const id = req.params.id;
-    console.log("----------id randm blog :", id)
     const blogPost = await BlogPost.findByPk(id);
     const blogPosts = await BlogPost.findAll({
         where: {

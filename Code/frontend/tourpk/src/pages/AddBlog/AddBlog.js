@@ -19,8 +19,6 @@ const AddBlog = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    console.log("---------update state -----", state);
-
     const upload = async (event) => {
         event.preventDefault();
         try {
@@ -34,22 +32,20 @@ const AddBlog = () => {
     };
     const addOrUpdate = async (blog) => {
         const resultAction = await dispatch(state ? updateBlog({ ...blog, id: state.id }) : addBlog(blog));
-        console.log("-----------result----", resultAction);
         const addedBlogId = resultAction.payload;
         navigate(`/Blog/${addedBlogId}`);
     }
 
     const handleSubmit = (event) => {
-
         event.preventDefault();
-        const imgUrl = state.image ? state.image : upload(event);
+        const imgUrl = upload(event);
         console.log("----------------img url: ---------", imgUrl);
-        // const img = state?.image || imgUrl;
+        const img = state?.image || imgUrl;
         const blog = {
             title: title,
             postText: value,
             category,
-            image: file ? imgUrl : "",
+            image: file ? img : "",
             userId: 1
         };
         addOrUpdate(blog);

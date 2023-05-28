@@ -1,5 +1,4 @@
-const { Comment } = require("../models");
-const { User } = require('../models');
+const { User, BlogPost, Comment } = require('../models');
 
 exports.addComment = async (req, res) => {
     const comment = req.body;
@@ -10,18 +9,17 @@ exports.addComment = async (req, res) => {
 
 exports.commentByBlogPostId = async (req, res) => {
     const id = req.params.blogId;
-    const comment = await Comment.findAll({ where: { blogPostId: id } });
-    // const comments = await Comment.findAll({
-    //     where: { blogPostId: id },
-    //     include: [
-    //         {
-    //             model: User,
-    //             attributes: ['name', 'id']
-    //         }
-    //     ],
-    //     attributes: ['id', 'commentText', 'datePosted']
-    // });
-    res.json(comment);
+    // const comment = await Comment.findAll({ where: { blogPostId: id } });
+    const comments = await Comment.findAll({
+        where: { blogPostId: id },
+        include: [
+            {
+                model: User,
+                attributes: ['name']
+            }
+        ]
+    });
+    res.json(comments);
 }
 
 exports.updateComment = async (req, res) => {

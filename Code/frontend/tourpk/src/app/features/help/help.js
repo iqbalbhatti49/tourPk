@@ -24,7 +24,7 @@ export const helpRequest = createAsyncThunk(
          console.log(err);
       }
       try {
-         const response = await axios.post('http://localhost:8080/help/', formData);
+         const response = await axios.post('/help/', formData);
          return response.data;
       } catch (error) {
          console.error(error);

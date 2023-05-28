@@ -30,12 +30,13 @@ export { BookingSummary } from './BookingSummary/BookingSummary';
 export { default as FormButton } from './FormButton/FormButton';
 export { HotelCard } from "./HotelCard/HotelCard";
 export { BillingAddress } from './BillingAddress/BillingAddress';
-
+export { default as Carousel } from './Carousel/Carousel';
+export { default as LocationPicker } from './LocationPicker/LocationPicker';
+export { Testimonial } from './Testimonial/Testimonial';
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
 export { toggleChecked } from '../app/features/pricing/pricingSlice';
-export { updateUser, login, logoutUser } from '../app/features/user/userSlice';
-
+export { updateUser, login, logout } from '../app/features/user/userSlice';
 
 //Icons
 export { default as IconAdd } from './IconAdd/IconAdd';

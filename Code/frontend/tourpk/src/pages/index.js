@@ -1,4 +1,3 @@
-
 export { default as Home } from "./Home/Home";
 export { default as Services } from "./Services/Services";
 export { default as InAppPlans } from "./InAppPlans/InAppPlans";
@@ -16,3 +15,6 @@ export { default as Listing } from "./Listing/Listing";
 export { default as BlogPage } from "./BlogPage/BlogPage";
 export { default as AddBlog } from "./AddBlog/AddBlog";
 export { default as Blogs } from "./Blogs/Blogs";
+export { default as SpotListing } from "./SpotListing/SpotListing";
+export { default as ForgetPassword } from "./ForgetPassword/ForgetPassword";
+export { default as ResetPassword } from "./ResetPassword/ResetPassword";

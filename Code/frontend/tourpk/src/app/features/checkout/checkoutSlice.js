@@ -30,7 +30,7 @@ const initialState = {
 export const initiatePayment = createAsyncThunk(
    'checkout/initiatePayment',
    async ({ cardInfo, billingAddress, orderComment, grandTotal }, { rejectWithValue }) => {
-      console.log("from req " , cardInfo)
+      console.log("from req ", cardInfo)
       var amount = grandTotal;
       amount = amount.replace('$', '');
       var request = {
@@ -48,7 +48,7 @@ export const initiatePayment = createAsyncThunk(
       };
       console.log(request)
       try {
-         const response = await axios.post('http://localhost:8080/payment/payment', request);
+         const response = await axios.post('/payment/payment', request);
          return response.data;
       } catch (error) {
          return rejectWithValue(error.response.data);

@@ -6,14 +6,7 @@ const initialState = {
         {
             commentText: '',
             datePosted: '',
-            commentPostId: null,
-            userId: '',
-            userName: ''
-        },
-        {
-            commentText: '',
-            datePosted: '',
-            commentPostId: null,
+            blogPostId: null,
             userId: '',
             userName: ''
         }
@@ -24,14 +17,11 @@ const initialState = {
 
 export const fetchCommentByBlog = createAsyncThunk('comment/fetchCommentByBlog', async (blogPostId) => {
     const response = await axios.get(`/comment/${blogPostId}`);
-    // console.log("---response.data of fetch comment--", response.data);
-    // console.log("blogId -- comnt SERVER -----********:", blogPostId);
     return response.data;
 });
 
 export const addComment = createAsyncThunk('comment/addComment', async (comment) => {
     try {
-        console.log("*************--->>>>>*** ", comment);
         const response = await axios.post('/comment/addComment', comment);
         return response.data;
     }
@@ -64,7 +54,6 @@ const commentsSlice = createSlice({
             .addCase(fetchCommentByBlog.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 console.log("------comment fetched payload-----", action.payload);
-                // state.items = state.items.push(action.payload);
                 state.items = state.items.concat(action.payload);
             })
             .addCase(fetchCommentByBlog.rejected, (state, action) => {
