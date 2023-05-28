@@ -2,7 +2,7 @@ export const Lahore = [
    {
       name: 'Lahore Fort',
       location: 'Lahore, The cultural capital of Pakistan',
-      picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3ElDPcieW5EyD5EpndUa4nDUsIixJH0DXqg&usqp=CAU',
+      picture: 'https://static.wixstatic.com/media/a27d24_0760cdfc7ced474490683464d9db06f5~mv2_d_2934_1956_s_2.jpg/v1/fill/w_1480,h_986,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a27d24_0760cdfc7ced474490683464d9db06f5~mv2_d_2934_1956_s_2.jpg',
       tagline: 'Historical landmark in Lahore display of Mughal architecture',
       rating: 4.5,
       reviews: 300
@@ -11,7 +11,7 @@ export const Lahore = [
       name: 'Shalimar Gardens',
       location: 'Lahore, Pakistan',
       // working link to pictre
-      picture: 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2020/07/Shalimar-Gardens-Lahore-B-27-07-1024x640.jpg',
+      picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/39/ae/f2/the-shalimar-gardens.jpg?w=1200&h=-1&s=1',
       tagline: 'A paradise on earth, built by Emperor Jahangir for Nur Jahan',
       rating: 4.0,
       reviews: 200
@@ -19,7 +19,7 @@ export const Lahore = [
    {
       name: 'Badshahi Mosque',
       location: 'Lahore, Pakistan',
-      picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRpjqLPYA_C1bx8HZ2HNgShEXXgh5t_dSyG2fDs86LhijIaTavk76QS7Pe2s0LGY4Pvow&usqp=CAU',
+      picture: 'https://c1.wallpaperflare.com/preview/455/433/186/lahore-lhr-badshahi-mosque-badshahi-mosque-lahore.jpg',
       tagline: 'A marvel of Mughal architecture, built by Aurangzeb',
       rating: 4.5,
       reviews: 300
@@ -27,7 +27,7 @@ export const Lahore = [
    {
       name: 'Tomb of Jahangir',
       location: 'Lahore, Pakistan',
-      picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_fG4gphvHJbfCUdh44aza5NUtJXNXZL-8WA&usqp=CAU',
+      picture: 'https://tourism.punjab.gov.pk/system/files/styles/dp_internal_fi/private/4_8_0.jpg?itok=eOp41EaS',
       tagline: 'A testament to the greatness of Jahangir',
       rating: 3.5,
       reviews: 150
@@ -35,7 +35,7 @@ export const Lahore = [
    {
       name: 'Wazir Khan Mosque',
       location: 'Lahore, Pakistan',
-      picture: 'https://i.pinimg.com/originals/ed/d2/00/edd200d71e84499547ae0f5bfd430828.jpg',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Wazir_Khan_Mosque_by_Moiz.jpg/1024px-Wazir_Khan_Mosque_by_Moiz.jpg',
       tagline: 'A masterpiece of tile work, 17th-century mosque',
       rating: 4.0,
       reviews: 200
@@ -43,7 +43,7 @@ export const Lahore = [
    {
       name: 'Data Darbar',
       location: 'Lahore, Pakistan',
-      picture: 'https://www.blizin.com/public/images/uploads/articles/datadarbarlahore-adepictionofourgloriousislamicandculturalvalues-A-1572601268.webp',
+      picture: 'https://guidetopakistan.pk/wp-content/uploads/2022/03/daa-darbar-img1.jpg',
       tagline: 'The shrine of the famous Sufi saint Hazrat Ali Hujwiri',
       rating: 4.5,
       reviews: 300
@@ -51,7 +51,7 @@ export const Lahore = [
    {
       name: 'Lahore Museum',
       location: 'Lahore, Pakistan',
-      picture: 'https://i.dawn.com/primary/2022/05/62953b71099c1.jpg',
+      picture: 'https://lh3.googleusercontent.com/ci/AJFM8ry5j_H9k_LjKmiSpfNUW-pwh_hkovQLIJOgPEzI48zLl0KJgFp3PTxoiiWvUEv3ztB6sqPnoA=s1200',
       tagline: 'Largest museum in Pakistan, featuring art, and archaeology',
       rating: 4.0,
       reviews: 200
@@ -59,7 +59,7 @@ export const Lahore = [
    {
       name: 'Minar-e-Pakistan',
       location: 'Lahore, Pakistan',
-      picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSljgvIGgOx653kE855wyzFmmogpdSJGiF1KA&usqp=CAU',
+      picture: 'https://images.prismic.io/manaky-test/ceab425f-4051-4e48-8954-57a085a3e9dd_lahore-2299773_1920.jpg?auto=compress,format',
       tagline: 'A monument commemorating the Lahore Resolution',
       rating: 4.5,
       reviews: 300
@@ -67,7 +67,7 @@ export const Lahore = [
    {
       name: 'Lahore Zoo',
       location: 'Lahore, Pakistan',
-      picture: 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2021/03/Cover-1440x625-2.jpg',
+      picture: 'https://www.eticketing.pk/seatingplans/venue_17.jpg',
       tagline: 'One of the oldest zoos in the world, featuring various animals',
       rating: 3.5,
       reviews: 150
@@ -185,7 +185,7 @@ export const Karachi = [
    {
       name: 'Mohatta Palace',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/41/1280/805.jpg?hmac=W9CWeYdlZisqEfhjuODl83T3lCXAqjUZrOe9iMFPYmI',
+      picture: 'https://i.tribune.com.pk/media/images/MohattaPalaceMuseumKarachiPakistan4720161635751200-0/MohattaPalaceMuseumKarachiPakistan4720161635751200-0.jpg',
       tagline: 'A symbol of Karachis architectural heritage',
       rating: 4.5,
       reviews: 300
@@ -193,7 +193,7 @@ export const Karachi = [
    {
       name: 'National Museum',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/39/3456/2304.jpg?hmac=cc_VPxzydwTUbGEtpsDeo2NxCkeYQrhTLqw4TFo-dIg',
+      picture: 'https://stdc.gos.pk/media/k2/items/cache/e44a6f32e15cb53ee479b2697e759e2e_XL.jpg',
       tagline: 'Museum displaying the cultural & historical heritage',
       rating: 4.0,
       reviews: 200
@@ -201,7 +201,7 @@ export const Karachi = [
    {
       name: 'Quaid House Museum',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/38/1280/960.jpg?hmac=HBrgyJHQOGVicaWoXgvdSfTakkAyv4BxAt4rF0DhWkU',
+      picture: 'https://www.thenews.com.pk/assets/uploads/akhbar/2021-09-23/894500_4710799_QA-Museum_akhbar.jpg',
       tagline: 'The former residence of Pakistans founder',
       rating: 4.5,
       reviews: 300
@@ -209,7 +209,7 @@ export const Karachi = [
    {
       name: 'Mazar-e-Quaid',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/37/2000/1333.jpg?hmac=vpYLNsQZwU2szsZc4Uo17cW786vR0GEUVq4icaKopQI',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Jinnah_Mausoleum.JPG',
       tagline: 'The mausoleum of Quaid-e-Azam, the founder of Pakistan',
       rating: 4.5,
       reviews: 300
@@ -411,28 +411,23 @@ export const Mardan = [
    {
       name: "Takht-i-Bahi",
       location: "Mardan, Khyber Pakhtunkhwa",
-      picture:
-         "https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA",
-      tagline:
-         "An ancient Buddhist monastery in Mardan",
+      picture:  "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/ce/c6/96/view-of-takht-i-bhai.jpg?w=1200&h=-1&s=1",
+      tagline:  "An ancient Buddhist monastery in Mardan",
       rating: 4.7,
       reviews: 150,
    },
    {
       name: "Swabi Forest",
       location: "Mardan, Khyber Pakhtunkhwa",
-      picture:
-         "https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU",
-      tagline:
-         "A serene forest in Mardan with diverse flora",
+      picture: "https://upload.wikimedia.org/wikipedia/commons/0/08/Sohaib_5.jpg",
+      tagline: "A serene forest in Mardan with diverse flora",
       rating: 4.2,
       reviews: 90,
    },
    {
       name: "Shahbaz Garhi",
       location: "Mardan, Khyber Pakhtunkhwa",
-      picture:
-         "https://fastly.picsum.photos/id/33/5000/3333.jpg?hmac=h5NVRcUXmsWm612YQOroHSA5n9R7gxZgoP60LHBPHtw",
+      picture: "https://www.livius.org/site/assets/files/3038/shahbazgarhi2.325x0-is-pid3033.jpg",
       tagline:
          "archaeological, historic and village site in Mardan",
       rating: 4.6,
@@ -441,10 +436,8 @@ export const Mardan = [
    {
       name: "Mardan Museum",
       location: "Mardan, Khyber Pakhtunkhwa",
-      tagline:
-         "An archaeological Heart Land of Mardan",
-      picture:
-         "https://fastly.picsum.photos/id/35/2758/3622.jpg?hmac=xIB3RTEGJ59FEnaQOXoaDgwX_K6PHAg57R0b4t7tiX0",
+      tagline: "An archaeological Heart Land of Mardan",
+      picture: "https://i.pinimg.com/736x/87/49/63/87496333d714de312744d9130be870a0.jpg",
       rating: 4.6,
       reviews: 80,
    },
@@ -453,7 +446,7 @@ export const Hyderabad = [
    {
       name: 'Tombs of Talpur Mirs',
       location: 'Hyderabad, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/18/2500/1667.jpg?hmac=JR0Z_jRs9rssQHZJ4b7xKF82kOj8-4Ackq75D_9Wmz8',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Two_big_tombs_at_Tombs_of_Talpur_Mirs%2C_Hyderabad_3.jpg',
       tagline: 'A display of Talpur dynastys cultural and architectural history',
       rating: 4.2,
       reviews: 180
@@ -461,7 +454,7 @@ export const Hyderabad = [
    {
       name: 'Pacca Qila',
       location: 'Hyderabad, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/19/2500/1667.jpg?hmac=7epGozH4QjToGaBf_xb2HbFTXoV5o8n_cYzB7I4lt6g',
+      picture: 'https://i.dawn.com/primary/2014/11/546caa04c8c2b.jpg?r=1190547066',
       tagline: 'Ancient fort with a mix of British, Mughal, and Talpur architecture',
       rating: 4.0,
       reviews: 225
@@ -469,7 +462,7 @@ export const Hyderabad = [
    {
       name: 'Hirabad Fish Aquarium',
       location: 'Hyderabad, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/25/5000/3333.jpg?hmac=yCz9LeSs-i72Ru0YvvpsoECnCTxZjzGde805gWrAHkM',
+      picture: 'https://static.tnn.in/thumb/msid-99547083,width-1280,height-720,resizemode-75/99547083.jpg',
       tagline: 'A place to explore aquatic life with family and friends',
       rating: 4.1,
       reviews: 140
@@ -477,7 +470,7 @@ export const Hyderabad = [
    {
       name: 'Rani Bagh',
       location: 'Hyderabad, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/27/3264/1836.jpg?hmac=p3BVIgKKQpHhfGRRCbsi2MCAzw8mWBCayBsKxxtWO8g',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/PK_Hyderabad_asv2020-02_img02_Rani_Bagh_gate.jpg',
       tagline: 'Botanical gardens and zoological park with a variety of flora',
       rating: 4.3,
       reviews: 195
@@ -487,7 +480,7 @@ export const Sukkur = [
    {
       name: 'Lansdowne Bridge',
       location: 'Sukkur, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/14/2500/1667.jpg?hmac=ssQyTcZRRumHXVbQAVlXTx-MGBxm6NHWD3SryQ48G-o',
+      picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/26/e4/3a/majestic-lansdowne-bridge.jpg?w=1200&h=-1&s=1',
       tagline: 'A masterpiece of British engineering in Sukkur',
       rating: 4.5,
       reviews: 120
@@ -495,7 +488,7 @@ export const Sukkur = [
    {
       name: 'Sukkur Barrage',
       location: 'Sukkur, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/15/2500/1667.jpg?hmac=Lv03D1Y3AsZ9L2tMMC1KQZekBVaQSDc1waqJ54IHvo4',
+      picture: 'https://i.tribune.com.pk/media/images/1178879-Sukkurbarragecopyx-1473362839/1178879-Sukkurbarragecopyx-1473362839.jpg',
       tagline: 'One of the largest and oldest irrigation systems in the world',
       rating: 4.2,
       reviews: 95
@@ -503,7 +496,7 @@ export const Sukkur = [
    {
       name: 'Lab-e-Mehran',
       location: 'Sukkur, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/16/2500/1667.jpg?hmac=uAkZwYc5phCRNFTrV_prJ_0rP0EdwJaZ4ctje2bY7aE',
+      picture: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/45839016402235.562ab35d5341a.jpg',
       tagline: 'A historical water source for the city with a beautiful garden',
       rating: 4.0,
       reviews: 115
@@ -511,7 +504,7 @@ export const Sukkur = [
    {
       name: 'Sadh Belo Temple',
       location: 'Sukkur, Sindh, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/17/2500/1667.jpg?hmac=HD-JrnNUZjFiP2UZQvWcKrgLoC_pc_ouUSWv8kHsJJY',
+      picture: 'https://i.dawn.com/large/2018/06/5b1faec8428a2.jpg',
       tagline: 'A revered Hindu temple in a peaceful and serene setting',
       rating: 4.4,
       reviews: 90
@@ -521,7 +514,7 @@ export const Abbottabad = [
    {
       name: 'Ilyasi Mosque',
       location: 'Abbottabad, Khyber Pakhtunkhwa, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/13/2500/1667.jpg?hmac=SoX9UoHhN8HyklRA4A3vcCWJMVtiBXUg0W4ljWTor7s',
+      picture: 'https://www.youlinmagazine.com/articles/ilyasi-mosque-a-pearl-in-abbottabad.jpg',
       tagline: 'A mosque named after a legendary saint',
       rating: 4.3,
       reviews: 190
@@ -529,7 +522,7 @@ export const Abbottabad = [
    {
       name: 'St. Lukes Church',
       location: 'Abbottabad, Khyber Pakhtunkhwa, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/12/2500/1667.jpg?hmac=Pe3284luVre9ZqNzv1jMFpLihFI6lwq7TPgMSsNXw2w',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/St_Luke%27s_Church_Exterior_2%2C_Chelsea%2C_England_-_Diliff.jpg/1200px-St_Luke%27s_Church_Exterior_2%2C_Chelsea%2C_England_-_Diliff.jpg',
       tagline: 'A beautiful old church in Abbottabad',
       rating: 4.7,
       reviews: 240
@@ -537,7 +530,7 @@ export const Abbottabad = [
    {
       name: 'Ilyasi Masjid Bazaar',
       location: 'Abbottabad, Khyber Pakhtunkhwa, Pakistan',
-      picture: 'https://prestinetravels.com/wp-content/uploads/2021/06/ilyas-masjid.jpg',
+      picture: 'https://www.havelian.net/hazara_pakistan/albums/980/abbottabad_havelian_2055.jpg',
       tagline: 'A bustling bazaar near Ilyasi Mosque',
       rating: 4.1,
       reviews: 140
@@ -545,7 +538,7 @@ export const Abbottabad = [
    {
       name: 'Thandiani',
       location: 'Abbottabad, Khyber Pakhtunkhwa, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68',
+      picture: 'https://guidetopakistan.pk/wp-content/uploads/2021/12/thandiani-2.jpg',
       tagline: 'A scenic hill station near Abbottabad',
       rating: 4.9,
       reviews: 320
