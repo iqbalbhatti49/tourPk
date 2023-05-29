@@ -6,7 +6,7 @@ import CategoryContainer from "../../components/CategoryContainer/CategoryContai
 import { useDispatch, useSelector } from "react-redux";
 import { addBlog, updateBlog } from "../../app/features/blogs/blogsSlice";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../../utils/Api";
 
 const AddBlog = () => {
     let { state } = useLocation();
@@ -16,37 +16,39 @@ const AddBlog = () => {
     const [category, setCategory] = useState(state?.category || "");
 
     const blogCategories = useSelector((state) => state.blogs.blogCategories);
+    const userId = useSelector((state) => state.user.id);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const upload = async (event) => {
+    const upload = async (event, file) => {
         event.preventDefault();
         try {
             const formData = new FormData();
             formData.append("file", file);
-            const res = await axios.post("/upload", formData);
+            const res = await axiosInstance.post("/upload", formData);
+            console.log(res.data);
             return res.data;
         } catch (err) {
             console.log(err);
         }
     };
+
     const addOrUpdate = async (blog) => {
         const resultAction = await dispatch(state ? updateBlog({ ...blog, id: state.id }) : addBlog(blog));
-        const addedBlogId = resultAction.payload;
+        const addedBlogId = resultAction.payload.id;
         navigate(`/Blog/${addedBlogId}`);
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        const imgUrl = upload(event);
-        console.log("----------------img url: ---------", imgUrl);
-        const img = state?.image || imgUrl;
+        console.log("--> ", state);
+        const imgUrl = state == null ? await upload(event) : state.image;
         const blog = {
             title: title,
             postText: value,
             category,
-            image: file ? img : "",
-            userId: 1
+            image: file ? imgUrl : "1685279246102blogDummy.jpeg",
+            UserId: userId
         };
         addOrUpdate(blog);
     }
@@ -74,7 +76,9 @@ const AddBlog = () => {
                         className={styles.blogImg}
                         name="file"
                         onChange={(e) => setFile(e.target.files[0])}
+                        placeholder="Select an image file"
                     />
+
                     <button className={styles.buttonPrimary} type="submit">
                         Publish
                     </button>

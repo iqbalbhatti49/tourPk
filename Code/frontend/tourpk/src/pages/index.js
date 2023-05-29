@@ -7,7 +7,7 @@ export { default as Login } from "./Login/Login";
 export { default as Signup } from "./Signup/Signup";
 export { default as AddPackage } from "./AddPackage/AddPackage";
 export { default as CheckOut } from "./CheckOut/CheckOut";
-export { default as AddRestaurant } from "./AddRestaurantService/AddRestaurantService";
+export { default as AddRestaurant } from "./AddRestaurant/AddRestaurant";
 export { default as Bookings } from "./Bookings/Bookings";
 export { default as HelpAndSupport } from "./HelpAndSupport/HelpAndSupport"
 export { default as GenericInfoAboutService } from "./GenericInfoAboutService/GenericInfoAboutService"

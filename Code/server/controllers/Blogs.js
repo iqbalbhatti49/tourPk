@@ -25,6 +25,7 @@ exports.showBlogById = async (req, res) => {
 
 exports.createBlogPost = async (req, res) => {
     const blogPost = req.body;
+    console.log("--- ", blogPost, "--------------");
     const resp = await BlogPost.create(blogPost);
     res.status(200).json(resp);
 }
@@ -39,11 +40,16 @@ exports.deleteBlogPost = async (req, res) => {
 
 exports.showRandomBlogs = async (req, res) => {
     const id = req.params.id;
-    const blogPost = await BlogPost.findByPk(id);
+    const blogPost = await BlogPost.findOne({
+        where: { id: id }
+    });
+    console.log("---> ", blogPost);
+
+    const cat = blogPost ? blogPost.category : "Other Blogs of Interest";
     const blogPosts = await BlogPost.findAll({
         where: {
             [Op.and]: [
-                { category: blogPost.category },
+                { category: cat },
                 {
                     id: {
                         [Op.ne]: id
