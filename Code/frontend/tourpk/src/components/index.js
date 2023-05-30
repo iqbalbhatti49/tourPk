@@ -33,6 +33,10 @@ export { BillingAddress } from './BillingAddress/BillingAddress';
 export { default as Carousel } from './Carousel/Carousel';
 export { default as LocationPicker } from './LocationPicker/LocationPicker';
 export { Testimonial } from './Testimonial/Testimonial';
+export { BookingCalendar } from './BookingCalendar/BookingCalendar';
+export { CircularRating } from './CircularRating/CircularRating';
+export { default as AddRoom } from "./AddRoom/AddRoom"
+
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
 export { toggleChecked } from '../app/features/pricing/pricingSlice';

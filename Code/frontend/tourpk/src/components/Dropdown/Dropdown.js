@@ -1,22 +1,42 @@
-import React from 'react'
-import { services } from '../../utils/serviceCategories'
-import styles from './Dropdown.module.css'
+import React, { useState } from 'react';
+import { Field } from 'react-final-form';
+import styles from './Dropdown.module.css';
+import { selectAllBlogs } from '../../app/features/blogs/blogsSlice';
 
-export default function Dropdown() {
-
-  const [value, setValue] = React.useState('');
+export default function Dropdown({ optionsValues, placeholder, name, onChange }) {
+  const [val,setVal] = useState(null);
   const handleChange = (event) => {
-    setValue(event.target.value);
+    const selectedValue = event.target.value;
+    setVal(selectedValue);
+        if (onChange) {
+      onChange(selectedValue);
+    }
   };
-  console.log(services);
+
   return (
     <div className={styles.dropdown}>
-      <select value={value} onChange={handleChange}>
-        <option disabled default>Select</option>
-        {services.map((option) => (
-          <option value={option.id} key={option.id}>{option.name}</option>
-        ))}
-      </select>
+      <Field name={name}>
+        {({ input }) => (
+          <select value={input.value} onChange={handleChange}>
+            {!val && (
+              <option value="" disabled hidden>
+                {placeholder}
+              </option>
+            )}
+            {
+              val && 
+              <option>
+                {val}
+              </option>
+            }
+            {optionsValues.map((option) => (
+              <option value={option.name} key={option.id} selected={input.value === option.name}>
+                {option.name}
+              </option>
+            ))}
+          </select>
+        )}
+      </Field>
     </div>
   );
 }

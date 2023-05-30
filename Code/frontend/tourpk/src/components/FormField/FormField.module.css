@@ -9,6 +9,9 @@
   margin-bottom: 14px;
 }
 
+.formField{
+  padding-block: 10px;
+}
 .formField::placeholder {
   font-weight: 400;
   color: #b0b1bb;
@@ -77,5 +80,5 @@
 }
 
 .checkBoxField label {
-  width: 100vw !important;
+  width: 300px;
 }
