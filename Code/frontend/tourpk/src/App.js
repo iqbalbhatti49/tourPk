@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import { useEffect } from "react";
 import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword } from "./pages/index";
-import RestaurantListing from "./pages/RestaurantListing/RestaurantListing";
+
 function App() {
   const action = useNavigationType();
   const location = useLocation();
@@ -49,7 +49,7 @@ function App() {
       <Route path="/contract" element={<Contract />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/addpackage" element={<AddPackage />} />
-      <Route path="/addrestaurant" element={<AddRestaurant />} />
+      <Route path="/addService" element={<AddService />} />
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/helpandsupport" element={<HelpAndSupport />} />
       <Route path="/AddBlog" element={<AddBlog />} />
@@ -68,6 +68,10 @@ function App() {
       <Route path="/Blog/:id" element={<BlogPage />} />
       <Route path="/allBlogs" element={<Blogs />} />
       <Route path="/spotListing" element={<SpotListing />} />
+      <Route path="/tourGuideListing" element={<TourGuideListing />} />
+      <Route path="/addTourGuide" element={<AddTourGuide />} />
+      <Route path="/addHotel" element={<AddHotel />} />
+      <Route path="/addHotelRoom" element={<AddHotelRoom />} />
       <Route path="/restaurantListing" element={<RestaurantListing />} />
       <Route path="/forgetPassword" element={<ForgetPassword />} />
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />

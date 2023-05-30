@@ -8,6 +8,7 @@ export { default as Signup } from "./Signup/Signup";
 export { default as AddPackage } from "./AddPackage/AddPackage";
 export { default as CheckOut } from "./CheckOut/CheckOut";
 export { default as AddRestaurant } from "./AddRestaurant/AddRestaurant";
+export { default as AddService } from "./AddService/AddService";
 export { default as Bookings } from "./Bookings/Bookings";
 export { default as HelpAndSupport } from "./HelpAndSupport/HelpAndSupport"
 export { default as GenericInfoAboutService } from "./GenericInfoAboutService/GenericInfoAboutService"
@@ -18,3 +19,7 @@ export { default as Blogs } from "./Blogs/Blogs";
 export { default as SpotListing } from "./SpotListing/SpotListing";
 export { default as ForgetPassword } from "./ForgetPassword/ForgetPassword";
 export { default as ResetPassword } from "./ResetPassword/ResetPassword";
+export { default as TourGuideListing } from "./TourGuideListing/TourGuideListing";
+export { default as AddTourGuide } from "./AddTourGuide/AddTourGuide";
+export { default as AddHotel } from "./AddHotel/AddHotel"
+export { default as AddHotelRoom } from "./AddHotelRoom/AddHotelRoom"
