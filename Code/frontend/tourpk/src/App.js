@@ -6,8 +6,7 @@ import {
   redirect
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddService, AddHotel, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, TourGuideListing, AddTourGuide, AddHotelRoom } from "./pages/index";
-
+import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddService, AddHotel, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, TourGuideListing, AddTourGuide, AddHotelRoom } from "./pages/index";
 function App() {
   const action = useNavigationType();
   const location = useLocation();
@@ -72,6 +71,8 @@ function App() {
       <Route path="/addTourGuide" element={<AddTourGuide/>} />
       <Route path="/addHotel" element={<AddHotel/>} />
       <Route path="/addHotelRoom" element={<AddHotelRoom/>} />
+      <Route path="/forgetPassword" element={<ForgetPassword />} />
+      <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
     </Routes>
   );
 };

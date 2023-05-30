@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
-import { FormField, IconEmail, IconPassword, IconGoogle, IconPerson, updateUser, Button } from "../../components/index";
+import { FormField, IconEmail, IconPassword, IconPerson, updateUser, Button } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
@@ -56,7 +56,7 @@ const Signup = (props) => {
                                 }
                                 <FormField name="phoneNumber" type="text" placeholder="Your Phone Number" validate={validatePhone} theme="dark" renderIcon={() => <IconPerson />} labelClass="noLabel" />
                                 <FormField name="password" type="password" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
-                                <FormField name="confirmPassword" type="password" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.Password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                                <FormField name="confirmPassword" type="password" placeholder="Confirm Password" validate={(value, values) => validateEquality(values.password, value)} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <div className={styles.signupBtn}>
                                     <Button id={styles.signupBtn} value={"Sign Up"} type="secondary" width={300} btnType="submit" font={" 600 20px Arial, '' "} />
                                 </div>

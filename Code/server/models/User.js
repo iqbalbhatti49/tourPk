@@ -35,7 +35,14 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     });
-    // User.hasMany(Comment, { foreignKey: 'userId' });
-    User.sync({ alter: true })
+    User.associate = (models) => {
+        User.hasMany(models.BlogPost, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.Comment, {
+            onDelete: "cascade",
+        });
+    };
+    // User.sync({ alter: true })
     return User;
 }

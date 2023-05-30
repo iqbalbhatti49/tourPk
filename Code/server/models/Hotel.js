@@ -1,4 +1,33 @@
-const User = require('./User');
+module.exports = (sequelize, DataTypes) => {
+    const Hotel = sequelize.define("Hotel", {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            startAt: 1, // start the auto increment at 1
+            increment: 1, // increment by 1
+        },
+        basePrice: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        }
+    }, {
+        timestamps: false
+    });
+    // Hotel.associate = (models) => {
+    //     Hotel.hasMany(models.?, {
+    //         onDelete: "cascade",
+    //         foreignKey: 'HotelId'
+    //     });
+    //     Hotel.hasMany(models.?, {
+    //         onDelete: "cascade",
+    //         foreignKey: 'HotelId'
+    //     });
+    // };
+    // Hotel.sync({ alter: true })
+    return Hotel;
+}const User = require('./User');
 const Service = require('./services');
 
 module.exports = (sequelize, DataTypes) => {
@@ -180,6 +209,7 @@ module.exports = (sequelize, DataTypes) => {
     Room.belongsToMany(Amenity, { through: RoomAmenities, foreignKey: 'room_id' });
     Amenity.belongsToMany(Room, { through: RoomAmenities, foreignKey: 'amenity_id' });
   
+
     Hotel.hasMany(Review, { foreignKey: 'hotel_id' });
     Review.belongsTo(Hotel, { foreignKey: 'hotel_id' });
     Hotel.hasMany(Booking, { foreignKey: 'hotel_id' });

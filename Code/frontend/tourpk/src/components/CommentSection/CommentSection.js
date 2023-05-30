@@ -12,18 +12,12 @@ const CommentSection = ({ blogId }) => {
   const dispatch = useDispatch();
 
   const fetchComments = async () => {
-    // fetch comments from database
     const result = await dispatch(fetchCommentByBlog(blogId));
-    console.log("-----------------comment yeeeeeeee: ", result.payload);
     setComments(result.payload);
   }
   const addComments = async (comment) => {
-    // console.log("gonna add this cmnt -----------", comment);
     const addedComment = await dispatch(addComment(comment));
-    // console.log("--------------added comment: --", addedComment);
-    console.log("----------comments *********** ", comments);
     setComments(prevState => [...prevState, addedComment.payload]);
-    console.log("----------comments *********** ", comments);
     setNewComment('');
     setisNewComment(!isNewComment); // to re-render the component and show the new comment
   }
@@ -48,9 +42,9 @@ const CommentSection = ({ blogId }) => {
       <h2>Comments</h2>
       {comments.map(comment => (
         <div key={comment.id} className={styles.comment}>
-          <div> <span className={styles.commentAuthor}>{comment.userId}</span> <span className={styles.commentDate}> &#8226; {comment.datePosted}</span>
+          <div> <span className={styles.commentAuthor}>{comment.User.name}</span> <span className={styles.commentDate}> &#8226; {comment.datePosted}</span>
           </div>
-          <div>{comment.commentText}</div>
+          <div className={styles.commentText}>{comment.commentText}</div>
         </div>
       ))
       }

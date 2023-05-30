@@ -25,10 +25,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: DataTypes.NOW, // set the default value to the current date
     },
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
     image: {
       type: DataTypes.TEXT('long'),
       allowNull: true,
@@ -36,6 +32,14 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: false
   });
-  BlogPost.sync({ alter: true })
+  BlogPost.associate = (models) => {
+    BlogPost.hasMany(models.Comment, {
+      onDelete: "cascade",
+    });
+    BlogPost.belongsTo(models.User, {
+      onDelete: "cascade",
+    });
+  }
+  // BlogPost.sync({ alter: true })
   return BlogPost;
 };

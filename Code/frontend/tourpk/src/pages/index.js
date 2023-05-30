@@ -16,6 +16,8 @@ export { default as BlogPage } from "./BlogPage/BlogPage";
 export { default as AddBlog } from "./AddBlog/AddBlog";
 export { default as Blogs } from "./Blogs/Blogs";
 export { default as SpotListing } from "./SpotListing/SpotListing";
+export { default as ForgetPassword } from "./ForgetPassword/ForgetPassword";
+export { default as ResetPassword } from "./ResetPassword/ResetPassword";
 export { default as TourGuideListing } from "./TourGuideListing/TourGuideListing";
 export { default as AddTourGuide } from "./AddTourGuide/AddTourGuide";
 export {default as AddHotel } from "./AddHotel/AddHotel"
