@@ -1,32 +1,14 @@
 import React from "react";
 import { Form as FormFinal } from 'react-final-form'
-import styles from './AddRestaurant.module.css'
+import styles from './TravelAgent.module.css'
 import { FormField, Button } from "../../components/index";
 import { required, validateURL } from '../../utils/validations';
 import { mealOptions, featureOptions } from '../../utils/Constants/RestaurantsOptions';
-import { useLocation } from "react-router";
 
-const AddRestaurant = () => {
+const TravelAgent = () => {
 
-    const location = useLocation();
     const onSubmit = (values) => {
         console.log(values);
-        console.log("--> ", location.state);
-
-        const meals = mealOptions
-            .filter(option => values[option.name])
-            .map(option => option.label)
-            .join(", ");
-
-        // Store selected features as a comma-separated string
-        const features = featureOptions
-            .flatMap(option => option.options)
-            .filter(option => values[option])
-            .join(", ");
-
-        console.log("Selected Meals:", meals);
-        console.log("Selected Features:", features);
-
     };
 
     return (
@@ -83,4 +65,4 @@ const AddRestaurant = () => {
         </div >
     );
 };
-export default AddRestaurant;
+export default TravelAgent;

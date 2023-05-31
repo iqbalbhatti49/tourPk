@@ -20,7 +20,7 @@ const AddBlog = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const upload = async (event, file) => {
+    const upload = async (event) => {
         event.preventDefault();
         try {
             const formData = new FormData();

@@ -1,5 +1,8 @@
-.hotelAmeneties{
+.hotelAmeneties {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+}
+
+.hotelAmeneties>* {
+  width: 33%;
 }

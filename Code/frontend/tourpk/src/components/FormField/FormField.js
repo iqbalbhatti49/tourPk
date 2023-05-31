@@ -30,13 +30,7 @@ const FormField = (props) => {
         <div className={wrapperClass}>
           {type === 'checkbox' ? (
             <label className={labelClassName} id={styles.checkBoxText}>
-              <input
-                className={styles.checkboxInput}
-                {...input}
-                type="checkbox"
-                checked={input.value}
-                onChange={(event) => handleCheckboxChange(event, input)}
-              />
+              <input className={styles.checkboxInput}  {...input} type="checkbox" checked={input.value} onChange={(event) => handleCheckboxChange(event, input)} />
               <span className={styles.checkboxCustom}></span>
               {label}
               {meta.error && meta.touched && <span id={styles.tooltiptext} className={styles.error}>{meta.error}</span>}
