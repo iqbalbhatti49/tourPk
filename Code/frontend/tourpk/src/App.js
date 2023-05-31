@@ -6,7 +6,9 @@ import {
   redirect
 } from "react-router-dom";
 import { useEffect } from "react";
-import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddService, AddHotel, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, TourGuideListing, AddTourGuide, AddHotelRoom } from "./pages/index";
+import { Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing } from "./pages/index";
+import AddTravelAgent from "./pages/AddTravelAgent/AddTravelAgent";
+
 function App() {
   const action = useNavigationType();
   const location = useLocation();
@@ -48,6 +50,7 @@ function App() {
       <Route path="/contract" element={<Contract />} />
       <Route path="/checkout" element={<CheckOut />} />
       <Route path="/addpackage" element={<AddPackage />} />
+      <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/addService" element={<AddService />} />
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/helpandsupport" element={<HelpAndSupport />} />
@@ -60,17 +63,17 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signupAsTourist" element={<Signup userType="tourist" />} />
       <Route path="/signupAsSeller" element={<Signup userType="seller" />} />
-      <Route path="/signupAsTourist" element={<Signup userType="tourist" />} />
-      <Route path="/signupAsSeller" element={<Signup userType="seller" />} />
       <Route path="/genericinfo" element={<GenericInfoAboutService />} />
       <Route path="/listing" element={<Listing />} />
       <Route path="/Blog/:id" element={<BlogPage />} />
       <Route path="/allBlogs" element={<Blogs />} />
       <Route path="/spotListing" element={<SpotListing />} />
       <Route path="/tourGuideListing" element={<TourGuideListing />} />
-      <Route path="/addTourGuide" element={<AddTourGuide/>} />
-      <Route path="/addHotel" element={<AddHotel/>} />
-      <Route path="/addHotelRoom" element={<AddHotelRoom/>} />
+      <Route path="/addTourGuide" element={<AddTourGuide />} />
+      <Route path="/addHotel" element={<AddHotel />} />
+      <Route path="/addTravelAgent" element={<AddTravelAgent />} />
+      <Route path="/addHotelRoom" element={<AddHotelRoom />} />
+      <Route path="/restaurantListing" element={<RestaurantListing />} />
       <Route path="/forgetPassword" element={<ForgetPassword />} />
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
     </Routes>

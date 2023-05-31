@@ -16,11 +16,11 @@
 }
 
 .description {
-    color: var(--assistColor);
-    max-width: 60%;
-    margin: 0px 0px 30px 0px;
-    text-align: center;
-  }
+  color: var(--assistColor);
+  max-width: 60%;
+  margin: 0px 0px 30px 0px;
+  text-align: center;
+}
 
 .heading {
   color: var(--primaryColor);
@@ -43,7 +43,7 @@
 }
 
 .formFields {
-  width: 90%;
+  width: 70%;
 }
 
 .content {
@@ -65,20 +65,23 @@
   font-size: 50px;
 }
 
-.formContainer{
-    display: flex;
-    flex-direction: column;
-    gap:10px;
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.btnDiv
-{
-    display: flex;
-    justify-content: center;
+.btnDiv {
+  display: flex;
+  justify-content: center;
 }
 
-.hotelAmeneties{
+.hotelAmeneties {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.hotelAmeneties>* {
+  width: 45%;
 }
