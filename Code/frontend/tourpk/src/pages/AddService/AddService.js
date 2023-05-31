@@ -7,19 +7,23 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import { useNavigate } from "react-router";
 import axiosInstance from "../../utils/Api";
 const AddService = () => {
-    const [file, setFile] = useState(null);
+    const [files, setFiles] = useState([]);
     const [service, setService] = useState("");
     const navigate = useNavigate();
     const handleChange = (selectedOption) => {
         setService(selectedOption);
     };
-
-    const upload = async (event) => {
+    const upload = async () => {
         try {
-            const formData = new FormData();
-            formData.append("file", file);
-            const res = await axiosInstance.post("/upload", formData);
-            return res.data;
+            const uploadPromises = files.map((file) => {
+                const formData = new FormData();
+                formData.append("file", file);
+                return axiosInstance.post("/upload", formData);
+            });
+
+            const responses = await Promise.all(uploadPromises);
+            const imageUrls = responses.map((res) => res.data);
+            return imageUrls;
         } catch (err) {
             console.log(err);
         }
@@ -31,8 +35,9 @@ const AddService = () => {
                 service == "Travel Agent" ? "../static/images/addTravelAgent.png" : "../static/images/addResturant.png"
 
     const onSubmit = async (values, event) => {
-        const imgUrl = await upload(event);
-        values.image = imgUrl;
+        const imageUrls = await upload();
+        values.images = imageUrls;
+        console.log(values);
         const URL = service == "Hotel" ? "addHotel" :
             service == "Tour Guide" ? "addTourGuide" :
                 service == "Travel Agent" ? "addTravelAgent" : "addrestaurant"
@@ -147,15 +152,16 @@ const AddService = () => {
                                     <FormField name="Country" label="Country" type="text" placeholder="Pakistan" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
                                     <FormField name="Street" label="Street Address" type="text" placeholder="Street # 1" validate={required} theme="light" value={values} renderIcon={() => null} />
                                     <div className={styles.uploadMedia}>
-                                        <label htmlFor="media-upload">Add Some Astetic Photos:&emsp;&emsp;</label>
+                                        <label htmlFor="media-upload"> Photos related to your service</label>
                                         <input
                                             id="media-upload"
                                             type="file"
-                                            className={styles.blogImg}
-                                            name="file"
-                                            onChange={(e) => setFile(e.target.files[0])}
-                                            placeholder="Select an image file"
+                                            className={styles.imgBtn}
+                                            name="files"
+                                            onChange={(e) => setFiles(Array.from(e.target.files))}
+                                            multiple
                                         />
+
                                     </div>
                                     <Button value="Continue" type="submit" btnType="submit" />
                                 </form>
