@@ -10,5 +10,6 @@ router.use("/auth", authRoutes);
 router.use("/comment", commentRoutes);
 router.use("/help", helpRouter);
 router.use("/payment", paymentRouter);
+// router.use("/hotel", hotel);
 
 module.exports = router;

@@ -31,7 +31,11 @@ module.exports = (sequelize, DataTypes) => {
         role: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        // plan: { //priviledge users -> basic, premium etc..
+        //     type: DataTypes.STRING,
+        //     allowNull: true
+        // }
     }, {
         timestamps: false
     });
@@ -39,7 +43,19 @@ module.exports = (sequelize, DataTypes) => {
         User.hasMany(models.BlogPost, {
             onDelete: "cascade",
         });
+        User.hasMany(models.Review, {
+            onDelete: "cascade",
+        });
         User.hasMany(models.Comment, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.BookingTravelAgent, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.BookingTourGuide, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.BookingHotel, {
             onDelete: "cascade",
         });
     };

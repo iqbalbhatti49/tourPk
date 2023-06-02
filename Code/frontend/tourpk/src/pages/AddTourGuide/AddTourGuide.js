@@ -77,17 +77,6 @@ const AddTourGuide = () => {
                     theme="light"
                     renderIcon={() => null}
                   />
-                  <div className={styles.uploadMedia}>
-                    <label htmlFor="media-upload">Upload Media:&emsp;&emsp;</label>
-                    <input
-                      id="media-upload"
-                      type="file"
-                      accept="image/*"
-                      className={styles.blogImg}
-                      name="file"
-                      onChange={handleInputChange}
-                    />
-                  </div>
                   <h2>Pricing Information</h2>
                   <FormField
                     name="price"

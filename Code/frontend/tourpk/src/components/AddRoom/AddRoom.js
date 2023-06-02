@@ -30,11 +30,11 @@ const AddRoom = () => {
                                         theme="light"
                                     />
                                     <FormField
-                                        name="roomNumber"
-                                        label="Room Number"
-                                        type="text"
-                                        placeholder="101, 202"
-                                        validate={required}
+                                        name="roomsCount"
+                                        label="Rooms Count with same characteristics"
+                                        type="number"
+                                        placeholder="30"
+                                        validate={mustBeNumber}
                                         renderIcon={() => null}
                                         theme="light"
                                     />
@@ -80,6 +80,16 @@ const AddRoom = () => {
                                     />
 
                                     <FormField
+                                        name="description"
+                                        label="Room description"
+                                        type="text"
+                                        placeholder="Amazing ventilation with 3 windows, coffee table area..."
+                                        validate={required}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
                                         name="smokingPolicy"
                                         label="Smoking Policy"
                                         type="text"
@@ -90,10 +100,10 @@ const AddRoom = () => {
                                     />
 
                                     <FormField
-                                        name="price"
-                                        label="Price"
+                                        name="rent"
+                                        label="Rent per Night"
                                         type="number"
-                                        placeholder="1500"
+                                        placeholder="2000"
                                         validate={mustBeNumber}
                                         renderIcon={() => null}
                                         theme="light"
