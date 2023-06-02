@@ -50,7 +50,7 @@ const AddTravelAgent = () => {
                                     <FormField name="hotel" label="Hotel details (if any)" type="text" placeholder="3 days in PC Hnza, 2 days in Serena Karachi..." theme="light" value={values} renderIcon={() => null} />
                                     <FormField name="food" label="Food details (if any)" type="text" placeholder="eg. Lunch included, at same hotel/ xyz travelAgent..." theme="light" value={values} renderIcon={() => null} />
                                     <FormField name="transport" label="Transport details (if any)" type="text" placeholder="eg. Departure from xyz Lahore Airport, back from Gilgit Airport..." theme="light" value={values} renderIcon={() => null} />
-
+                                    <FormField name="exclude" label="What's Excluded from package?" type="text" placeholder="eg. Return air ticket, dinner , Personal Expense..." theme="light" value={values} renderIcon={() => null} />
                                     <div className={styles.itenerary} >
                                         <h3 className={styles.title}>Itenerary (tour plan details per day)</h3>
                                         <a href="#" onClick={addSection} id={styles.addIcon} > <IconAdd /> </a>
