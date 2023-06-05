@@ -1,14 +1,17 @@
 import React from "react";
 import styles from "./AddHotelRoom.module.css";
-import { Form as FormFinal } from "react-final-form";
-import { FormField, Button } from "../../components/index";
-import {AddRoom} from "../../components/index";
+import { AddRoom } from "../../components/index";
+import { useLocation } from "react-router-dom";
 
 const AddHotelRoom = () => {
+  const location = useLocation();
+  const hotelData = location.state;
+
+  console.log("--> inside AddHotelRoom --> ", hotelData);
 
   return (
-        <AddRoom/>                   
-    );
+    <AddRoom hotelData={hotelData} />
+  );
 };
 
 export default AddHotelRoom;

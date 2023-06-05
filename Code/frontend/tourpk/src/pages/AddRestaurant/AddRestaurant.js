@@ -6,11 +6,14 @@ import { mustBeNumber, required, validateURL } from '../../utils/validations';
 import { mealOptions, featureOptions } from '../../utils/Constants/RestaurantsOptions';
 import { useLocation } from "react-router";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddRestaurant = () => {
 
+    const navigate = useNavigate();
     const location = useLocation();
-    const onSubmit = (values) => {
+
+    const preProcess = (values) => {
         // convert selected checkbox values to comma-separated string
         const meals = mealOptions
             .filter(option => values[option.name])
@@ -41,7 +44,16 @@ const AddRestaurant = () => {
             restaurant: restaurant,
             images: imagesArray
         }
-        axios.post("restaurant/addRestaurant", restaurantData);
+        return restaurantData;
+    }
+
+    const onSubmit = async (values) => {
+
+        const restaurantData = preProcess(values);
+        const restaurantAdded_ = await axios.post("restaurant/addRestaurant", restaurantData);
+        const restaurantAdded = restaurantAdded_.data;
+        console.log("--> Back on F.end --> ", restaurantAdded);
+        navigate(`/restaurantListing/${restaurantAdded.serviceObj.name}`, { restaurantAdded });
     };
 
     return (
