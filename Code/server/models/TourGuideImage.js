@@ -16,10 +16,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    TourGuideImage.associate = (models) => {
-        TourGuideImage.belongsTo(models.TourGuide, {
-            onDelete: "cascade"
-        });
-    };
     return TourGuideImage;
 };

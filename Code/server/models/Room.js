@@ -52,10 +52,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    Hotel.associate = (models) => {
-        Room.belongsTo(models.Hotel, {
-            onDelete: "cascade"
-        });
+    Room.associate = (models) => {
         Room.hasMany(models.BookingHotel, {
             onDelete: "cascade"
         });

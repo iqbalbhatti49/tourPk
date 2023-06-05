@@ -38,9 +38,6 @@ module.exports = (sequelize, DataTypes) => {
     BookingHotel.belongsTo(models.User, {
       onDelete: "cascade",
     });
-    BookingHotel.belongsTo(models.Room, {
-      onDelete: "cascade",
-    });
   };
   // BookingHotel.sync({ alter: true })
   return BookingHotel;

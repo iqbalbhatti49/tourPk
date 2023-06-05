@@ -40,11 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
     TourGuide.associate = (models) => {
-        TourGuide.belongsTo(models.Service, {
-            onDelete: "cascade",
-            foreignKey: 'TourGuideId'
-        });
-        TourGuide.hasMany(models.ImageTourGuide, {
+        TourGuide.hasMany(models.TourGuideImage, {
             onDelete: "cascade",
         });
         TourGuide.hasMany(models.BookingTourGuide, {

@@ -41,11 +41,8 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
     Restaurant.associate = (models) => {
-        Restaurant.hasMany(models.ImageRestaurant, {
+        Restaurant.hasMany(models.RestaurantImage, {
             onDelete: "cascade",
-        });
-        Restaurant.belongsTo(models.Service, {
-            onDelete: "cascade"
         });
     };
     // Restaurant.sync({ alter: true })

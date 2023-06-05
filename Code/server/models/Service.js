@@ -1,4 +1,4 @@
-module.exports = (sequelize) => {
+module.exports = (sequelize, DataTypes) => {
   const Service = sequelize.define('Service', {
     id: {
       type: DataTypes.INTEGER,
@@ -49,23 +49,23 @@ module.exports = (sequelize) => {
   });
 
 
-  Services.associate = (models) => {
-    Services.hasMany(models.Hotel, {
+  Service.associate = (models) => {
+    Service.hasMany(models.Hotel, {
       onDelete: "cascade",
     });
-    Services.hasMany(models.Restaurant, {
+    Service.hasMany(models.Restaurant, {
       onDelete: "cascade",
     });
-    Services.hasMany(models.TourGuide, {
+    Service.hasMany(models.TourGuide, {
       onDelete: "cascade",
     });
-    Services.hasMany(models.TravelAgent, {
+    Service.hasMany(models.TravelAgent, {
       onDelete: "cascade",
     });
-    Services.hasMany(models.Review, {
+    Service.hasMany(models.Review, {
       onDelete: "cascade",
     });
   };
-  // Services.sync({ alter: true })
+  // Service.sync({ alter: true })
   return Service;
 };

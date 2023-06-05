@@ -16,10 +16,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    RestaurantImage.associate = (models) => {
-        RestaurantImage.belongsTo(models.Restaurant, {
-            onDelete: "cascade"
-        });
-    };
     return RestaurantImage;
 };

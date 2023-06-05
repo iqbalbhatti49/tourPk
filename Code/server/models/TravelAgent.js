@@ -52,14 +52,11 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
     TravelAgent.associate = (models) => {
-        TravelAgent.hasMany(models.ImageTravelAgent, {
+        TravelAgent.hasMany(models.TravelAgentImage, {
             onDelete: "cascade",
         });
         TravelAgent.hasMany(models.BookingTravelAgent, {
             onDelete: "cascade",
-        });
-        TravelAgent.belongsTo(models.Service, {
-            onDelete: "cascade"
         });
     };
     // TravelAgent.sync({ alter: true })

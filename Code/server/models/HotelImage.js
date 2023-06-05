@@ -16,10 +16,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    HotelImage.associate = (models) => {
-        HotelImage.belongsTo(models.Hotel, {
-            onDelete: "cascade"
-        });
-    };
     return HotelImage;
 };

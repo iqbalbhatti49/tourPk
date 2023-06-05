@@ -16,10 +16,5 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    TravelAgentImage.associate = (models) => {
-        TravelAgentImage.belongsTo(models.TravelAgent, {
-            onDelete: "cascade"
-        });
-    };
     return TravelAgentImage;
 };
