@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
             increment: 1, // increment by 1
         },
         openTime: {
-            type: DataTypes.TIME,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         closeTime: {
-            type: DataTypes.TIME,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         menuUrl: {

@@ -1,3 +1,5 @@
+const { hashSync } = require("bcrypt");
+
 module.exports = (sequelize, DataTypes) => {
     const RestaurantImage = sequelize.define('RestaurantImage', {
         id: {
@@ -8,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1,
             increment: 1,
         },
-        URL: {
-            type: DataTypes.INTEGER,
+        imageUrl: {
+            type: DataTypes.STRING,
             allowNull: false
         },
     }, {
