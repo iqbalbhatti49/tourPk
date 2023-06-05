@@ -12,23 +12,41 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        city: {
+        experience: {
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        gender: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        primaryAreas: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        otherAreas: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        language: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        perHourRate: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
     }, {
         timestamps: false
     });
-    // TourGuide.associate = (models) => {
-    //     TourGuide.hasMany(models.?, {
-    //         onDelete: "cascade",
-    //         foreignKey: 'TourGuideId'
-    //     });
-    //     TourGuide.hasMany(models.?, {
-    //         onDelete: "cascade",
-    //         foreignKey: 'TourGuideId'
-    //     });
-    // };
+    TourGuide.associate = (models) => {
+        TourGuide.hasMany(models.TourGuideImage, {
+            onDelete: "cascade",
+        });
+        TourGuide.hasMany(models.BookingTourGuide, {
+            onDelete: "cascade",
+        });
+    };
     // TourGuide.sync({ alter: true })
     return TourGuide;
 }

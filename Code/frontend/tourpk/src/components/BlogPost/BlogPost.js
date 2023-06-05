@@ -35,7 +35,7 @@ const BlogPost = ({ post }) => {
 
     return (
         <div className={styles.container}>
-            <img className={styles.img} src={`../static/images/upload/${post.image}`} alt="" />
+            <img className={styles.img} src={`../static/images/upload/${post.image ? post.image : "1685279246102blogDummy.jpeg"}`} alt="" />
             <div className={styles.user}>
                 <IconAvatar />
                 <p className={styles.info}> {post.User && post.User.name} </p>

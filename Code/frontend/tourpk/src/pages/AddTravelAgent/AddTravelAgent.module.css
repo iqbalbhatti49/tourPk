@@ -1,0 +1,67 @@
+#travelAgentContainer {
+    padding: 0vh 12vw;
+    margin-top: 45px;
+    display: flex;
+    gap: 0px;
+}
+
+.meals,
+.subfeatures {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90%;
+}
+
+.meals>*,
+.subfeatures>* {
+    width: 33%;
+}
+
+.basicInfo {
+    margin-top: 45px;
+    width: 90%;
+}
+
+.formContainer {
+    flex: 2;
+    width: 70%;
+}
+
+.imageContainer {
+    margin-top: 70px;
+    flex: 1;
+}
+
+.imageContainer img {
+    width: 100%;
+    position: sticky !important;
+    top: 0;
+}
+
+.subheading {
+    color: var(--primaryColor);
+    font-size: 18px;
+    width: 100%;
+}
+
+.title {
+    padding-top: 20px;
+}
+
+.formBody {
+    margin-bottom: 30px;
+}
+
+.title {
+    padding-top: 20px;
+}
+
+.itenerary {
+    display: flex;
+}
+
+#addIcon {
+    position: relative;
+    top: 29px;
+    left: 13px;
+}

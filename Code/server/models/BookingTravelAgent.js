@@ -1,12 +1,13 @@
+
 module.exports = (sequelize, DataTypes) => {
-    const Booking = sequelize.define("Booking", {
+    const BookingTravelAgent = sequelize.define("BookingTravelAgent", {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-            startAt: 1, // start the auto increment at 1
-            increment: 1, // increment by 1
+            startAt: 1,
+            increment: 1,
         },
         checkInTime: {
             type: DataTypes.DATE,
@@ -18,9 +19,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         discount: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         quantity: //multiple of basic offer of a service
+        {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        totalPrice:
         {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -28,16 +34,15 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         timestamps: false
     });
-    // Booking.associate = (models) => {
-    //     Booking.hasMany(models.??, {
-    //         onDelete: "cascade",
-    //         foreignKey: 'BookingId'
-    //     });
-    //     Booking.hasMany(models.??, {
-    //         onDelete: "cascade",
-    //         foreignKey: 'BookingId'
-    //     });
-    // };
-    // Booking.sync({ alter: true })
-    return Booking;
+    BookingTravelAgent.associate = (models) => {
+        BookingTravelAgent.belongsTo(models.User, {
+            onDelete: "cascade",
+        });
+        BookingTravelAgent.belongsTo(models.Room, {
+            onDelete: "cascade",
+        });
+    };
+    // BookingTravelAgent.sync({ alter: true })
+    return BookingTravelAgent;
 }
+
