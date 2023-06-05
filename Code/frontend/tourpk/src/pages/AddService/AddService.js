@@ -107,7 +107,7 @@ const AddService = () => {
                                 <form onSubmit={handleSubmit}>
                                     <h2 className={styles.subTitle}>About {service}</h2>
                                     <FormField
-                                        name="serviceName"
+                                        name="name"
                                         label="Name"
                                         type="text"
                                         placeholder={service == "Hotel" ? "PC Hotel" : service == "Tour Guide" ? "Iqra" : service == "Travel Agent" ? "PK Tours" : "Khaba"}
@@ -116,7 +116,7 @@ const AddService = () => {
                                         renderIcon={() => null}
                                     />
                                     <FormField
-                                        name="Description"
+                                        name="description"
                                         label="Description"
                                         type="text"
                                         placeholder="About your service"
@@ -126,7 +126,7 @@ const AddService = () => {
                                         renderIcon={() => null}
                                     />
                                     <FormField
-                                        name="Email"
+                                        name="email"
                                         label="Email"
                                         type="email"
                                         placeholder="abc@email.com"
@@ -136,7 +136,7 @@ const AddService = () => {
                                         renderIcon={() => null}
                                     />
                                     <FormField
-                                        name="WebsiteURL"
+                                        name="website"
                                         label="Website URL"
                                         type="text"
                                         placeholder="pc.com"
@@ -145,12 +145,12 @@ const AddService = () => {
                                         value={values}
                                         renderIcon={() => null}
                                     />
-                                    <FormField name="PhoneNumber" label="Phone no." type="text" placeholder="Your Phone Number" validate={validatePhone} theme="light" renderIcon={() => null} />
+                                    <FormField name="phone" label="Phone no." type="text" placeholder="Your Phone Number" validate={validatePhone} theme="light" renderIcon={() => null} />
                                     <h2 className={styles.subTitle}>Location</h2>
-                                    <FormField name="City" label="City" type="text" placeholder="Lahore" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="Province" label="State/Province" type="text" placeholder="Punjab" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="Country" label="Country" type="text" placeholder="Pakistan" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="Street" label="Street Address" type="text" placeholder="Street # 1" validate={required} theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="city" label="City" type="text" placeholder="Lahore" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="province" label="State/Province" type="text" placeholder="Punjab" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="country" label="Country" type="text" placeholder="Pakistan" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="address" label="Street Address" type="text" placeholder="Street # 1" validate={required} theme="light" value={values} renderIcon={() => null} />
                                     <div className={styles.uploadMedia}>
                                         <label htmlFor="media-upload"> Photos related to your service</label>
                                         <input
