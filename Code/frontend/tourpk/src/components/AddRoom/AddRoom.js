@@ -3,12 +3,30 @@ import styles from "./AddRoom.module.css";
 import { Form as FormFinal } from "react-final-form";
 import { FormField, Button } from "../../components/index";
 import RoomAmeneties from "../RoomAmeneties/RoomAmeneties"
-import { mustBeNumber, validateAlpha } from "../../utils/validations";
+import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
+import { roomAmenities } from "../../utils/Constants/RoomAmenetiesOptions";
 
-const AddRoom = () => {
-    const required = (value) => (value ? undefined : "Required");
+const AddRoom = (props) => {
+
+    const { hotelData } = props; //{ hotelAmenities: "...", service: {...} }
+
+    const preProcess = (values) => {
+        // convert selected checkbox values to comma-separated string
+        const hotelRoomAmenities = roomAmenities
+            .filter(option => values[option.name])
+            .map(option => option.label)
+            .join(", ");
+
+        // TODO: remaining fields processing...
+
+        return hotelRoomAmenities;
+    };
+
     const onSubmit = (values) => {
         console.log("Form submitted with values:", values);
+
+        const roomData = preProcess(values);
+
     };
 
     return (
@@ -109,7 +127,7 @@ const AddRoom = () => {
                                         theme="light"
                                     />
 
-                                    <RoomAmeneties />
+                                    <RoomAmeneties values={values} />
                                     <div className={styles.btnDiv}>
                                         <Button
                                             id={styles.signupBtn}
