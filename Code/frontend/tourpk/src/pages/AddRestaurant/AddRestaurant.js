@@ -48,7 +48,6 @@ const AddRestaurant = () => {
     }
 
     const onSubmit = async (values) => {
-
         const restaurantData = preProcess(values);
         const restaurantAdded_ = await axios.post("restaurant/addRestaurant", restaurantData);
         const restaurantAdded = restaurantAdded_.data;

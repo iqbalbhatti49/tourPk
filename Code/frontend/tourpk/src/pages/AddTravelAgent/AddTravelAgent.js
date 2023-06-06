@@ -5,6 +5,7 @@ import { FormField, Button, IconAdd, ServiceSection } from "../../components/ind
 import { mustBeNumber, required } from '../../utils/validations';
 import { useLocation } from "react-router";
 import { itenerary } from "../../utils/Constants/travelAgent";
+import axios from "axios";
 
 const AddTravelAgent = () => {
 
@@ -15,7 +16,7 @@ const AddTravelAgent = () => {
         setSections([...sections, sections.length + 1]);
     };
 
-    const onSubmit = (values) => {
+    const onSubmit = async (values) => {
         let itenerary = "";
         for (let i = 0; i < sections.length; i++) {
             let j = i + 1;
@@ -31,6 +32,12 @@ const AddTravelAgent = () => {
             travelAgent: values
         };
         console.log(travelAgent);
+
+        const travelAgentObj = await axios.post("/addTravelAgentPackage");
+        const travelAgentAdded = travelAgentObj.data;
+        console.log("--> Back on F.end --> ", travelAgentAdded);
+        navigate(`/restaurantListing/${travelAgentAdded.serviceObj.name}`, { travelAgentAdded });
+
     };
 
     return (

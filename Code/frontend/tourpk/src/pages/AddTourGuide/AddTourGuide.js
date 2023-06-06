@@ -8,12 +8,17 @@ import { mustBeNumber, required } from "../../utils/validations";
 const AddTourGuide = () => {
   const location = useLocation();
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     const serviceGeneric = location.state;
     const tourGuideData = {
       serviceGeneric, values
     }
     console.log("-->>>> ", tourGuideData);
+
+    const tourGuideObj = await axios.post("/addtourguide");
+    const tourGuideAdded = tourGuideObj.data;
+    console.log("--> Back on F.end --> ", tourGuideAdded);
+    navigate(`/restaurantListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
   };
 
   return (
