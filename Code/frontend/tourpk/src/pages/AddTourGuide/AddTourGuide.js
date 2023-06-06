@@ -3,18 +3,17 @@ import styles from "./AddTourGuide.module.css";
 import { Form as FormFinal } from "react-final-form";
 import { FormField, Button, Dropdown } from "../../components/index";
 import { useLocation } from "react-router";
-import { required } from "../../utils/validations";
+import { mustBeNumber, required } from "../../utils/validations";
 
 const AddTourGuide = () => {
   const location = useLocation();
 
   const onSubmit = (values) => {
-    console.log("--> ", location.state);
-    console.log("Form submitted with values:", values);
-    // Perform any necessary actions with the form values
-  };
-  const handleInputChange = (e) => {
-    setSelectedFile(e.target.files[0]);
+    const serviceGeneric = location.state;
+    const tourGuideData = {
+      serviceGeneric, values
+    }
+    console.log("-->>>> ", tourGuideData);
   };
 
   return (
@@ -52,7 +51,7 @@ const AddTourGuide = () => {
                     renderIcon={() => null}
                   />
                   <FormField
-                    name="primaryGuidingArea"
+                    name="primaryAreas"
                     label="Primary Guiding Area"
                     type="text"
                     placeholder="Enter your primary guiding area"
@@ -69,7 +68,7 @@ const AddTourGuide = () => {
                     renderIcon={() => null}
                   />
                   <FormField
-                    name="languages"
+                    name="language"
                     label="Languages"
                     type="text"
                     placeholder="Enter languages you speak"
@@ -79,11 +78,11 @@ const AddTourGuide = () => {
                   />
                   <h2>Pricing Information</h2>
                   <FormField
-                    name="price"
-                    label="Price Per Hour"
-                    type="text"
+                    name="perHourRate"
+                    label="Price Per Hour (Rs.)"
+                    type="number"
                     placeholder="$5"
-                    validate={required}
+                    validate={mustBeNumber}
                     theme="light"
                     renderIcon={() => null}
                   />

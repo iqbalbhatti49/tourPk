@@ -9,16 +9,13 @@ import { itenerary } from "../../utils/Constants/travelAgent";
 const AddTravelAgent = () => {
 
     const location = useLocation();
-
     const [sections, setSections] = useState([1]);
     const addSection = (e) => {
         e.preventDefault()
         setSections([...sections, sections.length + 1]);
     };
 
-
     const onSubmit = (values) => {
-        console.log("--> ", location.state);
         let itenerary = "";
         for (let i = 0; i < sections.length; i++) {
             let j = i + 1;
@@ -26,7 +23,14 @@ const AddTravelAgent = () => {
             itenerary += day;
         }
         values.itenerary = itenerary;
-        console.log(values);
+        for (let i = 1; i <= sections.length; i++) {
+            delete values[`day${i}`];
+        }
+        const travelAgent = {
+            service: location.state,
+            travelAgent: values
+        };
+        console.log(travelAgent);
     };
 
     return (

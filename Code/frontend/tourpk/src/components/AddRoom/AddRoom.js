@@ -5,10 +5,9 @@ import { FormField, Button } from "../../components/index";
 import RoomAmeneties from "../RoomAmeneties/RoomAmeneties"
 import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
 import { roomAmenities } from "../../utils/Constants/RoomAmenetiesOptions";
+import axios from "axios";
 
-const AddRoom = (props) => {
-
-    const { hotelData } = props; //{ hotelAmenities: "...", service: {...} }
+const AddRoom = ({ hotelData }) => {
 
     const preProcess = (values) => {
         // convert selected checkbox values to comma-separated string
@@ -16,17 +15,26 @@ const AddRoom = (props) => {
             .filter(option => values[option.name])
             .map(option => option.label)
             .join(", ");
-
-        // TODO: remaining fields processing...
-
-        return hotelRoomAmenities;
+        for (const amenity in RoomAmeneties) {
+            const { name } = amenity;
+            if (values.hasOwnProperty(name)) {
+                delete values[name];
+            }
+        }
+        const roomData = {
+            ...values, hotelRoomAmenities
+        }
+        return roomData;
     };
 
-    const onSubmit = (values) => {
-        console.log("Form submitted with values:", values);
-
+    const onSubmit = async (values) => {
         const roomData = preProcess(values);
-
+        const hotelRoom = {
+            hotelData,
+            roomData
+        }
+        console.log(hotelRoom)
+        await axios.post("/hotel/addHotel", hotelRoom);
     };
 
     return (
