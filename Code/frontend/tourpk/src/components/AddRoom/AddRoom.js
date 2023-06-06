@@ -66,7 +66,7 @@ const AddRoom = ({ hotelData }) => {
                                     />
 
                                     <FormField
-                                        name="occupancy"
+                                        name="capacity"
                                         label="Occupancy"
                                         type="number"
                                         placeholder="1, 2, 4"
@@ -116,7 +116,7 @@ const AddRoom = ({ hotelData }) => {
                                     />
 
                                     <FormField
-                                        name="smokingPolicy"
+                                        name="smoking"
                                         label="Smoking Policy"
                                         type="text"
                                         placeholder="Smoking, Non-Smoking"
@@ -126,7 +126,7 @@ const AddRoom = ({ hotelData }) => {
                                     />
 
                                     <FormField
-                                        name="rent"
+                                        name="rentPerNight"
                                         label="Rent per Night"
                                         type="number"
                                         placeholder="2000"

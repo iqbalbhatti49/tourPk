@@ -8,10 +8,6 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1, // start the auto increment at 1
             increment: 1, // increment by 1
         },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
         experience: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -26,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         otherAreas: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         language: {
             type: DataTypes.STRING,

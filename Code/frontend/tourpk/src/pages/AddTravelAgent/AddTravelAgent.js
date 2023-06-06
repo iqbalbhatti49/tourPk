@@ -48,12 +48,12 @@ const AddTravelAgent = () => {
                                 <div className={styles.basicInfo}>
                                     <FormField name="source" label="Tour Starting Point" type="text" placeholder="eg. Lahore" validate={required} theme="light" value={values} renderIcon={() => null} />
                                     <FormField name="destination" label="Destination" type="text" placeholder="eg. Hunza Valley" validate={required} theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="duration" label="No. of days of tour" type="text" placeholder="eg. 12 days" validate={required} theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="price" label="Base Price (Rs.)" type="text" placeholder="Price without extra services(eg. Rs 5000)" validate={mustBeNumber} theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="extraPrice" label="Additional day Price (if you offer)" type="text" placeholder="Price per day for extra tour (eg. Rs 1000)" theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="hotel" label="Hotel details (if any)" type="text" placeholder="3 days in PC Hnza, 2 days in Serena Karachi..." theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="food" label="Food details (if any)" type="text" placeholder="eg. Lunch included, at same hotel/ xyz travelAgent..." theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="transport" label="Transport details (if any)" type="text" placeholder="eg. Departure from xyz Lahore Airport, back from Gilgit Airport..." theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="daysCount" label="No. of days of tour" type="text" placeholder="eg. 12 days" validate={required} theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="packagePrice" label="Base Price (Rs.)" type="text" placeholder="Price without extra services(eg. Rs 5000)" validate={mustBeNumber} theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="PerdayExtraPrice" label="Additional day Price (if you offer)" type="text" placeholder="Price per day for extra tour (eg. Rs 1000)" theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="hotelDetails" label="Hotel details (if any)" type="text" placeholder="3 days in PC Hnza, 2 days in Serena Karachi..." theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="foodDetails" label="Food details (if any)" type="text" placeholder="eg. Lunch included, at same hotel/ xyz travelAgent..." theme="light" value={values} renderIcon={() => null} />
+                                    <FormField name="transportDetails" label="Transport details (if any)" type="text" placeholder="eg. Departure from xyz Lahore Airport, back from Gilgit Airport..." theme="light" value={values} renderIcon={() => null} />
                                     <FormField name="exclude" label="What's Excluded from package?" type="text" placeholder="eg. Return air ticket, dinner , Personal Expense..." theme="light" value={values} renderIcon={() => null} />
                                     <div className={styles.itenerary} >
                                         <h3 className={styles.title}>Itenerary (tour plan details per day)</h3>

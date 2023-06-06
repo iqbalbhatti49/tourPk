@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         rentPerNight: {
-            type: DataTypes.FLOAT,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         bedConfiguration: {
@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         isAvailable: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
+            default: true
         },
     }, {
         timestamps: false,
