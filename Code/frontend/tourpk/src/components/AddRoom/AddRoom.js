@@ -34,7 +34,10 @@ const AddRoom = ({ hotelData }) => {
             roomData
         }
         console.log(hotelRoom)
-        await axios.post("/hotel/addHotel", hotelRoom);
+        const roomObj = await axios.post("/hotel/addHotel", hotelRoom);
+        const roomAdded = roomObj.data;
+        console.log("--> Back on F.end --> ", roomAdded);
+        navigate(`/restaurantListing/${roomAdded.serviceObj.name}`, { roomAdded });
     };
 
     return (
