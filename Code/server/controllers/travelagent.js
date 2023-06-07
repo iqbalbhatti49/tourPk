@@ -24,11 +24,10 @@ exports.addTravelAgentPackage = async (req, res) => {
         img[`image${index + 1}`] = image;
     });
     const response = {
-        serviceObj,
-        travelAgentObj,
-        img
+        serviceObj: serviceObj.dataValues,
+        travelAgentObj: travelAgentObj.dataValues,
+        images: img
     };
-
     console.log("--> Back.end --> ", response);
     res.status(200).json(response);
 }

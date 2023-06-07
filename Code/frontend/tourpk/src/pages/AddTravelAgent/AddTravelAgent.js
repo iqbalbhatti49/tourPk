@@ -5,9 +5,9 @@ import { FormField, Button, IconAdd, ServiceSection } from "../../components/ind
 import { mustBeNumber, required } from '../../utils/validations';
 import { useLocation } from "react-router";
 import { itenerary } from "../../utils/Constants/travelAgent";
-import axios from "axios";
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../utils/Api";
 
 const AddTravelAgent = () => {
     const navigate = useNavigate();
@@ -35,7 +35,7 @@ const AddTravelAgent = () => {
         };
         console.log(travelAgent);
 
-        const travelAgentObj = await axios.post("/travelAgent/addTravelAgentPackage", travelAgent);
+        const travelAgentObj = await axiosInstance.post("/travelAgent/addTravelAgentPackage", travelAgent);
         const travelAgentAdded = travelAgentObj.data;
         swal("Tour Package Added Successfully", "Success! The new Tour Package entry has been added successfully.", "success");
         navigate(`/travelAgentListing/${travelAgentAdded.serviceObj.name}`, { travelAgentAdded });

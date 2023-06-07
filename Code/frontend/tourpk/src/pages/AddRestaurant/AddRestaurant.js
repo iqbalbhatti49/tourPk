@@ -5,9 +5,9 @@ import { FormField, Button } from "../../components/index";
 import { mustBeNumber, required, validateURL } from '../../utils/validations';
 import { mealOptions, featureOptions } from '../../utils/Constants/RestaurantsOptions';
 import { useLocation } from "react-router";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
+import axiosInstance from "../../utils/Api";
 
 const AddRestaurant = () => {
 
@@ -50,7 +50,7 @@ const AddRestaurant = () => {
 
     const onSubmit = async (values) => {
         const restaurantData = preProcess(values);
-        const restaurantAdded_ = await axios.post("restaurant/addRestaurant", restaurantData);
+        const restaurantAdded_ = await axiosInstance.post("restaurant/addRestaurant", restaurantData);
         const restaurantAdded = restaurantAdded_.data;
         swal("Restaurant Added Successfully", "Success! The new Restaurant entry has been added successfully.", "success");
         navigate(`/restaurantListing/${restaurantAdded.serviceObj.name}`, { restaurantAdded });
