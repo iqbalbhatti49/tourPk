@@ -6,9 +6,11 @@ import { mustBeNumber, required } from '../../utils/validations';
 import { useLocation } from "react-router";
 import { itenerary } from "../../utils/Constants/travelAgent";
 import axios from "axios";
+import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 
 const AddTravelAgent = () => {
-
+    const navigate = useNavigate();
     const location = useLocation();
     const [sections, setSections] = useState([1]);
     const addSection = (e) => {
@@ -35,9 +37,8 @@ const AddTravelAgent = () => {
 
         const travelAgentObj = await axios.post("/travelAgent/addTravelAgentPackage", travelAgent);
         const travelAgentAdded = travelAgentObj.data;
-        console.log("--> Back on F.end --> ", travelAgentAdded);
+        swal("Tour Package Added Successfully", "Success! The new Tour Package entry has been added successfully.", "success");
         navigate(`/travelAgentListing/${travelAgentAdded.serviceObj.name}`, { travelAgentAdded });
-
     };
 
     return (

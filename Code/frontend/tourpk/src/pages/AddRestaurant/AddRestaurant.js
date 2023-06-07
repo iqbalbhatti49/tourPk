@@ -7,6 +7,7 @@ import { mealOptions, featureOptions } from '../../utils/Constants/RestaurantsOp
 import { useLocation } from "react-router";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import swal from 'sweetalert';
 
 const AddRestaurant = () => {
 
@@ -51,7 +52,7 @@ const AddRestaurant = () => {
         const restaurantData = preProcess(values);
         const restaurantAdded_ = await axios.post("restaurant/addRestaurant", restaurantData);
         const restaurantAdded = restaurantAdded_.data;
-        console.log("--> Back on F.end --> ", restaurantAdded);
+        swal("Restaurant Added Successfully", "Success! The new Restaurant entry has been added successfully.", "success");
         navigate(`/restaurantListing/${restaurantAdded.serviceObj.name}`, { restaurantAdded });
     };
 

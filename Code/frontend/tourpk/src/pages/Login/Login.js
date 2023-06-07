@@ -11,10 +11,11 @@ const Login = () => {
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const onSubmit = async (values, form) => {
         try {
-            const user = dispatch(login(values));
+            const user = await dispatch(login(values));
+            console.log("----> ", user.payload);
+
             if (user.payload.plan == null)
                 navigate("/pricing");
             else
