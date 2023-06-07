@@ -1,7 +1,7 @@
 import React from "react";
 import Switch from "react-switch";
 import styles from "./InAppPlans.module.css";
-import { PriceCard, toggleChecked } from "../../components/index";
+import { Button, PriceCard, toggleChecked } from "../../components/index";
 import { useSelector, useDispatch } from 'react-redux';
 
 const InAppPlans = () => {

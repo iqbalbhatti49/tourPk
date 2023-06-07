@@ -4,21 +4,23 @@ import { Form as FormFinal } from "react-final-form";
 import { FormField, Button, Dropdown } from "../../components/index";
 import { useLocation } from "react-router";
 import { mustBeNumber, required } from "../../utils/validations";
+import swal from 'sweetalert';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AddTourGuide = () => {
+  const navigate = useNavigate();
   const location = useLocation();
-
   const onSubmit = async (values) => {
-    const serviceGeneric = location.state;
     const tourGuideData = {
-      serviceGeneric, values
-    }
-    console.log("-->>>> ", tourGuideData);
-
-    const tourGuideObj = await axios.post("/addtourguide");
+      service: location.state,
+      tourGuide: values
+    };
+    const tourGuideObj = await axios.post("/tourguide/addtourguide", tourGuideData);
     const tourGuideAdded = tourGuideObj.data;
-    console.log("--> Back on F.end --> ", tourGuideAdded);
-    navigate(`/restaurantListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
+    swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
+    // navigate(`/tourGuideListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
+    navigate(`/tourGuideListing`);
   };
 
   return (

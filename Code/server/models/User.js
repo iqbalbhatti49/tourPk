@@ -32,10 +32,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        // plan: { //priviledge users -> basic, premium etc..
-        //     type: DataTypes.STRING,
-        //     allowNull: true
-        // }
+        plan: { //Tourist Starter, Explorer Plus, Adventurer Premium
+            type: DataTypes.STRING,
+            allowNull: false,
+        }
     }, {
         timestamps: false
     });

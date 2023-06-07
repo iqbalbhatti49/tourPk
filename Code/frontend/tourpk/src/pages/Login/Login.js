@@ -3,7 +3,7 @@ import styles from "../Signup/Signup.module.css";
 import { IconEmail, IconPassword, FormField, Button, login } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
@@ -11,11 +11,15 @@ const Login = () => {
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const onSubmit = async (values, form) => {
         try {
-            dispatch(login(values));
-            navigate("/");
+            const user = await dispatch(login(values));
+            console.log("----> ", user.payload);
+
+            if (user.payload.plan == null)
+                navigate("/pricing");
+            else
+                navigate("/");
         } catch (error) {
             setErrormsg(error.response.data);
         }
