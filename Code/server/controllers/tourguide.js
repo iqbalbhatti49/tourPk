@@ -7,7 +7,6 @@ exports.addTourGuide = async (req, res) => {
     const service = req.body.service.values;
     const tourGuide = req.body.tourGuide;
     const images = req.body.service.values.images;
-    console.log("---> ", service, "---> ", tourGuide, "---> ", images);
     const serviceObj = await Service.create(service);
     tourGuide.ServiceId = serviceObj.id;
     const tourGuideObj = await TourGuide.create(tourGuide);
@@ -24,9 +23,9 @@ exports.addTourGuide = async (req, res) => {
         img[`image${index + 1}`] = image;
     });
     const response = {
-        serviceObj,
-        tourGuideObj,
-        img
+        serviceObj: serviceObj.dataValues,
+        tourGuideObj: tourGuideObj.dataValues,
+        images: img
     };
 
     console.log("--> Back.end --> ", response);

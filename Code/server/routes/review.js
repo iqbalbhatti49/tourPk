@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const authenticateMiddleware = require("../middleware/auth.js");
-const { addTourGuide } = require("../controllers/tourguide.js");
+const { addReview } = require("../controllers/review.js");
 
-router.post("/addtourguide", authenticateMiddleware, addTourGuide);
+router.post("/addReview", authenticateMiddleware, addReview);
 
 module.exports = router;

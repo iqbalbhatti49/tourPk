@@ -3,7 +3,7 @@ const router = express.Router();
 const authenticateMiddleware = require("../middleware/auth.js");
 const { addRestaurant, getRestaurantById } = require("../controllers/restaurant.js");
 
-router.post("/addRestaurant", addRestaurant);
-router.post("/restaurantListing/:name", getRestaurantById);
+router.post("/addRestaurant", authenticateMiddleware, addRestaurant);
+router.post("/restaurantListing/:name", authenticateMiddleware, getRestaurantById);
 
 module.exports = router;

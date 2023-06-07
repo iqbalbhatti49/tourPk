@@ -5,8 +5,8 @@ import { FormField, Button, Dropdown } from "../../components/index";
 import { useLocation } from "react-router";
 import { mustBeNumber, required } from "../../utils/validations";
 import swal from 'sweetalert';
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../utils/Api";
 
 const AddTourGuide = () => {
   const navigate = useNavigate();
@@ -16,11 +16,11 @@ const AddTourGuide = () => {
       service: location.state,
       tourGuide: values
     };
-    const tourGuideObj = await axios.post("/tourguide/addtourguide", tourGuideData);
+    const tourGuideObj = await axiosInstance.post("/tourguide/addtourguide", tourGuideData);
     const tourGuideAdded = tourGuideObj.data;
     swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
     // navigate(`/tourGuideListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
-    navigate(`/tourGuideListing`);
+    navigate("/tourGuideListing");
   };
 
   return (
