@@ -3,7 +3,7 @@ import styles from "../Signup/Signup.module.css";
 import { IconEmail, IconPassword, FormField, Button, login } from "../../components/index";
 import { Form as FormFinal } from 'react-final-form'
 import { validateEmail, validatePassword } from '../../utils/validations'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
@@ -14,8 +14,11 @@ const Login = () => {
 
     const onSubmit = async (values, form) => {
         try {
-            dispatch(login(values));
-            navigate("/");
+            const user = dispatch(login(values));
+            if (user.payload.plan == null)
+                navigate("/pricing");
+            else
+                navigate("/");
         } catch (error) {
             setErrormsg(error.response.data);
         }
