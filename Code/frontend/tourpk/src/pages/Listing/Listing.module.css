@@ -4,10 +4,6 @@
   padding: 0px 5vw 75px 5vw;
 }
 
-.header {
-  padding-block: 50px;
-}
-
 .heading {
   margin-top: 0px;
   max-width: 900px;
@@ -30,13 +26,14 @@
   flex-direction: row;
   gap: 100px;
   width: 100%;
+  padding-block: 50px;
 }
 
 .subHeading {
   color: var(--primaryColor);
   font-size: 2rem;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
   line-height: 4rem;
 }
 
@@ -59,43 +56,11 @@
 .separator {
   margin: 0 5px;
 }
-
-#listingBody {
-  display: flex;
-  column-gap: 50px;
-  margin-top: 20px;
-}
-
-.listingContent {
-  flex: 4.5;
-}
-
-#listingBody .summary {
-  flex: 2;
-  position: sticky;
-  top: 10px;
-  padding: 5px;
-  height: 500px;
-}
-
-.box {
-  padding: 10px 0 10px 0;
-  display: flex;
-  column-gap: 20px;
-}
-
 .divider {
   margin: 30px 0 30px 0;
   height: 2px;
   background-color: var(--assistColorLight);
   border: none;
-}
-
-.infoBoxContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 5px;
-  padding-top: 20px;
 }
 
 .roomContainer {
@@ -104,6 +69,7 @@
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: var(--boxShadow);
+  width: 70%;
 }
 
 .roomDetails {
@@ -131,8 +97,23 @@
   margin-bottom: 5px;
 }
 
-.btn{
+.reviewsContainer
+{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.rating
+{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.roomWrapper
+{
+  display: flex;
+  flex: row;
+  gap: 30px;
 }

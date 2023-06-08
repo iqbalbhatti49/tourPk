@@ -23,4 +23,5 @@ export { default as TourGuideListing } from "./TourGuideListing/TourGuideListing
 export { default as AddTourGuide } from "./AddTourGuide/AddTourGuide";
 export { default as AddHotel } from "./AddHotel/AddHotel"
 export { default as AddHotelRoom } from "./AddHotelRoom/AddHotelRoom"
-export { default as RestaurantListing } from "./RestaurantListing/RestaurantListing";
+export { default as RestaurantListing } from "./RestaurantListing/RestaurantListing";           
+export {default as AccountVerification } from "./AccountVerification/AccountVerification"
