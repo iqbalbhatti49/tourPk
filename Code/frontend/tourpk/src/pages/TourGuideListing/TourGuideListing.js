@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './TourGuideListing.module.css'
 import { Button, Carousel } from '../../components';
-import { Testimonial, CircularRating, BookingCalendar } from '../../components';
+import { Testimonial, BookingCalendar, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 
 export default function TourGuideListing() {
@@ -15,7 +15,6 @@ export default function TourGuideListing() {
    }
 
    return (
-      <div>
          <div className={styles.container}>
             <div className={styles.header}>
                <div className={styles.information}>
@@ -43,29 +42,18 @@ export default function TourGuideListing() {
                   <div>
                      <h2 className={styles.subHeading}>People's Opinion</h2>
                      <Testimonial />
+                     <div className={styles.booking}>
+                     <Button value="Book Now" />
+                  </div>
                   </div>
                </div>
                <div>
-                  <div className={styles.ratingPricing}>
-                     <h2 className={styles.subHeading}>Ratings</h2>
-                     <div className={styles.rating}>
-                        <CircularRating rating={4.5} />
-                        <p className={styles.ratingText}>Based on 10 Reviews</p>
-                     </div>
-                  </div>
+                  <Rating/>
                   <div>
                      <h2 className={styles.subHeading}>Pricing</h2>
                      <div className={styles.pricing}>
-                        <div className={styles.pricingItem}>
-                           <div>
-                              <p className={styles.pricingKey}>Half Day</p>
-                              <p className={styles.pricingValue}>$50</p>
-                           </div>
-                           <div>
-                              <p className={styles.pricingKey}>Full Day</p>
-                              <p className={styles.pricingValue}>$100</p>
-                           </div>
-                        </div>
+                        <p className={styles.pricingKey}>Per Hour</p>
+                        <p className={styles.pricingValue}>$50</p>
                      </div>
                   </div>
                   <div>
@@ -74,13 +62,12 @@ export default function TourGuideListing() {
                         <BookingCalendar />
                      </div>
                   </div>
-                  <div className={styles.booking}>
-                     <Button value="Book Now" />
-                  </div>
                </div>
             </div>
+
+            <ReviewForm serviceId={2} />
          </div>
-         <ReviewForm serviceId={2} />
-      </div>
+         
+
    );
 }

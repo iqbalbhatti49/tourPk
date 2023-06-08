@@ -28,7 +28,7 @@ const ReviewForm = ({ serviceId }) => {
 
     return (
         <div className={styles.container}>
-            <h3>Add a Review</h3>
+            <h2 className={styles.subHeading}>How Was Your Experience?</h2>
             <div className={styles.formBorder}>
                 <div className={styles.formContainer}>
                     <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >

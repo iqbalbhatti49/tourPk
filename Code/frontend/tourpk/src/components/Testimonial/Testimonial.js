@@ -1,50 +1,75 @@
 import React from 'react';
 import styles from './Testimonial.module.css';
-import AwesomeTestimonial from 'react-awesome-testimonials';
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import StarRatings from 'react-star-ratings';
 export function Testimonial() {
-   return (
-      <>
-         <AwesomeTestimonial
-            testimonials={[
-               {
-                  name: "Eva",
-                  company: "Amazon",
-                  img_src: "https://i.ibb.co/84h8svL/eight.png",
-                  review:
-                     "Lorem 1 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
-               },
-               {
-                  name: "Evelyn",
-                  company: "Netflix",
-                  img_src: "https://i.ibb.co/k8Jnx61/five.png",
-                  review:
-                     "Lorem 2 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
-               },
-               {
-                  name: "Jack",
-                  company: "Google",
-                  img_src: "https://i.ibb.co/Yj8pMF8/four.png",
-                  review:
-                     "Lorem 3 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
-               },
-               {
-                  name: "Sam",
-                  company: "Microsoft",
-                  img_src: "https://i.ibb.co/ph360c6/nine.png",
-                  review:
-                     "Lorem 4 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
-               },
-               {
-                  name: "Vernoica",
-                  company: "Facebook",
-                  img_src: "https://i.ibb.co/pXMvXhK/three.png",
-                  review:
-                     "Lorem 8 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
-               },
+   const settings = {
+      dots: true,
+      infinite: true,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+   };
+   const testimonials = [
+      {
+         name: "Eva",
+         company: "Amazon",
+         rating: 5,
+         review:
+            "Lorem 1 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+      },
+      {
+         name: "Evelyn",
+         company: "Netflix",
+         rating: 3,
+         review:
+            "Lorem 2 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+      },
+      {
+         name: "Jack",
+         company: "Google",
+         rating: 4,
+         review:
+            "Lorem 3 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+      },
+      {
+         name: "Sam",
+         company: "Microsoft",
+         rating: 4.5,
+         review:
+            "Lorem 4 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+      },
+      {
+         name: "Vernoica",
+         company: "Facebook",
+         rating: 2.5,
+         review:
+            "Lorem 8 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
+      },
 
-            ]}
-         />
-      </>
+   ];
+
+   return (
+      <div className={styles.testimonialContainer}>
+         <Slider {...settings}>
+            {testimonials.map((testimonial, index) => (
+               <div key={index} className={styles.testimonial}>
+                  <StarRatings
+                     rating={testimonial.rating}
+                     starRatedColor="#FFD700"
+                     numberOfStars={5}
+                     starDimension="20px"
+                     starSpacing="2px"
+                     name="rating"  
+                     isSelectable	= {false}
+                  />
+                  <p>{testimonial.review}</p>
+                  <p className={styles.name}>{testimonial.name}</p>
+                  <p  className={styles.company}>{testimonial.company}</p>
+               </div>
+            ))}
+         </Slider>
+      </div>
    );
 }

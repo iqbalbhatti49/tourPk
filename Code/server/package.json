@@ -28,6 +28,7 @@
     "nodemon": "^2.0.22",
     "path": "^0.12.7",
     "sequelize": "^6.30.0",
-    "sequelize-cli": "^6.6.0"
+    "sequelize-cli": "^6.6.0",
+    "twilio": "^4.11.2"
   }
 }
