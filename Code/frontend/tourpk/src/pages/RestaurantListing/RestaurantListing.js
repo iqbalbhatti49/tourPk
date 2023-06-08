@@ -1,14 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './RestaurantListing.module.css'
 import { useLocation } from "react-router";
-import { BookingCalendar, Button, CircularRating, Carousel } from '../../components';
+import { Button, CircularRating, Carousel } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
+import axiosInstance from '../../utils/Api';
 
 export default function RestaurantListing() {
     const location = useLocation();
-    console.log("location.restaurantAdded >>>>> ", location.state);
     const restaurant = location.state;
-    const address = location.state.serviceObj.address + "  " + location.state.serviceObj.city + ",  " + location.state.serviceObj.province + ",  " + location.state.serviceObj.country;
+    const [reviews, setReviews] = useState([]);
+    const [reviewsAvg, setReviewsAvg] = useState();
+
+    const getReviews = async (id) => {
+        console.log("id of reviews --- > ", id);
+        const reviews = await axiosInstance.get(`/review/getReviewsByServiceId/${id}`);
+        // setReviews(reviews.data);
+        // setReviewsAvg();
+        console.log(reviews.data)
+    }
+    useEffect(() => {
+        getReviews(location.state.serviceObj.id);
+    }, [])
 
     return (
         <div className={styles.container}>
@@ -41,7 +53,7 @@ export default function RestaurantListing() {
                             </div>
                             <div>
                                 <div className={styles.contactInfo}>
-                                    <h1 className={styles.heading}>{restaurant.serviceObj.name}</h1>
+                                    <h2 className={styles.subHeading}>{restaurant.serviceObj.name}</h2>
                                     <div className={styles.attributesContainer}>
                                         {Object.entries(location.state.serviceObj).map(([key, value]) => (
                                             key !== 'id' && key !== 'name' && key !== 'description' ? (
@@ -60,7 +72,7 @@ export default function RestaurantListing() {
                                 <h2 className={styles.subHeading}>Ratings</h2>
                                 <div className={styles.rating}>
                                     <CircularRating rating={4.5} />
-                                    <p className={styles.ratingText}>Based on 10 Reviews</p>
+                                    <p className={styles.ratingText}>Based on {reviews.length} Reviews</p>
                                 </div>
                             </div>
                             <div className={styles.booking}>
