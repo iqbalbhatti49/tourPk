@@ -414,7 +414,6 @@ export const ListingHotel = [
       ],
       bedrooms: ["king size bed", "standard size bed"]
 
-
    }
 ];
 
@@ -513,3 +512,47 @@ export const types = [
       "name": "Seller",
    }
 ];
+export const hotalDataObj = [{
+   "hotelData": {
+       "hotelData": {
+           "service": {
+               "name": "Le Milleur Cafe",
+               "description": "This villa will appeal to those seeking to unwind, recharge and be in a tranquil environment. We expect guest to maintain that tranquility and accordingly adhere to house rules including the quiet hours. If you're wanting to party this is not the place for you.The main building hosts one bedroom suite, plus an open plan living, dining and kitchen, all with access to large terrace areas with stunning coastal and forest views.",
+               "email": "mahnooralei@gmail.com",
+               "website": "iqra.com",
+               "phone": "03214358863",
+               "city": "Lahore",
+               "province": "Punjab",
+               "country": "Pakistan",
+               "address": "street#02",
+               "images": [
+                   "1686032577225wall.png"
+               ]
+           },
+           "hotelAmenities": "Lobby area, Reception desk"
+       }
+   },
+   "roomData": [{
+      "roomType": "Single",
+      "roomsCount": "789",
+      "capacity": "566",
+      "bedConfiguration": "Queen",
+      "view": "Ocean View",
+      "roomSize": "678 sq ft",
+      "description": " bnmhbjn",
+      "smoking": "Smoking",
+      "rentPerNight": "2000",
+      "roomAmenities": "Air Conditioning, Coffee Maker"
+  },{
+   "roomType": "Single",
+   "roomsCount": "789",
+   "capacity": "566",
+   "bedConfiguration": "Queen",
+   "view": "Ocean View",
+   "roomSize": "678 sq ft",
+   "description": " bnmhbjn",
+   "smoking": "Smoking",
+   "rentPerNight": "2000",
+   "roomAmenities": "Air Conditioning, Coffee Maker"
+}]
+}];
