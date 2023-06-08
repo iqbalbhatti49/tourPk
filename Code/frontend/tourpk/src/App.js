@@ -73,7 +73,7 @@ function App() {
       <Route path="/addHotel" element={<AddHotel />} />
       <Route path="/addTravelAgent" element={<AddTravelAgent />} />
       <Route path="/addHotelRoom" element={<AddHotelRoom />} />
-      <Route path="/restaurantListing/:name" element={<RestaurantListing />} />
+      <Route path="/restaurantListing/" element={<RestaurantListing />} />
       <Route path="/forgetPassword" element={<ForgetPassword />} />
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
     </Routes>
