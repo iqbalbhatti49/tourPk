@@ -12,13 +12,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        comment: {
+        review: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         date: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
             allowNull: false,
+            defaultValue: DataTypes.NOW
         },
     }, {
         timestamps: false,

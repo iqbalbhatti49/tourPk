@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         packagePrice: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
-        PerdayPrice: {
+        PerdayExtraPrice: {
             type: DataTypes.INTEGER,
             allowNull: true,
         },

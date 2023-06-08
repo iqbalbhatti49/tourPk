@@ -22,12 +22,12 @@ exports.addRestaurant = async (req, res) => {
     images.forEach((image, index) => {
         img[`image${index + 1}`] = image;
     });
-    const response = {
-        serviceObj,
-        restaurantObj,
-        img
-    };
 
+    const response = {
+        serviceObj: serviceObj.dataValues,
+        restaurantObj: restaurantObj.dataValues,
+        images: img
+    };
     console.log("--> Back.end --> ", response);
     res.status(200).json(response);
 }

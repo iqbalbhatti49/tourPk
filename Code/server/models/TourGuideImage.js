@@ -8,13 +8,14 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1,
             increment: 1,
         },
-        URL: {
-            type: DataTypes.INTEGER,
+        imageUrl: {
+            type: DataTypes.STRING,
             allowNull: false
         },
     }, {
         timestamps: false,
     });
+    // TourGuideImage.sync({ alter: true })
 
     return TourGuideImage;
 };
