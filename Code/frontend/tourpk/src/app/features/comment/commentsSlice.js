@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import axiosInstance from '../../../utils/Api';
 
 const initialState = {
     items: [
@@ -16,13 +17,13 @@ const initialState = {
 };
 
 export const fetchCommentByBlog = createAsyncThunk('comment/fetchCommentByBlog', async (blogPostId) => {
-    const response = await axios.get(`/comment/${blogPostId}`);
+    const response = await axiosInstance.get(`/comment/${blogPostId}`);
     return response.data;
 });
 
 export const addComment = createAsyncThunk('comment/addComment', async (comment) => {
     try {
-        const response = await axios.post('/comment/addComment', comment);
+        const response = await axiosInstance.post('/comment/addComment', comment);
         return response.data;
     }
     catch (err) {
@@ -32,12 +33,12 @@ export const addComment = createAsyncThunk('comment/addComment', async (comment)
 });
 
 export const deleteComment = createAsyncThunk('comment/deleteComment', async (commentId) => {
-    const response = await axios.delete(`/comment/${commentId}`);
+    const response = await axiosInstance.delete(`/comment/${commentId}`);
     return response.data;
 });
 
 export const updateComment = createAsyncThunk('comment/updateComment', async (comment) => {
-    const response = await axios.put(`/comment/${comment.id}`, comment);
+    const response = await axiosInstance.put(`/comment/${comment.id}`, comment);
     return response.data;
 });
 

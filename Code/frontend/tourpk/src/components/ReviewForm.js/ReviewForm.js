@@ -15,20 +15,21 @@ const ReviewForm = ({ serviceId }) => {
         setRating(newRating);
     };
 
-    const onSubmit = async (values) => {
+    const onSubmit = async (values, form) => {
         const review = {
             UserId: userId,
             ServiceId: serviceId,
             rating: rating,
             ...values
         }
-        console.log(review);
+        setRating(0);
+        form.reset();
         await axiosInstance.post("/review/addReview", review);
     };
 
     return (
         <div className={styles.container}>
-            <h2 className={styles.subHeading}>How Was Your Experience?</h2>
+            <h3>Add a Review</h3>
             <div className={styles.formBorder}>
                 <div className={styles.formContainer}>
                     <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >

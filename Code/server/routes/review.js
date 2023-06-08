@@ -4,6 +4,6 @@ const authenticateMiddleware = require("../middleware/auth.js");
 const { addReview, getReviewsById } = require("../controllers/review.js");
 
 router.post("/addReview", authenticateMiddleware, addReview);
-router.get("/getReviewsByServiceId", authenticateMiddleware, getReviewsById);
+router.get("/getReviewsByServiceId/:id", authenticateMiddleware, getReviewsById);
 
 module.exports = router;
