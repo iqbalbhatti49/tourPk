@@ -185,7 +185,7 @@ export const Karachi = [
    {
       name: 'Mohatta Palace',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/41/1280/805.jpg?hmac=W9CWeYdlZisqEfhjuODl83T3lCXAqjUZrOe9iMFPYmI',
+      picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/2b/9f/b4/jardines-del-palacio.jpg?w=1200&h=-1&s=1',
       tagline: 'A symbol of Karachis architectural heritage',
       rating: 4.5,
       reviews: 300
@@ -193,7 +193,7 @@ export const Karachi = [
    {
       name: 'National Museum',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/39/3456/2304.jpg?hmac=cc_VPxzydwTUbGEtpsDeo2NxCkeYQrhTLqw4TFo-dIg',
+      picture: 'https://stdc.gos.pk/media/k2/items/cache/e44a6f32e15cb53ee479b2697e759e2e_XL.jpg',
       tagline: 'Museum displaying the cultural & historical heritage',
       rating: 4.0,
       reviews: 200
@@ -201,7 +201,7 @@ export const Karachi = [
    {
       name: 'Quaid House Museum',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/38/1280/960.jpg?hmac=HBrgyJHQOGVicaWoXgvdSfTakkAyv4BxAt4rF0DhWkU',
+      picture: 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2019/12/quaid1-1024x444.jpg',
       tagline: 'The former residence of Pakistans founder',
       rating: 4.5,
       reviews: 300
@@ -209,7 +209,7 @@ export const Karachi = [
    {
       name: 'Mazar-e-Quaid',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/37/2000/1333.jpg?hmac=vpYLNsQZwU2szsZc4Uo17cW786vR0GEUVq4icaKopQI',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Jinnah_Mausoleum.JPG',
       tagline: 'The mausoleum of Quaid-e-Azam, the founder of Pakistan',
       rating: 4.5,
       reviews: 300
@@ -217,7 +217,7 @@ export const Karachi = [
    {
       name: 'Port Grand',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/43/1280/831.jpg?hmac=glK-rQ0ppFClW-lvjk9FqEWKog07XkOxJf6Xg_cU9LI',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/a/a0/Port_Grand_Karachi.JPG',
       tagline: 'A waterfront recreational area with restaurants',
       rating: 4.0,
       reviews: 200
@@ -225,7 +225,7 @@ export const Karachi = [
    {
       name: 'Clifton Beach',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/44/4272/2848.jpg?hmac=a0rRK2VqTNYMvxqfQjFI65m4ZzMGnKRJzHvrJovjoQQ',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Seaview_%28Clifton_Beach%29_Karachi.jpg/250px-Seaview_%28Clifton_Beach%29_Karachi.jpg',
       tagline: 'A popular beach destination for locals and tourists',
       rating: 4.5,
       reviews: 300
@@ -233,7 +233,7 @@ export const Karachi = [
    {
       name: 'Empress Market',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/46/3264/2448.jpg?hmac=ZHE8nk-Q9uRp4MxgKNvN7V7pYFvA-9BCv99ltY3HBv4',
+      picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/98/f8/74/an-outer-view.jpg?w=1200&h=-1&s=1',
       tagline: 'A historic market known for its architecture and variety of goods',
       rating: 4.0,
       reviews: 200
@@ -241,7 +241,7 @@ export const Karachi = [
    {
       name: 'Churna Island',
       location: 'Karachi, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/47/4272/2848.jpg?hmac=G8dXSLa-ngBieraQt5EORu-4r6tveX3fhvBTZM0Y8xM',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Charna_Island_Karachi.JPG/260px-Charna_Island_Karachi.JPG',
       tagline: 'An uninhabited island known for its clear waters and marine life',
       rating: 4,
       reviews: 200
@@ -251,7 +251,7 @@ export const Peshawar = [
    {
       name: 'Peshawar Museum',
       location: 'Peshawar, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/52/1280/853.jpg?hmac=FBJ023QL6SsJpbQl8B20ExSey3BjyRH1MOw7Uo7fIMU',
+      picture: 'https://i.dawn.com/primary/2014/08/5402430b92598.jpg',
       tagline: 'Discover the rich history of Peshawar',
       rating: 4.2,
       reviews: 80
@@ -259,7 +259,7 @@ export const Peshawar = [
    {
       name: 'Bala Hisar Fort',
       location: 'Peshawar, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/51/5000/3333.jpg?hmac=9dZb89mIRt-mPQpI_ScJAxVsNI82SFCGOuiKsvGSchY',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/4/44/Bala_Hisar_Fort.jpg',
       tagline: 'Take in the stunning views of Peshawar',
       rating: 4.4,
       reviews: 95
@@ -267,7 +267,7 @@ export const Peshawar = [
    {
       name: 'Peshawar Zoo',
       location: 'Peshawar, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/50/4608/3072.jpg?hmac=E6WgCk6MBOyuRjW4bypT6y-tFXyWQfC_LjIBYPUspxE',
+      picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Peshawar_ZooV2.jpg/300px-Peshawar_ZooV2.jpg',
       tagline: 'Get up close with a variety of animals at Peshawar Zoo',
       rating: 3.8,
       reviews: 60
@@ -275,7 +275,7 @@ export const Peshawar = [
    {
       name: 'Gor Khatri',
       location: 'Peshawar, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/49/1280/792.jpg?hmac=NnUJy0O9-pXHLmY2loqVs2pJmgw9xzuixgYOk4ALCXU',
+      picture: 'https://mashriqtv.pk/en/wp-content/uploads/2021/08/a.jpg',
       tagline: 'Explore the ancient Gor Khatri archaeological site',
       rating: 4.1,
       reviews: 70
@@ -283,7 +283,7 @@ export const Peshawar = [
    {
       name: 'Peshawar Garrison Club',
       location: 'Peshawar, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/53/1280/1280.jpg?hmac=QP5opo-oENp5iFwsSiWH8azQuR0w0bwps6MT6yvhKwA',
+      picture: 'https://pbs.twimg.com/media/DdUbdQEW0AgMoJM.jpg',
       tagline: 'Relax and enjoy the amenities at the Peshawar Garrison Club',
       rating: 4.5,
       reviews: 120
@@ -291,7 +291,7 @@ export const Peshawar = [
    {
       name: 'Khyber Pass',
       location: 'Peshawar, Pakistan',
-      picture: 'https://fastly.picsum.photos/id/52/1280/853.jpg?hmac=FBJ023QL6SsJpbQl8B20ExSey3BjyRH1MOw7Uo7fIMU',
+      picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/2b/10/72/khyber-gate.jpg?w=1200&h=1200&s=1',
       tagline: 'Take a thrilling drive through the historic Khyber Pass',
       rating: 4.0,
       reviews: 50
@@ -317,7 +317,7 @@ export const Quetta = [
    {
       name: "Quetta Bazaar",
       location: "Quetta, Balochistan",
-      picture: "https://fastly.picsum.photos/id/61/3264/2448.jpg?hmac=Xi3Kq99U5tueFi0aajgUP0yWAL4xwCHg5ZXGZRLTqyI",
+      picture: "https://live.staticflickr.com/5223/5746357964_1a2f18111b_b.jpg",
       tagline: "A bustling bazaar with handicrafts and local delicacies",
       rating: 4.0,
       reviews: 100
@@ -325,7 +325,7 @@ export const Quetta = [
    {
       name: "Kund Malir Beach",
       location: "Quetta, Balochistan",
-      picture: "https://fastly.picsum.photos/id/59/2464/1632.jpg?hmac=uTfe6jCzLvCzANvJgtpo-a0fKhO8BvjpwLNYX3lqx_Q",
+      picture: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/d8/e8/14/kund-malir-beach-03008094313.jpg?w=1200&h=1200&s=1",
       tagline: "A scenic beach with crystal clear water and rock formations",
       rating: 4.8,
       reviews: 250
@@ -335,7 +335,7 @@ export const Zhob = [
    {
       name: "Zhob Valley",
       location: "Zhob, Balochistan",
-      picture: "https://picsum.photos/id/69/4912/3264",
+      picture: "https://www.mustvisitplace.com/wp-content/uploads/2019/05/Zhob-River-pakisthan.jpg",
       tagline: "A picturesque valley surrounded by mountains",
       rating: 4.2,
       reviews: 100
@@ -343,23 +343,15 @@ export const Zhob = [
    {
       name: "Ziarat Juniper Forest",
       location: "Zhob, Balochistan",
-      picture: "https://picsum.photos/id/70/3011/2000",
+      picture: "https://ichef.bbci.co.uk/news/976/cpsprodpb/5DE7/production/_100693042_img_1946.jpg.webp",
       tagline: "A unique forest of ancient juniper trees",
       rating: 4.7,
       reviews: 200
    },
    {
-      name: "Karez System",
-      location: "Zhob, Balochistan",
-      picture: "https://picsum.photos/id/71/5000/3333",
-      tagline: "A unique underground water system that dates",
-      rating: 4.1,
-      reviews: 120
-   },
-   {
       name: "Sandeman Tangi Dam",
       location: "Zhob, Balochistan",
-      picture: "https://picsum.photos/id/74/4288/2848",
+      picture: "https://flypakistan.pk/assets/img/attractions/Sandeman%20Tangi.jpg",
       tagline: "A scenic dam with turquoise water",
       rating: 4.1,
       reviews: 120
@@ -367,42 +359,26 @@ export const Zhob = [
 ]
 export const Sibi = [
    {
-      name: "Sibi Hill Park",
-      location: "Sibi, Balochistan",
-      picture:
-         "https://fastly.picsum.photos/id/58/1280/853.jpg?hmac=YO3QnOm9TpyM5DqsJjoM4CHg8oIq4cMWLpd9ALoP908",
-      tagline:
-         "A beautiful park in Sibi with lush greenery",
-      rating: 4.3,
-      reviews: 50,
-   },
-   {
       name: "Tilla Jogian",
       location: "Sibi, Balochistan",
-      picture:
-         "https://fastly.picsum.photos/id/57/2448/3264.jpg?hmac=ewraXYesC6HuSEAJsg3Q80bXd1GyJTxekI05Xt9YjfQ",
-      tagline:
-         "A beautiful mountain peak in Sibi Tilla",
+      picture: "https://upload.wikimedia.org/wikipedia/commons/1/1b/Hindu_Temple_at_Tilla_Gogian.jpg",
+      tagline:"A beautiful mountain peak in Sibi Tilla",
       rating: 4.8,
       reviews: 80,
    },
    {
       name: "Koh-e-Murad",
       location: "Sibi, Balochistan",
-      picture:
-         "https://fastly.picsum.photos/id/55/4608/3072.jpg?hmac=ahGhylwdN52ULB37deeMZX6T_G7NiERtoPhwydMvUKQ",
-      tagline:
-         "A popular hiking destination in Sibi",
+      picture:"https://live.staticflickr.com/3286/2500308298_7c15a9a972_b.jpg",
+      tagline:"A popular hiking destination in Sibi",
       rating: 4.5,
       reviews: 65,
    },
    {
       name: "Sibi Museum",
       location: "Sibi, Balochistan",
-      picture:
-         "https://fastly.picsum.photos/id/54/3264/2176.jpg?hmac=blh020fMeJ5Ru0p-fmXUaOAeYnxpOPHnhJojpzPLN3g",
-      tagline:
-         "A museum in Sibi displaying the history",
+      picture:"https://lh5.googleusercontent.com/p/AF1QipPxH__9GTC5q4ECQ3XQbAl6CwBucSoVZ0LTknr9=w480-h300-k-n",
+      tagline:"A museum in Sibi displaying the history",
       rating: 3.9,
       reviews: 30,
    },
@@ -412,7 +388,7 @@ export const Mardan = [
       name: "Takht-i-Bahi",
       location: "Mardan, Khyber Pakhtunkhwa",
       picture:
-         "https://fastly.picsum.photos/id/28/4928/3264.jpg?hmac=GnYF-RnBUg44PFfU5pcw_Qs0ReOyStdnZ8MtQWJqTfA",
+         "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/ce/c6/96/view-of-takht-i-bhai.jpg?w=1200&h=-1&s=1",
       tagline:
          "An ancient Buddhist monastery in Mardan",
       rating: 4.7,
@@ -422,7 +398,7 @@ export const Mardan = [
       name: "Swabi Forest",
       location: "Mardan, Khyber Pakhtunkhwa",
       picture:
-         "https://fastly.picsum.photos/id/29/4000/2670.jpg?hmac=rCbRAl24FzrSzwlR5tL-Aqzyu5tX_PA95VJtnUXegGU",
+         "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Sohaib_5.jpg/270px-Sohaib_5.jpg",
       tagline:
          "A serene forest in Mardan with diverse flora",
       rating: 4.2,
@@ -432,7 +408,7 @@ export const Mardan = [
       name: "Shahbaz Garhi",
       location: "Mardan, Khyber Pakhtunkhwa",
       picture:
-         "https://fastly.picsum.photos/id/33/5000/3333.jpg?hmac=h5NVRcUXmsWm612YQOroHSA5n9R7gxZgoP60LHBPHtw",
+         "https://www.livius.org/site/assets/files/3038/shahbazgarhi2.325x0-is-pid3033.jpg",
       tagline:
          "archaeological, historic and village site in Mardan",
       rating: 4.6,
@@ -444,7 +420,7 @@ export const Mardan = [
       tagline:
          "An archaeological Heart Land of Mardan",
       picture:
-         "https://fastly.picsum.photos/id/35/2758/3622.jpg?hmac=xIB3RTEGJ59FEnaQOXoaDgwX_K6PHAg57R0b4t7tiX0",
+         "https://www.kptourism.com/uploads/images/attraction/1621414607030museum.jpg",
       rating: 4.6,
       reviews: 80,
    },
