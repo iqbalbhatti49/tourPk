@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import StarRatings from 'react-star-ratings';
-export function Testimonial() {
+export function Testimonial({ testimonial }) {
    const settings = {
       dots: true,
       infinite: true,
@@ -14,35 +14,35 @@ export function Testimonial() {
    const testimonials = [
       {
          name: "Eva",
-         company: "Amazon",
+         date: "Amazon",
          rating: 5,
          review:
             "Lorem 1 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
       },
       {
          name: "Evelyn",
-         company: "Netflix",
+         date: "Netflix",
          rating: 3,
          review:
             "Lorem 2 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
       },
       {
          name: "Jack",
-         company: "Google",
+         date: "Google",
          rating: 4,
          review:
             "Lorem 3 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
       },
       {
          name: "Sam",
-         company: "Microsoft",
+         date: "Microsoft",
          rating: 4.5,
          review:
             "Lorem 4 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
       },
       {
          name: "Vernoica",
-         company: "Facebook",
+         date: "Facebook",
          rating: 2.5,
          review:
             "Lorem 8 ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.",
@@ -61,12 +61,12 @@ export function Testimonial() {
                      numberOfStars={5}
                      starDimension="20px"
                      starSpacing="2px"
-                     name="rating"  
-                     isSelectable	= {false}
+                     name="rating"
+                     isSelectable={false}
                   />
                   <p>{testimonial.review}</p>
                   <p className={styles.name}>{testimonial.name}</p>
-                  <p  className={styles.company}>{testimonial.company}</p>
+                  <p className={styles.company}>{testimonial.date}</p>
                </div>
             ))}
          </Slider>

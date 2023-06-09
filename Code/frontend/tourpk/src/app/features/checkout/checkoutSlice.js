@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
+import axiosInstance from '../../../utils/Api';
 
 const initialState = {
    paymentMethod: '',
@@ -48,7 +48,7 @@ export const initiatePayment = createAsyncThunk(
       };
       console.log(request)
       try {
-         const response = await axios.post('/payment/payment', request);
+         const response = await axiosInstance.post('/payment/payment', request);
          return response.data;
       } catch (error) {
          return rejectWithValue(error.response.data);

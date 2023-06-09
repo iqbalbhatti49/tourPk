@@ -16,6 +16,7 @@ export const HotelCard = (props) => {
                   <IconLocation />
                   <p className={styles.place}>{hotel.location}</p>
                </div>
+               <p className={styles.place}>Rs. 500</p>
                <div className={styles.stats}>
                   <div className={styles.rating}>
                      <p>{hotel.rating}</p>

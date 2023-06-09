@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     Hotel.hasMany(models.HotelImage, {
       onDelete: "cascade"
     });
+    Hotel.belongsTo(models.Service);
   };
   return Hotel;
 };
