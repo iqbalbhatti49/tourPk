@@ -1,85 +1,69 @@
 import React from 'react'
 import styles from './Listing.module.css'
-import { ListingHotel } from "../../utils/FakeData.js"
-import { IconStar, InfoBox, ImageGallery, ServiceBox, SellerProfile, BookingSummary } from '../../components/index';
+import {  Button, Carousel, ReviewForm, Rating, Testimonial } from '../../components/index';
+import {hotalDataObj} from "../../utils/FakeData";
 
 export default function Listing() {
-  const hotelData = ListingHotel[0];
-  const bigImage = hotelData.pictures.shift(); // remove the first image from the array to use it as the big image
-  const rightImages = hotelData.pictures.splice(0, 4); // get the next 4 images from the array to use as the right-side images
-
+  const service = hotalDataObj[0].hotelData.hotelData.service;
+  const rooms = hotalDataObj[0].roomData;
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <h1 className={styles.headingListing}>{hotelData.name}</h1>
-        <p className={styles.tourInfo}><span className={styles.separator}>&#8226;</span> {hotelData.rating} <IconStar /> <span className={styles.separator}>&#8226;</span> {hotelData.location} </p>
-        <ImageGallery bigImage={bigImage} rightImages={rightImages} />
+      <div className={styles.flex}>
+        <div>
+          <h1 className={styles.heading}>{service.name}</h1>
+          <p className={styles.tourInfo}>{service.address + ", " + service.city + ", " + service.country  + ", " + service.province}</p>
+          <p className={styles.tourInfo}>{service.website}</p>
+          <p className={styles.tourInfo}>{service.email}</p>
+          <p className={styles.tourInfo}>{service.phone}</p>
+          <h3 className={styles.headingListing}>Hotel Amenities</h3>
+          <p>{hotalDataObj[0].hotelData.hotelData.hotelAmenities}</p>
+          <h3 className={styles.headingListing}>About Hotel</h3>
+          <p>{service.description}</p>
+        </div>
+        <Carousel />
       </div>
-
-      <div id={styles.listingBody}>
-        <div className={styles.listingContent}>
-          <h2 className={styles.headingListing}>{hotelData.tagline}</h2>
-          <p className={styles.tourInfo}>
-            {(hotelData.Accomodation).map((item, index) => {
-              return (
-                <span key={index} className={styles.separator}>&#8226; {item} </span>
-              )
-            })}
-          </p>
-          <hr className={styles.divider} />
-
-          <h3 className={styles.headingListing}> What this place offers</h3>
-          <div className={styles.infoBoxContainer}>
-            {hotelData.offers.map((item, index) => {
-              return (
-                <InfoBox key={index} text={item} />
-              )
-            })}
+      <div>
+          <h3 className={styles.subHeading}>Room Types</h3>
+          {rooms.map((room, index) => {
+            return (
+              <div className={styles.roomWrapper}>
+                <div className={styles.roomContainer} key={index}>
+                  <h2 className={styles.headingListing}>{room.roomType}</h2>
+                  <div className={styles.roomDetails}>
+                    {Object.entries(room).map(([key, value]) => (
+                      key !== "roomAmenities" && (
+                        <div className={styles.detailItem} key={key}>
+                          <span className={styles.detailLabel}>{key}:</span>
+                          <span className={styles.detailValue}>{value}</span>
+                        </div>
+                      )
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h2 className={styles.headingListing}>Room Ameneties</h2>
+                  {room.roomAmenities}
+                </div>
+              </div>
+            );
+          })}
+          
+      </div>
+      <div>
+        <div className={styles.reviewsContainer}>
+          <div className={styles.testimonial}>
+            <h2 className={styles.subHeading}>People's Opinion</h2>
+            <Testimonial/>
           </div>
-
-          <hr className={styles.divider} />
-          {Object.entries(hotelData.About_place).map(([key, value]) => (
-            <div key={key}>
-              <h3>{value[0]}</h3>
-              <p>{value[1]}</p>
+          <div className={styles.rating}>
+            <Rating/>
+            <div className={styles.btn}>
+            <Button value="Book Room Now" btnType="submit"/>
             </div>
-          ))}
-
-          <hr className={styles.divider} />
-          <h3>Accomodation</h3>
-          <div className={styles.box}>
-            {
-              hotelData.bedrooms.map((item, index) => {
-                return (
-                  <ServiceBox key={index} heading={`Bedroom ${index + 1}`} description={item} />
-                )
-              })
-            }
-          </div>
-
-          <hr className={styles.divider} />
-          <SellerProfile />
-          <hr className={styles.divider} />
-
-          <h3>Things to know</h3>
-          <div className={styles.infoBoxContainer}>
-            {
-              hotelData.things_to_know.map((item, index) => {
-                return (
-                  <InfoBox key={index} text={item} />
-                )
-              })
-            }
-          </div>
-          <hr className={styles.divider} />
-        </div>
-
-        <div className={styles.summary}>
-          <div>
-            <BookingSummary />
           </div>
         </div>
       </div>
+      <ReviewForm />
     </div>
   );
 }

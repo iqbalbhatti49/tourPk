@@ -8,6 +8,21 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1, // start the auto increment at 1
             increment: 1, // increment by 1
         },
+        openTime: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        closeTime: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        menuUrl: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        }, menuStartingPrice: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         cuisineType: // Cuisine Type like -> Italian, Mexican, Chinese, etc.
         {
             type: DataTypes.STRING,
@@ -18,27 +33,18 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        reservationTime: {
-            type: DataTypes.DATE,
-            allowNull: false
-        },
-        basePrice: {
-            type: DataTypes.INTEGER,
+        features: {
+            type: DataTypes.TEXT,
             allowNull: false
         },
     }, {
         timestamps: false
     });
-    // Restaurant.associate = (models) => {
-    //     Restaurant.hasMany(models.?, {
-    //         onDelete: "cascade",
-    //         foreignKey: 'RestaurantId'
-    //     });
-    //     Restaurant.hasMany(models.?, {
-    //         onDelete: "cascade",
-    //         foreignKey: 'RestaurantId'
-    //     });
-    // };
+    Restaurant.associate = (models) => {
+        Restaurant.hasMany(models.RestaurantImage, {
+            onDelete: "cascade",
+        });
+    };
     // Restaurant.sync({ alter: true })
     return Restaurant;
 }

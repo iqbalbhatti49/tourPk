@@ -6,7 +6,11 @@
 }
 
 .field {
-  margin-bottom: 14px;
+  margin-bottom: 30px;
+}
+
+.formField {
+  padding-block: 10px;
 }
 
 .formField::placeholder {
@@ -41,21 +45,11 @@
   @apply --input;
 }
 
-.error {
-  color: var(--formLight);
-  padding-left: 10px;
-}
-
-.errorRed {
-  color: red;
-  padding-left: 10px;
-}
-
 .showLabel {
   position: absolute;
   top: -11px;
   left: 10px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   background-color: var(--whiteColor);
   padding: 0 5px;
@@ -75,4 +69,95 @@
 
 .checkBoxField label {
   width: 100vw !important;
+}
+
+#error {
+  border: 1px solid red;
+}
+
+#tooltip {
+  display: inline;
+}
+
+#tooltip #tooltiptext {
+  visibility: hidden;
+  width: max-content;
+  background-color: gray;
+  color: #fff;
+  border-radius: 8px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  transition: opacity 0.3s;
+}
+
+#tooltip #tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: gray transparent transparent transparent;
+}
+
+#tooltip:hover #tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkboxCustom {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-right: 15px;
+  transition: background-color 0.3s, border-color 0.9s;
+}
+
+.checkboxCustom:before {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--primaryColor);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: border-color 0.7s;
+}
+
+.checkboxInput:checked+.checkboxCustom {
+  border-color: var(--assistColor);
+}
+
+.checkboxInput:checked+.checkboxCustom:before {
+  display: block;
+}
+
+.checkboxLabel {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#checkBoxText {
+  font-size: 16px;
+  font-weight: 600;
 }

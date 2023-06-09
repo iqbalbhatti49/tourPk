@@ -28,10 +28,6 @@
     margin: 2px;
 }
 
-.tabs {
-    text-align: center;
-}
-
 :global(.react-tabs__tab--selected) {
     background: none !important;
     border: none !important;

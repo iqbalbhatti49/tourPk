@@ -1,0 +1,8 @@
+:global(.react-calendar__month-view__days__day--weekend) {
+   background-color: transparent !important;
+   color: black !important;
+}
+
+:global(.react-calendar__tile--now) {
+   background-color: var(--assistColor) !important;
+}

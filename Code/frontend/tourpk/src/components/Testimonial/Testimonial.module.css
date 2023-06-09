@@ -1,9 +1,34 @@
-:global(.Testimonials__main) {
-   max-width: 700px !important;
-   padding-top: 0px !important;
+@import "../../styles/variables.css";
+
+.testimonialContainer
+{
+   padding:60px;
+   padding-block: 5px;
+   background-color: var(--primaryColor);
+   color: var(--assistColorLight);
+   border-radius: 12px;
+   box-shadow: var(--boxShadow);
+   max-width: 50vw;
 }
 
-:global(.Testimonials__main-container) {
-   max-width: 700px !important;
-   margin-top: 0px !important;
+.testimonial
+{
+   padding: 30px;
+   padding-bottom: 10px;
+   text-align: center;
+   max-width: 90%;
+}
+
+.name
+{
+   font-size: 18px;
+   letter-spacing: 1px;
+   font-weight: 600;
+}
+.company
+{
+   font-size: 20px;
+   font-weight: bold;
+   font-style: italic;
+   margin: 0;
 }

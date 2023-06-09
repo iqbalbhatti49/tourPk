@@ -1,0 +1,164 @@
+import React from "react";
+import styles from "./AddRoom.module.css";
+import { Form as FormFinal } from "react-final-form";
+import { FormField, Button } from "../../components/index";
+import RoomAmeneties from "../RoomAmeneties/RoomAmeneties"
+import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
+import { roomAmenities } from "../../utils/Constants/RoomAmenetiesOptions";
+import axios from "axios";
+
+const AddRoom = ({ hotelData }) => {
+
+    const preProcess = (values) => {
+        // convert selected checkbox values to comma-separated string
+        const hotelRoomAmenities = roomAmenities
+            .filter(option => values[option.name])
+            .map(option => option.label)
+            .join(", ");
+        for (const amenity in RoomAmeneties) {
+            const { name } = amenity;
+            if (values.hasOwnProperty(name)) {
+                delete values[name];
+            }
+        }
+        const roomData = {
+            ...values, hotelRoomAmenities
+        }
+        return roomData;
+    };
+
+    const onSubmit = async (values) => {
+        const roomData = preProcess(values);
+        const hotelRoom = {
+            hotelData,
+            roomData
+        }
+        console.log(hotelRoom)
+        const roomObj = await axios.post("/hotel/addHotel", hotelRoom);
+        const roomAdded = roomObj.data;
+        console.log("--> Back on F.end --> ", roomAdded);
+        navigate(`/restaurantListing/${roomAdded.serviceObj.name}`, { roomAdded });
+    };
+
+    return (
+        <>
+            <div className={styles.container}>
+                <h1 className={styles.heading}>Add New Room Type</h1>
+                <div className={styles.content}>
+                    <div className={styles.formFields}>
+                        <FormFinal onSubmit={onSubmit}>
+                            {({ handleSubmit, values }) => (
+                                <form onSubmit={handleSubmit} className={styles.formContainer}>
+                                    <FormField
+                                        name="roomType"
+                                        label="Room Type"
+                                        type="text"
+                                        placeholder="Single, Double, Suite"
+                                        validate={validateAlpha}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+                                    <FormField
+                                        name="roomsCount"
+                                        label="Rooms Count with same characteristics"
+                                        type="number"
+                                        placeholder="30"
+                                        validate={mustBeNumber}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
+                                        name="capacity"
+                                        label="Occupancy"
+                                        type="number"
+                                        placeholder="1, 2, 4"
+                                        validate={mustBeNumber}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
+                                        name="bedConfiguration"
+                                        label="Bed Configuration"
+                                        type="text"
+                                        placeholder="King, Queen, Twin"
+                                        validate={validateAlpha}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
+                                        name="view"
+                                        label="View"
+                                        type="text"
+                                        placeholder="City View, Ocean View"
+                                        validate={validateAlpha}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
+                                        name="roomSize"
+                                        label="Room Size"
+                                        type="text"
+                                        placeholder="300 sq. ft., 25 sq. m"
+                                        validate={required}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
+                                        name="description"
+                                        label="Room description"
+                                        type="text"
+                                        placeholder="Amazing ventilation with 3 windows, coffee table area..."
+                                        validate={required}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
+                                        name="smoking"
+                                        label="Smoking Policy"
+                                        type="text"
+                                        placeholder="Smoking, Non-Smoking"
+                                        validate={validateAlpha}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <FormField
+                                        name="rentPerNight"
+                                        label="Rent per Night"
+                                        type="number"
+                                        placeholder="2000"
+                                        validate={mustBeNumber}
+                                        renderIcon={() => null}
+                                        theme="light"
+                                    />
+
+                                    <RoomAmeneties values={values} />
+                                    <div className={styles.btnDiv}>
+                                        <Button
+                                            id={styles.signupBtn}
+                                            value={"Submit"}
+                                            type="primary"
+                                            btnType="submit"
+                                            width={250}
+                                        />
+                                    </div>
+                                </form>
+                            )}
+                        </FormFinal>
+                    </div>
+                    <div className={styles.imageContainer}>
+                        <img src="../static/images/hotelDetails.png" alt="FAQs" />
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+};
+
+export default AddRoom;

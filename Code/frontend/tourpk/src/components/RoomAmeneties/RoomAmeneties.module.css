@@ -1,0 +1,8 @@
+.hotelAmeneties {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hotelAmeneties>* {
+  width: 33%;
+}

@@ -1,0 +1,12 @@
+.progresBar {
+   width: 100px;
+}
+
+:global(.CircularProgressbar .CircularProgressbar-path) {
+   stroke: var(--primaryColor);
+}
+
+:global(.CircularProgressbar .CircularProgressbar-text) {
+   fill: var(--primaryColor);
+   font-size: 1.5rem;
+}

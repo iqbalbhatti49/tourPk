@@ -1,0 +1,104 @@
+.container {
+    padding: 0px 5vw 75px 5vw;
+    text-align: justify;
+}
+
+.heading {
+    max-width: 900px;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 4rem;
+    margin-bottom: 24px;
+    margin-top: 0px;
+}
+
+.header p {
+    min-width: 300px !important;
+    line-height: 1.3rem;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    padding-block: 50px;
+}
+
+.subHeading {
+    color: var(--primaryColor);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 4rem;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.attributes {
+    display: flex;
+    flex-direction: row;
+}
+
+.key {
+    font-weight: 500;
+    color: var(--primaryColor);
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    width: 100%;
+}
+
+.about {
+    width: 68%;
+}
+
+.pricing {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.pricingItem div {
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    border: 1px solid var(--assistColor);
+    padding: 10px;
+}
+
+.pricingItem div:first-child {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: none;
+}
+
+.pricingItem div:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.booking {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.contactInfo p {
+    min-width: 155px !important;
+    max-width: 160px !important;
+}
+
+.attributesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 90px;
+}

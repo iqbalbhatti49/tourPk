@@ -11,6 +11,7 @@ const initialState = {
    businessTitle: '',
    loggedIn: false,
    token: null,
+   plan: null
 };
 
 export const login = createAsyncThunk('user/login', async (user) => {
@@ -62,6 +63,7 @@ const userSlice = createSlice({
          state.id = '';
          state.token = null;
          state.role = '';
+         state.plan = ''
       }
    },
    extraReducers: (builder) => {
@@ -77,6 +79,7 @@ const userSlice = createSlice({
             state.businessTitle = action.payload.user.businessTitle;
             state.token = action.payload.token;
             state.role = action.payload.user.role;
+            state.role = action.payload.user.plan;
          })
          .addCase(login.rejected, (state, action) => {
             state.status = 'failed';
