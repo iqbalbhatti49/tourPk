@@ -60,7 +60,6 @@ exports.signupAsTourist = async (req, res) => {
         });
         if (existingUser)
             return res.status(409).json("User already exists!");
-
         this.signup(req, res, { role: "tourist" });
     }
     catch (err) {
@@ -145,5 +144,25 @@ exports.resetPassword = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.json({ status: "Something Went Wrong" });
+    }
+};
+
+exports.updateUserWithPlanDetails = async (req,res) => {
+    console.log(req.body)
+    try {
+        await User.update(
+            {
+                discount: req.body.discount,
+                advancedSupport: req.body.advancedSupport,
+            },
+            {
+                where: {
+                    id: req.body.userId,
+                },
+            }
+        );
+        console.log("User plan details updated successfully");
+    } catch (error) {
+        console.log("Failed to update user plan details:", error);
     }
 };

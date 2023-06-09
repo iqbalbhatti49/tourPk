@@ -3,7 +3,6 @@ import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
 import { FormField, IconEmail, IconPassword, IconPerson, updateUser, Button } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
-import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axiosInstance from "../../utils/Api";

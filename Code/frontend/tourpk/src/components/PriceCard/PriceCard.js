@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button/Button';
+// import Button from '../Button/Button';
 import styles from './PriceCard.module.css';
 
 export const PriceCard = (props) => {
@@ -7,7 +7,7 @@ export const PriceCard = (props) => {
    let icon = "";
    const themeClass = theme === "light" ? styles.lightContainer : styles.darkContainer;
    const listIcon = theme === "light" ? "../static/images/filled-iconscheck-circle.svg" : "../static/images/filled-iconscheck-circle10.svg";
-   const btnType = theme === "light" ? "primary" : "secondary";
+   // const btnType = theme === "light" ? "primary" : "secondary";
    if (mainTitle === "Enterprise")
       icon = "../static/images/enterprisePricePlan.svg";
    else if (mainTitle === "Basic")
@@ -46,7 +46,7 @@ export const PriceCard = (props) => {
             }
             )}
          </div>
-         <Button value="Get Started" type={btnType} />
+         {/* <Button value="Get Started" type={btnType} /> */}
       </div >
    );
 };
