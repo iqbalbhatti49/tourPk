@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         plan: { //Tourist Starter, Explorer Plus, Adventurer Premium
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         }
     }, {
         timestamps: false

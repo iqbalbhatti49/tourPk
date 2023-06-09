@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './RestaurantListing.module.css'
 import { useLocation } from "react-router";
-import { Button, CircularRating, Carousel } from '../../components';
+import { Button, CircularRating, Carousel, Testimonial } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 import axiosInstance from '../../utils/Api';
 
@@ -73,6 +73,14 @@ export default function RestaurantListing() {
                             </div>
                         </div>
                     </div>
+
+
+                    <div>
+                        <h2 className={styles.subHeading}>People's Opinion</h2>
+                        <Testimonial />
+                    </div>
+
+
                 </div>
                 <div>
                     <div className={styles.ratingPricing}>

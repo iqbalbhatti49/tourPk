@@ -55,7 +55,6 @@ export default function SpotListing() {
             <LocationPicker onChange={handleLocationChange} onClose={hideLocationPicker} />
           </div>
         </div>
-
       </div>
     </div>
   );

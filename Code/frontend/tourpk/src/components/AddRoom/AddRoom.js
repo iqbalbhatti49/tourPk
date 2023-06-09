@@ -6,6 +6,7 @@ import RoomAmeneties from "../RoomAmeneties/RoomAmeneties"
 import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
 import { roomAmenities } from "../../utils/Constants/RoomAmenetiesOptions";
 import axios from "axios";
+import axiosInstance from "../../utils/Api";
 
 const AddRoom = ({ hotelData }) => {
 
@@ -34,7 +35,7 @@ const AddRoom = ({ hotelData }) => {
             roomData
         }
         console.log(hotelRoom)
-        const roomObj = await axios.post("/hotel/addHotel", hotelRoom);
+        const roomObj = await axiosInstance.post("/hotel/addHotel", hotelRoom);
         const roomAdded = roomObj.data;
         console.log("--> Back on F.end --> ", roomAdded);
         navigate(`/restaurantListing/${roomAdded.serviceObj.name}`, { roomAdded });

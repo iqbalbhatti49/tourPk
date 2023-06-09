@@ -42,6 +42,7 @@ module.exports = (sequelize, DataTypes) => {
         TourGuide.hasMany(models.BookingTourGuide, {
             onDelete: "cascade",
         });
+        TourGuide.belongsTo(models.Service);
     };
     // TourGuide.sync({ alter: true })
     return TourGuide;

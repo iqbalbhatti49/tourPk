@@ -1,4 +1,4 @@
-const { Service, TourGuide, TourGuideImage } = require("../models");
+const { Service, TourGuide, TourGuideImage, Review } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -30,4 +30,21 @@ exports.addTourGuide = async (req, res) => {
 
     console.log("--> Back.end --> ", response);
     res.status(200).json(response);
+}
+
+
+exports.getAllTourGuides = async (req, res) => {
+    const tourGuides = await TourGuide.findAll({
+        include: [
+            {
+                model: Service,
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+        ],
+    });
+    res.json(tourGuides);
 }

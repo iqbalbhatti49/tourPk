@@ -1,4 +1,4 @@
-const { Service, TravelAgent, TravelAgentImage } = require("../models");
+const { Service, TravelAgent, TravelAgentImage, Review } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -30,4 +30,21 @@ exports.addTravelAgentPackage = async (req, res) => {
     };
     console.log("--> Back.end --> ", response);
     res.status(200).json(response);
+}
+
+exports.getAllTravelAgents = async (req, res) => {
+    const travelAgent = await TravelAgent.findAll({
+        include: [
+            {
+                model: Service,
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+        ],
+    });
+
+    res.json(travelAgent);
 }

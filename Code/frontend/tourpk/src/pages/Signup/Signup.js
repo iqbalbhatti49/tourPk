@@ -6,6 +6,7 @@ import { validateAlpha, validateEmail, validatePassword, validateEquality, valid
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import axiosInstance from "../../utils/Api";
 
 const Signup = (props) => {
     const [errormsg, setErrormsg] = useState(null);
@@ -18,9 +19,9 @@ const Signup = (props) => {
         try {
             let res;
             if (props.userType === "seller")
-                res = await axios.post("auth/signupAsSeller", values);
+                res = await axiosInstance.post("auth/signupAsSeller", values);
             else
-                res = await axios.post("auth/signupAsTourist", values);
+                res = await axiosInstance.post("auth/signupAsTourist", values);
             form.reset(); // Reset the form's state after submission
             navigate("/Login");
         }

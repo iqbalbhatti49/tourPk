@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import axiosInstance from '../../../utils/Api';
 
 const initialState = {
    username: '',
@@ -17,14 +18,14 @@ export const helpRequest = createAsyncThunk(
       try {
          const fd = new FormData();
          fd.append("file", formData.file);
-         const res = await axios.post("/upload", fd);
+         const res = await axiosInstance.post("/upload", fd);
          formData.file = res.data;
       }
       catch (err) {
          console.log(err);
       }
       try {
-         const response = await axios.post('/help/', formData);
+         const response = await axiosInstance.post('/help/', formData);
          return response.data;
       } catch (error) {
          console.error(error);

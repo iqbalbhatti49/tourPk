@@ -25,14 +25,14 @@ const CommentSection = ({ blogId }) => {
   useEffect(
     () => {
       fetchComments();
-    }, [isNewComment]);
+    }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const comment = {
       commentText: newComment,
-      blogPostId: blogId,
-      userId: userId
+      BlogPostId: blogId,
+      UserId: userId
     }
     addComments(comment);
   };
@@ -42,7 +42,7 @@ const CommentSection = ({ blogId }) => {
       <h2>Comments</h2>
       {comments.map(comment => (
         <div key={comment.id} className={styles.comment}>
-          <div> <span className={styles.commentAuthor}>{comment.User.name}</span> <span className={styles.commentDate}> &#8226; {comment.datePosted}</span>
+          <div> <span className={styles.commentAuthor}>{comment.User ? comment.User.name : "you"}</span> <span className={styles.commentDate}> &#8226; {comment.datePosted}</span>
           </div>
           <div className={styles.commentText}>{comment.commentText}</div>
         </div>

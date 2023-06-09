@@ -14,8 +14,11 @@ const ReviewForm = ({ serviceId }) => {
     const handleRatingChange = (newRating) => {
         setRating(newRating);
     };
+    const apiRequest = async (review) => {
+        await axiosInstance.post("/review/addReview", review);
+    }
 
-    const onSubmit = async (values, form) => {
+    const onSubmit = (values, form) => {
         const review = {
             UserId: userId,
             ServiceId: serviceId,
@@ -24,7 +27,7 @@ const ReviewForm = ({ serviceId }) => {
         }
         setRating(0);
         form.reset();
-        await axiosInstance.post("/review/addReview", review);
+        apiRequest(review);
     };
 
     return (
