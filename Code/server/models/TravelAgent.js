@@ -59,6 +59,7 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade",
         });
         TravelAgent.belongsTo(models.Service);
+        TravelAgent.belongsTo(models.User);
     };
     // TravelAgent.sync({ alter: true })
     return TravelAgent;

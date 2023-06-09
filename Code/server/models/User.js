@@ -58,6 +58,18 @@ module.exports = (sequelize, DataTypes) => {
         User.hasMany(models.BookingHotel, {
             onDelete: "cascade",
         });
+        User.hasMany(models.Hotel, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.TravelAgent, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.Restaurant, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.TourGuide, {
+            onDelete: "cascade",
+        });
     };
     // User.sync({ alter: true })
     return User;

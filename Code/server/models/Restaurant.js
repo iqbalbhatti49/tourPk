@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade",
         });
         Restaurant.belongsTo(models.Service);
+        Restaurant.belongsTo(models.User);
     };
     // Restaurant.sync({ alter: true })
     return Restaurant;

@@ -43,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade",
         });
         TourGuide.belongsTo(models.Service);
+        TourGuide.belongsTo(models.User);
     };
     // TourGuide.sync({ alter: true })
     return TourGuide;

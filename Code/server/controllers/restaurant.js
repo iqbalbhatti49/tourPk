@@ -49,5 +49,7 @@ exports.getAllRestaurants = async (req, res) => {
             },
         ],
     });
+
+
     res.json(restaurants);
 }
