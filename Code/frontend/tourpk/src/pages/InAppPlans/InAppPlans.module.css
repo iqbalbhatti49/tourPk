@@ -1,5 +1,6 @@
 .container {
   padding: 0px 5vw 75px 5vw;
+
 }
 
 .header {
@@ -39,4 +40,13 @@
 .plans {
   display: flex;
   justify-content: space-around;
+}
+
+.form
+{
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  padding-block: 20px;
+  max-width: 40%;
 }
