@@ -25,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: "cascade"
     });
     Hotel.belongsTo(models.Service);
+    Hotel.belongsTo(models.User);
   };
   return Hotel;
 };

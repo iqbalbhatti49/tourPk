@@ -32,7 +32,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        discount: { 
+        discount: {
             type: DataTypes.INTEGER,
             allowNull: true,
         },
@@ -60,6 +60,18 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade",
         });
         User.hasMany(models.BookingHotel, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.Hotel, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.TravelAgent, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.Restaurant, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.TourGuide, {
             onDelete: "cascade",
         });
     };
