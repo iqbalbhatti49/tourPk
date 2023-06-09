@@ -28,9 +28,9 @@ const InAppPlans = () => {
    const onSubmit = async (values, event) => {
       if(checked)
       {
-        if (planType === "Basic")
+        if (planType === "Pro")
           discount = 15;
-        else
+        else  if (planType === "Entreprise")
         {
             advancedSupport = true;
             discount = 35;
@@ -38,9 +38,9 @@ const InAppPlans = () => {
       }
       else
       {
-        if (planType === "Basic")
+        if (planType === "Pro")
           discount = 10;
-        else
+        else if (planType === "Entreprise")
         {
             advancedSupport = true;
             discount = 25;

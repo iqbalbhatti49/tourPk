@@ -57,8 +57,11 @@ const initialState = {
    },
    loading: false,
    successMessage: '',
+   discount: 0,
+   advancedSupport: false,
    error: '',
 };
+
 export const updateUserWithPlanDetails = createAsyncThunk(
    'pricing/updateUserWithPlanDetails',
    async (payload) => {
@@ -77,9 +80,9 @@ export const updateUserWithPlanDetails = createAsyncThunk(
        throw error;
      }
    }
- );
- 
- const pricingSlice = createSlice({
+);
+
+const pricingSlice = createSlice({
    name: 'pricing',
    initialState,
    reducers: {
@@ -88,13 +91,17 @@ export const updateUserWithPlanDetails = createAsyncThunk(
      },
    },
    extraReducers: (builder) => {
-     builder.addCase(updateUserWithPlanDetails.pending, (state) => {
+     builder.addCase(updateUserWithPlanDetails.pending, (state, action) => {
        state.loading = true;
        state.successMessage = '';
        state.error = '';
      });
      builder.addCase(updateUserWithPlanDetails.fulfilled, (state, action) => {
        state.loading = false;
+       const { discount, advancedSupport } = action.payload; // Extract discount and advancedSupport from the response payload
+       state.discount = discount;
+       state.advancedSupport = advancedSupport;
+       console.log(action.payload)
        state.successMessage = 'User plan details updated successfully.';
      });
      builder.addCase(updateUserWithPlanDetails.rejected, (state, action) => {
@@ -102,9 +109,8 @@ export const updateUserWithPlanDetails = createAsyncThunk(
        state.error = 'Failed to update user with plan details.';
      });
    },
- });
- 
- export const { toggleChecked } = pricingSlice.actions;
- 
- export default pricingSlice.reducer;
- 
+});
+
+export const { toggleChecked } = pricingSlice.actions;
+
+export default pricingSlice.reducer;
