@@ -148,7 +148,7 @@ exports.resetPassword = async (req, res) => {
 };
 
 exports.updateUserWithPlanDetails = async (req, res) => {
-    console.log(req.body)
+    console.log(req.body);
     try {
         await User.update(
             {
@@ -162,7 +162,13 @@ exports.updateUserWithPlanDetails = async (req, res) => {
             }
         );
         console.log("User plan details updated successfully");
+        res.status(200).json({
+            discount: req.body.discount,
+            advancedSupport: req.body.advancedSupport,
+            message: "User plan details updated successfully"
+        });
     } catch (error) {
         console.log("Failed to update user plan details:", error);
+        res.status(500).json({ error: "Failed to update user plan details" });
     }
 };

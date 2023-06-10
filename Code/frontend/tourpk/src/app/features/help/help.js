@@ -9,7 +9,9 @@ const initialState = {
    questionDescription: '',
    file: null,
    status: '',
+   role :"",
    error: null,
+   advancedSupport : false
 };
 
 export const helpRequest = createAsyncThunk(
@@ -18,12 +20,20 @@ export const helpRequest = createAsyncThunk(
       try {
          const fd = new FormData();
          fd.append("file", formData.file);
+         fd.append("role", formData.role); // Add the role field to the FormData
+         fd.append("advancedSupport", formData.advancedSupport); // Add the advancedSupport field to the FormData
+         
          const res = await axiosInstance.post("/upload", fd);
          formData.file = res.data;
       }
       catch (err) {
          console.log(err);
       }
+
+      const pricingState = thunkAPI.getState().pricing;
+      const advancedSupport = pricingState.advancedSupport;
+      formData.advancedSupport = advancedSupport; // Update the formData with advancedSupport from pricing state
+
       try {
          const response = await axiosInstance.post('/help/', formData);
          return response.data;
@@ -33,6 +43,7 @@ export const helpRequest = createAsyncThunk(
       }
    }
 );
+
 
 export const helpSlice = createSlice({
    name: 'help',
@@ -44,6 +55,7 @@ export const helpSlice = createSlice({
          state.questionTitle = action.payload.questionTitle;
          state.questionDescription = action.payload.questionDescription;
          state.file = action.payload.file;
+         state.role = action.payload.role;
       },
    },
    extraReducers: (builder) => {

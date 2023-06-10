@@ -27,8 +27,8 @@ export const DiscountCodes = () => {
                }} >
                {({ handleSubmit }) => (
                   <form className={styles.form} onSubmit={handleSubmit}>
-                     <FormField name="copuncode" label="Enter Your Coupn Code" type="text" placeholder="XRTMSA70" value={discountCode} renderIcon={() => null} labelClass="showLabel" theme="light" />
-                     <OnChange name="copuncode">
+                     <FormField name="discountcode"  label="Your Discount Code" type="text" placeholder="XRTMSA70" value={discountCode} renderIcon={() => null} labelClass="showLabel" theme="light" />
+                     <OnChange name="discountcode">
                         {(value) => {
                            dispatch(updateDiscountCode(value));
                         }}

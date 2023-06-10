@@ -30,9 +30,9 @@ export const OrderReview = () => {
          </div>
          <div className={styles.items}>
             {items.map((item, index) => (
-               <React.Fragment key={index}>
+               <React.Fragment key={item.id}>
                   <OrderReviewItem
-                     key={index}
+                     key={item.id}
                      imageSrc={item.imageSrc}
                      title={item.title}
                      count={item.count}

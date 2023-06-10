@@ -5,10 +5,12 @@ import { Form as FormFinal } from "react-final-form";
 import { questions } from "../../utils/Constants/Help";
 import { helpRequest } from "../../app/features/help/help";
 import { useState } from "react";
-import { FormField, FAQDropdown, UserTypeDropdown, Button } from "../../components/index";
+import { FormField, FAQDropdown, UserTypeDropdown, Button, Dropdown } from "../../components/index";
 
 const HelpAndSupport = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [role,setRole] = useState("Tourist");
+
   const dispatch = useDispatch();
   const required = (value) => (value ? undefined : "Required");
   const onSubmit = (values, form) => {
@@ -16,6 +18,7 @@ const HelpAndSupport = () => {
       values["file"] = selectedFile;
     }
     console.log("Form submitted with values:", values);
+    values["role"]  = role;
     dispatch(helpRequest(values));
     form.reset();
   };
@@ -23,6 +26,9 @@ const HelpAndSupport = () => {
     setSelectedFile(e.target.files[0]);
   };
 
+  const handleChange = (selectedOption) => {
+    setRole(selectedOption)
+  }
 
   return (
     <>
@@ -59,20 +65,27 @@ const HelpAndSupport = () => {
                   {({ handleSubmit, values }) => (
                     <form onSubmit={handleSubmit}>
                       <p>Are you a tourist or service provider?</p>
-
-                      <UserTypeDropdown
-                        name="TouristOrServiceProvider"
-                        label="Tourist or Service Provider"
-                        options={[
-                          { value: "Tourist", label: "Tourist" },
-                          { value: "Service Provider", label: "Service Provider" },
-                        ]}
-                        validate={required}
-                        theme="light"
-                        value={values}
-                        renderIcon={() => null}
+                      <Dropdown
+                          name="roleTye"
+                          label="Role Type"
+                          optionsValues={[
+                              {
+                                  "id": 1,
+                                  "name": "Tourist",
+                              },
+                              {
+                                  "id": 2,
+                                  "name": "Service Provider",
+                              },
+                          ]}
+                          validate={required}
+                          theme="light"
+                          value={role}
+                          placeholder="Choose Your Role"
+                          renderIcon={() => null}
+                          onChange={(selectedOption) => handleChange(selectedOption)}
                       />
-
+                      
                       <br /> <br />
                       <div className={styles.formFields}>
                         <FormField

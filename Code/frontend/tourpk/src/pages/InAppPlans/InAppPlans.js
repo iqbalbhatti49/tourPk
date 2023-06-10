@@ -7,6 +7,8 @@ import { updateUserWithPlanDetails } from '../../app/features/pricing/pricingSli
 import {Dropdown} from "../../components/index";
 import { required } from '../../utils/validations';
 import { Form as FormFinal } from 'react-final-form'
+import { addItem } from "../../app/features/cart/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const InAppPlans = () => {
   let discount=0, advancedSupport = false;
@@ -16,6 +18,7 @@ const InAppPlans = () => {
   const pricing = checked ? annualPricing : monthlyPricing;
   const period = checked ? "annually" : "monthly";
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleChange = (checked) => {
     dispatch(toggleChecked(checked));
   };
@@ -24,13 +27,19 @@ const InAppPlans = () => {
     setPlanType(selectedOption);
   };
   const userId = useSelector(state => state.user.id);
+  const priceOfPlans = {
+    "annually" : {"Basic":0,"Pro":99,"Enterprise":499},
+    "monthly" : {"Basic":199,"Pro":599,"Enterprise":999}};
+  const imgs =  {"Basic":"../../static/images/basicPricePlan.svg",
+  "Pro":"../../static/images/proPricePlan.svg",
+  "Enterprise":"../../static/images/enterprisePricePlan.svg"};
 
    const onSubmit = async (values, event) => {
       if(checked)
       {
-        if (planType === "Basic")
+        if (planType === "Pro")
           discount = 15;
-        else
+        else  if (planType === "Enterprise")
         {
             advancedSupport = true;
             discount = 35;
@@ -38,15 +47,23 @@ const InAppPlans = () => {
       }
       else
       {
-        if (planType === "Basic")
+        if (planType === "Pro")
           discount = 10;
-        else
+        else if (planType === "Enterprise")
         {
             advancedSupport = true;
             discount = 25;
         }
       }
       dispatch(updateUserWithPlanDetails({userId, discount, advancedSupport}))
+      const price = priceOfPlans[period][planType];
+      const imageSrc =imgs[planType];
+      const discountedPrice = price;
+      const title = planType
+      const value = {imageSrc, title, price, discountedPrice };
+      console.log(value)
+      dispatch(addItem(value));
+      navigate("/checkout")
     };
   return (
     <>
@@ -88,7 +105,7 @@ const InAppPlans = () => {
                       },
                       {
                           "id": 3,
-                          "name": "Entreprise",
+                          "name": "Enterprise",
                       },
                   ]}
                   validate={required}

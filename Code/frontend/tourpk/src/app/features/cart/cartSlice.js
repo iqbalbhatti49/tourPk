@@ -49,9 +49,23 @@ export const cartSlice = createSlice({
             item.count--;
          }
       },
+      addItem: (state, action) => {
+         const newItem = {
+            imageSrc: action.payload.imageSrc,
+            title: action.payload.title,
+            count: 1,
+            price: action.payload.price,
+            discountedPrice: action.payload.discountedPrice,
+            id: state.items.length + 1,
+         };
+         state.items.push(newItem);
+      },
+      clearCart: (state) => {
+      state.items = [];
+      },
    },
 });
 
-export const { removeItem, decreaseItem, increaseItem } = cartSlice.actions;
+export const { removeItem, decreaseItem, increaseItem, addItem, clearCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

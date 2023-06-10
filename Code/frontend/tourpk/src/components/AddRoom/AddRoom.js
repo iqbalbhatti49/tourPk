@@ -5,7 +5,6 @@ import { FormField, Button } from "../../components/index";
 import RoomAmeneties from "../RoomAmeneties/RoomAmeneties"
 import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
 import { roomAmenities } from "../../utils/Constants/RoomAmenetiesOptions";
-import axios from "axios";
 import axiosInstance from "../../utils/Api";
 
 const AddRoom = ({ hotelData }) => {
