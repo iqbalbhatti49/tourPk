@@ -163,7 +163,8 @@ exports.updateUserWithPlanDetails = async (req, res) => {
             }
         );
         console.log("User plan details updated successfully");
-        res.status(200).json({  discount: req.body.discount,
+        res.status(200).json({
+            discount: req.body.discount,
             advancedSupport: req.body.advancedSupport,
             planCode: req.body.planCode,
             message: "User plan details updated successfully" });

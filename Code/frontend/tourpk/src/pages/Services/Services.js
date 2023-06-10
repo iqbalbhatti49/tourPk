@@ -6,6 +6,8 @@ import { IconHotel, IconResturant, IconGuide, IconAgent, HotelCard } from "../..
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../utils/Api";
+import { useNavigate } from "react-router-dom";
+
 
 const Services = () => {
 
@@ -50,7 +52,12 @@ const Services = () => {
    }, []);
 
    const location = useLocation();
-   console.log(location.search);
+   const navigate = useNavigate();
+
+   const handleRestaurantClick = (item) => {
+      console.log("goin ahed --> ", item);
+      navigate(`/restaurantListing/`, { state: item });
+   }
 
    if (isLoading) {
       return <div>Loading...</div>;
@@ -78,7 +85,7 @@ const Services = () => {
                   </Tab>
                   <Tab>
                      <IconResturant />
-                     <p>Resturants</p>
+                     <p>Restaurants</p>
                   </Tab>
                   <Tab><IconGuide />
                      <p>Tourist Guides</p></Tab>
@@ -89,11 +96,12 @@ const Services = () => {
                </TabList>
                <TabPanel>
                   <div className={styles.tabCards}>
-                     {LahoreHotles.map((item, index) => {
+                     {hotels.map((item, index) => {
                         return (
                            <HotelCard
                               key={index}
-                              hotel={item}
+                              data={item}
+                              type="Hotel"
                            />
                         );
                      })}
@@ -101,23 +109,27 @@ const Services = () => {
                </TabPanel>
                <TabPanel>
                   <div className={styles.tabCards}>
-                     {LahoreHotles.map((item, index) => {
+                     {restaurants.map((item, index) => {
                         return (
-                           <HotelCard
-                              key={index}
-                              hotel={item}
-                           />
+                           <a href="" onClick={() => handleRestaurantClick(item)}>
+                              <HotelCard
+                                 key={index}
+                                 data={item}
+                                 type="Restaurant"
+                              />
+                           </a>
                         );
                      })}
                   </div>
                </TabPanel>
                <TabPanel>
                   <div className={styles.tabCards}>
-                     {LahoreHotles.map((item, index) => {
+                     {tourGuides.map((item, index) => {
                         return (
                            <HotelCard
                               key={index}
-                              hotel={item}
+                              data={item}
+                              type="TourGuide"
                            />
                         );
                      })}
@@ -129,7 +141,8 @@ const Services = () => {
                         return (
                            <HotelCard
                               key={index}
-                              hotel={item}
+                              data={item}
+                              type="TravelAgent"
                            />
                         );
                      })}

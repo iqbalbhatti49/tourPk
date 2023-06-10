@@ -17,7 +17,11 @@ exports.getAllHotels = async (req, res) => {
                     },
                 ],
             },
+            {
+                model: HotelImage,
+            }
         ],
     });
+
     res.json(hotels);
 }

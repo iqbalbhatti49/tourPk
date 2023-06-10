@@ -40,9 +40,12 @@ exports.getAllTravelAgents = async (req, res) => {
                 include: [
                     {
                         model: Review,
-                    },
+                    }
                 ],
             },
+            {
+                model: TravelAgentImage,
+            }
         ],
     });
 
