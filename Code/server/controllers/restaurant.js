@@ -47,9 +47,11 @@ exports.getAllRestaurants = async (req, res) => {
                     },
                 ],
             },
+            {
+                model: RestaurantImage,
+            }
         ],
     });
-
 
     res.json(restaurants);
 }

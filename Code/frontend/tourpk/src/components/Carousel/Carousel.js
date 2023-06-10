@@ -21,6 +21,7 @@ export default function Carousels({ imageList }) {
    ];
 
    const imageListArr = Array.isArray(imageList) ? imageList : [imageList];
+   console.log(imageList);
    const images = imageList ? imageListArr : imagesConst;
    console.log(images);
 
@@ -32,7 +33,7 @@ export default function Carousels({ imageList }) {
                   <img
                      key={imageIndex}
                      alt=""
-                     src={`../static/images/upload/${image}`}
+                     src={image}
                      className={styles.mainImage}
                   />
                ))}
