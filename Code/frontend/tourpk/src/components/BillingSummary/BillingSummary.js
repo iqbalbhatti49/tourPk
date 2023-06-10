@@ -13,13 +13,27 @@ export const BillingSummary = () => {
    const billingAddress = useSelector((state) => state.checkout.billingAddress);
    const items = useSelector((state) => state.cart.items);
    let total = items.reduce((acc, item) => {
-      const itemPrice = parseFloat(item.price.replace('$', ''));
-      return acc + itemPrice * item.count;
+      const priceWithCurrency = item.price;
+      if (typeof priceWithCurrency === 'string' && priceWithCurrency.includes('$')) {
+         const itemPrice = parseFloat(priceWithCurrency.replace('$', ''));
+         return acc + itemPrice * item.count;
+      } else {
+         return acc;
+      }
    }, 0);
+   
    let totalDiscountedPrice = items.reduce((acc, item) => {
-      const DiscountedPrice = parseFloat(item.discountedPrice.replace('$', ''));
-      return acc + DiscountedPrice * item.count;
-   }, 0);
+      const priceWithCurrency = item.discountedPrice;
+      if (typeof priceWithCurrency === 'string' && priceWithCurrency.includes('$')) {
+        const discountedPrice = parseFloat(priceWithCurrency.replace('$', ''));
+        if (!isNaN(discountedPrice)) {
+          return acc + discountedPrice * item.count;
+        }
+      }
+      return acc;
+    }, 0);
+    
+    
    total = total.toFixed(0)
    totalDiscountedPrice = totalDiscountedPrice.toFixed(0)
    const tax = 1000;

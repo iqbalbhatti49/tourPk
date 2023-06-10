@@ -1,6 +1,7 @@
 .orderReview {
    display: flex;
    align-items: center;
+   justify-content: space-between;
    gap: 4px;
    padding: 4px;
    border-radius: 4px;
@@ -11,8 +12,9 @@
 }
 
 .OrderReview_img {
-   max-width: 100%;
-   height: auto;
+   width: 150px;
+   height: 130px;
+   border: 1px solid var(--assistColor);
 }
 
 .count {
