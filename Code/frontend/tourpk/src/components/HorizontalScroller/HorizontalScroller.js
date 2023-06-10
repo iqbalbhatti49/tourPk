@@ -57,10 +57,11 @@ const HorizontalScroll = (props) => {
                   {items.map((e, index) => (
                      <HotelCard
                         key={index}
-                        hotel={e}
+                        data={e}
                      />
                   ))}
-               </ScrollMenu></>
+               </ScrollMenu>
+            </>
          ) : (<></>)}
       </>
    );

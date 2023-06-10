@@ -11,32 +11,36 @@ exports.addTravelAgentPackage = async (req, res) => {
     const serviceObj = await Service.create(service);
     travelAgent.ServiceId = serviceObj.id;
     const travelAgentObj = await TravelAgent.create(travelAgent);
+    let rootPath = "../static/images/upload/";
     for (const img in images) {
+        let imgUrl = rootPath + images[img];
         const image = {
-            imageUrl: images[img],
+            imageUrl: imgUrl,
             TravelAgentId: travelAgentObj.id
         };
         await TravelAgentImage.create(image);
     }
 
-    let img = {};
-    images.forEach((image, index) => {
-        img[`image${index + 1}`] = image;
-    });
-    const response = {
-        serviceObj: serviceObj.dataValues,
-        travelAgentObj: travelAgentObj.dataValues,
-        images: img
-    };
-    console.log("--> Back.end --> ", response);
-    res.status(200).json(response);
+    // let img = {};
+    // images.forEach((image, index) => {
+    //     img[`image${index + 1}`] = image;
+    // });
+    // const response = {
+    //     serviceObj: serviceObj.dataValues,
+    //     travelAgentObj: travelAgentObj.dataValues,
+    //     images: img
+    // };
+    console.log("--> Back.end --> ", travelAgentObj.dataValues.id);
+    res.status(200).json(travelAgentObj.dataValues.id);
 }
 
 exports.getAllTravelAgents = async (req, res) => {
     const travelAgent = await TravelAgent.findAll({
+        attributes: ['id', 'packagePrice'],
         include: [
             {
                 model: Service,
+                attributes: ['name', 'address'],
                 include: [
                     {
                         model: Review,
@@ -45,9 +49,34 @@ exports.getAllTravelAgents = async (req, res) => {
             },
             {
                 model: TravelAgentImage,
+                attributes: ['imageUrl']
             }
         ],
     });
 
     res.json(travelAgent);
+}
+
+
+exports.getTravelAgentById = async (req, res) => {
+    const id = req.params.id;
+    const data = await TravelAgent.findOne({
+        where: {
+            id: id
+        },
+        include: [
+            {
+                model: Service,
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+            {
+                model: TravelAgentImage,
+            },
+        ]
+    });
+    res.json(data);
 }
