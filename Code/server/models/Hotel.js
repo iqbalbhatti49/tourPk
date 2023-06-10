@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false
     },
+    pricePerDay: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     timestamps: false,
   });
@@ -27,6 +31,8 @@ module.exports = (sequelize, DataTypes) => {
     Hotel.belongsTo(models.Service);
     Hotel.belongsTo(models.User);
   };
+  // Hotel.sync({ alter: true })
+
   return Hotel;
 };
 

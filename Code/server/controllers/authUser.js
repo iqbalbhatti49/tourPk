@@ -162,9 +162,11 @@ exports.updateUserWithPlanDetails = async (req, res) => {
             }
         );
         console.log("User plan details updated successfully");
-        res.status(200).json({  discount: req.body.discount,
+        res.status(200).json({
+            discount: req.body.discount,
             advancedSupport: req.body.advancedSupport,
-            message: "User plan details updated successfully" });
+            message: "User plan details updated successfully"
+        });
     } catch (error) {
         console.log("Failed to update user plan details:", error);
         res.status(500).json({ error: "Failed to update user plan details" });

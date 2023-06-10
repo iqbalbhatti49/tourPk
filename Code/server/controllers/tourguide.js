@@ -10,9 +10,11 @@ exports.addTourGuide = async (req, res) => {
     const serviceObj = await Service.create(service);
     tourGuide.ServiceId = serviceObj.id;
     const tourGuideObj = await TourGuide.create(tourGuide);
+    let rootPath = "../static/images/upload/";
     for (const img in images) {
+        let imgUrl = rootPath + images[img];
         const image = {
-            imageUrl: images[img],
+            imageUrl: imgUrl,
             TourGuideId: tourGuideObj.id
         };
         await TourGuideImage.create(image);
@@ -20,7 +22,7 @@ exports.addTourGuide = async (req, res) => {
 
     let img = {};
     images.forEach((image, index) => {
-        img[`image${index + 1}`] = image;
+        img[`image${index + 1}`] = rootPath + image;
     });
     const response = {
         serviceObj: serviceObj.dataValues,
@@ -41,9 +43,12 @@ exports.getAllTourGuides = async (req, res) => {
                 include: [
                     {
                         model: Review,
-                    },
+                    }
                 ],
             },
+            {
+                model: TourGuideImage,
+            }
         ],
     });
     res.json(tourGuides);

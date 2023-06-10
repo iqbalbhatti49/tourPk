@@ -24,10 +24,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    country: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     province: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -47,7 +43,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: false,
   });
-
 
   Service.associate = (models) => {
     Service.hasMany(models.Hotel, {

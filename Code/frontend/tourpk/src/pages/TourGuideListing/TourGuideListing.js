@@ -3,8 +3,41 @@ import styles from './TourGuideListing.module.css'
 import { Button, Carousel } from '../../components';
 import { Testimonial, BookingCalendar, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
+import { useLocation } from "react-router";
 
 export default function TourGuideListing() {
+   const location = useLocation();
+   console.log(location.state); //Its output below
+   /*
+{
+    "serviceObj": {
+        "id": 44,
+        "name": "Mahnoor",
+        "description": "iqrzzzzzz",
+        "email": "mahnooralei@gmail.com",
+        "website": "jkl.dk",
+        "phone": "03214358863",
+        "city": "lhr",
+        "province": "punjab",
+        "address": "str1"
+    },
+    "tourGuideObj": {
+        "id": 12,
+        "experience": "exfg",
+        "gender": "female",
+        "primaryAreas": "murree",
+        "otherAreas": "kamala",
+        "language": "urdu",
+        "perHourRate": "3",
+        "ServiceId": 44
+    },
+    "images": {
+        "image1": "../static/images/upload/1686381208538wall.png",
+        "image2": "../static/images/upload/1686381208538abc.png"
+    }
+}
+   */
+
    const attributes = {
       "Name": "Ghulam Murtaza",
       "Experience": "12 Years(Since 2008)",

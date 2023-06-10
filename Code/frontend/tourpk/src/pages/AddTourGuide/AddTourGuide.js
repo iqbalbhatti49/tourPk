@@ -20,7 +20,7 @@ const AddTourGuide = () => {
     const tourGuideAdded = tourGuideObj.data;
     swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
     // navigate(`/tourGuideListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
-    navigate("/tourGuideListing");
+    navigate("/tourGuideListing", { state: tourGuideAdded });
   };
 
   return (
