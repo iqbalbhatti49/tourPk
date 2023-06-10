@@ -64,7 +64,7 @@ function App() {
       <Route path="/signupAsTourist" element={<Signup userType="tourist" />} />
       <Route path="/signupAsSeller" element={<Signup userType="seller" />} />
       <Route path="/genericinfo" element={<GenericInfoAboutService />} />
-      <Route path="/listing" element={<Listing />} />
+      <Route path="/hotellisting" element={<Listing />} />
       <Route path="/Blog/:id" element={<BlogPage />} />
       <Route path="/allBlogs" element={<Blogs />} />
       <Route path="/spotListing" element={<SpotListing />} />
@@ -73,7 +73,7 @@ function App() {
       <Route path="/addHotel" element={<AddHotel />} />
       <Route path="/addTravelAgent" element={<AddTravelAgent />} />
       <Route path="/addHotelRoom" element={<AddHotelRoom />} />
-      <Route path="/restaurantListing/" element={<RestaurantListing />} />
+      <Route path="/restaurantListing/:id" element={<RestaurantListing />} />
       <Route path="/forgetPassword" element={<ForgetPassword />} />
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
       <Route path="/verify" element={<AccountVerification />} ></Route>

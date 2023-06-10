@@ -56,7 +56,7 @@ const Services = () => {
 
    const handleRestaurantClick = (item) => {
       console.log("goin ahed --> ", item);
-      navigate(`/restaurantListing/`, { state: item });
+      // navigate(`/restaurantListing/${id}`, { state: "showReviews" });
    }
 
    if (isLoading) {
@@ -111,7 +111,7 @@ const Services = () => {
                   <div className={styles.tabCards}>
                      {restaurants.map((item, index) => {
                         return (
-                           <a href="" onClick={() => handleRestaurantClick(item)}>
+                           <a key={index} href="" onClick={() => handleRestaurantClick(item)}>
                               <HotelCard
                                  key={index}
                                  data={item}

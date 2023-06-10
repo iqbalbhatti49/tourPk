@@ -149,7 +149,6 @@ const AddService = () => {
                                     <h2 className={styles.subTitle}>Location</h2>
                                     <FormField name="city" label="City" type="text" placeholder="Lahore" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
                                     <FormField name="province" label="State/Province" type="text" placeholder="Punjab" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
-                                    <FormField name="country" label="Country" type="text" placeholder="Pakistan" validate={validateAlpha} theme="light" value={values} renderIcon={() => null} />
                                     <FormField name="address" label="Street Address" type="text" placeholder="Street # 1" validate={required} theme="light" value={values} renderIcon={() => null} />
                                     <div className={styles.uploadMedia}>
                                         <label htmlFor="media-upload"> Photos related to your service</label>

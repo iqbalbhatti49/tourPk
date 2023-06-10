@@ -20,26 +20,28 @@ exports.addTourGuide = async (req, res) => {
         await TourGuideImage.create(image);
     }
 
-    let img = {};
-    images.forEach((image, index) => {
-        img[`image${index + 1}`] = rootPath + image;
-    });
-    const response = {
-        serviceObj: serviceObj.dataValues,
-        tourGuideObj: tourGuideObj.dataValues,
-        images: img
-    };
+    // let img = {};
+    // images.forEach((image, index) => {
+    //     img[`image${index + 1}`] = rootPath + image;
+    // });
+    // const response = {
+    //     serviceObj: serviceObj.dataValues,
+    //     tourGuideObj: tourGuideObj.dataValues,
+    //     images: img
+    // };
 
-    console.log("--> Back.end --> ", response);
-    res.status(200).json(response);
+    console.log("--> Back.end --> ", tourGuideObj.dataValues.id);
+    res.status(200).json(tourGuideObj.dataValues.id);
 }
 
 
 exports.getAllTourGuides = async (req, res) => {
     const tourGuides = await TourGuide.findAll({
+        attributes: ['id', 'perHourRate'],
         include: [
             {
                 model: Service,
+                attributes: ['name', 'address'],
                 include: [
                     {
                         model: Review,
@@ -48,8 +50,34 @@ exports.getAllTourGuides = async (req, res) => {
             },
             {
                 model: TourGuideImage,
+                attributes: ['imageUrl']
+
             }
         ],
     });
     res.json(tourGuides);
+}
+
+
+exports.getTourGuideById = async (req, res) => {
+    const id = req.params.id;
+    const data = await TourGuide.findOne({
+        where: {
+            id: id
+        },
+        include: [
+            {
+                model: Service,
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+            {
+                model: TourGuideImage,
+            },
+        ]
+    });
+    res.json(data);
 }
