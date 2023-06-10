@@ -22,6 +22,10 @@ const Signup = (props) => {
             else
                 res = await axiosInstance.post("auth/signupAsTourist", values);
             form.reset(); // Reset the form's state after submission
+            Object.keys(values).forEach(key => {
+                form.change(key, undefined);
+                form.resetFieldState(key);
+            });        
             navigate("/Login");
         }
         catch (error) {

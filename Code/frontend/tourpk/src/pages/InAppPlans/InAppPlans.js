@@ -9,9 +9,9 @@ import { required } from '../../utils/validations';
 import { Form as FormFinal } from 'react-final-form'
 import { addItem } from "../../app/features/cart/cartSlice";
 import { useNavigate } from "react-router-dom";
-
+import { clearCart } from "../../app/features/cart/cartSlice";
 const InAppPlans = () => {
-  let discount=0, advancedSupport = false;
+  let discount=0, advancedSupport = false, planCode = "BasicMonthly";
   const monthlyPricing = useSelector(state => state.pricing.monthly);
   const annualPricing = useSelector(state => state.pricing.annually);
   const checked = useSelector(state => state.pricing.checked);
@@ -28,8 +28,8 @@ const InAppPlans = () => {
   };
   const userId = useSelector(state => state.user.id);
   const priceOfPlans = {
-    "annually" : {"Basic":0,"Pro":99,"Enterprise":499},
-    "monthly" : {"Basic":199,"Pro":599,"Enterprise":999}};
+    "annually" : {"Basic":199,"Pro":599,"Enterprise":999},
+    "monthly" : {"Basic":0,"Pro":99,"Enterprise":499}};
   const imgs =  {"Basic":"../../static/images/basicPricePlan.svg",
   "Pro":"../../static/images/proPricePlan.svg",
   "Enterprise":"../../static/images/enterprisePricePlan.svg"};
@@ -37,31 +37,45 @@ const InAppPlans = () => {
    const onSubmit = async (values, event) => {
       if(checked)
       {
+        if (planType === "Basic")
+        {
+          discount = 5;
+          planCode = "BasicAnnually";
+        }
         if (planType === "Pro")
+        {
           discount = 15;
+          planCode = "ProAnnually";
+        }
         else  if (planType === "Enterprise")
         {
             advancedSupport = true;
             discount = 35;
+            planCode = "EnterpriseAnnually";
         }
       }
       else
       {
         if (planType === "Pro")
+        {
           discount = 10;
+          planCode = "ProMonthly"
+        }
         else if (planType === "Enterprise")
         {
             advancedSupport = true;
             discount = 25;
+            planCode = "EnterpriseMonthly"
         }
       }
-      dispatch(updateUserWithPlanDetails({userId, discount, advancedSupport}))
+      dispatch(updateUserWithPlanDetails({userId, discount, advancedSupport, planCode}))
       const price = priceOfPlans[period][planType];
       const imageSrc =imgs[planType];
       const discountedPrice = price;
-      const title = planType
-      const value = {imageSrc, title, price, discountedPrice };
-      console.log(value)
+      const title = planType + " "  + period
+      const discountApplicable =  "flase"
+      const value = {imageSrc, title, price, discountedPrice, discountApplicable };
+      dispatch(clearCart());
       dispatch(addItem(value));
       navigate("/checkout")
     };

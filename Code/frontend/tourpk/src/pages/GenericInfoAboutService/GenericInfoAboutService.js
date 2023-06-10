@@ -10,6 +10,10 @@ const GenericInfoAboutService = () => {
     console.log('Form submitted with values:', values);
     setFormData(values); // Store the form data in state
     form.reset();
+    Object.keys(values).forEach(key => {
+      form.change(key, undefined);
+      form.resetFieldState(key);
+  });
   };
 
   return (<>

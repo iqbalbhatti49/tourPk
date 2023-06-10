@@ -9,33 +9,13 @@ import {
 } from '../../app/features/checkout/checkoutSlice'
 
 export const DiscountCodes = () => {
-   const discountCode = useSelector((state) => state.checkout.discountCode);
-   const dispatch = useDispatch();
-   const onSubmit = (values, form) => {
-      console.log('Form submitted with values:', values);
-      form.reset();
-   };
+   const valueCode = useSelector((state) => state.pricing.planCode);
 
    return (
       <div className={styles.container} >
-         <p className={styles.heading}>Discount Codes</p>
+         <p className={styles.heading}>Discount Code</p>
          <div className={styles.form}>
-            <FormFinal
-               onSubmit={onSubmit}
-               subscription={{
-                  submitted: true
-               }} >
-               {({ handleSubmit }) => (
-                  <form className={styles.form} onSubmit={handleSubmit}>
-                     <FormField name="discountcode"  label="Your Discount Code" type="text" placeholder="XRTMSA70" value={discountCode} renderIcon={() => null} labelClass="showLabel" theme="light" />
-                     <OnChange name="discountcode">
-                        {(value) => {
-                           dispatch(updateDiscountCode(value));
-                        }}
-                     </OnChange>
-                  </form>
-               )}
-            </FormFinal>
+            {valueCode}
          </div>
       </div>
    );

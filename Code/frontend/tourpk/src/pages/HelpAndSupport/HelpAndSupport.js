@@ -21,6 +21,10 @@ const HelpAndSupport = () => {
     values["role"]  = role;
     dispatch(helpRequest(values));
     form.reset();
+    Object.keys(values).forEach(key => {
+      form.change(key, undefined);
+      form.resetFieldState(key);
+  });
   };
   const handleInputChange = (e) => {
     setSelectedFile(e.target.files[0]);

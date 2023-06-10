@@ -27,6 +27,10 @@ const ReviewForm = ({ serviceId }) => {
         }
         setRating(0);
         form.reset();
+        Object.keys(values).forEach(key => {
+            form.change(key, undefined);
+            form.resetFieldState(key);
+        });    
         apiRequest(review);
     };
 

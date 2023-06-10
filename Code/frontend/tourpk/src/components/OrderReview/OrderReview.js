@@ -26,7 +26,7 @@ export const OrderReview = () => {
       <div className={styles.container}>
          <h1 className={styles.heading}>Order Review</h1>
          <div className={styles.subtitle}>
-            <span>{totalCount} Item{totalCount !== 1 && 's'} in cart</span>
+            <span>Cart Items : {totalCount}  </span>
          </div>
          <div className={styles.items}>
             {items.map((item, index) => (
@@ -38,6 +38,7 @@ export const OrderReview = () => {
                      count={item.count}
                      price={item.price}
                      id={item.id}
+                     discountApplicability = {item.discountApplicability ? "Discount Applicable" : "Discount Not Applicale"}
                      discountedPrice={item.discountedPrice}
                      onIncrease={() => handleIncrease(item.id)}
                      onDecrease={() => handleDecrease(item.id)}

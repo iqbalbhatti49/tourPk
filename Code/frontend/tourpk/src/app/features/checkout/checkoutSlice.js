@@ -46,7 +46,6 @@ export const initiatePayment = createAsyncThunk(
          email: billingAddress.email,
          phoneNumber: billingAddress.phoneNumber,
       };
-      console.log(request)
       try {
          const response = await axiosInstance.post('/payment/payment', request);
          return response.data;

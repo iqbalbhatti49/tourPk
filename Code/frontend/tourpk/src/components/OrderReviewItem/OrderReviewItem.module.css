@@ -81,3 +81,9 @@
    flex-direction: column;
    gap: 16px;
 }
+
+.info{
+   font-weight: 500;
+   color: var(--assistColor);
+   font-style: italic;
+}

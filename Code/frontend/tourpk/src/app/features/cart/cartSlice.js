@@ -1,32 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-   items: [
-      {
-         imageSrc: '../../static/images/booking.png',
-         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-         count: 2,
-         price: '$19.99',
-         discountedPrice: '$14.99',
-         id: 1,
-      },
-      {
-         imageSrc: '../../static/images/booking.png',
-         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-         count: 1,
-         price: '$29.99',
-         discountedPrice: '$24.99',
-         id: 2,
-      },
-      {
-         imageSrc: '../../static/images/booking.png',
-         title: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-         count: 1,
-         price: '$29.99',
-         discountedPrice: '$24.99',
-         id: 3,
-      },
-   ],
+   items: [],
 };
 
 export const cartSlice = createSlice({

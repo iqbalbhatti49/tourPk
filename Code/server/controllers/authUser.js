@@ -154,6 +154,7 @@ exports.updateUserWithPlanDetails = async (req, res) => {
             {
                 discount: req.body.discount,
                 advancedSupport: req.body.advancedSupport,
+                plan: req.body.planCode
             },
             {
                 where: {
@@ -164,6 +165,7 @@ exports.updateUserWithPlanDetails = async (req, res) => {
         console.log("User plan details updated successfully");
         res.status(200).json({  discount: req.body.discount,
             advancedSupport: req.body.advancedSupport,
+            planCode: req.body.planCode,
             message: "User plan details updated successfully" });
     } catch (error) {
         console.log("Failed to update user plan details:", error);

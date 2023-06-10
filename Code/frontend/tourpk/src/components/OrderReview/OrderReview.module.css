@@ -10,6 +10,9 @@
 
 .subtitle {
    margin-bottom: 1rem;
+   /* font-style: italic; */
+   font-weight: 500;
+   color: var(--primaryColor);
 }
 
 .items {

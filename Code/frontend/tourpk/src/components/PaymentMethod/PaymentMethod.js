@@ -11,6 +11,8 @@ import Button from '../Button/Button';
 export const PaymentMethod = () => {
    const cardInfo = useSelector((state) => state.checkout.cardInfo);
    const [method, setMethod] = useState('001');
+   const [submitted, setSubmitted] = useState(false);
+
    const dispatch = useDispatch();
    console.log(cardInfo);
    const onSubmit = (values, form) => {
@@ -18,10 +20,29 @@ export const PaymentMethod = () => {
       values.cardType = method;
       dispatch(updateCardInfo(values));
       form.reset();
+      setSubmitted(true);
+      Object.keys(values).forEach(key => {
+         if(key != "cardType")
+         {
+            form.change(key, undefined);
+            form.resetFieldState(key);
+         }
+     }); 
+   };
+   const showSuccessAlert = () => {
+      swal({
+         title: 'Payment Details',
+         text: 'Your payment details have been saved! Now fill the remaining information to checkout.',
+         icon: 'success',
+         buttons: {
+            confirm: true,
+         },
+     })
    };
    return (
       <div className={styles.container}>
          <p className={styles.heading}>Payment Method</p>
+         <fieldset disabled={submitted && "disabled"}>
          <RadioGroup
             options={[
                { value: '001', icon: <img className={styles.image} alt="visa" src="../../static/images/visa.png" /> },
@@ -32,6 +53,7 @@ export const PaymentMethod = () => {
             value={method}
             onChange={(value) => { setMethod(value) }}
          />
+         </fieldset>
          <div className={styles.form}>
             <FormFinal
                onSubmit={onSubmit}
@@ -40,6 +62,7 @@ export const PaymentMethod = () => {
                }} >
                {({ handleSubmit }) => (
                   <form className={styles.form} onSubmit={handleSubmit}>
+                     <fieldset disabled={submitted && "disabled"}>
                      <div className={styles.row}>
                         <FormField name="expirationMonth" label="Expiration Month" type="text" placeholder="MM" value={cardInfo.cardExpirationMonth}
                            //validate={validateExpirationMonth}
@@ -50,10 +73,12 @@ export const PaymentMethod = () => {
                      </div>
                      <FormField name="cardNumber" label="Card Number" type="text" placeholder="1234 5678 9012 3456" value={cardInfo.cardNumber} validate={validateCreditCard} renderIcon={() => null} labelClass="showLabel" theme="light" />
                      <Button btnType="submit" value="Add Payment Method" />
+                     </fieldset>
                   </form>
                )}
             </FormFinal>
          </div>
+         {submitted && showSuccessAlert()}
          <div className={styles.securityMessage}>
             <img src="../../static/images/lock.png" />
             <span>Your payment information is secure.</span>

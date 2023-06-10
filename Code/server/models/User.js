@@ -39,6 +39,10 @@ module.exports = (sequelize, DataTypes) => {
         advancedSupport: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
+        },
+        plan: {
+            type: DataTypes.STRING,
+            allowNull: true,
         }
     }, {
         timestamps: false
