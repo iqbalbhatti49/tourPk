@@ -103,3 +103,13 @@ exports.addBooking = async (req, res) => {
     res.status(500).json({ error: 'Failed to add booking' });
   }
 };
+
+
+exports.deleteTourGuide = async (req, res) => {
+    console.log(req.body)
+    await TourGuideImage.destroy({ where: { TourGuideId: req.body.TourGuideId } });
+    await TourGuide.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Review.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Service.destroy({ where: { id: req.body.ServiceId } });
+    res.status(200).json("deleted sucessfully");
+}

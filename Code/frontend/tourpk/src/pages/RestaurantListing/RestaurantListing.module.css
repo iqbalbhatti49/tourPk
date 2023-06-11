@@ -1,3 +1,5 @@
+@import "../../styles/variables.css";
+
 .container {
     padding: 0px 5vw 75px 5vw;
     text-align: justify;
@@ -101,4 +103,19 @@
     display: flex;
     flex-wrap: wrap;
     column-gap: 90px;
+}
+
+.delete {
+    @apply --IconDelete;
+    padding-left: 20px;
+}
+
+.iconsDelEdit {
+    @apply --IconsBox;
+}
+
+.iconsBox {
+    top: 28px;
+    position: relative;
+    left: 64px;
 }

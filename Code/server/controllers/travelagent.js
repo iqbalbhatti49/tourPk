@@ -80,3 +80,12 @@ exports.getTravelAgentById = async (req, res) => {
     });
     res.json(data);
 }
+
+exports.deleteTourPackage = async (req, res) => {
+    console.log(req.body)
+    await TravelAgentImage.destroy({ where: { TravelAgentId: req.body.TravelAgentId } });
+    await TravelAgent.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Review.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Service.destroy({ where: { id: req.body.ServiceId } });
+    res.status(200).json("deleted sucessfully");
+}

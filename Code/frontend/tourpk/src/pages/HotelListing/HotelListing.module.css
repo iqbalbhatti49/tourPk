@@ -115,3 +115,18 @@
   flex: row;
   gap: 30px;
 }
+
+.delete {
+  @apply --IconDelete;
+  padding-left: 20px;
+}
+
+.iconsDelEdit {
+  @apply --IconsBox;
+}
+
+.iconsBox {
+  top: 28px;
+  position: relative;
+  left: 64px;
+}
