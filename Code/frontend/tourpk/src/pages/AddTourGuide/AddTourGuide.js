@@ -7,11 +7,14 @@ import { mustBeNumber, required } from "../../utils/validations";
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/Api";
+import { useSelector } from "react-redux";
 
 const AddTourGuide = () => {
+  const userId = useSelector(state => state.user.id);
   const navigate = useNavigate();
   const location = useLocation();
   const onSubmit = async (values) => {
+    values.UserId = userId;
     const tourGuideData = {
       service: location.state,
       tourGuide: values
@@ -85,8 +88,8 @@ const AddTourGuide = () => {
                   />
                   <h2>Pricing Information</h2>
                   <FormField
-                    name="perHourRate"
-                    label="Price Per Hour (Rs.)"
+                    name="perDayRate"
+                    label="Price Per Day (Rs.)"
                     type="number"
                     placeholder="$5"
                     validate={mustBeNumber}

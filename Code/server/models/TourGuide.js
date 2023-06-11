@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        perHourRate: {
+        perDayRate: {
             type: DataTypes.INTEGER,
             allowNull: false
         },

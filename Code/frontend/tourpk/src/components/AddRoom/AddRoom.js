@@ -4,40 +4,57 @@ import { Form as FormFinal } from "react-final-form";
 import { FormField, Button } from "../../components/index";
 import RoomAmeneties from "../RoomAmeneties/RoomAmeneties"
 import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
-import { roomAmenities } from "../../utils/Constants/RoomAmenetiesOptions";
+import { roomAmenitiess } from "../../utils/Constants/RoomAmenetiesOptions";
 import axiosInstance from "../../utils/Api";
+import { useSelector } from "react-redux";
 
-const AddRoom = ({ hotelData }) => {
+const AddRoom = (props) => {
+    const userId = useSelector(state => state.user.id); // Id of currently logged in user
+    const { service, hotelAmenities } = props.hotelData.hotelData;
+    const imagesArray = service.images;
+    delete service.images;
+    const hotel = {
+        UserId: userId,
+        amenities: hotelAmenities
+    }
+
+
 
     const preProcess = (values) => {
         // convert selected checkbox values to comma-separated string
-        const hotelRoomAmenities = roomAmenities
+        const roomAmenities = roomAmenitiess
             .filter(option => values[option.name])
             .map(option => option.label)
             .join(", ");
-        for (const amenity in RoomAmeneties) {
-            const { name } = amenity;
+        for (const index in roomAmenitiess) {
+            const { name } = roomAmenitiess[index];
             if (values.hasOwnProperty(name)) {
                 delete values[name];
             }
         }
+
         const roomData = {
-            ...values, hotelRoomAmenities
+            ...values, roomAmenities
         }
         return roomData;
     };
 
     const onSubmit = async (values) => {
+        values.availableRoomsCount = values.roomsCount;
         const roomData = preProcess(values);
+
         const hotelRoom = {
-            hotelData,
-            roomData
+            service: service,
+            hotel: hotel,
+            images: imagesArray,
+            room: roomData
         }
+
         console.log(hotelRoom)
-        const roomObj = await axiosInstance.post("/hotel/addHotel", hotelRoom);
-        const roomAdded = roomObj.data;
-        console.log("--> Back on F.end --> ", roomAdded);
-        navigate(`/restaurantListing/${roomAdded.serviceObj.name}`, { roomAdded });
+        const roomId = await axiosInstance.post("/hotel/addHotel", hotelRoom);
+        console.log("--> Back on F.end --> ", roomId.data);
+        swal("Hotel and Room Added Successfully", "Success! The new Hotel entry has been added successfully.", "success");
+        // navigate(`/hotelListing/${roomId.data}`, { state: "noReviews" });
     };
 
     return (
@@ -60,7 +77,7 @@ const AddRoom = ({ hotelData }) => {
                                     />
                                     <FormField
                                         name="roomsCount"
-                                        label="Rooms Count with same characteristics"
+                                        label="Rooms Count with similar characteristics"
                                         type="number"
                                         placeholder="30"
                                         validate={mustBeNumber}
@@ -72,7 +89,7 @@ const AddRoom = ({ hotelData }) => {
                                         name="capacity"
                                         label="Occupancy"
                                         type="number"
-                                        placeholder="1, 2, 4"
+                                        placeholder="2 persons"
                                         validate={mustBeNumber}
                                         renderIcon={() => null}
                                         theme="light"
@@ -93,7 +110,7 @@ const AddRoom = ({ hotelData }) => {
                                         label="View"
                                         type="text"
                                         placeholder="City View, Ocean View"
-                                        validate={validateAlpha}
+                                        validate={required}
                                         renderIcon={() => null}
                                         theme="light"
                                     />
@@ -130,9 +147,9 @@ const AddRoom = ({ hotelData }) => {
 
                                     <FormField
                                         name="rentPerNight"
-                                        label="Rent per Night"
+                                        label="Rent per Night (Rs.)"
                                         type="number"
-                                        placeholder="2000"
+                                        placeholder="Rs. 2000"
                                         validate={mustBeNumber}
                                         renderIcon={() => null}
                                         theme="light"

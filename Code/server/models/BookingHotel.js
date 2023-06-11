@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
       startAt: 1,
       increment: 1,
     },
-    checkInTime: {
-      type: DataTypes.DATE,
+    checkIn: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    checkOutTime: {
-      type: DataTypes.DATE,
+    checkOut: {
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     discount: {

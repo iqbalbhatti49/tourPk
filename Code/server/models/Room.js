@@ -20,8 +20,12 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        capacity: {
-            type: DataTypes.STRING,
+        availableRoomsCount: { //persons capacity
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        capacity: { //persons capacity
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         rentPerNight: {
@@ -41,6 +45,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         smoking: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        roomAmenities: {
             type: DataTypes.STRING,
             allowNull: false
         },

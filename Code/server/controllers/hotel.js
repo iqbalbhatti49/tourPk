@@ -1,9 +1,31 @@
-const { Service, Hotel, HotelImage, Review } = require("../models/");
+const { Service, Hotel, HotelImage, Review, Room } = require("../models/");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
 exports.addHotel = async (req, res) => {
     // TODO: IMPORTANT  modifiy capacity to ->> capacity = capacity + "persons" (string)
+    console.log("*********----START--", req.body, "----END----***********");
+
+    const service = req.body.service;
+    const hotel = req.body.hotel;
+    const images = req.body.images;
+    const room = req.body.room;
+
+    const serviceObj = await Service.create(service); //1. add in service table
+    hotel.ServiceId = serviceObj.id;
+    const hotelObj = await Hotel.create(hotel); //2. add in hotel table
+    let rootPath = "../static/images/upload/";
+    for (const img in images) {
+        let imgUrl = rootPath + images[img];
+        const image = {
+            imageUrl: imgUrl,
+            HotelId: hotelObj.id
+        };
+        await HotelImage.create(image); //3. add in images table
+    }
+    const roomObj = await Room.create(room); //4. add in room table
+
+    res.status(200).json(roomObj.dataValues.id);
 }
 
 

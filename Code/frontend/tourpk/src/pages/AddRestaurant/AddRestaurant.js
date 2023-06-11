@@ -8,9 +8,11 @@ import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 import axiosInstance from "../../utils/Api";
+import { useSelector } from "react-redux";
 
 const AddRestaurant = () => {
 
+    const userId = useSelector(state => state.user.id);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -35,6 +37,7 @@ const AddRestaurant = () => {
             cuisineType: values.cuisine,
             mealType: meals,
             features: features,
+            UserId: userId
         }
         const service = location.state.values;
         const imagesArray = service.images;

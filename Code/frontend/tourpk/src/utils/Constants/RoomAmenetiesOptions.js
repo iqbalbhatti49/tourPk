@@ -1,4 +1,4 @@
-export const roomAmenities = [
+export const roomAmenitiess = [
     { name: 'Air Conditioning', label: 'Air Conditioning' },
     { name: 'Television', label: 'Television' },
     { name: 'Mini-Fridge', label: 'Mini-Fridge' },
