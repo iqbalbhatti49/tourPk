@@ -21,14 +21,10 @@ const AddHotel = () => {
             service: location.state.values,
             hotelAmenities: hotelAmenities
         };
-        console.log("first hotel dataaaaaaaa:>>  ", hotelData);
-
         return hotelData;
     };
 
     const onSubmit = (values) => {
-        console.log("--> ", location.state);
-        console.log("Form submitted with values:", values);
         const hotelData = preProcess(values);
         console.log("hotel dataaaaaaaa:>>  ", hotelData);
         navigate("/addHotelRoom", { state: { hotelData } });

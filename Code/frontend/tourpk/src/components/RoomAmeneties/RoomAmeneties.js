@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./RoomAmeneties.module.css";
 import { FormField } from "../../components/index";
-import { roomAmenities } from "../../utils/Constants/RoomAmenetiesOptions";
+import { roomAmenitiess } from "../../utils/Constants/RoomAmenetiesOptions";
 
 const RoomAmeneties = ({ values }) => {
 
@@ -10,7 +10,7 @@ const RoomAmeneties = ({ values }) => {
       <h2>Room Ameneties</h2>
       <div className={styles.hotelAmeneties}>
         {
-          roomAmenities.map((amenity) => (
+          roomAmenitiess.map((amenity) => (
             <div>
               <FormField
                 key={amenity.name}

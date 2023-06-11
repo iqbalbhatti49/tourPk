@@ -9,22 +9,17 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1,
             increment: 1,
         },
-        checkInTime: {
-            type: DataTypes.DATE,
+        checkIn: {
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
-        checkOutTime: {
-            type: DataTypes.DATE,
+        checkOut: {
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
         discount: {
             type: DataTypes.INTEGER,
             allowNull: true
-        },
-        quantity: //multiple of basic offer of a service
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false
         },
         totalPrice:
         {

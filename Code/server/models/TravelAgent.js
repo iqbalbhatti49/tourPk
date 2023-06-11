@@ -24,10 +24,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        PerdayPrice: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
         hotelDetails: {
             type: DataTypes.STRING,
             allowNull: false,
