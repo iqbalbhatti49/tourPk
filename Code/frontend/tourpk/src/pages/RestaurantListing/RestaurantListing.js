@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './RestaurantListing.module.css'
 import { useLocation } from "react-router";
-import { Button, CircularRating, Carousel, Testimonial } from '../../components';
+import { Button, CircularRating, Carousel, Testimonial, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 import axiosInstance from '../../utils/Api';
 import { useParams } from 'react-router-dom';
@@ -14,7 +14,7 @@ export default function RestaurantListing() {
     const [reviewCount, setreviewCount] = useState(null);
     const [ratingAverge, setratingAverge] = useState(null);
     const [loading, setLoading] = useState(true);
-    let isReviewsAvailable;
+    const [isReviewsAvailable, setisReviewsAvailable] = useState(true);
 
     const getRestaurant = async () => {
         try {
@@ -28,21 +28,17 @@ export default function RestaurantListing() {
                 Reviews,
                 RestaurantImages
             };
-            setData(restaurantData);
             const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
             setratingAverge(ratingAvg);
             setreviewCount(reviewsCount);
-            console.log(reviewsCount, "---", ratingAvg);
-            setLoading(false);
-            if ('Reviews' in restaurantData)
-                isReviewsAvailable = true;
+            setData(restaurantData);
+            if (restaurantData.hasOwnProperty("Reviews"))
+                setisReviewsAvailable(true);
             else
-                isReviewsAvailable = false;
-
-            console.log(restaurantData);
-            console.log(isReviewsAvailable);
+                setisReviewsAvailable(false);
+            // console.log(reviewsCount, "---", ratingAvg);
+            setLoading(false);
         } catch (error) {
-            setError(error.message);
             setLoading(false);
         }
     };
@@ -112,12 +108,9 @@ export default function RestaurantListing() {
                 </div>
                 <div>
                     {isReviewsAvailable &&
-                        <div className={styles.ratingPricing}>
-                            <h2 className={styles.subHeading}>Ratings</h2>
-                            <div className={styles.rating}>
-                                <CircularRating rating={ratingAvg} />
-                                <p className={styles.ratingText}>Based on {reviewsCount} Reviews</p>
-                            </div>
+                        <div>
+                            <Rating rating={ratingAverge} />
+                            <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
                         </div>
                     }
                     <div className={styles.booking}>
