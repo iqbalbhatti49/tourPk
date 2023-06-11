@@ -5,59 +5,96 @@ import { Form as FormFinal } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { initiatePayment } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
+import {clearCart }from "../../app/features/cart/cartSlice"
+import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import { addTourGuideBooking, addTravelAgentBooking } from '../../app/features/bookings/bookingsSlice';
+
 
 export const BillingSummary = () => {
    const dispatch = useDispatch();
+   const navigate = useNavigate();
+   const location = useLocation();
+   const tourguide = location.state && location.state.payLaod;
+   const travelagent = location.state && location.state.travelagent;
    const required = value => (value ? undefined : 'Required');
+   const discount = useSelector((state) => state.pricing.discount);
    const cardInfo = useSelector((state) => state.checkout.cardInfo);
    const billingAddress = useSelector((state) => state.checkout.billingAddress);
+   const paymentResult = useSelector((state) => state.checkout.paymentResult);
    const items = useSelector((state) => state.cart.items);
+
    let total = items.reduce((acc, item) => {
-      const itemPrice = parseFloat(item.price.replace('$', ''));
-      return acc + itemPrice * item.count;
+      return acc + item.price * item.count;
    }, 0);
+   
    let totalDiscountedPrice = items.reduce((acc, item) => {
-      const DiscountedPrice = parseFloat(item.discountedPrice.replace('$', ''));
-      return acc + DiscountedPrice * item.count;
+      if (item.discountApplicable) {
+         return acc + item.discountedPrice * item.count;
+      } else {
+         return acc + item.price * item.count;
+      }
    }, 0);
+   
+    
    total = total.toFixed(0)
    totalDiscountedPrice = totalDiscountedPrice.toFixed(0)
-   const tax = 1000;
-   const warranty = 259;
-   let totalWithTax = parseInt(totalDiscountedPrice) + parseInt(tax) + parseInt(warranty);
-   totalWithTax = '$' + totalWithTax;
+   let overallTotal = parseInt(totalDiscountedPrice);
+   overallTotal = '$' + overallTotal;
 
    const billingSummary = [
       {
-         label: 'total',
-         value: '$ ' + total
+         label: 'Total',
+         value: total 
       },
       {
-         label: 'Discount',
-         value: '$ ' + (total - totalDiscountedPrice)
+         label: 'Discount Percentage',
+         value: discount + "%" 
       },
       {
-         label: 'DiscountedTotal',
-         value: '$ ' + totalDiscountedPrice
+         label: 'Discount Granted',
+         value: total - totalDiscountedPrice
       },
       {
-         label: 'Tax',
-         value: '$ ' + tax
+         label: 'Discounted Total',
+         value: totalDiscountedPrice 
       },
-      {
-         label: 'Warranty (Platinum)',
-         value: '$ ' + warranty
-      }
    ];
 
+   console.log(total)
    const onSubmit = (values, form) => {
       console.log('Form submitted with values:', values);
-      values.grandTotal = totalWithTax;
+      values.grandTotal = overallTotal;
       values.cardInfo = cardInfo;
       values.billingAddress = billingAddress;
       dispatch(initiatePayment(values))
       form.reset();
-   };
+      form.change("OrderComment", undefined);
+      form.resetFieldState("OrderComment");
+      swal({
+         title: 'Result',
+         text: paymentResult,
+         icon: 'success',
+         buttons: {
+           confirm: true,
+         },
+       })
+       .then((confirmed) => {
+         if (confirmed) {
+            if(tourguide)
+            {
+               dispatch(addTourGuideBooking(tourguide));
+            }
+            if(travelagent)
+            {
+               dispatch(addTravelAgentBooking(travelagent));
+            }
+           dispatch(clearCart());
+           navigate("/");
+         }
+       });
+       
+   }
 
    return (
       <div className={styles.container} >
@@ -72,7 +109,7 @@ export const BillingSummary = () => {
             <hr className={styles.hr}></hr>
             <div className={styles.summaryItem}>
                <p className={styles.total}>Grand Total</p>
-               <p className={styles.total}>{totalWithTax}</p>
+               <p className={styles.total}>{overallTotal}</p>
             </div>
             <div className={styles.form}>
                <FormFinal
@@ -83,7 +120,7 @@ export const BillingSummary = () => {
                   {({ handleSubmit }) => (
                      <form className={styles.form} onSubmit={handleSubmit}>
                         <FormField name="OrderComment" label="Order Comment" type="text" placeholder="Type Here...." validate={required} renderIcon={() => null} labelClass="showLabel" theme="light" />
-                        <Button value={"Pay " + totalWithTax} type="primary" width={480} btnType="submit" />
+                        <Button value={"Pay " + overallTotal} type="primary" width={480} btnType="submit" />
                      </form>
                   )}
                </FormFinal>

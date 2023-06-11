@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
     const BookingTravelAgent = sequelize.define("BookingTravelAgent", {
         id: {
@@ -9,24 +8,16 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1,
             increment: 1,
         },
-        checkInTime: {
-            type: DataTypes.DATE,
+        bookingDate: {
+            type: DataTypes.DATEONLY,
             allowNull: false,
         },
-        checkOutTime: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
-        discount: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        quantity: //multiple of basic offer of a service
+        totalPrice:
         {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        totalPrice:
+        guestCount:
         {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -38,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         BookingTravelAgent.belongsTo(models.User, {
             onDelete: "cascade",
         });
-        BookingTravelAgent.belongsTo(models.Room, {
+        BookingTravelAgent.belongsTo(models.TravelAgent, {
             onDelete: "cascade",
         });
     };

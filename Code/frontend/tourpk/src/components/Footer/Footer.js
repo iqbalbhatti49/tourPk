@@ -22,11 +22,11 @@ export const Footer = () => {
                      <Link className={styles.navLink} to="/addService">add SERvice</Link>
                      <Link className={styles.navLink} to={isLoggedIn ? "/AddBlog" : "/login"}>Write Blog</Link>
                      <Link className={styles.navLink} to="/addHotelRoom">addHotelRoom</Link>
-                     <Link className={styles.navLink} to="/restaurantListing">restaurantListing</Link>
+                     <Link className={styles.navLink} to="/restaurantListing/:id">restaurantListing</Link>
                      <Link className={styles.navLink} to="/addHotel">addHotel</Link>
                      <Link className={styles.navLink} to="/AddTravelAgent">AddTravelAgent</Link>
                      <Link className={styles.navLink} to="/addTourGuide">addTourGuide</Link>
-                     <Link className={styles.navLink} to="/tourGuideListing">tourGuideListing</Link>
+                     <Link className={styles.navLink} to="/tourGuideListing/:id">tourGuideListing</Link>
                      <Link className={styles.navLink} to="/addrestaurant">addrestaurant</Link>
                   </div>
                   <div className={styles.links}>
@@ -35,8 +35,9 @@ export const Footer = () => {
                      <Link className={styles.navLink} to="/bookings">Bookings</Link>
                      <Link className={styles.navLink} to="/addrestaurant">Add Restaurant</Link>
                      <Link className={styles.navLink} to={isLoggedIn ? "/helpandsupport" : "/login"} >Help And Support</Link>
-                     <Link className={styles.navLink} to="/listing">Listing</Link>
+                     <Link className={styles.navLink} to="/hotelListing">Hotel Listing</Link>
                      <Link className={styles.navLink} to="/spotListing">Spot Listing</Link>
+                     <Link className={styles.navLink} to="/travelAgentListing/:id">Travel Agent Listing</Link>
                      <Link className={styles.navLink} to={isLoggedIn ? "/checkout" : "/login"}>Checkout</Link>
                   </div>
                </div>

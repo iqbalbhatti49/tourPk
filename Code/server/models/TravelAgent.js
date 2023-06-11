@@ -24,10 +24,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        PerdayExtraPrice: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
         hotelDetails: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -58,6 +54,8 @@ module.exports = (sequelize, DataTypes) => {
         TravelAgent.hasMany(models.BookingTravelAgent, {
             onDelete: "cascade",
         });
+        TravelAgent.belongsTo(models.Service);
+        TravelAgent.belongsTo(models.User);
     };
     // TravelAgent.sync({ alter: true })
     return TravelAgent;

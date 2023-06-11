@@ -24,6 +24,9 @@
    color: var(--assistColor);
 }
 
+.darkContainer .description,.darkContainer .period{
+   color: var(--whiteColor);
+}
 .features {
    margin-bottom: 32px;
 }

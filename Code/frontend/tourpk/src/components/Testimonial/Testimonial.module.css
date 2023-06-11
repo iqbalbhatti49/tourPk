@@ -1,8 +1,7 @@
 @import "../../styles/variables.css";
 
-.testimonialContainer
-{
-   padding:60px;
+.testimonialContainer {
+   padding: 60px;
    padding-block: 5px;
    background-color: var(--primaryColor);
    color: var(--assistColorLight);
@@ -11,24 +10,21 @@
    max-width: 50vw;
 }
 
-.testimonial
-{
+.testimonial {
    padding: 30px;
    padding-bottom: 10px;
    text-align: center;
    max-width: 90%;
 }
 
-.name
-{
+.name {
    font-size: 18px;
    letter-spacing: 1px;
    font-weight: 600;
 }
-.company
-{
-   font-size: 20px;
-   font-weight: bold;
+
+.company {
+   font-size: 16px;
    font-style: italic;
    margin: 0;
 }

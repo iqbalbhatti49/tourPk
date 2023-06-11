@@ -16,10 +16,10 @@ const Login = () => {
             const user = await dispatch(login(values));
             console.log("----> ", user.payload);
 
-            if (user.payload.plan == null)
+            if (user.payload.role == "tourist")
                 navigate("/pricing");
             else
-                navigate("/");
+                navigate("/serviceProvider");
         } catch (error) {
             setErrormsg(error.response.data);
         }

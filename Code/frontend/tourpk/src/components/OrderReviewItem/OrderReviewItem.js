@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './OrderReviewItem.module.css';
 
-const OrderReview = ({ imageSrc, title, count, price, discountedPrice, onIncrease, onDecrease, onRemove }) => {
+const OrderReview = ({ imageSrc, title, count, price, discountedPrice, discountApplicability, onIncrease, onDecrease, onRemove }) => {
    const handleIncrease = () => {
       onIncrease();
    };
@@ -13,19 +13,22 @@ const OrderReview = ({ imageSrc, title, count, price, discountedPrice, onIncreas
    const handleRemove = () => {
       onRemove();
    };
+   console.log(imageSrc)
 
    return (
       <div className={styles.orderReview}>
          <div>
             <img className={styles.OrderReview_img} src={imageSrc} alt={title} />
          </div>
-         <div>
-            <p>{title}</p>
-            <div className={styles.count}>
+         <div className={styles.info}>
+            <p>Title : {title}</p>
+            {/* <div className={styles.count}>
                <button className={styles.button} onClick={handleDecrease}>-</button>
                <span className={styles.countValue}>{count}</span>
                <button className={styles.button} onClick={handleIncrease}>+</button>
-            </div>
+            </div> */}
+            <p>Count : {count}</p>
+            <p>{discountApplicability}</p>
          </div>
          <div className={styles.content}>
             <div className={styles.remove} onClick={handleRemove}>×</div>

@@ -11,7 +11,8 @@ const initialState = {
    businessTitle: '',
    loggedIn: false,
    token: null,
-   plan: null
+   phoneNumberVerified: false,
+   emailVerified: false
 };
 
 export const login = createAsyncThunk('user/login', async (user) => {
@@ -45,6 +46,25 @@ export const resetPassword = createAsyncThunk('user/resetPassword', async (value
    }
 });
 
+export const updatePhoneNumberVerification = createAsyncThunk(
+   'user/updatePhoneNumberVerification',
+   async (payload) => {
+      const { userId,phoneNumber } = payload;
+      console.log(payload)
+     try {
+       const response = await axiosInstance.post('/auth/numberVerification', {
+         phoneNumber,
+         userId,
+         phoneNumberVerified: true
+       });
+       return response.data;
+     } catch (error) {
+       console.log('Failed to update phone number verification:', error);
+       throw error;
+     }
+   }
+);
+
 const userSlice = createSlice({
    name: 'user',
    initialState,
@@ -63,8 +83,7 @@ const userSlice = createSlice({
          state.id = '';
          state.token = null;
          state.role = '';
-         state.plan = ''
-      }
+      },
    },
    extraReducers: (builder) => {
       builder
@@ -79,11 +98,23 @@ const userSlice = createSlice({
             state.businessTitle = action.payload.user.businessTitle;
             state.token = action.payload.token;
             state.role = action.payload.user.role;
-            state.role = action.payload.user.plan;
+            state.phoneNumber = action.payload.user.phoneNumber;
+            state.phoneNumberVerified = action.payload.user.phoneNumberVerified;
+            state.emailVerified = action.payload.user.emailVerified
          })
          .addCase(login.rejected, (state, action) => {
             state.status = 'failed';
             state.error = action.error.message;
+         })
+         .addCase(updatePhoneNumberVerification.pending, (state) => {
+            // Optional: You can update the state while the action is pending
+         })
+         .addCase(updatePhoneNumberVerification.fulfilled, (state, action) => {
+            state.phoneNumber = action.payload.phoneNumber;
+            state.phoneNumberVerified = action.payload.phoneNumberVerified;
+         })
+         .addCase(updatePhoneNumberVerification.rejected, (state, action) => {
+            // Handle the rejected action if needed
          });
    }
 });

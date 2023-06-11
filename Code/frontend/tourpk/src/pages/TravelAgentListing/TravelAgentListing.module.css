@@ -1,0 +1,96 @@
+@import "../../styles/variables.css";
+
+.container {
+   padding: 0px 5vw 75px 5vw;
+   text-align: justify;
+}
+
+.heading {
+   max-width: 900px;
+   font-size: 3rem;
+   font-weight: 700;
+   line-height: 4rem;
+   margin-bottom: 24px;
+   margin-top: 0px;
+}
+
+.header p {
+   min-width: 300px !important;
+   line-height: 1rem;
+}
+
+.header {
+   display: flex;
+   flex-direction: row;
+   gap: 20px;
+   width: 100%;
+   padding-block: 50px;
+}
+
+.subHeading {
+   color: var(--primaryColor);
+   font-size: 2rem;
+   font-weight: 700;
+   line-height: 4rem;
+}
+
+.testimonial {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.attributes {
+   display: flex;
+   flex-direction: row;
+}
+
+.key {
+   font-weight: 500;
+   color: var(--primaryColor);
+}
+
+.details {
+   display: flex;
+   flex-direction: row;
+   gap: 100px;
+   width: 100%;
+}
+
+.about {
+   width: 68%;
+}
+
+.pricing {
+   display: flex;
+   justify-content: space-between;
+   font-weight: 600;
+   width: 150px;
+   border-radius: 10px;
+   padding: 5px 30px;
+   border: 1px solid var(--assistColor);
+}
+
+.booking {
+   display: flex;
+   flex-direction: column;
+   max-width: 500px;
+   padding-top: 20px;
+   margin-top: 10px;
+}
+
+.delete {
+   @apply --IconDelete;
+   padding-left: 20px;
+}
+
+.iconsDelEdit {
+   @apply --IconsBox;
+}
+
+.iconsBox {
+   top: 28px;
+   position: relative;
+   left: 64px;
+}

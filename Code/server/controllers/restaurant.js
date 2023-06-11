@@ -1,4 +1,4 @@
-const { Restaurant, Service, RestaurantImage } = require("../models");
+const { Restaurant, Service, RestaurantImage, Review } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -9,29 +9,59 @@ exports.addRestaurant = async (req, res) => {
     const serviceObj = await Service.create(service);
     restaurant.ServiceId = serviceObj.id;
     const restaurantObj = await Restaurant.create(restaurant);
+    let rootPath = "../static/images/upload/";
     for (const img in images) {
-        // extract image url from images array and create a new object
+        let imgUrl = rootPath + images[img];
         const image = {
-            imageUrl: images[img],
+            imageUrl: imgUrl,
             RestaurantId: restaurantObj.id
         };
         await RestaurantImage.create(image);
     }
-
-    let img = {};
-    images.forEach((image, index) => {
-        img[`image${index + 1}`] = image;
-    });
-
-    const response = {
-        serviceObj: serviceObj.dataValues,
-        restaurantObj: restaurantObj.dataValues,
-        images: img
-    };
-    console.log("--> Back.end --> ", response);
-    res.status(200).json(response);
+    res.status(200).json(restaurantObj.dataValues.id);
 }
 
 exports.getRestaurantById = async (req, res) => {
+    const id = req.params.id;
+    const data = await Restaurant.findOne({
+        where: {
+            id: id
+        },
+        include: [
+            {
+                model: Service,
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+            {
+                model: RestaurantImage,
+            },
+        ]
+    });
+    res.json(data);
+}
 
+exports.getAllRestaurants = async (req, res) => {
+    const restaurants = await Restaurant.findAll({
+        attributes: ['id'],
+        include: [
+            {
+                model: Service,
+                attributes: ['name', 'address'], // Include attributes from the Service table: name, address
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+            {
+                model: RestaurantImage,
+                attributes: ['imageUrl']
+            },
+        ],
+    });
+    res.json(restaurants);
 }

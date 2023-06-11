@@ -3,14 +3,18 @@ import { Form as FinalForm } from 'react-final-form';
 import axiosInstance from '../../utils/Api';
 import { FormField, Button } from '../../components';
 import styles from './AccountVerification.module.css';
-
+import {updatePhoneNumberVerification} from "../../app/features/user/userSlice";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 function AccountVerification() {
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [phoneNumber, setPhoneNumber] = useState(null);
   const [otpCode, setOtpCode] = useState('');
-  const [verificationMessage, setVerificationMessage] = useState('');
   const [verificationStarted, setVerificationStarted] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Add isLoading state
+  const userId = useSelector((state) => state.user.id)
 
   const handlePhoneNumberChange = (e) => {
     setPhoneNumber(e.target.value);
@@ -27,13 +31,28 @@ function AccountVerification() {
         phoneNumber: values.phoneNumber,
       });
 
-      setVerificationMessage(response.data.message);
+      swal({
+          title: 'Verification Started!',
+          text: response.data.message,
+          icon: 'info',
+          buttons: {
+            confirm: true,
+          },
+      })
       setVerificationStarted(true);
+      setPhoneNumber(values.phoneNumber)
       setVerificationStatus(response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
     } catch (error) {
       console.error('Error initiating verification:', error);
-      setVerificationMessage('Failed to initiate verification');
+        swal({
+          title: 'Verification Failed!',
+          text: 'Failed to initiate verification',
+          icon: 'warning',
+          buttons: {
+            confirm: true,
+          },
+      })
       setVerificationStatus(error.response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
     }
@@ -48,16 +67,38 @@ function AccountVerification() {
       });
 
       if (response.data.success) {
-        setVerificationMessage('Verification code is valid');
+        swal({
+            title: 'Code Verified!',
+            text: 'Your phone number is successfully verified.',
+            icon: 'success',
+            buttons: {
+              confirm: true,
+            },
+        })
         setVerificationStatus(response.status); // Set the status code in state
+        dispatch(updatePhoneNumberVerification({userId,phoneNumber}));
+        navigate("/serviceProvider")
       } else {
-        setVerificationMessage('Verification code is invalid or expired');
+        swal({
+            title: 'Not Verified!',
+            text: 'Verification code is invalid or expired.',
+            icon: 'error',
+            buttons: {
+              confirm: true,
+            },
+        })
         setVerificationStatus(response.status); // Set the status code in state
       }
       setIsLoading(false); // Hide loading symbol
     } catch (error) {
-      console.error('Error checking verification code:', error);
-      setVerificationMessage('Failed to check verification code');
+      swal({
+          title: 'Not Verified!',
+          text: 'Failed to check verification code.',
+          icon: 'error',
+          buttons: {
+            confirm: true,
+          },
+      })
       setVerificationStatus(error.response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
     }
@@ -110,9 +151,6 @@ function AccountVerification() {
           )}
         />
         {isLoading && <p>Loading...</p>} 
-        <p className={`${styles.verificationMessage} ${verificationStatusClass}`}>
-          {verificationMessage}
-        </p>
       </div>
     </div>
   );

@@ -1,71 +1,87 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-   currentBookings: [
-      {
-         bookingId: 1,
-         packageName: "Winter tour",
-         customerName: "Miss Maryam",
-         contact: "+92 321111111",
-         cnic: "35202 xxxxxxxx",
-         date: "01-02-2023"
-      },
-      {
-         bookingId: 2,
-         packageName: "Summer tour",
-         customerName: "Mrs. Wahab",
-         contact: "+92 321000000",
-         cnic: "35202 xxxxxxxx",
-         date: "01-02-2022"
-      },
-      {
-         bookingId: 3,
-         packageName: "Spring tourista",
-         customerName: "Mr. Arham Saad",
-         contact: "+92 321010101",
-         cnic: "35202 xxxxxxxx",
-         date: "01-07-2022"
-      }
-   ],
-   pastBookings: [
-      {
-         bookingId: 1,
-         packageName: "Winter tour",
-         customerName: "Miss Maryam",
-         contact: "+92 321111111",
-         cnic: "35202 xxxxxxxx",
-         date: "01-02-2023"
-      },
-      {
-         bookingId: 2,
-         packageName: "Summer tour",
-         customerName: "Mrs. Wahab",
-         contact: "+92 321000000",
-         cnic: "35202 xxxxxxxx",
-         date: "01-02-2022"
-      },
-      {
-         bookingId: 3,
-         packageName: "Spring tourista",
-         customerName: "Mr. Arham Saad",
-         contact: "+92 321010101",
-         cnic: "35202 xxxxxxxx",
-         date: "01-07-2022"
-      }
-   ],
-   totalBookings: 6,
-   totalEarnings: 10000
+  currentBookings: [],
+  bookingStatus: 'idle', // Initial status is 'idle'
 };
 
+// Async thunk for making the API call
+export const addTourGuideBooking = createAsyncThunk(
+  'bookings/addTourGuideBooking',
+  async ({ userId, id, totalPrice, selectedDate }) => {
+    console.log(selectedDate);
+    try {
+      const response = await axios.post('/tourguide/addBooking', {
+        userId,
+        id,
+        totalPrice,
+        selectedDate,
+      });
+
+      return response.data; // You can handle the response data as needed
+    } catch (error) {
+      // Handle error case
+      throw Error('Failed to add booking');
+    }
+  }
+);
+
+export const addTravelAgentBooking = createAsyncThunk(
+  'bookings/addTravelAgentBooking',
+  async ({ userId, id, selectedDate, totalPrice, guests }) => {
+    try {
+      const response = await axios.post('/travelAgent/addBooking', {
+        userId,
+        id,
+        selectedDate,
+        totalPrice,
+        guestCount:guests,
+      });
+
+      return response.data; // You can handle the response data as needed
+    } catch (error) {
+      // Handle error case
+      throw Error('Failed to add booking');
+    }
+  }
+);
+
 export const bookingsSlice = createSlice({
-   name: 'bookings',
-   initialState,
-   reducers: {
-      
-   },
+  name: 'bookings',
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(addTourGuideBooking.pending, (state, action) => {
+      state.bookingStatus = 'loading'; // Set bookingStatus to 'loading' when the request is pending
+    });
+    builder.addCase(addTourGuideBooking.fulfilled, (state, action) => {
+      // Update the local state with the new booking
+      const newBooking = action.payload;
+      state.currentBookings.push(newBooking);
+      state.bookingStatus = 'succeeded'; // Set bookingStatus to 'succeeded' after successful booking
+    });
+    builder.addCase(addTourGuideBooking.rejected, (state, action) => {
+      // Handle error case if needed
+      state.bookingStatus = 'failed'; // Set bookingStatus to 'failed' if the request is rejected
+    });
+    builder.addCase(addTravelAgentBooking.pending, (state, action) => {
+      state.bookingStatus = 'loading'; // Set bookingStatus to 'loading' when the request is pending
+    });
+    builder.addCase(addTravelAgentBooking.fulfilled, (state, action) => {
+      // Update the local state with the new booking
+      const newBooking = action.payload;
+      state.currentBookings.push(newBooking);
+      state.bookingStatus = 'succeeded'; // Set bookingStatus to 'succeeded' after successful booking
+    });
+    builder.addCase(addTravelAgentBooking.rejected, (state, action) => {
+      // Handle error case if needed
+      state.bookingStatus = 'failed'; // Set bookingStatus to 'failed' if the request is rejected
+    });
+  },
 });
 
-export const { } = bookingsSlice.actions;
+export const {} = bookingsSlice.actions;
 
 export default bookingsSlice.reducer;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './BlogMenu.module.css';
 import axios from 'axios';
 import { BlogCard } from '../BlogCard/BlogCard';
+import axiosInstance from '../../utils/Api';
 
 export default function BlogMenu(props) {
     const [blogs, setBlogs] = useState([]);
@@ -10,7 +11,7 @@ export default function BlogMenu(props) {
             const id = props.id;
             try {
                 // console.log("----------id in blogmenu: ", id);
-                const res = await axios.get(`/blog/randomBlogs/${id}`);
+                const res = await axiosInstance.get(`/blog/randomBlogs/${id}`);
                 // console.log(res);
                 setBlogs(res.data);
             } catch (err) {

@@ -20,7 +20,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        capacity: {
+        availableRoomsCount: { //persons capacity
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
+        capacity: { //persons capacity
             type: DataTypes.INTEGER,
             allowNull: false,
         },
@@ -44,10 +48,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        isAvailable: {
-            type: DataTypes.BOOLEAN,
-            allowNull: false,
-            default: true
+        roomAmenities: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
     }, {
         timestamps: false,
@@ -58,5 +61,6 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade"
         });
     };
+    // Room.sync({ alter: true });
     return Room;
 }

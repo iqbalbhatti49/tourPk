@@ -44,6 +44,8 @@ module.exports = (sequelize, DataTypes) => {
         Restaurant.hasMany(models.RestaurantImage, {
             onDelete: "cascade",
         });
+        Restaurant.belongsTo(models.Service);
+        Restaurant.belongsTo(models.User);
     };
     // Restaurant.sync({ alter: true })
     return Restaurant;

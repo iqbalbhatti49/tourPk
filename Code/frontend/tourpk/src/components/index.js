@@ -40,7 +40,7 @@ export {default as Rating } from "./Rating/Rating"
 export {default as ReviewForm} from "./ReviewForm.js/ReviewForm"
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
-export { toggleChecked } from '../app/features/pricing/pricingSlice';
+export { toggleChecked, updateUserWithPlanDetails } from '../app/features/pricing/pricingSlice';
 export { updateUser, login, logout } from '../app/features/user/userSlice';
 
 //Icons

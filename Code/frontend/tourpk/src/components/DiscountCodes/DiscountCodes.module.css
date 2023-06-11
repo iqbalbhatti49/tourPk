@@ -7,3 +7,12 @@
 .heading {
    @apply --heading;
 }
+
+.form
+{
+   padding: 15px;
+   padding-bottom: 2px;
+   border: 1px solid var(--assistColorLight);
+   border-radius: 4px;
+   height: 34px;
+}

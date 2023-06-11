@@ -60,7 +60,6 @@ exports.signupAsTourist = async (req, res) => {
         });
         if (existingUser)
             return res.status(409).json("User already exists!");
-
         this.signup(req, res, { role: "tourist" });
     }
     catch (err) {
@@ -147,3 +146,57 @@ exports.resetPassword = async (req, res) => {
         res.json({ status: "Something Went Wrong" });
     }
 };
+
+exports.updateUserWithPlanDetails = async (req, res) => {
+    console.log(req.body);
+    try {
+        await User.update(
+            {
+                discount: req.body.discount,
+                advancedSupport: req.body.advancedSupport,
+                plan: req.body.planCode
+            },
+            {
+                where: {
+                    id: req.body.userId,
+                },
+            }
+        );
+        console.log("User plan details updated successfully");
+        res.status(200).json({
+            discount: req.body.discount,
+            advancedSupport: req.body.advancedSupport,
+            planCode: req.body.planCode,
+            message: "User plan details updated successfully" });
+    } catch (error) {
+        console.log("Failed to update user plan details:", error);
+        res.status(500).json({ error: "Failed to update user plan details" });
+    }
+};
+
+exports.numberVerification = async (req, res) => {
+    try {
+        const { phoneNumber, userId } = req.body;
+       await User.update(
+          {
+             phoneNumberVerified: true,
+             phoneNumber:phoneNumber
+          },
+          {
+             where: {
+                id: userId,
+             },
+          }
+       );
+ 
+       console.log(`Phone number verification updated for user with ID: ${userId}`);
+       res.status(200).json({
+          message: 'Phone number verification updated successfully',
+          phoneNumberVerified: true,
+          phoneNumber:phoneNumber
+       });
+    } catch (error) {
+       console.log('Failed to update phone number verification:', error);
+       res.status(500).json({ error: 'Failed to update phone number verification' });
+    }
+ };

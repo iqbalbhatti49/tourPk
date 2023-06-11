@@ -1,0 +1,95 @@
+@import "../../styles/variables.css";
+
+.container {
+    padding: 0px 5vw 75px 5vw;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    padding-block: 50px;
+  }
+  
+  .header h1 {
+    margin-bottom: 8px;
+    margin-top: 0;
+  }
+  
+  .subHeading {
+    letter-spacing: 0.1em;
+    line-height: 20px;
+    text-transform: uppercase;
+    color: var(--primaryColor);
+    font-weight: 600;
+  }
+  
+  .description {
+    color: var(--assistColor);
+    max-width: 500px;
+    margin: 0px 0px 30px 0px;
+    text-align: center;
+  }
+
+  .key
+  {
+    font-weight: 500;
+    color: var(--assistColor);
+  }
+  .flex
+  {
+    display: flex;
+    gap: 10px;
+  }
+  .flex div div{
+    padding-block: 10px;
+  }
+
+  .btns
+  {
+    display: flex;
+    gap: 50px;
+    padding-block: 30px;
+  }
+  .outerFlex
+  {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .innerFlex
+  {
+    display: flex;
+    gap:30px;
+  }
+  .informationTitle
+  {
+    font-style: italic;
+    color: var(--secondaryColor);
+    font-weight: bold;
+    margin:6px;
+  }
+  .travelAgent
+  {
+    /* border :1px solid var(--assistColor); */
+    border-radius: 12px;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.16);
+    width: 250px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .travelAgents
+  {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .desc{
+    text-align: justify;
+  }
+  .servicesFlex
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }

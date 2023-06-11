@@ -3,9 +3,9 @@ import styles from "./Signup.module.css";
 import { Form as FormFinal } from 'react-final-form'
 import { FormField, IconEmail, IconPassword, IconPerson, updateUser, Button } from "../../components/index";
 import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
-import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import axiosInstance from "../../utils/Api";
 
 const Signup = (props) => {
     const [errormsg, setErrormsg] = useState(null);
@@ -18,10 +18,14 @@ const Signup = (props) => {
         try {
             let res;
             if (props.userType === "seller")
-                res = await axios.post("auth/signupAsSeller", values);
+                res = await axiosInstance.post("auth/signupAsSeller", values);
             else
-                res = await axios.post("auth/signupAsTourist", values);
+                res = await axiosInstance.post("auth/signupAsTourist", values);
             form.reset(); // Reset the form's state after submission
+            Object.keys(values).forEach(key => {
+                form.change(key, undefined);
+                form.resetFieldState(key);
+            });        
             navigate("/Login");
         }
         catch (error) {

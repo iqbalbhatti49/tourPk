@@ -4,10 +4,69 @@ import 'react-tabs/style/react-tabs.css';
 import { LahoreHotles, LahoreResturants } from "../../utils/FakeData";
 import { IconHotel, IconResturant, IconGuide, IconAgent, HotelCard } from "../../components/index";
 import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axiosInstance from "../../utils/Api";
+import { useNavigate } from "react-router-dom";
+
 
 const Services = () => {
+
+   const [isLoading, setIsLoading] = useState(true);
+   const [error, setError] = useState(null);
+   const [restaurants, setRestaurants] = useState([]);
+   const [hotels, setHotels] = useState([]);
+   const [tourGuides, setTourGuides] = useState([]);
+   const [travelAgent, setTravelAgent] = useState([]);
+
+   const getRestaurants = async () => {
+      const res = await axiosInstance.get("/restaurant/getRestaurants");
+      console.log("restrnt ----: ", res.data);
+      setRestaurants(res.data);
+   }
+   const getHotels = async () => {
+      const res = await axiosInstance.get("/hotel/getHotels");
+      console.log("hotl ----: ", res.data);
+      setHotels(res.data);
+   }
+   const getTravelAgents = async () => {
+      const res = await axiosInstance.get("/travelAgent/getTravelAgents");
+      console.log("Tagent ----: ", res.data);
+      setTravelAgent(res.data);
+   }
+   const getTourGuides = async () => {
+      const res = await axiosInstance.get("/tourguide/getTourGuides");
+      console.log("tguide ----: ", res.data);
+      setTourGuides(res.data);
+   }
+
+   useEffect(() => {
+      Promise.all([getRestaurants(), getHotels(), getTravelAgents(), getTourGuides()])
+         .then(() => {
+            setIsLoading(false);
+            console.log("SUCCESSFULLY fetched 4 services*******");
+         })
+         .catch((error) => {
+            setError(error);
+            setIsLoading(false);
+         });
+   }, []);
+
    const location = useLocation();
-   console.log(location.search);
+   const navigate = useNavigate();
+
+   const handleRestaurantClick = (item) => {
+      console.log("goin ahed --> ", item);
+      // navigate(`/restaurantListing/${id}`, { state: "showReviews" });
+   }
+
+   if (isLoading) {
+      return <div>Loading...</div>;
+   }
+
+   if (error) {
+      return <div>Error: {error.message}</div>;
+   }
+
    return (
       <div className={styles.container}>
          <div className={styles.header}>
@@ -26,7 +85,7 @@ const Services = () => {
                   </Tab>
                   <Tab>
                      <IconResturant />
-                     <p>Resturants</p>
+                     <p>Restaurants</p>
                   </Tab>
                   <Tab><IconGuide />
                      <p>Tourist Guides</p></Tab>
@@ -37,11 +96,12 @@ const Services = () => {
                </TabList>
                <TabPanel>
                   <div className={styles.tabCards}>
-                     {LahoreHotles.map((item, index) => {
+                     {hotels.map((item, index) => {
                         return (
                            <HotelCard
                               key={index}
-                              hotel={item}
+                              data={item}
+                              type="Hotel"
                            />
                         );
                      })}
@@ -49,11 +109,27 @@ const Services = () => {
                </TabPanel>
                <TabPanel>
                   <div className={styles.tabCards}>
-                     {LahoreResturants.map((item, index) => {
+                     {restaurants.map((item, index) => {
+                        return (
+                           <a key={index} href="" onClick={() => handleRestaurantClick(item)}>
+                              <HotelCard
+                                 key={index}
+                                 data={item}
+                                 type="Restaurant"
+                              />
+                           </a>
+                        );
+                     })}
+                  </div>
+               </TabPanel>
+               <TabPanel>
+                  <div className={styles.tabCards}>
+                     {tourGuides.map((item, index) => {
                         return (
                            <HotelCard
                               key={index}
-                              hotel={item}
+                              data={item}
+                              type="TourGuide"
                            />
                         );
                      })}
@@ -61,23 +137,12 @@ const Services = () => {
                </TabPanel>
                <TabPanel>
                   <div className={styles.tabCards}>
-                     {LahoreHotles.map((item, index) => {
+                     {travelAgent.map((item, index) => {
                         return (
                            <HotelCard
                               key={index}
-                              hotel={item}
-                           />
-                        );
-                     })}
-                  </div>
-               </TabPanel>
-               <TabPanel>
-                  <div className={styles.tabCards}>
-                     {LahoreHotles.map((item, index) => {
-                        return (
-                           <HotelCard
-                              key={index}
-                              hotel={item}
+                              data={item}
+                              type="TravelAgent"
                            />
                         );
                      })}

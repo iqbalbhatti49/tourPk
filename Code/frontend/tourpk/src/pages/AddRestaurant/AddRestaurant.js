@@ -8,9 +8,11 @@ import { useLocation } from "react-router";
 import { useNavigate } from "react-router-dom";
 import swal from 'sweetalert';
 import axiosInstance from "../../utils/Api";
+import { useSelector } from "react-redux";
 
 const AddRestaurant = () => {
 
+    const userId = useSelector(state => state.user.id);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -35,6 +37,7 @@ const AddRestaurant = () => {
             cuisineType: values.cuisine,
             mealType: meals,
             features: features,
+            UserId: userId
         }
         const service = location.state.values;
         const imagesArray = service.images;
@@ -50,10 +53,10 @@ const AddRestaurant = () => {
 
     const onSubmit = async (values) => {
         const restaurantData = preProcess(values);
-        const restaurantAdded_ = await axiosInstance.post("restaurant/addRestaurant", restaurantData);
-        const restaurantAdded = restaurantAdded_.data;
+        const restaurantId_ = await axiosInstance.post("restaurant/addRestaurant", restaurantData);
+        const id = restaurantId_.data;
         swal("Restaurant Added Successfully", "Success! The new Restaurant entry has been added successfully.", "success");
-        navigate(`/restaurantListing/`, { state: restaurantAdded });
+        navigate(`/restaurantListing/${id}`);
         // navigate(`/restaurantListing/${restaurantAdded.serviceObj.name}`, { restaurantAdded });
     };
 

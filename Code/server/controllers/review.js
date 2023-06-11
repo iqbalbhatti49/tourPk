@@ -13,9 +13,16 @@ exports.getReviewsById = async (req, res) => {
     const id = req.params.id;
     console.log("---->::>> ", id);
     const reviews = await Review.findAll({
+        attributes: { exclude: ['UserId'] },
+        include: [
+            {
+                model: User,
+                attributes: ['name'],
+            },
+        ],
         where: {
-            ServiceId: id
-        }
+            ServiceId: id,
+        },
     });
     res.json(reviews);
 }

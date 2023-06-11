@@ -6,14 +6,33 @@ import { useDispatch } from 'react-redux';
 import { updateBillingAddress } from '../../app/features/checkout/checkoutSlice';
 import { required, validatePhone } from '../../utils/validations';
 import Button from '../Button/Button';
+import Swal from 'sweetalert';
+import { useState } from 'react';
 
 export const BillingAddress = () => {
    const dispatch = useDispatch();
+   const [submitted, setSubmitted] = useState(false);
 
    const onSubmit = (values, form) => {
       console.log('Form submitted with values:', values);
       dispatch(updateBillingAddress(values));
       form.reset();
+      setSubmitted(true);
+      Object.keys(values).forEach((key) => {
+         form.change(key, undefined);
+         form.resetFieldState(key);
+      });
+   };
+
+   const showSuccessAlert = () => {
+      swal({
+         title: 'Address Submitted',
+         text: 'Your address have been saved! Now fill the remaining information to checkout.',
+         icon: 'success',
+         buttons: {
+            confirm: true,
+         },
+     })
    };
 
    return (
@@ -28,6 +47,7 @@ export const BillingAddress = () => {
             >
                {({ handleSubmit }) => (
                   <form className={styles.form} onSubmit={handleSubmit}>
+                     <fieldset disabled={submitted && "disabled"}>
                      <div className={styles.row}>
                         <FormField
                            name="firstName"
@@ -100,10 +120,12 @@ export const BillingAddress = () => {
                         labelClass="showLabel"
                         theme="light"
                      />
-                     <Button btnType="submit" value="Add Address" />
+                     <Button btnType="submit" disabled = {submitted} value="Add Address" />
+                     </fieldset>
                   </form>
                )}
             </FormFinal>
+            {submitted && showSuccessAlert()}
          </div>
       </div>
    );

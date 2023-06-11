@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
     const BookingTourGuide = sequelize.define("BookingTourGuide", {
         id: {
@@ -9,22 +8,9 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1,
             increment: 1,
         },
-        checkIn: {
+        bookingDate: {
             type: DataTypes.DATEONLY,
             allowNull: false,
-        },
-        checkOut: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        discount: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
-        quantity: //multiple of basic offer of a service
-        {
-            type: DataTypes.INTEGER,
-            allowNull: false
         },
         totalPrice:
         {

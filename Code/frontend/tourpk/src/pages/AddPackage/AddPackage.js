@@ -39,6 +39,11 @@ export default function AddPackage() {
 
         dispatch(addPackage(formattedValues)); // add package to state
         form.reset();
+        Object.keys(values).forEach(key => {
+            form.change(key, undefined);
+            form.resetFieldState(key);
+        });
+    
     };
 
 

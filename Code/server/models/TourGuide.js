@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        perHourRate: {
+        perDayRate: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
@@ -42,6 +42,8 @@ module.exports = (sequelize, DataTypes) => {
         TourGuide.hasMany(models.BookingTourGuide, {
             onDelete: "cascade",
         });
+        TourGuide.belongsTo(models.Service);
+        TourGuide.belongsTo(models.User);
     };
     // TourGuide.sync({ alter: true })
     return TourGuide;

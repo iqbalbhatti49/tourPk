@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-            startAt: 1, // start the auto increment at 1
-            increment: 1, // increment by 1
+            startAt: 1,
+            increment: 1,
         },
         name: {
             type: DataTypes.STRING,
@@ -20,9 +20,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        emailVerified: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false,
+        },
         phoneNumber: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        phoneNumberVerified: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false,
         },
         businessTitle: {
             type: DataTypes.STRING,
@@ -32,9 +42,17 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        plan: { //Tourist Starter, Explorer Plus, Adventurer Premium
+        discount: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        },
+        advancedSupport: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+        },
+        plan: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         }
     }, {
         timestamps: false
@@ -56,6 +74,18 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "cascade",
         });
         User.hasMany(models.BookingHotel, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.Hotel, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.TravelAgent, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.Restaurant, {
+            onDelete: "cascade",
+        });
+        User.hasMany(models.TourGuide, {
             onDelete: "cascade",
         });
     };
