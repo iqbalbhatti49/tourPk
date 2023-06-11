@@ -12,7 +12,7 @@ export { default as AddService } from "./AddService/AddService";
 export { default as Bookings } from "./Bookings/Bookings";
 export { default as HelpAndSupport } from "./HelpAndSupport/HelpAndSupport"
 export { default as GenericInfoAboutService } from "./GenericInfoAboutService/GenericInfoAboutService"
-export { default as Listing } from "./Listing/Listing";
+export { default as HotelListing } from "./HotelListing/HotelListing";
 export { default as BlogPage } from "./BlogPage/BlogPage";
 export { default as AddBlog } from "./AddBlog/AddBlog";
 export { default as Blogs } from "./Blogs/Blogs";
@@ -23,7 +23,8 @@ export { default as TourGuideListing } from "./TourGuideListing/TourGuideListing
 export { default as AddTourGuide } from "./AddTourGuide/AddTourGuide";
 export { default as AddHotel } from "./AddHotel/AddHotel"
 export { default as AddHotelRoom } from "./AddHotelRoom/AddHotelRoom"
-export { default as RestaurantListing } from "./RestaurantListing/RestaurantListing";           
-export {default as AccountVerification } from "./AccountVerification/AccountVerification"
-export {default as ServiceProviderHome } from "./ServiceProviderHome/ServiceProviderHome"
-export {default as PaymentInformation } from "./PaymentInformation/PaymentInformation"
+export { default as RestaurantListing } from "./RestaurantListing/RestaurantListing";
+export { default as AccountVerification } from "./AccountVerification/AccountVerification"
+export { default as ServiceProviderHome } from "./ServiceProviderHome/ServiceProviderHome"
+export { default as PaymentInformation } from "./PaymentInformation/PaymentInformation"
+export { default as TravelAgentListing } from "./TravelAgentListing/TravelAgentListing";

@@ -50,7 +50,6 @@ export default function SpotListing() {
           <Testimonial />
         </div>
         <div>
-          <h2 className={styles.subHeading}>Where Are You?</h2>
           <div className={styles.map}>
             <LocationPicker onChange={handleLocationChange} onClose={hideLocationPicker} />
           </div>
