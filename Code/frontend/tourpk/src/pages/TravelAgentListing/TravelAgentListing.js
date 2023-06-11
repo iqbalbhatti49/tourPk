@@ -5,16 +5,43 @@ import { Testimonial, BookingCalendar, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 import { useLocation, useParams } from "react-router";
 import axiosInstance from '../../utils/Api';
+import { IconEdit, IconDelete } from "../../components/index";
+import swal from 'sweetalert';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 export default function TravelAgentListing() {
-
+   const currentUser = useSelector(state => state.user.id);
    const location = useLocation();
    const { id } = useParams();
    const [data, setData] = useState(null);
-   const [reviewCount, setreviewCount] = useState(null);
-   const [ratingAverge, setratingAverge] = useState(null);
+   const [reviewCount, setreviewCount] = useState(5);
+   const [ratingAverge, setratingAverge] = useState(4.5);
    const [loading, setLoading] = useState(true);
    const [isReviewsAvailable, setisReviewsAvailable] = useState(true);
+
+   const handleDelete = () => {
+      swal({
+         title: 'Are you sure?',
+         text: 'You will not be able to recover this Listing!',
+         icon: 'warning',
+         buttons: ['Cancel', 'Confirm'],
+         dangerMode: true,
+      }).then((clickedBtn) => {
+         if (clickedBtn) {
+            console.log('User clicked on confirm');
+            const ids = {
+               ServiceId: data.Service.id,
+               TravelAgentId: data.TravelAgent.id
+            };
+            axiosInstance.post(`/deleteTourPackage/`, ids);
+            navigate("/");
+         } else {
+            console.log('User clicked on "Cancel"');
+         }
+      });
+   }
+
 
    const getTravelAgent = async () => {
       try {
@@ -32,6 +59,7 @@ export default function TravelAgentListing() {
          const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
          setratingAverge(ratingAvg);
          setreviewCount(reviewsCount);
+
          if (TravelAgentData.hasOwnProperty("Reviews"))
             setisReviewsAvailable(true);
          else
@@ -56,7 +84,20 @@ export default function TravelAgentListing() {
       <div className={styles.container}>
          <div className={styles.header}>
             <div className={styles.information}>
-               <h1 className={styles.heading}>{data.Service.name}</h1>
+               <div className={styles.iconsDelEdit}>
+                  <h1 className={styles.heading}>{data.Service.name}</h1>
+                  {
+                     currentUser === data.TravelAgent.UserId &&
+                     <div className={styles.iconsBox}>
+                        <Link to={`/AddTravelAgent?edit=1`} state={data}> {/* set a stateful value for the new location */}
+                           <IconEdit />
+                        </Link>
+                        <button className={styles.delete} onClick={handleDelete}>
+                           <IconDelete />
+                        </button>
+                     </div>
+                  }
+               </div>
                <div className={styles.attributesContainer}>
                   {Object.entries(data.TravelAgent).map(([key, value]) => (
                      key !== 'ServiceId' && key !== 'id' && key !== 'UserId' && key !== 'itenerary' && key !== 'packagePrice' ? (
