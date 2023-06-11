@@ -37,7 +37,7 @@ exports.addTourGuide = async (req, res) => {
 
 exports.getAllTourGuides = async (req, res) => {
   const tourGuides = await TourGuide.findAll({
-    attributes: ['id', 'perHourRate'],
+    attributes: ['id', 'perDayRate'],
     include: [
       {
         model: Service,
@@ -59,31 +59,26 @@ exports.getAllTourGuides = async (req, res) => {
 }
 
 exports.getTourGuideById = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const data = await TourGuide.findOne({
-      where: {
-        id: id
+  const id = req.params.id;
+  const data = await TourGuide.findOne({
+    where: {
+      id: id
+    },
+    include: [
+      {
+        model: Service,
+        include: [
+          {
+            model: Review,
+          },
+        ],
       },
-      include: [
-        {
-          model: Service,
-          include: [
-            {
-              model: Review,
-            },
-          ],
-        },
-        {
-          model: TourGuideImage,
-        },
-      ]
-    });
-    return res.json(data);
-  } catch (error) {
-    console.log('Error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
+      {
+        model: TourGuideImage,
+      },
+    ]
+  });
+  res.json(data);
 }
 
 exports.addBooking = async (req, res) => {

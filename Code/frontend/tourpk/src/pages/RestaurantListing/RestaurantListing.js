@@ -8,8 +8,10 @@ import { Link, useParams } from 'react-router-dom';
 import { getReviewsStats } from '../../utils/FindReviewStats';
 import { IconEdit, IconDelete } from "../../components/index";
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 export default function RestaurantListing() {
+    const navigate = useNavigate();
     const currentUser = useSelector(state => state.user.id);
     const location = useLocation();
     const { id } = useParams();
@@ -32,12 +34,19 @@ export default function RestaurantListing() {
                     ServiceId: data.Service.id,
                     RestaurantId: data.Restaurant.id
                 };
-                // axiosInstance.post(`/deleteRestuarant/`, ids);
-                // navigate("/");
+                axiosInstance.post(`/restaurant/deleteRestaurant/`, ids);
+                navigate("/");
             } else {
                 console.log('User clicked on "Cancel"');
             }
         });
+    }
+
+    const handleUpdate = () => {
+        const state = {
+            data, serviceType: "Restaurant"
+        }
+        navigate("/AddService?edit=1", { state: state });
     }
 
     const getRestaurant = async () => {
@@ -56,8 +65,6 @@ export default function RestaurantListing() {
             setratingAverge(ratingAvg);
             setreviewCount(reviewsCount);
             setData(restaurantData);
-
-            // console.log(reviewsCount, "---", ratingAvg);
             setLoading(false);
         } catch (error) {
             setLoading(false);
@@ -82,9 +89,9 @@ export default function RestaurantListing() {
                         {
                             currentUser === data.Restaurant.UserId &&
                             <div className={styles.iconsBox}>
-                                <Link to={`/AddTravelAgent?edit=1`} state={data}> {/* set a stateful value for the new location */}
+                                <button className={styles.delete} onClick={handleUpdate}>
                                     <IconEdit />
-                                </Link>
+                                </button>
                                 <button className={styles.delete} onClick={handleDelete}>
                                     <IconDelete />
                                 </button>

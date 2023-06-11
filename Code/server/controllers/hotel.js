@@ -78,3 +78,14 @@ exports.getAllHotels = async (req, res) => {
 
     res.json(hotels);
 }
+
+
+exports.deleteHotel = async (req, res) => {
+    console.log(req.body)
+    await Room.destroy({ where: { HotelId: req.body.HotelId } });
+    await HotelImage.destroy({ where: { HotelId: req.body.HotelId } });
+    await Hotel.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Review.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Service.destroy({ where: { id: req.body.ServiceId } });
+    res.status(200).json("deleted sucessfully");
+}
