@@ -7,8 +7,10 @@ import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
 import { roomAmenitiess } from "../../utils/Constants/RoomAmenetiesOptions";
 import axiosInstance from "../../utils/Api";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const AddRoom = (props) => {
+    const navigate = useNavigate();
     const userId = useSelector(state => state.user.id); // Id of currently logged in user
     const { service, hotelAmenities } = props.hotelData.hotelData;
     const imagesArray = service.images;
@@ -17,8 +19,6 @@ const AddRoom = (props) => {
         UserId: userId,
         amenities: hotelAmenities
     }
-
-
 
     const preProcess = (values) => {
         // convert selected checkbox values to comma-separated string
@@ -54,7 +54,7 @@ const AddRoom = (props) => {
         const roomId = await axiosInstance.post("/hotel/addHotel", hotelRoom);
         console.log("--> Back on F.end --> ", roomId.data);
         swal("Hotel and Room Added Successfully", "Success! The new Hotel entry has been added successfully.", "success");
-        // navigate(`/hotelListing/${roomId.data}`, { state: "noReviews" });
+        navigate(`/hotelListing/${roomId.data}`, { state: "noReviews" });
     };
 
     return (
