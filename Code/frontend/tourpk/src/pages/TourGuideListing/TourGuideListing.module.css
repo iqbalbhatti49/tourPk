@@ -1,3 +1,4 @@
+@import url("../../styles/variables.css");
 .container {
    padding: 0px 5vw 75px 5vw;
    text-align: justify;

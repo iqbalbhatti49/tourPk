@@ -86,7 +86,6 @@ exports.getTourGuideById = async (req, res) => {
     }
   }
   
-
 exports.addBooking = async (req, res) => {
   const { userId, id, totalPrice, selectedDate } = req.body;
   console.log(selectedDate)
@@ -103,7 +102,6 @@ exports.addBooking = async (req, res) => {
     res.status(500).json({ error: 'Failed to add booking' });
   }
 };
-
 
 exports.deleteTourGuide = async (req, res) => {
     console.log(req.body)

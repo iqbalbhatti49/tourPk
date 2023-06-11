@@ -1,4 +1,4 @@
-const { Service, TravelAgent, TravelAgentImage, Review } = require("../models");
+const { Service, TravelAgent, TravelAgentImage, Review, BookingTravelAgent } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -89,3 +89,21 @@ exports.deleteTourPackage = async (req, res) => {
     await Service.destroy({ where: { id: req.body.ServiceId } });
     res.status(200).json("deleted sucessfully");
 }
+
+exports.addBooking = async (req, res) => {
+        const { userId, id, totalPrice, selectedDate, guestCount } = req.body;
+    console.log(selectedDate)
+    try {
+      const newBooking = await BookingTravelAgent.create({
+        bookingDate: selectedDate,
+        totalPrice,
+        UserId: userId,
+        guestCount:guestCount,
+        TravelAgentId: id,
+      });
+      res.status(200).json(newBooking);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Failed to add booking' });
+    }
+  };
