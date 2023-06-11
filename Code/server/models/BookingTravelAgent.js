@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
     const BookingTravelAgent = sequelize.define("BookingTravelAgent", {
         id: {
