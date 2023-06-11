@@ -26,7 +26,7 @@ export const Footer = () => {
                      <Link className={styles.navLink} to="/addHotel">addHotel</Link>
                      <Link className={styles.navLink} to="/AddTravelAgent">AddTravelAgent</Link>
                      <Link className={styles.navLink} to="/addTourGuide">addTourGuide</Link>
-                     <Link className={styles.navLink} to="/tourGuideListing">tourGuideListing</Link>
+                     <Link className={styles.navLink} to="/tourGuideListing/:id">tourGuideListing</Link>
                      <Link className={styles.navLink} to="/addrestaurant">addrestaurant</Link>
                   </div>
                   <div className={styles.links}>
