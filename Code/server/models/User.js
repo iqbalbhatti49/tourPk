@@ -5,8 +5,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
-            startAt: 1, // start the auto increment at 1
-            increment: 1, // increment by 1
+            startAt: 1,
+            increment: 1,
         },
         name: {
             type: DataTypes.STRING,
@@ -20,9 +20,19 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        emailVerified: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false,
+        },
         phoneNumber: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        phoneNumberVerified: {
+            type: DataTypes.BOOLEAN,
+            allowNull: true,
+            defaultValue: false,
         },
         businessTitle: {
             type: DataTypes.STRING,

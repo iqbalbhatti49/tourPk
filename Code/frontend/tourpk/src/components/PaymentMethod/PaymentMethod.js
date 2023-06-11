@@ -7,9 +7,11 @@ import { validateExpirationYear, validateCreditCard, validateExpirationMonth } f
 import { useDispatch, useSelector } from 'react-redux'
 import { updateCardInfo } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 export const PaymentMethod = () => {
    const cardInfo = useSelector((state) => state.checkout.cardInfo);
+   const role = useSelector((state) => state.user.role);
    const [method, setMethod] = useState('001');
    const [submitted, setSubmitted] = useState(false);
 
@@ -37,7 +39,14 @@ export const PaymentMethod = () => {
          buttons: {
             confirm: true,
          },
-     })
+     }).then((clickedBtn) => {
+      if (clickedBtn) {
+          if(role == "seller")
+          {
+            const navigate = useNavigate();
+            navigate("/serviceProvider");
+          }
+      }});
    };
    return (
       <div className={styles.container}>

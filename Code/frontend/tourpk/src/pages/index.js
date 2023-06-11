@@ -26,3 +26,4 @@ export { default as AddHotelRoom } from "./AddHotelRoom/AddHotelRoom"
 export { default as RestaurantListing } from "./RestaurantListing/RestaurantListing";           
 export {default as AccountVerification } from "./AccountVerification/AccountVerification"
 export {default as ServiceProviderHome } from "./ServiceProviderHome/ServiceProviderHome"
+export {default as PaymentInformation } from "./PaymentInformation/PaymentInformation"

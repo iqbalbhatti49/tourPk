@@ -173,3 +173,30 @@ exports.updateUserWithPlanDetails = async (req, res) => {
         res.status(500).json({ error: "Failed to update user plan details" });
     }
 };
+
+exports.numberVerification = async (req, res) => {
+    try {
+        const { phoneNumber, userId } = req.body;
+       await User.update(
+          {
+             phoneNumberVerified: true,
+             phoneNumber:phoneNumber
+          },
+          {
+             where: {
+                id: userId,
+             },
+          }
+       );
+ 
+       console.log(`Phone number verification updated for user with ID: ${userId}`);
+       res.status(200).json({
+          message: 'Phone number verification updated successfully',
+          phoneNumberVerified: true,
+          phoneNumber:phoneNumber
+       });
+    } catch (error) {
+       console.log('Failed to update phone number verification:', error);
+       res.status(500).json({ error: 'Failed to update phone number verification' });
+    }
+ };

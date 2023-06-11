@@ -6,7 +6,7 @@ import {
   redirect
 } from "react-router-dom";
 import { useEffect } from "react";
-import { AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome } from "./pages/index";
+import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, Listing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome } from "./pages/index";
 import AddTravelAgent from "./pages/AddTravelAgent/AddTravelAgent";
 
 function App() {
@@ -55,7 +55,6 @@ function App() {
       <Route path="/bookings" element={<Bookings />} />
       <Route path="/helpandsupport" element={<HelpAndSupport />} />
       <Route path="/AddBlog" element={<AddBlog />} />
-
       <Route exact path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
       <Route path="/pricing" element={<InAppPlans />} />
@@ -78,6 +77,7 @@ function App() {
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
       <Route path="/verify" element={<AccountVerification />} ></Route>
       <Route path="/serviceProvider" element={<ServiceProviderHome />} ></Route>
+      <Route path="/paymentInformation" element={<PaymentInformation />} ></Route>
     </Routes>
   );
 };
