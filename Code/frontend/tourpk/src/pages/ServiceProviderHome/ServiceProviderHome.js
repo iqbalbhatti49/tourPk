@@ -148,8 +148,8 @@ const ServiceProviderHome = () => {
           <div className={styles.servicesFlex}>
             <p className={styles.subHeading}>{`Serices offered`}</p>
             <div>
-            {services.travelAgent.length ? <p className={styles.key}>Travel Agents</p>:<></>}
-               <div className={styles.travelAgents}>
+            {services.travelAgent.length != 0 ? <p className={styles.key}>Travel Agents</p>:<></>}
+               {services["travelAgent"].length != 0 ? <div className={styles.travelAgents}>
                   {services.travelAgent.map((service) => (
                      <div key={service.id} className={styles.travelAgent}>
                         <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
@@ -162,11 +162,11 @@ const ServiceProviderHome = () => {
                         </Link>
                      </div>
                   ))}
-               </div>
+               </div>:<></>}
             </div>
             <div>
             {services.tourGuide.length ? <p className={styles.key}>Tour Guides</p>:<></>}
-               <div className={styles.travelAgents}>
+               {services.tourGuide.length != 0 ? <div className={styles.travelAgents}>
                   {services.tourGuide.map((service) => (
                      <div key={service.id} className={styles.travelAgent}>
                         <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
@@ -178,11 +178,11 @@ const ServiceProviderHome = () => {
                         </Link>
                      </div>
                   ))}
-               </div>
+               </div>:<></>}
             </div>
             <div>
                {services.hotels.length ? <p className={styles.key}>Hotels</p> : <></>}
-               <div className={styles.travelAgents}>
+               {services.hotels.length != 0 ? <div className={styles.travelAgents}>
                   {services.hotels.map((service) => (
                      <div key={service.id} className={styles.travelAgent}>
                         <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
@@ -194,11 +194,11 @@ const ServiceProviderHome = () => {
                         </Link>
                      </div>
                   ))}
-               </div>
+               </div>:<></>}
             </div>
             <div>
                {services.restaurant.length ? <p className={styles.key}>Restaurant</p> :<></>}
-               <div className={styles.travelAgents}>
+               {services.restaurant.length != 0 ? <div className={styles.travelAgents}>
                   {services.restaurant.map((service) => (
                      <div key={service.id} className={styles.travelAgent}>
                         <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
@@ -210,7 +210,7 @@ const ServiceProviderHome = () => {
                         </Link>
                      </div>
                   ))}
-               </div>
+               </div>:<></>}
             </div>
           </div>
       </div>

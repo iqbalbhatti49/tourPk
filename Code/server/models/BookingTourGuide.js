@@ -12,10 +12,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATEONLY,
             allowNull: false,
         },
-        discount: {
-            type: DataTypes.INTEGER,
-            allowNull: true
-        },
         totalPrice:
         {
             type: DataTypes.INTEGER,

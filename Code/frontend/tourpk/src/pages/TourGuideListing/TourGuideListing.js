@@ -1,51 +1,91 @@
-import React from 'react'
-import styles from './TourGuideListing.module.css'
+import React, { useEffect, useState } from 'react';
+import styles from './TourGuideListing.module.css';
 import { Button, Carousel } from '../../components';
 import { Testimonial, BookingCalendar, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 import { useLocation } from "react-router";
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { clearCart, addItem } from '../../app/features/cart/cartSlice';
 
 export default function TourGuideListing() {
    const location = useLocation();
-   console.log(location.state); //Its output below
-   /*
-{
-    "serviceObj": {
-        "id": 44,
-        "name": "Mahnoor",
-        "description": "iqrzzzzzz",
-        "email": "mahnooralei@gmail.com",
-        "website": "jkl.dk",
-        "phone": "03214358863",
-        "city": "lhr",
-        "province": "punjab",
-        "address": "str1"
-    },
-    "tourGuideObj": {
-        "id": 12,
-        "experience": "exfg",
-        "gender": "female",
-        "primaryAreas": "murree",
-        "otherAreas": "kamala",
-        "language": "urdu",
-        "perHourRate": "3",
-        "ServiceId": 44
-    },
-    "images": {
-        "image1": "../static/images/upload/1686381208538wall.png",
-        "image2": "../static/images/upload/1686381208538abc.png"
-    }
-}
-   */
+   // console.log(location.state); // Output below
+   const discount = useSelector(state => state.pricing.discount);
+   const { id } = useParams();
+   const dispatch = useDispatch();
+   const userId = useSelector((state) => state.user.id);
+   const [tourGuideInfo, setTourGuideInfo] = useState(null);
+   const [selectedDate, setSelectedDate] = useState(null);
+   const bookingState= useSelector((state) => state.bookings.bookingStatus);
+   const navigate = useNavigate();
+
+   const handleDateChange = (date) => {
+      console.log('Selected date:', date.toISOString().split('T')[0]);
+      setSelectedDate(date.toISOString().split('T')[0]);
+   };
+
+   const handleClick = () =>
+   {
+      if(selectedDate == null)
+      {
+         swal({
+            title: 'Date Missing',
+            text: 'First select an available date from the calender.',
+            icon: 'error',
+            buttons: {
+               confirm: true,
+            },
+        })
+        return;
+      }
+      dispatch(clearCart());
+      const newItem = {
+         imageSrc: tourGuideInfo.TourGuideImages[0].imageUrl,
+         title: tourGuideInfo.Service.name,
+         count: 1,
+         price: tourGuideInfo.perDayRate,
+         discountedPrice: tourGuideInfo.perDayRate - (tourGuideInfo.perDayRate * (discount/100)),
+      };
+      dispatch(addItem(newItem));
+      const totalPrice = tourGuideInfo["perDayRate"];
+      const payLaod = {userId, id, selectedDate, totalPrice, type: "tourguide" };
+      navigate("/checkout", { state: { payLaod } });
+   }
+
+   useEffect(() => {
+      const fetchTourGuideInfo = async () => {
+         try {
+            const response = await fetch(`/tourguide/getTourGuideById/${id}`);
+            if (response.ok) {
+               const data = await response.json();
+               setTourGuideInfo(data);
+               console.log(data);
+            } else {
+               console.log('Error:', response.status);
+            }
+         } catch (error) {
+            console.log('Error:', error);
+         }
+      };
+      fetchTourGuideInfo();
+   }, [id]);
+
+   // Render the component once the tourGuideInfo is available
+   if (!tourGuideInfo) {
+      return <div>Loading...</div>;
+   }
 
    const attributes = {
-      "Name": "Ghulam Murtaza",
-      "Experience": "12 Years(Since 2008)",
-      "Gender": "Male",
-      "Primary Guiding Area": "Islamabad",
-      "Other Areas": "Hunza, Skardu, Chitral, Lahore, Taxila, Larkana, Thatta, Karachi, Peshawar, Mardan, Khanpur",
-      "Languages": "English, Punjabi, Urdu"
-   }
+      "Name": tourGuideInfo.Service.name,
+      "Experience": tourGuideInfo.experience + " Years",
+      "Gender": tourGuideInfo.gender,
+      "Primary Guiding Area": tourGuideInfo.primaryAreas,
+      "Other Areas": tourGuideInfo.otherAreas,
+      "Languages": tourGuideInfo.language
+   };
 
    return (
       <div className={styles.container}>
@@ -68,15 +108,14 @@ export default function TourGuideListing() {
             <div className={styles.about}>
                <div>
                   <h2 className={styles.subHeading}>About {attributes["Name"]}</h2>
-                  <p className={styles.description}>
-                     I Am Ghulam Murtaza real local, born in remote village of "Sindh" southern province of Pakistan, Lives in well planned town, most naturally green and world's one of the most beautiful Capital cities the Capital City of Pakistan "Islamabad" and having more then 14 year experience of Guiding.Come to see my beautiful country Pakistan, Here I will show you sea to world's Highest mountains & longest ranges (Himalaya, Karakuram & Hindu Kush), Deserts to Lush Green Fields, world's oldest civilizations (2500 BCE to 3500 BCE) to most modern societies, Adventure tourism to luxurious tourism, oldest archaeological sites to most modern cities, most oldest cultures (Kalash culture) to advanced ones, Shrines, Hindu temples, sikh gurdwars, most important Buddhist sites like Sawat region to Texila region, we have south Asia's oldest town Peshawar. In north west part of Pakistan, world's highest paved road "The Karakuram Highway, and many more to see.Khush Aamdeed (welcome in Urdu) to the country of smiley faces and most curtseious Nation of world, where people are polite and very warm welcoming. We don't call tourists as clients we always call tourists " honoured Guests". In Pakistani society Guest are considered as Blessing of God. and how we welcomes our blessing for this you have to visit Pakistan atlest once.I am a attentive, friendly and enthusiastic Islamabad based local tour Guide.
-                  </p>
+                  <p className={styles.description}>{tourGuideInfo.Service.description}</p>
                </div>
                <div>
                   <h2 className={styles.subHeading}>People's Opinion</h2>
                   <Testimonial />
                   <div className={styles.booking}>
-                     <Button value="Book Now" />
+                     <p>Select a date from the given claender to book me and click the button below.</p>
+                     <Button btnType="submit"  value="Book Now" handleClick={handleClick}/>
                   </div>
                </div>
             </div>
@@ -85,22 +124,20 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>Pricing</h2>
                   <div className={styles.pricing}>
-                     <p className={styles.pricingKey}>Per Hour</p>
-                     <p className={styles.pricingValue}>$50</p>
+                     <p className={styles.pricingKey}>Per Day</p>
+                     <p className={styles.pricingValue}>{tourGuideInfo.perDayRate}</p>
                   </div>
                </div>
                <div>
-                  <h2 className={styles.subHeading}>Booking Calender</h2>
-                  <div className={styles.calender}>
-                     <BookingCalendar />
+                  <h2 className={styles.subHeading}>Booking Calendar</h2>
+                  <div className={styles.calendar}>
+                     <BookingCalendar selectedDate={selectedDate} onDateChange={handleDateChange} />
                   </div>
                </div>
             </div>
          </div>
 
-         <ReviewForm serviceId={2} />
+         <ReviewForm serviceId={tourGuideInfo.ServiceId} />
       </div>
-
-
    );
 }

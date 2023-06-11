@@ -1,4 +1,4 @@
-const { Service, TourGuide, TourGuideImage, Review } = require("../models");
+const { Service, TourGuide, TourGuideImage, Review, BookingTourGuide } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -58,26 +58,48 @@ exports.getAllTourGuides = async (req, res) => {
     res.json(tourGuides);
 }
 
-
 exports.getTourGuideById = async (req, res) => {
-    const id = req.params.id;
-    const data = await TourGuide.findOne({
+    try {
+      const id = req.params.id;
+      const data = await TourGuide.findOne({
         where: {
-            id: id
+          id: id
         },
         include: [
-            {
-                model: Service,
-                include: [
-                    {
-                        model: Review,
-                    },
-                ],
-            },
-            {
-                model: TourGuideImage,
-            },
+          {
+            model: Service,
+            include: [
+              {
+                model: Review,
+              },
+            ],
+          },
+          {
+            model: TourGuideImage,
+          },
         ]
+      });
+      return res.json(data);
+    } catch (error) {
+      console.log('Error:', error);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+  
+
+exports.addBooking = async (req, res) => {
+  const { userId, id, totalPrice, selectedDate } = req.body;
+  console.log(selectedDate)
+  try {
+    const newBooking = await BookingTourGuide.create({
+      bookingDate: selectedDate,
+      totalPrice,
+      UserId: userId,
+      TourGuideId: id,
     });
-    res.json(data);
-}
+    res.status(200).json(newBooking);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to add booking' });
+  }
+};

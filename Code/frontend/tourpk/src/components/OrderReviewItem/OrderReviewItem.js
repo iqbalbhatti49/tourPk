@@ -13,6 +13,7 @@ const OrderReview = ({ imageSrc, title, count, price, discountedPrice, discountA
    const handleRemove = () => {
       onRemove();
    };
+   console.log(imageSrc)
 
    return (
       <div className={styles.orderReview}>

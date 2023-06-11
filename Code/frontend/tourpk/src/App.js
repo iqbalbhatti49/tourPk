@@ -68,6 +68,7 @@ function App() {
       <Route path="/allBlogs" element={<Blogs />} />
       <Route path="/spotListing" element={<SpotListing />} />
       <Route path="/tourGuideListing" element={<TourGuideListing />} />
+      <Route path="/tourGuideListing/:id" element={<TourGuideListing />} />
       <Route path="/addTourGuide" element={<AddTourGuide />} />
       <Route path="/addHotel" element={<AddHotel />} />
       <Route path="/addTravelAgent" element={<AddTravelAgent />} />

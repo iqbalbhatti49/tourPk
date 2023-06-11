@@ -7,10 +7,16 @@ import { initiatePayment } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
 import {clearCart }from "../../app/features/cart/cartSlice"
 import { useNavigate } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
+import { addTourGuideBooking } from '../../app/features/bookings/bookingsSlice';
+
 
 export const BillingSummary = () => {
    const dispatch = useDispatch();
    const navigate = useNavigate();
+   const location = useLocation();
+   const tourguide = location.state && location.state.payLaod;
+   console.log(tourguide);
    const required = value => (value ? undefined : 'Required');
    const discount = useSelector((state) => state.pricing.discount);
    const cardInfo = useSelector((state) => state.checkout.cardInfo);
@@ -75,6 +81,10 @@ export const BillingSummary = () => {
        })
        .then((confirmed) => {
          if (confirmed) {
+            if(tourguide)
+            {
+               dispatch(addTourGuideBooking(tourguide));
+            }
            dispatch(clearCart());
            navigate("/");
          }
