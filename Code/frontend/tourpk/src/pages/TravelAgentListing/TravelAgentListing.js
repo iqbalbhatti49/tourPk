@@ -14,6 +14,7 @@ import { required } from '../../utils/validations';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearCart, addItem } from '../../app/features/cart/cartSlice';
+
 export default function TravelAgentListing() {
    const currentUser = useSelector(state => state.user.id);
    const navigate = useNavigate();
@@ -33,8 +34,7 @@ export default function TravelAgentListing() {
       setSelectedDate(date.toISOString().split('T')[0]);
    };
    const onSubmit = async (values) => {
-      if(selectedDate == null)
-      {
+      if (selectedDate == null) {
          swal({
             title: 'Date Missing',
             text: 'First select an available date from the calender.',
@@ -42,22 +42,22 @@ export default function TravelAgentListing() {
             buttons: {
                confirm: true,
             },
-        })
-        return;
+         })
+         return;
       }
       dispatch(clearCart());
-      const totalPrice = data.TravelAgent.packagePrice*values.guests;
+      const totalPrice = data.TravelAgent.packagePrice * values.guests;
       const newItem = {
          imageSrc: data.TravelAgentImages[0].imageUrl,
          title: data.Service.name,
          count: parseInt(values.guests),
          price: totalPrice,
-         discountedPrice: totalPrice - (totalPrice * (discount/100)),
+         discountedPrice: totalPrice - (totalPrice * (discount / 100)),
       };
       console.log(values.guests)
       dispatch(addItem(newItem));
       const guests = values.guests
-      const travelagent = {userId, id, selectedDate, totalPrice, type: "travelagent", guests };
+      const travelagent = { userId, id, selectedDate, totalPrice, type: "travelagent", guests };
       navigate("/checkout", { state: { travelagent } });
    }
    const handleDelete = () => {
@@ -74,7 +74,7 @@ export default function TravelAgentListing() {
                ServiceId: data.Service.id,
                TravelAgentId: data.TravelAgent.id
             };
-            axiosInstance.post(`/deleteTourPackage/`, ids);
+            axiosInstance.post(`/travelagent/deleteTourPackage/`, ids);
             navigate("/");
          } else {
             console.log('User clicked on "Cancel"');
@@ -82,6 +82,13 @@ export default function TravelAgentListing() {
       });
    }
 
+
+   const handleUpdate = () => {
+      const state = {
+         data, serviceType: "Travel Agent"
+      }
+      navigate("/AddService?edit=1", { state: state });
+   }
 
    const getTravelAgent = async () => {
       try {
@@ -129,9 +136,9 @@ export default function TravelAgentListing() {
                   {
                      currentUser === data.TravelAgent.UserId &&
                      <div className={styles.iconsBox}>
-                        <Link to={`/AddTravelAgent?edit=1`} state={data}> {/* set a stateful value for the new location */}
+                        <button className={styles.delete} onClick={handleUpdate}>
                            <IconEdit />
-                        </Link>
+                        </button>
                         <button className={styles.delete} onClick={handleDelete}>
                            <IconDelete />
                         </button>
@@ -217,25 +224,25 @@ export default function TravelAgentListing() {
             </div>
          </div>
          <div className={styles.booking}>
-                     <p>Select the start date of tour from the given calender.</p>
-                     <div className={styles.formContainer}>
-                        <FormFinal
-                           onSubmit={onSubmit}
-                           subscription={{
-                                 submitted: true
-                           }} >
-                           {({ handleSubmit, submitting, values }) => (
-                              <form onSubmit={handleSubmit}>   
-                                 <FormField name="guests"
-                                  label="NumberofGuests" type="number" placeholder="12" 
-                                  validate={required} theme="light" value={values} 
-                                  renderIcon={() => null} />
-                                 <Button value="Book Now" btnType="submit" />
-                              </form>
-                              )}
-                        </FormFinal>
-                     </div>
-                  </div>
+            <p>Select the start date of tour from the given calender.</p>
+            <div className={styles.formContainer}>
+               <FormFinal
+                  onSubmit={onSubmit}
+                  subscription={{
+                     submitted: true
+                  }} >
+                  {({ handleSubmit, submitting, values }) => (
+                     <form onSubmit={handleSubmit}>
+                        <FormField name="guests"
+                           label="NumberofGuests" type="number" placeholder="12"
+                           validate={required} theme="light" value={values}
+                           renderIcon={() => null} />
+                        <Button value="Book Now" btnType="submit" />
+                     </form>
+                  )}
+               </FormFinal>
+            </div>
+         </div>
          <ReviewForm serviceId={2} />
       </div>
 

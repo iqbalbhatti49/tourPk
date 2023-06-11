@@ -15,7 +15,7 @@ export const HotelCard = (props) => {
       const address = data.Service.address;
       const price = (type === "TravelAgent") ? data.packagePrice :
          (type === "Hotel") ? "Rs. 5000" :
-            (type === "TourGuide") ? data.perHourRate : "";
+            (type === "TourGuide") ? data.perDayRate : "";
       const imgesKey = type + "Images"; //key of corresponding images object
       const reviews = data.Service.Reviews;
       const { reviewsCount, ratingAvg } = getReviewsStats(reviews);
