@@ -3,7 +3,6 @@ import styles from './TourGuideListing.module.css';
 import { Button, Carousel } from '../../components';
 import { Testimonial, BookingCalendar, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
-import { useLocation } from "react-router";
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -11,15 +10,14 @@ import { useNavigate } from 'react-router-dom';
 import { clearCart, addItem } from '../../app/features/cart/cartSlice';
 
 export default function TourGuideListing() {
-   const location = useLocation();
-   // console.log(location.state); // Output below
    const discount = useSelector(state => state.pricing.discount);
    const { id } = useParams();
    const dispatch = useDispatch();
    const userId = useSelector((state) => state.user.id);
    const [tourGuideInfo, setTourGuideInfo] = useState(null);
    const [selectedDate, setSelectedDate] = useState(null);
-   const bookingState= useSelector((state) => state.bookings.bookingStatus);
+   const [bookings,setBookings] =useState(null);
+   const [disabledDatesArr, setDisabledDates] = useState(null);
    const navigate = useNavigate();
 
    const handleDateChange = (date) => {
@@ -55,25 +53,49 @@ export default function TourGuideListing() {
       navigate("/checkout", { state: { payLaod } });
    }
 
-   useEffect(() => {
+   const fetchTourGuideBookings = async () => {
+      try {
+        const response = await fetch(`/tourguide/getAllBookings/${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setBookings(data);
+        } else {
+          console.log('Error:', response.status);
+        }
+      } catch (error) {
+        console.log('Error:', error);
+      }
+    };
+    
+    useEffect(() => {
+      if (bookings) {
+        const disabledDates = bookings.map((booking) => new Date(booking.bookingDate));
+        setDisabledDates(disabledDates);
+        console.log(disabledDatesArr);
+      }
+    }, [bookings]);
+    
+    useEffect(() => {
       const fetchTourGuideInfo = async () => {
-         try {
-            const response = await fetch(`/tourguide/getTourGuideById/${id}`);
-            if (response.ok) {
-               const data = await response.json();
-               setTourGuideInfo(data);
-               console.log(data);
-            } else {
-               console.log('Error:', response.status);
-            }
-         } catch (error) {
-            console.log('Error:', error);
-         }
+        try {
+          const response = await fetch(`/tourguide/getTourGuideById/${id}`);
+          if (response.ok) {
+            const data = await response.json();
+            setTourGuideInfo(data);
+            console.log(data);
+          } else {
+            console.log('Error:', response.status);
+          }
+        } catch (error) {
+          console.log('Error:', error);
+        }
       };
+    
+      fetchTourGuideBookings();
       fetchTourGuideInfo();
-   }, [id]);
+    }, [id]);
+    
 
-   // Render the component once the tourGuideInfo is available
    if (!tourGuideInfo) {
       return <div>Loading...</div>;
    }
@@ -131,7 +153,7 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>Booking Calendar</h2>
                   <div className={styles.calendar}>
-                     <BookingCalendar selectedDate={selectedDate} onDateChange={handleDateChange} />
+                     <BookingCalendar disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
                   </div>
                </div>
             </div>

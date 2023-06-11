@@ -111,3 +111,24 @@ exports.deleteTourGuide = async (req, res) => {
   await Service.destroy({ where: { id: req.body.ServiceId } });
   res.status(200).json("deleted sucessfully");
 }
+
+exports.getAllBookings = async (req, res) => {
+  try {
+    const tourGuideId = req.params.id;
+    console.log("fetchifb id ", tourGuideId);
+    const bookings = await BookingTourGuide.findAll({
+      where: {
+        TourGuideId: tourGuideId
+      },
+      include: [
+        {
+          model: TourGuide
+        }
+      ]
+    });
+    res.json(bookings);
+  } catch (error) {
+    console.log('Error:', error);
+    res.status(500).json({ error: 'Failed to get tour guide bookings' });
+  }
+};
