@@ -40,6 +40,6 @@ exports.getServicesByUserId = async (req, res) => {
     const services = {
         hotels, travelAgent, restaurant, tourGuide
     }
-
+    console.log(services)
     res.json(services);
 }
