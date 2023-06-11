@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import { Form as FinalForm } from 'react-final-form';
 import axiosInstance from '../../utils/Api';
 import { FormField, Button } from '../../components';
-import styles from './AccountVerification.module.css';
-import {updatePhoneNumberVerification} from "../../app/features/user/userSlice";
+import styles from './EmailVerification.module.css';
+import { updateEmailVerification } from "../../app/features/user/userSlice";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-function AccountVerification() {
+
+function EmailVerification() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [email, setEmail] = useState(null);
   const [otpCode, setOtpCode] = useState('');
   const [verificationStarted, setVerificationStarted] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Add isLoading state
   const userId = useSelector((state) => state.user.id)
 
-  const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
   };
 
   const handleOtpCodeChange = (e) => {
@@ -27,10 +28,9 @@ function AccountVerification() {
   const handleVerificationSubmit = async (values) => {
     try {
       setIsLoading(true); // Show loading symbol
-      const response = await axiosInstance.post('/verify/start-verification', {
-        phoneNumber: values.phoneNumber,
+      const response = await axiosInstance.post('/verifyEmail/start-verification', {
+        email: values.email,
       });
-
       swal({
           title: 'Verification Started!',
           text: response.data.message,
@@ -40,7 +40,7 @@ function AccountVerification() {
           },
       })
       setVerificationStarted(true);
-      setPhoneNumber(values.phoneNumber)
+      setEmail(values.email)
       setVerificationStatus(response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
     } catch (error) {
@@ -54,29 +54,29 @@ function AccountVerification() {
           },
       })
       setVerificationStatus(error.response.status); // Set the status code in state
-      setIsLoading(false); // Hide loading symbol
+      setIsLoading(false); // Hide loading 
     }
   };
 
   const handleOtpSubmit = async (values) => {
     try {
       setIsLoading(true); // Show loading symbol
-      const response = await axiosInstance.post('/verify/check-verification', {
-        phoneNumber: values.phoneNumber,
+      const response = await axiosInstance.post('/verifyEmail/check-verification', {
+        email: values.email,
         verificationCode: values.otpCode,
       });
 
       if (response.data.success) {
         swal({
             title: 'Code Verified!',
-            text: 'Your phone number is successfully verified.',
+            text: 'Your Email is successfully verified.',
             icon: 'success',
             buttons: {
               confirm: true,
             },
         })
         setVerificationStatus(response.status); // Set the status code in state
-        dispatch(updatePhoneNumberVerification({userId,phoneNumber}));
+        dispatch(updateEmailVerification({userId,email}));
         navigate("/serviceProvider")
       } else {
         swal({
@@ -113,14 +113,14 @@ function AccountVerification() {
             <form onSubmit={handleSubmit}>
               {!verificationStarted ? (
                 <div>
-                  <h1 className={styles.heading}>Add Phone Number</h1>
+                  <h1 className={styles.heading}>Add Email</h1>
                   <FormField
-                    name="phoneNumber"
-                    label="Phone Number"
-                    type="text"
-                    placeholder="Enter phone number"
-                    value={phoneNumber}
-                    onChange={handlePhoneNumberChange}
+                    name="email"
+                    label="Email"
+                    type="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={handleEmailChange}
                     renderIcon={() => null}
                     labelClass="showLabel"
                     theme="light"
@@ -152,4 +152,4 @@ function AccountVerification() {
   );
 }
 
-export default AccountVerification;
+export default EmailVerification;
