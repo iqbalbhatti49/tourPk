@@ -28,6 +28,21 @@ export default function TourGuideListing() {
    const [disabledDatesArr, setDisabledDates] = useState(null);
    const navigate = useNavigate();
 
+   // RESOLVED CONFLICT =---> your code kept there:
+   const fetchTourGuideBookings = async () => {
+      try {
+         const response = await fetch(`/tourguide/getAllBookings/${id}`);
+         if (response.ok) {
+            const data = await response.json();
+            setBookings(data);
+         } else {
+            console.log('Error:', response.status);
+         }
+      } catch (error) {
+         console.log('Error:', error);
+      }
+   };
+
    useEffect(() => {
       const getTourGuide = async () => {
          const response = await axiosInstance.get(`/TourGuide/getTourGuideById/${id}`);
@@ -46,6 +61,7 @@ export default function TourGuideListing() {
          setratingAverge(ratingAvg);
          setreviewCount(reviewsCount);
       };
+      fetchTourGuideBookings();
       getTourGuide();
    }, [id]);
 
@@ -109,26 +125,6 @@ export default function TourGuideListing() {
       navigate("/AddService?edit=1", { state: state });
    }
 
-
-
-
-
-
-   // RESOLVED CONFLICT =---> your code kept there:
-   const fetchTourGuideBookings = async () => {
-      try {
-         const response = await fetch(`/tourguide/getAllBookings/${id}`);
-         if (response.ok) {
-            const data = await response.json();
-            setBookings(data);
-         } else {
-            console.log('Error:', response.status);
-         }
-      } catch (error) {
-         console.log('Error:', error);
-      }
-   };
-
    useEffect(() => {
       if (bookings) {
          const disabledDates = bookings.map((booking) => new Date(booking.bookingDate));
@@ -137,39 +133,10 @@ export default function TourGuideListing() {
       }
    }, [bookings]);
 
-   useEffect(() => {
-      const fetchTourGuideInfo = async () => {
-         try {
-            const response = await fetch(`/tourguide/getTourGuideById/${id}`);
-            if (response.ok) {
-               const data = await response.json();
-               setTourGuideInfo(data);
-               console.log(data);
-            } else {
-               console.log('Error:', response.status);
-            }
-         } catch (error) {
-            console.log('Error:', error);
-         }
-      };
-
-      fetchTourGuideBookings();
-      fetchTourGuideInfo();
-   }, [id]);
-
-
-
-
-
-
-
    // Render the component once the data is available
    if (!data) {
       return <div>Loading...</div>;
    }
-
-   //to send on Update option
-
 
    return (
       <div className={styles.container}>
