@@ -17,7 +17,6 @@ export default function RestaurantListing() {
     const [reviewCount, setreviewCount] = useState(null);
     const [ratingAverge, setratingAverge] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [isReviewsAvailable, setisReviewsAvailable] = useState(true);
 
     const handleDelete = () => {
         swal({
@@ -57,10 +56,7 @@ export default function RestaurantListing() {
             setratingAverge(ratingAvg);
             setreviewCount(reviewsCount);
             setData(restaurantData);
-            if (restaurantData.hasOwnProperty("Reviews"))
-                setisReviewsAvailable(true);
-            else
-                setisReviewsAvailable(false);
+
             // console.log(reviewsCount, "---", ratingAvg);
             setLoading(false);
         } catch (error) {
@@ -137,20 +133,17 @@ export default function RestaurantListing() {
                         </div>
                     </div>
 
-                    {isReviewsAvailable && <div>
+                    <div>
                         <h2 className={styles.subHeading}>People's Opinion</h2>
                         <Testimonial />
                     </div>
-                    }
 
                 </div>
                 <div>
-                    {isReviewsAvailable &&
-                        <div>
-                            <Rating rating={ratingAverge} />
-                            <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
-                        </div>
-                    }
+                    <div>
+                        <Rating rating={ratingAverge} />
+                        <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
+                    </div>
                     <div className={styles.booking}>
                         <Button value="Book Now" />
                     </div>
