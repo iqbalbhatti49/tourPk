@@ -4,37 +4,66 @@ import { useLocation } from "react-router";
 import { Button, CircularRating, Carousel, Testimonial } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 import axiosInstance from '../../utils/Api';
+import { useParams } from 'react-router-dom';
+import { getReviewsStats } from '../../utils/FindReviewStats';
 
 export default function RestaurantListing() {
     const location = useLocation();
-    const restaurant = location.state;
-    const [reviews, setReviews] = useState([]);
-    const [reviewsAvg, setReviewsAvg] = useState();
+    const { id } = useParams();
+    const [data, setData] = useState(null);
+    const [reviewCount, setreviewCount] = useState(null);
+    const [ratingAverge, setratingAverge] = useState(null);
+    const [loading, setLoading] = useState(true);
+    let isReviewsAvailable;
 
-    const getReviews = async (id) => {
-        const review = await axiosInstance.get(`/review/getReviewsByServiceId/${id}`);
-        setReviews(review.data);
-        console.log(review.data)
-        let avg = 0;
-        review.data.forEach(element => {
-            console.log(element);
-            avg += element.rating;
-        });
-        avg = (avg / (review.data.length)).toFixed(1);;
-        setReviewsAvg(avg);
-    }
+    const getRestaurant = async () => {
+        try {
+            const response = await axiosInstance.get(`/restaurant/getRestaurantById/${id}`);
+            const { Service: { Reviews, ...serviceData }, RestaurantImages, ...restData } = response.data;
+            const Restaurant = restData;
+            const Service = serviceData;
+            const restaurantData = {
+                Service,
+                Restaurant,
+                Reviews,
+                RestaurantImages
+            };
+            setData(restaurantData);
+            const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
+            setratingAverge(ratingAvg);
+            setreviewCount(reviewsCount);
+            console.log(reviewsCount, "---", ratingAvg);
+            setLoading(false);
+            if ('Reviews' in restaurantData)
+                isReviewsAvailable = true;
+            else
+                isReviewsAvailable = false;
+
+            console.log(restaurantData);
+            console.log(isReviewsAvailable);
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        getReviews(location.state.serviceObj.id);
-    }, [])
+        getRestaurant();
+        console.log(location.state);
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.information}>
-                    <h1 className={styles.heading}>{restaurant.serviceObj.name}</h1>
+                    <h1 className={styles.heading}>{data.Service.name}</h1>
                     <div className={styles.attributesContainer}>
-                        {Object.entries(location.state.restaurantObj).map(([key, value]) => (
-                            key !== 'ServiceId' && key !== 'id' ? (
+                        {Object.entries(data.Restaurant).map(([key, value]) => (
+                            key !== 'ServiceId' && key !== 'id' && key !== 'UserId' ? (
                                 <div className={styles.attributes} key={key}>
                                     <p className={styles.key}>{key}</p>
                                     <p>{value}</p>
@@ -43,11 +72,11 @@ export default function RestaurantListing() {
                         ))}
                         <div className={styles.attributes}>
                             <p className={styles.key}>Website </p>
-                            <p>{location.state.serviceObj.website}</p>
+                            <p>{data.Service.website}</p>
                         </div>
                     </div>
                 </div>
-                <Carousel imageList={location.state.images} />
+                <Carousel imageList={data.RestaurantImages} />
             </div>
 
             <div className={styles.details}>
@@ -55,14 +84,14 @@ export default function RestaurantListing() {
                     <div>
                         <h2 className={styles.subHeading}>Restaurant Description</h2>
                         <p className={styles.description}>
-                            {restaurant.serviceObj.description}
+                            {data.Service.description}
                         </p>
                     </div>
                     <div>
                         <div className={styles.contactInfo}>
-                            <h2 className={styles.subHeading}>{restaurant.serviceObj.name}</h2>
+                            <h2 className={styles.subHeading}>{data.Service.name}</h2>
                             <div className={styles.attributesContainer}>
-                                {Object.entries(location.state.serviceObj).map(([key, value]) => (
+                                {Object.entries(data.Service).map(([key, value]) => (
                                     key !== 'id' && key !== 'name' && key !== 'description' && key !== 'website' ? (
                                         <div className={styles.attributes} key={key}>
                                             <p className={styles.key}>{key}</p>
@@ -74,28 +103,29 @@ export default function RestaurantListing() {
                         </div>
                     </div>
 
-
-                    <div>
+                    {isReviewsAvailable && <div>
                         <h2 className={styles.subHeading}>People's Opinion</h2>
                         <Testimonial />
                     </div>
-
+                    }
 
                 </div>
                 <div>
-                    <div className={styles.ratingPricing}>
-                        <h2 className={styles.subHeading}>Ratings</h2>
-                        <div className={styles.rating}>
-                            <CircularRating rating={reviewsAvg} />
-                            <p className={styles.ratingText}>Based on {reviews.length} Reviews</p>
+                    {isReviewsAvailable &&
+                        <div className={styles.ratingPricing}>
+                            <h2 className={styles.subHeading}>Ratings</h2>
+                            <div className={styles.rating}>
+                                <CircularRating rating={ratingAvg} />
+                                <p className={styles.ratingText}>Based on {reviewsCount} Reviews</p>
+                            </div>
                         </div>
-                    </div>
+                    }
                     <div className={styles.booking}>
                         <Button value="Book Now" />
                     </div>
                 </div>
             </div>
-            <ReviewForm serviceId={location.state.serviceObj.id} />
+            <ReviewForm serviceId={data.Service.id} />
         </div>
     );
 }
