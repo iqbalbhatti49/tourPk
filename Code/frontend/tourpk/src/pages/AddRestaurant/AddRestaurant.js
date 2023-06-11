@@ -56,7 +56,7 @@ const AddRestaurant = () => {
         const restaurantId_ = await axiosInstance.post("restaurant/addRestaurant", restaurantData);
         const id = restaurantId_.data;
         swal("Restaurant Added Successfully", "Success! The new Restaurant entry has been added successfully.", "success");
-        navigate(`/restaurantListing/${id}`, { state: "noReviews" });
+        navigate(`/restaurantListing/${id}`);
         // navigate(`/restaurantListing/${restaurantAdded.serviceObj.name}`, { restaurantAdded });
     };
 
