@@ -65,6 +65,24 @@ export const updatePhoneNumberVerification = createAsyncThunk(
    }
 );
 
+export const updateEmailVerification = createAsyncThunk(
+   'user/updateEmailVerification',
+   async (payload) => {
+     const { userId, email } = payload;
+     try {
+       const response = await axiosInstance.post('/auth/emailVerification', {
+         email,
+         userId,
+         emailVerified: true,
+       });
+       return response.data;
+     } catch (error) {
+       console.log('Failed to update email verification:', error);
+       throw error;
+     }
+   }
+ );
+
 const userSlice = createSlice({
    name: 'user',
    initialState,
@@ -115,7 +133,17 @@ const userSlice = createSlice({
          })
          .addCase(updatePhoneNumberVerification.rejected, (state, action) => {
             // Handle the rejected action if needed
-         });
+         })
+         .addCase(updateEmailVerification.pending, (state) => {
+            // Optional: You can update the state while the action is pending
+          })
+          .addCase(updateEmailVerification.fulfilled, (state, action) => {
+            state.email = action.payload.email;
+            state.emailVerified = action.payload.emailVerified;
+          })
+          .addCase(updateEmailVerification.rejected, (state, action) => {
+            // Handle the rejected action if needed
+          });
    }
 });
 

@@ -200,3 +200,32 @@ exports.numberVerification = async (req, res) => {
        res.status(500).json({ error: 'Failed to update phone number verification' });
     }
  };
+
+ exports.emailVerification = async (req, res) => {
+    try {
+      const { email, userId } = req.body;
+      console.log(req.body)
+      await User.update(
+        {
+          emailVerified: true,
+          email: email
+        },
+        {
+          where: {
+            id: userId,
+          },
+        }
+      );
+  
+      console.log(`Email verification updated for user with ID: ${userId}`);
+      res.status(200).json({
+        message: 'Email verification updated successfully',
+        emailVerified: true,
+        email: email
+      });
+    } catch (error) {
+      console.log('Failed to update email verification:', error);
+      res.status(500).json({ error: 'Failed to update email verification' });
+    }
+  };
+  

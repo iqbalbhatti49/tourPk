@@ -104,10 +104,6 @@ function AccountVerification() {
     }
   };
 
-  const verificationStatusClass = verificationStatus == 200 
-    ? styles.success // CSS class for success message
-    : styles.error; // CSS class for error message
-
   return (
     <div className={styles.container}>
       <div className={styles.box}>

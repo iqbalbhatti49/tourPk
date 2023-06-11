@@ -63,7 +63,7 @@ const ServiceProviderHome = () => {
                         <span>{user.phoneNumberVerified ? "Verified":"Unverified"}</span>
                      </div>
                      <div>
-                        <span>{user.emailVerified ? "Verified":"Unverified"}</span>
+                        <span>{user.emailVerified ? "Verified": "Unverified"}</span>
                      </div>
                   </div>
                </div>
@@ -71,7 +71,9 @@ const ServiceProviderHome = () => {
                   <Link to="/verify">
                      <Button value= {!user.phoneNumberVerified ? "Verify Phone Number" : "Update Phone Number"} />
                   </Link>
-                  <Button value= {!user.emailVerified && "Verfiy Email"} />
+                  <Link to="/verifyEmail">
+                     <Button value= {!user.emailVerified ? "Verfiy Email" : "Update Email"} />
+                  </Link>
                </div>
             </div>
             <div>
