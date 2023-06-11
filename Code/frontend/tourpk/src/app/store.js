@@ -11,7 +11,7 @@
 
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import { cart, pacakage, checkout, pricing, bookings, user, contract, cities, help, blogs, comments } from './index'
+import { cart, pacakage, checkout, pricing, bookings, user, contract, cities, help, blogs, comments, service } from './index'
 import logger from 'redux-logger';
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
@@ -22,7 +22,7 @@ const persistConfig = {
    storage,
 }
 const rootReducer = combineReducers({
-   cart, pacakage, checkout, pricing, user, bookings, contract, cities, help, blogs, comments
+   cart, pacakage, checkout, pricing, user, bookings, contract, cities, help, blogs, comments, service
 })
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

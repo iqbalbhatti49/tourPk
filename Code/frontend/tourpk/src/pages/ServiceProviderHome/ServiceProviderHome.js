@@ -1,13 +1,23 @@
 import styles from "./ServiceProviderHome.module.css";
-import { useSelector } from 'react-redux';
 import {Button} from "../../components/index"
 import { Link } from "react-router-dom";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchServicesByUserId } from '../../app/features/services/servicesSlice';
 
 const ServiceProviderHome = () => {
    const user = useSelector((state) => state.user)
    const card = useSelector((state) => state.checkout.cardInfo);
    const address = useSelector((state) => state.checkout.billingAddress);
+   const dispatch = useDispatch();
+   const userId = useSelector((state) => state.user.id);
+   const services = useSelector((state) => state.service.services);
 
+   useEffect(() => {
+      dispatch(fetchServicesByUserId({ userId }));
+    }, [dispatch, userId]);
+    console.log(services)
+    
    return (
       <div className={styles.container}>
         <div className={styles.header}>
@@ -135,8 +145,73 @@ const ServiceProviderHome = () => {
                </div>
             </div>
           </div>
-          <div>
+          <div className={styles.servicesFlex}>
             <p className={styles.subHeading}>{`Serices offered`}</p>
+            <div>
+            {services.travelAgent.length ? <p className={styles.key}>Travel Agents</p>:<></>}
+               <div className={styles.travelAgents}>
+                  {services.travelAgent.map((service) => (
+                     <div key={service.id} className={styles.travelAgent}>
+                        <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
+                        <p className={styles.name}><span className={styles.key}>Name: </span>{service.name}</p>
+                        <p className={styles.website}><span className={styles.key}>Website: </span> {service.website}</p>
+                        <p className={styles.desc}><span className={styles.key}>Description: </span>{service.description}</p>
+                        <Link to={`/travelAgentListing/${service.id}`}> 
+                        {/* //TODO:Mano yeh link dekhna */}
+                           <Button value="View Details" type="secondary" />
+                        </Link>
+                     </div>
+                  ))}
+               </div>
+            </div>
+            <div>
+            {services.tourGuide.length ? <p className={styles.key}>Tour Guides</p>:<></>}
+               <div className={styles.travelAgents}>
+                  {services.tourGuide.map((service) => (
+                     <div key={service.id} className={styles.travelAgent}>
+                        <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
+                        <p className={styles.name}><span className={styles.key}>Name: </span>{service.name}</p>
+                        <p className={styles.website}><span className={styles.key}>Website: </span> {service.website}</p>
+                        <p className={styles.desc}><span className={styles.key}>Description: </span>{service.description}</p>
+                        <Link to={`/tourGuideListing/${service.id}`}>
+                           <Button value="View Details" type="secondary" />
+                        </Link>
+                     </div>
+                  ))}
+               </div>
+            </div>
+            <div>
+               {services.hotels.length ? <p className={styles.key}>Hotels</p> : <></>}
+               <div className={styles.travelAgents}>
+                  {services.hotels.map((service) => (
+                     <div key={service.id} className={styles.travelAgent}>
+                        <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
+                        <p className={styles.name}><span className={styles.key}>Name: </span>{service.name}</p>
+                        <p className={styles.website}><span className={styles.key}>Website: </span> {service.website}</p>
+                        <p className={styles.desc}><span className={styles.key}>Description: </span>{service.description}</p>
+                        <Link to={`/listing/${service.id}`}>
+                           <Button value="View Details" type="secondary" />
+                        </Link>
+                     </div>
+                  ))}
+               </div>
+            </div>
+            <div>
+               {services.restaurant.length ? <p className={styles.key}>Restaurant</p> :<></>}
+               <div className={styles.travelAgents}>
+                  {services.restaurant.map((service) => (
+                     <div key={service.id} className={styles.travelAgent}>
+                        <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
+                        <p className={styles.name}><span className={styles.key}>Name: </span>{service.name}</p>
+                        <p className={styles.website}><span className={styles.key}>Website: </span> {service.website}</p>
+                        <p className={styles.desc}><span className={styles.key}>Description: </span>{service.description}</p>
+                        <Link to={`/restaurantListing/${service.id}`}>
+                           <Button value="View Details" type="secondary" />
+                        </Link>
+                     </div>
+                  ))}
+               </div>
+            </div>
           </div>
       </div>
    );
