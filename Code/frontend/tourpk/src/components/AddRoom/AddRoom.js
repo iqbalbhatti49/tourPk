@@ -55,6 +55,7 @@ const AddRoom = (props) => {
         console.log("--> Back on F.end --> ", roomId.data);
         swal("Hotel and Room Added Successfully", "Success! The new Hotel entry has been added successfully.", "success");
         navigate(`/hotelListing/${roomId.data}`, { state: "noReviews" });
+
     };
 
     return (
