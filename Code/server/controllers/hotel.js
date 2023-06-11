@@ -47,6 +47,9 @@ exports.getHotelById = async (req, res) => {
             {
                 model: HotelImage,
             },
+            {
+                model: Room,
+            },
         ]
     });
     res.json(data);
