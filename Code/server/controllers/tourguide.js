@@ -59,28 +59,32 @@ exports.getAllTourGuides = async (req, res) => {
 }
 
 exports.getTourGuideById = async (req, res) => {
-  const id = req.params.id;
-  const data = await TourGuide.findOne({
-    where: {
-      id: id
-    },
-    include: [
-      {
-        model: Service,
-        include: [
-          {
-            model: Review,
-          },
-        ],
+  try {
+    const id = req.params.id;
+    const data = await TourGuide.findOne({
+      where: {
+        id: id
       },
-      {
-        model: TourGuideImage,
-      },
-    ]
-  });
-  res.json(data);
+      include: [
+        {
+          model: Service,
+          include: [
+            {
+              model: Review,
+            },
+          ],
+        },
+        {
+          model: TourGuideImage,
+        },
+      ]
+    });
+    return res.json(data);
+  } catch (error) {
+    console.log('Error:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
 }
-
 
 exports.addBooking = async (req, res) => {
   const { userId, id, totalPrice, selectedDate } = req.body;
@@ -98,7 +102,6 @@ exports.addBooking = async (req, res) => {
     res.status(500).json({ error: 'Failed to add booking' });
   }
 };
-
 
 exports.deleteTourGuide = async (req, res) => {
   console.log(req.body)

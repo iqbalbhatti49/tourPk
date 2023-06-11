@@ -8,7 +8,7 @@ import Button from '../Button/Button';
 import {clearCart }from "../../app/features/cart/cartSlice"
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
-import { addTourGuideBooking } from '../../app/features/bookings/bookingsSlice';
+import { addTourGuideBooking, addTravelAgentBooking } from '../../app/features/bookings/bookingsSlice';
 
 
 export const BillingSummary = () => {
@@ -16,7 +16,7 @@ export const BillingSummary = () => {
    const navigate = useNavigate();
    const location = useLocation();
    const tourguide = location.state && location.state.payLaod;
-   console.log(tourguide);
+   const travelagent = location.state && location.state.travelagent;
    const required = value => (value ? undefined : 'Required');
    const discount = useSelector((state) => state.pricing.discount);
    const cardInfo = useSelector((state) => state.checkout.cardInfo);
@@ -84,6 +84,10 @@ export const BillingSummary = () => {
             if(tourguide)
             {
                dispatch(addTourGuideBooking(tourguide));
+            }
+            if(travelagent)
+            {
+               dispatch(addTravelAgentBooking(travelagent));
             }
            dispatch(clearCart());
            navigate("/");

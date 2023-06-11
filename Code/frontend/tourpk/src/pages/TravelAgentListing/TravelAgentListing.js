@@ -5,21 +5,61 @@ import { Testimonial, BookingCalendar, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 import { useLocation, useParams } from "react-router";
 import axiosInstance from '../../utils/Api';
-import { IconEdit, IconDelete } from "../../components/index";
+import { IconEdit, IconDelete, FormField } from "../../components/index";
 import swal from 'sweetalert';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import { Form as FormFinal } from 'react-final-form'
+import { required } from '../../utils/validations';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { clearCart, addItem } from '../../app/features/cart/cartSlice';
 export default function TravelAgentListing() {
    const currentUser = useSelector(state => state.user.id);
+   const navigate = useNavigate();
+   const discount = useSelector(state => state.pricing.discount);
    const location = useLocation();
+   const dispatch = useDispatch();
    const { id } = useParams();
    const [data, setData] = useState(null);
+   const userId = useSelector((state) => state.user.id);
    const [reviewCount, setreviewCount] = useState(5);
    const [ratingAverge, setratingAverge] = useState(4.5);
    const [loading, setLoading] = useState(true);
    const [isReviewsAvailable, setisReviewsAvailable] = useState(true);
-
+   const [selectedDate, setSelectedDate] = useState(null);
+   const handleDateChange = (date) => {
+      console.log('Selected date:', date.toISOString().split('T')[0]);
+      setSelectedDate(date.toISOString().split('T')[0]);
+   };
+   const onSubmit = async (values) => {
+      if(selectedDate == null)
+      {
+         swal({
+            title: 'Date Missing',
+            text: 'First select an available date from the calender.',
+            icon: 'error',
+            buttons: {
+               confirm: true,
+            },
+        })
+        return;
+      }
+      dispatch(clearCart());
+      const totalPrice = data.TravelAgent.packagePrice*values.guests;
+      const newItem = {
+         imageSrc: data.TravelAgentImages[0].imageUrl,
+         title: data.Service.name,
+         count: parseInt(values.guests),
+         price: totalPrice,
+         discountedPrice: totalPrice - (totalPrice * (discount/100)),
+      };
+      console.log(values.guests)
+      dispatch(addItem(newItem));
+      const guests = values.guests
+      const travelagent = {userId, id, selectedDate, totalPrice, type: "travelagent", guests };
+      navigate("/checkout", { state: { travelagent } });
+   }
    const handleDelete = () => {
       swal({
          title: 'Are you sure?',
@@ -147,9 +187,6 @@ export default function TravelAgentListing() {
                      <Testimonial />
                   </div>
                   }
-                  <div className={styles.booking}>
-                     <Button value="Book Now" />
-                  </div>
                </div>
             </div>
             <div>
@@ -167,19 +204,38 @@ export default function TravelAgentListing() {
                <div>
                   <h2 className={styles.subHeading}>Pricing</h2>
                   <div className={styles.pricing}>
-                     <p className={styles.pricingKey}>Package Price</p>
+                     <p className={styles.pricingKey}>Per Person</p>
                      <p className={styles.pricingValue}> Rs. {data.TravelAgent.packagePrice}</p>
                   </div>
                </div>
                <div>
                   <h2 className={styles.subHeading}>Booking Calender</h2>
                   <div className={styles.calender}>
-                     <BookingCalendar />
+                     <BookingCalendar selectedDate={selectedDate} onDateChange={handleDateChange} />
                   </div>
                </div>
             </div>
          </div>
-
+         <div className={styles.booking}>
+                     <p>Select the start date of tour from the given calender.</p>
+                     <div className={styles.formContainer}>
+                        <FormFinal
+                           onSubmit={onSubmit}
+                           subscription={{
+                                 submitted: true
+                           }} >
+                           {({ handleSubmit, submitting, values }) => (
+                              <form onSubmit={handleSubmit}>   
+                                 <FormField name="guests"
+                                  label="NumberofGuests" type="number" placeholder="12" 
+                                  validate={required} theme="light" value={values} 
+                                  renderIcon={() => null} />
+                                 <Button value="Book Now" btnType="submit" />
+                              </form>
+                              )}
+                        </FormFinal>
+                     </div>
+                  </div>
          <ReviewForm serviceId={2} />
       </div>
 

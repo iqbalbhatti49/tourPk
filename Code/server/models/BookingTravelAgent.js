@@ -8,19 +8,16 @@ module.exports = (sequelize, DataTypes) => {
             startAt: 1,
             increment: 1,
         },
-        checkIn: {
+        bookingDate: {
             type: DataTypes.DATEONLY,
             allowNull: false,
-        },
-        checkOut: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-        },
-        discount: {
-            type: DataTypes.INTEGER,
-            allowNull: true
         },
         totalPrice:
+        {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        guestCount:
         {
             type: DataTypes.INTEGER,
             allowNull: false
@@ -30,6 +27,9 @@ module.exports = (sequelize, DataTypes) => {
     });
     BookingTravelAgent.associate = (models) => {
         BookingTravelAgent.belongsTo(models.User, {
+            onDelete: "cascade",
+        });
+        BookingTravelAgent.belongsTo(models.TravelAgent, {
             onDelete: "cascade",
         });
     };
