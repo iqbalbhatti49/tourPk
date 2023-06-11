@@ -77,3 +77,18 @@
    padding-top: 20px;
    margin-top: 10px;
 }
+
+.delete {
+   @apply --IconDelete;
+   padding-left: 20px;
+}
+
+.iconsDelEdit {
+   @apply --IconsBox;
+}
+
+.iconsBox {
+   top: 28px;
+   position: relative;
+   left: 64px;
+}

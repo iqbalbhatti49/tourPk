@@ -4,10 +4,13 @@ import { useLocation } from "react-router";
 import { Button, CircularRating, Carousel, Testimonial, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
 import axiosInstance from '../../utils/Api';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getReviewsStats } from '../../utils/FindReviewStats';
+import { IconEdit, IconDelete } from "../../components/index";
+import { useSelector } from 'react-redux';
 
 export default function RestaurantListing() {
+    const currentUser = useSelector(state => state.user.id);
     const location = useLocation();
     const { id } = useParams();
     const [data, setData] = useState(null);
@@ -15,6 +18,28 @@ export default function RestaurantListing() {
     const [ratingAverge, setratingAverge] = useState(null);
     const [loading, setLoading] = useState(true);
     const [isReviewsAvailable, setisReviewsAvailable] = useState(true);
+
+    const handleDelete = () => {
+        swal({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this Listing!',
+            icon: 'warning',
+            buttons: ['Cancel', 'Confirm'],
+            dangerMode: true,
+        }).then((clickedBtn) => {
+            if (clickedBtn) {
+                console.log('User clicked on confirm');
+                const ids = {
+                    ServiceId: data.Service.id,
+                    RestaurantId: data.Restaurant.id
+                };
+                // axiosInstance.post(`/deleteRestuarant/`, ids);
+                // navigate("/");
+            } else {
+                console.log('User clicked on "Cancel"');
+            }
+        });
+    }
 
     const getRestaurant = async () => {
         try {
@@ -56,7 +81,20 @@ export default function RestaurantListing() {
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.information}>
-                    <h1 className={styles.heading}>{data.Service.name}</h1>
+                    <div className={styles.iconsDelEdit}>
+                        <h1 className={styles.heading}>{data.Service.name}</h1>
+                        {
+                            currentUser === data.Restaurant.UserId &&
+                            <div className={styles.iconsBox}>
+                                <Link to={`/AddTravelAgent?edit=1`} state={data}> {/* set a stateful value for the new location */}
+                                    <IconEdit />
+                                </Link>
+                                <button className={styles.delete} onClick={handleDelete}>
+                                    <IconDelete />
+                                </button>
+                            </div>
+                        }
+                    </div>
                     <div className={styles.attributesContainer}>
                         {Object.entries(data.Restaurant).map(([key, value]) => (
                             key !== 'ServiceId' && key !== 'id' && key !== 'UserId' ? (
