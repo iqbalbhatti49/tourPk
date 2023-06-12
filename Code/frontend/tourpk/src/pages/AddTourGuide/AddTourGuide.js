@@ -34,7 +34,7 @@ const AddTourGuide = () => {
     "primaryAreas": "",
     "otherAreas": "",
     "language": "",
-    "perDayRate": "",
+    "perDayRate": null,
     "ServiceId": "",
     "UserId": ""
   }
@@ -53,7 +53,13 @@ const AddTourGuide = () => {
       tourGuide: values
     };
 
-    const tourGuideObj = await axiosInstance.post("/tourguide/addtourguide", tourGuideData);
+    let tourGuideObj;
+    console.log(tourGuideData);
+    if (!isEditMode)
+      tourGuideObj = await axiosInstance.post("/tourguide/addtourguide", tourGuideData);
+    else
+      tourGuideObj = await axiosInstance.post("/tourguide/updatetourguide", tourGuideData);
+
     const tourGuideAdded = tourGuideObj.data;
     swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
     // navigate(`/tourGuideListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
@@ -131,56 +137,11 @@ const AddTourGuide = () => {
                     label="Price Per Day (Rs.)"
                     type="number"
                     placeholder="$5"
-                    validate={mustBeNumber}
+                    validate={required}
                     theme="light"
                     defaultValue={initialValue.perDayRate}
                     renderIcon={() => null}
                   />
-                  {/*                       
-                      <h2>Account Information</h2>
-                      <Dropdown
-                        name="accountType"
-                        label="Account Type"
-                        optionsValues = {[{
-                            "id": 1,
-                            "name": "JazzCash",
-                         },
-                         {
-                            "id": 2,
-                            "name": "EaisaPaisa",
-                         },
-                         {
-                            "id": 2,
-                            "name": "SadaPay",
-                         },
-                         {
-                            "id": 2,
-                            "name": "NayaPay",
-                         }]}
-                        validate={required}
-                        theme="light"
-                        placeholder="Please choose an Account Type"
-                        value={values}
-                        renderIcon={() => null}
-                      />
-                          <FormField
-                            name="accountHolderName"
-                            label="Account Holder Name"
-                            type="text"
-                            placeholder="Enter the account holder name"
-                            validate={required}
-                            theme="light"
-                            renderIcon={() => null}
-                          />
-                          <FormField
-                            name="accountNumber"
-                            label="Account Number"
-                            type="text"
-                            placeholder="Enter the account number"
-                            validate={required}
-                            theme="light"
-                            renderIcon={() => null}
-                          /> */}
                   <div className={styles.btnDiv}>
                     <Button
                       id={styles.signupBtn}
