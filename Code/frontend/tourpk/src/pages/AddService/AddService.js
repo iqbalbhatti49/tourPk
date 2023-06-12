@@ -77,7 +77,11 @@ const AddService = () => {
                 service == "Travel Agent" ? "addTravelAgent" : "addrestaurant"
         if (isEditMode)
             URL += "?edit=1"
-        const tourGuide = data.TourGuide
+        console.log(URL);
+        let nothing = {
+            somedata: ""
+        }
+        const tourGuide = isEditMode ? data.TourGuide : nothing;
         //naviagte to corresponding add Service
         navigate(`/${URL}`, {
             state: { values, tourGuide }
