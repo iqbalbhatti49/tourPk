@@ -9,6 +9,6 @@ router.get("/getTourGuideById/:id", getTourGuideById);
 router.post("/addBooking", addBooking);
 router.post("/deleteTourGuide/", deleteTourGuide);
 router.get("/getAllBookings/:id", getAllBookings)
-router.get("/updatetourguide/", authenticateMiddleware, updatetourguide);
+router.post("/updatetourguide/", updatetourguide);
 
 module.exports = router;
