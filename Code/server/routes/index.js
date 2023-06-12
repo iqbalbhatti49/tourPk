@@ -11,6 +11,7 @@ const hotelRouter = require("./hotel");
 const serviceRouter = require("./service");
 const reviewRouter = require("./review");
 const phoneNumberVerification = require("./phoneNumberVerification");
+const emailVerification = require("./emailVerification");
 
 router.use("/blog", blogRouter);
 router.use("/auth", authRoutes);
@@ -23,6 +24,7 @@ router.use("/tourguide", tourGuideRouter);
 router.use("/hotel", hotelRouter);
 router.use("/review", reviewRouter);
 router.use("/verify", phoneNumberVerification);
+router.use("/verifyEmail", emailVerification);
 router.use("/service", serviceRouter);
 
 module.exports = router;

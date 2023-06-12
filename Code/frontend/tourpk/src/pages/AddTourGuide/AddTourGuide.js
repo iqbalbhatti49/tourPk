@@ -10,20 +10,59 @@ import axiosInstance from "../../utils/Api";
 import { useSelector } from "react-redux";
 
 const AddTourGuide = () => {
+  const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const isEditMode = searchParams.get('edit') === '1';
+  console.log(isEditMode);
+  let values, tourGuide;
+  let updateInitialValue;
+  if (isEditMode) {
+    ({ values, tourGuide } = location.state);
+    updateInitialValue = tourGuide;
+    console.log("hi")
+  }
+
+  console.log(location.state);
+
+  const addInitialValue =
+  {
+    "id": "",
+    "experience": "",
+    "gender": "",
+    "primaryAreas": "",
+    "otherAreas": "",
+    "language": "",
+    "perDayRate": null,
+    "ServiceId": "",
+    "UserId": ""
+  }
+
+  const initialValue = isEditMode ? updateInitialValue : addInitialValue;
+
   const userId = useSelector(state => state.user.id);
   const navigate = useNavigate();
-  const location = useLocation();
+  const { state } = useLocation();
+  console.log(state);
   const onSubmit = async (values) => {
     values.UserId = userId;
+    const servic = isEditMode ? location.state.tourGuide : location.state;
     const tourGuideData = {
-      service: location.state,
+      service: servic,
       tourGuide: values
     };
-    const tourGuideObj = await axiosInstance.post("/tourguide/addtourguide", tourGuideData);
+
+    let tourGuideObj;
+    console.log(tourGuideData);
+    if (!isEditMode)
+      tourGuideObj = await axiosInstance.post("/tourguide/addtourguide", tourGuideData);
+    else
+      tourGuideObj = await axiosInstance.post("/tourguide/updatetourguide", tourGuideData);
+
     const tourGuideAdded = tourGuideObj.data;
     swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
     // navigate(`/tourGuideListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
-    navigate("/tourGuideListing", { state: tourGuideAdded });
+    navigate(`/tourGuideListing/${tourGuideAdded}`, { state: tourGuideAdded });
   };
 
   return (
@@ -49,6 +88,7 @@ const AddTourGuide = () => {
                     placeholder="Enter your experience"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.experience}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -58,6 +98,7 @@ const AddTourGuide = () => {
                     placeholder="Enter your gender"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.gender}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -67,6 +108,7 @@ const AddTourGuide = () => {
                     placeholder="Enter your primary guiding area"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.primaryAreas}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -75,6 +117,7 @@ const AddTourGuide = () => {
                     type="text"
                     placeholder="Enter other guiding areas"
                     theme="light"
+                    defaultValue={initialValue.otherAreas}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -84,6 +127,7 @@ const AddTourGuide = () => {
                     placeholder="Enter languages you speak"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.language}
                     renderIcon={() => null}
                   />
                   <h2>Pricing Information</h2>
@@ -92,55 +136,11 @@ const AddTourGuide = () => {
                     label="Price Per Day (Rs.)"
                     type="number"
                     placeholder="$5"
-                    validate={mustBeNumber}
+                    validate={required}
                     theme="light"
+                    defaultValue={initialValue.perDayRate}
                     renderIcon={() => null}
                   />
-                  {/*                       
-                      <h2>Account Information</h2>
-                      <Dropdown
-                        name="accountType"
-                        label="Account Type"
-                        optionsValues = {[{
-                            "id": 1,
-                            "name": "JazzCash",
-                         },
-                         {
-                            "id": 2,
-                            "name": "EaisaPaisa",
-                         },
-                         {
-                            "id": 2,
-                            "name": "SadaPay",
-                         },
-                         {
-                            "id": 2,
-                            "name": "NayaPay",
-                         }]}
-                        validate={required}
-                        theme="light"
-                        placeholder="Please choose an Account Type"
-                        value={values}
-                        renderIcon={() => null}
-                      />
-                          <FormField
-                            name="accountHolderName"
-                            label="Account Holder Name"
-                            type="text"
-                            placeholder="Enter the account holder name"
-                            validate={required}
-                            theme="light"
-                            renderIcon={() => null}
-                          />
-                          <FormField
-                            name="accountNumber"
-                            label="Account Number"
-                            type="text"
-                            placeholder="Enter the account number"
-                            validate={required}
-                            theme="light"
-                            renderIcon={() => null}
-                          /> */}
                   <div className={styles.btnDiv}>
                     <Button
                       id={styles.signupBtn}

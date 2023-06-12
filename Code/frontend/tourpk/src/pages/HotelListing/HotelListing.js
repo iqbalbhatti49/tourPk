@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import styles from './HotelListing.module.css'
-import { Button, Carousel, ReviewForm, Rating, Testimonial, BookingCalendar } from '../../components/index';
-import { hotalDataObj } from "../../utils/FakeData";
+import { Button, Carousel, ReviewForm, Rating, Testimonial, HotelBooking } from '../../components/index';
 import { useLocation, useParams } from "react-router";
 import axiosInstance from '../../utils/Api';
 import { IconEdit, IconDelete } from "../../components/index";
 import swal from 'sweetalert';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { addHotelBooking } from '../../app/features/bookings/bookingsSlice'; 
 
 export default function HotelListing() {
+  const navigate = useNavigate();
   const currentUser = useSelector(state => state.user.id);
   const location = useLocation();
   const { id } = useParams();
@@ -17,7 +19,7 @@ export default function HotelListing() {
   const [reviewCount, setreviewCount] = useState(5);
   const [ratingAverge, setratingAverge] = useState(4.5);
   const [loading, setLoading] = useState(true);
-
+  
   const handleDelete = () => {
     swal({
       title: 'Are you sure?',
@@ -32,14 +34,20 @@ export default function HotelListing() {
           ServiceId: data.Service.id,
           HotelId: data.Hotel.id
         };
-        // axiosInstance.post(`/deleteHotel/`, ids);
-        // navigate("/");
+        axiosInstance.post(`/hotel/deleteHotel/`, ids);
+        navigate("/");
       } else {
         console.log('User clicked on "Cancel"');
       }
     });
   }
 
+  const handleUpdate = () => {
+    const state = {
+      data, serviceType: "Hotel"
+    }
+    navigate("/AddService?edit=1", { state: state });
+  }
   const getHotel = async () => {
     try {
       const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
@@ -66,7 +74,6 @@ export default function HotelListing() {
 
   useEffect(() => {
     getHotel();
-    // console.log(location.state);
   }, []);
 
   if (loading) {
@@ -82,9 +89,9 @@ export default function HotelListing() {
           {
             currentUser === data.Hotel.UserId &&
             <div className={styles.iconsBox}>
-              <Link to={`/AddHotel?edit=1`} state={data}>
+              <button className={styles.delete} onClick={handleUpdate}>
                 <IconEdit />
-              </Link>
+              </button>
               <button className={styles.delete} onClick={handleDelete}>
                 <IconDelete />
               </button>
@@ -118,11 +125,12 @@ export default function HotelListing() {
                     ) : null
                   ))}
                 </div>
-              </div>
-              <div>
+                <div>
                 <h2 className={styles.headingListing}>Room Ameneties</h2>
-                {room.roomAmenities}
+                  {room.roomAmenities}
+                </div>
               </div>
+              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} hotelName={data.Service.name} hotelId = {room["HotelId"]} roomId={room["id"]} price= {room["rentPerNight"]} />
             </div>
           );
         })}

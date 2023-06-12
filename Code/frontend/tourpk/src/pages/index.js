@@ -28,3 +28,4 @@ export { default as AccountVerification } from "./AccountVerification/AccountVer
 export { default as ServiceProviderHome } from "./ServiceProviderHome/ServiceProviderHome"
 export { default as PaymentInformation } from "./PaymentInformation/PaymentInformation"
 export { default as TravelAgentListing } from "./TravelAgentListing/TravelAgentListing";
+export { default as EmailVerification } from "./EmailVerification/EmailVerification"

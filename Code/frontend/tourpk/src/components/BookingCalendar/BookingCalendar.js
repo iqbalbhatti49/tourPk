@@ -3,10 +3,16 @@ import 'react-calendar/dist/Calendar.css';
 import './BookingCalendar.module.css'; // Custom styling for the calendar
 import { Calendar } from 'react-calendar';
 
-export const BookingCalendar = ({ selectedDate, onDateChange }) => {
-  const disabledDates = [new Date(2023, 4, 15), new Date(2023, 4, 25)];
-
+export const BookingCalendar = ({disabledDates, selectedDate, onDateChange }) => {
+  // const disabledDates = [new Date(2023, 4, 15), new Date(2023, 4, 25)];
+  console.log(disabledDates)
   const isDateDisabled = (date) => {
+    if (disabledDates === null || disabledDates === undefined) {
+      return false; // or return true, depending on your requirements
+    }
+    // if (date.getDay() === 0 || date.getDay() == 6) {
+    //   return true;
+    // }
     const year = date.getFullYear();
     const month = date.getMonth();
     const day = date.getDate();
@@ -34,5 +40,5 @@ export const BookingCalendar = ({ selectedDate, onDateChange }) => {
     onDateChange(date);
   };
 
-  return <Calendar tileDisabled={tileDisabled} onChange={handleDateChange} value={selectedDate} />;
+  return <Calendar selectRange={false} tileDisabled={tileDisabled} onChange={handleDateChange} value={selectedDate} />;
 };

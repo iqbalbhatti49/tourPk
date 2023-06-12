@@ -65,3 +65,13 @@ exports.getAllRestaurants = async (req, res) => {
     });
     res.json(restaurants);
 }
+
+
+exports.deleteRestaurant = async (req, res) => {
+    console.log(req.body)
+    await RestaurantImage.destroy({ where: { RestaurantId: req.body.RestaurantId } });
+    await Restaurant.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Review.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Service.destroy({ where: { id: req.body.ServiceId } });
+    res.status(200).json("deleted sucessfully");
+}

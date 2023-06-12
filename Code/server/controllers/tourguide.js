@@ -35,9 +35,50 @@ exports.addTourGuide = async (req, res) => {
 }
 
 
+exports.updatetourguide = async (req, res) => {
+  console.log(req.body);
+  const { values, tourGuide } = req.body; // Destructure the objects from the request body
+  delete values.images;
+  console.log(values);
+
+  try {
+    // Update the service
+    const updatedService = await Service.update(values, {
+      where: { id: tourGuide.ServiceId }
+    });
+
+    // Update the tour guide
+    const updatedTourGuide = await TourGuide.update(tourGuide, {
+      where: { id: tourGuide.id }
+    });
+
+
+
+    // Update the images
+    // Assuming you have a separate TourGuideImage model/table
+    /*
+     const tourGuideImages = images.map((image) => ({
+       imageUrl: image.imageUrl,
+       TourGuideId: tourGuide.id
+     }));
+ 
+     await TourGuideImage.bulkCreate(tourGuideImages, {
+       updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+     });
+ 
+     */
+
+    res.status(200).json(tourGuide.id);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to update tour guide' });
+  }
+};
+
+
 exports.getAllTourGuides = async (req, res) => {
   const tourGuides = await TourGuide.findAll({
-    attributes: ['id', 'perHourRate'],
+    attributes: ['id', 'perDayRate'],
     include: [
       {
         model: Service,
@@ -59,31 +100,26 @@ exports.getAllTourGuides = async (req, res) => {
 }
 
 exports.getTourGuideById = async (req, res) => {
-  try {
-    const id = req.params.id;
-    const data = await TourGuide.findOne({
-      where: {
-        id: id
+  const id = req.params.id;
+  const data = await TourGuide.findOne({
+    where: {
+      id: id
+    },
+    include: [
+      {
+        model: Service,
+        include: [
+          {
+            model: Review,
+          },
+        ],
       },
-      include: [
-        {
-          model: Service,
-          include: [
-            {
-              model: Review,
-            },
-          ],
-        },
-        {
-          model: TourGuideImage,
-        },
-      ]
-    });
-    return res.json(data);
-  } catch (error) {
-    console.log('Error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
-  }
+      {
+        model: TourGuideImage,
+      },
+    ]
+  });
+  res.json(data);
 }
 
 exports.addBooking = async (req, res) => {
@@ -111,3 +147,25 @@ exports.deleteTourGuide = async (req, res) => {
   await Service.destroy({ where: { id: req.body.ServiceId } });
   res.status(200).json("deleted sucessfully");
 }
+
+exports.getAllBookings = async (req, res) => {
+  try {
+    const tourGuideId = req.params.id;
+    console.log("fetchifb id ", tourGuideId);
+    const bookings = await BookingTourGuide.findAll({
+      where: {
+        TourGuideId: tourGuideId
+      },
+      include: [
+        {
+          model: TourGuide
+        }
+      ]
+    });
+    res.json(bookings);
+  } catch (error) {
+    console.log('Error:', error);
+    res.status(500).json({ error: 'Failed to get tour guide bookings' });
+  }
+};
+

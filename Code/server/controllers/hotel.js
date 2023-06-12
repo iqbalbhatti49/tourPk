@@ -1,4 +1,4 @@
-const { Service, Hotel, HotelImage, Review, Room } = require("../models/");
+const { Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -58,7 +58,7 @@ exports.getHotelById = async (req, res) => {
 
 exports.getAllHotels = async (req, res) => {
     const hotels = await Hotel.findAll({
-        attributes: ['id', 'pricePerDay'],
+        attributes: ['id'],
         include: [
             {
                 model: Service,
@@ -78,3 +78,47 @@ exports.getAllHotels = async (req, res) => {
 
     res.json(hotels);
 }
+
+
+exports.deleteHotel = async (req, res) => {
+    console.log(req.body)
+    await Room.destroy({ where: { HotelId: req.body.HotelId } });
+    await HotelImage.destroy({ where: { HotelId: req.body.HotelId } });
+    await Hotel.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Review.destroy({ where: { ServiceId: req.body.ServiceId } });
+    await Service.destroy({ where: { id: req.body.ServiceId } });
+    res.status(200).json("deleted sucessfully");
+}
+
+// Controller method to add a booking
+exports.addBooking = async (req, res) => {
+  try {
+    const { startDate, numberOfDays, totalPrice, userId, hotelId, roomId } = req.body; // Assuming you receive the necessary data in the request body
+
+    // Create the booking in the database
+    const newBooking = await BookingHotel.create({
+      startDate,
+      numberOfDays,
+      totalPrice,
+      UserId: userId, // Assuming you have a foreign key 'UserId' in the BookingHotel model
+      HotelId: hotelId, // Assuming you have a foreign key 'HotelId' in the BookingHotel model
+      RoomId: roomId // Assuming you have a foreign key 'RoomId' in the BookingHotel model
+    });
+
+    // Retrieve the associated user, hotel, and room data
+    // const user = await User.findByPk(userId);
+    const hotel = await Hotel.findByPk(hotelId);
+    const room = await Room.findByPk(roomId);
+
+    // Respond with the created booking and associated data
+    res.status(201).json({
+      newBooking,
+    //   user,
+      hotel,
+      room
+    });
+  } catch (error) {
+    console.error('Error adding booking:', error);
+    res.status(500).json({ error: 'Failed to add booking' });
+  }
+};

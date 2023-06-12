@@ -5,7 +5,7 @@ import styles from './FormField.module.css';
 let classWrapper = classNames.bind(styles);
 
 const FormField = (props) => {
-  const { name, type, placeholder, validate, theme, renderIcon, label, labelClass } = props;
+  const { name, type, placeholder, validate, theme, renderIcon, label, labelClass, defaultValue } = props;
   let classes = classWrapper({ formField: type !== 'checkbox', iconInput: renderIcon() !== null, noIconInput: renderIcon() === null, light: theme === 'light' });
   let labelClassName = classWrapper({ noLabel: labelClass === 'noLabel', showLabel: labelClass !== 'noLabel' });
   labelClassName = type === 'checkbox' ? classWrapper({ checkBoxLabel: true }) : labelClassName;
@@ -19,6 +19,7 @@ const FormField = (props) => {
     <Field
       name={name}
       validate={validate}
+      initialValue={defaultValue}
       subscription={{
         value: true,
         active: true,
@@ -30,7 +31,7 @@ const FormField = (props) => {
         <div className={wrapperClass}>
           {type === 'checkbox' ? (
             <label className={labelClassName} id={styles.checkBoxText}>
-              <input className={styles.checkboxInput}  {...input} type="checkbox" checked={input.value} onChange={(event) => handleCheckboxChange(event, input)} />
+              <input className={styles.checkboxInput}  {...input} type="checkbox" checked={input.value} onChange={(event) => handleCheckboxChange(event, input)} value="rfgvbh" />
               <span className={styles.checkboxCustom}></span>
               {label}
               {meta.error && meta.touched && <span id={styles.tooltiptext} className={styles.error}>{meta.error}</span>}
