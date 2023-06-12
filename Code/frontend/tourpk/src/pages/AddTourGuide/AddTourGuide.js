@@ -8,17 +8,21 @@ import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/Api";
 import { useSelector } from "react-redux";
+import 'url-search-params-polyfill';
 
 const AddTourGuide = () => {
+  const location = useLocation();
   const userId = useSelector(state => state.user.id);
   const navigate = useNavigate();
-  const location = useLocation();
+  const { state } = useLocation();
+  console.log(state);
   const onSubmit = async (values) => {
     values.UserId = userId;
     const tourGuideData = {
       service: location.state,
       tourGuide: values
     };
+
     const tourGuideObj = await axiosInstance.post("/tourguide/addtourguide", tourGuideData);
     const tourGuideAdded = tourGuideObj.data;
     swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");

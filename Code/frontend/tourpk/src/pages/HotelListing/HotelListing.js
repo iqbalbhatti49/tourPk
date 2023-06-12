@@ -7,9 +7,11 @@ import { IconEdit, IconDelete } from "../../components/index";
 import swal from 'sweetalert';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { addHotelBooking } from '../../app/features/bookings/bookingsSlice'; 
 
 export default function HotelListing() {
+  const navigate = useNavigate();
   const currentUser = useSelector(state => state.user.id);
   const location = useLocation();
   const { id } = useParams();
@@ -32,14 +34,20 @@ export default function HotelListing() {
           ServiceId: data.Service.id,
           HotelId: data.Hotel.id
         };
-        // axiosInstance.post(`/deleteHotel/`, ids);
-        // navigate("/");
+        axiosInstance.post(`/hotel/deleteHotel/`, ids);
+        navigate("/");
       } else {
         console.log('User clicked on "Cancel"');
       }
     });
   }
 
+  const handleUpdate = () => {
+    const state = {
+      data, serviceType: "Hotel"
+    }
+    navigate("/AddService?edit=1", { state: state });
+  }
   const getHotel = async () => {
     try {
       const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
@@ -81,9 +89,9 @@ export default function HotelListing() {
           {
             currentUser === data.Hotel.UserId &&
             <div className={styles.iconsBox}>
-              <Link to={`/AddHotel?edit=1`} state={data}>
+              <button className={styles.delete} onClick={handleUpdate}>
                 <IconEdit />
-              </Link>
+              </button>
               <button className={styles.delete} onClick={handleDelete}>
                 <IconDelete />
               </button>
