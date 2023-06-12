@@ -12,14 +12,44 @@ import 'url-search-params-polyfill';
 
 const AddTourGuide = () => {
   const location = useLocation();
+
+  const searchParams = new URLSearchParams(location.search);
+  const isEditMode = searchParams.get('edit') === '1';
+  console.log(isEditMode);
+  let values, tourGuide;
+  let updateInitialValue;
+  if (isEditMode) {
+    ({ values, tourGuide } = location.state);
+    updateInitialValue = tourGuide;
+    console.log("hi")
+  }
+
+  console.log(location.state);
+
+  const addInitialValue =
+  {
+    "id": "",
+    "experience": "",
+    "gender": "",
+    "primaryAreas": "",
+    "otherAreas": "",
+    "language": "",
+    "perDayRate": "",
+    "ServiceId": "",
+    "UserId": ""
+  }
+
+  const initialValue = isEditMode ? updateInitialValue : addInitialValue;
+
   const userId = useSelector(state => state.user.id);
   const navigate = useNavigate();
   const { state } = useLocation();
   console.log(state);
   const onSubmit = async (values) => {
     values.UserId = userId;
+    const servic = isEditMode ? location.state.tourGuide : location.state;
     const tourGuideData = {
-      service: location.state,
+      service: servic,
       tourGuide: values
     };
 
@@ -27,7 +57,7 @@ const AddTourGuide = () => {
     const tourGuideAdded = tourGuideObj.data;
     swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
     // navigate(`/tourGuideListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
-    navigate("/tourGuideListing", { state: tourGuideAdded });
+    navigate(`/tourGuideListing/${tourGuideAdded}`, { state: tourGuideAdded });
   };
 
   return (
@@ -53,6 +83,7 @@ const AddTourGuide = () => {
                     placeholder="Enter your experience"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.experience}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -62,6 +93,7 @@ const AddTourGuide = () => {
                     placeholder="Enter your gender"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.gender}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -71,6 +103,7 @@ const AddTourGuide = () => {
                     placeholder="Enter your primary guiding area"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.primaryAreas}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -79,6 +112,7 @@ const AddTourGuide = () => {
                     type="text"
                     placeholder="Enter other guiding areas"
                     theme="light"
+                    defaultValue={initialValue.otherAreas}
                     renderIcon={() => null}
                   />
                   <FormField
@@ -88,6 +122,7 @@ const AddTourGuide = () => {
                     placeholder="Enter languages you speak"
                     validate={required}
                     theme="light"
+                    defaultValue={initialValue.language}
                     renderIcon={() => null}
                   />
                   <h2>Pricing Information</h2>
@@ -98,6 +133,7 @@ const AddTourGuide = () => {
                     placeholder="$5"
                     validate={mustBeNumber}
                     theme="light"
+                    defaultValue={initialValue.perDayRate}
                     renderIcon={() => null}
                   />
                   {/*                       

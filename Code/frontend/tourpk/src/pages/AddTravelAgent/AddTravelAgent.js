@@ -40,8 +40,9 @@ const AddTravelAgent = () => {
 
         const travelAgentObj = await axiosInstance.post("/travelAgent/addTravelAgentPackage", travelAgent);
         const travelAgentAdded = travelAgentObj.data;
+        console.log(travelAgentAdded);
         swal("Tour Package Added Successfully", "Success! The new Tour Package entry has been added successfully.", "success");
-        navigate(`/travelAgentListing/${travelAgentAdded.serviceObj.name}`, { travelAgentAdded });
+        navigate(`/travelAgentListing/${travelAgentAdded}`, { travelAgentAdded });
     };
 
     return (
