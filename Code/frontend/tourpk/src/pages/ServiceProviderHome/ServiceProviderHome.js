@@ -147,11 +147,12 @@ const ServiceProviderHome = () => {
                </div>
             </div>
           </div>
-          <div className={styles.servicesFlex}>
+          { services.length != 0 ?
+            <div className={styles.servicesFlex}>
             <p className={styles.subHeading}>{`Serices offered`}</p>
             <div>
             {services.travelAgent.length != 0 ? <p className={styles.key}>Travel Agents</p>:<></>}
-               {services["travelAgent"].length != 0 ? <div className={styles.travelAgents}>
+               {services.travelAgent.length != 0 ? <div className={styles.travelAgents}>
                   {services.travelAgent.map((service) => (
                      <div key={service.id} className={styles.travelAgent}>
                         <p className={styles.id}><span className={styles.key}><span className={styles.key}>Id: </span> </span>{service.id}</p>
@@ -214,7 +215,7 @@ const ServiceProviderHome = () => {
                   ))}
                </div>:<></>}
             </div>
-          </div>
+          </div> :<></>}
       </div>
    );
 };
