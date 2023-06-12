@@ -38,6 +38,7 @@ export { CircularRating } from './CircularRating/CircularRating';
 export { default as AddRoom } from "./AddRoom/AddRoom"
 export {default as Rating } from "./Rating/Rating"
 export {default as ReviewForm} from "./ReviewForm.js/ReviewForm"
+export {default as HotelBooking} from "./HotelBooking/HotelBooking"
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
 export { toggleChecked, updateUserWithPlanDetails } from '../app/features/pricing/pricingSlice';

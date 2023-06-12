@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import styles from './HotelListing.module.css'
-import { Button, Carousel, ReviewForm, Rating, Testimonial, BookingCalendar } from '../../components/index';
-import { hotalDataObj } from "../../utils/FakeData";
+import { Button, Carousel, ReviewForm, Rating, Testimonial, HotelBooking } from '../../components/index';
 import { useLocation, useParams } from "react-router";
 import axiosInstance from '../../utils/Api';
 import { IconEdit, IconDelete } from "../../components/index";
 import swal from 'sweetalert';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addHotelBooking } from '../../app/features/bookings/bookingsSlice'; 
 
 export default function HotelListing() {
   const currentUser = useSelector(state => state.user.id);
@@ -17,7 +17,7 @@ export default function HotelListing() {
   const [reviewCount, setreviewCount] = useState(5);
   const [ratingAverge, setratingAverge] = useState(4.5);
   const [loading, setLoading] = useState(true);
-
+  
   const handleDelete = () => {
     swal({
       title: 'Are you sure?',
@@ -66,7 +66,6 @@ export default function HotelListing() {
 
   useEffect(() => {
     getHotel();
-    // console.log(location.state);
   }, []);
 
   if (loading) {
@@ -118,11 +117,12 @@ export default function HotelListing() {
                     ) : null
                   ))}
                 </div>
-              </div>
-              <div>
+                <div>
                 <h2 className={styles.headingListing}>Room Ameneties</h2>
-                {room.roomAmenities}
+                  {room.roomAmenities}
+                </div>
               </div>
+              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} hotelName={data.Service.name} hotelId = {room["HotelId"]} roomId={room["id"]} price= {room["rentPerNight"]} />
             </div>
           );
         })}
