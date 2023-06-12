@@ -58,7 +58,7 @@ exports.getHotelById = async (req, res) => {
 
 exports.getAllHotels = async (req, res) => {
     const hotels = await Hotel.findAll({
-        attributes: ['id', 'pricePerDay'],
+        attributes: ['id'],
         include: [
             {
                 model: Service,

@@ -72,12 +72,15 @@ const AddService = () => {
         const imageUrls = await upload();
         values.images = imageUrls;
         console.log(values);
-        const URL = service == "Hotel" ? "addHotel" :
+        var URL = service == "Hotel" ? "addHotel" :
             service == "Tour Guide" ? "addTourGuide" :
                 service == "Travel Agent" ? "addTravelAgent" : "addrestaurant"
+        if (isEditMode)
+            URL += "?edit=1"
+        const tourGuide = data.TourGuide
         //naviagte to corresponding add Service
         navigate(`/${URL}`, {
-            state: { values }
+            state: { values, tourGuide }
         });
     };
 

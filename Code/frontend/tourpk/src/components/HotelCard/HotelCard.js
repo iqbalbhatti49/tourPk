@@ -21,6 +21,7 @@ export const HotelCard = (props) => {
       const { reviewsCount, ratingAvg } = getReviewsStats(reviews);
       let img = data[imgesKey][0];
       const { imageUrl } = img;
+      console.log(data);
 
       return (
          <Card>

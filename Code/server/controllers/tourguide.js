@@ -35,6 +35,67 @@ exports.addTourGuide = async (req, res) => {
 }
 
 
+exports.updatetourguide = async (req, res) => {
+  console.log(req.body);
+  const { values, tourGuide } = req.body; // Destructure the objects from the request body
+
+  try {
+    // Update the service
+    const updatedService = await Service.update(values, {
+      where: { id: values.id }
+    });
+
+    // Update the tour guide
+    const updatedTourGuide = await TourGuide.update(tourGuide, {
+      where: { id: tourGuide.id }
+    });
+
+    // Update the images
+    // Assuming you have a separate TourGuideImage model/table
+    /*
+     const tourGuideImages = images.map((image) => ({
+       imageUrl: image.imageUrl,
+       TourGuideId: tourGuide.id
+     }));
+ 
+     await TourGuideImage.bulkCreate(tourGuideImages, {
+       updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+     });
+ 
+     */
+
+    res.status(200).json(req.body);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Failed to update tour guide' });
+  }
+};
+
+
+
+exports.updatetourguide = async (req, res) => {
+  //extract 3 objects each to add in services, tourGuide and tourGuideImage table respectively
+  const service = req.body.service.values;
+  const tourGuide = req.body.tourGuide;
+  const images = req.body.service.values.images;
+  const serviceObj = await Service.create(service);
+  tourGuide.ServiceId = serviceObj.id;
+  const tourGuideObj = await TourGuide.create(tourGuide);
+  let rootPath = "../static/images/upload/";
+  for (const img in images) {
+    let imgUrl = rootPath + images[img];
+    const image = {
+      imageUrl: imgUrl,
+      TourGuideId: tourGuideObj.id
+    };
+    await TourGuideImage.create(image);
+  }
+
+  console.log("--> Back.end --> ", tourGuideObj.dataValues.id);
+  res.status(200).json(tourGuideObj.dataValues.id);
+}
+
+
 exports.getAllTourGuides = async (req, res) => {
   const tourGuides = await TourGuide.findAll({
     attributes: ['id', 'perDayRate'],
@@ -127,3 +188,4 @@ exports.getAllBookings = async (req, res) => {
     res.status(500).json({ error: 'Failed to get tour guide bookings' });
   }
 };
+
