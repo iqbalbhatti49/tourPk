@@ -3,7 +3,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import { LahoreHotles, LahoreResturants } from "../../utils/FakeData";
 import { IconHotel, IconResturant, IconGuide, IconAgent, HotelCard } from "../../components/index";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../utils/Api";
 import { useNavigate } from "react-router-dom";
@@ -98,11 +98,13 @@ const Services = () => {
                   <div className={styles.tabCards}>
                      {hotels.map((item, index) => {
                         return (
-                           <HotelCard
-                              key={index}
-                              data={item}
-                              type="Hotel"
-                           />
+                           <Link to={`/hotelListing/${item.id}`}>
+                              <HotelCard
+                                 key={index}
+                                 data={item}
+                                 type="Hotel"
+                              />
+                           </Link>
                         );
                      })}
                   </div>
@@ -111,13 +113,13 @@ const Services = () => {
                   <div className={styles.tabCards}>
                      {restaurants.map((item, index) => {
                         return (
-                           <a key={index} href="" onClick={() => handleRestaurantClick(item)}>
+                           <Link to={`/restaurantListing/${item.id}`}>
                               <HotelCard
                                  key={index}
                                  data={item}
                                  type="Restaurant"
                               />
-                           </a>
+                           </Link>
                         );
                      })}
                   </div>
@@ -126,11 +128,13 @@ const Services = () => {
                   <div className={styles.tabCards}>
                      {tourGuides.map((item, index) => {
                         return (
-                           <HotelCard
-                              key={index}
-                              data={item}
-                              type="TourGuide"
-                           />
+                           <Link to={`tourGuideListing/${item.id}`}>
+                              <HotelCard
+                                 key={index}
+                                 data={item}
+                                 type="TourGuide"
+                              />
+                           </Link>
                         );
                      })}
                   </div>
@@ -139,11 +143,13 @@ const Services = () => {
                   <div className={styles.tabCards}>
                      {travelAgent.map((item, index) => {
                         return (
-                           <HotelCard
-                              key={index}
-                              data={item}
-                              type="TravelAgent"
-                           />
+                           <Link to={`/travelAgentListing/${item.id}`}>
+                              <HotelCard
+                                 key={index}
+                                 data={item}
+                                 type="TravelAgent"
+                              />
+                           </Link>
                         );
                      })}
                   </div>
