@@ -1,4 +1,4 @@
-const { Service, TravelAgent, TravelAgentImage, Review, BookingTravelAgent } = require("../models");
+const { Service, TravelAgent, TravelAgentImage, Review, BookingTravelAgent, User } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -70,6 +70,13 @@ exports.getTravelAgentById = async (req, res) => {
                 include: [
                     {
                         model: Review,
+                        attributes: ['rating', 'review', 'date'],
+                        include: [
+                            {
+                                model: User,
+                                attributes: ['name'],
+                            },
+                        ],
                     },
                 ],
             },
@@ -91,19 +98,19 @@ exports.deleteTourPackage = async (req, res) => {
 }
 
 exports.addBooking = async (req, res) => {
-        const { userId, id, totalPrice, selectedDate, guestCount } = req.body;
+    const { userId, id, totalPrice, selectedDate, guestCount } = req.body;
     console.log(selectedDate)
     try {
-      const newBooking = await BookingTravelAgent.create({
-        bookingDate: selectedDate,
-        totalPrice,
-        UserId: userId,
-        guestCount:guestCount,
-        TravelAgentId: id,
-      });
-      res.status(200).json(newBooking);
+        const newBooking = await BookingTravelAgent.create({
+            bookingDate: selectedDate,
+            totalPrice,
+            UserId: userId,
+            guestCount: guestCount,
+            TravelAgentId: id,
+        });
+        res.status(200).json(newBooking);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Failed to add booking' });
+        console.error(error);
+        res.status(500).json({ error: 'Failed to add booking' });
     }
-  };
+};

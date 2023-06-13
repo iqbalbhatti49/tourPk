@@ -1,6 +1,6 @@
-const { Service, Hotel, HotelImage, Review, Room } = require("../models/");
-const { Op } = require("sequelize");
-const Sequelize = require('sequelize');
+const { Service, Hotel, HotelImage, Review, Room, User } = require("../models/");
+const { Op, literal } = require('sequelize');
+
 
 exports.addHotel = async (req, res) => {
     // TODO: IMPORTANT  modifiy capacity to ->> capacity = capacity + "persons" (string)
@@ -28,6 +28,47 @@ exports.addHotel = async (req, res) => {
     res.status(200).json(roomObj.dataValues.id);
 }
 
+exports.updatehotel = async (req, res) => {
+    console.log(req.body);
+    const { service, hotel } = req.body; // Destructure the objects from the request body
+
+    const servicDta = {
+        name: service.name,
+        description: service.description,
+        email: service.email,
+        website: service.website,
+        phone: service.phone,
+        city: service.city,
+        province: service.province,
+        address: service.address,
+    }
+
+    try {
+        const updatedService = await Service.update(servicDta, {
+            where: { id: service.id }
+        });
+
+        const updatedhotel = await hotel.update(hotel, {
+            where: { id: service.serviceId }
+        });
+
+        // Assuming you have a separate hotelImage model/table
+        /*
+         const hotelImages = images.map((image) => ({
+           imageUrl: image.imageUrl,
+           hotelId: hotel.id
+         }));
+     
+         await hotelImage.bulkCreate(hotelImages, {
+           updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+         });
+         */
+        res.status(200).json(service.serviceId);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to update tour guide' });
+    }
+};
 
 exports.getHotelById = async (req, res) => {
     const id = req.params.id;
@@ -41,6 +82,13 @@ exports.getHotelById = async (req, res) => {
                 include: [
                     {
                         model: Review,
+                        attributes: ['rating', 'review', 'date'],
+                        include: [
+                            {
+                                model: User,
+                                attributes: ['name'],
+                            },
+                        ],
                     },
                 ],
             },
@@ -52,6 +100,7 @@ exports.getHotelById = async (req, res) => {
             },
         ]
     });
+
     res.json(data);
 }
 

@@ -52,6 +52,7 @@ export default function RestaurantListing() {
     const getRestaurant = async () => {
         try {
             const response = await axiosInstance.get(`/restaurant/getRestaurantById/${id}`);
+            console.log(response.data);
             const { Service: { Reviews, ...serviceData }, RestaurantImages, ...restData } = response.data;
             const Restaurant = restData;
             const Service = serviceData;
@@ -61,10 +62,11 @@ export default function RestaurantListing() {
                 Reviews,
                 RestaurantImages
             };
-            const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
+            console.log(restaurantData);
+            let { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
+            setData(restaurantData);
             setratingAverge(ratingAvg);
             setreviewCount(reviewsCount);
-            setData(restaurantData);
             setLoading(false);
         } catch (error) {
             setLoading(false);
@@ -73,7 +75,6 @@ export default function RestaurantListing() {
 
     useEffect(() => {
         getRestaurant();
-        console.log(location.state);
     }, []);
 
     if (loading) {
@@ -84,19 +85,21 @@ export default function RestaurantListing() {
         <div className={styles.container}>
             <div className={styles.header}>
                 <div className={styles.information}>
-                    <div className={styles.iconsDelEdit}>
+                    <div className={styles.headingContainer}>
                         <h1 className={styles.heading}>{data.Service.name}</h1>
-                        {
-                            currentUser === data.Restaurant.UserId &&
-                            <div className={styles.iconsBox}>
-                                <button className={styles.delete} onClick={handleUpdate}>
-                                    <IconEdit />
-                                </button>
-                                <button className={styles.delete} onClick={handleDelete}>
-                                    <IconDelete />
-                                </button>
-                            </div>
-                        }
+                        <div className={styles.iconsDelEdit}>
+                            {
+                                currentUser === data.Restaurant.UserId &&
+                                <div className={styles.iconsBox}>
+                                    <button className={styles.delete} onClick={handleUpdate}>
+                                        <IconEdit />
+                                    </button>
+                                    <button className={styles.delete} onClick={handleDelete}>
+                                        <IconDelete />
+                                    </button>
+                                </div>
+                            }
+                        </div>
                     </div>
                     <div className={styles.attributesContainer}>
                         {Object.entries(data.Restaurant).map(([key, value]) => (
@@ -142,18 +145,20 @@ export default function RestaurantListing() {
 
                     <div>
                         <h2 className={styles.subHeading}>People's Opinion</h2>
-                        <Testimonial />
+                        <Testimonial data={data.Reviews} />
                     </div>
-
                 </div>
                 <div>
-                    <div>
-                        <Rating rating={ratingAverge} />
-                        <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
-                    </div>
-                    <div className={styles.booking}>
-                        <Button value="Book Now" />
-                    </div>
+                    {
+                        reviewCount != 0 ? (
+                            <div>
+                                <Rating rating={ratingAverge} />
+                                <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
+                            </div>) :
+                            <div>
+                                <h2 className={styles.subHeading}>Reviews</h2>
+                                <p>No reviews yet</p></div>
+                    }
                 </div>
             </div>
             <ReviewForm serviceId={data.Service.id} />

@@ -142,22 +142,20 @@ export default function TourGuideListing() {
       <div className={styles.container}>
          <div className={styles.header}>
             <div className={styles.information}>
-               {/* <h1 className={styles.heading}>Meet {data.Service.name}</h1> */}
-               <div className={styles.iconsDelEdit}>
+               <div className={styles.headingContainer}>
                   <h1 className={styles.heading}>Meet {data.Service.name}</h1>
-                  {
-                     currentUser === data.TourGuide.UserId &&
-                     <div className={styles.iconsBox}>
-                        {/* <Link to={`/AddTravelAgent?edit=1`} state={state}>  */}
-                        <button className={styles.delete} onClick={handleUpdate}>
-                           <IconEdit />
-                        </button>
-                        {/* </Link> */}
-                        <button className={styles.delete} onClick={handleDelete}>
-                           <IconDelete />
-                        </button>
-                     </div>
-                  }
+                  <div className={styles.iconsDelEdit}>
+                     {currentUser === data.TourGuide.UserId && (
+                        <div className={styles.iconsBox}>
+                           <button className={styles.delete} onClick={handleUpdate}>
+                              <IconEdit />
+                           </button>
+                           <button className={styles.delete} onClick={handleDelete}>
+                              <IconDelete />
+                           </button>
+                        </div>
+                     )}
+                  </div>
                </div>
                <div className={styles.attributesContainer}>
                   {Object.entries(data.TourGuide).map(([key, value]) => (
@@ -165,10 +163,12 @@ export default function TourGuideListing() {
                         <div className={styles.attributes} key={key}>
                            <p className={styles.key}>{key}</p>
                            <p>{value}</p>
-                        </div>) : null
+                        </div>
+                     ) : null
                   ))}
                </div>
             </div>
+
             <Carousel />
          </div>
 
@@ -180,7 +180,7 @@ export default function TourGuideListing() {
                </div>
                <div>
                   <h2 className={styles.subHeading}>People's Opinion</h2>
-                  <Testimonial />
+                  <Testimonial data={data.Reviews} />
                   <div className={styles.booking}>
                      <p>Select a date from the given calender to book me and click the button below.</p>
                      <Button btnType="submit" value="Book Now" handleClick={handleClick} />

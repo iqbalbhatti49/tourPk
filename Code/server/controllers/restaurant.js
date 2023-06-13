@@ -1,4 +1,4 @@
-const { Restaurant, Service, RestaurantImage, Review } = require("../models");
+const { Restaurant, Service, RestaurantImage, Review, User } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -33,6 +33,13 @@ exports.getRestaurantById = async (req, res) => {
                 include: [
                     {
                         model: Review,
+                        attributes: ['rating', 'review', 'date'],
+                        include: [
+                            {
+                                model: User,
+                                attributes: ['name'],
+                            },
+                        ],
                     },
                 ],
             },

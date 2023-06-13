@@ -71,7 +71,8 @@ const AddService = () => {
     const onSubmit = async (values, event) => {
         const imageUrls = await upload();
         values.images = imageUrls;
-        values.id = data.Service.id;
+        if (isEditMode)
+            values.id = data.Service.id;
         console.log(values);
         var URL = service == "Hotel" ? "addHotel" :
             service == "Tour Guide" ? "addTourGuide" :

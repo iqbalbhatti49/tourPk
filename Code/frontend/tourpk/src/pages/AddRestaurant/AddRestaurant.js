@@ -17,6 +17,7 @@ const AddRestaurant = () => {
     const location = useLocation();
 
     const preProcess = (values) => {
+        console.log(values);
         // convert selected checkbox values to comma-separated string
         const meals = mealOptions
             .filter(option => values[option.name])

@@ -48,6 +48,7 @@ export default function HotelListing() {
     }
     navigate("/AddService?edit=1", { state: state });
   }
+
   const getHotel = async () => {
     try {
       const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
@@ -71,7 +72,6 @@ export default function HotelListing() {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     getHotel();
     // console.log(location.state);
@@ -140,7 +140,7 @@ export default function HotelListing() {
         <div className={styles.reviewsContainer}>
           <div className={styles.testimonial}>
             <h2 className={styles.subHeading}>People's Opinion</h2>
-            <Testimonial />
+            <Testimonial data={data.Reviews} />
           </div>
           <div className={styles.rating}>
             <Rating rating={ratingAverge} />

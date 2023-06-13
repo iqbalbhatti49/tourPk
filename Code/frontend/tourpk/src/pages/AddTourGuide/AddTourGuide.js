@@ -13,6 +13,7 @@ import 'url-search-params-polyfill';
 const AddTourGuide = () => {
   const location = useLocation();
 
+  //Update Tour guide logic
   const searchParams = new URLSearchParams(location.search);
   const isEditMode = searchParams.get('edit') === '1';
   console.log(isEditMode);
@@ -23,11 +24,7 @@ const AddTourGuide = () => {
     updateInitialValue = tourGuide;
     console.log(tourGuide);
     console.log(values);
-    console.log("hi")
   }
-
-  console.log(location.state);
-
   const addInitialValue =
   {
     "id": "",
@@ -42,11 +39,9 @@ const AddTourGuide = () => {
   }
 
   const initialValue = isEditMode ? updateInitialValue : addInitialValue;
-
   const userId = useSelector(state => state.user.id);
   const navigate = useNavigate();
-  // const { state } = useLocation();
-  // console.log(state);
+
   const onSubmit = async (value) => {
     value.UserId = userId;
     const servic = isEditMode ? values : location.value;
