@@ -2,29 +2,47 @@ import React, { useState } from 'react';
 import styles from './PaymentMethod.module.css';
 import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import FormField from '../FormField/FormField';
-import { Form as FormFinal } from 'react-final-form'
+import { Form as FormFinal, FormSpy } from 'react-final-form'
 import { validateExpirationYear, validateCreditCard, validateExpirationMonth } from '../../utils/validations'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateCardInfo } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export const PaymentMethod = () => {
    const cardInfo = useSelector((state) => state.checkout.cardInfo);
    const role = useSelector((state) => state.user.role);
    const [method, setMethod] = useState('001');
+   const id = useSelector((state) => state.user.id)
+   const paymentState = useSelector((state) => state.checkout.cardInfo)
    const [submitted, setSubmitted] = useState(false);
-
+   const location = useLocation();
+  
+   useEffect(() => {
+      // Check if the previous path was '/login'
+      const { state } = location;
+      if (state && state.from === '/login') {
+         // Code to execute if coming from the login page
+         console.log('Navigated from login page');
+      }
+      else
+      console.log(state)
+   }, [location]);
+    
    const dispatch = useDispatch();
    console.log(cardInfo);
+   const navigate = useNavigate();
    const onSubmit = (values, form) => {
       console.log('Form submitted with values:', values);
+      if(!values.cardType)
       values.cardType = method;
-      dispatch(updateCardInfo(values));
+      dispatch(updateCardInfo({id,values}));
       form.reset();
       setSubmitted(true);
       Object.keys(values).forEach(key => {
-         if(key != "cardType")
+         if(key!= null && key != undefined && key != "cardType")
          {
             form.change(key, undefined);
             form.resetFieldState(key);
@@ -40,13 +58,17 @@ export const PaymentMethod = () => {
             confirm: true,
          },
      }).then((clickedBtn) => {
-      if (clickedBtn) {
-          if(role == "seller")
-          {
-            const navigate = useNavigate();
-            navigate("/serviceProvider");
-          }
-      }});
+      const { state } = location;
+      if (state && state.from === '/login') {
+         if (clickedBtn) {
+            if(role == "seller")
+              navigate("/serviceProvider");
+            else
+              navigate("/pricing");
+        }
+      }
+      
+   });
    };
    return (
       <div className={styles.container}>
@@ -83,6 +105,15 @@ export const PaymentMethod = () => {
                      <FormField name="cardNumber" label="Card Number" type="text" placeholder="1234 5678 9012 3456" value={cardInfo.cardNumber} validate={validateCreditCard} renderIcon={() => null} labelClass="showLabel" theme="light" />
                      <Button btnType="submit" value="Add Payment Method" />
                      </fieldset>
+                     <FormSpy subscription={{ form: true }}>
+                        {({ form }) => {
+                           useEffect(() => {
+                              form.initialize(paymentState);
+                           }, [paymentState]);
+
+                           return null;
+                        }}
+                     </FormSpy>
                   </form>
                )}
             </FormFinal>
