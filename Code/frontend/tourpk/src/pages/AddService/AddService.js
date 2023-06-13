@@ -18,10 +18,9 @@ const AddService = () => {
     if (location.state) {
         ({ data, serviceType } = location.state);
         updateInitialValue = data.Service;
-        console.log("hi")
+        console.log(data);
     }
 
-    // let { data, serviceType } = location.state
     console.log(serviceType);
     console.log(data);
 
@@ -83,10 +82,20 @@ const AddService = () => {
         let nothing = {
             somedata: ""
         }
-        const tourGuide = isEditMode ? data.TourGuide : nothing;
+
+        let obj;
+        if (service == "Hotel")
+            obj = isEditMode ? data.Hotel : nothing;
+        else if (service == "Tour Guide")
+            obj = isEditMode ? data.TourGuide : nothing;
+        else if (service == "Travel Agent")
+            obj = isEditMode ? data.TravelAgent : nothing;
+        else if (service == "Restaurant")
+            obj = isEditMode ? data.Restaurant : nothing;
+
         //naviagte to corresponding add Service
         navigate(`/${URL}`, {
-            state: { values, tourGuide }
+            state: { values, obj }
         });
     };
 
