@@ -82,3 +82,47 @@ exports.deleteRestaurant = async (req, res) => {
     await Service.destroy({ where: { id: req.body.ServiceId } });
     res.status(200).json("deleted sucessfully");
 }
+
+
+exports.updaterestaurant = async (req, res) => {
+    console.log(req.body);
+    const { service, restaurant } = req.body; // Destructure the objects from the request body
+
+    const servicDta = {
+        name: service.name,
+        description: service.description,
+        email: service.email,
+        website: service.website,
+        phone: service.phone,
+        city: service.city,
+        province: service.province,
+        address: service.address,
+    }
+
+    try {
+        const updatedService = await Service.update(servicDta, {
+            where: { id: service.id }
+        });
+
+        const updatedRestaurant = await Restaurant.update(restaurant, {
+            where: { id: service.serviceId }
+        });
+
+        // Assuming you have a separate RestaurantImage model/table
+        /*
+         const restaurantImages = images.map((image) => ({
+           imageUrl: image.imageUrl,
+           RestaurantId: restaurant.id
+         }));
+     
+         await RestaurantImage.bulkCreate(restaurantImages, {
+           updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+         });
+         */
+
+        res.status(200).json(service.serviceId);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to update restaurant' });
+    }
+};
