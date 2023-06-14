@@ -182,6 +182,7 @@ exports.updatehotel = async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'Failed to update tour guide' });
     }
+}
 
   // Controller method to add a booking
 exports.addBooking = async (req, res) => {
@@ -214,4 +215,4 @@ exports.addBooking = async (req, res) => {
     console.error('Error adding booking:', error);
     res.status(500).json({ error: 'Failed to add booking' });
   }
-};
+}
