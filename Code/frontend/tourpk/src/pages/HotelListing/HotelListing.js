@@ -12,6 +12,7 @@ import { addHotelBooking } from '../../app/features/bookings/bookingsSlice';
 
 export default function HotelListing() {
   const navigate = useNavigate();
+  const role = useSelector((state) => state.user.role);
   const currentUser = useSelector(state => state.user.id);
   const location = useLocation();
   const { id } = useParams();
@@ -129,7 +130,7 @@ export default function HotelListing() {
                   {room.roomAmenities}
                 </div>
               </div>
-              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} hotelName={data.Service.name} hotelId = {room["HotelId"]} roomId={room["id"]} price= {room["rentPerNight"]} />
+              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} roomCount={room["roomsCount"]}  hotelName={data.Service.name} hotelId = {room["HotelId"]} roomId={room["id"]} price= {room["rentPerNight"]} />
             </div>
           );
         })}
@@ -149,14 +150,13 @@ export default function HotelListing() {
               </>
             ) : null
             }
-
             <div className={styles.btn}>
-              <Button value="Book Room Now" btnType="submit" />
+              {role != "tourist" && <Button value="Add New Room Type" btnType="submit" />}
             </div>
           </div>
         </div>
       </div>
-      <ReviewForm />
+      {role == "tourist" && <ReviewForm />}
     </div >
   );
 }

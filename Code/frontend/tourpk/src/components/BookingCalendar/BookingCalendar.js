@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'react-calendar/dist/Calendar.css';
 import './BookingCalendar.module.css';
 import { Calendar } from 'react-calendar';
 
-export const BookingCalendar = ({ disabledDates, selectedDate, onDateChange, selectRange }) => {
-  console.log(disabledDates);
+export const BookingCalendar = ({ disabledDates, setValidRange, selectedDate, onDateChange, selectRange }) => {
+  const [prevSelectedDate, setPrevSelectedDate] = useState(null);
+
   const isDateDisabled = (date) => {
     if (disabledDates === null || disabledDates === undefined) {
       return false;
@@ -35,10 +36,38 @@ export const BookingCalendar = ({ disabledDates, selectedDate, onDateChange, sel
   const handleDateChange = (date) => {
     if (selectRange && Array.isArray(date) && date.length === 2) {
       const [startDate, endDate] = date;
-      onDateChange({ startDate, endDate });
+      const isRangeValid = !disabledDates.some((disabledDate) =>
+        isDateInRange(disabledDate, startDate, endDate)
+      );
+
+      if (isRangeValid) {
+        setPrevSelectedDate(date);
+        setValidRange(true);
+        onDateChange({ startDate, endDate });
+      } 
+      else {
+        if (prevSelectedDate) {
+          swal({
+            title: 'Invalid Selection',
+            text: 'The selected date range includes disabled dates.',
+            icon: 'error',
+            buttons: {
+              confirm: true,
+            },
+          });
+        }
+        onDateChange({startDate:null,endDate:null});
+        setValidRange(false);
+      }
     } else {
+      setValidRange(true);
+      setPrevSelectedDate(date);
       onDateChange(date);
     }
+  };
+
+  const isDateInRange = (dateToCheck, startDate, endDate) => {
+    return dateToCheck >= startDate && dateToCheck <= endDate;
   };
 
   return (
@@ -46,8 +75,9 @@ export const BookingCalendar = ({ disabledDates, selectedDate, onDateChange, sel
       selectRange={selectRange}
       tileDisabled={tileDisabled}
       onChange={handleDateChange}
-      minDate	= {new Date()}
-      allowPartialRange	= {true}
+      selectedDate = {selectedDate}
+      minDate={new Date()}
+      allowPartialRange={true}
     />
   );
 };
