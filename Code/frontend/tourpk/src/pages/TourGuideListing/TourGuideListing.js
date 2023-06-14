@@ -169,7 +169,7 @@ export default function TourGuideListing() {
                </div>
             </div>
 
-            <Carousel />
+            <Carousel imageList={data.TourGuideImages} />
          </div>
 
          <div className={styles.details}>

@@ -19,11 +19,12 @@ const AddTourGuide = () => {
   const isEditMode = searchParams.get('edit') === '1';
   console.log(isEditMode);
   console.log(location.state);
-  let values, tourGuide;
+  let values, tourGuide, obj;
   let updateInitialValue;
   if (isEditMode) {
-    ({ values, tourGuide } = location.state);
-    updateInitialValue = tourGuide;
+    ({ values, obj } = location.state);
+    updateInitialValue = obj;
+    tourGuide = obj;
     console.log(tourGuide);
     console.log(values);
   }

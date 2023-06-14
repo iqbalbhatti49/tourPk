@@ -40,8 +40,7 @@ exports.addTourGuide = async (req, res) => {
 exports.updatetourguide = async (req, res) => {
   console.log(req.body);
   const { service, tourGuide } = req.body; // Destructure the objects from the request body
-  // delete service.images;
-  // console.log(service);
+  const images = service.images;
 
   const servicDta = {
     name: service.name,
@@ -66,18 +65,16 @@ exports.updatetourguide = async (req, res) => {
     });
 
     // Update the images
-    // Assuming you have a separate TourGuideImage model/table
-    /*
-     const tourGuideImages = images.map((image) => ({
-       imageUrl: image.imageUrl,
-       TourGuideId: tourGuide.id
-     }));
- 
-     await TourGuideImage.bulkCreate(tourGuideImages, {
-       updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
-     });
- 
-     */
+    let rootPath = "../static/images/upload/";
+    const tourGuideImages = images.map((image) => ({
+      imageUrl: rootPath + image,
+      TourGuideId: service.serviceId
+    }));
+
+    await TourGuideImage.bulkCreate(tourGuideImages, {
+      updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+    });
+
 
     res.status(200).json(service.serviceId);
   } catch (error) {

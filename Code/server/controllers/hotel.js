@@ -168,9 +168,7 @@ exports.updatehotel = async (req, res) => {
             where: { id: room.id }
         });
 
-        // Assuming you have a separate HotelImage model/table
         let rootPath = "../static/images/upload/";
-
         const hotelImages = images.map((image) => ({
             imageUrl: rootPath + image,
             HotelId: hotel.id
