@@ -1,5 +1,5 @@
 
-const { Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
+const { User, Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -182,6 +182,7 @@ exports.updatehotel = async (req, res) => {
         console.error(error);
         res.status(500).json({ error: 'Failed to update tour guide' });
     }
+}
 
   // Controller method to add a booking
 exports.addBooking = async (req, res) => {

@@ -4,6 +4,7 @@ const Sequelize = require('sequelize');
 
 exports.addTourGuide = async (req, res) => {
   //extract 3 objects each to add in services, tourGuide and tourGuideImage table respectively
+  console.log(req.body)
   const service = req.body.service.service;
   const tourGuide = req.body.tourGuide;
   const images = req.body.service.service.images;
