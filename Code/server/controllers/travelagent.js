@@ -119,6 +119,7 @@ exports.addBooking = async (req, res) => {
 exports.updatetravelagent = async (req, res) => {
     console.log(req.body);
     const { service, travelAgent } = req.body; // Destructure the objects from the request body
+    const images = service.images;
 
     const servicDta = {
         name: service.name,
@@ -132,25 +133,23 @@ exports.updatetravelagent = async (req, res) => {
     }
 
     try {
-        const updatedService = await Service.update(servicDta, {
+        await Service.update(servicDta, {
             where: { id: service.id }
         });
 
-        const updatedTravelAgent = await TravelAgent.update(travelAgent, {
+        await TravelAgent.update(travelAgent, {
             where: { id: service.serviceId }
         });
 
-        // Assuming you have a separate TravelAgentImage model/table
-        /*
-         const travelAgentImages = images.map((image) => ({
-           imageUrl: image.imageUrl,
-           TravelAgentId: travelAgent.id
-         }));
-     
-         await TravelAgentImage.bulkCreate(travelAgentImages, {
-           updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
-         });
-         */
+        let rootPath = "../static/images/upload/";
+        const travelAgentImages = images.map((image) => ({
+            imageUrl: rootPath + image,
+            TravelAgentId: service.serviceId
+        }));
+
+        await TravelAgentImage.bulkCreate(travelAgentImages, {
+            updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+        });
 
         res.status(200).json(service.serviceId);
     } catch (error) {

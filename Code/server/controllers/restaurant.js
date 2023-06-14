@@ -87,6 +87,7 @@ exports.deleteRestaurant = async (req, res) => {
 exports.updaterestaurant = async (req, res) => {
     console.log(req.body);
     const { service, restaurant } = req.body; // Destructure the objects from the request body
+    const images = service.images;
 
     const servicDta = {
         name: service.name,
@@ -108,18 +109,18 @@ exports.updaterestaurant = async (req, res) => {
             where: { id: service.serviceId }
         });
 
-        // Assuming you have a separate RestaurantImage model/table
-        /*
-         const restaurantImages = images.map((image) => ({
-           imageUrl: image.imageUrl,
-           RestaurantId: restaurant.id
-         }));
-     
-         await RestaurantImage.bulkCreate(restaurantImages, {
-           updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
-         });
-         */
 
+        if (images) {
+            let rootPath = "../static/images/upload/";
+            const restaurantImages = images.map((image) => ({
+                imageUrl: rootPath + image,
+                RestaurantId: service.serviceId
+            }));
+
+            await RestaurantImage.bulkCreate(restaurantImages, {
+                updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+            });
+        }
         res.status(200).json(service.serviceId);
     } catch (error) {
         console.error(error);
