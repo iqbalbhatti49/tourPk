@@ -8,7 +8,6 @@ import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/Api";
 import { useSelector } from "react-redux";
-import 'url-search-params-polyfill';
 
 const AddTourGuide = () => {
   const location = useLocation();
