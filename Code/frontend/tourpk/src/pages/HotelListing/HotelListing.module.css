@@ -113,7 +113,8 @@
 .roomWrapper {
   display: flex;
   flex: row;
-  gap: 30px;
+  gap: 100px;
+  /* max-width: 900px */
 }
 
 .delete {

@@ -47,6 +47,7 @@ export default function TourGuideListing() {
       const getTourGuide = async () => {
          const response = await axiosInstance.get(`/TourGuide/getTourGuideById/${id}`);
          const { Service: { Reviews, ...serviceData }, TourGuideImages, ...restData } = response.data;
+         console.log(response.data)
          const TourGuide = restData;
          const Service = serviceData;
          const TourGuideData = {
@@ -84,14 +85,14 @@ export default function TourGuideListing() {
       }
       dispatch(clearCart());
       const newItem = {
-         imageSrc: tourGuideInfo.TourGuideImages[0].imageUrl,
-         title: tourGuideInfo.Service.name,
+         imageSrc: data.TourGuideImages[0].imageUrl,
+         title: data.Service.name,
          count: 1,
-         price: tourGuideInfo.perDayRate,
-         discountedPrice: tourGuideInfo.perDayRate - (tourGuideInfo.perDayRate * (discount / 100)),
+         price: data.TourGuide.perDayRate,
+         discountedPrice: data.TourGuide.perDayRate - (data.TourGuide.perDayRate * (discount / 100)),
       };
       dispatch(addItem(newItem));
-      const totalPrice = tourGuideInfo["perDayRate"];
+      const totalPrice = data.TourGuide["perDayRate"];
       const payLaod = { userId, id, selectedDate, totalPrice, type: "tourguide" };
       navigate("/checkout", { state: { payLaod } });
    }
