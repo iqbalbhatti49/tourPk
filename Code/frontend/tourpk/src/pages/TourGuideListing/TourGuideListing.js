@@ -169,7 +169,7 @@ export default function TourGuideListing() {
                </div>
             </div>
 
-            <Carousel />
+            <Carousel imageList={data.TourGuideImages} />
          </div>
 
          <div className={styles.details}>
@@ -188,7 +188,10 @@ export default function TourGuideListing() {
                </div>
             </div>
             <div>
-               <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+               {reviewCount != 0 ? (
+                  <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+               ) : null
+               }
                <div>
                   <h2 className={styles.subHeading}>Pricing</h2>
                   <div className={styles.pricing}>
