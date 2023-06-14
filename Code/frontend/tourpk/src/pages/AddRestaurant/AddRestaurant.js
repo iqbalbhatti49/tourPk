@@ -117,7 +117,7 @@ const AddRestaurant = () => {
 
         console.log(value);
         value.UserId = userId;
-        const servic = isEditMode ? values : location.value;
+        const servic = isEditMode ? values : location.state.values;
         if (isEditMode)
             servic.serviceId = restaurant.id;
         const restaurantData = {

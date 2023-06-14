@@ -14,6 +14,7 @@ const AddTravelAgent = () => {
     const userId = useSelector(state => state.user.id);
     const navigate = useNavigate();
     const location = useLocation();
+    console.log(location.state);
     const [sections, setSections] = useState([1]);
     const addSection = (e) => {
         e.preventDefault()
@@ -80,7 +81,7 @@ const AddTravelAgent = () => {
     const onSubmit = async (value) => {
         console.log(value);
         value.UserId = userId;
-        const servic = isEditMode ? values : location.value;
+        const servic = isEditMode ? values : location.state.values;
         if (isEditMode)
             servic.serviceId = travelAgent.id;
         const travelAgentData = {
