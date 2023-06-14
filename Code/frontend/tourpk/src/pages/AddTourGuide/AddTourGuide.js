@@ -11,7 +11,9 @@ import { useSelector } from "react-redux";
 
 const AddTourGuide = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
+  //Update Tour guide logic
   const searchParams = new URLSearchParams(location.search);
   const isEditMode = searchParams.get('edit') === '1';
   console.log(isEditMode);
@@ -20,11 +22,9 @@ const AddTourGuide = () => {
   if (isEditMode) {
     ({ values, tourGuide } = location.state);
     updateInitialValue = tourGuide;
-    console.log("hi")
+    console.log(tourGuide);
+    console.log(values);
   }
-
-  console.log(location.state);
-
   const addInitialValue =
   {
     "id": "",
@@ -39,28 +39,30 @@ const AddTourGuide = () => {
   }
 
   const initialValue = isEditMode ? updateInitialValue : addInitialValue;
-
   const userId = useSelector(state => state.user.id);
-  const navigate = useNavigate();
-  const { state } = useLocation();
-  console.log(state);
-  const onSubmit = async (values) => {
-    values.UserId = userId;
-    const servic = isEditMode ? location.state.tourGuide : location.state;
+
+  const onSubmit = async (value) => {
+    value.UserId = userId;
+    const servic = isEditMode ? values : location.value;
+    if (isEditMode)
+      servic.serviceId = tourGuide.id;
     const tourGuideData = {
       service: servic,
-      tourGuide: values
+      tourGuide: value
     };
 
     let tourGuideObj;
     console.log(tourGuideData);
-    if (!isEditMode)
+    if (!isEditMode) {
       tourGuideObj = await axiosInstance.post("/tourguide/addtourguide", tourGuideData);
-    else
+      swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
+    }
+    else {
       tourGuideObj = await axiosInstance.post("/tourguide/updatetourguide", tourGuideData);
+      swal("Tour Guide Service Updated Successfully", "Success! Changes has been updated successfully.", "success");
+    }
 
     const tourGuideAdded = tourGuideObj.data;
-    swal("Tour Guide Service Added Successfully", "Success! The new Tour Guide Listing has been added successfully.", "success");
     // navigate(`/tourGuideListing/${tourGuideAdded.serviceObj.name}`, { tourGuideAdded });
     navigate(`/tourGuideListing/${tourGuideAdded}`, { state: tourGuideAdded });
   };

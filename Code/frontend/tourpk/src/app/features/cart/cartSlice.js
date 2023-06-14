@@ -32,6 +32,7 @@ export const cartSlice = createSlice({
             price: action.payload.price,
             discountedPrice: action.payload.discountedPrice,
             id: state.items.length + 1,
+            discountApplicable:action.payload.discountApplicable  == "false" ? false :true
          };
          state.items.push(newItem);
       },

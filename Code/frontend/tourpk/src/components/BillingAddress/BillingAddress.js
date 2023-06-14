@@ -1,21 +1,24 @@
 import React from 'react';
 import styles from './BillingAddress.module.css';
 import FormField from '../FormField/FormField';
-import { Form as FormFinal } from 'react-final-form';
+import { Form as FormFinal, FormSpy } from 'react-final-form';
 import { useDispatch } from 'react-redux';
 import { updateBillingAddress } from '../../app/features/checkout/checkoutSlice';
 import { required, validatePhone } from '../../utils/validations';
 import Button from '../Button/Button';
-import Swal from 'sweetalert';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export const BillingAddress = () => {
    const dispatch = useDispatch();
    const [submitted, setSubmitted] = useState(false);
-
+   const id = useSelector((state) => state.user.id);
+   const BillingAddressState = useSelector((state) => state.checkout.billingAddress);
+   
    const onSubmit = (values, form) => {
       console.log('Form submitted with values:', values);
-      dispatch(updateBillingAddress(values));
+      dispatch(updateBillingAddress({id, values}));
       form.reset();
       setSubmitted(true);
       Object.keys(values).forEach((key) => {
@@ -27,12 +30,12 @@ export const BillingAddress = () => {
    const showSuccessAlert = () => {
       swal({
          title: 'Address Submitted',
-         text: 'Your address have been saved! Now fill the remaining information to checkout.',
+         text: 'Your address has been saved! Now fill the remaining information to checkout.',
          icon: 'success',
          buttons: {
             confirm: true,
          },
-     })
+     });
    };
 
    return (
@@ -120,8 +123,17 @@ export const BillingAddress = () => {
                         labelClass="showLabel"
                         theme="light"
                      />
-                     <Button btnType="submit" disabled = {submitted} value="Add Address" />
+                     <Button btnType="submit" disabled={submitted} value="Add Address" />
                      </fieldset>
+                     <FormSpy subscription={{ form: true }}>
+                        {({ form }) => {
+                           useEffect(() => {
+                              form.initialize(BillingAddressState);
+                           }, [BillingAddressState]);
+
+                           return null;
+                        }}
+                     </FormSpy>
                   </form>
                )}
             </FormFinal>
@@ -130,4 +142,3 @@ export const BillingAddress = () => {
       </div>
    );
 };
-

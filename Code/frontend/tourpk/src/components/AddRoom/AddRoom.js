@@ -7,15 +7,79 @@ import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
 import { roomAmenitiess } from "../../utils/Constants/RoomAmenetiesOptions";
 import axiosInstance from "../../utils/Api";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 const AddRoom = (props) => {
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // Logic for Update hotel 
+    const searchParams = new URLSearchParams(location.search);
+    const isEditMode = searchParams.get('edit') === '1';
+    console.log(isEditMode);
+    let values, hotel, room;
+    let updateInitialValue;
+    if (isEditMode) {
+        console.log(location.state);
+        values = location.state.values;
+        hotel = location.state.obj;
+        room = location.state.room;
+        console.log("Before Formatting****** ", hotel);
+        console.log(values);
+    }
+
+    if (isEditMode) {
+        const formatToFieldNames = (obj) => {
+            const convertOptionsToValues = (options, features) => {
+                return options.reduce((values, option) => {
+                    values[option] = features.includes(option);
+                    return values;
+                }, {});
+            };
+            const mealTypeValues = convertOptionsToValues(mealOptions.map(option => option.label), obj.mealType.split(', '));
+            const featureValues = convertOptionsToValues(featureOptions.flatMap(option => option.options), obj.features.split(', '));
+            console.log(mealTypeValues);
+            const obj1 = {
+                startTime: obj.openTime,
+                endTime: obj.closeTime,
+                menu: obj.menuUrl,
+                minPrice: obj.menuStartingPrice.toString(),
+                cuisine: obj.cuisineType,
+                ...mealTypeValues,
+                ...featureValues,
+                UserId: obj.UserId,
+                serviceId: obj.ServiceId,
+            };
+            return obj1;
+        };
+
+        updateInitialValue = formatToFieldNames(hotel);
+        console.log(hotel);
+    }
+
+    const addInitialValue = {
+        openTime: "",
+        closeTime: "",
+        menuUrl: "",
+        menuStartingPrice: null,
+        cuisineType: "",
+        mealType: "",
+        features: "",
+        ServiceId: null,
+        UserId: null
+    };
+
+    console.log(addInitialValue);
+    const initialValue = isEditMode ? updateInitialValue : addInitialValue;
+
+
+
+    console.log("props**** ", props);
     const userId = useSelector(state => state.user.id); // Id of currently logged in user
     const { service, hotelAmenities } = props.hotelData.hotelData;
     const imagesArray = service.images;
     delete service.images;
-    const hotel = {
+    const hotel_ = {
         UserId: userId,
         amenities: hotelAmenities
     }
@@ -44,7 +108,7 @@ const AddRoom = (props) => {
 
         const hotelRoom = {
             service: service,
-            hotel: hotel,
+            hotel: hotel_,
             images: imagesArray,
             room: roomData
         }

@@ -1,12 +1,12 @@
-const { Service, TourGuide, TourGuideImage, Review, BookingTourGuide } = require("../models");
+const { Service, TourGuide, TourGuideImage, Review, BookingTourGuide, User } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
 exports.addTourGuide = async (req, res) => {
   //extract 3 objects each to add in services, tourGuide and tourGuideImage table respectively
-  const service = req.body.service.values;
+  const service = req.body.service.service;
   const tourGuide = req.body.tourGuide;
-  const images = req.body.service.values.images;
+  const images = req.body.service.service.images;
   const serviceObj = await Service.create(service);
   tourGuide.ServiceId = serviceObj.id;
   const tourGuideObj = await TourGuide.create(tourGuide);
@@ -25,10 +25,12 @@ exports.addTourGuide = async (req, res) => {
   //     img[`image${index + 1}`] = rootPath + image;
   // });
   // const response = {
-  //     serviceObj: serviceObj.dataValues,
-  //     tourGuideObj: tourGuideObj.dataValues,
+  //     serviceObj: serviceObj.dataservice,
+  //     tourGuideObj: tourGuideObj.dataservice,
   //     images: img
   // };
+
+
 
   console.log("--> Back.end --> ", tourGuideObj.dataValues.id);
   res.status(200).json(tourGuideObj.dataValues.id);
@@ -37,22 +39,31 @@ exports.addTourGuide = async (req, res) => {
 
 exports.updatetourguide = async (req, res) => {
   console.log(req.body);
-  const { values, tourGuide } = req.body; // Destructure the objects from the request body
-  delete values.images;
-  console.log(values);
+  const { service, tourGuide } = req.body; // Destructure the objects from the request body
+  // delete service.images;
+  // console.log(service);
+
+  const servicDta = {
+    name: service.name,
+    description: service.description,
+    email: service.email,
+    website: service.website,
+    phone: service.phone,
+    city: service.city,
+    province: service.province,
+    address: service.address,
+  }
 
   try {
     // Update the service
-    const updatedService = await Service.update(values, {
-      where: { id: tourGuide.ServiceId }
+    const updatedService = await Service.update(servicDta, {
+      where: { id: service.id }
     });
 
     // Update the tour guide
     const updatedTourGuide = await TourGuide.update(tourGuide, {
-      where: { id: tourGuide.id }
+      where: { id: service.serviceId }
     });
-
-
 
     // Update the images
     // Assuming you have a separate TourGuideImage model/table
@@ -68,7 +79,7 @@ exports.updatetourguide = async (req, res) => {
  
      */
 
-    res.status(200).json(tourGuide.id);
+    res.status(200).json(service.serviceId);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Failed to update tour guide' });
@@ -111,6 +122,13 @@ exports.getTourGuideById = async (req, res) => {
         include: [
           {
             model: Review,
+            attributes: ['rating', 'review', 'date'],
+            include: [
+              {
+                model: User,
+                attributes: ['name'],
+              },
+            ],
           },
         ],
       },

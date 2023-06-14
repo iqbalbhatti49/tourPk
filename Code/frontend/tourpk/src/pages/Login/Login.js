@@ -14,10 +14,10 @@ const Login = () => {
     const onSubmit = async (values, form) => {
         try {
             const user = await dispatch(login(values));
-            console.log("----> ", user.payload);
+            console.log("----> ", user.payload.user.role);
 
-            if (user.payload.role == "tourist")
-                navigate("/pricing");
+            if (user.payload.user.role === "tourist")
+            navigate("/paymentInformation", { state: { from: '/login' } });
             else
                 navigate("/serviceProvider");
         } catch (error) {

@@ -9,7 +9,8 @@ module.exports = {
   },
   "development": {
     "username": "root",
-    "password": "Pucit333@",
+    // "password": "Pucit333@",
+    "password": "iqra.M012",
     "database": "tourpk",
     "host": "127.0.0.1",
     "dialect": "mysql"
