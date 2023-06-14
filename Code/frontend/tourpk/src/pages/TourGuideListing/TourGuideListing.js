@@ -134,7 +134,6 @@ export default function TourGuideListing() {
       }
    }, [bookings]);
 
-   // Render the component once the data is available
    if (!data) {
       return <div>Loading...</div>;
    }
@@ -170,7 +169,7 @@ export default function TourGuideListing() {
                </div>
             </div>
 
-            <Carousel />
+            <Carousel imageList={data.TourGuideImages} />
          </div>
 
          <div className={styles.details}>
@@ -189,7 +188,10 @@ export default function TourGuideListing() {
                </div>
             </div>
             <div>
-               <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+               {reviewCount != 0 ? (
+                  <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+               ) : null
+               }
                <div>
                   <h2 className={styles.subHeading}>Pricing</h2>
                   <div className={styles.pricing}>
@@ -200,7 +202,8 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>Booking Calendar</h2>
                   <div className={styles.calendar}>
-                     <BookingCalendar disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
+                     <BookingCalendar selectRange={false}
+                     disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
                   </div>
                </div>
             </div>

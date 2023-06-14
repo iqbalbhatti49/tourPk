@@ -74,7 +74,7 @@ const AddHotel = () => {
         }
         console.log("***** ye wo data hai jo update krna hai ******", data);
         if (isEditMode)
-            navigate("/addHotelRoom", { state: { data } });
+            navigate("/addHotelRoom?edit=1", { state: { data } });
         else
             navigate("/addHotelRoom", { state: { hotelData } });
     }

@@ -13,10 +13,24 @@ export function Testimonial({ data }) {
       slidesToScroll: 1,
    };
 
+   const testimonials = [
+      {
+         User: {
+            name: ""
+         },
+         date: "",
+         rating: 0,
+         review:
+            "No reviews yet",
+      },
+   ];
+
+   const reviews = Array.isArray(data) && data.length > 0 ? data : testimonials;
+
    return (
       <div className={styles.testimonialContainer}>
          <Slider {...settings}>
-            {data.map((testimonial, index) => (
+            {reviews.map((testimonial, index) => (
                <div key={index} className={styles.testimonial}>
                   <StarRatings
                      rating={testimonial.rating}

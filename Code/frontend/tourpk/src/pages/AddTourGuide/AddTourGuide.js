@@ -17,11 +17,13 @@ const AddTourGuide = () => {
   const searchParams = new URLSearchParams(location.search);
   const isEditMode = searchParams.get('edit') === '1';
   console.log(isEditMode);
-  let values, tourGuide;
+  console.log(location.state);
+  let values, tourGuide, obj;
   let updateInitialValue;
   if (isEditMode) {
-    ({ values, tourGuide } = location.state);
-    updateInitialValue = tourGuide;
+    ({ values, obj } = location.state);
+    updateInitialValue = obj;
+    tourGuide = obj;
     console.log(tourGuide);
     console.log(values);
   }
@@ -43,7 +45,7 @@ const AddTourGuide = () => {
 
   const onSubmit = async (value) => {
     value.UserId = userId;
-    const servic = isEditMode ? values : location.value;
+    const servic = isEditMode ? values : location.state.values;
     if (isEditMode)
       servic.serviceId = tourGuide.id;
     const tourGuideData = {
