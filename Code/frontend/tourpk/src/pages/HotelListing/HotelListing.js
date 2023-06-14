@@ -61,12 +61,11 @@ export default function HotelListing() {
         Reviews,
         HotelImages
       };
-      console.log(HotelData);
       setData(HotelData);
+      console.log(HotelData);
       const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
       setratingAverge(ratingAvg);
       setreviewCount(reviewsCount);
-      setLoading(false);
 
     } catch (error) {
       setLoading(false);
@@ -74,10 +73,12 @@ export default function HotelListing() {
   };
   useEffect(() => {
     getHotel();
+    setLoading(false);
+
     // console.log(location.state);
   }, []);
 
-  if (loading) {
+  if (loading || data === null) {
     return <div>Loading...</div>;
   }
 

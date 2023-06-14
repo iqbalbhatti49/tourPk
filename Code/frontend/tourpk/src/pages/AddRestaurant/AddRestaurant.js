@@ -16,7 +16,6 @@ const AddRestaurant = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-
     // Logic for Update restaurant 
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
@@ -32,26 +31,26 @@ const AddRestaurant = () => {
     }
 
     if (isEditMode) {
-        const formatToFieldNames = (obj2) => {
+        const formatToFieldNames = (obj) => {
             const convertOptionsToValues = (options, features) => {
                 return options.reduce((values, option) => {
                     values[option] = features.includes(option);
                     return values;
                 }, {});
             };
-            const mealTypeValues = convertOptionsToValues(mealOptions.map(option => option.label), obj2.mealType.split(', '));
-            const featureValues = convertOptionsToValues(featureOptions.flatMap(option => option.options), obj2.features.split(', '));
+            const mealTypeValues = convertOptionsToValues(mealOptions.map(option => option.label), obj.mealType.split(', '));
+            const featureValues = convertOptionsToValues(featureOptions.flatMap(option => option.options), obj.features.split(', '));
             console.log(mealTypeValues);
             const obj1 = {
-                startTime: obj2.openTime,
-                endTime: obj2.closeTime,
-                menu: obj2.menuUrl,
-                minPrice: obj2.menuStartingPrice.toString(),
-                cuisine: obj2.cuisineType,
+                startTime: obj.openTime,
+                endTime: obj.closeTime,
+                menu: obj.menuUrl,
+                minPrice: obj.menuStartingPrice.toString(),
+                cuisine: obj.cuisineType,
                 ...mealTypeValues,
                 ...featureValues,
-                UserId: obj2.UserId,
-                serviceId: obj2.ServiceId,
+                UserId: obj.UserId,
+                serviceId: obj.ServiceId,
             };
             return obj1;
         };

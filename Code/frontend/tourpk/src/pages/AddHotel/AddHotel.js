@@ -9,6 +9,40 @@ import { amenities } from "../../utils/Constants/HotelOptions";
 const AddHotel = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    console.log(location.state);
+
+    // Logic for Update hotel 
+    const searchParams = new URLSearchParams(location.search);
+    const isEditMode = searchParams.get('edit') === '1';
+    console.log(isEditMode);
+    let values, hotel;
+    let updateInitialValue;
+    if (isEditMode) {
+        console.log(location.state);
+        values = location.state.values;
+        hotel = location.state.obj;
+
+        // convert amenities string to object for form initial values
+        const formatToFieldNames = (obj) => {
+            const convertOptionsToValues = (options, features) => {
+                return options.reduce((values, option) => {
+                    values[option] = features.includes(option);
+                    return values;
+                }, {});
+            };
+            const mealTypeValues = convertOptionsToValues(amenities.map(option => option.label), obj.amenities.split(', '));
+            const obj1 = {
+                ServiceId: obj.ServiceId,
+                UserId: obj.UserId,
+                ...mealTypeValues,
+                id: obj.id
+            };
+            return obj1;
+        };
+
+        updateInitialValue = formatToFieldNames(hotel);
+        console.log(updateInitialValue);
+    }
 
     const preProcess = (values) => {
         // convert selected checkbox values to comma-separated string
@@ -26,8 +60,23 @@ const AddHotel = () => {
 
     const onSubmit = (values) => {
         const hotelData = preProcess(values);
-        console.log("hotel dataaaaaaaa:>>  ", hotelData);
-        navigate("/addHotelRoom", { state: { hotelData } });
+        console.log("** ye wo add hotel wala data hai ****", hotelData);
+        const hotel = {
+            id: location.state.obj.id,
+            amenities: hotelData.hotelAmenities,
+            ServiceId: location.state.obj.ServiceId,
+            UserId: location.state.obj.UserId,
+        }
+        const data = {
+            hotel: hotel,
+            service: hotelData.service,
+            room: location.state.obj.Rooms
+        }
+        console.log("***** ye wo data hai jo update krna hai ******", data);
+        if (isEditMode)
+            navigate("/addHotelRoom", { state: { data } });
+        else
+            navigate("/addHotelRoom", { state: { hotelData } });
     }
 
     return (
@@ -57,6 +106,7 @@ const AddHotel = () => {
                                                         type="checkbox"
                                                         theme="light"
                                                         value={values}
+                                                        defaultValue={isEditMode ? updateInitialValue[amenity.label] : ""}
                                                         renderIcon={() => null}
                                                     />
                                                 </div>

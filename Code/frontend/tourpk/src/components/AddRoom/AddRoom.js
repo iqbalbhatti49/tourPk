@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 
 const AddRoom = (props) => {
     const navigate = useNavigate();
+
     const userId = useSelector(state => state.user.id); // Id of currently logged in user
     const { service, hotelAmenities } = props.hotelData.hotelData;
     const imagesArray = service.images;
