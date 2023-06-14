@@ -32,6 +32,7 @@
    font-size: 2rem;
    font-weight: 700;
    line-height: 4rem;
+   text-align: left !important;
 }
 
 .testimonial {
@@ -80,9 +81,11 @@
    margin-top: 10px;
 }
 
+
 .delete {
    @apply --IconDelete;
-   padding-left: 20px;
+   padding-left: 30px;
+   width: 20px;
 }
 
 .iconsDelEdit {
@@ -90,7 +93,12 @@
 }
 
 .iconsBox {
-   top: 28px;
    position: relative;
-   left: 64px;
+   width: 110px;
+}
+
+.headingContainer {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
 }

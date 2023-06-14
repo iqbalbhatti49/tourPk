@@ -131,20 +131,23 @@ export default function TravelAgentListing() {
       <div className={styles.container}>
          <div className={styles.header}>
             <div className={styles.information}>
-               <div className={styles.iconsDelEdit}>
+               <div className={styles.headingContainer}>
                   <h1 className={styles.heading}>{data.Service.name}</h1>
-                  {
-                     currentUser === data.TravelAgent.UserId &&
-                     <div className={styles.iconsBox}>
-                        <button className={styles.delete} onClick={handleUpdate}>
-                           <IconEdit />
-                        </button>
-                        <button className={styles.delete} onClick={handleDelete}>
-                           <IconDelete />
-                        </button>
-                     </div>
-                  }
+                  <div className={styles.iconsDelEdit}>
+                     {
+                        currentUser === data.TravelAgent.UserId &&
+                        <div className={styles.iconsBox}>
+                           <button className={styles.delete} onClick={handleUpdate}>
+                              <IconEdit />
+                           </button>
+                           <button className={styles.delete} onClick={handleDelete}>
+                              <IconDelete />
+                           </button>
+                        </div>
+                     }
+                  </div>
                </div>
+
                <div className={styles.attributesContainer}>
                   {Object.entries(data.TravelAgent).map(([key, value]) => (
                      key !== 'ServiceId' && key !== 'id' && key !== 'UserId' && key !== 'itenerary' && key !== 'packagePrice' ? (
@@ -191,7 +194,7 @@ export default function TravelAgentListing() {
                <div>
                   {isReviewsAvailable && <div>
                      <h2 className={styles.subHeading}>People's Opinion</h2>
-                     <Testimonial />
+                     <Testimonial data={data.Reviews} />
                   </div>
                   }
                </div>
