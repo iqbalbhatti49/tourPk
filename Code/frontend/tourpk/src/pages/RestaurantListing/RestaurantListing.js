@@ -144,6 +144,7 @@ export default function RestaurantListing() {
                     </div>
 
                     <div>
+
                         <h2 className={styles.subHeading}>People's Opinion</h2>
                         <Testimonial data={data.Reviews} />
                     </div>
