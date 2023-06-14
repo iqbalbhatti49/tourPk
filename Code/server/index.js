@@ -7,6 +7,7 @@ const path = require('path');
 const db = require("./models");
 const apiRoutes = require('./routes/index');
 const app = express();
+// const scheduler = require('./scheduler');
 require('dotenv').config();
 
 app.use(cors());
@@ -16,6 +17,8 @@ app.use(cookieParser()); // to parse cookies attached to the client request obje
 app.use(express.json()); // To parse the incoming requests with JSON payloadsthan the server-side app (8080)
 // set up router for handling HTTP requests related to each route
 
+// Run the scheduler to update bookings periodically
+// scheduler.start();
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
