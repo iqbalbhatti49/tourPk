@@ -27,7 +27,6 @@ export default function TravelAgentListing() {
    const [reviewCount, setreviewCount] = useState(5);
    const [ratingAverge, setratingAverge] = useState(4.5);
    const [loading, setLoading] = useState(true);
-   const [isReviewsAvailable, setisReviewsAvailable] = useState(true);
    const [selectedDate, setSelectedDate] = useState(null);
    const handleDateChange = (date) => {
       console.log('Selected date:', date.toISOString().split('T')[0]);
@@ -106,11 +105,6 @@ export default function TravelAgentListing() {
          const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
          setratingAverge(ratingAvg);
          setreviewCount(reviewsCount);
-
-         if (TravelAgentData.hasOwnProperty("Reviews"))
-            setisReviewsAvailable(true);
-         else
-            setisReviewsAvailable(false);
          setLoading(false);
 
       } catch (error) {
@@ -192,23 +186,22 @@ export default function TravelAgentListing() {
                   </div>
                </div>
                <div>
-                  {isReviewsAvailable && <div>
-                     <h2 className={styles.subHeading}>People's Opinion</h2>
-                     <Testimonial data={data.Reviews} />
-                  </div>
-                  }
+                  <h2 className={styles.subHeading}>People's Opinion</h2>
+                  <Testimonial data={data.Reviews} />
                </div>
             </div>
             <div>
                <div>
-                  {isReviewsAvailable &&
-                     <div className={styles.ratingPricing}>
-                        <h2 className={styles.subHeading}>Ratings</h2>
-                        <div className={styles.rating}>
-                           <CircularRating rating={ratingAverge} />
-                           <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
-                        </div>
-                     </div>
+                  {
+                     reviewCount != 0 ? (
+                        <div className={styles.ratingPricing}>
+                           <h2 className={styles.subHeading}>Ratings</h2>
+                           <div className={styles.rating}>
+                              <CircularRating rating={ratingAverge} />
+                              <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
+                           </div>
+                        </div>) :
+                        null
                   }
                </div>
                <div>

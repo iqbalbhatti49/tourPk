@@ -144,7 +144,10 @@ export default function HotelListing() {
             <Testimonial data={data.Reviews} />
           </div>
           <div className={styles.rating}>
-            <Rating rating={ratingAverge} />
+            {reviewCount != 0 ? (
+              <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+            ) : null
+            }
             <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
 
             <div className={styles.btn}>
