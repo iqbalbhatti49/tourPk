@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Form as FormFinal } from "react-final-form";
 import { FormField, Button } from "../../components/index";
 import RoomAmeneties from "../../components/RoomAmeneties/RoomAmeneties";
-import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
+import { required, validateAlpha } from "../../utils/validations";
 import { roomAmenitiess } from "../../utils/Constants/RoomAmenetiesOptions";
 import axiosInstance from "../../utils/Api";
 import { useSelector } from "react-redux";
@@ -14,25 +14,71 @@ const AddHotelRoom = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const aaaaaaa = location.state;
-  console.log(aaaaaaa);
   const userId = useSelector(state => state.user.id); // Id of currently logged in user
 
 
   // UPDATE Logic *******
-  // const { hotel, room, service } = location.state.data;
-
-
-
-  // ADD LOGIC **********
-  const hotelData = location.state;
-  let service = location.state.hotelData.service;
-  let hotelAmenities = location.state.hotelData.hotelAmenities;
-  const imagesArray = service.images;
-  delete service.images;
-  const hotell = {
-    UserId: userId,
-    amenities: hotelAmenities
+  const searchParams = new URLSearchParams(location.search);
+  const isEditMode = searchParams.get('edit') === '1';
+  console.log(isEditMode);
+  let hotel, room, service;
+  let updateInitialValue;
+  if (isEditMode) {
+    hotel = location.state.data.hotel;
+    room = location.state.data.room;
+    service = location.state.data.service;
+    console.log("Updatw walaaaaaaaa****** ", location.state.data);
   }
+
+  if (isEditMode) {
+    const formatToFieldNames = (obj) => {
+      const convertOptionsToValues = (options, features) => {
+        return options.reduce((values, option) => {
+          values[option] = features.includes(option);
+          return values;
+        }, {});
+      };
+      const amenitiesValues = convertOptionsToValues(roomAmenitiess.map(option => option.label), obj.roomAmenities.split(', '));
+      // console.log(amenitiesValues);
+      const obj1 = {
+        id: obj.id,
+        roomType: obj.roomType,
+        description: obj.description,
+        roomsCount: obj.roomsCount,
+        availableRoomsCount: obj.availableRoomsCount,
+        capacity: obj.capacity,
+        rentPerNight: obj.rentPerNight,
+        bedConfiguration: obj.bedConfiguration,
+        view: obj.view,
+        roomSize: obj.roomSize,
+        smoking: obj.smoking,
+        HotelId: obj.HotelId,
+        ...amenitiesValues
+      };
+      return obj1;
+    };
+
+    updateInitialValue = formatToFieldNames(room[0]);
+    console.log("Ye format hogya ha******", updateInitialValue);
+  }
+
+  const addInitialValue = {
+    id: null,
+    roomType: '',
+    description: '',
+    roomsCount: null,
+    availableRoomsCount: null,
+    capacity: null,
+    rentPerNight: null,
+    bedConfiguration: '',
+    view: '',
+    roomSize: '',
+    smoking: '',
+    HotelId: null
+  };
+
+  const initialValue = isEditMode ? updateInitialValue : addInitialValue;
+
 
   const preProcess = (values) => {
     // convert selected checkbox values to comma-separated string
@@ -52,25 +98,55 @@ const AddHotelRoom = () => {
     return roomData;
   };
 
+  // ADD LOGIC **********
+
   const onSubmit = async (values) => {
     values.availableRoomsCount = values.roomsCount;
     const roomData = preProcess(values);
 
-    const hotelRoom = {
-      service: service,
-      hotel: hotell,
-      images: imagesArray,
-      room: roomData
+    let hotell, servicee, imagesArray, hotelRoom_A, hotelRoom_U;
+    if (!isEditMode) {
+      servicee = location.state.hotelData.service;
+      let hotelAmenities = location.state.hotelData.hotelAmenities;
+      imagesArray = servicee.images;
+      delete servicee.images;
+      hotell = {
+        UserId: userId,
+        amenities: hotelAmenities
+      }
+
+      hotelRoom_A = {
+        service: servicee,
+        hotel: hotell,
+        images: imagesArray,
+        room: roomData
+      }
+      console.log("Add wla object ********* ", hotelRoom_A);
     }
 
-    console.log(hotelRoom)
-    const roomId = await axiosInstance.post("/hotel/addHotel", hotelRoom);
-    console.log("--> Back on F.end --> ", roomId.data);
-    swal("Hotel and Room Added Successfully", "Success! The new Hotel entry has been added successfully.", "success");
-    navigate(`/hotelListing/${roomId.data}`);
+    if (isEditMode) {
+      roomData.id = room[0].id;
+      roomData.hotelId = room[0].HotelId;
+      hotelRoom_U = {
+        service: service,
+        hotel: hotel,
+        room: roomData
+      }
+      console.log("Update wla object ********* ", hotelRoom_U);
+    }
+
+    let roomObj;
+    if (!isEditMode) {
+      roomObj = await axiosInstance.post("/hotel/addHotel", hotelRoom_A);
+      swal("Hotel and Room Added Successfully", "Success! The new Hotel entry has been added successfully.", "success");
+    }
+    else {
+      roomObj = await axiosInstance.post("/hotel/updateHotel", hotelRoom_U);
+      swal("Hotel and Room Updated Successfully", "Success! Changes has been updated successfully.", "success");
+    }
+    navigate(`/hotelListing/${roomObj.data}`);
   };
 
-  console.log("--> inside AddHotelRoom --> ", hotelData);
 
   return (
     <>
@@ -88,6 +164,7 @@ const AddHotelRoom = () => {
                     placeholder="Single, Double, Suite"
                     validate={validateAlpha}
                     renderIcon={() => null}
+                    defaultValue={initialValue.roomType}
                     theme="light"
                   />
                   <FormField
@@ -95,8 +172,9 @@ const AddHotelRoom = () => {
                     label="Rooms Count with similar characteristics"
                     type="number"
                     placeholder="30"
-                    validate={mustBeNumber}
+                    validate={required}
                     renderIcon={() => null}
+                    defaultValue={initialValue.roomsCount}
                     theme="light"
                   />
 
@@ -105,8 +183,9 @@ const AddHotelRoom = () => {
                     label="Occupancy"
                     type="number"
                     placeholder="2 persons"
-                    validate={mustBeNumber}
+                    validate={required}
                     renderIcon={() => null}
+                    defaultValue={initialValue.capacity}
                     theme="light"
                   />
 
@@ -117,6 +196,7 @@ const AddHotelRoom = () => {
                     placeholder="King, Queen, Twin"
                     validate={validateAlpha}
                     renderIcon={() => null}
+                    defaultValue={initialValue.bedConfiguration}
                     theme="light"
                   />
 
@@ -127,6 +207,7 @@ const AddHotelRoom = () => {
                     placeholder="City View, Ocean View"
                     validate={required}
                     renderIcon={() => null}
+                    defaultValue={initialValue.view}
                     theme="light"
                   />
 
@@ -137,6 +218,7 @@ const AddHotelRoom = () => {
                     placeholder="300 sq. ft., 25 sq. m"
                     validate={required}
                     renderIcon={() => null}
+                    defaultValue={initialValue.roomSize}
                     theme="light"
                   />
 
@@ -147,6 +229,7 @@ const AddHotelRoom = () => {
                     placeholder="Amazing ventilation with 3 windows, coffee table area..."
                     validate={required}
                     renderIcon={() => null}
+                    defaultValue={initialValue.description}
                     theme="light"
                   />
 
@@ -157,6 +240,7 @@ const AddHotelRoom = () => {
                     placeholder="Smoking, Non-Smoking"
                     validate={validateAlpha}
                     renderIcon={() => null}
+                    defaultValue={initialValue.smoking}
                     theme="light"
                   />
 
@@ -165,12 +249,12 @@ const AddHotelRoom = () => {
                     label="Rent per Night (Rs.)"
                     type="number"
                     placeholder="Rs. 2000"
-                    validate={mustBeNumber}
+                    validate={required}
                     renderIcon={() => null}
+                    defaultValue={initialValue.rentPerNight}
                     theme="light"
                   />
-
-                  <RoomAmeneties values={values} />
+                  <RoomAmeneties values={values} updateInitialVal={updateInitialValue} isEditMode={isEditMode} />
                   <div className={styles.btnDiv}>
                     <Button
                       id={styles.signupBtn}

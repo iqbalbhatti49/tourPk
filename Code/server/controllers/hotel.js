@@ -142,8 +142,8 @@ exports.deleteHotel = async (req, res) => {
 
 exports.updatehotel = async (req, res) => {
     console.log(req.body);
-    const { service, hotel } = req.body; // Destructure the objects from the request body
-
+    const { service, hotel, room } = req.body; // Destructure the objects from the request body
+    const images = service.images;
     const servicDta = {
         name: service.name,
         description: service.description,
@@ -156,27 +156,32 @@ exports.updatehotel = async (req, res) => {
     }
 
     try {
-        const updatedService = await Service.update(servicDta, {
+        await Service.update(servicDta, {
             where: { id: service.id }
         });
 
-        const updatedHotel = await Hotel.update(hotel, {
-            where: { id: service.serviceId }
+        await Hotel.update(hotel, {
+            where: { id: hotel.id }
+        });
+
+        await Room.update(room, {
+            where: { id: room.id }
         });
 
         // Assuming you have a separate HotelImage model/table
-        /*
-         const hotelImages = images.map((image) => ({
-           imageUrl: image.imageUrl,
-           HotelId: hotel.id
-         }));
-     
-         await HotelImage.bulkCreate(hotelImages, {
-           updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
-         });
-         */
+        let rootPath = "../static/images/upload/";
 
-        res.status(200).json(service.serviceId);
+        const hotelImages = images.map((image) => ({
+            imageUrl: rootPath + image,
+            HotelId: hotel.id
+        }));
+
+        await HotelImage.bulkCreate(hotelImages, {
+            updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
+        });
+
+
+        res.status(200).json(hotel.id);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to update tour guide' });

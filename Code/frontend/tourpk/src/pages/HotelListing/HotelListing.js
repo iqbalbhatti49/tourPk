@@ -16,8 +16,8 @@ export default function HotelListing() {
   const location = useLocation();
   const { id } = useParams();
   const [data, setData] = useState(null);
-  const [reviewCount, setreviewCount] = useState(5);
-  const [ratingAverge, setratingAverge] = useState(4.5);
+  const [reviewCount, setreviewCount] = useState(0);
+  const [ratingAverge, setratingAverge] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const handleDelete = () => {
@@ -145,10 +145,12 @@ export default function HotelListing() {
           </div>
           <div className={styles.rating}>
             {reviewCount != 0 ? (
-              <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+              <>
+                <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+                <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
+              </>
             ) : null
             }
-            <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
 
             <div className={styles.btn}>
               <Button value="Book Room Now" btnType="submit" />
@@ -157,6 +159,6 @@ export default function HotelListing() {
         </div>
       </div>
       <ReviewForm />
-    </div>
+    </div >
   );
 }
