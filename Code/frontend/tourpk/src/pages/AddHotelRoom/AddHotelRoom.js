@@ -12,15 +12,24 @@ import { useNavigate } from "react-router";
 
 const AddHotelRoom = () => {
   const location = useLocation();
-  const hotelData = location.state;
-
   const navigate = useNavigate();
-  console.log("props**** ", hotelData);
+  const aaaaaaa = location.state;
+  console.log(aaaaaaa);
   const userId = useSelector(state => state.user.id); // Id of currently logged in user
-  const { service, hotelAmenities } = hotelData.hotelData;
+
+
+  // UPDATE Logic *******
+  // const { hotel, room, service } = location.state.data;
+
+
+
+  // ADD LOGIC **********
+  const hotelData = location.state;
+  let service = location.state.hotelData.service;
+  let hotelAmenities = location.state.hotelData.hotelAmenities;
   const imagesArray = service.images;
   delete service.images;
-  const hotel = {
+  const hotell = {
     UserId: userId,
     amenities: hotelAmenities
   }
@@ -49,7 +58,7 @@ const AddHotelRoom = () => {
 
     const hotelRoom = {
       service: service,
-      hotel: hotel,
+      hotel: hotell,
       images: imagesArray,
       room: roomData
     }

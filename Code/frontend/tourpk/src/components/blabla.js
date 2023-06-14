@@ -39,3 +39,19 @@
 //         }
 //     }
 // }
+
+
+
+
+// ADD OBJECT AT ROOMS
+// {
+//     "name": "rida",
+//         "description": "iqrzzzzzz",
+//             "email": "rida@gmail.co",
+//                 "website": "iqea.com",
+//                     "phone": "03214358865",
+//                         "city": "lhr",
+//                             "province": "punjab",
+//                                 "address": "str1",
+//                                     "images": []
+// }

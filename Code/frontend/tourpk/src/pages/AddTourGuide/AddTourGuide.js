@@ -18,6 +18,7 @@ const AddTourGuide = () => {
   const searchParams = new URLSearchParams(location.search);
   const isEditMode = searchParams.get('edit') === '1';
   console.log(isEditMode);
+  console.log(location.state);
   let values, tourGuide;
   let updateInitialValue;
   if (isEditMode) {
@@ -44,7 +45,7 @@ const AddTourGuide = () => {
 
   const onSubmit = async (value) => {
     value.UserId = userId;
-    const servic = isEditMode ? values : location.value;
+    const servic = isEditMode ? values : location.state.values;
     if (isEditMode)
       servic.serviceId = tourGuide.id;
     const tourGuideData = {
