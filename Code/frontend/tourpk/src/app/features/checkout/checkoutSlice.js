@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../../utils/Api';
 
 const initialState = {
-  paymentMethod: '',
   cardInfo: {
     cardNumber: 0,
     expirationMonth: 0,
@@ -21,8 +20,8 @@ const initialState = {
     phoneNumber: '',
   },
   status: 'idle',
-  error: null,
-  paymentResult: null,
+  error: "",
+  paymentResult: "",
   totalAmount: 0,
 };
 
