@@ -4,7 +4,7 @@ const authenticateMiddleware = require("../middleware/auth.js");
 const { addHotel, getAllHotels, getHotelById, addBooking, deleteHotel, updatehotel, addRoom } = require("../controllers/hotel.js");
 
 router.post("/addHotel", addHotel);
-router.get("/getHotels", authenticateMiddleware, getAllHotels);
+router.get("/getHotels", getAllHotels);
 router.get("/getHotelById/:id", getHotelById);
 router.post("/deleteHotel", deleteHotel);
 router.post("/updateHotel", updatehotel);
