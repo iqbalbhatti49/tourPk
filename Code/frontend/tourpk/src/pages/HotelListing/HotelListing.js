@@ -12,6 +12,7 @@ import { addHotelBooking } from '../../app/features/bookings/bookingsSlice';
 
 export default function HotelListing() {
   const navigate = useNavigate();
+  const role = useSelector((state) => state.user.role);
   const currentUser = useSelector(state => state.user.id);
   const location = useLocation();
   const { id } = useParams();
@@ -158,14 +159,13 @@ export default function HotelListing() {
                   {room.roomAmenities}
                 </div>
               </div>
-              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} hotelName={data.Service.name} hotelId={room["HotelId"]} roomId={room["id"]} price={room["rentPerNight"]} />
+              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} roomCount={room["roomsCount"]}  hotelName={data.Service.name} hotelId={room["HotelId"]} roomId={room["id"]} price={room["rentPerNight"]} />
             </div>
           );
         })}
 
       </div>
       <div>
-        <Button value="Add More Rooms" btnType="button" handleClick={addRoom} />
         <div className={styles.reviewsContainer}>
           <div className={styles.testimonial}>
             <h2 className={styles.subHeading}>People's Opinion</h2>
@@ -179,14 +179,13 @@ export default function HotelListing() {
               </>
             ) : null
             }
-
             <div className={styles.btn}>
-              <Button value="Book Room Now" btnType="submit" />
+              {role != "tourist" && <Button value="Add More Rooms" btnType="button" handleClick={addRoom} />}
             </div>
           </div>
         </div>
       </div>
-      <ReviewForm serviceId={data.Service.id} setReview={setreviews} />
+     {role == "tourist" <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
     </div >
   );
 }

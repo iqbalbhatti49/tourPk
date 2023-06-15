@@ -35,7 +35,7 @@ export const HotelCard = (props) => {
                   {type === "Hotel" ? <p className={styles.place}> Click to view prices </p> : null}
                   <div className={styles.stats}>
                      <div className={styles.rating}>
-                        <p>{ratingAvg}</p>
+                        <p>{ratingAvg != "NaN" ? ratingAvg : 0}</p>
                         <IconStar />
                      </div>
                      <p className={styles.reviews}>{reviewsCount} reviews</p>

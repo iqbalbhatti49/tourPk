@@ -1,6 +1,5 @@
 const { User, Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
-const { Op } = require("sequelize");
-const Sequelize = require('sequelize');
+const {scheduleDeleteBooking} = require("../scheduler")
 
 exports.addHotel = async (req, res) => {
     console.log("*********----START--", req.body, "----END----***********");
@@ -61,7 +60,6 @@ exports.getHotelById = async (req, res) => {
     res.json(data);
 }
 
-
 exports.getAllHotels = async (req, res) => {
     const hotels = await Hotel.findAll({
         attributes: ['id'],
@@ -85,7 +83,6 @@ exports.getAllHotels = async (req, res) => {
     res.json(hotels);
 }
 
-
 exports.deleteHotel = async (req, res) => {
     console.log(req.body)
     await Room.destroy({ where: { HotelId: req.body.HotelId } });
@@ -95,7 +92,6 @@ exports.deleteHotel = async (req, res) => {
     await Service.destroy({ where: { id: req.body.ServiceId } });
     res.status(200).json("deleted sucessfully");
 }
-
 
 exports.updatehotel = async (req, res) => {
     console.log(req.body);
@@ -143,38 +139,38 @@ exports.updatehotel = async (req, res) => {
     }
 }
 
-// Controller method to add a booking
 exports.addBooking = async (req, res) => {
-    try {
-        const { startDate, numberOfDays, totalPrice, userId, hotelId, roomId } = req.body; // Assuming you receive the necessary data in the request body
+  try {
+    const { startDate, numberOfDays, totalPrice, userId, endDate, hotelId, roomId } = req.body; 
+    const newBooking = await BookingHotel.create({
+      startDate,
+      numberOfDays,
+      totalPrice,
+      UserId: userId, 
+      HotelId: hotelId, 
+      RoomId: roomId 
+    });
 
-        // Create the booking in the database
-        const newBooking = await BookingHotel.create({
-            startDate,
-            numberOfDays,
-            totalPrice,
-            UserId: userId, // Assuming you have a foreign key 'UserId' in the BookingHotel model
-            HotelId: hotelId, // Assuming you have a foreign key 'HotelId' in the BookingHotel model
-            RoomId: roomId // Assuming you have a foreign key 'RoomId' in the BookingHotel model
-        });
+    const hotel = await Hotel.findByPk(hotelId);
+    const room = await Room.findByPk(roomId);
+    if(endDate == false)
+    scheduleDeleteBooking(newBooking.id, startDate);
+    else
+    scheduleDeleteBooking(newBooking.id, endDate);
 
-        // Retrieve the associated user, hotel, and room data
-        // const user = await User.findByPk(userId);
-        const hotel = await Hotel.findByPk(hotelId);
-        const room = await Room.findByPk(roomId);
+    // Respond with the created booking and associated data
+    res.status(201).json({
+      newBooking,
+    //   user,
+      hotel,
+      room
+    });
+  } catch (error) {
+    console.error('Error adding booking:', error);
+    res.status(500).json({ error: 'Failed to add booking' });
+  }
+};
 
-        // Respond with the created booking and associated data
-        res.status(201).json({
-            newBooking,
-            //   user,
-            hotel,
-            room
-        });
-    } catch (error) {
-        console.error('Error adding booking:', error);
-        res.status(500).json({ error: 'Failed to add booking' });
-    }
-}
 
 exports.addRoom = async (req, res) => {
     console.log(req.body);
@@ -184,3 +180,22 @@ exports.addRoom = async (req, res) => {
     res.status(200).json("done");
 
 }
+exports.getBookingsByIds = async (req, res) => {
+    try {
+      const { hotelId, roomId } = req.query;
+      console.log(req.query);
+      const bookings = await BookingHotel.findAll({
+        where: {
+          HotelId: hotelId,
+          RoomId: roomId
+        }
+      });
+  
+      res.status(200).json({
+        bookings
+      });
+    } catch (error) {
+      console.error('Error retrieving bookings:', error);
+      res.status(500).json({ error: 'Failed to retrieve bookings' });
+    }
+  };

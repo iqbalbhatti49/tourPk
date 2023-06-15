@@ -5,7 +5,9 @@ import { FormField, Button } from '../../components';
 import styles from './AccountVerification.module.css';
 import {updatePhoneNumberVerification} from "../../app/features/user/userSlice";
 import { useDispatch, useSelector } from 'react-redux';
+import { validatePhoneWithCode } from '../../utils/validations';
 import { useNavigate } from 'react-router-dom';
+
 function AccountVerification() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -124,6 +126,7 @@ function AccountVerification() {
                     renderIcon={() => null}
                     labelClass="showLabel"
                     theme="light"
+                    validate={validatePhoneWithCode}
                   />
                 </div>
               ) : (

@@ -1,13 +1,19 @@
-// const cron = require('node-cron');
-// const axios = require('axios');
+const cron = require('node-cron');
+const { deleteBookingById } = require('./controllers/hotel');
 
-//execute every 12 hours
-// cron.schedule('0 */12 * * *', async () => {
-//     try {
-        // API request to update hotels depending on bookings end date
-//         const response = await axios.post('http://localhost:8080/api/hotel/updateHotelBookings');
-//         console.log('Scheduled job executed successfully:', response.data);
-//     } catch (error) {
-//         console.error('Error executing scheduled job:', error);
-//     }
-// });
+function scheduleDeleteBooking(bookingId, endDate) {
+  const [year, month, day] = endDate.split('-');
+
+  // Schedule the task to run at midnight on the end date
+  const cronPattern = `0 0 ${day} ${month} *`;
+  cron.schedule(cronPattern, () => {
+    deleteBookingById(bookingId);
+  });
+
+  console.log('Scheduled task to delete booking on endDate:', endDate);
+};
+
+module.exports = { scheduleDeleteBooking };
+      
+      
+      

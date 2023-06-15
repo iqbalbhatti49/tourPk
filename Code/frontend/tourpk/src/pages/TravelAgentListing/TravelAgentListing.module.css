@@ -6,6 +6,7 @@
 }
 
 .heading {
+   text-align: left;
    max-width: 900px;
    font-size: 3rem;
    font-weight: 700;

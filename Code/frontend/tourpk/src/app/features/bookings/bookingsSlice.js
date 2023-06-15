@@ -52,7 +52,7 @@ export const addTravelAgentBooking = createAsyncThunk(
 
 export const addHotelBooking = createAsyncThunk(
   'bookings/addHotelBooking',
-  async ({ startDate, numberOfDays, totalPrice, userId, hotelId, roomId }) => {
+  async ({ startDate, numberOfDays, totalPrice, userId, hotelId, roomId, endDate }) => {
     console.log("dFJOLKHVF sdhFLKGgrj")
     try {
       const response = await axiosInstance.post('/hotel/addBooking', {
@@ -62,6 +62,7 @@ export const addHotelBooking = createAsyncThunk(
         userId,
         hotelId,
         roomId,
+        endDate
       });
       return response.data; // You can handle the response data as needed
     } catch (error) {

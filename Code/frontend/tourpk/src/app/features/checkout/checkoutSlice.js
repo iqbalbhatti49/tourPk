@@ -94,11 +94,11 @@ export const checkoutSlice = createSlice({
       })
       .addCase(initiatePayment.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.paymentResult = action.payload;
+        state.paymentResult = true;
       })
       .addCase(initiatePayment.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload;
+        state.paymentResult = false;
       })
       .addCase(updateCardInfo.pending, (state) => {
         state.status = 'loading';
