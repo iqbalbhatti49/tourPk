@@ -27,48 +27,6 @@ exports.addHotel = async (req, res) => {
     res.status(200).json(roomObj.dataValues.id);
 }
 
-exports.updatehotel = async (req, res) => {
-    console.log(req.body);
-    const { service, hotel } = req.body; // Destructure the objects from the request body
-
-    const servicDta = {
-        name: service.name,
-        description: service.description,
-        email: service.email,
-        website: service.website,
-        phone: service.phone,
-        city: service.city,
-        province: service.province,
-        address: service.address,
-    }
-
-    try {
-        const updatedService = await Service.update(servicDta, {
-            where: { id: service.id }
-        });
-
-        const updatedhotel = await hotel.update(hotel, {
-            where: { id: service.serviceId }
-        });
-
-        // Assuming you have a separate hotelImage model/table
-        /*
-         const hotelImages = images.map((image) => ({
-           imageUrl: image.imageUrl,
-           hotelId: hotel.id
-         }));
-     
-         await hotelImage.bulkCreate(hotelImages, {
-           updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
-         });
-         */
-        res.status(200).json(service.serviceId);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Failed to update tour guide' });
-    }
-};
-
 exports.getHotelById = async (req, res) => {
     const id = req.params.id;
     const data = await Hotel.findOne({
@@ -216,4 +174,13 @@ exports.addBooking = async (req, res) => {
         console.error('Error adding booking:', error);
         res.status(500).json({ error: 'Failed to add booking' });
     }
+}
+
+exports.addRoom = async (req, res) => {
+    console.log(req.body);
+    const room = req.body;
+    const roomObj = await Room.create(room);
+    // res.status(200).json(roomObj.dataValues.id);
+    res.status(200).json("done");
+
 }
