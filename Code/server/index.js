@@ -40,5 +40,4 @@ app.use("/api", apiRoutes);
 // const PORT = process.env.PORT || 3000;  --> for production
 db.sequelize.sync().then(() => {
   app.listen(8080, console.log(`Server running on port 8080`))
-  console.log("--------------------aaaaaaaaaaaaa--------------");
 });
