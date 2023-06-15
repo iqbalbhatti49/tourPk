@@ -16,6 +16,7 @@ export default function RestaurantListing() {
     const location = useLocation();
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const [reviews, setreviews] = useState(null);
     const [reviewCount, setreviewCount] = useState(null);
     const [ratingAverge, setratingAverge] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -54,12 +55,12 @@ export default function RestaurantListing() {
             const response = await axiosInstance.get(`/restaurant/getRestaurantById/${id}`);
             console.log(response.data);
             const { Service: { Reviews, ...serviceData }, RestaurantImages, ...restData } = response.data;
+            setreviews(Reviews);
             const Restaurant = restData;
             const Service = serviceData;
             const restaurantData = {
                 Service,
                 Restaurant,
-                Reviews,
                 RestaurantImages
             };
             console.log(restaurantData);
@@ -146,7 +147,7 @@ export default function RestaurantListing() {
                     <div>
 
                         <h2 className={styles.subHeading}>People's Opinion</h2>
-                        <Testimonial data={data.Reviews} />
+                        <Testimonial data={reviews} />
                     </div>
                 </div>
                 <div>
@@ -162,7 +163,7 @@ export default function RestaurantListing() {
                     }
                 </div>
             </div>
-            <ReviewForm serviceId={data.Service.id} />
+            <ReviewForm serviceId={data.Service.id} setReview={setreviews} />
         </div>
     );
 }

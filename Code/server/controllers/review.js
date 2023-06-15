@@ -1,4 +1,4 @@
-const { Review } = require("../models");
+const { Review, User } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -13,7 +13,7 @@ exports.getReviewsById = async (req, res) => {
     const id = req.params.id;
     console.log("---->::>> ", id);
     const reviews = await Review.findAll({
-        attributes: { exclude: ['UserId'] },
+        attributes: ['rating', 'review', 'date'],
         include: [
             {
                 model: User,
