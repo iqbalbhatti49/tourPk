@@ -167,7 +167,6 @@ export default function HotelListing() {
 
       </div>
       <div>
-        <Button value="Add More Rooms" btnType="button" handleClick={addRoom} />
         <div className={styles.reviewsContainer}>
           <div className={styles.testimonial}>
             <h2 className={styles.subHeading}>People's Opinion</h2>
@@ -182,7 +181,7 @@ export default function HotelListing() {
             ) : null
             }
             <div className={styles.btn}>
-              {role != "tourist" && <Button value="Add New Room Type" btnType="submit" />}
+              {role != "tourist" && <Button value="Add More Rooms" btnType="button" handleClick={addRoom} />}
             </div>
           </div>
         </div>

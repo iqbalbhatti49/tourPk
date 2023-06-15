@@ -170,3 +170,32 @@ exports.addBooking = async (req, res) => {
     res.status(500).json({ error: 'Failed to add booking' });
   }
 };
+
+
+exports.addRoom = async (req, res) => {
+    console.log(req.body);
+    const room = req.body;
+    const roomObj = await Room.create(room);
+    // res.status(200).json(roomObj.dataValues.id);
+    res.status(200).json("done");
+
+}
+exports.getBookingsByIds = async (req, res) => {
+    try {
+      const { hotelId, roomId } = req.query;
+      console.log(req.query);
+      const bookings = await BookingHotel.findAll({
+        where: {
+          HotelId: hotelId,
+          RoomId: roomId
+        }
+      });
+  
+      res.status(200).json({
+        bookings
+      });
+    } catch (error) {
+      console.error('Error retrieving bookings:', error);
+      res.status(500).json({ error: 'Failed to retrieve bookings' });
+    }
+  };

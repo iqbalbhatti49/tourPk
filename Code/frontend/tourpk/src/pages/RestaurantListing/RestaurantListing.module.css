@@ -47,8 +47,8 @@
 }
 
 .key {
-    font-weight: 500;
     color: var(--primaryColor);
+    font-weight: 600;
 }
 
 .details {

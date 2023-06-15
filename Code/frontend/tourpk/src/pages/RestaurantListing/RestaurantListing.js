@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 export default function RestaurantListing() {
     const navigate = useNavigate();
     const currentUser = useSelector(state => state.user.id);
+    const role = useSelector((state) => state.user.role);
     const location = useLocation();
     const { id } = useParams();
     const [data, setData] = useState(null);
@@ -162,7 +163,7 @@ export default function RestaurantListing() {
                     }
                 </div>
             </div>
-            <ReviewForm serviceId={data.Service.id} />
+            {role == "tourist" && <ReviewForm serviceId={data.Service.id} />}
         </div>
     );
 }

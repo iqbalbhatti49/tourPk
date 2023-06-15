@@ -24,7 +24,7 @@ export default function TourGuideListing() {
    const [reviewCount, setreviewCount] = useState(null);
    const [ratingAverge, setratingAverge] = useState(null);
    const [data, setData] = useState(null);
-   const bookingState = useSelector((state) => state.bookings.bookingStatus);
+   const [validRange,setValidRange] = useState(true) 
    const [bookings, setBookings] = useState(null);
    const [disabledDatesArr, setDisabledDates] = useState(null);
    const navigate = useNavigate();
@@ -202,8 +202,13 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>Booking Calendar</h2>
                   <div className={styles.calendar}>
-                     <BookingCalendar selectRange={false}
-                     disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
+                     <BookingCalendar 
+                        selectRange={false}
+                        setValidRange = {setValidRange}
+                        disabledDates={disabledDatesArr} 
+                        selectedDate={selectedDate} 
+                        onDateChange={handleDateChange} 
+                     />
                   </div>
                </div>
             </div>

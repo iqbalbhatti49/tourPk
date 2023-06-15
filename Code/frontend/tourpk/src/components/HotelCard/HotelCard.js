@@ -36,7 +36,7 @@ export const HotelCard = (props) => {
                   {type === "Restaurant" ? null : <p className={styles.place}>Rs. {price}</p>}
                   <div className={styles.stats}>
                      <div className={styles.rating}>
-                        <p>{ratingAvg}</p>
+                        <p>{ratingAvg != "NaN" ? ratingAvg : 0}</p>
                         <IconStar />
                      </div>
                      <p className={styles.reviews}>{reviewsCount} reviews</p>
