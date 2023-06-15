@@ -17,10 +17,9 @@ export default function HotelListing() {
   const location = useLocation();
   const { id } = useParams();
   const [data, setData] = useState(null);
-  const [reviewCount, setreviewCount] = useState(0);
+  const [reviews, setreviews] = useState(null);
+  const [reviewCount, setreviewCount] = useState(null);
   const [ratingAverge, setratingAverge] = useState(null);
-  const [loading, setLoading] = useState(true);
-
 
   const addRoom = async () => {
     setLoading(true);
@@ -83,13 +82,13 @@ export default function HotelListing() {
     try {
       const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
       const { Service: { Reviews, ...serviceData }, HotelImages, ...restData } = response.data;
+      setreviews(Reviews);
       console.log(response.data);
       const Hotel = restData;
       const Service = serviceData;
       const HotelData = {
         Service,
         Hotel,
-        Reviews,
         HotelImages
       };
       setData(HotelData);
@@ -106,7 +105,7 @@ export default function HotelListing() {
     getHotel();
   }, []);
 
-  if (loading || data === null) {
+  if (data === null) {
     return <div>Loading...</div>;
   }
 
@@ -150,7 +149,7 @@ export default function HotelListing() {
                     key !== "roomAmenities" && key !== 'HotelId' && key !== 'id' ? (
                       <div className={styles.detailItem} key={key}>
                         <span className={styles.detailLabel}>{key}:</span>
-                        <span className={styles.detailValue}>{value}</span>
+                        <span className={styles.detailValue}> {key == 'rentPerNight' ? "Rs. " : ""}  {value}</span>
                       </div>
                     ) : null
                   ))}
@@ -170,12 +169,12 @@ export default function HotelListing() {
         <div className={styles.reviewsContainer}>
           <div className={styles.testimonial}>
             <h2 className={styles.subHeading}>People's Opinion</h2>
-            <Testimonial data={data.Reviews} />
+            <Testimonial data={reviews} />
           </div>
           <div className={styles.rating}>
             {reviewCount != 0 ? (
               <>
-                <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+                <Rating rating={ratingAverge} />
                 <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
               </>
             ) : null
@@ -186,7 +185,7 @@ export default function HotelListing() {
           </div>
         </div>
       </div>
-      {role == "tourist" && <ReviewForm />}
+     {role == "tourist" <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
     </div >
   );
 }

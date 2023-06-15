@@ -8,8 +8,9 @@ import Button from '../Button/Button';
 import { useSelector } from 'react-redux';
 import axiosInstance from '../../utils/Api';
 
-const ReviewForm = ({ serviceId }) => {
+const ReviewForm = ({ serviceId, setReview }) => {
     const userId = useSelector(state => state.user.id);
+    const username = useSelector(state => state.user.name);
     const [rating, setRating] = useState(0);
     const handleRatingChange = (newRating) => {
         setRating(newRating);
@@ -30,8 +31,19 @@ const ReviewForm = ({ serviceId }) => {
         Object.keys(values).forEach(key => {
             form.change(key, undefined);
             form.resetFieldState(key);
-        });    
+        });
         apiRequest(review);
+
+        const currentDate = new Date().toISOString().split("T")[0];
+        const newReview = {
+            rating: rating,
+            review: values.review,
+            date: currentDate,
+            User: {
+                name: username
+            }
+        };
+        setReview((prevReviews) => [...prevReviews, newReview]);
     };
 
     return (
