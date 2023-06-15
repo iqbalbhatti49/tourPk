@@ -15,10 +15,20 @@ const AddHotelRoom = () => {
   const navigate = useNavigate();
   const aaaaaaa = location.state;
   const userId = useSelector(state => state.user.id); // Id of currently logged in user
+  const searchParams = new URLSearchParams(location.search);
 
+  // Add more rooms logic
+  const isAddRoomsMode = searchParams.get('moreRooms') === '1';
+  const addMoreRooms = (values) => {
+    values.availableRoomsCount = values.roomsCount;
+    values.HotelId = location.state;
+    const roomData = preProcess(values);
+    axiosInstance.post("/hotel/addRoom", roomData);
+    swal("New Room Added to Hotel", "Success! News Room(s) has been added to your hotel successfully.", "success");
+    navigate(-1); // Go back to previous page hotel listing
+  }
 
   // UPDATE Logic *******
-  const searchParams = new URLSearchParams(location.search);
   const isEditMode = searchParams.get('edit') === '1';
   console.log(isEditMode);
   let hotel, room, service;
@@ -101,6 +111,9 @@ const AddHotelRoom = () => {
   // ADD LOGIC **********
 
   const onSubmit = async (values) => {
+    if (isAddRoomsMode) {
+      addMoreRooms(values);
+    }
     values.availableRoomsCount = values.roomsCount;
     const roomData = preProcess(values);
 
