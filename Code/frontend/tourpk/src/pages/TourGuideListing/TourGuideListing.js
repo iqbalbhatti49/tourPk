@@ -134,7 +134,6 @@ export default function TourGuideListing() {
       }
    }, [bookings]);
 
-   // Render the component once the data is available
    if (!data) {
       return <div>Loading...</div>;
    }
@@ -203,7 +202,8 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>Booking Calendar</h2>
                   <div className={styles.calendar}>
-                     <BookingCalendar disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
+                     <BookingCalendar selectRange={false}
+                     disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
                   </div>
                </div>
             </div>

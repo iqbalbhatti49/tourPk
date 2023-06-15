@@ -1,5 +1,4 @@
-
-const { Service, Hotel, HotelImage, Review, Room, BookingHotel, User } = require("../models/");
+const { User, Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 

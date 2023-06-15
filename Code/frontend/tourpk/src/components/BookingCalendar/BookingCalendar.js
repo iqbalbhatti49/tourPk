@@ -1,18 +1,14 @@
 import React from 'react';
 import 'react-calendar/dist/Calendar.css';
-import './BookingCalendar.module.css'; // Custom styling for the calendar
+import './BookingCalendar.module.css';
 import { Calendar } from 'react-calendar';
 
-export const BookingCalendar = ({disabledDates, selectedDate, onDateChange }) => {
-  // const disabledDates = [new Date(2023, 4, 15), new Date(2023, 4, 25)];
-  console.log(disabledDates)
+export const BookingCalendar = ({ disabledDates, selectedDate, onDateChange, selectRange }) => {
+  console.log(disabledDates);
   const isDateDisabled = (date) => {
     if (disabledDates === null || disabledDates === undefined) {
-      return false; // or return true, depending on your requirements
+      return false;
     }
-    // if (date.getDay() === 0 || date.getDay() == 6) {
-    //   return true;
-    // }
     const year = date.getFullYear();
     const month = date.getMonth();
     const day = date.getDate();
@@ -37,8 +33,21 @@ export const BookingCalendar = ({disabledDates, selectedDate, onDateChange }) =>
   };
 
   const handleDateChange = (date) => {
-    onDateChange(date);
+    if (selectRange && Array.isArray(date) && date.length === 2) {
+      const [startDate, endDate] = date;
+      onDateChange({ startDate, endDate });
+    } else {
+      onDateChange(date);
+    }
   };
 
-  return <Calendar selectRange={false} tileDisabled={tileDisabled} onChange={handleDateChange} value={selectedDate} />;
+  return (
+    <Calendar
+      selectRange={selectRange}
+      tileDisabled={tileDisabled}
+      onChange={handleDateChange}
+      minDate	= {new Date()}
+      allowPartialRange	= {true}
+    />
+  );
 };

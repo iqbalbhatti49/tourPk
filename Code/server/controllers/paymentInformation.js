@@ -6,7 +6,6 @@ exports.updatePayment = async (req, res) => {
   try {
     const paymentObj = await PaymentInformation.findOne({ where: { UserId: id } });
     const obj = {
-      paymentMethod: cardInfo.paymentMethod,
       cardNumber: cardInfo.cardNumber,
       expirationMonth: cardInfo.expirationMonth,
       expirationYear: cardInfo.expirationYear,
