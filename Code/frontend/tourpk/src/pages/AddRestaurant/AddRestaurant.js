@@ -101,7 +101,6 @@ const AddRestaurant = () => {
         }
         const service = location.state.values;
         const imagesArray = service.images;
-        delete service.images;
 
         const restaurantData = {
             service: service,

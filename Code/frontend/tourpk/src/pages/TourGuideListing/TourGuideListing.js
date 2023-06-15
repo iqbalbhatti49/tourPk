@@ -3,7 +3,6 @@ import styles from './TourGuideListing.module.css';
 import { Button, Carousel } from '../../components';
 import { Testimonial, BookingCalendar, Rating } from '../../components';
 import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
-import { useLocation } from "react-router";
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -20,6 +19,7 @@ export default function TourGuideListing() {
    const dispatch = useDispatch();
    const userId = useSelector((state) => state.user.id);
    const [selectedDate, setSelectedDate] = useState(null);
+   const [reviews, setreviews] = useState(null);
    const [reviewCount, setreviewCount] = useState(null);
    const [ratingAverge, setratingAverge] = useState(null);
    const [data, setData] = useState(null);
@@ -47,13 +47,13 @@ export default function TourGuideListing() {
       const getTourGuide = async () => {
          const response = await axiosInstance.get(`/TourGuide/getTourGuideById/${id}`);
          const { Service: { Reviews, ...serviceData }, TourGuideImages, ...restData } = response.data;
+         setreviews(Reviews);
          console.log(response.data)
          const TourGuide = restData;
          const Service = serviceData;
          const TourGuideData = {
             Service,
             TourGuide,
-            Reviews,
             TourGuideImages
          };
          setData(TourGuideData);
@@ -180,7 +180,7 @@ export default function TourGuideListing() {
                </div>
                <div>
                   <h2 className={styles.subHeading}>People's Opinion</h2>
-                  <Testimonial data={data.Reviews} />
+                  <Testimonial data={reviews} />
                   <div className={styles.booking}>
                      <p>Select a date from the given calender to book me and click the button below.</p>
                      <Button btnType="submit" value="Book Now" handleClick={handleClick} />
@@ -189,7 +189,10 @@ export default function TourGuideListing() {
             </div>
             <div>
                {reviewCount != 0 ? (
-                  <Rating rating={ratingAverge ? ratingAverge : 4.5} />
+                  <>
+                     <Rating rating={ratingAverge} />
+                     <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
+                  </>
                ) : null
                }
                <div>
@@ -203,12 +206,12 @@ export default function TourGuideListing() {
                   <h2 className={styles.subHeading}>Booking Calendar</h2>
                   <div className={styles.calendar}>
                      <BookingCalendar selectRange={false}
-                     disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
+                        disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
                   </div>
                </div>
             </div>
          </div>
-         <ReviewForm serviceId={data.Service.id} />
+         <ReviewForm serviceId={data.Service.id} setReview={setreviews} />
       </div>
    );
 }

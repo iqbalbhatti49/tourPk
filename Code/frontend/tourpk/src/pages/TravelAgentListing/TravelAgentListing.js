@@ -24,8 +24,9 @@ export default function TravelAgentListing() {
    const { id } = useParams();
    const [data, setData] = useState(null);
    const userId = useSelector((state) => state.user.id);
-   const [reviewCount, setreviewCount] = useState(5);
-   const [ratingAverge, setratingAverge] = useState(4.5);
+   const [reviews, setreviews] = useState(null);
+   const [reviewCount, setreviewCount] = useState(null);
+   const [ratingAverge, setratingAverge] = useState(null);
    const [loading, setLoading] = useState(true);
    const [selectedDate, setSelectedDate] = useState(null);
    const handleDateChange = (date) => {
@@ -93,19 +94,18 @@ export default function TravelAgentListing() {
       try {
          const response = await axiosInstance.get(`/travelagent/getTravelAgentById/${id}`);
          const { Service: { Reviews, ...serviceData }, TravelAgentImages, ...restData } = response.data;
+         setreviews(Reviews);
          const TravelAgent = restData;
          const Service = serviceData;
          const TravelAgentData = {
             Service,
             TravelAgent,
-            Reviews,
             TravelAgentImages
          };
          setData(TravelAgentData);
          const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
          setratingAverge(ratingAvg);
          setreviewCount(reviewsCount);
-         setLoading(false);
 
       } catch (error) {
          setLoading(false);
@@ -117,7 +117,7 @@ export default function TravelAgentListing() {
       // console.log(location.state);
    }, []);
 
-   if (loading) {
+   if (!data) {
       return <div>Loading...</div>;
    }
 
@@ -187,7 +187,7 @@ export default function TravelAgentListing() {
                </div>
                <div>
                   <h2 className={styles.subHeading}>People's Opinion</h2>
-                  <Testimonial data={data.Reviews} />
+                  <Testimonial data={reviews} />
                </div>
             </div>
             <div>
@@ -239,7 +239,7 @@ export default function TravelAgentListing() {
                </FormFinal>
             </div>
          </div>
-         <ReviewForm serviceId={2} />
+         <ReviewForm serviceId={data.Service.id} setReview={setreviews} />
       </div>
 
 

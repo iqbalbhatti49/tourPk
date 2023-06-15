@@ -5,7 +5,7 @@ const Sequelize = require('sequelize');
 exports.addRestaurant = async (req, res) => {
     const service = req.body.service;
     const restaurant = req.body.restaurant;
-    const images = req.body.images;
+    const images = req.body.service.images;
     const serviceObj = await Service.create(service);
     restaurant.ServiceId = serviceObj.id;
     const restaurantObj = await Restaurant.create(restaurant);

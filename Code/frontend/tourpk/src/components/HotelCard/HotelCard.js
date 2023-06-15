@@ -14,14 +14,12 @@ export const HotelCard = (props) => {
       const name = data.Service.name;
       const address = data.Service.address;
       const price = (type === "TravelAgent") ? data.packagePrice :
-         (type === "Hotel") ? "Rs. 5000" :
-            (type === "TourGuide") ? data.perDayRate : "";
+         (type === "TourGuide") ? data.perDayRate : "";
       const imgesKey = type + "Images"; //key of corresponding images object
       const reviews = data.Service.Reviews;
       const { reviewsCount, ratingAvg } = getReviewsStats(reviews);
       let img = data[imgesKey][0];
       const { imageUrl } = img;
-      console.log(data);
 
       return (
          <Card>
@@ -33,7 +31,8 @@ export const HotelCard = (props) => {
                      <IconLocation />
                      <p className={styles.place}>{address}</p>
                   </div>
-                  {type === "Restaurant" ? null : <p className={styles.place}>Rs. {price}</p>}
+                  {type === "Restaurant" || type === "Hotel" ? null : <p className={styles.place}>Rs. {price}</p>}
+                  {type === "Hotel" ? <p className={styles.place}> Click to view prices </p> : null}
                   <div className={styles.stats}>
                      <div className={styles.rating}>
                         <p>{ratingAvg}</p>
