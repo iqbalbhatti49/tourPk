@@ -1,0 +1,47 @@
+.container {
+    padding: 2vh 7vw;
+  }
+  
+  .container h1 {
+    font-size: 2.3rem;
+  }
+  
+  .header {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    padding-block: 50px;
+  }
+  
+  .subHeading {
+    line-height: 10px;
+    text-transform: uppercase;
+    color: var(--primaryColor);
+    font-weight: 800;
+  }
+  
+  .flex {
+    width: 100%;
+  }
+  
+  .serviceType {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .searchInfo{
+    display: flex;
+    flex: 0.7;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;    
+    border: 2px solid #ccc;
+    border-radius: 30px;
+    padding: 15px 35px 0px 35px;
+    margin: 10px;
+
+  }

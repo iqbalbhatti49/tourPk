@@ -29,3 +29,4 @@ export { default as ServiceProviderHome } from "./ServiceProviderHome/ServicePro
 export { default as PaymentInformation } from "./PaymentInformation/PaymentInformation"
 export { default as TravelAgentListing } from "./TravelAgentListing/TravelAgentListing";
 export { default as EmailVerification } from "./EmailVerification/EmailVerification"
+export { default as Search } from "./Search/Search";

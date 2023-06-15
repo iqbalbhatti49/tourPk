@@ -6,7 +6,7 @@ import {
   redirect
 } from "react-router-dom";
 import { useEffect } from "react";
-import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, HotelListing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome, TravelAgentListing, EmailVerification } from "./pages/index";
+import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, HotelListing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome, TravelAgentListing, EmailVerification, Search } from "./pages/index";
 import AddTravelAgent from "./pages/AddTravelAgent/AddTravelAgent";
 
 function App() {
@@ -80,6 +80,7 @@ function App() {
       <Route path="/serviceProvider" element={<ServiceProviderHome />} ></Route>
       <Route path="/paymentInformation" element={<PaymentInformation />} ></Route>
       <Route path="/verifyEmail" element={<EmailVerification />} ></Route>
+      <Route path="/search" element={<Search />} ></Route>
     </Routes>
   );
 };

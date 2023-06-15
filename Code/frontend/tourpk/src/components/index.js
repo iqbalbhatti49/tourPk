@@ -1,6 +1,7 @@
 export { NavBar } from "./NavBar/NavBar";
 export { default as HorizontalScroll } from "./HorizontalScroller/HorizontalScroller";
 export { Footer } from "./Footer/Footer";
+// export { Filters } from "./Filters/Filters";
 export { default as Button } from './Button/Button';
 export { default as ServiceSection } from './ServiceSection/ServiceSection';
 export { default as PackageInformation } from './PackageInformation/PackageInformation';

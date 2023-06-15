@@ -39,6 +39,7 @@ export const Footer = () => {
                      <Link className={styles.navLink} to="/spotListing">Spot Listing</Link>
                      <Link className={styles.navLink} to="/travelAgentListing/:id">Travel Agent Listing</Link>
                      <Link className={styles.navLink} to={isLoggedIn ? "/checkout" : "/login"}>Checkout</Link>
+                     <Link className={styles.navLink} to="/search">Search</Link>
                   </div>
                </div>
             </div>
