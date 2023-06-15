@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { addHotelBooking } from '../../app/features/bookings/bookingsSlice'; 
+import { addHotelBooking } from '../../app/features/bookings/bookingsSlice';
 
 export default function HotelListing() {
   const navigate = useNavigate();
@@ -20,7 +20,36 @@ export default function HotelListing() {
   const [reviewCount, setreviewCount] = useState(0);
   const [ratingAverge, setratingAverge] = useState(null);
   const [loading, setLoading] = useState(true);
-  
+
+
+  const addRoom = async () => {
+    setLoading(true);
+    const hotelId = data.Hotel.id;
+    navigate("/AddHotelRoom?moreRooms=1", { state: hotelId });
+
+    // Wait for the new room to be added, then fetch the updated hotel data
+    try {
+      const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
+      const { Service: { Reviews, ...serviceData }, HotelImages, ...restData } = response.data;
+      const Hotel = restData;
+      const Service = serviceData;
+      const HotelData = {
+        Service,
+        Hotel,
+        Reviews,
+        HotelImages
+      };
+      setData(HotelData);
+      const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
+      setratingAverge(ratingAvg);
+      setreviewCount(reviewsCount);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+    }
+  };
+
+
   const handleDelete = () => {
     swal({
       title: 'Are you sure?',
@@ -54,6 +83,7 @@ export default function HotelListing() {
     try {
       const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
       const { Service: { Reviews, ...serviceData }, HotelImages, ...restData } = response.data;
+      console.log(response.data);
       const Hotel = restData;
       const Service = serviceData;
       const HotelData = {
@@ -126,17 +156,18 @@ export default function HotelListing() {
                   ))}
                 </div>
                 <div>
-                <h2 className={styles.headingListing}>Room Ameneties</h2>
+                  <h2 className={styles.headingListing}>Room Ameneties</h2>
                   {room.roomAmenities}
                 </div>
               </div>
-              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} roomCount={room["roomsCount"]}  hotelName={data.Service.name} hotelId = {room["HotelId"]} roomId={room["id"]} price= {room["rentPerNight"]} />
+              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} roomCount={room["roomsCount"]}  hotelName={data.Service.name} hotelId={room["HotelId"]} roomId={room["id"]} price={room["rentPerNight"]} />
             </div>
           );
         })}
 
       </div>
       <div>
+        <Button value="Add More Rooms" btnType="button" handleClick={addRoom} />
         <div className={styles.reviewsContainer}>
           <div className={styles.testimonial}>
             <h2 className={styles.subHeading}>People's Opinion</h2>

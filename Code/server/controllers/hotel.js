@@ -1,9 +1,7 @@
-
 const { User, Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
 const {scheduleDeleteBooking} = require("../scheduler")
 
 exports.addHotel = async (req, res) => {
-    // TODO: IMPORTANT  modifiy capacity to ->> capacity = capacity + "persons" (string)
     console.log("*********----START--", req.body, "----END----***********");
 
     const service = req.body.service;
@@ -27,48 +25,6 @@ exports.addHotel = async (req, res) => {
     const roomObj = await Room.create(room); //4. add in room table
     res.status(200).json(roomObj.dataValues.id);
 }
-
-exports.updatehotel = async (req, res) => {
-    console.log(req.body);
-    const { service, hotel } = req.body; // Destructure the objects from the request body
-
-    const servicDta = {
-        name: service.name,
-        description: service.description,
-        email: service.email,
-        website: service.website,
-        phone: service.phone,
-        city: service.city,
-        province: service.province,
-        address: service.address,
-    }
-
-    try {
-        const updatedService = await Service.update(servicDta, {
-            where: { id: service.id }
-        });
-
-        const updatedhotel = await hotel.update(hotel, {
-            where: { id: service.serviceId }
-        });
-
-        // Assuming you have a separate hotelImage model/table
-        /*
-         const hotelImages = images.map((image) => ({
-           imageUrl: image.imageUrl,
-           hotelId: hotel.id
-         }));
-     
-         await hotelImage.bulkCreate(hotelImages, {
-           updateOnDuplicate: ['imageUrl'] // Update the image URL if already exists
-         });
-         */
-        res.status(200).json(service.serviceId);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Failed to update tour guide' });
-    }
-};
 
 exports.getHotelById = async (req, res) => {
     const id = req.params.id;
@@ -202,8 +158,10 @@ exports.addBooking = async (req, res) => {
     else
     scheduleDeleteBooking(newBooking.id, endDate);
 
+    // Respond with the created booking and associated data
     res.status(201).json({
       newBooking,
+    //   user,
       hotel,
       room
     });
@@ -212,43 +170,3 @@ exports.addBooking = async (req, res) => {
     res.status(500).json({ error: 'Failed to add booking' });
   }
 };
-exports.getBookingsByIds = async (req, res) => {
-    try {
-      const { hotelId, roomId } = req.query;
-      console.log(req.query);
-      const bookings = await BookingHotel.findAll({
-        where: {
-          HotelId: hotelId,
-          RoomId: roomId
-        }
-      });
-  
-      res.status(200).json({
-        bookings
-      });
-    } catch (error) {
-      console.error('Error retrieving bookings:', error);
-      res.status(500).json({ error: 'Failed to retrieve bookings' });
-    }
-  };
-  
-  exports.deleteBookingById = async (req, res) => {
-    try {
-        console.log(req.body)
-      const bookingId = req.body.bookingId; // Accessing booking ID from req.body
-      const deletedBookings = await BookingHotel.destroy({
-        where: {
-          id: bookingId
-        }
-      });
-  
-      res.status(200).json({
-        deletedBookings
-      });
-    } catch (error) {
-      console.error('Error deleting bookings:', error);
-      res.status(500).json({ error: 'Failed to delete bookings' });
-    }
-  };
-  
-  

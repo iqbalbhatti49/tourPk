@@ -4,9 +4,9 @@ const Sequelize = require('sequelize');
 
 exports.addTravelAgentPackage = async (req, res) => {
     //extract 3 objects each to add in services, travelAgent and TravelAgentImage table respectively
-    const service = req.body.service.values;
+    const service = req.body.service;
     const travelAgent = req.body.travelAgent;
-    const images = req.body.service.values.images;
+    const images = req.body.service.images;
     console.log("---> ", service, "---> ", travelAgent, "---> ", images);
     const serviceObj = await Service.create(service);
     travelAgent.ServiceId = serviceObj.id;
