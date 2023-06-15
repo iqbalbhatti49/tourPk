@@ -3,7 +3,7 @@ const router = express.Router();
 const authenticateMiddleware = require("../middleware/auth.js");
 const { addReview, getReviewsById } = require("../controllers/review.js");
 
-router.post("/addReview", authenticateMiddleware, addReview);
-router.get("/getReviewsByServiceId/:id", authenticateMiddleware, getReviewsById);
+router.post("/addReview", addReview);
+router.get("/getReviewsByServiceId/:id", getReviewsById);
 
 module.exports = router;

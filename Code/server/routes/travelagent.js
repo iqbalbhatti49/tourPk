@@ -3,7 +3,7 @@ const router = express.Router();
 const authenticateMiddleware = require("../middleware/auth.js");
 const { addTravelAgentPackage, getAllTravelAgents, getTravelAgentById, deleteTourPackage, addBooking, updatetravelagent } = require("../controllers/travelagent.js");
 
-router.post("/addTravelAgentPackage", authenticateMiddleware, addTravelAgentPackage);
+router.post("/addTravelAgentPackage", addTravelAgentPackage);
 router.get("/getTravelAgents", getAllTravelAgents);
 router.get("/getTravelAgentById/:id", getTravelAgentById);
 router.post("/deleteTourPackage/", deleteTourPackage);
