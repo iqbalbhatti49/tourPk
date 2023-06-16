@@ -45,6 +45,84 @@ exports.getServicesByUserId = async (req, res) => {
 }
 
 
+
+
+
+exports.getAllServicesByCitiesDivision = async (req, res) => {
+    try {
+        const services = await Service.findAll({
+            include: [
+                {
+                    model: Review,
+                    include: [
+                        {
+                            model: User,
+                        },
+                    ],
+                },
+                {
+                    model: Restaurant,
+                    include: [
+                        {
+                            model: RestaurantImage,
+                        },
+                    ],
+                },
+                {
+                    model: TourGuide,
+                    include: [
+                        {
+                            model: TourGuideImage,
+                        },
+                    ],
+                },
+                {
+                    model: TravelAgent,
+                    include: [
+                        {
+                            model: TravelAgentImage,
+                        },
+                    ],
+                },
+                {
+                    model: Hotel,
+                    include: [
+                        {
+                            model: HotelImage,
+                        },
+                        {
+                            model: Room,
+                        },
+                    ],
+                },
+            ],
+        });
+
+        const servicesByCitiesDivision = {};
+        services.forEach((service) => {
+            const { city, province } = service;
+            const division = `${city}, ${province}`;
+
+            if (!servicesByCitiesDivision[division]) {
+                servicesByCitiesDivision[division] = [];
+            }
+            servicesByCitiesDivision[division].push(service);
+        });
+
+        res.json(servicesByCitiesDivision);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
+
+
+
+
+
+
+
 exports.getBookingsByUserId = async (req, res) => {
     const id = req.params.id;
     const tourguideBookings = await BookingTourGuide.findAll({
@@ -122,3 +200,19 @@ exports.getBookingsByUserId = async (req, res) => {
     }
     res.json(bookings);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

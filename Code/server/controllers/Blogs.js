@@ -26,6 +26,8 @@ exports.showBlogById = async (req, res) => {
 exports.createBlogPost = async (req, res) => {
     const blogPost = req.body;
     console.log("--- ", blogPost, "--------------");
+    let rootPath = "../static/images/upload/";
+    blogPost.image = rootPath + blogPost.image;
     const resp = await BlogPost.create(blogPost);
     res.status(200).json(resp);
 }
@@ -65,7 +67,9 @@ exports.showRandomBlogs = async (req, res) => {
 
 exports.updateBlogPost = async (req, res) => {
     const id = req.params.id;
-    const blog = req.body;
+    let blog = req.body;
+    let rootPath = "../static/images/upload/";
+    blog.image = rootPath + blog.image;
     await BlogPost.update(blog, { where: { id } });
     res.json(id);
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styles from "./AddBlog.module.css";
@@ -10,6 +10,12 @@ import axiosInstance from "../../utils/Api";
 
 const AddBlog = () => {
     let { state } = useLocation();
+    console.log(state, "---------------------");
+    const [isEditMode, setisEditMode] = useState(false);
+    useEffect(() => {
+        state ? setisEditMode(true) : null;
+    }, [])
+
     const [value, setValue] = useState(state?.postText || "");
     const [title, setTitle] = useState(state?.title || "");
     const [file, setFile] = useState(null);
@@ -35,19 +41,25 @@ const AddBlog = () => {
 
     const addOrUpdate = async (blog) => {
         const resultAction = await dispatch(state ? updateBlog({ ...blog, id: state.id }) : addBlog(blog));
-        const addedBlogId = resultAction.payload.id;
+        const addedBlogId = !isEditMode ? resultAction.payload.id : state.id;
         navigate(`/Blog/${addedBlogId}`);
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log("--> ", state);
-        const imgUrl = state == null ? await upload(event) : state.image;
+        let imggg, imgUrl;
+        if (isEditMode && !file)
+            imggg = state.image;
+        else
+            imgUrl = await upload(event);
+        console.log(imggg, "-update wli");
+        console.log(imgUrl, "uploafdd wli-----");
         const blog = {
             title: title,
             postText: value,
             category,
-            image: file ? imgUrl : "1685279246102blogDummy.jpeg",
+            image: imggg ? imggg : imgUrl,
             UserId: userId
         };
         addOrUpdate(blog);

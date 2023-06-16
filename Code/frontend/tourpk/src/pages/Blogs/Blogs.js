@@ -9,7 +9,8 @@ const Blogs = () => {
     const dispatch = useDispatch();
     const blogCategories = useSelector((state) => state.blogs.blogCategories);
     useEffect(() => {
-        dispatch(fetchBlogs());
+        const s = dispatch(fetchBlogs());
+        console.log(s.payload);
     }, [dispatch]);
 
     return (

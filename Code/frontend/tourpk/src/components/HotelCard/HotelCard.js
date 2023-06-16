@@ -8,8 +8,6 @@ import { getReviewsStats } from '../../utils/FindReviewStats';
 export const HotelCard = (props) => {
    const { data, type } = props;
 
-   // TODO: do below.. schema changed,..
-   // TODO: type=Hotel -> hardcoded... get price from Room table..  OR "get starting prices of rent in a particular hotel..."
    if (type) {
       const name = data.Service.name;
       const address = data.Service.address;
@@ -32,7 +30,6 @@ export const HotelCard = (props) => {
                      <p className={styles.place}>{address}</p>
                   </div>
                   {type === "Restaurant" || type === "Hotel" ? null : <p className={styles.place}>Rs. {price}</p>}
-                  {type === "Hotel" ? <p className={styles.place}> Click to view prices </p> : null}
                   <div className={styles.stats}>
                      <div className={styles.rating}>
                         <p>{ratingAvg}</p>
