@@ -128,7 +128,7 @@ const Services = () => {
                   <div className={styles.tabCards}>
                      {tourGuides.map((item, index) => {
                         return (
-                           <Link to={`tourGuideListing/${item.id}`}>
+                           <Link to={`/tourGuideListing/${item.id}`}>
                               <HotelCard
                                  key={index}
                                  data={item}

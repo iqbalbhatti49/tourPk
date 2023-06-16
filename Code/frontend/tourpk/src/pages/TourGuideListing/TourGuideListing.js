@@ -14,6 +14,7 @@ import { IconEdit, IconDelete } from "../../components/index";
 
 export default function TourGuideListing() {
    const currentUser = useSelector(state => state.user.id);
+   const role = useSelector((state) => state.user.role);
    const discount = useSelector(state => state.pricing.discount);
    const { id } = useParams();
    const dispatch = useDispatch();
@@ -23,12 +24,11 @@ export default function TourGuideListing() {
    const [reviewCount, setreviewCount] = useState(null);
    const [ratingAverge, setratingAverge] = useState(null);
    const [data, setData] = useState(null);
-   const bookingState = useSelector((state) => state.bookings.bookingStatus);
+   const [validRange,setValidRange] = useState(true) 
    const [bookings, setBookings] = useState(null);
    const [disabledDatesArr, setDisabledDates] = useState(null);
    const navigate = useNavigate();
 
-   // RESOLVED CONFLICT =---> your code kept there:
    const fetchTourGuideBookings = async () => {
       try {
          const response = await fetch(`/tourguide/getAllBookings/${id}`);
@@ -181,10 +181,11 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>People's Opinion</h2>
                   <Testimonial data={reviews} />
-                  <div className={styles.booking}>
+                  {role == "tourist" && <div className={styles.booking}> }
+
                      <p>Select a date from the given calender to book me and click the button below.</p>
                      <Button btnType="submit" value="Book Now" handleClick={handleClick} />
-                  </div>
+                  </div>}
                </div>
             </div>
             <div>
@@ -205,13 +206,20 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>Booking Calendar</h2>
                   <div className={styles.calendar}>
-                     <BookingCalendar selectRange={false}
-                        disabledDates={disabledDatesArr} selectedDate={selectedDate} onDateChange={handleDateChange} />
+
+                     <BookingCalendar 
+                        selectRange={false}
+                        setValidRange = {setValidRange}
+                        disabledDates={disabledDatesArr} 
+                        selectedDate={selectedDate} 
+                        onDateChange={handleDateChange} 
+                     />
                   </div>
                </div>
             </div>
          </div>
-         <ReviewForm serviceId={data.Service.id} setReview={setreviews} />
+           {role == "tourist" &&  <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
+
       </div>
    );
 }

@@ -12,6 +12,18 @@ export const validatePhone = (value) => {
   return !validator.isMobilePhone(value, 'en-PK') ? 'Please enter a valid phone number' : '';
 };
 
+export const validatePhoneWithCode = (value) => {
+  if (!value) {
+    return 'Required';
+  }
+
+  if (!value.startsWith('+92')) {
+    return 'Phone number must start with +92';
+  }
+
+  return !validator.isMobilePhone(value, 'en-PK') ? 'Please enter a valid phone number' : '';
+};
+
 export const validateEmail = (value) => {
   if (!value) {
     return 'Required';
@@ -100,22 +112,35 @@ export const validateExpirationDate = (value) => {
   }
 };
 export const validateExpirationMonth = (value) => {
-  const monthRegex = /^(0[1-9]|1[0-2])$/; // regular expression to match valid month format
-  return monthRegex.test(value); // return true if valid format, false otherwise
+  const month = parseInt(value); // Convert the value to an integer
+  console.log(month)
+  if (month < 1 || month > 12) {
+    return true; // Return false if the value is not a valid integer between 1 and 12
+  }
+  
+  return false; // Return true if the value is a valid month
 }
+
+
+
 export const validateExpirationYear = (value) => {
-  const yearRegex = /^20[2-9][0-9]$|^30[0-9][0-9]$/; // regular expression to match valid year format
-  return yearRegex.test(value);
+  const yearRegex = /^(20[2-9][0-9]|30[0-9][0-9])$/; // regular expression to match valid year format (2020-2099 or 3000-3099)
   const currentYear = new Date().getFullYear().toString().substring(2); // get last 2 digits of current year
+  
+  if (!yearRegex.test(value)) {
+    // If the value doesn't match the valid year format, return false
+    return false;
+  }
+
   if (value.length === 2) {
-    // if year is in 2-digit format, add current century to compare with current year
+    // If the year is in 2-digit format, add the current century to compare with the current year
     const expYearWithCentury = parseInt("20" + value);
     const currentYearWithCentury = parseInt("20" + currentYear);
-    return expYearWithCentury >= currentYearWithCentury; // return true if year is greater than or equal to current year
+    return expYearWithCentury >= currentYearWithCentury; // Return true if the year is greater than or equal to the current year
   } else {
-    // if year is in 4-digit format, compare with current year
+    // If the year is in 4-digit format, compare with the current year
     const expYearNum = parseInt(value);
     const currentYearNum = parseInt(currentYear);
-    return expYearNum >= currentYearNum; // return true if year is greater than or equal to current year
+    return expYearNum >= currentYearNum; // Return true if the year is greater than or equal to the current year
   }
 }

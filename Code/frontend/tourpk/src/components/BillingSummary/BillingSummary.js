@@ -72,9 +72,11 @@ export const BillingSummary = () => {
       form.reset();
       form.change("OrderComment", undefined);
       form.resetFieldState("OrderComment");
-      swal({
+      if(paymentResult)
+      {
+         swal({
          title: 'Result',
-         text: paymentResult,
+         text: "payment successful",
          icon: 'success',
          buttons: {
            confirm: true,
@@ -98,6 +100,18 @@ export const BillingSummary = () => {
            navigate("/");
          }
        });
+      }
+      else
+      {
+         swal({
+            title: 'Result',
+            text: "Payment Failed",
+            icon: 'error',
+            buttons: {
+              confirm: true,
+            },
+          });
+      }
        
    }
 

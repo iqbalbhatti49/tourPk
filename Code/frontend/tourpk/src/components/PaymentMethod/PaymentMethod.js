@@ -96,10 +96,10 @@ export const PaymentMethod = () => {
                      <fieldset disabled={submitted && "disabled"}>
                      <div className={styles.row}>
                         <FormField name="expirationMonth" label="Expiration Month" type="text" placeholder="MM" value={cardInfo.cardExpirationMonth}
-                           //validate={validateExpirationMonth}
+                           validate={validateExpirationMonth}
                            renderIcon={() => null} labelClass="showLabel" theme="light" />
                         <FormField name="expirationYear" label="Expiration Year" type="text" placeholder="YYYY" value={cardInfo.cardExpirationYear}
-                           //  validate={validateExpirationYear}
+                            validate={validateExpirationYear}
                            renderIcon={() => null} labelClass="showLabel" theme="light" />
                      </div>
                      <FormField name="cardNumber" label="Card Number" type="text" placeholder="1234 5678 9012 3456" value={cardInfo.cardNumber} validate={validateCreditCard} renderIcon={() => null} labelClass="showLabel" theme="light" />
