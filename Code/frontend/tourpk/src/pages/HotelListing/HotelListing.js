@@ -159,7 +159,7 @@ export default function HotelListing() {
                   {room.roomAmenities}
                 </div>
               </div>
-              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} roomCount={room["roomsCount"]}  hotelName={data.Service.name} hotelId={room["HotelId"]} roomId={room["id"]} price={room["rentPerNight"]} />
+              <HotelBooking imgSrc={data.HotelImages[0].imageUrl} roomCount={room["roomsCount"]} hotelName={data.Service.name} hotelId={room["HotelId"]} roomId={room["id"]} price={room["rentPerNight"]} />
             </div>
           );
         })}
@@ -185,7 +185,7 @@ export default function HotelListing() {
           </div>
         </div>
       </div>
-     {role == "tourist" <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
+      {role == "tourist" && (<><ReviewForm serviceId={data.Service.id} setReview={setreviews} /></>)}
     </div >
   );
 }

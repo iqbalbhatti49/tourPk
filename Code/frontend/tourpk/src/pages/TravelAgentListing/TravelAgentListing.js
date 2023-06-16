@@ -25,7 +25,7 @@ export default function TravelAgentListing() {
    const [data, setData] = useState(null);
    const userId = useSelector((state) => state.user.id);
    const role = useSelector((state) => state.user.role);
-   const [validRange,setValidRange] = useState(true);
+   const [validRange, setValidRange] = useState(true);
    const [reviews, setreviews] = useState(null);
    const [reviewCount, setreviewCount] = useState(null);
    const [ratingAverge, setratingAverge] = useState(null);
@@ -218,9 +218,9 @@ export default function TravelAgentListing() {
                   <h2 className={styles.subHeading}>Booking Calender</h2>
                   <div className={styles.calender}>
                      <BookingCalendar
-                        selectRange={false} 
-                        setValidRange = {setValidRange}
-                        selectedDate={selectedDate} 
+                        selectRange={false}
+                        setValidRange={setValidRange}
+                        selectedDate={selectedDate}
                         onDateChange={handleDateChange}
                      />
                   </div>
@@ -246,8 +246,7 @@ export default function TravelAgentListing() {
                   )}
                </FormFinal>
             </div>
-         </div>
-         {role == "tourist" &&    <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
+            {role == "tourist" && <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
          </div>}
       </div>
    );
