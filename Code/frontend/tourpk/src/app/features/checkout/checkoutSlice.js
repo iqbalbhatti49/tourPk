@@ -21,7 +21,7 @@ const initialState = {
   },
   status: 'idle',
   error: "",
-  paymentResult: "",
+  paymentResult: true,
   totalAmount: 0,
 };
 

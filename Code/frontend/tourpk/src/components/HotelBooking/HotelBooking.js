@@ -48,14 +48,15 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
         Object.entries(bookingsCountByDate).forEach(([date, count]) => {
           console.log(count,roomCount)
           console.log(date,count)
-          if (count == roomCount ) { // Compare with roomCount + 1
+          if (count >= roomCount ) { // Compare with roomCount + 1
             const disabledDate = new Date(date);
-          disabledDate.setDate(disabledDate.getDate() + 1); // Subtract one day to disable the start date
+          disabledDate.setDate(disabledDate.getDate());
+          console.log("disabled ", disabledDate)
           disabledDates.push(disabledDate);
           }
         });
-        console.log(disabledDates)
-        console.log(bookingsCountByDate)
+        console.log("disabled dates" , disabledDates)
+        console.log("count", bookingsCountByDate)
         setDisabledDates(disabledDates);
       } catch (error) {
         console.log('Error:', error);
@@ -106,7 +107,7 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
     }
     dispatch(clearCart());
     let numberOfDays = 0;
-    console.log(selectedDate)
+    // console.log(selectedDate)
     if (selectedDate.endDate != null) {
       const startDate = new Date(selectedDate.startDate);
       const endDate = new Date(selectedDate.endDate);
@@ -125,8 +126,7 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
         numberOfDays = 1; 
       }
     } 
-
-console.log(numberOfDays);
+    console.log(numberOfDays);
 
     const pricing = numberOfDays * price;
     const newItem = {

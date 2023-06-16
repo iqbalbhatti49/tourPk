@@ -5,7 +5,8 @@ export const Lahore = [
       picture: 'https://static.wixstatic.com/media/a27d24_0760cdfc7ced474490683464d9db06f5~mv2_d_2934_1956_s_2.jpg/v1/fill/w_1480,h_986,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a27d24_0760cdfc7ced474490683464d9db06f5~mv2_d_2934_1956_s_2.jpg',
       tagline: 'Historical landmark in Lahore display of Mughal architecture',
       rating: 4.5,
-      reviews: 300
+      reviews: 300,
+      Description: "Lahore Fort is a historical landmark located in Lahore, the cultural capital of Pakistan. It is known for its impressive display of Mughal architecture. The fort complex includes various structures, such as palaces, gardens, and mosques, representing the grandeur of the Mughal era."
    },
    {
       name: 'Shalimar Gardens',
@@ -14,7 +15,8 @@ export const Lahore = [
       picture: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/39/ae/f2/the-shalimar-gardens.jpg?w=1200&h=-1&s=1',
       tagline: 'A paradise on earth, built by Emperor Jahangir for Nur Jahan',
       rating: 4.0,
-      reviews: 200
+      reviews: 200,
+      Description: "Shalimar Gardens is a beautiful garden complex situated in Lahore, Pakistan. It was built by Emperor Jahangir for his wife Nur Jahan and is often referred to as a paradise on earth. The gardens feature stunning terraces, fountains, pools, and vibrant flower beds, offering a serene and picturesque setting."
    },
    {
       name: 'Badshahi Mosque',
@@ -22,7 +24,8 @@ export const Lahore = [
       picture: 'https://c1.wallpaperflare.com/preview/455/433/186/lahore-lhr-badshahi-mosque-badshahi-mosque-lahore.jpg',
       tagline: 'A marvel of Mughal architecture, built by Aurangzeb',
       rating: 4.5,
-      reviews: 300
+      reviews: 300,
+      Description: "Badshahi Mosque is a magnificent mosque located in Lahore, Pakistan. Constructed by Emperor Aurangzeb, it is an architectural marvel of the Mughal era. The mosques grandeur is characterized by its vast courtyard, towering minarets, and intricately designed domes, attracting visitors from all over the world."
    },
    {
       name: 'Tomb of Jahangir',
@@ -30,7 +33,8 @@ export const Lahore = [
       picture: 'https://tourism.punjab.gov.pk/system/files/styles/dp_internal_fi/private/4_8_0.jpg?itok=eOp41EaS',
       tagline: 'A testament to the greatness of Jahangir',
       rating: 3.5,
-      reviews: 150
+      reviews: 150,
+      Description: "The Tomb of Jahangir is a mausoleum situated in Lahore, Pakistan. It is the final resting place of Emperor Jahangir, one of the greatest Mughal emperors. The tombs architecture reflects the artistic finesse of the Mughal era, with beautifully carved marble and intricate detailing."
    },
    {
       name: 'Wazir Khan Mosque',
@@ -38,7 +42,8 @@ export const Lahore = [
       picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Wazir_Khan_Mosque_by_Moiz.jpg/1024px-Wazir_Khan_Mosque_by_Moiz.jpg',
       tagline: 'A masterpiece of tile work, 17th-century mosque',
       rating: 4.0,
-      reviews: 200
+      reviews: 200,
+      Description: "Wazir Khan Mosque is a renowned 17th-century mosque located in Lahore, Pakistan. It is celebrated for its exquisite tile work and intricate frescoes. The mosques stunning architecture, vibrant colors, and ornate decorations make it a masterpiece of Mughal-era craftsmanship."
    },
    {
       name: 'Data Darbar',
@@ -46,7 +51,8 @@ export const Lahore = [
       picture: 'https://guidetopakistan.pk/wp-content/uploads/2022/03/daa-darbar-img1.jpg',
       tagline: 'The shrine of the famous Sufi saint Hazrat Ali Hujwiri',
       rating: 4.5,
-      reviews: 300
+      reviews: 300,
+      Description: "Data Darbar is a famous Sufi shrine located in Lahore, Pakistan. It is the resting place of Hazrat Ali Hujwiri, a revered Sufi saint. The shrine holds spiritual significance and is visited by devotees seeking blessings and spiritual solace."
    },
    {
       name: 'Lahore Museum',
@@ -54,7 +60,8 @@ export const Lahore = [
       picture: 'https://lh3.googleusercontent.com/ci/AJFM8ry5j_H9k_LjKmiSpfNUW-pwh_hkovQLIJOgPEzI48zLl0KJgFp3PTxoiiWvUEv3ztB6sqPnoA=s1200',
       tagline: 'Largest museum in Pakistan, featuring art, and archaeology',
       rating: 4.0,
-      reviews: 200
+      reviews: 200,
+      Description: "Lahore Museum is the largest museum in Pakistan, situated in Lahore. It houses an extensive collection of artifacts, artworks, and archaeological treasures representing the rich cultural heritage of the region. The museum offers insights into Pakistans history, art, and archaeology."
    },
    {
       name: 'Minar-e-Pakistan',
@@ -62,7 +69,8 @@ export const Lahore = [
       picture: 'https://images.prismic.io/manaky-test/ceab425f-4051-4e48-8954-57a085a3e9dd_lahore-2299773_1920.jpg?auto=compress,format',
       tagline: 'A monument commemorating the Lahore Resolution',
       rating: 4.5,
-      reviews: 300
+      reviews: 300,
+      Description: "Minar-e-Pakistan is a towering monument located in Lahore, Pakistan. It commemorates the Lahore Resolution, a significant milestone in the country's struggle for independence. The monument's unique design and panoramic views from the top attract visitors, serving as a symbol of national pride."
    },
    {
       name: 'Lahore Zoo',
@@ -70,7 +78,8 @@ export const Lahore = [
       picture: 'https://www.eticketing.pk/seatingplans/venue_17.jpg',
       tagline: 'One of the oldest zoos in the world, featuring various animals',
       rating: 3.5,
-      reviews: 150
+      reviews: 150,
+      Description: "Lahore Zoo is one of the oldest zoos in the world, located in Lahore, Pakistan. It houses a diverse collection of animals, including mammals, birds, and reptiles. The zoo provides a recreational and educational experience for visitors of all ages."
    },
    {
       name: 'Anarkali Bazaar',
@@ -78,7 +87,8 @@ export const Lahore = [
       picture: 'https://1.bp.blogspot.com/-yDqz_o8_6a0/U6x_UgFXepI/AAAAAAAACSU/GJs0IbgNCzM/s1600/306730%252Cxcitefun-food-street-at-anarkali-lahore-4.jpg',
       tagline: 'A bustling market known for handicrafts, and clothing',
       rating: 4.0,
-      reviews: 200
+      reviews: 200,
+      Description: "Anarkali Bazaar is a bustling market in Lahore, Pakistan, known for its vibrant atmosphere and diverse range of products. It is particularly renowned for its handicrafts, clothing, jewelry, and traditional food items. Visitors can explore the market, shop for souvenirs, and savor the local flavors."
    }
 ];
 export const Faisalabad = [

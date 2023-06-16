@@ -4,7 +4,7 @@ const axios = require('axios');
 function scheduleDeleteBooking(bookingId, endDate) {
   const [year, month, day] = endDate.split('-');
 
-  const cronPattern = `55 02 ${day} ${month} *`;
+  const cronPattern = `35 11 ${day} ${month} *`;
   console.log(bookingId)
   cron.schedule(cronPattern, async () => {
     try {
