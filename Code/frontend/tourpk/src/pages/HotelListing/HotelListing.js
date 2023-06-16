@@ -185,7 +185,7 @@ export default function HotelListing() {
           </div>
         </div>
       </div>
-     {role == "tourist" <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
+     {role == "tourist" ? <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> :<></>}
     </div >
   );
 }

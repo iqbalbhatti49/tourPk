@@ -162,7 +162,6 @@ export default function TravelAgentListing() {
             </div>
             <Carousel imageList={data.TravelAgentImages} />
          </div>
-
          <div className={styles.details}>
             <div className={styles.about}>
                <div>
@@ -246,9 +245,9 @@ export default function TravelAgentListing() {
                   )}
                </FormFinal>
             </div>
-         </div>
-         {role == "tourist" &&    <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
          </div>}
+         {role == "tourist" &&    <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
       </div>
+      // </div>
    );
 }

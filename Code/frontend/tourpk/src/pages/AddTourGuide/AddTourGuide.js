@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/Api";
 import { useSelector } from "react-redux";
-
+import { useState } from "react";
 const AddTourGuide = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,9 +42,14 @@ const AddTourGuide = () => {
 
   const initialValue = isEditMode ? updateInitialValue : addInitialValue;
   const userId = useSelector(state => state.user.id);
+  const [gender, setGender] = useState("Male");
 
+  const handleChange = (selectedOption) => {
+      setGender(selectedOption);
+  };
   const onSubmit = async (value) => {
     value.UserId = userId;
+    value.gender = gender;
     const servic = isEditMode ? values : location.state.values;
     if (isEditMode)
       servic.serviceId = tourGuide.id;
@@ -95,15 +100,25 @@ const AddTourGuide = () => {
                     defaultValue={initialValue.experience}
                     renderIcon={() => null}
                   />
-                  <FormField
-                    name="gender"
-                    label="Gender"
-                    type="text"
-                    placeholder="Enter your gender"
-                    validate={required}
-                    theme="light"
-                    defaultValue={initialValue.gender}
-                    renderIcon={() => null}
+                  <Dropdown
+                      name="gender"
+                      label="Gender"
+                      optionsValues={[
+                          {
+                              "id": 1,
+                              "name": "Female",
+                          },
+                          {
+                              "id": 2,
+                              "name": "Male",
+                          }
+                      ]}
+                      validate={required}
+                      theme="light"
+                      value={gender}
+                      placeholder="Choose Gender"
+                      renderIcon={() => null}
+                      onChange={(selectedOption) => handleChange(selectedOption)}
                   />
                   <FormField
                     name="primaryAreas"
