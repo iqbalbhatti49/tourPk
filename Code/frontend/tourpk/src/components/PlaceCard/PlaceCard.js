@@ -21,7 +21,7 @@ export const PlaceCard = (props) => {
                         <IconStar />
                      </div>
                      <div>
-                        <Link to="/spotListing">
+                        <Link to="/spotListing" state={city}>
                            <Button value="Explore" type="secondary"/>
                         </Link>
                      </div>

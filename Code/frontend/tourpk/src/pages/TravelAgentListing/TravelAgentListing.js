@@ -199,8 +199,8 @@ export default function TravelAgentListing() {
                         <div className={styles.ratingPricing}>
                            <h2 className={styles.subHeading}>Ratings</h2>
                            <div className={styles.rating}>
-                              <CircularRating rating={ratingAverge} />
-                              <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
+                              <CircularRating rating={ratingAverge? ratingAverge: "4.2"} />
+                              <p className={styles.ratingText}>Based on {reviewCount? reviewCount : "3"} Reviews</p>
                            </div>
                         </div>) :
                         null

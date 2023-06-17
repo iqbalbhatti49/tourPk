@@ -1,4 +1,4 @@
-const { Restaurant, Service, TravelAgent, TourGuide, Hotel, User, BookingHotel, BookingRestaurant, BookingTourGuide, BookingTravelAgent } = require("../models");
+const { Restaurant, Review, Service, TravelAgent, TourGuide, Hotel, User, BookingHotel, BookingRestaurant, BookingTourGuide, BookingTravelAgent, RestaurantImage, TravelAgentImage, TourGuideImage, HotelImage, Room } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -44,6 +44,75 @@ exports.getServicesByUserId = async (req, res) => {
     res.json(services);
 }
 
+exports.spotsByCities = async (req, res) => {
+    try {
+        const services = await Service.findAll({
+            where:{
+                city:req.body.city
+            },
+            include: [
+                {
+                    model: Review,
+                    include: [
+                        {
+                            model: User,
+                        },
+                    ],
+                },
+                {
+                    model: Restaurant,
+                    include: [
+                        {
+                            model: RestaurantImage,
+                        },
+                    ],
+                },
+                {
+                    model: TourGuide,
+                    include: [
+                        {
+                            model: TourGuideImage,
+                        },
+                    ],
+                },
+                {
+                    model: TravelAgent,
+                    include: [
+                        {
+                            model: TravelAgentImage,
+                        },
+                    ],
+                },
+                {
+                    model: Hotel,
+                    include: [
+                        {
+                            model: HotelImage,
+                        },
+                        {
+                            model: Room,
+                        },
+                    ],
+                },
+            ],
+        });
+
+        // const servicesByCitiesDivision = {};
+        // services.forEach((service) => {
+        //     const { city, province } = service;
+        //     const division = `${city}, ${province}`;
+
+        //     if (!servicesByCitiesDivision[division]) {
+        //         servicesByCitiesDivision[division] = [];
+        //     }
+        //     servicesByCitiesDivision[division].push(service);
+        // });
+        res.status(200).json(services);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
 
 exports.getBookingsByUserId = async (req, res) => {
     const id = req.params.id;
@@ -122,3 +191,16 @@ exports.getBookingsByUserId = async (req, res) => {
     }
     res.json(bookings);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

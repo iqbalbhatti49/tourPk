@@ -98,7 +98,8 @@ export const Faisalabad = [
       picture: 'https://img3.foodbevg.com/396/743/5160482193967435.jpg',
       tagline: 'A premier club featuring a range of recreational facilities',
       rating: 4.5,
-      reviews: 300
+      reviews: 300,
+      Description: "Chenab Club is a historical landmark located in Lahore, the cultural capital of Pakistan. It is known for its impressive display of Mughal architecture. The fort complex includes various structures, such as palaces, gardens, and mosques, representing the grandeur of the Mughal era."
    },
    {
       name: 'Faisalabad Clock Tower',
@@ -106,7 +107,8 @@ export const Faisalabad = [
       picture: 'https://zameenblog.s3.amazonaws.com/blog/wp-content/uploads/2021/03/Body-Image-1440x900-2-1024x640.jpg',
       tagline: 'A distinctive clock tower located in the heart of the city',
       rating: 4.0,
-      reviews: 200
+      reviews: 200,
+      Description: "Faisalabad Clock Tower is a bustling market in Lahore, Pakistan, known for its vibrant atmosphere and diverse range of products. It is particularly renowned for its handicrafts, clothing, jewelry, and traditional food items. Visitors can explore the market, shop for souvenirs, and savor the local flavors."
    },
    {
       name: 'Jinnah Garden',
@@ -114,7 +116,8 @@ export const Faisalabad = [
       picture: 'https://thumbs.dreamstime.com/b/jinnah-park-faisalabad-pakistan-its-old-name-was-company-bagh-86183801.jpg',
       tagline: 'A popular park featuring a variety of flora and fauna',
       rating: 3.0,
-      reviews: 100
+      reviews: 100,
+      Description: "Jinnah Garden is a bustling market in Lahore, Pakistan, known for its vibrant atmosphere and diverse range of products. It is particularly renowned for its handicrafts, clothing, jewelry, and traditional food items. Visitors can explore the market, shop for souvenirs, and savor the local flavors."
    },
    {
       name: 'Faisalabad Wildlife Park',
@@ -122,7 +125,8 @@ export const Faisalabad = [
       picture: 'https://flypakistan.pk/assets/img/attractions/Gutwala%20Park.jpg',
       tagline: 'A wildlife park featuring tigers, lions, bears, and others',
       rating: 4.0,
-      reviews: 200
+      reviews: 200,
+      Description: "Faisalabad Wildlife Park is a bustling market in Lahore, Pakistan, known for its vibrant atmosphere and diverse range of products. It is particularly renowned for its handicrafts, clothing, jewelry, and traditional food items. Visitors can explore the market, shop for souvenirs, and savor the local flavors."
    },
    {
       name: 'Iqbal Stadium',
@@ -130,7 +134,8 @@ export const Faisalabad = [
       picture: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIiuxNZ4fjmBt44fQetSm0tDEr7Spm-oZXxQ&usqp=CAU',
       tagline: 'A sports stadium that is home to the Faisalabad region team',
       rating: 4.0,
-      reviews: 200
+      reviews: 200,
+      Description: "Iqbal Stadium is a bustling market in Lahore, Pakistan, known for its vibrant atmosphere and diverse range of products. It is particularly renowned for its handicrafts, clothing, jewelry, and traditional food items. Visitors can explore the market, shop for souvenirs, and savor the local flavors."
    },
    {
       name: 'Faisalabad Arts Council',
@@ -138,7 +143,8 @@ export const Faisalabad = [
       picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Faisalabad_Arts_Council.JPG/320px-Faisalabad_Arts_Council.JPG',
       tagline: 'A cultural center that hosts events and exhibitions',
       rating: 3.5,
-      reviews: 150
+      reviews: 150,
+      Description: "Faisalabad Arts Council is a bustling market in Lahore, Pakistan, known for its vibrant atmosphere and diverse range of products. It is particularly renowned for its handicrafts, clothing, jewelry, and traditional food items. Visitors can explore the market, shop for souvenirs, and savor the local flavors."
    }
 ]
 export const Rawalpindi = [
