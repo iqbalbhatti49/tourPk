@@ -1,14 +1,9 @@
-import React from "react";
 import styles from "./AddTourGuide.module.css";
-import { Form as FormFinal } from "react-final-form";
-import { FormField, Button, Dropdown } from "../../components/index";
-import { useLocation } from "react-router";
-import { mustBeNumber, required } from "../../utils/validations";
-import swal from 'sweetalert';
-import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/Api";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import { 
+  useState, Dropdown, required, useNavigate, FormField, 
+  React, Button, useSelector, FinalForm , useLocation, axiosInstance, swal } 
+from "../../components/index";
+
 const AddTourGuide = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -86,7 +81,7 @@ const AddTourGuide = () => {
         </div>
         <div className={styles.content}>
           <div className={styles.formFields}>
-            <FormFinal onSubmit={onSubmit}>
+            <FinalForm onSubmit={onSubmit}>
               {({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit} className={styles.formContainer}>
                   <h2>Guiding Information</h2>
@@ -171,7 +166,7 @@ const AddTourGuide = () => {
                   </div>
                 </form>
               )}
-            </FormFinal>
+            </FinalForm>
           </div>
           <div className={styles.imageContainer}>
             <img src="../static/images/AddTourGuide.png" alt="FAQs" />

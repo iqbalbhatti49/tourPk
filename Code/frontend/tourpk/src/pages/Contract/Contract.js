@@ -1,8 +1,5 @@
 import styles from "./Contract.module.css";
-import { Button } from "../../components/index";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import swal from 'sweetalert';
+import { Button, useSelector, useNavigate, swal } from "../../components/index";
 
 const Contract = () => {
    const contract = useSelector((state) => state.contract.agreement);

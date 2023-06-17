@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./AddRoom.module.css";
-import { Form as FormFinal } from "react-final-form";
+import { Form as FinalForm } from "react-final-form";
 import { FormField, Button } from "../../components/index";
 import RoomAmeneties from "../RoomAmeneties/RoomAmeneties"
 import { mustBeNumber, required, validateAlpha } from "../../utils/validations";
@@ -126,7 +126,7 @@ const AddRoom = (props) => {
                 <h1 className={styles.heading}>Add New Room Type</h1>
                 <div className={styles.content}>
                     <div className={styles.formFields}>
-                        <FormFinal onSubmit={onSubmit}>
+                        <FinalForm onSubmit={onSubmit}>
                             {({ handleSubmit, values }) => (
                                 <form onSubmit={handleSubmit} className={styles.formContainer}>
                                     <FormField
@@ -230,7 +230,7 @@ const AddRoom = (props) => {
                                     </div>
                                 </form>
                             )}
-                        </FormFinal>
+                        </FinalForm>
                     </div>
                     <div className={styles.imageContainer}>
                         <img src="../static/images/hotelDetails.png" alt="FAQs" />

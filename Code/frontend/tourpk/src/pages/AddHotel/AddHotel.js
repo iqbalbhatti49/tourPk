@@ -1,10 +1,6 @@
-import React from "react";
 import styles from "./AddHotel.module.css";
-import { Form as FormFinal } from "react-final-form";
-import { FormField, Button } from "../../components/index";
-import { useLocation } from "react-router";
-import { useNavigate } from "react-router-dom";
-import { amenities } from "../../utils/Constants/HotelOptions";
+import { amenities, React, FormField, Button, useLocation, useNavigate, FinalForm } 
+from "../../components/index";
 
 const AddHotel = () => {
     const location = useLocation();
@@ -91,7 +87,7 @@ const AddHotel = () => {
                 </div>
                 <div className={styles.content}>
                     <div className={styles.formFields}>
-                        <FormFinal onSubmit={onSubmit}>
+                        <FinalForm onSubmit={onSubmit}>
                             {({ handleSubmit, values }) => (
                                 <form onSubmit={handleSubmit} className={styles.formContainer}>
                                     <h2>Ameneties You Offer</h2>
@@ -124,7 +120,7 @@ const AddHotel = () => {
                                     </div>
                                 </form>
                             )}
-                        </FormFinal>
+                        </FinalForm>
                     </div>
                     <div className={styles.imageContainer}>
                         <img src="../static/images/hotelDetails.png" alt="FAQs" />

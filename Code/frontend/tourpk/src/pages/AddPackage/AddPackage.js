@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Button, ServiceSection, PackageInformation, IconAdd, addPackage } from '../../components/index'
-import styles from './AddPackage.module.css'
-import { Form as FormFinal } from 'react-final-form'
-import { validateAlpha } from '../../utils/validations'
+import styles from './AddPackage.module.css';
+import { 
+    ServiceSection, PackageInformation, IconAdd, addPackage, validateAlpha,
+    React, Button, useState, FinalForm , useDispatch } 
+from "../../components/index";
 
 export default function AddPackage() {
     const dispatch = useDispatch();
@@ -56,7 +55,7 @@ export default function AddPackage() {
                 </div>
                 <div className={styles.formBorder}>
                     <div className={styles.formContainer}>
-                        <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >
+                        <FinalForm onSubmit={onSubmit} subscription={{ submitted: true }} >
                             {({ handleSubmit, submitting, values }) => (
                                 <form onSubmit={handleSubmit}>
                                     <PackageInformation values={values} />
@@ -77,7 +76,7 @@ export default function AddPackage() {
                                     </div>
                                 </form>
                             )}
-                        </FormFinal>
+                        </FinalForm>
                     </div>
                 </div>
             </div>

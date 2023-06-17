@@ -1,16 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import styles from './TourGuideListing.module.css';
-import { Button, Carousel } from '../../components';
-import { Testimonial, BookingCalendar, Rating } from '../../components';
-import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { clearCart, addItem } from '../../app/features/cart/cartSlice';
-import axiosInstance from '../../utils/Api';
-import { getReviewsStats } from '../../utils/FindReviewStats';
-import { IconEdit, IconDelete } from "../../components/index";
+import { IconEdit, IconDelete, getReviewsStats, axiosInstance, clearCart, addItem, BookingCalendar, 
+         useNavigate, useDispatch, useSelector, useParams, ReviewForm, Testimonial, Rating,
+         Button, Carousel, React, useEffect, useState } 
+from "../../components/index";
 
 export default function TourGuideListing() {
    const currentUser = useSelector(state => state.user.id);

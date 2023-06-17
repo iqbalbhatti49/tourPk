@@ -23,7 +23,7 @@ export const BlogCard = (props) => {
             usage == "menu" ? (
                <div id={styles.sidebarCard}>
                   <Card>
-                     <ImageHeader className={styles.sidebarImg} imageSrc="https://i0.wp.com/www.wonderslist.com/wp-content/uploads/2022/05/Best-Natural-Places-to-Visit-in-Pakistan.jpg" />
+                     <ImageHeader className={styles.sidebarImg} imageSrc={blog.image} />
                      <CardBody>
                         <div>
                            <div className={styles.sidebarTitle}>{blog.title}</div>

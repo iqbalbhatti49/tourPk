@@ -1,19 +1,8 @@
-import React, { useEffect, useState } from 'react'
 import styles from './TravelAgentListing.module.css'
-import { Button, Carousel, CircularRating } from '../../components';
-import { Testimonial, BookingCalendar, Rating } from '../../components';
-import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
-import { useLocation, useParams } from "react-router";
-import axiosInstance from '../../utils/Api';
-import { IconEdit, IconDelete, FormField } from "../../components/index";
-import swal from 'sweetalert';
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Form as FormFinal } from 'react-final-form'
-import { required } from '../../utils/validations';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { clearCart, addItem } from '../../app/features/cart/cartSlice';
+import { clearCart, addItem, useNavigate, useDispatch, required, FinalForm, ReviewForm,
+         useSelector, swal, IconEdit, IconDelete, FormField, axiosInstance, useLocation, useParams,
+         Testimonial, BookingCalendar, React, Button, Carousel, CircularRating, useEffect, useState  } 
+from '../../components/index';
 
 export default function TravelAgentListing() {
    const currentUser = useSelector(state => state.user.id);
@@ -229,7 +218,7 @@ export default function TravelAgentListing() {
          {role == "tourist" && <div className={styles.booking}>
             <p>Select the start date of tour from the given calender.</p>
             <div className={styles.formContainer}>
-               <FormFinal
+               <FinalForm
                   onSubmit={onSubmit}
                   subscription={{
                      submitted: true
@@ -243,7 +232,7 @@ export default function TravelAgentListing() {
                         <Button value="Book Now" btnType="submit" />
                      </form>
                   )}
-               </FormFinal>
+               </FinalForm>
             </div>
          </div>}
          {role == "tourist" &&    <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }

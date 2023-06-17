@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from 'react'
 import styles from './RestaurantListing.module.css'
-import { useLocation } from "react-router";
-import { Button, CircularRating, Carousel, Testimonial, Rating } from '../../components';
-import ReviewForm from '../../components/ReviewForm.js/ReviewForm';
-import axiosInstance from '../../utils/Api';
-import { Link, useParams } from 'react-router-dom';
-import { getReviewsStats } from '../../utils/FindReviewStats';
-import { IconEdit, IconDelete } from "../../components/index";
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { React, useEffect, useLocation, Carousel, Testimonial, Rating, useNavigate, getReviewsStats,
+    useSelector, IconEdit, IconDelete, useState, useParams, axiosInstance, ReviewForm } 
+    from '../../components';
 
 export default function RestaurantListing() {
     const navigate = useNavigate();

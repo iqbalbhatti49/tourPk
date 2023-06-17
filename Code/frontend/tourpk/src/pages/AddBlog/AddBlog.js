@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import styles from "./AddBlog.module.css";
-import CategoryContainer from "../../components/CategoryContainer/CategoryContainer";
-import { useDispatch, useSelector } from "react-redux";
-import { addBlog, updateBlog } from "../../app/features/blogs/blogsSlice";
-import { useLocation, useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/Api";
+import {  axiosInstance } from '../../../src/utils/index';
+import { 
+    CategoryContainer, addBlog, updateBlog,
+    React, useState, useSelector, useDispatch,
+    useLocation, useNavigate, ReactQuill 
+} from '../../components';
 
 const AddBlog = () => {
     let { state } = useLocation();

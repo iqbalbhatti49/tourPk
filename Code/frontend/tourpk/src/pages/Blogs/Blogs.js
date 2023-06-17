@@ -1,9 +1,10 @@
 import styles from "./Blogs.module.css";
 import 'react-tabs/style/react-tabs.css';
-import { HorizontalScroll } from "../../components/index";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchBlogs } from "../../app/features/blogs/blogsSlice";
+import { 
+    HorizontalScroll, useDispatch, useEffect,
+    React, fetchBlogs, useSelector } 
+  from "../../components/index";
+
 
 const Blogs = () => {
     const dispatch = useDispatch();

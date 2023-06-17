@@ -1,14 +1,8 @@
-import React from "react";
-import { Form as FormFinal } from 'react-final-form'
-import styles from './AddRestaurant.module.css'
-import { FormField, Button } from "../../components/index";
-import { mustBeNumber, required, validateURL } from '../../utils/validations';
-import { mealOptions, featureOptions } from '../../utils/Constants/RestaurantsOptions';
-import { useLocation } from "react-router";
-import { useNavigate } from "react-router-dom";
-import swal from 'sweetalert';
-import axiosInstance from "../../utils/Api";
-import { useSelector } from "react-redux";
+import styles from './AddRestaurant.module.css';
+import { 
+    mustBeNumber, required, validateURL, mealOptions, featureOptions, useSelector,
+    React, Button, useNavigate, FinalForm , useLocation, axiosInstance, swal } 
+from "../../components/index";
 
 const AddRestaurant = () => {
 
@@ -143,7 +137,7 @@ const AddRestaurant = () => {
     return (
         <div id={styles.restaurantContainer}>
             <div className={styles.formContainer}>
-                <FormFinal
+                <FinalForm
                     onSubmit={onSubmit}
                     subscription={{
                         submitted: true
@@ -186,7 +180,7 @@ const AddRestaurant = () => {
                             <Button value="Add Restaurant" type="submit" btnType="submit" />
                         </form>
                     )}
-                </FormFinal>
+                </FinalForm>
             </div>
             <div className={styles.imageContainer}>
                 <img src="https://images.pexels.com/photos/3534744/pexels-photo-3534744.jpeg" alt="" />

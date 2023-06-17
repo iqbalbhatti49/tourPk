@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from 'react';
 import styles from './BlogPage.module.css';
-import { BlogPost, CommentSection } from '../../components/index'
-import { useParams } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import BlogMenu from '../../components/BlogMenu/BlogMenu';
-import { fetchBlogById } from '../../app/features/blogs/blogsSlice';
+import { 
+  useState, BlogPost, CommentSection,
+  React, useEffect, useDispatch, BlogMenu } 
+from "../../components/index";
 
 const BlogPage = () => {
   const { id } = useParams();

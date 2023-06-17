@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 import styles from "../Signup/Signup.module.css";
-import { IconEmail, IconPassword, FormField, Button, login } from "../../components/index";
-import { Form as FormFinal } from 'react-final-form'
-import { validateEmail, validatePassword } from '../../utils/validations'
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { Link } from 'react-router-dom';
-
+import { IconEmail, IconPassword, FormField, Button, login, FinalForm,
+         validateEmail, validatePassword, useDispatch, useNavigate, Link } from "../../components/index";
+         
 const Login = () => {
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
@@ -33,7 +29,7 @@ const Login = () => {
                     <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600&h=500" alt="" />
                 </div>
                 <div className={styles.form}>
-                    <FormFinal
+                    <FinalForm
                         onSubmit={onSubmit}
                         subscription={{
                             submitted: true
@@ -51,7 +47,7 @@ const Login = () => {
                                 <div className={styles.text}>Don't have an account? <a href="/SignupAsTourist" className={styles.whiteText}>Signup</a></div>
                             </form >
                         )}
-                    </FormFinal >
+                    </FinalForm >
                 </div >
             </div >
         </div >

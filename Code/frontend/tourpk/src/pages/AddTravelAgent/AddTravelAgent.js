@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-import { Form as FormFinal } from 'react-final-form'
-import styles from './AddTravelAgent.module.css'
-import { FormField, Button, IconAdd, ServiceSection } from "../../components/index";
-import { mustBeNumber, required } from '../../utils/validations';
-import { useLocation } from "react-router";
-import { itenerary } from "../../utils/Constants/travelAgent";
-import swal from 'sweetalert';
-import { useNavigate } from "react-router-dom";
-import axiosInstance from "../../utils/Api";
-import { useSelector } from "react-redux";
+import styles from './AddTravelAgent.module.css';
+import { 
+    useState, itenerary, required, useNavigate, FormField,
+    React, Button, useSelector, FinalForm , useLocation, axiosInstance, swal, IconAdd } 
+  from "../../components/index";
 
 const AddTravelAgent = () => {
     const userId = useSelector(state => state.user.id);
@@ -122,7 +116,7 @@ const AddTravelAgent = () => {
     return (
         <div id={styles.travelAgentContainer}>
             <div className={styles.formContainer}>
-                <FormFinal
+                <FinalForm
                     // initialValues={initialValues}
                     onSubmit={onSubmit}
                     subscription={{
@@ -161,7 +155,7 @@ const AddTravelAgent = () => {
                             <Button value="Add TourPackage" type="submit" btnType="submit" />
                         </form>
                     )}
-                </FormFinal>
+                </FinalForm>
             </div>
             <div className={styles.imageContainer}>
                 <img src="https://cdn.pixabay.com/photo/2018/12/15/19/36/fashion-3877510_1280.jpg" alt="" />

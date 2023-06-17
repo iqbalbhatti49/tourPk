@@ -1,12 +1,8 @@
 import styles from "./Services.module.css";
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { LahoreHotles, LahoreResturants } from "../../utils/FakeData";
-import { IconHotel, IconResturant, IconGuide, IconAgent, HotelCard } from "../../components/index";
-import { Link, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axiosInstance from "../../utils/Api";
-import { useNavigate } from "react-router-dom";
+import { IconHotel, IconResturant, IconGuide, IconAgent, HotelCard, useNavigate,
+   useEffect, useState, axiosInstance, Link, useLocation, Tab, Tabs, TabList, TabPanel } 
+from "../../components/index";
 
 
 const Services = () => {

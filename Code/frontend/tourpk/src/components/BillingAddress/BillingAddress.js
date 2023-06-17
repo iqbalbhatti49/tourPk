@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './BillingAddress.module.css';
 import FormField from '../FormField/FormField';
-import { Form as FormFinal, FormSpy } from 'react-final-form';
+import { Form as FinalForm, FormSpy } from 'react-final-form';
 import { useDispatch } from 'react-redux';
 import { updateBillingAddress } from '../../app/features/checkout/checkoutSlice';
 import { required, validatePhone } from '../../utils/validations';
@@ -42,7 +42,7 @@ export const BillingAddress = () => {
       <div className={styles.container}>
          <p className={styles.heading}>Billing Address</p>
          <div className={styles.form}>
-            <FormFinal
+            <FinalForm
                onSubmit={onSubmit}
                subscription={{
                   submitted: true,
@@ -146,7 +146,7 @@ export const BillingAddress = () => {
                      </FormSpy>
                   </form>
                )}
-            </FormFinal>
+            </FinalForm>
             {submitted && showSuccessAlert()}
          </div>
       </div>

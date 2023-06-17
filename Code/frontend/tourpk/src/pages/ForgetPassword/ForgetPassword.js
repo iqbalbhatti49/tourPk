@@ -1,10 +1,6 @@
-import React, { useState } from 'react'
 import styles from './ForgetPassword.module.css'
-import { Button, FormField } from '../../components'
-import { useDispatch } from "react-redux";
-import { Form as FormFinal } from 'react-final-form'
-import { validateEmail } from '../../utils/validations';
-import { forgotPassword } from '../../app/features/user/userSlice';
+import { Button, FormField, forgotPassword, React, useState,
+         FinalForm, validateEmail, useDispatch, } from '../../components'
 
 export default function ForgetPassword() {
     const dispatch = useDispatch();
@@ -19,7 +15,7 @@ export default function ForgetPassword() {
         <div className={styles.container}>
             <h2 className={styles.heading}>Forget Password</h2>
             <div className={styles.title}>Please enter your email address</div>
-            <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >
+            <FinalForm onSubmit={onSubmit} subscription={{ submitted: true }} >
                 {({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
                         <FormField name="forgetEmail" label="Email Address" type="text" placeholder="Registered Email Address to forget password" validate={validateEmail} theme="light" renderIcon={() => null} />
@@ -28,7 +24,7 @@ export default function ForgetPassword() {
                         </div>
                     </form>
                 )}
-            </FormFinal>
+            </FinalForm>
             <div className={styles.msg}> {message} </div>
         </div>
     )

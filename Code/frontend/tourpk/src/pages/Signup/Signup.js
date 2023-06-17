@@ -1,11 +1,8 @@
-import React, { useState } from "react";
 import styles from "./Signup.module.css";
-import { Form as FormFinal } from 'react-final-form'
-import { FormField, IconEmail, IconPassword, IconPerson, updateUser, Button } from "../../components/index";
-import { validateAlpha, validateEmail, validatePassword, validateEquality, validatePhone } from '../../utils/validations';
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import axiosInstance from "../../utils/Api";
+import { FormField, IconEmail, IconPassword, IconPerson, updateUser, Button, useDispatch,
+         useNavigate, axiosInstance, validateAlpha, validateEmail, validatePassword, validateEquality, 
+         validatePhone, FinalForm, React, useState } 
+from "../../components/index";
 
 const Signup = (props) => {
     const [errormsg, setErrormsg] = useState(null);
@@ -44,7 +41,7 @@ const Signup = (props) => {
                     <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600&h=500" alt="" />
                 </div>
                 <div className={styles.form}>
-                    <FormFinal
+                    <FinalForm
                         onSubmit={onSubmit}
                         subscription={{
                             submitted: true
@@ -73,7 +70,7 @@ const Signup = (props) => {
                                 }
                             </form >
                         )}
-                    </FormFinal >
+                    </FinalForm >
                 </div >
             </div >
         </div >

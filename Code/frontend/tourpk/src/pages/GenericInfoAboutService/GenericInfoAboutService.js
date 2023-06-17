@@ -1,8 +1,5 @@
 import styles from './GenericInfoAboutService.module.css'
-import { useState } from 'react';
-import { Form as FormFinal } from "react-final-form";
-import FormButton from '../../components/FormButton/FormButton';
-import { Dropdown, Button, YesNoDropdown, RolesDropdown } from "../../components/index";
+import { Dropdown, Button, YesNoDropdown, RolesDropdown, FinalForm, useState } from "../../components/index";
 
 const GenericInfoAboutService = () => {
   const [formData, setFormData] = useState(null);
@@ -40,7 +37,7 @@ const GenericInfoAboutService = () => {
     <div className={styles.formContainer}></div>
     <div className={styles.tableContainer}>
       <div className={styles.quesForm}>
-        <FormFinal
+        <FinalForm
           onSubmit={onSubmit}
           subscription={{
             submitted: true,
@@ -68,7 +65,7 @@ const GenericInfoAboutService = () => {
               <Button id={styles.signupBtn} value={"Continue"} type="primary" width={150} btnType="submit" font={" 500 20px Arial, '' "} />
             </form>
           )}
-        </FormFinal>
+        </FinalForm>
       </div>
     </div>
   </>

@@ -46,73 +46,63 @@ exports.getServicesByUserId = async (req, res) => {
 
 exports.spotsByCities = async (req, res) => {
     try {
-        const services = await Service.findAll({
-            where:{
-                city:req.body.city
-            },
+      const services = await Service.findAll({
+        where: {
+          city: req.body.city,
+        },
+        include: [
+          {
+            model: Review,
             include: [
-                {
-                    model: Review,
-                    include: [
-                        {
-                            model: User,
-                        },
-                    ],
-                },
-                {
-                    model: Restaurant,
-                    include: [
-                        {
-                            model: RestaurantImage,
-                        },
-                    ],
-                },
-                {
-                    model: TourGuide,
-                    include: [
-                        {
-                            model: TourGuideImage,
-                        },
-                    ],
-                },
-                {
-                    model: TravelAgent,
-                    include: [
-                        {
-                            model: TravelAgentImage,
-                        },
-                    ],
-                },
-                {
-                    model: Hotel,
-                    include: [
-                        {
-                            model: HotelImage,
-                        },
-                        {
-                            model: Room,
-                        },
-                    ],
-                },
+              {
+                model: User,
+              },
             ],
-        });
-
-        // const servicesByCitiesDivision = {};
-        // services.forEach((service) => {
-        //     const { city, province } = service;
-        //     const division = `${city}, ${province}`;
-
-        //     if (!servicesByCitiesDivision[division]) {
-        //         servicesByCitiesDivision[division] = [];
-        //     }
-        //     servicesByCitiesDivision[division].push(service);
-        // });
-        res.status(200).json(services);
+          },
+          {
+            model: Restaurant,
+            include: [
+              {
+                model: RestaurantImage,
+              },
+            ],
+          },
+          {
+            model: TourGuide,
+            include: [
+              {
+                model: TourGuideImage,
+              },
+            ],
+          },
+          {
+            model: TravelAgent,
+            include: [
+              {
+                model: TravelAgentImage,
+              },
+            ],
+          },
+          {
+            model: Hotel,
+            include: [
+              {
+                model: HotelImage,
+              },
+              {
+                model: Room,
+              },
+            ],
+          },
+        ],
+      });
+      res.status(200).json(services);
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
     }
-};
+  };
+  
 
 exports.getBookingsByUserId = async (req, res) => {
     const id = req.params.id;
