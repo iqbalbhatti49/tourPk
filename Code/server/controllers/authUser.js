@@ -6,7 +6,6 @@ const nodemailer = require('nodemailer');
 const nodemailerSendgrid = require('nodemailer-sendgrid');
 require('dotenv').config();
 
-// common function for signup as seller and tourist
 exports.signup = async (req, res, data) => {
     try {
         //Hash the password and create a user

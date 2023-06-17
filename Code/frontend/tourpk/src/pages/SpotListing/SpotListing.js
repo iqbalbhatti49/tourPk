@@ -1,14 +1,17 @@
-import React from 'react'
-import styles from './SpotListing.module.css'
+import React, { useEffect } from 'react';
+import styles from './SpotListing.module.css';
 import { Carousel } from '../../components';
 import { HorizontalScroll, LocationPicker } from "../../components/index";
 import { LahoreHotles, LahoreResturants } from "../../utils/FakeData";
-import { Testimonial } from '../../components';
+import { useLocation } from 'react-router-dom';
 import { useState } from 'react';
+import axiosInstance from '../../utils/Api';
+import { PlaceCard } from '../../components/PlaceCard/PlaceCard';
 
 export default function SpotListing() {
   const [locationValue, setLocationValue] = useState("");
   const [isVisible, setIsVisible] = useState(false);
+  const [services, setServices] = useState(null); // State to store services fetched from the API
 
   function hideLocationPicker() {
     setIsVisible(false);
@@ -17,44 +20,58 @@ export default function SpotListing() {
     setLocationValue(`${location.lat},${location.lng}`);
   }
 
+  const location = useLocation();
+  const city = location.state;
+  const img = [{ imageUrl: city.picture }]
+  const cityFromLocation = (location) => {
+    const words = location.split(',');
+    const firstWord = words[0].trim();
+    return firstWord;
+  };
+
+  const cityy = cityFromLocation(city.location);
+  console.log(city);
+  // useEffect(() => {
+  //   const fetchServices = async () => {
+  //     try {
+  //       const response = await axiosInstance.post('/service/spotsByCities', { city: cityy });
+  //       setServices(response.data); // Store the fetched services in the state
+  //       console.log(response.data)
+  //       console.log(services)
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchServices(); // Call the fetchServices function when the component mounts
+  // }, []);
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.flex}>
           <div>
-            <h1 className={styles.heading}>Explore Shalimar Gardens</h1>
-            <p>Explore Pakistan's beauty and culture with tourPk
-              Are you planning a vacation to enjoy your free time? Looking for a place to explore, eat and enjoy your vacation with your loved ones or Are you a solo traveler who travels often for a wonderful experiences.
-              Explore Pakistan's beauty and culture with tourPk
-              Are you planning a vacation to enjoy your free time? Looking for a place to explore, eat and enjoy your vacation with your loved ones or Are you a solo traveler who travels often for a wonderful experiences.  Explore Pakistan's beauty and culture with tourPk
-              Are you planning a vacation to enjoy your free time?</p>
+            <h1 className={styles.heading}>Explore {city.name}</h1>
+            <p>{city.Description}</p>
+            <p>{city.location}</p>
+            <p>{city.reviews} Reviews</p>
+            <p>{city.rating} Rating</p>
+            <p>{city.tagline}</p>
           </div>
-          <Carousel />
+          <Carousel imageList={img}/>
         </div>
+        
+        {/* {services != null ? 
         <div>
-          <h2 className={styles.subHeading}>Best Near By Places To Visit</h2>
-          <div>
-            <HorizontalScroll title="RESTURANTS" items={LahoreResturants} />
-          </div>
-          <div>
-            <HorizontalScroll title="HOTELS" items={LahoreHotles} />
-          </div>
-          <div>
-            <HorizontalScroll title="TOUR GUIDES" items={LahoreResturants} />
-          </div>
+          <h2 className={styles.subHeading}>Service NearBy</h2>
+          {services.map((e, index) => (
+                     <div>
+                      {services.name}
+                      </div>
+                  ))}
         </div>
+        :
+        <><p>loading</p></>} */}
       </div>
-      <div className={styles.testimonial}>
-        <div>
-          <h2 className={styles.subHeading}>What People Says About This Place?</h2>
-          <Testimonial data={data.Reviews} />
-        </div>
-        <div>
-          <div className={styles.map}>
-            <LocationPicker onChange={handleLocationChange} onClose={hideLocationPicker} />
-          </div>
-        </div>
-      </div>
+     
     </div>
   );
 }

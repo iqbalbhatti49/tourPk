@@ -25,7 +25,6 @@ exports.addHotel = async (req, res) => {
     const roomObj = await Room.create(room); //4. add in room table
     res.status(200).json(roomObj.dataValues.id);
 }
-
 exports.getHotelById = async (req, res) => {
     const id = req.params.id;
     const data = await Hotel.findOne({
@@ -59,7 +58,6 @@ exports.getHotelById = async (req, res) => {
 
     res.json(data);
 }
-
 exports.getAllHotels = async (req, res) => {
     const hotels = await Hotel.findAll({
         attributes: ['id'],
@@ -82,7 +80,6 @@ exports.getAllHotels = async (req, res) => {
 
     res.json(hotels);
 }
-
 exports.deleteHotel = async (req, res) => {
     console.log(req.body)
     await Room.destroy({ where: { HotelId: req.body.HotelId } });
@@ -92,7 +89,6 @@ exports.deleteHotel = async (req, res) => {
     await Service.destroy({ where: { id: req.body.ServiceId } });
     res.status(200).json("deleted sucessfully");
 }
-
 exports.updatehotel = async (req, res) => {
     console.log(req.body);
     const { service, hotel, room } = req.body; // Destructure the objects from the request body
@@ -138,7 +134,6 @@ exports.updatehotel = async (req, res) => {
         res.status(500).json({ error: 'Failed to update tour guide' });
     }
 }
-
 exports.addBooking = async (req, res) => {
     try {
         const { startDate, numberOfDays, totalPrice, userId, endDate, hotelId, roomId } = req.body;
@@ -170,8 +165,6 @@ exports.addBooking = async (req, res) => {
         res.status(500).json({ error: 'Failed to add booking' });
     }
 };
-
-
 exports.addRoom = async (req, res) => {
     console.log(req.body);
     const room = req.body;
@@ -199,3 +192,24 @@ exports.getBookingsByIds = async (req, res) => {
         res.status(500).json({ error: 'Failed to retrieve bookings' });
     }
 };
+
+exports.deleteBookingById = async (req, res) => {
+    try {
+        const { bookingId } = req.body;
+        console.log(bookingId);
+        const deletedBookings = await BookingHotel.destroy({
+            where: {
+                id: bookingId
+            }
+        });
+
+        res.status(200).json({
+            deletedBookings
+        });
+    } catch (error) {
+        console.error('Error deleting bookings:', error);
+        res.status(500).json({ error: 'Failed to delete bookings' });
+    }
+};
+
+

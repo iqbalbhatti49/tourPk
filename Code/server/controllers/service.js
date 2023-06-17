@@ -1,4 +1,4 @@
-const { Restaurant, Service, TravelAgent, TourGuide, Hotel, User, BookingHotel, BookingRestaurant, BookingTourGuide, BookingTravelAgent, TravelAgentImage, TourGuideImage, HotelImage, RestaurantImage, Review, Room } = require("../models");
+const { Restaurant, Review, Service, TravelAgent, TourGuide, Hotel, User, BookingHotel, BookingRestaurant, BookingTourGuide, BookingTravelAgent, RestaurantImage, TravelAgentImage, TourGuideImage, HotelImage, Room } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -43,7 +43,6 @@ exports.getServicesByUserId = async (req, res) => {
     console.log(services)
     res.json(services);
 }
-
 
 
 
@@ -193,19 +192,3 @@ exports.getBookingsByUserId = async (req, res) => {
     }
     res.json(bookings);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

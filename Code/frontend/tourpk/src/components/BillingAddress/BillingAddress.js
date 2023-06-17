@@ -128,7 +128,17 @@ export const BillingAddress = () => {
                      <FormSpy subscription={{ form: true }}>
                         {({ form }) => {
                            useEffect(() => {
-                              form.initialize(BillingAddressState);
+                              const valuesToInitialize = {};
+                              for (const key in BillingAddressState) {
+                              if (BillingAddressState.hasOwnProperty(key)) {
+                                 const value = BillingAddressState[key];
+                                 if (value !== null) {
+                                    valuesToInitialize[key] = value;
+                                 }
+                              }
+                              }
+
+                              form.initialize(valuesToInitialize);
                            }, [BillingAddressState]);
 
                            return null;

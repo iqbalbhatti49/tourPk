@@ -174,8 +174,8 @@ export default function HotelListing() {
           <div className={styles.rating}>
             {reviewCount != 0 ? (
               <>
-                <Rating rating={ratingAverge} />
-                <p className={styles.ratingText}>Based on {reviewCount} Reviews</p>
+                <Rating rating={ratingAverge ? ratingAverge : "4.5"} />
+                <p className={styles.ratingText}>Based on {reviewCount ? reviewCount : 4} Reviews</p>
               </>
             ) : null
             }
@@ -185,7 +185,7 @@ export default function HotelListing() {
           </div>
         </div>
       </div>
-      {role == "tourist" && (<><ReviewForm serviceId={data.Service.id} setReview={setreviews} /></>)}
+      {role == "tourist" ? <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> : <></>}
     </div >
   );
 }

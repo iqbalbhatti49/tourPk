@@ -16,7 +16,7 @@ export const PaymentMethod = () => {
    const role = useSelector((state) => state.user.role);
    const [method, setMethod] = useState('001');
    const id = useSelector((state) => state.user.id)
-   const paymentState = useSelector((state) => state.checkout.cardInfo)
+   const paymentState = useSelector((state) => state.checkout.paymentResult)
    const [submitted, setSubmitted] = useState(false);
    const location = useLocation();
   
@@ -108,12 +108,24 @@ export const PaymentMethod = () => {
                      <FormSpy subscription={{ form: true }}>
                         {({ form }) => {
                            useEffect(() => {
-                              form.initialize(paymentState);
+                              const valuesToInitialize = {};
+
+                              // Iterate over the paymentState object
+                              for (const key in paymentState) {
+                              if (paymentState.hasOwnProperty(key)) {
+                                 const value = paymentState[key];
+                                 if (value !== null) {
+                                    valuesToInitialize[key] = value;
+                                 }
+                              }
+                              }
+                              form.initialize(valuesToInitialize);
                            }, [paymentState]);
 
                            return null;
                         }}
-                     </FormSpy>
+                        </FormSpy>
+
                   </form>
                )}
             </FormFinal>

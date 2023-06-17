@@ -36,8 +36,7 @@ export const BillingSummary = () => {
          return acc + item.price * item.count;
       }
    }, 0);
-   
-    
+     
    total = total.toFixed(0)
    totalDiscountedPrice = totalDiscountedPrice.toFixed(0)
    let overallTotal = parseInt(totalDiscountedPrice);
@@ -72,6 +71,8 @@ export const BillingSummary = () => {
       form.reset();
       form.change("OrderComment", undefined);
       form.resetFieldState("OrderComment");
+      console.log(paymentResult)
+
       if(paymentResult)
       {
          swal({
