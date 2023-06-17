@@ -1,4 +1,3 @@
-import { Hotels, Restaurants, TourGuides, MesmerizingSight, MustVisitPlace, Other } from './Data';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axiosInstance from '../../../utils/Api'
 
@@ -42,12 +41,10 @@ const initialState = {
 
 export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
     const response = await axiosInstance.get('/blog/blogs');
-    console.log(response.data);
     return response.data;
 });
 
 export const fetchBlogById = createAsyncThunk('blogs/fetchBlogById', async (id) => {
-    console.log(id);
     const response = await axiosInstance.get(`/blog/${id}`);
     return response.data;
 });

@@ -26,9 +26,16 @@ exports.showBlogById = async (req, res) => {
 exports.createBlogPost = async (req, res) => {
     const blogPost = req.body;
     console.log("--- ", blogPost, "--------------");
-    let rootPath = "../static/images/upload/";
-    blogPost.image = rootPath + blogPost.image;
-    const resp = await BlogPost.create(blogPost);
+    let resp;
+    if (blogPost.image.includes("http")) {
+        resp = await BlogPost.create(blogPost);
+        res.status(200).json(resp);
+    }
+    else {
+        let rootPath = "../static/images/upload/";
+        blogPost.image = rootPath + blogPost.image;
+        resp = await BlogPost.create(blogPost);
+    }
     res.status(200).json(resp);
 }
 
@@ -68,8 +75,13 @@ exports.showRandomBlogs = async (req, res) => {
 exports.updateBlogPost = async (req, res) => {
     const id = req.params.id;
     let blog = req.body;
-    let rootPath = "../static/images/upload/";
-    blog.image = rootPath + blog.image;
-    await BlogPost.update(blog, { where: { id } });
+    if (blog.image.includes("http")) {
+        await BlogPost.update(blog, { where: { id } });
+    }
+    else {
+        let rootPath = "../static/images/upload/";
+        blog.image = rootPath + blog.image;
+        await BlogPost.update(blog, { where: { id } });
+    }
     res.json(id);
 }

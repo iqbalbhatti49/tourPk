@@ -40,7 +40,7 @@ export const BlogCard = (props) => {
                            <div className={styles.body}>
                               <div className={styles.imageTitle}>{blog.title}</div>
                               <p className={styles.postText}>{extractPlainText(blog.postText, 90)} ..... </p>
-                              <p className={styles.username}>By John doe</p>
+                              <p className={styles.username}>{blog.datePosted}</p>
                            </div>
                         </CardBody>
                      </Card >

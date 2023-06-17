@@ -44,9 +44,6 @@ exports.getServicesByUserId = async (req, res) => {
     res.json(services);
 }
 
-
-
-
 exports.getAllServicesByCitiesDivision = async (req, res) => {
     const namee = req.body.city;
     try {
@@ -107,13 +104,6 @@ exports.getAllServicesByCitiesDivision = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
-
-
-
-
-
-
-
 
 exports.getBookingsByUserId = async (req, res) => {
     const id = req.params.id;

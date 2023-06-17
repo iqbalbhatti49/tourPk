@@ -25,7 +25,7 @@ const CommentSection = ({ blogId }) => {
   useEffect(
     () => {
       fetchComments();
-    }, []);
+    }, [blogId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

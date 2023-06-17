@@ -8,7 +8,6 @@ import { HotelCard } from '../HotelCard/HotelCard';
 
 const HorizontalScroll = (props) => {
    const { spots, blogs, items, title } = props;
-   console.log(spots);
    const [selected, setSelected] = useState([]);
 
    const isItemSelected = (id) => !!selected.find((el) => el === id);

@@ -10,26 +10,17 @@ export default function BlogMenu(props) {
         const fetchData = async () => {
             const id = props.id;
             try {
-                // console.log("----------id in blogmenu: ", id);
                 const res = await axiosInstance.get(`/blog/randomBlogs/${id}`);
-                // console.log(res);
                 setBlogs(res.data);
             } catch (err) {
                 console.log(err);
             }
         };
         fetchData();
-    }, [])
+    }, [props.id])
 
     return (
         <div className={styles.menu}>
-            {/*
-            {posts.map((post) => (
-                <div className={styles.post} key={post.id}>
-                    <img className={styles.blogImg} src={`../upload/${post?.img}`} alt="" />
-                    <h2>{post.title}</h2>
-                </div>
-            ))} */}
             <h2>Other posts you may like</h2>
             {blogs.map((blog, index) => (
                 <BlogCard
@@ -38,8 +29,6 @@ export default function BlogMenu(props) {
                     usage="menu"
                 />
             ))}
-            {/* <button>Read More</button> */}
-
         </div>
     )
 }
