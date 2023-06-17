@@ -1,5 +1,5 @@
 const { User, Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
-const {scheduleDeleteBooking} = require("../scheduler")
+const { scheduleDeleteBooking } = require("../scheduler")
 
 exports.addHotel = async (req, res) => {
     console.log("*********----START--", req.body, "----END----***********");
@@ -140,35 +140,35 @@ exports.updatehotel = async (req, res) => {
 }
 
 exports.addBooking = async (req, res) => {
-  try {
-    const { startDate, numberOfDays, totalPrice, userId, endDate, hotelId, roomId } = req.body; 
-    const newBooking = await BookingHotel.create({
-      startDate,
-      numberOfDays,
-      totalPrice,
-      UserId: userId, 
-      HotelId: hotelId, 
-      RoomId: roomId 
-    });
+    try {
+        const { startDate, numberOfDays, totalPrice, userId, endDate, hotelId, roomId } = req.body;
+        const newBooking = await BookingHotel.create({
+            startDate,
+            numberOfDays,
+            totalPrice,
+            UserId: userId,
+            HotelId: hotelId,
+            RoomId: roomId
+        });
 
-    const hotel = await Hotel.findByPk(hotelId);
-    const room = await Room.findByPk(roomId);
-    if(endDate == false)
-    scheduleDeleteBooking(newBooking.id, startDate);
-    else
-    scheduleDeleteBooking(newBooking.id, endDate);
+        const hotel = await Hotel.findByPk(hotelId);
+        const room = await Room.findByPk(roomId);
+        if (endDate == false)
+            scheduleDeleteBooking(newBooking.id, startDate);
+        else
+            scheduleDeleteBooking(newBooking.id, endDate);
 
-    // Respond with the created booking and associated data
-    res.status(201).json({
-      newBooking,
-    //   user,
-      hotel,
-      room
-    });
-  } catch (error) {
-    console.error('Error adding booking:', error);
-    res.status(500).json({ error: 'Failed to add booking' });
-  }
+        // Respond with the created booking and associated data
+        res.status(201).json({
+            newBooking,
+            //   user,
+            hotel,
+            room
+        });
+    } catch (error) {
+        console.error('Error adding booking:', error);
+        res.status(500).json({ error: 'Failed to add booking' });
+    }
 };
 
 
@@ -182,20 +182,20 @@ exports.addRoom = async (req, res) => {
 }
 exports.getBookingsByIds = async (req, res) => {
     try {
-      const { hotelId, roomId } = req.query;
-      console.log(req.query);
-      const bookings = await BookingHotel.findAll({
-        where: {
-          HotelId: hotelId,
-          RoomId: roomId
-        }
-      });
-  
-      res.status(200).json({
-        bookings
-      });
+        const { hotelId, roomId } = req.query;
+        console.log(req.query);
+        const bookings = await BookingHotel.findAll({
+            where: {
+                HotelId: hotelId,
+                RoomId: roomId
+            }
+        });
+
+        res.status(200).json({
+            bookings
+        });
     } catch (error) {
-      console.error('Error retrieving bookings:', error);
-      res.status(500).json({ error: 'Failed to retrieve bookings' });
+        console.error('Error retrieving bookings:', error);
+        res.status(500).json({ error: 'Failed to retrieve bookings' });
     }
-  };
+};

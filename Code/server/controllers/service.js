@@ -1,4 +1,4 @@
-const { Restaurant, Service, TravelAgent, TourGuide, Hotel, User, BookingHotel, BookingRestaurant, BookingTourGuide, BookingTravelAgent } = require("../models");
+const { Restaurant, Service, TravelAgent, TourGuide, Hotel, User, BookingHotel, BookingRestaurant, BookingTourGuide, BookingTravelAgent, TravelAgentImage, TourGuideImage, HotelImage, RestaurantImage, Review, Room } = require("../models");
 const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
@@ -49,8 +49,13 @@ exports.getServicesByUserId = async (req, res) => {
 
 
 exports.getAllServicesByCitiesDivision = async (req, res) => {
+    const namee = req.body.city;
     try {
         const services = await Service.findAll({
+            where:
+            {
+                name: namee
+            },
             include: [
                 {
                     model: Review,
@@ -97,19 +102,7 @@ exports.getAllServicesByCitiesDivision = async (req, res) => {
                 },
             ],
         });
-
-        const servicesByCitiesDivision = {};
-        services.forEach((service) => {
-            const { city, province } = service;
-            const division = `${city}, ${province}`;
-
-            if (!servicesByCitiesDivision[division]) {
-                servicesByCitiesDivision[division] = [];
-            }
-            servicesByCitiesDivision[division].push(service);
-        });
-
-        res.json(servicesByCitiesDivision);
+        res.json(services);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });

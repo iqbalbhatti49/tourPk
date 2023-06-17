@@ -46,8 +46,8 @@ export default function SpotListing() {
       </div>
       <div className={styles.testimonial}>
         <div>
-          {/* <h2 className={styles.subHeading}>What People Says About This Place?</h2> */}
-          {/* <Testimonial data={data.Reviews} /> */}
+          <h2 className={styles.subHeading}>What People Says About This Place?</h2>
+          <Testimonial data={data.Reviews} />
         </div>
         <div>
           <div className={styles.map}>

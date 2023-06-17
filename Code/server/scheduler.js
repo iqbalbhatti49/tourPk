@@ -14,6 +14,5 @@ function scheduleDeleteBooking(bookingId, endDate) {
 };
 
 module.exports = { scheduleDeleteBooking };
-      
-      
-      
+
+

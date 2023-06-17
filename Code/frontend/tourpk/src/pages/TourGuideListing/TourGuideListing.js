@@ -24,7 +24,7 @@ export default function TourGuideListing() {
    const [reviewCount, setreviewCount] = useState(null);
    const [ratingAverge, setratingAverge] = useState(null);
    const [data, setData] = useState(null);
-   const [validRange,setValidRange] = useState(true) 
+   const [validRange, setValidRange] = useState(true)
    const [bookings, setBookings] = useState(null);
    const [disabledDatesArr, setDisabledDates] = useState(null);
    const navigate = useNavigate();
@@ -181,7 +181,7 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>People's Opinion</h2>
                   <Testimonial data={reviews} />
-                  {role == "tourist" && <div className={styles.booking}> }
+                  {role == "tourist" && <div className={styles.booking}>
 
                      <p>Select a date from the given calender to book me and click the button below.</p>
                      <Button btnType="submit" value="Book Now" handleClick={handleClick} />
@@ -207,18 +207,18 @@ export default function TourGuideListing() {
                   <h2 className={styles.subHeading}>Booking Calendar</h2>
                   <div className={styles.calendar}>
 
-                     <BookingCalendar 
+                     <BookingCalendar
                         selectRange={false}
-                        setValidRange = {setValidRange}
-                        disabledDates={disabledDatesArr} 
-                        selectedDate={selectedDate} 
-                        onDateChange={handleDateChange} 
+                        setValidRange={setValidRange}
+                        disabledDates={disabledDatesArr}
+                        selectedDate={selectedDate}
+                        onDateChange={handleDateChange}
                      />
                   </div>
                </div>
             </div>
          </div>
-           {role == "tourist" &&  <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
+         {role == "tourist" && <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
 
       </div>
    );
