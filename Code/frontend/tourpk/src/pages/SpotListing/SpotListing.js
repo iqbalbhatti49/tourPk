@@ -26,7 +26,7 @@ export default function SpotListing() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axiosInstance.get('/service/spotsByCities', { city: cityy });
+        const response = await axiosInstance.get(`/service/spotsByCities/${cityy}`);
         setServices(response.data); // Store the fetched services in the state
 
         // Extracting hotels, restaurants, tour guides, and travel agents into separate arrays
@@ -95,7 +95,7 @@ export default function SpotListing() {
         console.error(error);
       }
     };
-    fetchServices(); // Call the fetchServices function when the component mounts
+    fetchServices();
   }, []);
 
   return (

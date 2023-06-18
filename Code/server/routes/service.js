@@ -4,6 +4,6 @@ const { getServicesByUserId, getBookingsByUserId, spotsByCities } = require("../
 
 router.get("/getServicesByUserId/:id", getServicesByUserId);
 router.get("/Bookings/:id", getBookingsByUserId);
-router.get("/spotsByCities", spotsByCities);
+router.get("/spotsByCities/:city", spotsByCities);
 
 module.exports = router;

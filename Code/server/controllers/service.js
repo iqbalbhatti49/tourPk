@@ -47,7 +47,7 @@ exports.spotsByCities = async (req, res) => {
   try {
     const services = await Service.findAll({
       where: {
-        city: req.body.city,
+        city: req.params.city,
       },
       include: [
         {
