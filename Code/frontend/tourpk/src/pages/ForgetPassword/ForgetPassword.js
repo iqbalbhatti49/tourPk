@@ -1,13 +1,14 @@
 import styles from './ForgetPassword.module.css'
-import { Button, FormField, forgotPassword, React, useState,
-         FinalForm, validateEmail, useDispatch, } from '../../components'
+import {
+    Button, FormField, forgotPassword, React, useState,
+    FinalForm, validateEmail, useDispatch,
+} from '../../components'
 
 export default function ForgetPassword() {
     const dispatch = useDispatch();
     const [message, setMessage] = useState(null);
     const onSubmit = async (values) => {
         const result = await dispatch(forgotPassword(values));
-        console.log(result);
         setMessage(result.payload);
     }
 

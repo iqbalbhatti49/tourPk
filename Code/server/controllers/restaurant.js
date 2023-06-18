@@ -74,7 +74,6 @@ exports.getAllRestaurants = async (req, res) => {
 }
 
 exports.deleteRestaurant = async (req, res) => {
-    console.log(req.body)
     await RestaurantImage.destroy({ where: { RestaurantId: req.body.RestaurantId } });
     await Restaurant.destroy({ where: { ServiceId: req.body.ServiceId } });
     await Review.destroy({ where: { ServiceId: req.body.ServiceId } });
@@ -84,7 +83,6 @@ exports.deleteRestaurant = async (req, res) => {
 
 
 exports.updaterestaurant = async (req, res) => {
-    console.log(req.body);
     const { service, restaurant } = req.body; // Destructure the objects from the request body
     const images = service.images;
 
@@ -122,14 +120,12 @@ exports.updaterestaurant = async (req, res) => {
         }
         res.status(200).json(service.serviceId);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Failed to update restaurant' });
     }
 };
 
 
 exports.searchRestaurant = async (req, res) => {
-    console.log(req);
     const result = await Restaurant.findAll({
         attributes: ['id'],
         include: [

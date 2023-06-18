@@ -28,7 +28,6 @@ const initialState = {
 export const initiatePayment = createAsyncThunk(
   'checkout/initiatePayment',
   async ({ cardInfo, billingAddress, orderComment, grandTotal }, { rejectWithValue }) => {
-    console.log("from req ", cardInfo);
     var amount = grandTotal;
     amount = amount.replace('$', '');
     var request = {
@@ -57,7 +56,7 @@ export const updateCardInfo = createAsyncThunk(
   'checkout/updateCardInfo',
   async ({ id, values }, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post('/paymentInformation/updatepayment', { id,cardInfo:values });
+      const response = await axiosInstance.post('/paymentInformation/updatepayment', { id, cardInfo: values });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -69,7 +68,7 @@ export const updateBillingAddress = createAsyncThunk(
   'checkout/updateBillingAddress',
   async ({ id, values }, { rejectWithValue }) => {
     try {
-      const response = await axiosInstance.post('/billingAddress/updateAddress', { id, address:values });
+      const response = await axiosInstance.post('/billingAddress/updateAddress', { id, address: values });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);

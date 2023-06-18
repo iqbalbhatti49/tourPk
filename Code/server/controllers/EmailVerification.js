@@ -3,9 +3,8 @@ const authToken = '851ed7213d5632220f91deed5d9e3863';
 const verifySid = 'VAd5a507cf48317670548cf5249f1be226';
 const client = require('twilio')(accountSid, authToken);
 
-function sendVerificationCodeByEmailWithTemplate(req,res) {
-  console.log(req.body.email);
-    return client.verify.v2.services(verifySid)
+function sendVerificationCodeByEmailWithTemplate(req, res) {
+  return client.verify.v2.services(verifySid)
     .verifications
     .create({
       channelConfiguration: {
@@ -17,21 +16,18 @@ function sendVerificationCodeByEmailWithTemplate(req,res) {
       channel: 'email'
     })
     .then((verification) => {
-      console.log(verification.status);
       res.status(200).json({ success: true, message: 'Verification initiated successfully' });
     })
     .catch((error) => {
-      console.error('Error initiating verification:', error);
       res.status(500).json({ success: false, message: 'Failed to initiate verification' });
     });
 };
 
-function checkVerificationCode(req,res) {
+function checkVerificationCode(req, res) {
   return client.verify.v2.services(verifySid)
     .verificationChecks
     .create({ to: req.body.email, code: req.body.verificationCode })
     .then((verificationCheck) => {
-      console.log(verificationCheck.status);
       if (verificationCheck.status === 'approved') {
         res.status(200).json({ success: true, message: 'Verification code is valid' });
       } else {
@@ -39,7 +35,6 @@ function checkVerificationCode(req,res) {
       }
     })
     .catch((error) => {
-      console.error('Error checking verification code:', error);
       res.status(500).json({ success: false, message: 'Failed to check verification code' });
     });
 };

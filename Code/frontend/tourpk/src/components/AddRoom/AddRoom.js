@@ -16,16 +16,12 @@ const AddRoom = (props) => {
     // Logic for Update hotel 
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
-    console.log(isEditMode);
     let values, hotel, room;
     let updateInitialValue;
     if (isEditMode) {
-        console.log(location.state);
         values = location.state.values;
         hotel = location.state.obj;
         room = location.state.room;
-        console.log("Before Formatting****** ", hotel);
-        console.log(values);
     }
 
     if (isEditMode) {
@@ -38,7 +34,6 @@ const AddRoom = (props) => {
             };
             const mealTypeValues = convertOptionsToValues(mealOptions.map(option => option.label), obj.mealType.split(', '));
             const featureValues = convertOptionsToValues(featureOptions.flatMap(option => option.options), obj.features.split(', '));
-            console.log(mealTypeValues);
             const obj1 = {
                 startTime: obj.openTime,
                 endTime: obj.closeTime,
@@ -52,9 +47,7 @@ const AddRoom = (props) => {
             };
             return obj1;
         };
-
         updateInitialValue = formatToFieldNames(hotel);
-        console.log(hotel);
     }
 
     const addInitialValue = {
@@ -69,12 +62,8 @@ const AddRoom = (props) => {
         UserId: null
     };
 
-    console.log(addInitialValue);
     const initialValue = isEditMode ? updateInitialValue : addInitialValue;
 
-
-
-    console.log("props**** ", props);
     const userId = useSelector(state => state.user.id); // Id of currently logged in user
     const { service, hotelAmenities } = props.hotelData.hotelData;
     const imagesArray = service.images;
@@ -113,9 +102,7 @@ const AddRoom = (props) => {
             room: roomData
         }
 
-        console.log(hotelRoom)
         const roomId = await axiosInstance.post("/hotel/addHotel", hotelRoom);
-        console.log("--> Back on F.end --> ", roomId.data);
         swal("Hotel and Room Added Successfully", "Success! The new Hotel entry has been added successfully.", "success");
         navigate(`/hotelListing/${roomId.data}`);
     };

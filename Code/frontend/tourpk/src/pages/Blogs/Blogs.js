@@ -1,9 +1,10 @@
 import styles from "./Blogs.module.css";
 import 'react-tabs/style/react-tabs.css';
-import { 
+import {
     HorizontalScroll, useDispatch, useEffect,
-    React, fetchBlogs, useSelector } 
-  from "../../components/index";
+    React, fetchBlogs, useSelector
+}
+    from "../../components/index";
 
 
 const Blogs = () => {
@@ -11,7 +12,6 @@ const Blogs = () => {
     const blogCategories = useSelector((state) => state.blogs.blogCategories);
     useEffect(() => {
         const s = dispatch(fetchBlogs());
-        console.log(s.payload);
     }, [dispatch]);
 
     return (

@@ -4,13 +4,12 @@ import { Dropdown, Button, YesNoDropdown, RolesDropdown, FinalForm, useState } f
 const GenericInfoAboutService = () => {
   const [formData, setFormData] = useState(null);
   const onSubmit = (values, form) => {
-    console.log('Form submitted with values:', values);
     setFormData(values); // Store the form data in state
     form.reset();
     Object.keys(values).forEach(key => {
       form.change(key, undefined);
       form.resetFieldState(key);
-  });
+    });
   };
 
   return (<>

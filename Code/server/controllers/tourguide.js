@@ -3,7 +3,6 @@ const { Op } = require("sequelize");
 const Sequelize = require('sequelize');
 
 exports.addTourGuide = async (req, res) => {
-  //extract 3 objects each to add in services, tourGuide and tourGuideImage table respectively
   const service = req.body.service;
   const tourGuide = req.body.tourGuide;
   const images = req.body.service.images;
@@ -19,27 +18,12 @@ exports.addTourGuide = async (req, res) => {
     };
     await TourGuideImage.create(image);
   }
-
-  // let img = {};
-  // images.forEach((image, index) => {
-  //     img[`image${index + 1}`] = rootPath + image;
-  // });
-  // const response = {
-  //     serviceObj: serviceObj.dataservice,
-  //     tourGuideObj: tourGuideObj.dataservice,
-  //     images: img
-  // };
-
-
-
-  console.log("--> Back.end --> ", tourGuideObj.dataValues.id);
   res.status(200).json(tourGuideObj.dataValues.id);
 }
 
 
 exports.updatetourguide = async (req, res) => {
-  console.log(req.body);
-  const { service, tourGuide } = req.body; // Destructure the objects from the request body
+  const { service, tourGuide } = req.body;
   const images = service.images;
 
   const servicDta = {
@@ -54,17 +38,14 @@ exports.updatetourguide = async (req, res) => {
   }
 
   try {
-    // Update the service
     const updatedService = await Service.update(servicDta, {
       where: { id: service.id }
     });
 
-    // Update the tour guide
     const updatedTourGuide = await TourGuide.update(tourGuide, {
       where: { id: service.serviceId }
     });
 
-    // Update the images
     let rootPath = "../static/images/upload/";
     const tourGuideImages = images.map((image) => ({
       imageUrl: rootPath + image,
@@ -78,7 +59,6 @@ exports.updatetourguide = async (req, res) => {
 
     res.status(200).json(service.serviceId);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Failed to update tour guide' });
   }
 };
@@ -139,7 +119,6 @@ exports.getTourGuideById = async (req, res) => {
 
 exports.addBooking = async (req, res) => {
   const { userId, id, totalPrice, selectedDate } = req.body;
-  console.log(selectedDate)
   try {
     const newBooking = await BookingTourGuide.create({
       bookingDate: selectedDate,
@@ -149,13 +128,11 @@ exports.addBooking = async (req, res) => {
     });
     res.status(200).json(newBooking);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Failed to add booking' });
   }
 };
 
 exports.deleteTourGuide = async (req, res) => {
-  console.log(req.body)
   await TourGuideImage.destroy({ where: { TourGuideId: req.body.TourGuideId } });
   await TourGuide.destroy({ where: { ServiceId: req.body.ServiceId } });
   await Review.destroy({ where: { ServiceId: req.body.ServiceId } });
@@ -166,7 +143,6 @@ exports.deleteTourGuide = async (req, res) => {
 exports.getAllBookings = async (req, res) => {
   try {
     const tourGuideId = req.params.id;
-    console.log("fetchifb id ", tourGuideId);
     const bookings = await BookingTourGuide.findAll({
       where: {
         TourGuideId: tourGuideId
@@ -179,11 +155,9 @@ exports.getAllBookings = async (req, res) => {
     });
     res.json(bookings);
   } catch (error) {
-    console.log('Error:', error);
     res.status(500).json({ error: 'Failed to get tour guide bookings' });
   }
 };
-
 
 exports.searchTourGuide = async (req, res) => {
   const result = await TourGuide.findAll({

@@ -80,7 +80,6 @@ exports.getAllHotels = async (req, res) => {
     res.json(hotels);
 }
 exports.deleteHotel = async (req, res) => {
-    console.log(req.body)
     await Room.destroy({ where: { HotelId: req.body.HotelId } });
     await HotelImage.destroy({ where: { HotelId: req.body.HotelId } });
     await Hotel.destroy({ where: { ServiceId: req.body.ServiceId } });
@@ -89,8 +88,7 @@ exports.deleteHotel = async (req, res) => {
     res.status(200).json("deleted sucessfully");
 }
 exports.updatehotel = async (req, res) => {
-    console.log(req.body);
-    const { service, hotel, room } = req.body; // Destructure the objects from the request body
+    const { service, hotel, room } = req.body;
     const images = service.images;
     const servicDta = {
         name: service.name,
@@ -129,7 +127,6 @@ exports.updatehotel = async (req, res) => {
 
         res.status(200).json(hotel.id);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Failed to update tour guide' });
     }
 }
@@ -160,22 +157,18 @@ exports.addBooking = async (req, res) => {
             room
         });
     } catch (error) {
-        console.error('Error adding booking:', error);
         res.status(500).json({ error: 'Failed to add booking' });
     }
 };
 exports.addRoom = async (req, res) => {
-    console.log(req.body);
     const room = req.body;
     const roomObj = await Room.create(room);
-    // res.status(200).json(roomObj.dataValues.id);
     res.status(200).json("done");
 
 }
 exports.getBookingsByIds = async (req, res) => {
     try {
         const { hotelId, roomId } = req.query;
-        console.log(req.query);
         const bookings = await BookingHotel.findAll({
             where: {
                 HotelId: hotelId,
@@ -187,7 +180,6 @@ exports.getBookingsByIds = async (req, res) => {
             bookings
         });
     } catch (error) {
-        console.error('Error retrieving bookings:', error);
         res.status(500).json({ error: 'Failed to retrieve bookings' });
     }
 };
@@ -195,7 +187,6 @@ exports.getBookingsByIds = async (req, res) => {
 exports.deleteBookingById = async (req, res) => {
     try {
         const { bookingId } = req.body;
-        console.log(bookingId);
         const deletedBookings = await BookingHotel.destroy({
             where: {
                 id: bookingId
@@ -206,7 +197,6 @@ exports.deleteBookingById = async (req, res) => {
             deletedBookings
         });
     } catch (error) {
-        console.error('Error deleting bookings:', error);
         res.status(500).json({ error: 'Failed to delete bookings' });
     }
 };

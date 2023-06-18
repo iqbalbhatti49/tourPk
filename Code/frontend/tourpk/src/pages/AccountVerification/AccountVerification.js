@@ -1,8 +1,8 @@
 import styles from './AccountVerification.module.css';
-import { 
+import {
   FinalForm, FormField, Button, validatePhoneWithCode, axiosInstance,
   updatePhoneNumberVerification, React, useState, useSelector,
-  useNavigate, useDispatch  
+  useNavigate, useDispatch
 } from '../../components';
 
 function AccountVerification() {
@@ -12,7 +12,7 @@ function AccountVerification() {
   const [otpCode, setOtpCode] = useState('');
   const [verificationStarted, setVerificationStarted] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState('');
-  const [isLoading, setIsLoading] = useState(false); 
+  const [isLoading, setIsLoading] = useState(false);
   const userId = useSelector((state) => state.user.id)
 
   const handlePhoneNumberChange = (e) => {
@@ -31,26 +31,25 @@ function AccountVerification() {
       });
 
       swal({
-          title: 'Verification Started!',
-          text: response.data.message,
-          icon: 'info',
-          buttons: {
-            confirm: true,
-          },
+        title: 'Verification Started!',
+        text: response.data.message,
+        icon: 'info',
+        buttons: {
+          confirm: true,
+        },
       })
       setVerificationStarted(true);
       setPhoneNumber(values.phoneNumber)
       setVerificationStatus(response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
     } catch (error) {
-      console.error('Error initiating verification:', error);
-        swal({
-          title: 'Verification Failed!',
-          text: 'Failed to initiate verification',
-          icon: 'warning',
-          buttons: {
-            confirm: true,
-          },
+      swal({
+        title: 'Verification Failed!',
+        text: 'Failed to initiate verification',
+        icon: 'warning',
+        buttons: {
+          confirm: true,
+        },
       })
       setVerificationStatus(error.response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
@@ -67,36 +66,36 @@ function AccountVerification() {
 
       if (response.data.success) {
         swal({
-            title: 'Code Verified!',
-            text: 'Your phone number is successfully verified.',
-            icon: 'success',
-            buttons: {
-              confirm: true,
-            },
+          title: 'Code Verified!',
+          text: 'Your phone number is successfully verified.',
+          icon: 'success',
+          buttons: {
+            confirm: true,
+          },
         })
         setVerificationStatus(response.status); // Set the status code in state
-        dispatch(updatePhoneNumberVerification({userId,phoneNumber}));
+        dispatch(updatePhoneNumberVerification({ userId, phoneNumber }));
         navigate("/serviceProvider")
       } else {
         swal({
-            title: 'Not Verified!',
-            text: 'Verification code is invalid or expired.',
-            icon: 'error',
-            buttons: {
-              confirm: true,
-            },
+          title: 'Not Verified!',
+          text: 'Verification code is invalid or expired.',
+          icon: 'error',
+          buttons: {
+            confirm: true,
+          },
         })
         setVerificationStatus(response.status); // Set the status code in state
       }
       setIsLoading(false); // Hide loading symbol
     } catch (error) {
       swal({
-          title: 'Not Verified!',
-          text: 'Failed to check verification code.',
-          icon: 'error',
-          buttons: {
-            confirm: true,
-          },
+        title: 'Not Verified!',
+        text: 'Failed to check verification code.',
+        icon: 'error',
+        buttons: {
+          confirm: true,
+        },
       })
       setVerificationStatus(error.response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
@@ -146,7 +145,7 @@ function AccountVerification() {
             </form>
           )}
         />
-        {isLoading && <p>Loading...</p>} 
+        {isLoading && <p>Loading...</p>}
       </div>
     </div>
   );

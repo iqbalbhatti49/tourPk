@@ -12,7 +12,6 @@ const initialState = {
 export const addTourGuideBooking = createAsyncThunk(
   'bookings/addTourGuideBooking',
   async ({ userId, id, totalPrice, selectedDate }) => {
-    console.log(selectedDate);
     try {
       const response = await axios.post('/tourguide/addBooking', {
         userId,
@@ -32,14 +31,13 @@ export const addTourGuideBooking = createAsyncThunk(
 export const addTravelAgentBooking = createAsyncThunk(
   'bookings/addTravelAgentBooking',
   async ({ userId, id, selectedDate, totalPrice, guests }) => {
-    console.log(userId, id, selectedDate, totalPrice, guests)
     try {
       const response = await axios.post('/travelAgent/addBooking', {
         userId,
         id,
         selectedDate,
         totalPrice,
-        guestCount:guests,
+        guestCount: guests,
       });
 
       return response.data; // You can handle the response data as needed
@@ -53,7 +51,6 @@ export const addTravelAgentBooking = createAsyncThunk(
 export const addHotelBooking = createAsyncThunk(
   'bookings/addHotelBooking',
   async ({ startDate, numberOfDays, totalPrice, userId, hotelId, roomId, endDate }) => {
-    console.log("dFJOLKHVF sdhFLKGgrj")
     try {
       const response = await axiosInstance.post('/hotel/addBooking', {
         startDate,
@@ -119,6 +116,6 @@ export const bookingsSlice = createSlice({
   },
 });
 
-export const {} = bookingsSlice.actions;
+export const { } = bookingsSlice.actions;
 
 export default bookingsSlice.reducer;

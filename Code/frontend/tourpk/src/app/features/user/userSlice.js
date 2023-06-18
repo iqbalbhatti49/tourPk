@@ -49,39 +49,36 @@ export const resetPassword = createAsyncThunk('user/resetPassword', async (value
 export const updatePhoneNumberVerification = createAsyncThunk(
    'user/updatePhoneNumberVerification',
    async (payload) => {
-      const { userId,phoneNumber } = payload;
-      console.log(payload)
-     try {
-       const response = await axiosInstance.post('/auth/numberVerification', {
-         phoneNumber,
-         userId,
-         phoneNumberVerified: true
-       });
-       return response.data;
-     } catch (error) {
-       console.log('Failed to update phone number verification:', error);
-       throw error;
-     }
+      const { userId, phoneNumber } = payload;
+      try {
+         const response = await axiosInstance.post('/auth/numberVerification', {
+            phoneNumber,
+            userId,
+            phoneNumberVerified: true
+         });
+         return response.data;
+      } catch (error) {
+         throw error;
+      }
    }
 );
 
 export const updateEmailVerification = createAsyncThunk(
    'user/updateEmailVerification',
    async (payload) => {
-     const { userId, email } = payload;
-     try {
-       const response = await axiosInstance.post('/auth/emailVerification', {
-         email,
-         userId,
-         emailVerified: true,
-       });
-       return response.data;
-     } catch (error) {
-       console.log('Failed to update email verification:', error);
-       throw error;
-     }
+      const { userId, email } = payload;
+      try {
+         const response = await axiosInstance.post('/auth/emailVerification', {
+            email,
+            userId,
+            emailVerified: true,
+         });
+         return response.data;
+      } catch (error) {
+         throw error;
+      }
    }
- );
+);
 
 const userSlice = createSlice({
    name: 'user',
@@ -136,14 +133,14 @@ const userSlice = createSlice({
          })
          .addCase(updateEmailVerification.pending, (state) => {
             // Optional: You can update the state while the action is pending
-          })
-          .addCase(updateEmailVerification.fulfilled, (state, action) => {
+         })
+         .addCase(updateEmailVerification.fulfilled, (state, action) => {
             state.email = action.payload.email;
             state.emailVerified = action.payload.emailVerified;
-          })
-          .addCase(updateEmailVerification.rejected, (state, action) => {
+         })
+         .addCase(updateEmailVerification.rejected, (state, action) => {
             // Handle the rejected action if needed
-          });
+         });
    }
 });
 

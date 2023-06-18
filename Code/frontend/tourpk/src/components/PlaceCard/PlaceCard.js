@@ -7,33 +7,32 @@ import Button from '../Button/Button';
 
 export const PlaceCard = (props) => {
    const { city } = props;
-   console.log(city)
    return (
       <Card>
-        
-            <ImageHeader imageSrc={city.picture} />
-            <CardBody>
-               <div className={styles.body}>
-                  <p className={styles.title}>{city.tagline}</p>
-                  <div className={styles.flex}>
-                     <div className={styles.rating}>
-                        <p>{city.rating}</p>
-                        <IconStar />
-                     </div>
-                     <div>
-                        <Link to="/spotListing" state={city}>
-                           <Button value="Explore" type="secondary"/>
-                        </Link>
-                     </div>
+
+         <ImageHeader imageSrc={city.picture} />
+         <CardBody>
+            <div className={styles.body}>
+               <p className={styles.title}>{city.tagline}</p>
+               <div className={styles.flex}>
+                  <div className={styles.rating}>
+                     <p>{city.rating}</p>
+                     <IconStar />
                   </div>
-                  <div className={styles.stats}>
-                     <p className={styles.place}>{city.name}</p>
-                     <p className={styles.reviews}>{city.reviews} reviews</p>
+                  <div>
+                     <Link to="/spotListing" state={city}>
+                        <Button value="Explore" type="secondary" />
+                     </Link>
                   </div>
                </div>
-               
-            </CardBody>
-         
+               <div className={styles.stats}>
+                  <p className={styles.place}>{city.name}</p>
+                  <p className={styles.reviews}>{city.reviews} reviews</p>
+               </div>
+            </div>
+
+         </CardBody>
+
       </Card>
    );
 };

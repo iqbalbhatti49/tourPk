@@ -10,11 +10,9 @@ exports.startVerification = (req, res) => {
     .verifications
     .create({ to: phoneNumber, channel: 'sms' })
     .then((verification) => {
-      console.log(verification.status);
       res.status(200).json({ success: true, message: 'Verification initiated successfully' });
     })
     .catch((error) => {
-      console.error('Error initiating verification:', error);
       res.status(500).json({ success: false, message: 'Failed to initiate verification' });
     });
 };
@@ -26,7 +24,6 @@ exports.checkVerification = (req, res) => {
     .verificationChecks
     .create({ to: phoneNumber, code: verificationCode })
     .then((verificationCheck) => {
-      console.log(verificationCheck.status);
       if (verificationCheck.status === 'approved') {
         res.status(200).json({ success: true, message: 'Verification code is valid' });
       } else {
@@ -34,7 +31,6 @@ exports.checkVerification = (req, res) => {
       }
     })
     .catch((error) => {
-      console.error('Error checking verification code:', error);
       res.status(500).json({ success: false, message: 'Failed to check verification code' });
     });
 };

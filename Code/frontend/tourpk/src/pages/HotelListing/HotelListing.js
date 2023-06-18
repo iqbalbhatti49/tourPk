@@ -1,7 +1,9 @@
 import styles from './HotelListing.module.css'
-import { Button, Carousel, ReviewForm, Rating, Testimonial, HotelBooking,
-         React,  useEffect, useState, useLocation, useParams, axiosInstance,
-         IconEdit, IconDelete, useSelector, swal, useNavigate } from '../../components/index';
+import {
+  Button, Carousel, ReviewForm, Rating, Testimonial, HotelBooking,
+  React, useEffect, useState, useLocation, useParams, axiosInstance,
+  IconEdit, IconDelete, useSelector, swal, useNavigate
+} from '../../components/index';
 
 export default function HotelListing() {
   const navigate = useNavigate();
@@ -51,15 +53,12 @@ export default function HotelListing() {
       dangerMode: true,
     }).then((clickedBtn) => {
       if (clickedBtn) {
-        console.log('User clicked on confirm');
         const ids = {
           ServiceId: data.Service.id,
           HotelId: data.Hotel.id
         };
         axiosInstance.post(`/hotel/deleteHotel/`, ids);
         navigate("/");
-      } else {
-        console.log('User clicked on "Cancel"');
       }
     });
   }
@@ -76,7 +75,6 @@ export default function HotelListing() {
       const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
       const { Service: { Reviews, ...serviceData }, HotelImages, ...restData } = response.data;
       setreviews(Reviews);
-      console.log(response.data);
       const Hotel = restData;
       const Service = serviceData;
       const HotelData = {
@@ -85,7 +83,6 @@ export default function HotelListing() {
         HotelImages
       };
       setData(HotelData);
-      console.log(HotelData);
       const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
       setratingAverge(ratingAvg);
       setreviewCount(reviewsCount);

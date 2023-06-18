@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styles from "../Signup/Signup.module.css";
-import { IconEmail, IconPassword, FormField, Button, login, FinalForm,
-         validateEmail, validatePassword, useDispatch, useNavigate, Link } from "../../components/index";
-         
+import {
+    IconEmail, IconPassword, FormField, Button, login, FinalForm,
+    validateEmail, validatePassword, useDispatch, useNavigate, Link
+} from "../../components/index";
+
 const Login = () => {
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
@@ -10,10 +12,8 @@ const Login = () => {
     const onSubmit = async (values, form) => {
         try {
             const user = await dispatch(login(values));
-            console.log("----> ", user.payload.user.role);
-
             if (user.payload.user.role === "tourist")
-            navigate("/paymentInformation", { state: { from: '/login' } });
+                navigate("/paymentInformation", { state: { from: '/login' } });
             else
                 navigate("/serviceProvider");
         } catch (error) {
