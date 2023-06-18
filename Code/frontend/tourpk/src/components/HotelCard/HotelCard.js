@@ -16,6 +16,7 @@ export const HotelCard = (props) => {
       const imgesKey = type + "Images"; //key of corresponding images object
       const reviews = data.Service.Reviews;
       const { reviewsCount, ratingAvg } = getReviewsStats(reviews);
+      console.log("********", data, imgesKey);
       let img = data[imgesKey][0];
       const { imageUrl } = img;
 

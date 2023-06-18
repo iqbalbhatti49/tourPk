@@ -20,22 +20,18 @@ const Services = () => {
 
    const getRestaurants = async () => {
       const res = await axiosInstance.get("/restaurant/getRestaurants");
-      console.log("restrnt ----: ", res.data);
       setRestaurants(res.data);
    }
    const getHotels = async () => {
       const res = await axiosInstance.get("/hotel/getHotels");
-      console.log("hotl ----: ", res.data);
       setHotels(res.data);
    }
    const getTravelAgents = async () => {
       const res = await axiosInstance.get("/travelAgent/getTravelAgents");
-      console.log("Tagent ----: ", res.data);
       setTravelAgent(res.data);
    }
    const getTourGuides = async () => {
       const res = await axiosInstance.get("/tourguide/getTourGuides");
-      console.log("tguide ----: ", res.data);
       setTourGuides(res.data);
    }
 
@@ -43,7 +39,6 @@ const Services = () => {
       Promise.all([getRestaurants(), getHotels(), getTravelAgents(), getTourGuides()])
          .then(() => {
             setIsLoading(false);
-            console.log("SUCCESSFULLY fetched 4 services*******");
          })
          .catch((error) => {
             setError(error);
@@ -52,12 +47,6 @@ const Services = () => {
    }, []);
 
    const location = useLocation();
-   const navigate = useNavigate();
-
-   const handleRestaurantClick = (item) => {
-      console.log("goin ahed --> ", item);
-      // navigate(`/restaurantListing/${id}`, { state: "showReviews" });
-   }
 
    if (isLoading) {
       return <div>Loading...</div>;

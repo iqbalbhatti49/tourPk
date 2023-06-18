@@ -47,14 +47,11 @@ const AddBlog = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log("--> ", state);
         let imggg, imgUrl;
         if (isEditMode && !file)
             imggg = state.image;
         else
             imgUrl = await upload(event);
-        console.log(imggg, "-update wli");
-        console.log(imgUrl, "uploafdd wli-----");
         const blog = {
             title: title,
             postText: value,

@@ -1,9 +1,8 @@
 const { User, Service, Hotel, HotelImage, Review, Room, BookingHotel } = require("../models/");
-const { scheduleDeleteBooking } = require("../scheduler")
+const { scheduleDeleteBooking } = require("../scheduler");
+const { Op } = require("sequelize");
 
 exports.addHotel = async (req, res) => {
-    console.log("*********----START--", req.body, "----END----***********");
-
     const service = req.body.service;
     const hotel = req.body.hotel;
     const images = req.body.images;
@@ -213,3 +212,32 @@ exports.deleteBookingById = async (req, res) => {
 };
 
 
+exports.searchHotel = async (req, res) => {
+    const result = await Hotel.findAll({
+        attributes: ['id'],
+        include: [
+            {
+                model: Service,
+                where: {
+                    [Op.or]: [
+                        { name: { [Op.like]: '%' + req.params.searchkey + '%' } },
+                        { address: { [Op.like]: '%' + req.params.searchkey + '%' } },
+                        { city: { [Op.like]: '%' + req.params.searchkey + '%' } },
+                        { description: { [Op.like]: '%' + req.params.searchkey + '%' } }
+                    ]
+                },
+                attributes: ['name', 'address'],
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+            {
+                model: HotelImage,
+                attributes: ['imageUrl']
+            },
+        ],
+    });
+    res.json(result);
+}

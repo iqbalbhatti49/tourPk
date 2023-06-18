@@ -94,3 +94,8 @@
       color: var(--secondaryColor) !important;
    }
 }
+
+.serviceType select {
+   border: none;
+   padding: 0px;
+}
