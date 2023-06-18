@@ -1,4 +1,3 @@
-import { Hotels, Restaurants, TourGuides, MesmerizingSight, MustVisitPlace, Other } from './Data';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axiosInstance from '../../../utils/Api'
 
@@ -8,32 +7,32 @@ const initialState = {
         {
             id: 1,
             name: 'Hotels & Resorts',
-            blogs: Hotels
+            blogs: []
         },
         {
             id: 2,
             name: 'Food & Restaurants',
-            blogs: Restaurants
+            blogs: []
         },
         {
             id: 3,
             name: 'Tour Guides',
-            blogs: TourGuides
+            blogs: []
         },
         {
             id: 4,
             name: 'Mesmerizing Sight Seeing Places',
-            blogs: MesmerizingSight
+            blogs: []
         },
         {
             id: 5,
             name: 'Must Visit Places in 2023',
-            blogs: MustVisitPlace
+            blogs: []
         },
         {
             id: 6,
             name: 'Other Blogs of Interest',
-            blogs: Other
+            blogs: []
         }
     ],
     status: 'idle',
@@ -46,7 +45,6 @@ export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async () => {
 });
 
 export const fetchBlogById = createAsyncThunk('blogs/fetchBlogById', async (id) => {
-    console.log(id);
     const response = await axiosInstance.get(`/blog/${id}`);
     return response.data;
 });
@@ -84,9 +82,9 @@ const blogsSlice = createSlice({
             })
             .addCase(fetchBlogs.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.blogCategories.forEach((category, index) => {
+                state.blogCategories.forEach((category) => {
                     const blogs = action.payload.filter((blog) => blog.category === category.name);
-                    state.blogCategories[index].blogs.push(...blogs);
+                    category.blogs = [...blogs];
                 });
             })
             .addCase(fetchBlogs.rejected, (state, action) => {

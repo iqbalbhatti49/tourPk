@@ -184,3 +184,33 @@ exports.getAllBookings = async (req, res) => {
   }
 };
 
+
+exports.searchTourGuide = async (req, res) => {
+  const result = await TourGuide.findAll({
+    attributes: ['id', 'perDayRate'],
+    include: [
+      {
+        model: Service,
+        where: {
+          [Op.or]: [
+            { name: { [Op.like]: '%' + req.params.searchkey + '%' } },
+            { address: { [Op.like]: '%' + req.params.searchkey + '%' } },
+            { city: { [Op.like]: '%' + req.params.searchkey + '%' } },
+            { description: { [Op.like]: '%' + req.params.searchkey + '%' } }
+          ]
+        },
+        attributes: ['name', 'address'], // Include attributes from the Service table: name, address
+        include: [
+          {
+            model: Review,
+          },
+        ],
+      },
+      {
+        model: TourGuideImage,
+        attributes: ['imageUrl']
+      },
+    ],
+  });
+  res.json(result);
+}

@@ -35,12 +35,12 @@ export const BlogCard = (props) => {
                : (
                   <Link to={`/Blog/${blog.id}`} className={styles.card} >
                      <Card>
-                        <ImageHeader imageSrc="https://i0.wp.com/www.wonderslist.com/wp-content/uploads/2022/05/Best-Natural-Places-to-Visit-in-Pakistan.jpg" />
+                        <ImageHeader imageSrc={blog.image} />
                         <CardBody>
                            <div className={styles.body}>
                               <div className={styles.imageTitle}>{blog.title}</div>
                               <p className={styles.postText}>{extractPlainText(blog.postText, 90)} ..... </p>
-                              <p className={styles.username}>By John doe</p>
+                              <p className={styles.username}>{blog.datePosted}</p>
                            </div>
                         </CardBody>
                      </Card >

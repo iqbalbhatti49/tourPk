@@ -54,8 +54,8 @@ const commentsSlice = createSlice({
             })
             .addCase(fetchCommentByBlog.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                console.log("------comment fetched payload-----", action.payload);
-                state.items = state.items.concat(action.payload);
+                // console.log("------comment fetched payload-----", action.payload);
+                // state.items = "";
             })
             .addCase(fetchCommentByBlog.rejected, (state, action) => {
                 state.status = 'failed';
@@ -63,8 +63,7 @@ const commentsSlice = createSlice({
             })
             .addCase(addComment.fulfilled, (state, action) => {
                 console.log("---------action payload ----- ", action.payload);
-                state.items.push(action.payload);
-
+                // state.items.push(action.payload);
             })
             .addCase(addComment.pending, (state, action) => {
                 state.status = 'loading';

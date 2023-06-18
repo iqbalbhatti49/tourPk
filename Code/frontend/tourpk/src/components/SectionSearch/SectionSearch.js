@@ -2,28 +2,31 @@ import React, { useState } from 'react';
 import Button from '../Button/Button';
 import styles from './SectionSearch.module.css';
 import { IconLocation } from '../../components/IconLocation/IconLocation';
-import { IconCalendar } from '../../components/IconCalendar/IconCalendar';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import LocationPicker from '../LocationPicker/LocationPicker';
+import Dropdown from '../Dropdown/Dropdown';
+import { Form as FormFinal } from 'react-final-form'
+import axiosInstance from '../../utils/Api';
+import { useNavigate } from 'react-router-dom';
 
 export const SectionSearch = () => {
-   const [startDate, setStartDate] = useState(new Date());
-   const [isVisible, setIsVisible] = useState(false);
-   const [locationValue, setLocationValue] = useState("");
+   const [service, setService] = useState(null);
+   const [searchkey, setsearchkey] = useState("");
+   const navigate = useNavigate();
 
-   function showLocationPicker() {
-      setIsVisible(true);
-   }
+   const searchItem = async () => {
+      let servicee = service;
+      servicee = servicee.replace(/\s+/g, ''); //remove spaces to avoid error in url
+      const res = await axiosInstance.get(`/${servicee}/search${servicee}/${searchkey}`);
+      navigate(`/searchResult/`, { state: { serviceType: servicee, results: res.data } });
+   };
 
-   function hideLocationPicker() {
-      setIsVisible(false);
-   }
+   const handleChange = (selectedOption) => {
+      setService(selectedOption);
+   };
 
-   function handleLocationChange(location) {
-      setLocationValue(`${location.lat},${location.lng}`);
-      hideLocationPicker();
-   }
+   const onSubmit = (values) => {
+      console.log(values);
+   };
 
    return (
       <div className={styles.container}>
@@ -34,24 +37,50 @@ export const SectionSearch = () => {
                <div className={styles.inputIconed}>
                   <IconLocation />
                   <div className={styles.inputLabeled}>
-                     <label className={styles.sLabel} htmlFor="location">Location</label>
-                     <input name="location" type="text" placeholder="Lahore, Pakistan" onClick={showLocationPicker} value={locationValue} />
+                     <label className={styles.sLabel} htmlFor="location">Search</label>
+                     <input className={styles.title} type="text" placeholder="Restaurant (eg. Howdy)" value={searchkey} onChange={(e) => setsearchkey(e.target.value)} />
                   </div>
                </div>
-               {isVisible && (
-                  <div className={styles.popUp}>
-                     <LocationPicker onClose={hideLocationPicker} onChange={handleLocationChange} />
-                  </div>
-               )}
                <div className={styles.divider}></div>
                <div className={styles.inputIconed}>
-                  <IconCalendar />
                   <div className={styles.inputLabeled}>
-                     <label htmlFor="Date">Date</label>
-                     <DatePicker showIcon selected={startDate} />
+                     <FormFinal
+                        onSubmit={onSubmit}>
+                        {({ handleSubmit, values }) => (
+                           <form onSubmit={handleSubmit} className={styles.serviceType}>
+                              <Dropdown
+                                 name="serviceType"
+                                 label="Service Type"
+                                 optionsValues={[
+                                    {
+                                       "id": 1,
+                                       "name": "Hotel",
+                                    },
+                                    {
+                                       "id": 2,
+                                       "name": "Restaurant",
+                                    },
+                                    {
+                                       "id": 3,
+                                       "name": "Tour Guide",
+                                    },
+                                    {
+                                       "id": 4,
+                                       "name": "Travel Agent",
+                                    }
+                                 ]}
+                                 theme="light"
+                                 value={service}
+                                 placeholder="Choose Service Type"
+                                 renderIcon={() => null}
+                                 onChange={(selectedOption) => handleChange(selectedOption)}
+                              />
+                           </form>
+                        )}
+                     </FormFinal>
                   </div>
                </div>
-               <Button type="primary" value="Search" />
+               <Button type="primary" value="Search" btnType="button" handleClick={searchItem} />
             </div>
          </div>
       </div>

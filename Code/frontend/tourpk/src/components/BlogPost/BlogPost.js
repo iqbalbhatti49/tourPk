@@ -35,7 +35,7 @@ const BlogPost = ({ post }) => {
 
     return (
         <div className={styles.container}>
-            <img className={styles.img} src={post.image  || `../static/images/upload/${post.image ? post.image : "1685279246102blogDummy.jpeg"}`} alt="" />
+            <img className={styles.img} src={post.image ? post.image : ""} alt="" />
             <div className={styles.user}>
                 <IconAvatar />
                 <p className={styles.info}> {post.User && post.User.name} </p>
@@ -43,7 +43,7 @@ const BlogPost = ({ post }) => {
                     {
                         currentUser === post.UserId &&
                         <>
-                            <Link to={`/AddBlog?edit=1`} state={post}> {/* set a stateful value for the new location */}
+                            <Link to={`/AddBlog?edit=1`} state={post}>
                                 <IconEdit />
                             </Link>
                             <button className={styles.delete} onClick={handleDelete}>

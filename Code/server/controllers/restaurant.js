@@ -73,7 +73,6 @@ exports.getAllRestaurants = async (req, res) => {
     res.json(restaurants);
 }
 
-
 exports.deleteRestaurant = async (req, res) => {
     console.log(req.body)
     await RestaurantImage.destroy({ where: { RestaurantId: req.body.RestaurantId } });
@@ -127,3 +126,35 @@ exports.updaterestaurant = async (req, res) => {
         res.status(500).json({ error: 'Failed to update restaurant' });
     }
 };
+
+
+exports.searchRestaurant = async (req, res) => {
+    console.log(req);
+    const result = await Restaurant.findAll({
+        attributes: ['id'],
+        include: [
+            {
+                model: Service,
+                where: {
+                    [Op.or]: [
+                        { name: { [Op.like]: '%' + req.params.searchkey + '%' } },
+                        { address: { [Op.like]: '%' + req.params.searchkey + '%' } },
+                        { city: { [Op.like]: '%' + req.params.searchkey + '%' } },
+                        { description: { [Op.like]: '%' + req.params.searchkey + '%' } }
+                    ]
+                },
+                attributes: ['name', 'address'], // Include attributes from the Service table: name, address
+                include: [
+                    {
+                        model: Review,
+                    },
+                ],
+            },
+            {
+                model: RestaurantImage,
+                attributes: ['imageUrl']
+            },
+        ],
+    });
+    res.json(result);
+}

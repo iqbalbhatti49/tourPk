@@ -14,7 +14,7 @@ export default function TravelAgentListing() {
    const [data, setData] = useState(null);
    const userId = useSelector((state) => state.user.id);
    const role = useSelector((state) => state.user.role);
-   const [validRange,setValidRange] = useState(true);
+   const [validRange, setValidRange] = useState(true);
    const [reviews, setreviews] = useState(null);
    const [reviewCount, setreviewCount] = useState(null);
    const [ratingAverge, setratingAverge] = useState(null);
@@ -188,8 +188,8 @@ export default function TravelAgentListing() {
                         <div className={styles.ratingPricing}>
                            <h2 className={styles.subHeading}>Ratings</h2>
                            <div className={styles.rating}>
-                              <CircularRating rating={ratingAverge? ratingAverge: "4.2"} />
-                              <p className={styles.ratingText}>Based on {reviewCount? reviewCount : "3"} Reviews</p>
+                              <CircularRating rating={ratingAverge ? ratingAverge : "4.2"} />
+                              <p className={styles.ratingText}>Based on {reviewCount ? reviewCount : "3"} Reviews</p>
                            </div>
                         </div>) :
                         null
@@ -206,9 +206,9 @@ export default function TravelAgentListing() {
                   <h2 className={styles.subHeading}>Booking Calender</h2>
                   <div className={styles.calender}>
                      <BookingCalendar
-                        selectRange={false} 
-                        setValidRange = {setValidRange}
-                        selectedDate={selectedDate} 
+                        selectRange={false}
+                        setValidRange={setValidRange}
+                        selectedDate={selectedDate}
                         onDateChange={handleDateChange}
                      />
                   </div>
@@ -235,7 +235,7 @@ export default function TravelAgentListing() {
                </FinalForm>
             </div>
          </div>}
-         {role == "tourist" &&    <ReviewForm serviceId={data.Service.id} setReview={setreviews} /> }
+         {role == "tourist" && <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
       </div>
       // </div>
    );
