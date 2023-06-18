@@ -1,11 +1,6 @@
-import React from "react";
-import { useDispatch } from "react-redux";
 import styles from "./HelpAndSupport.module.css";
-import { Form as FormFinal } from "react-final-form";
-import { questions } from "../../utils/Constants/Help";
-import { helpRequest } from "../../app/features/help/help";
-import { useState } from "react";
-import { FormField, FAQDropdown, UserTypeDropdown, Button, Dropdown } from "../../components/index";
+import { FormField, FAQDropdown, useState, Button, Dropdown,
+          FinalForm, React, useDispatch, helpRequest, questions } from "../../components/index";
 
 const HelpAndSupport = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -63,7 +58,7 @@ const HelpAndSupport = () => {
             <div className={styles.tableContainer}>
               <h2>Still have questions? Fill the form below to contact us</h2>
               <div className={styles.quesForm}>
-                <FormFinal
+                <FinalForm
                   onSubmit={onSubmit}
                 >
                   {({ handleSubmit, values }) => (
@@ -152,7 +147,7 @@ const HelpAndSupport = () => {
                       <Button id={styles.signupBtn} value={"Submit"} type="primary" width={250} btnType="submit" font={" 600 20px Arial, '' "} />
                     </form>
                   )}
-                </FormFinal>
+                </FinalForm>
               </div>
             </div>
           </div>

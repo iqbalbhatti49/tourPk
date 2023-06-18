@@ -1,8 +1,7 @@
 import styles from "./Cities.module.css";
 import 'react-tabs/style/react-tabs.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { useSelector } from "react-redux";
-import { IconKpk, IconPunjab, IconSindh, IconBalochistan, HorizontalScroll } from "../../components/index";
+import { useSelector, IconKpk, IconPunjab, IconSindh, IconBalochistan, 
+   HorizontalScroll, Tab, Tabs, TabList, TabPanel } from "../../components/index";
 
 const Cities = () => {
    const data = useSelector((state) => state.cities.provinces);

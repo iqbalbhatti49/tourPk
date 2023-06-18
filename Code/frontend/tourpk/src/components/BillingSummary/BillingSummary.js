@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './BillingSummary.module.css';
 import FormField from '../FormField/FormField';
-import { Form as FormFinal } from 'react-final-form';
+import { Form as FinalForm } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { initiatePayment } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
@@ -132,7 +132,7 @@ export const BillingSummary = () => {
                <p className={styles.total}>{overallTotal}</p>
             </div>
             <div className={styles.form}>
-               <FormFinal
+               <FinalForm
                   onSubmit={onSubmit}
                   subscription={{
                      submitted: true
@@ -143,7 +143,7 @@ export const BillingSummary = () => {
                         <Button value={"Pay " + overallTotal} type="primary" width={480} btnType="submit" />
                      </form>
                   )}
-               </FormFinal>
+               </FinalForm>
             </div>
          </div>
       </div>

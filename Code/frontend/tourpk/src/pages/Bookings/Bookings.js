@@ -1,5 +1,4 @@
-import React from 'react'
-import { BookingsSidebar, BookingCard } from '../../components/index'
+import { React, BookingsSidebar, BookingCard } from '../../components/index'
 import styles from './Bookings.module.css'
 
 export default function Bookings() {

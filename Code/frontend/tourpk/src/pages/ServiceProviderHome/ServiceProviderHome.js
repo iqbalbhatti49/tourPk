@@ -1,9 +1,5 @@
 import styles from "./ServiceProviderHome.module.css";
-import { Button } from "../../components/index"
-import { Link } from "react-router-dom";
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchServicesByUserId } from '../../app/features/services/servicesSlice';
+import { React, useEffect, useDispatch, Link, Button, useSelector} from '../../components';
 
 const ServiceProviderHome = () => {
    const user = useSelector((state) => state.user)

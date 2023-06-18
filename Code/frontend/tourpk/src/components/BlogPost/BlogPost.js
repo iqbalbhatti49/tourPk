@@ -43,7 +43,7 @@ const BlogPost = ({ post }) => {
                     {
                         currentUser === post.UserId &&
                         <>
-                            <Link to={`/AddBlog?edit=1`} state={post}> {/* set a stateful value for the new location */}
+                            <Link to={`/AddBlog?edit=1`} state={post}>
                                 <IconEdit />
                             </Link>
                             <button className={styles.delete} onClick={handleDelete}>

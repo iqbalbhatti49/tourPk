@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from 'react'
 import styles from './HotelListing.module.css'
-import { Button, Carousel, ReviewForm, Rating, Testimonial, HotelBooking } from '../../components/index';
-import { useLocation, useParams } from "react-router";
-import axiosInstance from '../../utils/Api';
-import { IconEdit, IconDelete } from "../../components/index";
-import swal from 'sweetalert';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { addHotelBooking } from '../../app/features/bookings/bookingsSlice';
+import { Button, Carousel, ReviewForm, Rating, Testimonial, HotelBooking,
+         React,  useEffect, useState, useLocation, useParams, axiosInstance,
+         IconEdit, IconDelete, useSelector, swal, useNavigate } from '../../components/index';
 
 export default function HotelListing() {
   const navigate = useNavigate();

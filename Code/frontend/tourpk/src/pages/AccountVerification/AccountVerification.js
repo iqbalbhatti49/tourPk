@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import { Form as FinalForm } from 'react-final-form';
-import axiosInstance from '../../utils/Api';
-import { FormField, Button } from '../../components';
 import styles from './AccountVerification.module.css';
-import {updatePhoneNumberVerification} from "../../app/features/user/userSlice";
-import { useDispatch, useSelector } from 'react-redux';
-import { validatePhoneWithCode } from '../../utils/validations';
-import { useNavigate } from 'react-router-dom';
+import { 
+  FinalForm, FormField, Button, validatePhoneWithCode, axiosInstance,
+  updatePhoneNumberVerification, React, useState, useSelector,
+  useNavigate, useDispatch  
+} from '../../components';
 
 function AccountVerification() {
   const dispatch = useDispatch();
@@ -15,7 +12,7 @@ function AccountVerification() {
   const [otpCode, setOtpCode] = useState('');
   const [verificationStarted, setVerificationStarted] = useState(false);
   const [verificationStatus, setVerificationStatus] = useState('');
-  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
+  const [isLoading, setIsLoading] = useState(false); 
   const userId = useSelector((state) => state.user.id)
 
   const handlePhoneNumberChange = (e) => {

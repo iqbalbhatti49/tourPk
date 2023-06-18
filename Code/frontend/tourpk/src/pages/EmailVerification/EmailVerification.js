@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
-import { Form as FinalForm } from 'react-final-form';
-import axiosInstance from '../../utils/Api';
-import { FormField, Button } from '../../components';
+import { FormField, Button, useDispatch, useSelector, useNavigate, axiosInstance, 
+         FinalForm, React, useState, updateEmailVerification} from '../../components/index';
 import styles from './EmailVerification.module.css';
-import { updateEmailVerification } from "../../app/features/user/userSlice";
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 function EmailVerification() {
   const dispatch = useDispatch();

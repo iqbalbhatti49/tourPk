@@ -1,9 +1,6 @@
-import React from "react";
-import { Form as FormFinal } from 'react-final-form'
 import styles from './TravelAgent.module.css'
-import { FormField, Button } from "../../components/index";
-import { required, validateURL } from '../../utils/validations';
-import { mealOptions, featureOptions } from '../../utils/Constants/RestaurantsOptions';
+import { FormField, Button, mealOptions, featureOptions, required, validateURL,
+         FinalForm, React } from "../../components/index";
 
 const TravelAgent = () => {
 
@@ -14,7 +11,7 @@ const TravelAgent = () => {
     return (
         <div id={styles.restaurantContainer}>
             <div className={styles.formContainer}>
-                <FormFinal
+                <FinalForm
                     onSubmit={onSubmit}
                     subscription={{
                         submitted: true
@@ -57,7 +54,7 @@ const TravelAgent = () => {
                             <Button value="Add Restaurant" type="submit" btnType="submit" />
                         </form>
                     )}
-                </FormFinal>
+                </FinalForm>
             </div>
             <div className={styles.imageContainer}>
                 <img src="https://images.pexels.com/photos/3534744/pexels-photo-3534744.jpeg" alt="" />

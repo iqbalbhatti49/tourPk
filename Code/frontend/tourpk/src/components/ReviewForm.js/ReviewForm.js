@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StarRatings from 'react-star-ratings';
 import styles from './ReviewForm.module.css';
-import { Form as FormFinal } from 'react-final-form'
+import { Form as FinalForm } from 'react-final-form'
 import FormField from '../FormField/FormField';
 import { required } from '../../utils/validations';
 import Button from '../Button/Button';
@@ -51,7 +51,7 @@ const ReviewForm = ({ serviceId, setReview }) => {
             <h3>Add a Review</h3>
             <div className={styles.formBorder}>
                 <div className={styles.formContainer}>
-                    <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >
+                    <FinalForm onSubmit={onSubmit} subscription={{ submitted: true }} >
                         {({ handleSubmit, submitting, values }) => (
                             <form onSubmit={handleSubmit}>
                                 <div className={styles.ratingContainer}>
@@ -72,7 +72,7 @@ const ReviewForm = ({ serviceId, setReview }) => {
                                 <Button value={"Submit Review"} type="primary" btnType="submit" width={150} />
                             </form>
                         )}
-                    </FormFinal>
+                    </FinalForm>
                 </div>
             </div>
         </div>

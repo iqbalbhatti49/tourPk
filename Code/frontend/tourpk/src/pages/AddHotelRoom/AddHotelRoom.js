@@ -1,14 +1,8 @@
-import React from "react";
 import styles from "./AddHotelRoom.module.css";
-import { useLocation } from "react-router-dom";
-import { Form as FormFinal } from "react-final-form";
-import { FormField, Button } from "../../components/index";
-import RoomAmeneties from "../../components/RoomAmeneties/RoomAmeneties";
-import { required, validateAlpha } from "../../utils/validations";
-import { roomAmenitiess } from "../../utils/Constants/RoomAmenetiesOptions";
-import axiosInstance from "../../utils/Api";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { 
+  required, RoomAmeneties, validateAlpha, axiosInstance, React, FormField, 
+  Button, useLocation, useSelector, useNavigate, FinalForm, roomAmenitiess } 
+from "../../components/index";
 
 const AddHotelRoom = () => {
   const location = useLocation();
@@ -167,7 +161,7 @@ const AddHotelRoom = () => {
         <h1 className={styles.heading}>Add New Room Type</h1>
         <div className={styles.content}>
           <div className={styles.formFields}>
-            <FormFinal onSubmit={onSubmit}>
+            <FinalForm onSubmit={onSubmit}>
               {({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit} className={styles.formContainer}>
                   <FormField
@@ -279,7 +273,7 @@ const AddHotelRoom = () => {
                   </div>
                 </form>
               )}
-            </FormFinal>
+            </FinalForm>
           </div>
           <div className={styles.imageContainer}>
             <img src="../static/images/hotelDetails.png" alt="FAQs" />

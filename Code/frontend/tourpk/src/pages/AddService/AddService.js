@@ -1,11 +1,8 @@
-import React, { useState } from "react";
-import { Form as FormFinal } from 'react-final-form'
-import styles from './AddService.module.css'
-import { FormField, Button } from "../../components/index";
-import { required, validatePhone, validateEmail, validateAlpha, validateURL } from '../../utils/validations';
-import Dropdown from "../../components/Dropdown/Dropdown";
-import { useLocation, useNavigate } from "react-router";
-import axiosInstance from "../../utils/Api";
+import styles from './AddService.module.css';
+import { 
+    useState, Dropdown, required, validateURL,
+    React, Button, useNavigate, FinalForm , useLocation, axiosInstance } 
+from "../../components/index";
 
 const AddService = () => {
     const location = useLocation();
@@ -110,7 +107,7 @@ const AddService = () => {
                         provided below! If you can't find the answers to the questions you are looking for, please contact us through the form
                         provided below!
                     </p>
-                    <FormFinal
+                    <FinalForm
                         onSubmit={onSubmit}>
                         {({ handleSubmit, values }) => (
                             <form onSubmit={handleSubmit} className={styles.serviceType}>
@@ -144,14 +141,14 @@ const AddService = () => {
                                 />
                             </form>
                         )}
-                    </FormFinal>
+                    </FinalForm>
                 </div>
                 <img className={styles.image} alt="Cities" src="../../static/images/serviceProvider.png" />
             </div>
             {service != "" &&
                 <div className={styles.content}>
                     <div className={styles.formFields}>
-                        <FormFinal
+                        <FinalForm
                             onSubmit={onSubmit}
                             subscription={{
                                 submitted: true
@@ -224,7 +221,7 @@ const AddService = () => {
                                     <Button value="Continue" type="submit" btnType="submit" />
                                 </form>
                             )}
-                        </FormFinal>
+                        </FinalForm>
                     </div>
                     <div className={styles.imageContainer}>
                         <img src={image} alt="FAQs" />

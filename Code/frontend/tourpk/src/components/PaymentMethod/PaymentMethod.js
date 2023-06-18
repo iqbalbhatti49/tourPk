@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './PaymentMethod.module.css';
 import RadioGroup from "../../components/RadioGroup/RadioGroup";
 import FormField from '../FormField/FormField';
-import { Form as FormFinal, FormSpy } from 'react-final-form'
+import { Form as FinalForm, FormSpy } from 'react-final-form'
 import { validateExpirationYear, validateCreditCard, validateExpirationMonth } from '../../utils/validations'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateCardInfo } from '../../app/features/checkout/checkoutSlice'
@@ -16,7 +16,7 @@ export const PaymentMethod = () => {
    const role = useSelector((state) => state.user.role);
    const [method, setMethod] = useState('001');
    const id = useSelector((state) => state.user.id)
-   const paymentState = useSelector((state) => state.checkout.paymentResult)
+   const paymentState = useSelector((state) => state.checkout.cardInfo)
    const [submitted, setSubmitted] = useState(false);
    const location = useLocation();
   
@@ -86,7 +86,7 @@ export const PaymentMethod = () => {
          />
          </fieldset>
          <div className={styles.form}>
-            <FormFinal
+            <FinalForm
                onSubmit={onSubmit}
                subscription={{
                   submitted: true
@@ -128,7 +128,7 @@ export const PaymentMethod = () => {
 
                   </form>
                )}
-            </FormFinal>
+            </FinalForm>
          </div>
          {submitted && showSuccessAlert()}
          <div className={styles.securityMessage}>

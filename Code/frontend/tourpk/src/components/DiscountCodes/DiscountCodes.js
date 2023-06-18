@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './DiscountCodes.module.css';
 import FormField from '../FormField/FormField';
-import { Form as FormFinal } from 'react-final-form'
+import { Form as FinalForm } from 'react-final-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { OnChange } from 'react-final-form-listeners'
 import {

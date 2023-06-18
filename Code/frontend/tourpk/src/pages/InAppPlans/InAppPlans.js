@@ -1,15 +1,8 @@
-import React, { useState } from "react";
-import Switch from "react-switch";
 import styles from "./InAppPlans.module.css";
-import { Button, PriceCard, toggleChecked } from "../../components/index";
-import { useSelector, useDispatch } from 'react-redux';
-import { updateUserWithPlanDetails } from '../../app/features/pricing/pricingSlice';
-import {Dropdown} from "../../components/index";
-import { required } from '../../utils/validations';
-import { Form as FormFinal } from 'react-final-form'
-import { addItem } from "../../app/features/cart/cartSlice";
-import { useNavigate } from "react-router-dom";
-import { clearCart } from "../../app/features/cart/cartSlice";
+import { React, useState, Button, PriceCard, toggleChecked, useSelector, useDispatch, Switch, 
+         Dropdown, required, FinalForm, useNavigate, addItem, clearCart, updateUserWithPlanDetails } 
+from "../../components/index";
+
 const InAppPlans = () => {
   let discount=0, advancedSupport = false, planCode = "BasicMonthly";
   const monthlyPricing = useSelector(state => state.pricing.monthly);
@@ -101,7 +94,7 @@ const InAppPlans = () => {
           <PriceCard theme="light" subTitle="For big companies" mainTitle={pricing.enterprise.name} description={pricing.enterprise.description} price={pricing.enterprise.price} period={period} features={pricing.enterprise.features} />
         </div>      
         <div className={styles.form}>
-        <FormFinal onSubmit={onSubmit}>
+        <FinalForm onSubmit={onSubmit}>
         {({ handleSubmit, values }) => (
             <form onSubmit={handleSubmit} className={styles.serviceType}>
               <p className={styles.subHeading}>{`Choose your Favourite Plan`}</p>
@@ -132,7 +125,7 @@ const InAppPlans = () => {
               <Button value="Get Started"  type="submit" btnType="submit" />
               </form>
             )}
-        </FormFinal>
+        </FinalForm>
         </div>
       </div>
     </>

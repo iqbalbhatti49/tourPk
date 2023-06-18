@@ -1,12 +1,6 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
 import styles from './ResetPassword.module.css'
-import { Button, FormField } from '../../components'
-import { Form as FormFinal } from 'react-final-form'
-import { validateEquality, validatePassword } from '../../utils/validations';
-import { resetPassword } from '../../app/features/user/userSlice';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Button, FormField, useParams, useNavigate, FinalForm, useDispatch,
+         React, validateEquality, validatePassword, resetPassword } from '../../components'
 
 export default function ResetPassword() {
     const dispatch = useDispatch();
@@ -22,7 +16,7 @@ export default function ResetPassword() {
     return (
         <div className={styles.container}>
             <div className={styles.title}>Set New Password</div>
-            <FormFinal onSubmit={onSubmit} subscription={{ submitted: true }} >
+            <FinalForm onSubmit={onSubmit} subscription={{ submitted: true }} >
                 {({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
                         <FormField name="Password1" label="Password" type="text" placeholder="New Password" validate={validatePassword} theme="light" renderIcon={() => null} />
@@ -32,7 +26,7 @@ export default function ResetPassword() {
                         </div>
                     </form>
                 )}
-            </FormFinal>
+            </FinalForm>
         </div>
     )
 }
