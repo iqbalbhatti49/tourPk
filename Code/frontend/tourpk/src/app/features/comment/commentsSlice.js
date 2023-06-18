@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
 import axiosInstance from '../../../utils/Api';
 
 const initialState = {
@@ -51,17 +50,17 @@ const commentsSlice = createSlice({
             .addCase(fetchCommentByBlog.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchCommentByBlog.fulfilled, (state, action) => {
+            .addCase(fetchCommentByBlog.fulfilled, (state) => {
                 state.status = 'succeeded';
             })
             .addCase(fetchCommentByBlog.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
-            .addCase(addComment.fulfilled, (state, action) => {
+            .addCase(addComment.fulfilled, (state) => {
                 state.status = 'succeeded';
             })
-            .addCase(addComment.pending, (state, action) => {
+            .addCase(addComment.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(addComment.rejected, (state, action) => {
@@ -72,7 +71,7 @@ const commentsSlice = createSlice({
                 const index = state.items.findIndex((comment) => comment.id === action.payload.id);
                 state.items.splice(index, 1);
             })
-            .addCase(deleteComment.pending, (state, action) => {
+            .addCase(deleteComment.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(deleteComment.rejected, (state, action) => {
@@ -86,5 +85,4 @@ const commentsSlice = createSlice({
     },
 });
 
-export const { } = commentsSlice.actions;
 export default commentsSlice.reducer;

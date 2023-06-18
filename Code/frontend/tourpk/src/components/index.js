@@ -87,6 +87,8 @@ export { mealOptions, featureOptions } from '../utils/Constants/RestaurantsOptio
 export { itenerary } from "../utils/Constants/travelAgent";
 export { questions } from "../utils/Constants/Help";
 export { getReviewsStats } from '../utils/FindReviewStats';
+export { provinces} from "../utils/cities";
+export { agreement } from "../utils/FakeData";
 
 //components
 export { Form as FinalForm } from 'react-final-form';

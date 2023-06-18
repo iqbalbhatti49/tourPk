@@ -1,10 +1,10 @@
 import styles from "./Cities.module.css";
 import 'react-tabs/style/react-tabs.css';
-import { useSelector, IconKpk, IconPunjab, IconSindh, IconBalochistan, 
+import { provinces, IconKpk, IconPunjab, IconSindh, IconBalochistan, 
    HorizontalScroll, Tab, Tabs, TabList, TabPanel } from "../../components/index";
 
 const Cities = () => {
-   const data = useSelector((state) => state.cities.provinces);
+   const data = provinces;
 
    const punjabSpots = data.find(p => p.name === 'Punjab').cities.map(c => c.spots);
    const kpkSpots = data.find(c => c.name === 'Khyber Pakhtunkhwa').cities.map(c => c.spots);

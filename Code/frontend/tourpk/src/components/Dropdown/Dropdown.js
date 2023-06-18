@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Field } from 'react-final-form';
 import styles from './Dropdown.module.css';
-import { selectAllBlogs } from '../../app/features/blogs/blogsSlice';
 
 export default function Dropdown({ optionsValues, placeholder, name, onChange }) {
   const [val,setVal] = useState(null);

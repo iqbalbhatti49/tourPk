@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axiosInstance from '../../../utils/Api';
 
-
 const initialState = {
    checked: false,
    monthly: {
@@ -76,7 +75,6 @@ export const updateUserWithPlanDetails = createAsyncThunk(
    async (payload) => {
      const { userId, discount, advancedSupport, planCode } = payload;
      try {
-       // Make API call to update the user at route '/auth/addPlan'
        const response = await axiosInstance.post('/auth/addPlan', {
          userId,
          discount,
@@ -85,7 +83,6 @@ export const updateUserWithPlanDetails = createAsyncThunk(
        });
        return response.data;
      } catch (error) {
-       // Handle error if API call fails
        console.log('Failed to update user with plan details:', error);
        throw error;
      }
@@ -101,20 +98,20 @@ const pricingSlice = createSlice({
      },
    },
    extraReducers: (builder) => {
-     builder.addCase(updateUserWithPlanDetails.pending, (state, action) => {
+     builder.addCase(updateUserWithPlanDetails.pending, (state) => {
        state.loading = true;
        state.successMessage = '';
        state.error = '';
      });
      builder.addCase(updateUserWithPlanDetails.fulfilled, (state, action) => {
        state.loading = false;
-       const { discount, advancedSupport, planCode } = action.payload; // Extract discount and advancedSupport from the response payload
+       const { discount, advancedSupport, planCode } = action.payload; 
        state.discount = discount;
        state.advancedSupport = advancedSupport;
        state.planCode = planCode
        state.successMessage = 'User plan details updated successfully.';
      });
-     builder.addCase(updateUserWithPlanDetails.rejected, (state, action) => {
+     builder.addCase(updateUserWithPlanDetails.rejected, (state) => {
        state.loading = false;
        state.error = 'Failed to update user with plan details.';
      });

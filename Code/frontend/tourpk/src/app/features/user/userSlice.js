@@ -90,7 +90,7 @@ const userSlice = createSlice({
          if (action.payload.userType == "seller")
             state.businessTitle = action.payload.businessTitle;
       },
-      logout: (state, action) => {
+      logout: (state) => {
          state.loggedIn = false;
          state.name = '';
          state.email = '';
@@ -121,26 +121,14 @@ const userSlice = createSlice({
             state.status = 'failed';
             state.error = action.error.message;
          })
-         .addCase(updatePhoneNumberVerification.pending, (state) => {
-            // Optional: You can update the state while the action is pending
-         })
          .addCase(updatePhoneNumberVerification.fulfilled, (state, action) => {
             state.phoneNumber = action.payload.phoneNumber;
             state.phoneNumberVerified = action.payload.phoneNumberVerified;
-         })
-         .addCase(updatePhoneNumberVerification.rejected, (state, action) => {
-            // Handle the rejected action if needed
-         })
-         .addCase(updateEmailVerification.pending, (state) => {
-            // Optional: You can update the state while the action is pending
          })
          .addCase(updateEmailVerification.fulfilled, (state, action) => {
             state.email = action.payload.email;
             state.emailVerified = action.payload.emailVerified;
          })
-         .addCase(updateEmailVerification.rejected, (state, action) => {
-            // Handle the rejected action if needed
-         });
    }
 });
 

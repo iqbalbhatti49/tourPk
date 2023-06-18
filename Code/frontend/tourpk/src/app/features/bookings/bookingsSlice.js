@@ -5,10 +5,9 @@ import axiosInstance from '../../../utils/Api';
 
 const initialState = {
   currentBookings: [],
-  bookingStatus: 'idle', // Initial status is 'idle'
+  bookingStatus: 'idle', 
 };
 
-// Async thunk for making the API call
 export const addTourGuideBooking = createAsyncThunk(
   'bookings/addTourGuideBooking',
   async ({ userId, id, totalPrice, selectedDate }) => {
@@ -19,10 +18,8 @@ export const addTourGuideBooking = createAsyncThunk(
         totalPrice,
         selectedDate,
       });
-
-      return response.data; // You can handle the response data as needed
+      return response.data; 
     } catch (error) {
-      // Handle error case
       throw Error('Failed to add booking');
     }
   }
@@ -39,10 +36,8 @@ export const addTravelAgentBooking = createAsyncThunk(
         totalPrice,
         guestCount: guests,
       });
-
-      return response.data; // You can handle the response data as needed
+      return response.data; 
     } catch (error) {
-      // Handle error case
       throw Error('Failed to add booking');
     }
   }
@@ -61,9 +56,8 @@ export const addHotelBooking = createAsyncThunk(
         roomId,
         endDate
       });
-      return response.data; // You can handle the response data as needed
+      return response.data; 
     } catch (error) {
-      // Handle error case
       throw Error('Failed to add booking');
     }
   }
@@ -74,48 +68,40 @@ export const bookingsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(addTourGuideBooking.pending, (state, action) => {
-      state.bookingStatus = 'loading'; // Set bookingStatus to 'loading' when the request is pending
+    builder.addCase(addTourGuideBooking.pending, (state) => {
+      state.bookingStatus = 'loading'; 
     });
     builder.addCase(addTourGuideBooking.fulfilled, (state, action) => {
-      // Update the local state with the new booking
       const newBooking = action.payload;
       state.currentBookings.push(newBooking);
-      state.bookingStatus = 'succeeded'; // Set bookingStatus to 'succeeded' after successful booking
+      state.bookingStatus = 'succeeded'; 
     });
-    builder.addCase(addTourGuideBooking.rejected, (state, action) => {
-      // Handle error case if needed
-      state.bookingStatus = 'failed'; // Set bookingStatus to 'failed' if the request is rejected
+    builder.addCase(addTourGuideBooking.rejected, (state) => {
+      state.bookingStatus = 'failed'; 
     });
-    builder.addCase(addTravelAgentBooking.pending, (state, action) => {
-      state.bookingStatus = 'loading'; // Set bookingStatus to 'loading' when the request is pending
+    builder.addCase(addTravelAgentBooking.pending, (state) => {
+      state.bookingStatus = 'loading'; 
     });
     builder.addCase(addTravelAgentBooking.fulfilled, (state, action) => {
-      // Update the local state with the new booking
       const newBooking = action.payload;
       state.currentBookings.push(newBooking);
-      state.bookingStatus = 'succeeded'; // Set bookingStatus to 'succeeded' after successful booking
+      state.bookingStatus = 'succeeded'; 
     });
-    builder.addCase(addTravelAgentBooking.rejected, (state, action) => {
-      // Handle error case if needed
-      state.bookingStatus = 'failed'; // Set bookingStatus to 'failed' if the request is rejected
+    builder.addCase(addTravelAgentBooking.rejected, (state) => {
+      state.bookingStatus = 'failed';
     });
-    builder.addCase(addHotelBooking.pending, (state, action) => {
-      state.bookingStatus = 'loading'; // Set bookingStatus to 'loading' when the request is pending
+    builder.addCase(addHotelBooking.pending, (state) => {
+      state.bookingStatus = 'loading'; 
     });
     builder.addCase(addHotelBooking.fulfilled, (state, action) => {
-      // Update the local state with the new booking
       const newBooking = action.payload.newBooking;
       state.currentBookings.push(newBooking);
-      state.bookingStatus = 'succeeded'; // Set bookingStatus to 'succeeded' after successful booking
+      state.bookingStatus = 'succeeded'; 
     });
-    builder.addCase(addHotelBooking.rejected, (state, action) => {
-      // Handle error case if needed
-      state.bookingStatus = 'failed'; // Set bookingStatus to 'failed' if the request is rejected
+    builder.addCase(addHotelBooking.rejected, (state) => {
+      state.bookingStatus = 'failed'; 
     });
   },
 });
-
-export const { } = bookingsSlice.actions;
 
 export default bookingsSlice.reducer;

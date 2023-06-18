@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import axiosInstance from '../../../utils/Api';
 
 const initialState = {
@@ -13,27 +12,23 @@ const initialState = {
    error: null,
    advancedSupport : false
 };
-
 export const helpRequest = createAsyncThunk(
    'help/helpRequest',
    async (formData, thunkAPI) => {
       try {
          const fd = new FormData();
          fd.append("file", formData.file);
-         fd.append("role", formData.role); // Add the role field to the FormData
-         fd.append("advancedSupport", formData.advancedSupport); // Add the advancedSupport field to the FormData
-         
+         fd.append("role", formData.role); 
+         fd.append("advancedSupport", formData.advancedSupport); 
          const res = await axiosInstance.post("/upload", fd);
          formData.file = res.data;
       }
       catch (err) {
          console.log(err);
       }
-
       const pricingState = thunkAPI.getState().pricing;
       const advancedSupport = pricingState.advancedSupport;
-      formData.advancedSupport = advancedSupport; // Update the formData with advancedSupport from pricing state
-
+      formData.advancedSupport = advancedSupport; 
       try {
          const response = await axiosInstance.post('/help/', formData);
          return response.data;
@@ -43,8 +38,6 @@ export const helpRequest = createAsyncThunk(
       }
    }
 );
-
-
 export const helpSlice = createSlice({
    name: 'help',
    initialState,
@@ -72,7 +65,5 @@ export const helpSlice = createSlice({
          });
    },
 });
-
 export const { setData } = helpSlice.actions;
-
 export default helpSlice.reducer;

@@ -1,16 +1,16 @@
 module.exports = {
   "development": {
     "username": "root",
-    // "password": "iqra.M012",
-    "password": process.env.DB_PASSWORD, // IQRAAA isy yaha s na hatana, oper wly m change kro jo krna ha
+    "password": "iqra.M012",
+    // "password": process.env.DB_PASSWORD, 
     "database": "tourpk",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "development": {
     "username": "root",
-    // "password": "Pucit333@",
-    "password": process.env.DB_PASSWORD,
+    "password": "iqra.M012",
+    // "password": process.env.DB_PASSWORD,
     "database": "tourpk",
     "host": "127.0.0.1",
     "dialect": "mysql"

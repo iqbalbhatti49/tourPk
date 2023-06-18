@@ -1,8 +1,8 @@
 import styles from "./Contract.module.css";
-import { Button, useSelector, useNavigate, swal } from "../../components/index";
+import { Button, agreement, useNavigate, swal } from "../../components/index";
 
 const Contract = () => {
-   const contract = useSelector((state) => state.contract.agreement);
+   const contract = agreement;
    const navigate = useNavigate();
 
    const acceptContract = () => {

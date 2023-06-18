@@ -97,7 +97,7 @@ const blogsSlice = createSlice({
                     }
                 });
             })
-            .addCase(addBlog.pending, (state, action) => {
+            .addCase(addBlog.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(addBlog.rejected, (state, action) => {
@@ -111,7 +111,7 @@ const blogsSlice = createSlice({
                     }
                 });
             })
-            .addCase(deleteBlog.pending, (state, action) => {
+            .addCase(deleteBlog.pending, (state) => {
                 state.status = 'loading';
             })
             .addCase(deleteBlog.rejected, (state, action) => {
@@ -133,9 +133,4 @@ const blogsSlice = createSlice({
     },
 });
 
-export const selectAllBlogs = (state) => state.blogs.blogCategories;
-export const selectBlogById = (state, id) =>
-    state.blogs.blogCategories.find((category) => category.id === id);
-
-export const { } = blogsSlice.actions;
 export default blogsSlice.reducer;
