@@ -1,8 +1,9 @@
 import styles from './AddRestaurant.module.css';
-import { 
+import {
     mustBeNumber, required, validateURL, mealOptions, featureOptions, useSelector,
-    React, Button, useNavigate, FinalForm , useLocation, axiosInstance, swal } 
-from "../../components/index";
+    React, Button, useNavigate, FinalForm, useLocation, axiosInstance, swal, FormField
+}
+    from "../../components/index";
 
 const AddRestaurant = () => {
 
@@ -13,15 +14,11 @@ const AddRestaurant = () => {
     // Logic for Update restaurant 
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
-    console.log(isEditMode);
     let values, restaurant;
     let updateInitialValue;
     if (isEditMode) {
-        console.log(location.state);
         values = location.state.values;
         restaurant = location.state.obj;
-        console.log("Before Formatting****** ", restaurant);
-        console.log(values);
     }
 
     if (isEditMode) {
@@ -34,7 +31,6 @@ const AddRestaurant = () => {
             };
             const mealTypeValues = convertOptionsToValues(mealOptions.map(option => option.label), obj.mealType.split(', '));
             const featureValues = convertOptionsToValues(featureOptions.flatMap(option => option.options), obj.features.split(', '));
-            console.log(mealTypeValues);
             const obj1 = {
                 startTime: obj.openTime,
                 endTime: obj.closeTime,
@@ -50,7 +46,6 @@ const AddRestaurant = () => {
         };
 
         updateInitialValue = formatToFieldNames(restaurant);
-        console.log(restaurant);
     }
 
     const addInitialValue = {
@@ -64,13 +59,10 @@ const AddRestaurant = () => {
         ServiceId: null,
         UserId: null
     };
-
-    console.log(addInitialValue);
     const initialValue = isEditMode ? updateInitialValue : addInitialValue;
 
     // ADD: Process the selected checkboxes to string for storing in DB
     const preProcess = (values) => {
-        console.log(values);
         // convert selected checkbox values to comma-separated string
         const meals = mealOptions
             .filter(option => values[option.name])
@@ -105,10 +97,7 @@ const AddRestaurant = () => {
     }
 
     const onSubmit = async (value) => {
-        console.log(value);
         const formattedValues = preProcess(value);
-
-        console.log(value);
         value.UserId = userId;
         const servic = isEditMode ? values : location.state.values;
         if (isEditMode)
@@ -117,10 +106,8 @@ const AddRestaurant = () => {
             service: servic,
             restaurant: formattedValues.restaurant
         };
-        console.log(restaurantData);
 
         let restaurantObj;
-        console.log(restaurantData);
         if (!isEditMode) {
             restaurantObj = await axiosInstance.post("restaurant/addRestaurant", restaurantData);
             swal("Restaurant Added Successfully", "Success! The new Restaurant entry has been added successfully.", "success");

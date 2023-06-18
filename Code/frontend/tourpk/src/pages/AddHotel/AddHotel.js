@@ -1,20 +1,17 @@
 import styles from "./AddHotel.module.css";
-import { amenities, React, FormField, Button, useLocation, useNavigate, FinalForm } 
-from "../../components/index";
+import { amenities, React, FormField, Button, useLocation, useNavigate, FinalForm }
+    from "../../components/index";
 
 const AddHotel = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    console.log(location.state);
 
     // Logic for Update hotel 
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
-    console.log(isEditMode);
     let values, hotel;
     let updateInitialValue;
     if (isEditMode) {
-        console.log(location.state);
         values = location.state.values;
         hotel = location.state.obj;
 
@@ -37,7 +34,6 @@ const AddHotel = () => {
         };
 
         updateInitialValue = formatToFieldNames(hotel);
-        console.log(updateInitialValue);
     }
 
     const preProcess = (values) => {
@@ -56,7 +52,6 @@ const AddHotel = () => {
 
     const onSubmit = (values) => {
         const hotelData = preProcess(values);
-        console.log("** ye wo add hotel wala data hai ****", hotelData);
         const hotel = {
             id: location.state.obj.id,
             amenities: hotelData.hotelAmenities,
@@ -68,7 +63,6 @@ const AddHotel = () => {
             service: hotelData.service,
             room: location.state.obj.Rooms
         }
-        console.log("***** ye wo data hai jo update krna hai ******", data);
         if (isEditMode)
             navigate("/addHotelRoom?edit=1", { state: { data } });
         else

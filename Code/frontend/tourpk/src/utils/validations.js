@@ -112,13 +112,12 @@ export const validateExpirationDate = (value) => {
   }
 };
 export const validateExpirationMonth = (value) => {
-  const month = parseInt(value); // Convert the value to an integer
-  console.log(month)
+  const month = parseInt(value);
   if (month < 1 || month > 12) {
-    return true; // Return false if the value is not a valid integer between 1 and 12
+    return true;
   }
-  
-  return false; // Return true if the value is a valid month
+
+  return false;
 }
 
 
@@ -126,9 +125,8 @@ export const validateExpirationMonth = (value) => {
 export const validateExpirationYear = (value) => {
   const yearRegex = /^(20[2-9][0-9]|30[0-9][0-9])$/; // regular expression to match valid year format (2020-2099 or 3000-3099)
   const currentYear = new Date().getFullYear().toString().substring(2); // get last 2 digits of current year
-  
+
   if (!yearRegex.test(value)) {
-    // If the value doesn't match the valid year format, return false
     return false;
   }
 

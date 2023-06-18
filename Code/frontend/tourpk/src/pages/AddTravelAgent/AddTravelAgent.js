@@ -1,14 +1,14 @@
 import styles from './AddTravelAgent.module.css';
-import { 
+import {
     useState, itenerary, required, useNavigate, FormField,
-    React, Button, useSelector, FinalForm , useLocation, axiosInstance, swal, IconAdd } 
-  from "../../components/index";
+    React, Button, useSelector, FinalForm, useLocation, axiosInstance, IconAdd
+} from "../../components/index";
+import swal from 'sweetalert';
 
 const AddTravelAgent = () => {
     const userId = useSelector(state => state.user.id);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location.state);
     const [sections, setSections] = useState([1]);
     const addSection = (e) => {
         e.preventDefault()
@@ -18,16 +18,11 @@ const AddTravelAgent = () => {
     //Update Tour guide logic
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
-    console.log(isEditMode);
     let values, travelAgent;
     let updateInitialValue;
     if (isEditMode) {
-        console.log(location.state);
-        // ({ values, tourGuide } = location.state);
         values = location.state.values;
         travelAgent = location.state.obj;
-        console.log("Before Formatting****** ", travelAgent);
-        console.log(values);
     }
 
     if (isEditMode) {
@@ -69,11 +64,9 @@ const AddTravelAgent = () => {
         UserId: null
     };
 
-    console.log(addInitialValue);
     const initialValue = isEditMode ? updateInitialValue : addInitialValue;
 
     const onSubmit = async (value) => {
-        console.log(value);
         value.UserId = userId;
         const servic = isEditMode ? values : location.state.values;
         if (isEditMode)
@@ -82,7 +75,6 @@ const AddTravelAgent = () => {
             service: servic,
             travelAgent: value
         };
-        console.log(travelAgentData);
 
         //convert itenerary object to string for database
         let itenerary = "";
@@ -92,7 +84,6 @@ const AddTravelAgent = () => {
             itenerary += day;
         }
         value.itenerary = itenerary;
-        console.log(itenerary);
         value.UserId = userId;
         for (let i = 1; i <= sections.length; i++) {
             delete value[`day${i}`];
@@ -109,7 +100,6 @@ const AddTravelAgent = () => {
         }
 
         const travelAgentAdded = travelAgentObj.data;
-        console.log(travelAgentAdded);
         navigate(`/travelAgentListing/${travelAgentAdded}`, { travelAgentAdded });
     };
 

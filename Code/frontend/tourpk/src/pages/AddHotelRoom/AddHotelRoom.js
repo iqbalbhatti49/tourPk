@@ -1,8 +1,9 @@
 import styles from "./AddHotelRoom.module.css";
-import { 
-  required, RoomAmeneties, validateAlpha, axiosInstance, React, FormField, 
-  Button, useLocation, useSelector, useNavigate, FinalForm, roomAmenitiess } 
-from "../../components/index";
+import {
+  required, RoomAmeneties, validateAlpha, axiosInstance, React, FormField,
+  Button, useLocation, useSelector, useNavigate, FinalForm, roomAmenitiess
+}
+  from "../../components/index";
 
 const AddHotelRoom = () => {
   const location = useLocation();
@@ -24,14 +25,12 @@ const AddHotelRoom = () => {
 
   // UPDATE Logic *******
   const isEditMode = searchParams.get('edit') === '1';
-  console.log(isEditMode);
   let hotel, room, service;
   let updateInitialValue;
   if (isEditMode) {
     hotel = location.state.data.hotel;
     room = location.state.data.room;
     service = location.state.data.service;
-    console.log("Updatw walaaaaaaaa****** ", location.state.data);
   }
 
   if (isEditMode) {
@@ -43,7 +42,6 @@ const AddHotelRoom = () => {
         }, {});
       };
       const amenitiesValues = convertOptionsToValues(roomAmenitiess.map(option => option.label), obj.roomAmenities.split(', '));
-      // console.log(amenitiesValues);
       const obj1 = {
         id: obj.id,
         roomType: obj.roomType,
@@ -63,7 +61,6 @@ const AddHotelRoom = () => {
     };
 
     updateInitialValue = formatToFieldNames(room[0]);
-    console.log("Ye format hogya ha******", updateInitialValue);
   }
 
   const addInitialValue = {
@@ -128,7 +125,6 @@ const AddHotelRoom = () => {
         images: imagesArray,
         room: roomData
       }
-      console.log("Add wla object ********* ", hotelRoom_A);
     }
 
     if (isEditMode) {
@@ -139,7 +135,6 @@ const AddHotelRoom = () => {
         hotel: hotel,
         room: roomData
       }
-      console.log("Update wla object ********* ", hotelRoom_U);
     }
 
     let roomObj;

@@ -14,18 +14,16 @@ export const NavBar = () => {
    const logoutUser = () => {
       dispatch(logout());
    }
-   useEffect(() => {
-      console.log("value of isloggedIn: ", isloggedIn);
-   }, []);
+
    return (
       <div className={styles.container}>
          <nav className={styles.nav}>
             <Logo width={100} height={50} rootClassName="dark" />
             <div className={styles.navLinks}>
                {
-                  role != "seller" ? 
-                  <Link className={location.pathname === '/' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/">Home</Link> :
-                  <Link className={location.pathname === '/serviceProvider' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/serviceProvider">Home</Link> 
+                  role != "seller" ?
+                     <Link className={location.pathname === '/' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/">Home</Link> :
+                     <Link className={location.pathname === '/serviceProvider' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/serviceProvider">Home</Link>
                }
                {
                   role == "seller" && <Link className={location.pathname === '/bookings' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/bookings">Bookings</Link>
@@ -34,13 +32,13 @@ export const NavBar = () => {
                   role != "seller" &&
                   <>
                      <Link className={location.pathname === '/cities' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/cities">Cities</Link>
-                     <Link className={location.pathname === '/services' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/services">Services</Link>   
+                     <Link className={location.pathname === '/services' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/services">Services</Link>
                   </>
                }
                {
-                  role != "seller" ? 
-                  <Link className={location.pathname === '/pricing' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/pricing">Pricing</Link> :
-                  <Link className={location.pathname === '/addService' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/addService">Add Service</Link> 
+                  role != "seller" ?
+                     <Link className={location.pathname === '/pricing' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/pricing">Pricing</Link> :
+                     <Link className={location.pathname === '/addService' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/addService">Add Service</Link>
                }
                <Link className={location.pathname === '/allBlogs' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/allBlogs">Blogs</Link>
             </div>

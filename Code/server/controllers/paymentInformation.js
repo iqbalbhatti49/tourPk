@@ -13,14 +13,13 @@ exports.updatePayment = async (req, res) => {
     };
     if (paymentObj) {
       await paymentObj.update(obj, { where: { UserId: id } });
-      return res.status(200).json({ cardInfo:obj,  message: "cardInfo information updated successfully" });
+      return res.status(200).json({ cardInfo: obj, message: "cardInfo information updated successfully" });
     } else {
       obj.UserId = id;
       await PaymentInformation.create(obj);
-      return res.status(200).json({ cardInfo:obj, message: "cardInfo information added successfully" });
+      return res.status(200).json({ cardInfo: obj, message: "cardInfo information added successfully" });
     }
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ message: "Internal server error" });
   }
 };

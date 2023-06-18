@@ -1,10 +1,12 @@
 import styles from "./HelpAndSupport.module.css";
-import { FormField, FAQDropdown, useState, Button, Dropdown,
-          FinalForm, React, useDispatch, helpRequest, questions } from "../../components/index";
+import {
+  FormField, FAQDropdown, useState, Button, Dropdown,
+  FinalForm, React, useDispatch, helpRequest, questions
+} from "../../components/index";
 
 const HelpAndSupport = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [role,setRole] = useState("Tourist");
+  const [role, setRole] = useState("Tourist");
 
   const dispatch = useDispatch();
   const required = (value) => (value ? undefined : "Required");
@@ -12,14 +14,13 @@ const HelpAndSupport = () => {
     if (selectedFile) {
       values["file"] = selectedFile;
     }
-    console.log("Form submitted with values:", values);
-    values["role"]  = role;
+    values["role"] = role;
     dispatch(helpRequest(values));
     form.reset();
     Object.keys(values).forEach(key => {
       form.change(key, undefined);
       form.resetFieldState(key);
-  });
+    });
   };
   const handleInputChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -65,26 +66,26 @@ const HelpAndSupport = () => {
                     <form onSubmit={handleSubmit}>
                       <p>Are you a tourist or service provider?</p>
                       <Dropdown
-                          name="roleTye"
-                          label="Role Type"
-                          optionsValues={[
-                              {
-                                  "id": 1,
-                                  "name": "Tourist",
-                              },
-                              {
-                                  "id": 2,
-                                  "name": "Service Provider",
-                              },
-                          ]}
-                          validate={required}
-                          theme="light"
-                          value={role}
-                          placeholder="Choose Your Role"
-                          renderIcon={() => null}
-                          onChange={(selectedOption) => handleChange(selectedOption)}
+                        name="roleTye"
+                        label="Role Type"
+                        optionsValues={[
+                          {
+                            "id": 1,
+                            "name": "Tourist",
+                          },
+                          {
+                            "id": 2,
+                            "name": "Service Provider",
+                          },
+                        ]}
+                        validate={required}
+                        theme="light"
+                        value={role}
+                        placeholder="Choose Your Role"
+                        renderIcon={() => null}
+                        onChange={(selectedOption) => handleChange(selectedOption)}
                       />
-                      
+
                       <br /> <br />
                       <div className={styles.formFields}>
                         <FormField

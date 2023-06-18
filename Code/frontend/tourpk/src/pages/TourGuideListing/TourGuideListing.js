@@ -1,8 +1,10 @@
 import styles from './TourGuideListing.module.css';
-import { IconEdit, IconDelete, getReviewsStats, axiosInstance, clearCart, addItem, BookingCalendar, 
-         useNavigate, useDispatch, useSelector, useParams, ReviewForm, Testimonial, Rating,
-         Button, Carousel, React, useEffect, useState } 
-from "../../components/index";
+import {
+   IconEdit, IconDelete, getReviewsStats, axiosInstance, clearCart, addItem, BookingCalendar,
+   useNavigate, useDispatch, useSelector, useParams, ReviewForm, Testimonial, Rating,
+   Button, Carousel, React, useEffect, useState
+}
+   from "../../components/index";
 
 export default function TourGuideListing() {
    const currentUser = useSelector(state => state.user.id);
@@ -24,12 +26,8 @@ export default function TourGuideListing() {
    const fetchTourGuideBookings = async () => {
       try {
          const response = await fetch(`/tourguide/getAllBookings/${id}`);
-         if (response.ok) {
-            const data = await response.json();
-            setBookings(data);
-         } else {
-            console.log('Error:', response.status);
-         }
+         const data = await response.json();
+         setBookings(data);
       } catch (error) {
          console.log('Error:', error);
       }
@@ -40,7 +38,6 @@ export default function TourGuideListing() {
          const response = await axiosInstance.get(`/TourGuide/getTourGuideById/${id}`);
          const { Service: { Reviews, ...serviceData }, TourGuideImages, ...restData } = response.data;
          setreviews(Reviews);
-         console.log(response.data)
          const TourGuide = restData;
          const Service = serviceData;
          const TourGuideData = {
@@ -49,7 +46,6 @@ export default function TourGuideListing() {
             TourGuideImages
          };
          setData(TourGuideData);
-         console.log(TourGuideData);
          const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
          setratingAverge(ratingAvg);
          setreviewCount(reviewsCount);
@@ -59,7 +55,6 @@ export default function TourGuideListing() {
    }, [id]);
 
    const handleDateChange = (date) => {
-      console.log('Selected date:', date.toISOString().split('T')[0]);
       setSelectedDate(date.toISOString().split('T')[0]);
    };
 
@@ -98,15 +93,12 @@ export default function TourGuideListing() {
          dangerMode: true,
       }).then((clickedBtn) => {
          if (clickedBtn) {
-            console.log('User clicked on confirm');
             const ids = {
                ServiceId: data.Service.id,
                TourGuideId: data.TourGuide.id
             };
             axiosInstance.post(`/tourguide/deleteTourGuide/`, ids);
             navigate("/");
-         } else {
-            console.log('User clicked on "Cancel"');
          }
       });
    }
@@ -122,7 +114,6 @@ export default function TourGuideListing() {
       if (bookings) {
          const disabledDates = bookings.map((booking) => new Date(booking.bookingDate));
          setDisabledDates(disabledDates);
-         console.log(disabledDatesArr);
       }
    }, [bookings]);
 

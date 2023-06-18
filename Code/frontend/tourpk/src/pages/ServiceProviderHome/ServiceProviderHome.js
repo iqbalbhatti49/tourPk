@@ -1,5 +1,5 @@
 import styles from "./ServiceProviderHome.module.css";
-import { React, useEffect, useDispatch, Link, Button, useSelector} from '../../components';
+import { React, useEffect, useDispatch, Link, Button, useSelector } from '../../components';
 
 const ServiceProviderHome = () => {
    const user = useSelector((state) => state.user)
@@ -12,7 +12,6 @@ const ServiceProviderHome = () => {
    useEffect(() => {
       dispatch(fetchServicesByUserId({ userId }));
    }, [dispatch, userId]);
-   console.log(services)
 
    return (
       <div className={styles.container}>

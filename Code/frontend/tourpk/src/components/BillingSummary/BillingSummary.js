@@ -5,7 +5,7 @@ import { Form as FinalForm } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { initiatePayment } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
-import {clearCart }from "../../app/features/cart/cartSlice"
+import { clearCart } from "../../app/features/cart/cartSlice"
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { addHotelBooking, addTourGuideBooking, addTravelAgentBooking } from '../../app/features/bookings/bookingsSlice';
@@ -28,7 +28,7 @@ export const BillingSummary = () => {
    let total = items.reduce((acc, item) => {
       return acc + item.price * item.count;
    }, 0);
-   
+
    let totalDiscountedPrice = items.reduce((acc, item) => {
       if (item.discountApplicable) {
          return acc + item.discountedPrice * item.count;
@@ -36,7 +36,7 @@ export const BillingSummary = () => {
          return acc + item.price * item.count;
       }
    }, 0);
-     
+
    total = total.toFixed(0)
    totalDiscountedPrice = totalDiscountedPrice.toFixed(0)
    let overallTotal = parseInt(totalDiscountedPrice);
@@ -45,11 +45,11 @@ export const BillingSummary = () => {
    const billingSummary = [
       {
          label: 'Total',
-         value: total 
+         value: total
       },
       {
          label: 'Discount Percentage',
-         value: discount + "%" 
+         value: discount + "%"
       },
       {
          label: 'Discount Granted',
@@ -57,13 +57,11 @@ export const BillingSummary = () => {
       },
       {
          label: 'Discounted Total',
-         value: totalDiscountedPrice 
+         value: totalDiscountedPrice
       },
    ];
 
-   console.log(total)
    const onSubmit = (values, form) => {
-      console.log('Form submitted with values:', values);
       values.grandTotal = overallTotal;
       values.cardInfo = cardInfo;
       values.billingAddress = billingAddress;
@@ -71,49 +69,43 @@ export const BillingSummary = () => {
       form.reset();
       form.change("OrderComment", undefined);
       form.resetFieldState("OrderComment");
-      console.log(paymentResult)
 
-      if(paymentResult)
-      {
+      if (paymentResult) {
          swal({
-         title: 'Result',
-         text: "payment successful",
-         icon: 'success',
-         buttons: {
-           confirm: true,
-         },
-       })
-       .then((confirmed) => {
-         if (confirmed) {
-            if(tourguide)
-            {
-               dispatch(addTourGuideBooking(tourguide));
-            }
-            if(travelagent)
-            {
-               dispatch(addTravelAgentBooking(travelagent));
-            }
-            if(hotel)
-            {
-               dispatch(addHotelBooking(hotel));
-            }
-           dispatch(clearCart());
-           navigate("/");
-         }
-       });
+            title: 'Result',
+            text: "payment successful",
+            icon: 'success',
+            buttons: {
+               confirm: true,
+            },
+         })
+            .then((confirmed) => {
+               if (confirmed) {
+                  if (tourguide) {
+                     dispatch(addTourGuideBooking(tourguide));
+                  }
+                  if (travelagent) {
+                     dispatch(addTravelAgentBooking(travelagent));
+                  }
+                  if (hotel) {
+                     dispatch(addHotelBooking(hotel));
+                  }
+                  dispatch(clearCart());
+                  navigate("/");
+               }
+            });
       }
-      else
-      {
+      else {
          swal({
             title: 'Result',
             text: "Payment Failed",
             icon: 'error',
             buttons: {
-              confirm: true,
+               confirm: true,
             },
-          });
+         });
       }
-       
+
    }
 
    return (

@@ -1,8 +1,10 @@
 import styles from './TravelAgentListing.module.css'
-import { clearCart, addItem, useNavigate, useDispatch, required, FinalForm, ReviewForm,
-         useSelector, swal, IconEdit, IconDelete, FormField, axiosInstance, useLocation, useParams,
-         Testimonial, BookingCalendar, React, Button, Carousel, CircularRating, useEffect, useState  } 
-from '../../components/index';
+import {
+   clearCart, addItem, useNavigate, useDispatch, required, FinalForm, ReviewForm,
+   useSelector, swal, IconEdit, IconDelete, FormField, axiosInstance, useLocation, useParams,
+   Testimonial, BookingCalendar, React, Button, Carousel, CircularRating, useEffect, useState
+}
+   from '../../components/index';
 
 export default function TravelAgentListing() {
    const currentUser = useSelector(state => state.user.id);
@@ -22,7 +24,6 @@ export default function TravelAgentListing() {
    const [loading, setLoading] = useState(true);
    const [selectedDate, setSelectedDate] = useState(null);
    const handleDateChange = (date) => {
-      console.log('Selected date:', date.toISOString().split('T')[0]);
       setSelectedDate(date.toISOString().split('T')[0]);
    };
    const onSubmit = async (values) => {
@@ -46,7 +47,6 @@ export default function TravelAgentListing() {
          price: totalPrice,
          discountedPrice: totalPrice - (totalPrice * (discount / 100)),
       };
-      console.log(values.guests)
       dispatch(addItem(newItem));
       const guests = values.guests
       const travelagent = { userId, id, selectedDate, totalPrice, type: "travelagent", guests };
@@ -61,7 +61,6 @@ export default function TravelAgentListing() {
          dangerMode: true,
       }).then((clickedBtn) => {
          if (clickedBtn) {
-            console.log('User clicked on confirm');
             const ids = {
                ServiceId: data.Service.id,
                TravelAgentId: data.TravelAgent.id
@@ -69,7 +68,6 @@ export default function TravelAgentListing() {
             axiosInstance.post(`/travelagent/deleteTourPackage/`, ids);
             navigate("/");
          } else {
-            console.log('User clicked on "Cancel"');
          }
       });
    }
@@ -106,7 +104,6 @@ export default function TravelAgentListing() {
 
    useEffect(() => {
       getTravelAgent();
-      // console.log(location.state);
    }, []);
 
    if (!data) {

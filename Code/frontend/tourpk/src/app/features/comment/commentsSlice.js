@@ -27,7 +27,6 @@ export const addComment = createAsyncThunk('comment/addComment', async (comment)
         return response.data;
     }
     catch (err) {
-        console.log(err);
         return err;
     }
 });
@@ -54,16 +53,13 @@ const commentsSlice = createSlice({
             })
             .addCase(fetchCommentByBlog.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                // console.log("------comment fetched payload-----", action.payload);
-                // state.items = "";
             })
             .addCase(fetchCommentByBlog.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
             .addCase(addComment.fulfilled, (state, action) => {
-                console.log("---------action payload ----- ", action.payload);
-                // state.items.push(action.payload);
+                state.status = 'succeeded';
             })
             .addCase(addComment.pending, (state, action) => {
                 state.status = 'loading';

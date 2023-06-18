@@ -55,7 +55,6 @@ export const addBlog = createAsyncThunk('blogs/addBlog', async (blog) => {
         return response.data;
     }
     catch (err) {
-        console.log(err);
         return err;
     }
 });

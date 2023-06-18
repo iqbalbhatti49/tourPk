@@ -8,7 +8,6 @@ export default function Dropdown() {
   const handleChange = (event) => {
     setValue(event.target.value);
   };
-  console.log(roles);
   return (
     <div className={styles.dropdown}>
       <select value={value} onChange={handleChange}>

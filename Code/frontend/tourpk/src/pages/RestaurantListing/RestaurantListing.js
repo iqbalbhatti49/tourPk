@@ -1,6 +1,8 @@
 import styles from './RestaurantListing.module.css'
-import { React, useEffect, useLocation, Carousel, Testimonial, Rating, useNavigate, getReviewsStats,
-    useSelector, IconEdit, IconDelete, useState, useParams, axiosInstance, ReviewForm } 
+import {
+    React, useEffect, useLocation, Carousel, Testimonial, Rating, useNavigate, getReviewsStats,
+    useSelector, IconEdit, IconDelete, useState, useParams, axiosInstance, ReviewForm
+}
     from '../../components';
 
 export default function RestaurantListing() {
@@ -24,15 +26,12 @@ export default function RestaurantListing() {
             dangerMode: true,
         }).then((clickedBtn) => {
             if (clickedBtn) {
-                console.log('User clicked on confirm');
                 const ids = {
                     ServiceId: data.Service.id,
                     RestaurantId: data.Restaurant.id
                 };
                 axiosInstance.post(`/restaurant/deleteRestaurant/`, ids);
                 navigate("/");
-            } else {
-                console.log('User clicked on "Cancel"');
             }
         });
     }
@@ -47,7 +46,6 @@ export default function RestaurantListing() {
     const getRestaurant = async () => {
         try {
             const response = await axiosInstance.get(`/restaurant/getRestaurantById/${id}`);
-            console.log(response.data);
             const { Service: { Reviews, ...serviceData }, RestaurantImages, ...restData } = response.data;
             setreviews(Reviews);
             const Restaurant = restData;
@@ -57,7 +55,6 @@ export default function RestaurantListing() {
                 Restaurant,
                 RestaurantImages
             };
-            console.log(restaurantData);
             let { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
             setData(restaurantData);
             setratingAverge(ratingAvg);
@@ -157,7 +154,7 @@ export default function RestaurantListing() {
                     }
                 </div>
             </div>
-            {role == "tourist" &&  <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
+            {role == "tourist" && <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
         </div>
     );
 }

@@ -9,7 +9,6 @@ import {
 
 const AddBlog = () => {
     let { state } = useLocation();
-    console.log(state, "---------------------");
     const [isEditMode, setisEditMode] = useState(false);
     useEffect(() => {
         state ? setisEditMode(true) : null;
@@ -31,7 +30,6 @@ const AddBlog = () => {
             const formData = new FormData();
             formData.append("file", file);
             const res = await axiosInstance.post("/upload", formData);
-            console.log(res.data);
             return res.data;
         } catch (err) {
             console.log(err);

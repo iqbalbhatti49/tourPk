@@ -15,10 +15,9 @@ export const BillingAddress = () => {
    const [submitted, setSubmitted] = useState(false);
    const id = useSelector((state) => state.user.id);
    const BillingAddressState = useSelector((state) => state.checkout.billingAddress);
-   
+
    const onSubmit = (values, form) => {
-      console.log('Form submitted with values:', values);
-      dispatch(updateBillingAddress({id, values}));
+      dispatch(updateBillingAddress({ id, values }));
       form.reset();
       setSubmitted(true);
       Object.keys(values).forEach((key) => {
@@ -35,7 +34,7 @@ export const BillingAddress = () => {
          buttons: {
             confirm: true,
          },
-     });
+      });
    };
 
    return (
@@ -51,91 +50,91 @@ export const BillingAddress = () => {
                {({ handleSubmit }) => (
                   <form className={styles.form} onSubmit={handleSubmit}>
                      <fieldset disabled={submitted && "disabled"}>
-                     <div className={styles.row}>
+                        <div className={styles.row}>
+                           <FormField
+                              name="firstName"
+                              label="First Name"
+                              type="text"
+                              placeholder="Jhon"
+                              validate={required}
+                              renderIcon={() => null}
+                              labelClass="showLabel"
+                              theme="light"
+                           />
+                           <FormField
+                              name="lastName"
+                              label="Last Name"
+                              type="text"
+                              placeholder="Doe"
+                              validate={required}
+                              renderIcon={() => null}
+                              labelClass="showLabel"
+                              theme="light"
+                           />
+                        </div>
                         <FormField
-                           name="firstName"
-                           label="First Name"
-                           type="text"
-                           placeholder="Jhon"
+                           name="email"
+                           label="Email"
+                           type="email"
+                           placeholder="abc@email.com"
                            validate={required}
                            renderIcon={() => null}
                            labelClass="showLabel"
                            theme="light"
                         />
                         <FormField
-                           name="lastName"
-                           label="Last Name"
+                           name="streetAddress1"
+                           label="Street Address 1"
                            type="text"
-                           placeholder="Doe"
+                           placeholder="House # 3, Street # 27"
                            validate={required}
                            renderIcon={() => null}
                            labelClass="showLabel"
                            theme="light"
                         />
-                     </div>
-                     <FormField
-                        name="email"
-                        label="Email"
-                        type="email"
-                        placeholder="abc@email.com"
-                        validate={required}
-                        renderIcon={() => null}
-                        labelClass="showLabel"
-                        theme="light"
-                     />
-                     <FormField
-                        name="streetAddress1"
-                        label="Street Address 1"
-                        type="text"
-                        placeholder="House # 3, Street # 27"
-                        validate={required}
-                        renderIcon={() => null}
-                        labelClass="showLabel"
-                        theme="light"
-                     />
-                     <FormField
-                        name="city"
-                        label="City"
-                        type="text"
-                        placeholder="Lahore"
-                        validate={required}
-                        renderIcon={() => null}
-                        labelClass="showLabel"
-                        theme="light"
-                     />
-                     <FormField
-                        name="zipCode"
-                        label="Zip Code"
-                        type="number"
-                        placeholder="2234"
-                        validate={required}
-                        renderIcon={() => null}
-                        labelClass="showLabel"
-                        theme="light"
-                     />
-                     <FormField
-                        name="phoneNumber"
-                        label="Phone Number"
-                        type="text"
-                        placeholder="+923xxxxxxxxx"
-                        validate={validatePhone}
-                        renderIcon={() => null}
-                        labelClass="showLabel"
-                        theme="light"
-                     />
-                     <Button btnType="submit" disabled={submitted} value="Add Address" />
+                        <FormField
+                           name="city"
+                           label="City"
+                           type="text"
+                           placeholder="Lahore"
+                           validate={required}
+                           renderIcon={() => null}
+                           labelClass="showLabel"
+                           theme="light"
+                        />
+                        <FormField
+                           name="zipCode"
+                           label="Zip Code"
+                           type="number"
+                           placeholder="2234"
+                           validate={required}
+                           renderIcon={() => null}
+                           labelClass="showLabel"
+                           theme="light"
+                        />
+                        <FormField
+                           name="phoneNumber"
+                           label="Phone Number"
+                           type="text"
+                           placeholder="+923xxxxxxxxx"
+                           validate={validatePhone}
+                           renderIcon={() => null}
+                           labelClass="showLabel"
+                           theme="light"
+                        />
+                        <Button btnType="submit" disabled={submitted} value="Add Address" />
                      </fieldset>
                      <FormSpy subscription={{ form: true }}>
                         {({ form }) => {
                            useEffect(() => {
                               const valuesToInitialize = {};
                               for (const key in BillingAddressState) {
-                              if (BillingAddressState.hasOwnProperty(key)) {
-                                 const value = BillingAddressState[key];
-                                 if (value !== null) {
-                                    valuesToInitialize[key] = value;
+                                 if (BillingAddressState.hasOwnProperty(key)) {
+                                    const value = BillingAddressState[key];
+                                    if (value !== null) {
+                                       valuesToInitialize[key] = value;
+                                    }
                                  }
-                              }
                               }
 
                               form.initialize(valuesToInitialize);

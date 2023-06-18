@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './HotelBooking.module.css';
 import { Button } from '../../components';
-import { BookingCalendar} from '../../components';
+import { BookingCalendar } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearCart, addItem } from '../../app/features/cart/cartSlice';
@@ -16,7 +16,7 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
   const [disabledDatesArr, setDisabledDates] = useState(null);
   const navigate = useNavigate();
   const currentUser = useSelector(state => state.user.id);
-  const [validRange,setValidRange] = useState(true) 
+  const [validRange, setValidRange] = useState(true)
   useEffect(() => {
     const getBookings = async () => {
       try {
@@ -26,12 +26,11 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
             roomId
           }
         });
-        console.log('Bookings:', response.data);
         const bookingsCountByDate = {};
         response.data.bookings.forEach(booking => {
           const startDate = new Date(booking.startDate);
           const endDate = booking.numberOfDays === 1 ? startDate : new Date(startDate.getTime() + (booking.numberOfDays - 1) * 24 * 60 * 60 * 1000);
-        
+
           const currentDate = new Date(startDate);
           while (currentDate <= endDate) {
             const formattedDate = currentDate.toISOString().split('T')[0];
@@ -42,30 +41,25 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
             currentDate.setDate(currentDate.getDate() + 1);
           }
         });
-  
+
         // Generate disabled dates array
         const disabledDates = [];
         Object.entries(bookingsCountByDate).forEach(([date, count]) => {
-          console.log(count,roomCount)
-          console.log(date,count)
-          if (count >= roomCount ) { // Compare with roomCount + 1
+          if (count >= roomCount) { // Compare with roomCount + 1
             const disabledDate = new Date(date);
-          disabledDate.setDate(disabledDate.getDate());
-          console.log("disabled ", disabledDate)
-          disabledDates.push(disabledDate);
+            disabledDate.setDate(disabledDate.getDate());
+            disabledDates.push(disabledDate);
           }
         });
-        console.log("disabled dates" , disabledDates)
-        console.log("count", bookingsCountByDate)
         setDisabledDates(disabledDates);
       } catch (error) {
         console.log('Error:', error);
       }
     };
-  
+
     getBookings();
   }, [roomId, hotelId, roomCount]);
-  
+
 
   const handleDateChange = (dates) => {
     const startDate = dates.startDate;
@@ -93,8 +87,7 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
       });
       return;
     }
-    if(!validRange)
-    {
+    if (!validRange) {
       swal({
         title: 'Invalid Range',
         text: 'First select an available date range from the calendar.',
@@ -107,26 +100,22 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
     }
     dispatch(clearCart());
     let numberOfDays = 0;
-    // console.log(selectedDate)
     if (selectedDate.endDate != null) {
       const startDate = new Date(selectedDate.startDate);
       const endDate = new Date(selectedDate.endDate);
 
       if (startDate.getMonth() === endDate.getMonth()) {
-        console.log("Same")
         numberOfDays = (endDate.getDate() - startDate.getDate()) + 1;
       } else if (selectedDate.endDate != false) {
-        console.log("Not Same")
         const startMonthDays = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate();
         const startDaysRemaining = startMonthDays - startDate.getDate() + 1;
         const endDays = endDate.getDate();
 
         numberOfDays = startDaysRemaining + endDays;
-      }else {
-        numberOfDays = 1; 
+      } else {
+        numberOfDays = 1;
       }
-    } 
-    console.log(numberOfDays);
+    }
 
     const pricing = numberOfDays * price;
     const newItem = {
@@ -136,7 +125,6 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
       price: pricing,
       discountedPrice: pricing - (pricing * (discount / 100)),
     };
-    console.log(newItem);
     dispatch(addItem(newItem));
     const hotel = {
       startDate: selectedDate.startDate,
@@ -145,7 +133,7 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
       userId: currentUser,
       hotelId: hotelId,
       roomId: roomId,
-      endDate:selectedDate.endDate
+      endDate: selectedDate.endDate
     };
     navigate("/checkout", { state: { hotel } });
   };
@@ -159,8 +147,8 @@ export default function HotelBooking({ hotelName, roomCount, hotelId, imgSrc, ro
           selectedDate={selectedDate}
           onDateChange={handleDateChange}
           selectRange={true}
-          setValidRange = {setValidRange}
-        />   
+          setValidRange={setValidRange}
+        />
         {role == "tourist" && <Button value="Book Now" btnType="submit" handleClick={onSubmit} />}
       </div>
     </div>

@@ -25,7 +25,6 @@ exports.showBlogById = async (req, res) => {
 
 exports.createBlogPost = async (req, res) => {
     const blogPost = req.body;
-    console.log("--- ", blogPost, "--------------");
     let resp;
     if (blogPost.image.includes("http")) {
         resp = await BlogPost.create(blogPost);
@@ -52,7 +51,6 @@ exports.showRandomBlogs = async (req, res) => {
     const blogPost = await BlogPost.findOne({
         where: { id: id }
     });
-    console.log("---> ", blogPost);
 
     const cat = blogPost ? blogPost.category : "Other Blogs of Interest";
     const blogPosts = await BlogPost.findAll({

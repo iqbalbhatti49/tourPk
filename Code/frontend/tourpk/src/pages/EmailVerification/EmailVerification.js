@@ -1,5 +1,7 @@
-import { FormField, Button, useDispatch, useSelector, useNavigate, axiosInstance, 
-         FinalForm, React, useState, updateEmailVerification} from '../../components/index';
+import {
+  FormField, Button, useDispatch, useSelector, useNavigate, axiosInstance,
+  FinalForm, React, useState, updateEmailVerification
+} from '../../components/index';
 import styles from './EmailVerification.module.css';
 
 function EmailVerification() {
@@ -27,26 +29,25 @@ function EmailVerification() {
         email: values.email,
       });
       swal({
-          title: 'Verification Started!',
-          text: response.data.message,
-          icon: 'info',
-          buttons: {
-            confirm: true,
-          },
+        title: 'Verification Started!',
+        text: response.data.message,
+        icon: 'info',
+        buttons: {
+          confirm: true,
+        },
       })
       setVerificationStarted(true);
       setEmail(values.email)
       setVerificationStatus(response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
     } catch (error) {
-      console.error('Error initiating verification:', error);
-        swal({
-          title: 'Verification Failed!',
-          text: 'Failed to initiate verification',
-          icon: 'warning',
-          buttons: {
-            confirm: true,
-          },
+      swal({
+        title: 'Verification Failed!',
+        text: 'Failed to initiate verification',
+        icon: 'warning',
+        buttons: {
+          confirm: true,
+        },
       })
       setVerificationStatus(error.response.status); // Set the status code in state
       setIsLoading(false); // Hide loading 
@@ -63,36 +64,36 @@ function EmailVerification() {
 
       if (response.data.success) {
         swal({
-            title: 'Code Verified!',
-            text: 'Your Email is successfully verified.',
-            icon: 'success',
-            buttons: {
-              confirm: true,
-            },
+          title: 'Code Verified!',
+          text: 'Your Email is successfully verified.',
+          icon: 'success',
+          buttons: {
+            confirm: true,
+          },
         })
         setVerificationStatus(response.status); // Set the status code in state
-        dispatch(updateEmailVerification({userId,email}));
+        dispatch(updateEmailVerification({ userId, email }));
         navigate("/serviceProvider")
       } else {
         swal({
-            title: 'Not Verified!',
-            text: 'Verification code is invalid or expired.',
-            icon: 'error',
-            buttons: {
-              confirm: true,
-            },
+          title: 'Not Verified!',
+          text: 'Verification code is invalid or expired.',
+          icon: 'error',
+          buttons: {
+            confirm: true,
+          },
         })
         setVerificationStatus(response.status); // Set the status code in state
       }
       setIsLoading(false); // Hide loading symbol
     } catch (error) {
       swal({
-          title: 'Not Verified!',
-          text: 'Failed to check verification code.',
-          icon: 'error',
-          buttons: {
-            confirm: true,
-          },
+        title: 'Not Verified!',
+        text: 'Failed to check verification code.',
+        icon: 'error',
+        buttons: {
+          confirm: true,
+        },
       })
       setVerificationStatus(error.response.status); // Set the status code in state
       setIsLoading(false); // Hide loading symbol
@@ -141,7 +142,7 @@ function EmailVerification() {
             </form>
           )}
         />
-        {isLoading && <p>Loading...</p>} 
+        {isLoading && <p>Loading...</p>}
       </div>
     </div>
   );

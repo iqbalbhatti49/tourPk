@@ -82,7 +82,6 @@ exports.login = async (req, res) => {
         res.status(200).json({ user, token });
     }
     catch (err) {
-        console.error(err);
         return res.status(500).json(err);
     }
 };
@@ -91,7 +90,6 @@ exports.logout = async (req, res) => {
     try {
         res.status(200).json("User has been logged out.")
     } catch (err) {
-        console.error(err);
         return res.status(500).json(err);
     }
 };
@@ -125,7 +123,6 @@ exports.forgetPassword = async (req, res) => {
         return res.json(`Check Email to reset password ${req.body.forgetEmail}`);
     }
     catch (err) {
-        console.log('Errors occurred, failed to deliver message');
         return res.status(500).json(err);
     }
 };
@@ -141,13 +138,11 @@ exports.resetPassword = async (req, res) => {
         });
         res.status(200).json("Password Updated Successfully");
     } catch (error) {
-        console.log(error);
         res.json({ status: "Something Went Wrong" });
     }
 };
 
 exports.updateUserWithPlanDetails = async (req, res) => {
-    console.log(req.body);
     try {
         await User.update(
             {
@@ -161,14 +156,13 @@ exports.updateUserWithPlanDetails = async (req, res) => {
                 },
             }
         );
-        console.log("User plan details updated successfully");
         res.status(200).json({
             discount: req.body.discount,
             advancedSupport: req.body.advancedSupport,
             planCode: req.body.planCode,
-            message: "User plan details updated successfully" });
+            message: "User plan details updated successfully"
+        });
     } catch (error) {
-        console.log("Failed to update user plan details:", error);
         res.status(500).json({ error: "Failed to update user plan details" });
     }
 };
@@ -176,55 +170,49 @@ exports.updateUserWithPlanDetails = async (req, res) => {
 exports.numberVerification = async (req, res) => {
     try {
         const { phoneNumber, userId } = req.body;
-       await User.update(
-          {
-             phoneNumberVerified: true,
-             phoneNumber:phoneNumber
-          },
-          {
-             where: {
-                id: userId,
-             },
-          }
-       );
- 
-       console.log(`Phone number verification updated for user with ID: ${userId}`);
-       res.status(200).json({
-          message: 'Phone number verification updated successfully',
-          phoneNumberVerified: true,
-          phoneNumber:phoneNumber
-       });
-    } catch (error) {
-       console.log('Failed to update phone number verification:', error);
-       res.status(500).json({ error: 'Failed to update phone number verification' });
-    }
- };
+        await User.update(
+            {
+                phoneNumberVerified: true,
+                phoneNumber: phoneNumber
+            },
+            {
+                where: {
+                    id: userId,
+                },
+            }
+        );
 
- exports.emailVerification = async (req, res) => {
-    try {
-      const { email, userId } = req.body;
-      console.log(req.body)
-      await User.update(
-        {
-          emailVerified: true,
-          email: email
-        },
-        {
-          where: {
-            id: userId,
-          },
-        }
-      );
-  
-      console.log(`Email verification updated for user with ID: ${userId}`);
-      res.status(200).json({
-        message: 'Email verification updated successfully',
-        emailVerified: true,
-        email: email
-      });
+        res.status(200).json({
+            message: 'Phone number verification updated successfully',
+            phoneNumberVerified: true,
+            phoneNumber: phoneNumber
+        });
     } catch (error) {
-      console.log('Failed to update email verification:', error);
-      res.status(500).json({ error: 'Failed to update email verification' });
+        res.status(500).json({ error: 'Failed to update phone number verification' });
     }
-  };
-  
+};
+
+exports.emailVerification = async (req, res) => {
+    try {
+        const { email, userId } = req.body;
+        await User.update(
+            {
+                emailVerified: true,
+                email: email
+            },
+            {
+                where: {
+                    id: userId,
+                },
+            }
+        );
+
+        res.status(200).json({
+            message: 'Email verification updated successfully',
+            emailVerified: true,
+            email: email
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to update email verification' });
+    }
+};

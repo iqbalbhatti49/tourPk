@@ -1,8 +1,10 @@
 import styles from "./Signup.module.css";
-import { FormField, IconEmail, IconPassword, IconPerson, updateUser, Button, useDispatch,
-         useNavigate, axiosInstance, validateAlpha, validateEmail, validatePassword, validateEquality, 
-         validatePhone, FinalForm, React, useState } 
-from "../../components/index";
+import {
+    FormField, IconEmail, IconPassword, IconPerson, updateUser, Button, useDispatch,
+    useNavigate, axiosInstance, validateAlpha, validateEmail, validatePassword, validateEquality,
+    validatePhone, FinalForm, React, useState
+}
+    from "../../components/index";
 
 const Signup = (props) => {
     const [errormsg, setErrormsg] = useState(null);
@@ -10,7 +12,6 @@ const Signup = (props) => {
     const dispatch = useDispatch();
 
     const onSubmit = async (values, form) => {
-        console.log('Form submitted with values:', values);
         dispatch(updateUser(values));
         try {
             let res;
@@ -22,7 +23,7 @@ const Signup = (props) => {
             Object.keys(values).forEach(key => {
                 form.change(key, undefined);
                 form.resetFieldState(key);
-            });        
+            });
             navigate("/Login");
         }
         catch (error) {

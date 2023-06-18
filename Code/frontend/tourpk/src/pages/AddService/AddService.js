@@ -1,26 +1,21 @@
 import styles from './AddService.module.css';
-import { 
+import {
     useState, Dropdown, required, validateURL,
-    React, Button, useNavigate, FinalForm , useLocation, axiosInstance } 
-from "../../components/index";
+    React, Button, useNavigate, FinalForm, useLocation, axiosInstance, FormField, validateEmail, validatePhone, validateAlpha
+}
+    from "../../components/index";
 
 const AddService = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
-    console.log(isEditMode);
 
     let data, serviceType;
     let updateInitialValue;
     if (location.state) {
         ({ data, serviceType } = location.state);
         updateInitialValue = data.Service;
-        console.log(data);
     }
-
-    console.log(serviceType);
-    console.log(data);
-
     const addInitialValue = {
         "id": "",
         "name": "",
@@ -37,7 +32,6 @@ const AddService = () => {
 
     const [files, setFiles] = useState([]);
     const [service, setService] = useState(serviceType ? serviceType : "");
-    console.log(service);
     const navigate = useNavigate();
 
     const handleChange = (selectedOption) => {
@@ -69,13 +63,11 @@ const AddService = () => {
         values.images = imageUrls;
         if (isEditMode)
             values.id = data.Service.id;
-        console.log(values);
         var URL = service == "Hotel" ? "addHotel" :
             service == "Tour Guide" ? "addTourGuide" :
                 service == "Travel Agent" ? "addTravelAgent" : "addrestaurant"
         if (isEditMode)
             URL += "?edit=1"
-        console.log(URL);
         let nothing = {
             somedata: ""
         }

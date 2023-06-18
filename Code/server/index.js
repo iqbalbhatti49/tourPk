@@ -25,7 +25,6 @@ const storage = multer.diskStorage({
     cb(null, "../frontend/tourpk/public/static/images/upload");
   },
   filename: function (req, file, cb) {
-    console.log("path", file);
     cb(null, Date.now() + file.originalname);
   },
 });

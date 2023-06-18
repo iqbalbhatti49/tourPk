@@ -20,12 +20,9 @@ const BlogPost = ({ post }) => {
             dangerMode: true,
         }).then((clickedBtn) => {
             if (clickedBtn) {
-                console.log('User clicked on confirm');
                 dispatch(deleteBlog(post.id));
                 navigate("/allBlogs");
 
-            } else {
-                console.log('User clicked on "Cancel"');
             }
         });
     }

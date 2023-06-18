@@ -18,7 +18,6 @@ export default function Carousels({ imageList }) {
          src: 'https://images.pexels.com/photos/1579253/pexels-photo-1579253.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
       }
    ];
-   // console.log(imageList)
    const images = imageList ? imageList.map(item => item.imageUrl) : imagesConst.map(item => item.src);
 
    return (
