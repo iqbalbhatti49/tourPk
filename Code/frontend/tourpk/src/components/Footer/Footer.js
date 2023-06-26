@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 export const Footer = () => {
    const isLoggedIn = useSelector(state => state.user.loggedIn);
+   const role = useSelector((state) => state.user.role);
 
    return (
       <div className={styles.container}>
@@ -18,27 +19,24 @@ export const Footer = () => {
                <Logo rootClassName="dark" height={50} width={100} />
                <div className={styles.linksContainer}>
                   <div className={styles.links}>
-                     <p className={styles.subHeading}>Website Links</p>
-                     <Link className={styles.navLink} to="/addService">add SERvice</Link>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/AddBlog" : "/login"}>Write Blog</Link>
-                     <Link className={styles.navLink} to="/addHotelRoom">addHotelRoom</Link>
-                     <Link className={styles.navLink} to="/restaurantListing/:id">restaurantListing</Link>
-                     <Link className={styles.navLink} to="/addHotel">addHotel</Link>
-                     <Link className={styles.navLink} to="/AddTravelAgent">AddTravelAgent</Link>
-                     <Link className={styles.navLink} to="/addTourGuide">addTourGuide</Link>
-                     <Link className={styles.navLink} to="/tourGuideListing/:id">tourGuideListing</Link>
-                     <Link className={styles.navLink} to="/addrestaurant">addrestaurant</Link>
+                     <p className={styles.subHeading}>Offerings</p>
+                     <Link className={styles.navLink} to="/services"> Restaurants</Link>
+                     <Link className={styles.navLink} to="/services">View Hotels</Link>
+                     <Link className={styles.navLink} to="/services">Tour Guides</Link>
+                     <Link className={styles.navLink} to="/services">Tour Packages</Link>
+                     <Link className={styles.navLink} to="/allBlogs">Read Blogs</Link>
                   </div>
                   <div className={styles.links}>
-                     <p className={styles.subHeading}>Services</p>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/addpackage" : "/login"} >Add Package</Link>
-                     <Link className={styles.navLink} to="/bookings">Bookings</Link>
-                     <Link className={styles.navLink} to="/addrestaurant">Add Restaurant</Link>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/helpandsupport" : "/login"} >Help And Support</Link>
-                     <Link className={styles.navLink} to="/hotelListing">Hotel Listing</Link>
-                     <Link className={styles.navLink} to="/spotListing">Spot Listing</Link>
-                     <Link className={styles.navLink} to="/travelAgentListing/:id">Travel Agent Listing</Link>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/checkout" : "/login"}>Checkout</Link>
+                     <p className={styles.subHeading}>Explore</p>
+                     <Link className={styles.navLink} to={isLoggedIn ? "/bookings" : "/login"}>Bookings</Link>
+                     <Link className={styles.navLink} to={isLoggedIn ? "/AddBlog" : "/login"}>Write Blog</Link>
+                     <Link className={styles.navLink} to={isLoggedIn ? "/helpandsupport" : "/login"}>Help Centre</Link>
+                     {role == "seller" ? <>
+                        <Link className={styles.navLink} to="/contract" >Seller Conditions</Link>
+                        <Link className={styles.navLink} to="/addService">Offer service</Link>
+                     </>
+                        : <Link className={styles.navLink} to="/pricing" >Special offers</Link>
+                     }
                   </div>
                </div>
             </div>
@@ -50,7 +48,7 @@ export const Footer = () => {
                <IconInstagram />
                <IconLinkedin />
             </div>
-            <p>Copyrighted © 2022 tourPk technologies</p>
+            <p>Copyrighted © 2023 tourPk technologies</p>
          </div>
       </div>
    );

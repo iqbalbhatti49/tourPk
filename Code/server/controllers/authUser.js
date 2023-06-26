@@ -76,7 +76,7 @@ exports.login = async (req, res) => {
         // Verify the password
         const validPassword = await bcrypt.compare(req.body.password, user.password);
         if (!validPassword) {
-            return res.status(401).json("Invalid credentials"); //client request has not been completed because it lacks valid authentication credentials for the requested resource.
+            return res.status(401).json({ error: "Invalid credentials" }); //client request has not been completed because it lacks valid authentication credentials
         } const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRE });
         user.password = "";
         res.status(200).json({ user, token });

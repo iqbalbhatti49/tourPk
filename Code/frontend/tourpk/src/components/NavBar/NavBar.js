@@ -26,7 +26,7 @@ export const NavBar = () => {
                      <Link className={location.pathname === '/serviceProvider' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/serviceProvider">Home</Link>
                }
                {
-                  role == "seller" && <Link className={location.pathname === '/bookings' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/bookings">Bookings</Link>
+                  isloggedIn ? <Link className={location.pathname === '/bookings' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/bookings">Bookings</Link> : null
                }
                {
                   role != "seller" &&
@@ -38,7 +38,7 @@ export const NavBar = () => {
                {
                   role != "seller" ?
                      <Link className={location.pathname === '/pricing' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/pricing">Pricing</Link> :
-                     <Link className={location.pathname === '/addService' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/addService">Add Service</Link>
+                     isloggedIn ? <Link className={location.pathname === '/addService' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/addService">Add Service</Link> : null
                }
                <Link className={location.pathname === '/allBlogs' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/allBlogs">Blogs</Link>
             </div>
