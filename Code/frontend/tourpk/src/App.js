@@ -8,7 +8,6 @@ import { useEffect } from "react";
 import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, HotelListing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome, TravelAgentListing, EmailVerification } from "./pages/index";
 import AddTravelAgent from "./pages/AddTravelAgent/AddTravelAgent";
 import SearchResult from "./pages/SearchResult/SearchResult";
-import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   const action = useNavigationType();
@@ -50,7 +49,6 @@ function App() {
     <Routes>
       <Route path="/contract" element={<Contract />} />
       <Route path="/checkout" element={<CheckOut />} />
-      {/* <Route path="/addpackage" element={<AddPackage />} /> */}
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/addService" element={<AddService />} />
       <Route path="/bookings" element={<Bookings />} />
@@ -81,7 +79,6 @@ function App() {
       <Route path="/paymentInformation" element={<PaymentInformation />} ></Route>
       <Route path="/verifyEmail" element={<EmailVerification />} ></Route>
       <Route path="/searchResult" element={<SearchResult />} ></Route>
-      <Route path="/notFound" element={<NotFound />} ></Route>
     </Routes>
   );
 };

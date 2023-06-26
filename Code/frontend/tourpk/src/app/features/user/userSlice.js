@@ -98,6 +98,10 @@ const userSlice = createSlice({
          state.id = '';
          state.token = null;
          state.role = '';
+         state.phoneNumber = '';
+         state.error = '';
+         state.phoneNumberVerified = false;
+         state.emailVerified = false;
       },
    },
    extraReducers: (builder) => {

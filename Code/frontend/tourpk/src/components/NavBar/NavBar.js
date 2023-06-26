@@ -12,7 +12,6 @@ export const NavBar = () => {
       dispatch(logout());
    }
    const links = {
-      "/bookings": "Bookings",
       "/allBlogs": "Blogs",
       "/help": "Contact Us",
    };
@@ -23,7 +22,7 @@ export const NavBar = () => {
    }
    const sellerLinks = {
       "/serviceProvider": "Home",
-      "/addService": "Offer Services"
+      "/addService": "Offer-services"
    }
    return (
       <div className={styles.container}>
@@ -39,6 +38,9 @@ export const NavBar = () => {
                {Object.entries(links).map(([key, value]) => (
                   <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
                ))}
+               {
+                  isloggedIn ? <Link className={location.pathname === '/bookings' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/bookings">Bookings</Link> : null
+               }
             </div>
             {
                isloggedIn ? (

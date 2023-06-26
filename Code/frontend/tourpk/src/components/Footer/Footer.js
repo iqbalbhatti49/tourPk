@@ -12,22 +12,22 @@ export const Footer = () => {
    const role = useSelector((state) => state.user.role);
 
    const links = {
-      "/verify": "PhoneNumber Verification",
-      "/verifyEmail": "Email Verification",
+      "/cities": "Explore city",
+      "/services": "View Hotels",
       "/forgetPassword": "Reset Password",
-      "/help": "Contact Us"
+      "/allBlogs": "Read Blogs"
    };
    const otherLinks = {
       "/AddBlog": "Write a Blog",
       "/bookings": "Bookings",
    };
    const touristLinks = {
-      "/search": "Search",
+      "/plans": "Special offers",
       "/paymentInformation": "Account Information",
    }
    const sellerLinks = {
       "/serviceProvider": "My Account",
-      "/addService": "Offer Services"
+      "/addService": "Offer services",
    }
 
    return (
@@ -44,7 +44,7 @@ export const Footer = () => {
                      ))}
                   </div>
                   <div className={styles.links}>
-                     <p className={styles.subHeading}>Services</p>
+                     <p className={styles.subHeading}>Explore</p>
                      {Object.entries(otherLinks).map(([key, value]) => (
                         <Link className={styles.navLink} to={key}>{value}</Link>
                      ))}
