@@ -56,13 +56,14 @@ function simple_authorization_internet(callback, enable_capture, cardNumber, exp
          else if (data) {
             console.log('\nData : ' + JSON.stringify(data));
          }
-
          console.log('\nResponse : ' + JSON.stringify(response));
          {
-            response != undefined &&
-            console.log('\nResponse Code of Process a Payment : ' + JSON.stringify(response['status']));
-            var status = response['status'];
-            write_log_audit(status);
+            if(response != undefined)
+            { 
+               console.log('\nResponse Code of Process a Payment : ' + JSON.stringify(response['status']));
+               var status = response['status'];
+               write_log_audit(status);
+            }
          }
          callback(error, data, response);
       });

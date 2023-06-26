@@ -17,11 +17,12 @@
   }
   
   .subHeading {
-    letter-spacing: 0.1em;
-    line-height: 20px;
-    text-transform: uppercase;
     color: var(--primaryColor);
-    font-weight: 600;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: left;
+    line-height: 4rem;
+    text-align: center;
   }
   
   .description {
@@ -70,7 +71,6 @@
   }
   .travelAgent
   {
-    /* border :1px solid var(--assistColor); */
     border-radius: 12px;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.16);
     width: 250px;

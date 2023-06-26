@@ -3,11 +3,9 @@ import { FormField, Button, mealOptions, featureOptions, required, validateURL,
          FinalForm, React } from "../../components/index";
 
 const TravelAgent = () => {
-
     const onSubmit = (values) => {
         console.log(values);
     };
-
     return (
         <div id={styles.restaurantContainer}>
             <div className={styles.formContainer}>

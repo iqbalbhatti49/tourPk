@@ -11,7 +11,6 @@ export { default as AddRestaurant } from "./AddRestaurant/AddRestaurant";
 export { default as AddService } from "./AddService/AddService";
 export { default as Bookings } from "./Bookings/Bookings";
 export { default as HelpAndSupport } from "./HelpAndSupport/HelpAndSupport"
-export { default as GenericInfoAboutService } from "./GenericInfoAboutService/GenericInfoAboutService"
 export { default as HotelListing } from "./HotelListing/HotelListing";
 export { default as BlogPage } from "./BlogPage/BlogPage";
 export { default as AddBlog } from "./AddBlog/AddBlog";

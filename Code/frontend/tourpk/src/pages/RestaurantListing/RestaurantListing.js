@@ -3,20 +3,18 @@ import {
     React, useEffect, useLocation, Carousel, Testimonial, Rating, useNavigate, getReviewsStats,
     useSelector, IconEdit, IconDelete, useState, useParams, axiosInstance, ReviewForm
 }
-    from '../../components';
+from '../../components';
 
 export default function RestaurantListing() {
     const navigate = useNavigate();
     const currentUser = useSelector(state => state.user.id);
     const role = useSelector((state) => state.user.role);
-    const location = useLocation();
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [reviews, setreviews] = useState(null);
     const [reviewCount, setreviewCount] = useState(null);
     const [ratingAverge, setratingAverge] = useState(null);
     const [loading, setLoading] = useState(true);
-
     const handleDelete = () => {
         swal({
             title: 'Are you sure?',
@@ -35,14 +33,12 @@ export default function RestaurantListing() {
             }
         });
     }
-
     const handleUpdate = () => {
         const state = {
             data, serviceType: "Restaurant"
         }
         navigate("/AddService?edit=1", { state: state });
     }
-
     const getRestaurant = async () => {
         try {
             const response = await axiosInstance.get(`/restaurant/getRestaurantById/${id}`);
@@ -64,7 +60,6 @@ export default function RestaurantListing() {
             setLoading(false);
         }
     };
-
     useEffect(() => {
         getRestaurant();
     }, []);
@@ -72,7 +67,6 @@ export default function RestaurantListing() {
     if (loading) {
         return <div>Loading...</div>;
     }
-
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -110,7 +104,6 @@ export default function RestaurantListing() {
                 </div>
                 <Carousel imageList={data.RestaurantImages} />
             </div>
-
             <div className={styles.details}>
                 <div className={styles.about}>
                     <div>
@@ -134,7 +127,6 @@ export default function RestaurantListing() {
                             </div>
                         </div>
                     </div>
-
                     <div>
 
                         <h2 className={styles.subHeading}>People's Opinion</h2>

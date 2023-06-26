@@ -8,7 +8,7 @@ export default function SearchResult() {
     const { serviceType, results } = location.state;
     const redirectUrl = serviceType + "Listing";
     return (
-        <div>
+        <div className={styles.container}>
             <h1 className={styles.heading}> {serviceType} Matching your Search </h1>
             {results.length !== 0 ? (
                 <div className={styles.tabCards}>

@@ -3,13 +3,13 @@ import styles from './BillingSummary.module.css';
 import FormField from '../FormField/FormField';
 import { Form as FinalForm } from 'react-final-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { initiatePayment } from '../../app/features/checkout/checkoutSlice'
+import { initiatePayment, updateStatus } from '../../app/features/checkout/checkoutSlice'
 import Button from '../Button/Button';
 import { clearCart } from "../../app/features/cart/cartSlice"
 import { useNavigate } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 import { addHotelBooking, addTourGuideBooking, addTravelAgentBooking } from '../../app/features/bookings/bookingsSlice';
-
+import { useEffect } from 'react';
 
 export const BillingSummary = () => {
    const dispatch = useDispatch();
@@ -69,44 +69,56 @@ export const BillingSummary = () => {
       form.reset();
       form.change("OrderComment", undefined);
       form.resetFieldState("OrderComment");
-
-      if (paymentResult) {
+      if (paymentResult === null) {
          swal({
-            title: 'Result',
-            text: "payment successful",
-            icon: 'success',
-            buttons: {
-               confirm: true,
-            },
-         })
-            .then((confirmed) => {
-               if (confirmed) {
-                  if (tourguide) {
-                     dispatch(addTourGuideBooking(tourguide));
-                  }
-                  if (travelagent) {
-                     dispatch(addTravelAgentBooking(travelagent));
-                  }
-                  if (hotel) {
-                     dispatch(addHotelBooking(hotel));
-                  }
-                  dispatch(clearCart());
-                  navigate("/");
-               }
-            });
-      }
-      else {
-         swal({
-            title: 'Result',
-            text: "Payment Failed",
-            icon: 'error',
-            buttons: {
-               confirm: true,
-            },
+           title: 'Result',
+           text: "Processing Payment",
+           icon: 'info',
+           buttons: {
+             confirm: true,
+           },
          });
-      }
-
+       }
    }
+
+   useEffect(() => {
+       if (paymentResult === false) {
+        swal({
+          title: 'Payment Failed',
+          text: 'Your payment was not successful!',
+          icon: 'error',
+          buttons: {
+            confirm: true,
+          },
+        }).then(function() {
+          dispatch(updateStatus());
+        });
+      } else if (paymentResult) {
+        swal({
+          title: 'Result',
+          text: "payment successful",
+          icon: 'success',
+          buttons: {
+            confirm: true,
+          }
+        }).then((confirmed) => {
+          if (confirmed) {
+            if (tourguide) {
+              dispatch(addTourGuideBooking(tourguide));
+            }
+            if (travelagent) {
+              dispatch(addTravelAgentBooking(travelagent));
+            }
+            if (hotel) {
+              dispatch(addHotelBooking(hotel));
+            }
+            dispatch(clearCart());
+            navigate("/");
+          }
+          dispatch(updateStatus());
+        });
+      }
+    }, [paymentResult]);
 
    return (
       <div className={styles.container} >

@@ -20,8 +20,6 @@ export default function HotelListing() {
     setLoading(true);
     const hotelId = data.Hotel.id;
     navigate("/AddHotelRoom?moreRooms=1", { state: hotelId });
-
-    // Wait for the new room to be added, then fetch the updated hotel data
     try {
       const response = await axiosInstance.get(`/hotel/getHotelById/${id}`);
       const { Service: { Reviews, ...serviceData }, HotelImages, ...restData } = response.data;
@@ -42,8 +40,6 @@ export default function HotelListing() {
       setLoading(false);
     }
   };
-
-
   const handleDelete = () => {
     swal({
       title: 'Are you sure?',

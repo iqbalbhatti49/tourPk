@@ -8,7 +8,6 @@ require('dotenv').config();
 
 exports.signup = async (req, res, data) => {
     try {
-        //Hash the password and create a user
         const salt = bcrypt.genSaltSync(10);
         const encryptedPassword = bcrypt.hashSync(req.body.password, salt);
 

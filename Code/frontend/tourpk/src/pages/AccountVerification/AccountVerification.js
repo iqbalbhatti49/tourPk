@@ -25,7 +25,7 @@ function AccountVerification() {
 
   const handleVerificationSubmit = async (values) => {
     try {
-      setIsLoading(true); // Show loading symbol
+      setIsLoading(true); 
       const response = await axiosInstance.post('/verify/start-verification', {
         phoneNumber: values.phoneNumber,
       });
@@ -40,8 +40,8 @@ function AccountVerification() {
       })
       setVerificationStarted(true);
       setPhoneNumber(values.phoneNumber)
-      setVerificationStatus(response.status); // Set the status code in state
-      setIsLoading(false); // Hide loading symbol
+      setVerificationStatus(response.status); 
+      setIsLoading(false); 
     } catch (error) {
       swal({
         title: 'Verification Failed!',

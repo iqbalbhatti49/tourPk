@@ -4,16 +4,13 @@ import { IconHotel, IconResturant, IconGuide, IconAgent, HotelCard, useNavigate,
    useEffect, useState, axiosInstance, Link, useLocation, Tab, Tabs, TabList, TabPanel } 
 from "../../components/index";
 
-
 const Services = () => {
-
    const [isLoading, setIsLoading] = useState(true);
    const [error, setError] = useState(null);
    const [restaurants, setRestaurants] = useState([]);
    const [hotels, setHotels] = useState([]);
    const [tourGuides, setTourGuides] = useState([]);
    const [travelAgent, setTravelAgent] = useState([]);
-
    const getRestaurants = async () => {
       const res = await axiosInstance.get("/restaurant/getRestaurants");
       setRestaurants(res.data);
@@ -30,7 +27,6 @@ const Services = () => {
       const res = await axiosInstance.get("/tourguide/getTourGuides");
       setTourGuides(res.data);
    }
-
    useEffect(() => {
       Promise.all([getRestaurants(), getHotels(), getTravelAgents(), getTourGuides()])
          .then(() => {
@@ -41,17 +37,12 @@ const Services = () => {
             setIsLoading(false);
          });
    }, []);
-
-   const location = useLocation();
-
    if (isLoading) {
       return <div>Loading...</div>;
    }
-
    if (error) {
       return <div>Error: {error.message}</div>;
    }
-
    return (
       <div className={styles.container}>
          <div className={styles.header}>
@@ -144,5 +135,4 @@ const Services = () => {
       </div>
    );
 };
-
 export default Services;

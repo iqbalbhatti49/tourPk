@@ -42,7 +42,7 @@ export { default as HotelBooking } from "./HotelBooking/HotelBooking"
 export { default as CategoryContainer } from "./CategoryContainer/CategoryContainer";
 export { addBlog, updateBlog } from "../app/features/blogs/blogsSlice";
 export { default as RoomAmeneties } from "./RoomAmeneties/RoomAmeneties";
-
+export {default as ServicesTabs} from "./ServicesTabs/ServicesTabs"
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
 export { toggleChecked, updateUserWithPlanDetails } from '../app/features/pricing/pricingSlice';
@@ -75,6 +75,7 @@ export { default as IconEdit } from './IconEdit/IconEdit';
 export { default as IconDelete } from './IconDelete/IconDelete';
 export { default as IconAvatar } from './IconAvatar/IconAvatar';
 export { default as BlogMenu } from './BlogMenu/BlogMenu';
+export { IconLocation } from "./IconLocation/IconLocation"
 //utils
 export {
     required, validateAlpha, validatePhoneWithCode, validateEquality,
