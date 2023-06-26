@@ -19,7 +19,7 @@ const Signup = (props) => {
                 res = await axiosInstance.post("auth/signupAsSeller", values);
             else
                 res = await axiosInstance.post("auth/signupAsTourist", values);
-            form.reset(); // Reset the form's state after submission
+            form.reset(); 
             Object.keys(values).forEach(key => {
                 form.change(key, undefined);
                 form.resetFieldState(key);
@@ -78,5 +78,3 @@ const Signup = (props) => {
     );
 }
 export default Signup;
-
-//When a validation function is passed to a form field, final-form library automatically passes two arguments to that function: the current field value and entire form values object

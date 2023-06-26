@@ -7,7 +7,7 @@ import {
   from "../../components/index";
 
 export default function SpotListing() {
-  const [services, setServices] = useState(null); // State to store services fetched from the API
+  const [services, setServices] = useState(null); 
   const [hotels, setHotels] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [tourGuides, setTourGuides] = useState([]);
@@ -27,9 +27,8 @@ export default function SpotListing() {
     const fetchServices = async () => {
       try {
         const response = await axiosInstance.get(`/service/spotsByCities/${cityy}`);
-        setServices(response.data); // Store the fetched services in the state
-
-        // Extracting hotels, restaurants, tour guides, and travel agents into separate arrays
+        setServices(response.data); 
+        console.log(response.data)
         const extractedHotels = response.data.map(service => {
           if (service.Hotels.length != 0) {
             const fromattedHotel = {};
@@ -86,7 +85,6 @@ export default function SpotListing() {
           }
           else return null;
         }).flat();
-
         setHotels(extractedHotels);
         setRestaurants(extractedRestaurants);
         setTourGuides(extractedTourGuides);
@@ -112,7 +110,6 @@ export default function SpotListing() {
           </div>
           <Carousel imageList={img} />
         </div>
-        {/* Conditional rendering for services */}
         {services && (
           <div className={styles.tabs}>
             <Tabs focusTabOnClick={false}>

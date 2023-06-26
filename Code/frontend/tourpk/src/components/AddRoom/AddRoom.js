@@ -12,18 +12,15 @@ import { useLocation, useNavigate } from "react-router";
 const AddRoom = (props) => {
     const navigate = useNavigate();
     const location = useLocation();
-
-    // Logic for Update hotel 
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
-    let values, hotel, room;
+    let hotel;
     let updateInitialValue;
     if (isEditMode) {
         values = location.state.values;
         hotel = location.state.obj;
         room = location.state.room;
     }
-
     if (isEditMode) {
         const formatToFieldNames = (obj) => {
             const convertOptionsToValues = (options, features) => {
@@ -49,7 +46,6 @@ const AddRoom = (props) => {
         };
         updateInitialValue = formatToFieldNames(hotel);
     }
-
     const addInitialValue = {
         openTime: "",
         closeTime: "",
@@ -61,10 +57,8 @@ const AddRoom = (props) => {
         ServiceId: null,
         UserId: null
     };
-
     const initialValue = isEditMode ? updateInitialValue : addInitialValue;
-
-    const userId = useSelector(state => state.user.id); // Id of currently logged in user
+    const userId = useSelector(state => state.user.id); 
     const { service, hotelAmenities } = props.hotelData.hotelData;
     const imagesArray = service.images;
     delete service.images;
@@ -72,9 +66,7 @@ const AddRoom = (props) => {
         UserId: userId,
         amenities: hotelAmenities
     }
-
     const preProcess = (values) => {
-        // convert selected checkbox values to comma-separated string
         const roomAmenities = roomAmenitiess
             .filter(option => values[option.name])
             .map(option => option.label)
@@ -90,7 +82,6 @@ const AddRoom = (props) => {
         }
         return roomData;
     };
-
     const onSubmit = async (values) => {
         values.availableRoomsCount = values.roomsCount;
         const roomData = preProcess(values);
@@ -106,7 +97,6 @@ const AddRoom = (props) => {
         swal("Hotel and Room Added Successfully", "Success! The new Hotel entry has been added successfully.", "success");
         navigate(`/hotelListing/${roomId.data}`);
     };
-
     return (
         <>
             <div className={styles.container}>
@@ -204,7 +194,6 @@ const AddRoom = (props) => {
                                         renderIcon={() => null}
                                         theme="light"
                                     />
-
                                     <RoomAmeneties values={values} />
                                     <div className={styles.btnDiv}>
                                         <Button

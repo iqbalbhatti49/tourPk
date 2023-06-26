@@ -31,7 +31,6 @@ export const validateEmail = (value) => {
   return !validator.isEmail(value) ? 'Please enter a valid email address' : '';
 };
 
-//validate if the value is a strong password
 export const validatePassword = (value) => {
   if (!value)
     return 'Required';
@@ -44,7 +43,6 @@ export const validateLength = (value, min, max) => {
   return !validator.isLength(value, { min, max }) ? `Must be between ${min} and ${max} characters` : '';
 };
 
-//validate if the value is alphabetic characters only (a-zA-Z) and spaces
 export const validateAlpha = (value) => {
   if (!value)
     return 'Required';
@@ -120,25 +118,19 @@ export const validateExpirationMonth = (value) => {
   return false;
 }
 
-
-
 export const validateExpirationYear = (value) => {
-  const yearRegex = /^(20[2-9][0-9]|30[0-9][0-9])$/; // regular expression to match valid year format (2020-2099 or 3000-3099)
-  const currentYear = new Date().getFullYear().toString().substring(2); // get last 2 digits of current year
-
+  const yearRegex = /^(20[2-9][0-9]|30[0-9][0-9])$/; 
+  const currentYear = new Date().getFullYear().toString().substring(2); 
   if (!yearRegex.test(value)) {
     return false;
   }
-
   if (value.length === 2) {
-    // If the year is in 2-digit format, add the current century to compare with the current year
     const expYearWithCentury = parseInt("20" + value);
     const currentYearWithCentury = parseInt("20" + currentYear);
-    return expYearWithCentury >= currentYearWithCentury; // Return true if the year is greater than or equal to the current year
+    return expYearWithCentury >= currentYearWithCentury; 
   } else {
-    // If the year is in 4-digit format, compare with the current year
     const expYearNum = parseInt(value);
     const currentYearNum = parseInt(currentYear);
-    return expYearNum >= currentYearNum; // Return true if the year is greater than or equal to the current year
+    return expYearNum >= currentYearNum; 
   }
 }

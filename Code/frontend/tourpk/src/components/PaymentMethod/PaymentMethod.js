@@ -21,7 +21,6 @@ export const PaymentMethod = () => {
    const location = useLocation();
 
    useEffect(() => {
-      // Check if the previous path was '/login'
       const { state } = location;
       if (state && state.from === '/login') {
          // Code to execute if coming from the login page
@@ -48,7 +47,7 @@ export const PaymentMethod = () => {
    const showSuccessAlert = () => {
       swal({
          title: 'Payment Details',
-         text: 'Your payment details have been saved! Now fill the remaining information to checkout.',
+         text: 'Your details have been saved!.',
          icon: 'success',
          buttons: {
             confirm: true,
@@ -60,7 +59,7 @@ export const PaymentMethod = () => {
                if (role == "seller")
                   navigate("/serviceProvider");
                else
-                  navigate("/pricing");
+                  navigate("/plans");
             }
          }
 

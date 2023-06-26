@@ -4,13 +4,12 @@ import {
    useSelector, swal, IconEdit, IconDelete, FormField, axiosInstance, useLocation, useParams,
    Testimonial, BookingCalendar, React, Button, Carousel, CircularRating, useEffect, useState
 }
-   from '../../components/index';
+from '../../components/index';
 
 export default function TravelAgentListing() {
    const currentUser = useSelector(state => state.user.id);
    const navigate = useNavigate();
    const discount = useSelector(state => state.pricing.discount);
-   const location = useLocation();
    const dispatch = useDispatch();
    const { id } = useParams();
    const [data, setData] = useState(null);
@@ -20,7 +19,6 @@ export default function TravelAgentListing() {
    const [reviews, setreviews] = useState(null);
    const [reviewCount, setreviewCount] = useState(null);
    const [ratingAverge, setratingAverge] = useState(null);
-
    const [loading, setLoading] = useState(true);
    const [selectedDate, setSelectedDate] = useState(null);
    const handleDateChange = (date) => {
@@ -71,15 +69,12 @@ export default function TravelAgentListing() {
          }
       });
    }
-
-
    const handleUpdate = () => {
       const state = {
          data, serviceType: "Travel Agent"
       }
       navigate("/AddService?edit=1", { state: state });
    }
-
    const getTravelAgent = async () => {
       try {
          const response = await axiosInstance.get(`/travelagent/getTravelAgentById/${id}`);
@@ -101,7 +96,6 @@ export default function TravelAgentListing() {
          setLoading(false);
       }
    };
-
    useEffect(() => {
       getTravelAgent();
    }, []);
@@ -109,7 +103,6 @@ export default function TravelAgentListing() {
    if (!data) {
       return <div>Loading...</div>;
    }
-
    return (
       <div className={styles.container}>
          <div className={styles.header}>
@@ -234,6 +227,5 @@ export default function TravelAgentListing() {
          </div>}
          {role == "tourist" && <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
       </div>
-      // </div>
    );
 }

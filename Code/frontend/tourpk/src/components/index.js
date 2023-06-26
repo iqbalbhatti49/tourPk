@@ -42,7 +42,8 @@ export { default as HotelBooking } from "./HotelBooking/HotelBooking"
 export { default as CategoryContainer } from "./CategoryContainer/CategoryContainer";
 export { addBlog, updateBlog } from "../app/features/blogs/blogsSlice";
 export { default as RoomAmeneties } from "./RoomAmeneties/RoomAmeneties";
-
+export {default as ServicesTabs} from "./ServicesTabs/ServicesTabs"
+export { Logo } from "./Logo/Logo"
 //Redux State
 export { addPackage } from '../app/features/pacakage/pacakageSlice';
 export { toggleChecked, updateUserWithPlanDetails } from '../app/features/pricing/pricingSlice';
@@ -75,6 +76,7 @@ export { default as IconEdit } from './IconEdit/IconEdit';
 export { default as IconDelete } from './IconDelete/IconDelete';
 export { default as IconAvatar } from './IconAvatar/IconAvatar';
 export { default as BlogMenu } from './BlogMenu/BlogMenu';
+export { IconLocation } from "./IconLocation/IconLocation"
 //utils
 export {
     required, validateAlpha, validatePhoneWithCode, validateEquality,
@@ -95,7 +97,7 @@ export { Form as FinalForm } from 'react-final-form';
 export { Link, useNavigate, useLocation, useParams } from 'react-router-dom';
 export { useDispatch, useSelector } from 'react-redux';
 export { React, useState, useEffect } from 'react';
-export { ReactQuill } from "react-quill";
+export { default as ReactQuill } from "react-quill";
 export { swal } from 'sweetalert';
 export { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 export { default as Switch } from "react-switch";

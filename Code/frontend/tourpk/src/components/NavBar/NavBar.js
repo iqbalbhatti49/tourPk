@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
 import styles from './NavBar.module.css';
-import { Logo } from '../Logo/Logo';
-import { Button, IconAvatar, logout } from "../../components/index";
-import { useDispatch, useSelector } from "react-redux";
+import { Logo, React, Link, useLocation, useDispatch, useSelector, Button, IconAvatar, logout }
+   from "../index";
 
 export const NavBar = () => {
    const location = useLocation();
@@ -14,33 +11,34 @@ export const NavBar = () => {
    const logoutUser = () => {
       dispatch(logout());
    }
-
+   const links = {
+      "/bookings": "Bookings",
+      "/allBlogs": "Blogs",
+      "/help": "Contact Us",
+   };
+   const touristLinks = {
+      "/": "Home",
+      "/cities": "Tourist Attractions",
+      "/services": "Services",
+   }
+   const sellerLinks = {
+      "/serviceProvider": "Home",
+      "/addService": "Offer Services"
+   }
    return (
       <div className={styles.container}>
          <nav className={styles.nav}>
             <Logo width={100} height={50} rootClassName="dark" />
             <div className={styles.navLinks}>
-               {
-                  role != "seller" ?
-                     <Link className={location.pathname === '/' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/">Home</Link> :
-                     <Link className={location.pathname === '/serviceProvider' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/serviceProvider">Home</Link>
-               }
-               {
-                  isloggedIn ? <Link className={location.pathname === '/bookings' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/bookings">Bookings</Link> : null
-               }
-               {
-                  role != "seller" &&
-                  <>
-                     <Link className={location.pathname === '/cities' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/cities">Cities</Link>
-                     <Link className={location.pathname === '/services' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/services">Services</Link>
-                  </>
-               }
-               {
-                  role != "seller" ?
-                     <Link className={location.pathname === '/pricing' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/pricing">Pricing</Link> :
-                     isloggedIn ? <Link className={location.pathname === '/addService' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/addService">Add Service</Link> : null
-               }
-               <Link className={location.pathname === '/allBlogs' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/allBlogs">Blogs</Link>
+               {Object.entries(touristLinks).map(([key, value]) => (
+                  role != "seller" && <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
+               ))}
+               {Object.entries(sellerLinks).map(([key, value]) => (
+                  role == "seller" && <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
+               ))}
+               {Object.entries(links).map(([key, value]) => (
+                  <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
+               ))}
             </div>
             {
                isloggedIn ? (

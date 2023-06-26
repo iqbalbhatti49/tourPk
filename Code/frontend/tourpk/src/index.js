@@ -12,7 +12,7 @@ const container = document.getElementById("root");
 const root = createRoot(container);
 import { injectStore } from './utils/Api'
 import ScrollToTop from './utils/scrollToTop';
-injectStore(store); //inject the store into the API setup
+injectStore(store); 
 
 root.render(
   <BrowserRouter>

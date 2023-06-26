@@ -7,13 +7,13 @@ import { getReviewsStats } from '../../utils/FindReviewStats';
 
 export const HotelCard = (props) => {
    const { data, type } = props;
-
+   console.log(data)
    if (type) {
       const name = data.Service.name;
       const address = data.Service.address;
       const price = (type === "TravelAgent") ? data.packagePrice :
          (type === "TourGuide") ? data.perDayRate : "";
-      const imgesKey = type + "Images"; //key of corresponding images object
+      const imgesKey = type + "Images"; 
       const reviews = data.Service.Reviews;
       const { reviewsCount, ratingAvg } = getReviewsStats(reviews);
       let img = data[imgesKey][0];

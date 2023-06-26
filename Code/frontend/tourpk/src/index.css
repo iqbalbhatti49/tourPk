@@ -1,5 +1,4 @@
 :root {
-  /* fonts */
   --fontPrimary: system-ui,
     -apple-system,
     BlinkMacSystemFont,
@@ -12,11 +11,9 @@
     'Helvetica Neue',
     sans-serif;
 
-  /* font sizes */
   --fontSizeNormal: 16px;
   --fontWeightSmall: 200px;
 
-  /* Colors */
   --assistColor: #508991;
   --assistColorLight: #eef3f4;
   --primaryColor: #004346;
@@ -25,16 +22,10 @@
   --yellowColor: #f2c94c;
   --formLight: #b5b5b5;
 
-
-  /* To show the rating star color */
   --ratingStarColor: #f2c94c;
 
-  /* Gaps */
-  /* Paddings */
   --mediumScreenPadding: 0 5vw;
 
-  /* border radiuses */
-  /* Effects */
   --navBarShadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 }
 

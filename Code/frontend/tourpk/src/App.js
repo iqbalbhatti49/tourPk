@@ -2,11 +2,10 @@ import {
   Routes,
   Route,
   useNavigationType,
-  useLocation,
-  redirect
+  useLocation
 } from "react-router-dom";
 import { useEffect } from "react";
-import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, GenericInfoAboutService, HotelListing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome, TravelAgentListing, EmailVerification } from "./pages/index";
+import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, HotelListing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome, TravelAgentListing, EmailVerification } from "./pages/index";
 import AddTravelAgent from "./pages/AddTravelAgent/AddTravelAgent";
 import SearchResult from "./pages/SearchResult/SearchResult";
 import NotFound from "./pages/NotFound/NotFound";
@@ -51,20 +50,19 @@ function App() {
     <Routes>
       <Route path="/contract" element={<Contract />} />
       <Route path="/checkout" element={<CheckOut />} />
-      <Route path="/addpackage" element={<AddPackage />} />
+      {/* <Route path="/addpackage" element={<AddPackage />} /> */}
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/addService" element={<AddService />} />
       <Route path="/bookings" element={<Bookings />} />
-      <Route path="/helpandsupport" element={<HelpAndSupport />} />
+      <Route path="/help" element={<HelpAndSupport />} />
       <Route path="/AddBlog" element={<AddBlog />} />
       <Route exact path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
-      <Route path="/pricing" element={<InAppPlans />} />
+      <Route path="/plans" element={<InAppPlans />} />
       <Route path="/cities" element={<Cities />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signupAsTourist" element={<Signup userType="tourist" />} />
       <Route path="/signupAsSeller" element={<Signup userType="seller" />} />
-      <Route path="/genericinfo" element={<GenericInfoAboutService />} />
       <Route path="/hotelListing/:id" element={<HotelListing />} />
       <Route path="/Blog/:id" element={<BlogPage />} />
       <Route path="/allBlogs" element={<Blogs />} />

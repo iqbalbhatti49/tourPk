@@ -3,10 +3,10 @@ import axiosInstance from '../../../utils/Api';
 
 const initialState = {
   cardInfo: {
-    cardNumber: 0,
-    expirationMonth: 0,
-    expirationYear: 0,
-    cardType: '001',
+    cardNumber: null,
+    expirationMonth: null,
+    expirationYear: null,
+    cardType: null,
   },
   discountCode: '',
   orderComment: '',
@@ -21,7 +21,7 @@ const initialState = {
   },
   status: 'idle',
   error: "",
-  paymentResult: true,
+  paymentResult: null,
   totalAmount: 0,
 };
 
@@ -83,6 +83,10 @@ export const checkoutSlice = createSlice({
     updateDiscountCode: (state, action) => {
       state.discountCode = action.payload;
     },
+    updateStatus: (state, action) => {
+      state.paymentResult = null
+      state.status = "idle"
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -126,6 +130,6 @@ export const checkoutSlice = createSlice({
   },
 });
 
-export const { updateDiscountCode } = checkoutSlice.actions;
+export const { updateDiscountCode, updateStatus } = checkoutSlice.actions;
 
 export default checkoutSlice.reducer;

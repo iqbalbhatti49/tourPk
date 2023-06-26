@@ -1,0 +1,23 @@
+.title
+{
+    font-weight: 500;
+    letter-spacing: 1.1px;
+    color: var(--primaryColor);
+}
+:global(.react-tabs__tab-list)
+{
+    display: flex;
+    justify-content: center;
+}
+.tabCards
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.location
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
