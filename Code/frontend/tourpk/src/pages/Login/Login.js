@@ -2,24 +2,36 @@ import React, { useState } from "react";
 import styles from "../Signup/Signup.module.css";
 import {
     IconEmail, IconPassword, FormField, Button, login, FinalForm,
-    validateEmail, validatePassword, useDispatch, useNavigate, Link
+    validateEmail, useDispatch, useNavigate, Link, required
 } from "../../components/index";
 
 const Login = () => {
     const [errormsg, setErrormsg] = useState(null);
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const onSubmit = async (values, form) => {
         try {
             const user = await dispatch(login(values));
-            if (user.payload.user.role === "tourist")
-                navigate("/paymentInformation", { state: { from: '/login' } });
-            else
-                navigate("/serviceProvider");
+            if (!user.payload) {
+                throw new Error(user.error.message);
+            }
+            else {
+                if (user.payload.user.role === "tourist") {
+                    navigate("/paymentInformation", { state: { from: '/login' } });
+                } else {
+                    navigate("/serviceProvider");
+                }
+            }
         } catch (error) {
-            setErrormsg(error.response.data);
+            if (error.message === "401") {
+                setErrormsg("Invalid email or password");
+            } else {
+                setErrormsg(error.message);
+            }
         }
     };
+
 
     return (
         <div className={styles.formContainer}>
@@ -38,7 +50,7 @@ const Login = () => {
                             <form onSubmit={handleSubmit}>
                                 <h1 className={styles.whiteText}>Welcome back!</h1>
                                 <FormField name="email" type="email" placeholder="abc@email.com" validate={validateEmail} theme="dark" renderIcon={() => <IconEmail />} labelClass="noLabel" />
-                                <FormField name="password" type="password" placeholder="Your Password" validate={validatePassword} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
+                                <FormField name="password" type="password" placeholder="Your Password" validate={required} theme="dark" renderIcon={() => <IconPassword />} labelClass="noLabel" />
                                 <Link className={styles.forget} to="/forgetPassword">Forgot Password</Link>
                                 <div className={styles.signupBtn}>
                                     <Button className={styles.signupBtn} value={"Sign In"} type="secondary" width={300} btnType="submit" font={" 600 20px Arial, '' "} />

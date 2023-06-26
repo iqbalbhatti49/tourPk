@@ -12,22 +12,22 @@ export const Footer = () => {
    const role = useSelector((state) => state.user.role);
 
    const links = {
-      "/verify" : "PhoneNumber Verification",
-      "/verifyEmail" : "Email Verification",
-      "/forgetPassword" : "Reset Password",
-      "/help" : "Contact Us"
+      "/cities": "Explore city",
+      "/services": "View Hotels",
+      "/forgetPassword": "Reset Password",
+      "/allBlogs": "Read Blogs"
    };
    const otherLinks = {
-      "/AddBlog" : "Write a Blog",
-      "/bookings" : "Bookings",
+      "/AddBlog": "Write a Blog",
+      "/bookings": "Bookings",
    };
    const touristLinks = {
-      "/search" : "Search",
-      "/paymentInformation" : "Account Information",
+      "/plans": "Special offers",
+      "/paymentInformation": "Account Information",
    }
    const sellerLinks = {
-      "/serviceProvider" : "My Account",
-      "/addService" : "Offer Services"
+      "/serviceProvider": "My Account",
+      "/addService": "Offer services",
    }
 
    return (
@@ -44,13 +44,18 @@ export const Footer = () => {
                      ))}
                   </div>
                   <div className={styles.links}>
-                     <p className={styles.subHeading}>Services</p>
+                     <p className={styles.subHeading}>Explore</p>
                      {Object.entries(otherLinks).map(([key, value]) => (
                         <Link className={styles.navLink} to={key}>{value}</Link>
                      ))}
                      {Object.entries(touristLinks).map(([key, value]) => (
-                        role != "seller" && <Link className={styles.navLink} to={key}>{value}</Link>
+                        !isLoggedIn && key !== "/paymentInformation" ? (
+                           <Link className={styles.navLink} to={key}>{value}</Link>
+                        ) : null
                      ))}
+                     {!isLoggedIn && (
+                        <Link className={styles.navLink} to="/contract">Seller Terms</Link>
+                     )}
                      {Object.entries(sellerLinks).map(([key, value]) => (
                         role == "seller" && <Link className={styles.navLink} to={key}>{value}</Link>
                      ))}
@@ -65,7 +70,7 @@ export const Footer = () => {
                <IconInstagram />
                <IconLinkedin />
             </div>
-            <p>Copyrighted © 2022 tourPk technologies</p>
+            <p>Copyrighted © 2023 tourPk technologies</p>
          </div>
       </div>
    );

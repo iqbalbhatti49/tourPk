@@ -3,25 +3,28 @@ import styles from "./AddBlog.module.css";
 import {
     CategoryContainer, addBlog, updateBlog, ReactQuill,
     React, useState, useSelector, useDispatch,
-    useLocation, useNavigate, useEffect,axiosInstance
+    useLocation, useNavigate, useEffect, axiosInstance
 } from '../../components';
 
 const AddBlog = () => {
     let { state } = useLocation();
-    const [isEditMode, setisEditMode] = useState(false);
-    useEffect(() => {
-        state ? setisEditMode(true) : null;
-    }, [])
+    const isLoggedIn = useSelector(state => state.user.loggedIn);
+    const blogCategories = useSelector((state) => state.blogs.blogCategories);
+    const userId = useSelector((state) => state.user.id);
 
     const [value, setValue] = useState(state?.postText || "");
     const [title, setTitle] = useState(state?.title || "");
     const [file, setFile] = useState(null);
     const [category, setCategory] = useState(state?.category || "");
 
-    const blogCategories = useSelector((state) => state.blogs.blogCategories);
-    const userId = useSelector((state) => state.user.id);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    const [isEditMode, setisEditMode] = useState(false);
+    useEffect(() => {
+        state ? setisEditMode(true) : null;
+        !isLoggedIn ? navigate("/login") : null;
+    }, [])
 
     const upload = async (event) => {
         event.preventDefault();

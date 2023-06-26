@@ -1,10 +1,11 @@
 import styles from "./AddHotel.module.css";
-import { amenities, React, FormField, Button, useLocation, useNavigate, FinalForm }
+import { amenities, React, FormField, Button, useLocation, useNavigate, FinalForm, useSelector }
     from "../../components/index";
 
 const AddHotel = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const role = useSelector((state) => state.user.role);
 
     // Logic for Update hotel 
     const searchParams = new URLSearchParams(location.search);
@@ -71,56 +72,61 @@ const AddHotel = () => {
 
     return (
         <>
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <h1 className={styles.heading}>So, You Are A Hotel Owner?</h1>
-                    <p className={styles.subHeading}>Offer your services through TourPK</p>
-                    <p className={styles.description}>If you can't find the answers to the questions you are looking for, please contact us through the form
-                        provided below! If you can't find the answers to the questions you are looking for, please contact us through the form
-                        provided below!</p>
-                </div>
-                <div className={styles.content}>
-                    <div className={styles.formFields}>
-                        <FinalForm onSubmit={onSubmit}>
-                            {({ handleSubmit, values }) => (
-                                <form onSubmit={handleSubmit} className={styles.formContainer}>
-                                    <h2>Ameneties You Offer</h2>
-                                    <div className={styles.hotelAmeneties}>
-                                        {
-                                            amenities.map((amenity) => (
-                                                <div>
-                                                    <FormField
-                                                        key={amenity.name}
-                                                        name={amenity.name}
-                                                        label={amenity.label}
-                                                        type="checkbox"
-                                                        theme="light"
-                                                        value={values}
-                                                        defaultValue={isEditMode ? updateInitialValue[amenity.label] : ""}
-                                                        renderIcon={() => null}
-                                                    />
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
-                                    <div className={styles.btnDiv}>
-                                        <Button
-                                            id={styles.signupBtn}
-                                            value="Submit"
-                                            type="submit"
-                                            btnType="submit"
-                                            width={250}
-                                        />
-                                    </div>
-                                </form>
-                            )}
-                        </FinalForm>
+            {
+                role === "seller" ? (
+                    <div className={styles.container}>
+                        <div className={styles.header}>
+                            <h1 className={styles.heading}>So, You Are A Hotel Owner?</h1>
+                            <p className={styles.subHeading}>Offer your services through TourPK</p>
+                            <p className={styles.description}>If you can't find the answers to the questions you are looking for, please contact us through the form
+                                provided below! If you can't find the answers to the questions you are looking for, please contact us through the form
+                                provided below!</p>
+                        </div>
+                        <div className={styles.content}>
+                            <div className={styles.formFields}>
+                                <FinalForm onSubmit={onSubmit}>
+                                    {({ handleSubmit, values }) => (
+                                        <form onSubmit={handleSubmit} className={styles.formContainer}>
+                                            <h2>Ameneties You Offer</h2>
+                                            <div className={styles.hotelAmeneties}>
+                                                {
+                                                    amenities.map((amenity) => (
+                                                        <div>
+                                                            <FormField
+                                                                key={amenity.name}
+                                                                name={amenity.name}
+                                                                label={amenity.label}
+                                                                type="checkbox"
+                                                                theme="light"
+                                                                value={values}
+                                                                defaultValue={isEditMode ? updateInitialValue[amenity.label] : ""}
+                                                                renderIcon={() => null}
+                                                            />
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+                                            <div className={styles.btnDiv}>
+                                                <Button
+                                                    id={styles.signupBtn}
+                                                    value="Submit"
+                                                    type="submit"
+                                                    btnType="submit"
+                                                    width={250}
+                                                />
+                                            </div>
+                                        </form>
+                                    )}
+                                </FinalForm>
+                            </div>
+                            <div className={styles.imageContainer}>
+                                <img src="../static/images/hotelDetails.png" alt="FAQs" />
+                            </div>
+                        </div>
                     </div>
-                    <div className={styles.imageContainer}>
-                        <img src="../static/images/hotelDetails.png" alt="FAQs" />
-                    </div>
-                </div>
-            </div>
+                ) :
+                    (<img src="../static/images/404.png" alt="" />)
+            }
         </>
     );
 };

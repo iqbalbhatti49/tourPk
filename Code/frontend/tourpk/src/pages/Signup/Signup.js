@@ -34,8 +34,8 @@ const Signup = (props) => {
         <div className={styles.formContainer}>
             {
                 props.userType === "seller"
-                    ? <h1>SignUp As Seller!</h1>
-                    : <h1>SignUp for Your Next Tour!</h1>
+                    ? <h1>Sign Up As Seller</h1>
+                    : <h1>Sign Up as Tourist</h1>
             }
             <div className={styles.tableContainer}>
                 <div className={styles.formImage}>

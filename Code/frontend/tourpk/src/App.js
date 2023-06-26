@@ -49,7 +49,6 @@ function App() {
     <Routes>
       <Route path="/contract" element={<Contract />} />
       <Route path="/checkout" element={<CheckOut />} />
-      {/* <Route path="/addpackage" element={<AddPackage />} /> */}
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/addService" element={<AddService />} />
       <Route path="/bookings" element={<Bookings />} />
