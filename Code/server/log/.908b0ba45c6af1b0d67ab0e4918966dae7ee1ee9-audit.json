@@ -6,19 +6,14 @@
     "auditLog": "log\\.908b0ba45c6af1b0d67ab0e4918966dae7ee1ee9-audit.json",
     "files": [
         {
-            "date": 1686847674496,
-            "name": "log\\cybs-2023-06-15.log",
-            "hash": "3eab83028c213654e010be4db865064b56073d012a18885d05f8cbb055ee33ca"
-        },
-        {
-            "date": 1686858744589,
-            "name": "log\\cybs-2023-06-16.log",
-            "hash": "0db0e8ffe2d09cdb284604fadd872c280047edf249ca4057c2fdd56a9728f5cb"
-        },
-        {
             "date": 1687672131154,
             "name": "log\\cybs-2023-06-25.log",
             "hash": "1fc643a8bc9b5d1ccec6a671352d7154a47e7ec28e9ad6e00c418551e3204268"
+        },
+        {
+            "date": 1687771461414,
+            "name": "log\\cybs-2023-06-26.log",
+            "hash": "0c2e4b673461d3ea2527b76e54dd68d74ccf880a8df9163c0d6730e3f4aeb59e"
         }
     ],
     "hashType": "sha256"

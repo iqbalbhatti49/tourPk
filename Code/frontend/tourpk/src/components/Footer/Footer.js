@@ -9,6 +9,26 @@ import { useSelector } from "react-redux";
 
 export const Footer = () => {
    const isLoggedIn = useSelector(state => state.user.loggedIn);
+   const role = useSelector((state) => state.user.role);
+
+   const links = {
+      "/verify" : "PhoneNumber Verification",
+      "/verifyEmail" : "Email Verification",
+      "/forgetPassword" : "Reset Password",
+      "/help" : "Contact Us"
+   };
+   const otherLinks = {
+      "/AddBlog" : "Write a Blog",
+      "/bookings" : "Bookings",
+   };
+   const touristLinks = {
+      "/search" : "Search",
+      "/paymentInformation" : "Account Information",
+   }
+   const sellerLinks = {
+      "/serviceProvider" : "My Account",
+      "/addService" : "Offer Services"
+   }
 
    return (
       <div className={styles.container}>
@@ -19,26 +39,21 @@ export const Footer = () => {
                <div className={styles.linksContainer}>
                   <div className={styles.links}>
                      <p className={styles.subHeading}>Website Links</p>
-                     <Link className={styles.navLink} to="/addService">add SERvice</Link>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/AddBlog" : "/login"}>Write Blog</Link>
-                     <Link className={styles.navLink} to="/addHotelRoom">addHotelRoom</Link>
-                     <Link className={styles.navLink} to="/restaurantListing/:id">restaurantListing</Link>
-                     <Link className={styles.navLink} to="/addHotel">addHotel</Link>
-                     <Link className={styles.navLink} to="/AddTravelAgent">AddTravelAgent</Link>
-                     <Link className={styles.navLink} to="/addTourGuide">addTourGuide</Link>
-                     <Link className={styles.navLink} to="/tourGuideListing/:id">tourGuideListing</Link>
-                     <Link className={styles.navLink} to="/addrestaurant">addrestaurant</Link>
+                     {Object.entries(links).map(([key, value]) => (
+                        <Link className={styles.navLink} to={key}>{value}</Link>
+                     ))}
                   </div>
                   <div className={styles.links}>
                      <p className={styles.subHeading}>Services</p>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/addpackage" : "/login"} >Add Package</Link>
-                     <Link className={styles.navLink} to="/bookings">Bookings</Link>
-                     <Link className={styles.navLink} to="/addrestaurant">Add Restaurant</Link>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/helpandsupport" : "/login"} >Help And Support</Link>
-                     <Link className={styles.navLink} to="/hotelListing">Hotel Listing</Link>
-                     <Link className={styles.navLink} to="/spotListing">Spot Listing</Link>
-                     <Link className={styles.navLink} to="/travelAgentListing/:id">Travel Agent Listing</Link>
-                     <Link className={styles.navLink} to={isLoggedIn ? "/checkout" : "/login"}>Checkout</Link>
+                     {Object.entries(otherLinks).map(([key, value]) => (
+                        <Link className={styles.navLink} to={key}>{value}</Link>
+                     ))}
+                     {Object.entries(touristLinks).map(([key, value]) => (
+                        role != "seller" && <Link className={styles.navLink} to={key}>{value}</Link>
+                     ))}
+                     {Object.entries(sellerLinks).map(([key, value]) => (
+                        role == "seller" && <Link className={styles.navLink} to={key}>{value}</Link>
+                     ))}
                   </div>
                </div>
             </div>

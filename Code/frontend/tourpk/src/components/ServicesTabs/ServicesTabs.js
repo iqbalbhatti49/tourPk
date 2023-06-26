@@ -1,12 +1,12 @@
 import 'react-tabs/style/react-tabs.css';
 import styles from "./ServicesTabs.module.css";
 import {
-  IconHotel, IconResturant, IconGuide, IconAgent, React, useState,
+  IconHotel, IconResturant, IconGuide, IconAgent, React, Button,
  Link, Tab, Tabs, TabList, TabPanel, IconLocation
 }
 from "../index";
 
-import { Card, ImageHeader, CardBody } from 'react-simple-card';
+import { Card, CardBody } from 'react-simple-card';
 
 export default function ServicesTabs({services}) { 
     return (
@@ -36,7 +36,6 @@ export default function ServicesTabs({services}) {
                     if (item != null) {
                       return (
                         <Card>
-                            {/* <ImageHeader imageSrc={imageUrl} /> */}
                             <CardBody>
                             <div className={styles.body}>
                                 <p className={styles.title}>{item.name}</p>
@@ -44,6 +43,9 @@ export default function ServicesTabs({services}) {
                                     <IconLocation /> 
                                     <p className={styles.place}>{item.address}</p>
                                 </div>
+                                <Link to={`/hotelListing/${item.Hotels[0].id}`}>
+                                    <Button value="View Details" type="secondary" />
+                                </Link>
                             </div>
                             </CardBody>
                         </Card>
@@ -58,7 +60,6 @@ export default function ServicesTabs({services}) {
                     if (item != null) {
                       return (
                         <Card>
-                            {/* <ImageHeader imageSrc={imageUrl} /> */}
                             <CardBody>
                             <div className={styles.body}>
                                 <p className={styles.title}>{item.name}</p>
@@ -66,6 +67,9 @@ export default function ServicesTabs({services}) {
                                      <IconLocation /> 
                                     <p className={styles.place}>{item.address}</p>
                                 </div>
+                                <Link to={`/restaurantListing/${item.Restaurants[0].id}`}>
+                                    <Button value="View Details" type="secondary" />
+                                </Link>
                             </div>
                             </CardBody>
                         </Card>
@@ -80,7 +84,6 @@ export default function ServicesTabs({services}) {
                     if (item != null) {
                       return (
                         <Card>
-                            {/* <ImageHeader imageSrc={imageUrl} /> */}
                             <CardBody>
                             <div className={styles.body}>
                                 <p className={styles.title}>{item.name}</p>
@@ -88,6 +91,9 @@ export default function ServicesTabs({services}) {
                                      <IconLocation /> 
                                     <p className={styles.place}>{item.address}</p>
                                 </div>
+                                <Link to={`/tourGuideListing/${item.TourGuides[0].id}`}>
+                                    <Button value="View Details" type="secondary" />
+                                </Link>
                             </div>
                             </CardBody>
                         </Card>
@@ -102,7 +108,6 @@ export default function ServicesTabs({services}) {
                     if (item != null) {
                       return (
                         <Card>
-                            {/* <ImageHeader imageSrc={imageUrl} /> */}
                             <CardBody>
                             <div className={styles.body}>
                                 <p className={styles.title}>{item.name}</p>
@@ -110,6 +115,9 @@ export default function ServicesTabs({services}) {
                                      <IconLocation /> 
                                     <p className={styles.place}>{item.address}</p>
                                 </div>
+                                <Link to={`/travelAgentListing/${item.TravelAgents[0].id}`}>
+                                    <Button value="View Details" type="secondary" />
+                                </Link>
                             </div>
                             </CardBody>
                         </Card>

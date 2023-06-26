@@ -49,15 +49,15 @@ function App() {
     <Routes>
       <Route path="/contract" element={<Contract />} />
       <Route path="/checkout" element={<CheckOut />} />
-      <Route path="/addpackage" element={<AddPackage />} />
+      {/* <Route path="/addpackage" element={<AddPackage />} /> */}
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/addService" element={<AddService />} />
       <Route path="/bookings" element={<Bookings />} />
-      <Route path="/helpandsupport" element={<HelpAndSupport />} />
+      <Route path="/help" element={<HelpAndSupport />} />
       <Route path="/AddBlog" element={<AddBlog />} />
       <Route exact path="/" element={<Home />} />
       <Route path="/services" element={<Services />} />
-      <Route path="/pricing" element={<InAppPlans />} />
+      <Route path="/plans" element={<InAppPlans />} />
       <Route path="/cities" element={<Cities />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signupAsTourist" element={<Signup userType="tourist" />} />

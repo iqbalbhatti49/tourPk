@@ -50,9 +50,7 @@ const ServiceProviderHome = () => {
                </div>
             </div>
             <BillingAddress/>
-            
-         </div>
-         
+         </div> 
          {services.length != 0 && 
             <>
                <p className={styles.subHeading}>{`Serices Offered By You`}</p>

@@ -1,10 +1,9 @@
 import "react-quill/dist/quill.snow.css";
 import styles from "./AddBlog.module.css";
-import { axiosInstance } from '../../../src/utils/index';
 import {
-    CategoryContainer, addBlog, updateBlog,
+    CategoryContainer, addBlog, updateBlog, ReactQuill,
     React, useState, useSelector, useDispatch,
-    useLocation, useNavigate, ReactQuill
+    useLocation, useNavigate, useEffect,axiosInstance
 } from '../../components';
 
 const AddBlog = () => {
