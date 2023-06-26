@@ -110,6 +110,7 @@ export default function SpotListing() {
           </div>
           <Carousel imageList={img} />
         </div>
+        <p className={styles.subHeading}>{`Services Near By`}</p>
         {services && (
           <div className={styles.tabs}>
             <Tabs focusTabOnClick={false}>
@@ -133,7 +134,6 @@ export default function SpotListing() {
                 <div className={styles.tabCards}>
                   {hotels.map((item, index) => {
                     if (item != null) {
-
                       return (
                         <Link to={`/hotelListing/${item.id}`}>
                           <HotelCard
@@ -145,6 +145,7 @@ export default function SpotListing() {
                       );
                     }
                   })}
+                  {!hotels.length && <p>No Hotels Found!</p>}
                 </div>
               </TabPanel>
               <TabPanel>
@@ -162,6 +163,7 @@ export default function SpotListing() {
                       );
                     }
                   })}
+                  {!restaurants.length && <p>No Restaurants Found!</p>}
                 </div>
               </TabPanel>
               <TabPanel>
@@ -179,6 +181,7 @@ export default function SpotListing() {
                       );
                     }
                   })}
+                  {!tourGuides.length && <p>No Tour Guides Found!</p>}
                 </div>
               </TabPanel>
               <TabPanel>
@@ -196,6 +199,7 @@ export default function SpotListing() {
                       );
                     }
                   })}
+                  {!travelAgents.length && <p>No Travel Agents Found!</p>}
                 </div>
               </TabPanel>
             </Tabs>

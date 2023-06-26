@@ -145,7 +145,7 @@ const HelpAndSupport = () => {
                         />
                       </div>
 
-                      <Button id={styles.signupBtn} value={"Submit"} type="primary" width={250} btnType="submit" font={" 600 20px Arial, '' "} />
+                      <Button value={"Submit"} type="primary" width={"96%"} btnType="submit" />
                     </form>
                   )}
                 </FinalForm>

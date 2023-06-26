@@ -6,7 +6,7 @@ const PaymentInformation = () => {
       <div>
          <div className={styles.container}>
             <div className={styles.header}>
-               <p className={styles.subHeading}>Provide us your account details where you would like to receive your payments.</p>
+               <p className={styles.subHeading}>Provide us your payment account information.</p>
                <h1 className={styles.Heading}>We Offer Services With Confidence</h1>
             </div>
             <div className={styles.information}>

@@ -76,3 +76,13 @@
 .tabCards a {
   text-decoration: none;
 }
+
+.subHeading
+{
+  color: var(--primaryColor);
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: left;
+  line-height: 4rem;
+  text-align: center;
+}

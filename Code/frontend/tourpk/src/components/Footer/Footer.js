@@ -22,7 +22,7 @@ export const Footer = () => {
       "/bookings" : "Bookings",
    };
    const touristLinks = {
-      "/search" : "Search",
+      "/searchResult" : "Search",
       "/paymentInformation" : "Account Information",
    }
    const sellerLinks = {

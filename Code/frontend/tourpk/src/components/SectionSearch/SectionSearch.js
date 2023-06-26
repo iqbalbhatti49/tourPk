@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import Button from '../Button/Button';
 import styles from './SectionSearch.module.css';
 import { IconLocation } from '../../components/IconLocation/IconLocation';
-import "react-datepicker/dist/react-datepicker.css";
 import Dropdown from '../Dropdown/Dropdown';
 import { Form as FormFinal } from 'react-final-form'
 import axiosInstance from '../../utils/Api';
 import { useNavigate } from 'react-router-dom';
 
-export const SectionSearch = () => {
+export const SectionSearch = ({displayImage}) => {
    const [service, setService] = useState(null);
    const [searchkey, setsearchkey] = useState("");
    const navigate = useNavigate();
+   const show = displayImage || null;
 
    const searchItem = async () => {
       let servicee = service;
@@ -30,14 +30,16 @@ export const SectionSearch = () => {
 
    return (
       <div className={styles.container}>
-         <img className={styles.image} alt="Cities" src="../../static/images/searchSectionBg.png" />
+         {show != null ? <img className={styles.image} alt="Cities" src="../../static/images/searchSectionBg.png" />
+          : <h2>Search Here!</h2> }
          <div className={styles.content}>
-            <p>Let's Your Curiosity do the booking!</p>
+            
+            {show != null ? <p>Let's Your Curiosity do the booking!</p> : <h2>Search Here!</h2> }
             <div className={styles.actions}>
                <div className={styles.inputIconed}>
                   <IconLocation />
                   <div className={styles.inputLabeled}>
-                     <label className={styles.sLabel} htmlFor="location">Search</label>
+                     <label className={styles.sLabel} htmlFor="location">Find</label>
                      <input className={styles.title} type="text" placeholder="Restaurant (eg. Howdy)" value={searchkey} onChange={(e) => setsearchkey(e.target.value)} />
                   </div>
                </div>
