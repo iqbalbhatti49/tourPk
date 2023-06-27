@@ -116,9 +116,9 @@ export default function HotelListing() {
           <p className={styles.tourInfo}>{data.Service.website}</p>
           <p className={styles.tourInfo}>{data.Service.email}</p>
           <p className={styles.tourInfo}>{data.Service.phone}</p>
-          <h3 className={styles.headingListing}>Hotel Amenities</h3>
+          <h2 className={styles.subHeading}>Hotel Amenities</h2>
           <p>{data.Hotel.amenities}</p>
-          <h3 className={styles.headingListing}>About Hotel</h3>
+          <h2 className={styles.subHeading}>About Hotel</h2>
           <p>{data.Service.description}</p>
         </div>
         <Carousel imageList={data.HotelImages} />
@@ -129,7 +129,7 @@ export default function HotelListing() {
           return (
             <div className={styles.roomWrapper}>
               <div className={styles.roomContainer} key={index}>
-                <h2 className={styles.headingListing}>Room Configuration {index + 1}</h2>
+              <p className={styles.spacedHeading}>Room Configuration {index + 1}</p>
                 <div className={styles.roomDetails}>
                   {Object.entries(room).map(([key, value]) => (
                     key !== "roomAmenities" && key !== 'HotelId' && key !== 'id' ? (
@@ -141,7 +141,7 @@ export default function HotelListing() {
                   ))}
                 </div>
                 <div>
-                  <h2 className={styles.headingListing}>Room Ameneties</h2>
+                <p className={styles.spacedHeading}>Room Ameneties</p>
                   {room.roomAmenities}
                 </div>
               </div>

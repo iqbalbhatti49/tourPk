@@ -30,13 +30,7 @@
 }
 
 .navLink {
-   color: var(--primaryColor);
-   cursor: pointer;
-   text-decoration: none;
-
-   &:hover {
-      color: var(--secondaryColor);
-   }
+   @apply --navLink
 }
 
 .divider {

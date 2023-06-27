@@ -1,3 +1,5 @@
+@import "../../styles/variables.css";
+
 :global(.card__header--image img) {
    height: 223px;
    object-fit: cover;
@@ -10,18 +12,14 @@
    background: linear-gradient(to bottom, #f2f2f2, #ffffff);
    transition: all 0.2s ease-in-out;
    text-decoration: none;
+   
+   & :hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+   }
 }
-
-.card:hover {
-   transform: translateY(-5px);
-   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
-}
-
 .body {
-   text-align: left;
-   line-height: 1.5rem;
-   font-weight: 400;
-   letter-spacing: 0.5px;
+   @apply --body;
    min-height: 110px;
    max-height: 110px;
    word-wrap: break-word;

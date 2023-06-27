@@ -1,7 +1,6 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import styles from './Carousel.module.css';
 
 export default function Carousels({ imageList }) {
    const imagesConst = [
@@ -28,7 +27,6 @@ export default function Carousels({ imageList }) {
                   key={index}
                   alt=""
                   src={image}
-                  className={styles.mainImage}
                />
             </div>
          ))}

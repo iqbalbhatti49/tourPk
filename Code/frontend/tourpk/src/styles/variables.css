@@ -107,7 +107,6 @@
       font-size: 3rem;
       text-align:center;
       line-height:4rem;
-      /* text-transform:sentencecase; */
   }
   --subHeading : {
       margin-bottom: 2rem;
@@ -126,6 +125,8 @@
   }
   --homeHeadings : {
     font-size: 3rem;
+    display: flex;
+    flex-wrap: wrap;
     font-weight: 700;
     line-height: 4rem;
   }
@@ -162,5 +163,59 @@
       max-width: 500px;
       padding-top: 20px;
       margin-top: 10px;
+   }
+
+   --navLink : {
+      color: var(--assistColor);
+      cursor: pointer;
+      text-decoration: none;
+
+      &:hover {
+            color: var(--secondaryColor);
+      }
+   }
+    
+   --navLinks : {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+   }
+
+   --rating : { 
+         display: flex;
+         align-items: center;
+         background-color: var(--assistColorLight);
+         width: 50px;
+         justify-content: center;
+         border-radius: 5px;
+         padding: 2px;
+         margin: 18px 0px 10px 0px;
+   }
+
+   --title : {
+      font-weight: 500;
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+      letter-spacing: 0.5px;
+      color: var(--textColor);
+   }
+
+   --body : {
+      text-align: left;
+      line-height: 1.5rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+   }
+
+   --place : {
+      color: var(--primaryColor);
+   font-weight: 600;
+   }
+
+   --stats : {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
    }
 }

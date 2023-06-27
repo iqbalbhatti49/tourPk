@@ -1,3 +1,5 @@
+@import "../../styles/variables.css";
+
 .container {
       box-shadow: var(--navBarShadow);
       padding: var(--mediumScreenPadding);
@@ -17,21 +19,11 @@
 }
 
 .navLinks {
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
+      @apply --navLinks
 }
 
 .navLink {
-      color: var(--assistColor);
-      cursor: pointer;
-      text-decoration: none;
-
-      &:hover {
-            color: var(--secondaryColor);
-      }
+      @apply --navLink
 }
 
 .active {

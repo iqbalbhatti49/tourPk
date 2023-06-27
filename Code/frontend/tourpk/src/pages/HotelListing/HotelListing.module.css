@@ -27,12 +27,15 @@
   @apply --subHeading;
 }
 
-.listingContent {
-  margin-bottom: 20px;
+.spacedHeading {
+  @apply --subHeading;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
 }
 
-.listingContent h3 {
-  margin: 6px 0 6px 0px;
+
+.listingContent {
+  margin-bottom: 20px;
 }
 
 .listingContent p {
@@ -41,6 +44,7 @@
 
 .tourInfo {
   margin-block: 4px;
+  max-width: 400px;
 }
 
 .separator {
@@ -105,7 +109,6 @@
   display: flex;
   flex: row;
   gap: 100px;
-  /* max-width: 900px */
 }
 
 .delete {

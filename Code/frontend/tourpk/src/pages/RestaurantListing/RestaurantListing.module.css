@@ -38,6 +38,7 @@
 .attributes {
     display: flex;
     flex-direction: row;
+    max-width: 350px;
 }
 
 .key {

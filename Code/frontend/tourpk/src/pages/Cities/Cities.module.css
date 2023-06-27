@@ -36,14 +36,3 @@
 .tabs {
    text-align: center;
 }
-
-:global(.react-tabs__tab--selected) {
-   background: none !important;
-   border: none !important;
-   color: var(--primaryColor) !important;
-   border-bottom: 2.5px solid var(--primaryColor) !important;
-}
-
-:global(.react-tabs__tab-list) {
-   border-bottom: none !important;
-}

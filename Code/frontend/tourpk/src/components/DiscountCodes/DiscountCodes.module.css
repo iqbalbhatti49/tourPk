@@ -5,7 +5,7 @@
    @apply --container;
 }
 
-.heading {
+.subHeading {
    @apply --subHeading;
 }
 

@@ -1,8 +1,6 @@
+@import "../../styles/variables.css";
 .body {
-   text-align: left;
-   line-height: 1.5rem;
-   font-weight: 400;
-   letter-spacing: 0.5px;
+   @apply --body;
 }
 
 .body p {
@@ -10,23 +8,16 @@
 }
 
 .title {
-   font-weight: 500;
-   font-size: 1.1rem;
-   line-height: 1.4rem;
-   letter-spacing: 0.5px;
-   color: var(--textColor);
+   @apply --title;
 }
 
 .stats {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+   @apply --stats;
    margin: 0px 0px 10px 0px !important;
 }
 
 .place {
-   color: var(--primaryColor);
-   font-weight: 600;
+   @apply --place;
    margin: 20px 0px 0px 0px !important;
 }
 

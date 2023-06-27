@@ -24,7 +24,7 @@
 }
 
 .subHeading {
-   @applu --subHeading;
+   @apply --subHeading;
 }
 
 .testimonial {
@@ -39,6 +39,7 @@
 .key {
    font-weight: 500;
    color: var(--primaryColor);
+   max-width: 300px;
 }
 
 .details {

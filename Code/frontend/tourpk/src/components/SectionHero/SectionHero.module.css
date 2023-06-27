@@ -12,12 +12,8 @@
 }
 
 .heading {
-   display: flex;
-   flex-wrap: wrap;
+   @apply --homeHeadings;
    max-width: 650px;
-   font-size: 3rem;
-   font-weight: 700;
-   line-height: 4rem;
 }
 
 .heading p {

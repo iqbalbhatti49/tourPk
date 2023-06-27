@@ -17,36 +17,6 @@
    border: 1px solid var(--assistColor);
 }
 
-.count {
-   display: flex;
-   align-items: center;
-   margin-bottom: 0.5rem;
-}
-
-.countValue {
-   display: inline-block;
-   margin: 0 0.5rem;
-   font-weight: bold;
-}
-
-.button {
-   width: 30px;
-   height: 30px;
-   margin: 0;
-   padding: 0;
-   font-size: 1rem;
-   line-height: 1;
-   text-align: center;
-   border: 1px solid var(--assistColorLight);
-   border-radius: 4%;
-   background-color: var(--whiteColor);
-   cursor: pointer;
-}
-
-.button:hover {
-   background-color: var(--whiteColor);
-}
-
 .prices {
    display: flex;
    flex-direction: column;
