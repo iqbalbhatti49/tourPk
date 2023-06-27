@@ -122,7 +122,7 @@ export const BillingSummary = () => {
 
    return (
       <div className={styles.container} >
-         <p className={styles.heading}>Billing Summary</p>
+         <h2 className={styles.subHeading}>Billing Summary</h2>
          <div className={styles.summary}>
             {billingSummary.map((item, index) => (
                <div key={index} className={styles.summaryItem}>

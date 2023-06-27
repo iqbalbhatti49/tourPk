@@ -1,4 +1,10 @@
-.hotelAmeneties {
+@import "../../styles/variables.css";
+
+.subHeading {
+    @apply --subHeading;
+ }
+
+ .hotelAmeneties {
   display: flex;
   flex-wrap: wrap;
 }

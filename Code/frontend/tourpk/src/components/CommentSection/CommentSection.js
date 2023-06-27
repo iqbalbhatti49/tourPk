@@ -39,7 +39,7 @@ const CommentSection = ({ blogId }) => {
 
   return (
     <div className={styles.container}>
-      <h2>Comments</h2>
+      <h2 className={styles.subHeading}>Comments</h2>
       {comments.map(comment => (
         <div key={comment.id} className={styles.comment}>
           <div> <span className={styles.commentAuthor}>{comment.User ? comment.User.name : "you"}</span> <span className={styles.commentDate}> &#8226; {comment.datePosted}</span>

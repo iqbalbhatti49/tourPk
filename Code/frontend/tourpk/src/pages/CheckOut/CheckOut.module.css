@@ -1,3 +1,5 @@
+@import "../../styles/variables.css";
+
 .container {
    padding: 0px 5vw 0px 5vw;
 }
@@ -14,12 +16,8 @@
    margin-top: 0;
 }
 
-.subHeading {
-   letter-spacing: 0.1em;
-   line-height: 20px;
-   text-transform: uppercase;
-   color: var(--primaryColor);
-   font-weight: 600;
+ .subHeading {
+   @apply --spacedHeading;
 }
 
 .information {

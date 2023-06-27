@@ -1,11 +1,12 @@
 @import "../../styles/checkout.css";
+@import "../../styles/variables.css";
 
 .container {
    @apply --container;
 }
 
 .heading {
-   @apply --heading;
+   @apply --subHeading;
 }
 
 .form

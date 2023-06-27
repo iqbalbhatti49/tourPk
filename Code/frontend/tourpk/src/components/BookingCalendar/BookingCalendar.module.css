@@ -1,10 +1,4 @@
-
 :global(.react-calendar__tile--now) {
    background-color: var(--assistColor) !important;
 }
-
-:global(.react-calendar__tile--active) {
-   /* color: black !important; */
-   /* background-color: transparent !important; */
-} 
 

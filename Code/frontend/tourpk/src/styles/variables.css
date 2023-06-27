@@ -94,5 +94,32 @@
       height: 0px;
       cursor: pointer;
    }
+   --pageHeading : {
+      color: var(--primaryColor);
+      font-size: 2.3rem;
+      text-align:center;
+      line-height:2.5rem;
+      /* text-transform:sentencecase; */
+  }
+  --subHeading : {
+      margin-bottom: 2rem;
+      color: var(--primaryColor);
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 2rem;
+      text-align:center;
+  }
+  --spacedHeading : {
+    letter-spacing: 0.1em;
+    line-height: 10px;
+    text-transform: uppercase;
+    color: var(--primaryColor);
+    font-weight: 600;
+  }
+  --homeHeadings : {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 4rem;
+  }
 
 }

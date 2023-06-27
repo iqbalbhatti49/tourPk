@@ -1,11 +1,12 @@
 @import "../../styles/checkout.css";
+@import "../../styles/variables.css";
 
 .container {
    @apply --container;
 }
 
-.heading {
-   @apply --heading;
+.subHeading {
+   @apply --subHeading;
 }
 
 .form {
@@ -14,13 +15,4 @@
 
 .row {
    @apply --row;
-}
-
-fieldset
-{
-   border: none;
-   margin:0;
-   padding:0;
-   display: flex;
-   flex-direction: column;
 }

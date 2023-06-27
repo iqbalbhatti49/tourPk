@@ -24,7 +24,7 @@ export const OrderReview = () => {
 
    return (
       <div className={styles.container}>
-         <h1 className={styles.heading}>Order Review</h1>
+         <h2 className={styles.subHeading}>Order Review</h2>
          <div className={styles.subtitle}>
             <span>Cart Items : {totalCount}  </span>
          </div>

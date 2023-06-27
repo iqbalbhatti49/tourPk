@@ -48,7 +48,7 @@ const ReviewForm = ({ serviceId, setReview }) => {
 
     return (
         <div className={styles.container}>
-            <h3>Add a Review</h3>
+            <h2 className={styles.subHeading}>Add a Review</h2>
             <div className={styles.formBorder}>
                 <div className={styles.formContainer}>
                     <FinalForm onSubmit={onSubmit} subscription={{ submitted: true }} >

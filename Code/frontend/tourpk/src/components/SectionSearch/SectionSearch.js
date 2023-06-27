@@ -31,10 +31,10 @@ export const SectionSearch = ({displayImage}) => {
    return (
       <div className={styles.container}>
          {show != null ? <img className={styles.image} alt="Cities" src="../../static/images/searchSectionBg.png" />
-          : <h2>Search Here!</h2> }
+          : <h2 className={styles.subHeading}>Search Here!</h2> }
          <div className={styles.content}>
             
-            {show != null ? <p>Let's Your Curiosity do the booking!</p> : <h2>Search Here!</h2> }
+            {show != null ? <p>Let's Your Curiosity do the booking!</p> : <h2 className={styles.subHeading}>Search Here!</h2> }
             <div className={styles.actions}>
                <div className={styles.inputIconed}>
                   <IconLocation />

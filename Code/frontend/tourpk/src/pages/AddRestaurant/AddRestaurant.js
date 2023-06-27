@@ -6,12 +6,9 @@ import {
     from "../../components/index";
 
 const AddRestaurant = () => {
-
     const userId = useSelector(state => state.user.id);
     const navigate = useNavigate();
     const location = useLocation();
-
-    // Logic for Update restaurant 
     const searchParams = new URLSearchParams(location.search);
     const isEditMode = searchParams.get('edit') === '1';
     let values, restaurant;

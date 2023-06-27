@@ -1,11 +1,8 @@
-.subHeading {
+@import "../../styles/variables.css";
 
-  color: var(--primaryColor);
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: left;
-  line-height: 4rem;
- }
+ .subHeading {
+   @apply --subHeading;
+}
  
  .rating
  {

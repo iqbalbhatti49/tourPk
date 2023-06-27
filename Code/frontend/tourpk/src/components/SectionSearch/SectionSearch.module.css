@@ -1,3 +1,9 @@
+@import "../../styles/variables.css";
+
+.subHeading {
+   @apply --subHeading;
+}
+
 .container {
    padding-top: 50px;
    display: flex;

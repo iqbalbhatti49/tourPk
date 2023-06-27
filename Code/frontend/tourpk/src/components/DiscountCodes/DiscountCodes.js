@@ -8,7 +8,7 @@ export const DiscountCodes = () => {
 
    return (
       <div className={styles.container} >
-         <p className={styles.heading}>Discount Code</p>
+         <h2 className={styles.subHeading}>Discount Code</h2>
          <div className={styles.form}>
             {valueCode}
          </div>

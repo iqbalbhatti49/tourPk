@@ -1,6 +1,6 @@
 import styles from './BlogPage.module.css';
 import { 
-  useState, BlogPost, CommentSection,
+  useState, BlogPost, CommentSection, useParams,
   React, useEffect, useDispatch, BlogMenu } 
 from "../../components/index";
 

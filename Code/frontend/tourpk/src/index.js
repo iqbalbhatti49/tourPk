@@ -1,17 +1,11 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react'
-import { store, persistor } from './app/store';
+import { React, NavBar, Footer, Provider, BrowserRouter, store, persistor, createRoot, 
+  PersistGate, injectStore, ScrollToTop } 
+from "./components/index";
 import App from "./App";
 import "./index.css"
-import { NavBar } from "./components/NavBar/NavBar";
-import { Footer } from "./components/Footer/Footer";
+
 const container = document.getElementById("root");
 const root = createRoot(container);
-import { injectStore } from './utils/Api'
-import ScrollToTop from './utils/scrollToTop';
 injectStore(store); 
 
 root.render(

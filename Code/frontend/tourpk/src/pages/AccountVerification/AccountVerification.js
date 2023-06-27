@@ -29,7 +29,6 @@ function AccountVerification() {
       const response = await axiosInstance.post('/verify/start-verification', {
         phoneNumber: values.phoneNumber,
       });
-
       swal({
         title: 'Verification Started!',
         text: response.data.message,
@@ -51,19 +50,18 @@ function AccountVerification() {
           confirm: true,
         },
       })
-      setVerificationStatus(error.response.status); // Set the status code in state
-      setIsLoading(false); // Hide loading symbol
+      setVerificationStatus(error.response.status); 
+      setIsLoading(false); 
     }
   };
 
   const handleOtpSubmit = async (values) => {
     try {
-      setIsLoading(true); // Show loading symbol
+      setIsLoading(true); 
       const response = await axiosInstance.post('/verify/check-verification', {
         phoneNumber: values.phoneNumber,
         verificationCode: values.otpCode,
       });
-
       if (response.data.success) {
         swal({
           title: 'Code Verified!',
@@ -73,7 +71,7 @@ function AccountVerification() {
             confirm: true,
           },
         })
-        setVerificationStatus(response.status); // Set the status code in state
+        setVerificationStatus(response.status); 
         dispatch(updatePhoneNumberVerification({ userId, phoneNumber }));
         navigate("/serviceProvider")
       } else {
@@ -85,9 +83,9 @@ function AccountVerification() {
             confirm: true,
           },
         })
-        setVerificationStatus(response.status); // Set the status code in state
+        setVerificationStatus(response.status); 
       }
-      setIsLoading(false); // Hide loading symbol
+      setIsLoading(false); 
     } catch (error) {
       swal({
         title: 'Not Verified!',
@@ -97,14 +95,13 @@ function AccountVerification() {
           confirm: true,
         },
       })
-      setVerificationStatus(error.response.status); // Set the status code in state
-      setIsLoading(false); // Hide loading symbol
+      setVerificationStatus(error.response.status); 
+      setIsLoading(false); 
     }
   };
 
   return (
     <div className={styles.container}>
-      <div className={styles.box}>
         <FinalForm
           onSubmit={verificationStarted ? handleOtpSubmit : handleVerificationSubmit}
           render={({ handleSubmit, values }) => (
@@ -146,7 +143,6 @@ function AccountVerification() {
           )}
         />
         {isLoading && <p>Loading...</p>}
-      </div>
     </div>
   );
 }

@@ -23,7 +23,6 @@ export const PaymentMethod = () => {
    useEffect(() => {
       const { state } = location;
       if (state && state.from === '/login') {
-         // Code to execute if coming from the login page
       }
       else
          console.log(state)
@@ -67,7 +66,7 @@ export const PaymentMethod = () => {
    };
    return (
       <div className={styles.container}>
-         <p className={styles.heading}>Payment Method</p>
+         <h2 className={styles.subHeading}>Payment Method</h2>
          <fieldset disabled={submitted && "disabled"}>
             <RadioGroup
                options={[
@@ -104,8 +103,6 @@ export const PaymentMethod = () => {
                         {({ form }) => {
                            useEffect(() => {
                               const valuesToInitialize = {};
-
-                              // Iterate over the paymentState object
                               for (const key in paymentState) {
                                  if (paymentState.hasOwnProperty(key)) {
                                     const value = paymentState[key];

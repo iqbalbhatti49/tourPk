@@ -7,7 +7,7 @@ const RoomAmeneties = (props) => {
   const { values, updateInitialVal, isEditMode } = props;
   return (
     <>
-      <h2>Room Ameneties</h2>
+      <h2 className={styles.subHeading}>Room Ameneties</h2>
       <div className={styles.hotelAmeneties}>
         {
           roomAmenitiess.map((amenity) => (

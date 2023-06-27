@@ -35,7 +35,7 @@ const HelpAndSupport = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.heading}>Do You Have Questions?</h1>
-          <p className={styles.subHeading}>We have answers (well, most of the times!)</p>
+          <p className={styles.spacedHeading}>We have answers (well, most of the times!)</p>
           <p className={styles.description}>
             Below you'll find answers to the most common questions you may have about tourpk.
             Also, please feel free to check out our social media pages. If you can't find the
@@ -47,7 +47,7 @@ const HelpAndSupport = () => {
           <div>
             <div className={styles.faqContainer}>
               <div className={styles.faqDropdowns}>
-                <h2>Frequently Asked Questions</h2>
+                <h2 className={styles.subHeading}>Frequently Asked Questions</h2>
                 {questions.map((question, index) => (
                   <FAQDropdown
                     key={index}
@@ -57,7 +57,7 @@ const HelpAndSupport = () => {
               </div>
             </div>
             <div className={styles.tableContainer}>
-              <h2>Still have questions? Fill the form below to contact us</h2>
+              <h2 className={styles.subHeading}>Still have questions? Fill the form below to contact us</h2>
               <div className={styles.quesForm}>
                 <FinalForm
                   onSubmit={onSubmit}

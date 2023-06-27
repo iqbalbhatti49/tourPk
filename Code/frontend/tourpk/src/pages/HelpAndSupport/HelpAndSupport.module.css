@@ -4,8 +4,17 @@
   padding: 2vh 7vw;
 }
 
-.container h1 {
-  font-size: 2.3rem;
+.heading {
+  @apply --pageHeading;
+}
+
+.subHeading {
+  @apply --subHeading;
+}
+
+.spacedHeading
+{
+  @apply --spacedHeading;
 }
 
 input[name="generalField"] {
@@ -27,14 +36,6 @@ input[name="generalField"] {
 
 .heading {
   color: var(--primaryColor);
-}
-
-.subHeading {
-  letter-spacing: 0.1em;
-  line-height: 10px;
-  text-transform: uppercase;
-  color: var(--primaryColor);
-  font-weight: 600;
 }
 
 .description {

@@ -1,55 +1,19 @@
 import {
-  Routes,
-  Route,
-  useNavigationType,
-  useLocation
-} from "react-router-dom";
-import { useEffect } from "react";
-import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, Login, Signup, AddPackage, CheckOut, AddRestaurant, Bookings, HelpAndSupport, HotelListing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword, AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, ServiceProviderHome, TravelAgentListing, EmailVerification } from "./pages/index";
-import AddTravelAgent from "./pages/AddTravelAgent/AddTravelAgent";
-import SearchResult from "./pages/SearchResult/SearchResult";
+  Routes, Route
+} from "./components/index";
+import { PaymentInformation, AccountVerification, Home, Services, InAppPlans, Cities, Contract, 
+  Login, Signup, CheckOut, AddRestaurant, Bookings, 
+  HelpAndSupport, HotelListing, BlogPage, AddBlog, Blogs, SpotListing, ForgetPassword, ResetPassword,
+  AddService, TourGuideListing, AddTourGuide, AddHotel, AddHotelRoom, RestaurantListing, 
+  ServiceProviderHome, TravelAgentListing, EmailVerification, SearchResult, AddTravelAgent } 
+from "./pages/index";
 
 function App() {
-  const action = useNavigationType();
-  const location = useLocation();
-  const pathname = location.pathname;
-
-  useEffect(() => {
-    if (action !== "POP") {
-      window.scrollTo(0, 0);
-    }
-  }, [action]);
-
-  useEffect(() => {
-    let title = "";
-    let metaDescription = "";
-
-    switch (pathname) {
-      case "/":
-        title = "";
-        metaDescription = "";
-        break;
-    }
-
-    if (title) {
-      document.title = title;
-    }
-
-    if (metaDescription) {
-      const metaDescriptionTag = document.querySelector(
-        'head > meta[name="description"]'
-      );
-      if (metaDescriptionTag) {
-        metaDescriptionTag.content = metaDescription;
-      }
-    }
-  }, [pathname]);
 
   return (
     <Routes>
       <Route path="/contract" element={<Contract />} />
       <Route path="/checkout" element={<CheckOut />} />
-      {/* <Route path="/addpackage" element={<AddPackage />} /> */}
       <Route path="/addrestaurant" element={<AddRestaurant />} />
       <Route path="/addService" element={<AddService />} />
       <Route path="/bookings" element={<Bookings />} />
@@ -75,11 +39,11 @@ function App() {
       <Route path="/restaurantListing/:id" element={<RestaurantListing />} />
       <Route path="/forgetPassword" element={<ForgetPassword />} />
       <Route path="/reset-password/:id/:token" element={<ResetPassword />} />
-      <Route path="/verify" element={<AccountVerification />} ></Route>
-      <Route path="/serviceProvider" element={<ServiceProviderHome />} ></Route>
-      <Route path="/paymentInformation" element={<PaymentInformation />} ></Route>
-      <Route path="/verifyEmail" element={<EmailVerification />} ></Route>
-      <Route path="/searchResult" element={<SearchResult />} ></Route>
+      <Route path="/verify" element={<AccountVerification />} />
+      <Route path="/serviceProvider" element={<ServiceProviderHome />} />
+      <Route path="/paymentInformation" element={<PaymentInformation />} />
+      <Route path="/verifyEmail" element={<EmailVerification />} />
+      <Route path="/searchResult" element={<SearchResult />} />
     </Routes>
   );
 };

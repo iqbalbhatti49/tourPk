@@ -5,8 +5,8 @@
    @apply --container;
 }
 
-.heading {
-   @apply --heading;
+.subHeading {
+   @apply --subHeading;
 }
 
 .hr {
@@ -22,3 +22,5 @@
    font-size: 1.2rem;
    font-weight: 500;
 }
+
+

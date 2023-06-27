@@ -7,22 +7,12 @@
   .header {
     display: flex;
     flex-direction: column;
-    place-items: center;
-    padding-block: 50px;
-  }
-  
-  .header h1 {
-    margin-bottom: 8px;
-    margin-top: 0;
+    align-items: center;
+    padding-top: 50px;
   }
   
   .subHeading {
-    color: var(--primaryColor);
-    font-size: 2rem;
-    font-weight: 700;
-    text-align: left;
-    line-height: 4rem;
-    text-align: center;
+    @apply --subHeading;
   }
   
   .description {
@@ -37,59 +27,29 @@
     font-weight: 500;
     color: var(--assistColor);
   }
-  .flex
-  {
-    display: flex;
-    gap: 10px;
-  }
-  .flex div div{
-    padding-block: 10px;
-  }
 
   .btns
   {
     display: flex;
     gap: 50px;
-    padding-block: 30px;
+    padding-block: 5px;
   }
+
   .outerFlex
   {
     display: flex;
+    flex-direction: row;
     justify-content: space-evenly;
   }
-  .innerFlex
-  {
-    display: flex;
-    gap:30px;
+  
+  .flex{
+    @apply --boxShadow;
+    padding: 30px;
+    padding-block:5px;
+    margin-top:-35px;
   }
-  .informationTitle
+
+  .status
   {
-    font-style: italic;
-    color: var(--secondaryColor);
-    font-weight: bold;
-    margin:6px;
-  }
-  .travelAgent
-  {
-    border-radius: 12px;
-    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.16);
-    width: 250px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  .travelAgents
-  {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .desc{
-    text-align: justify;
-  }
-  .servicesFlex
-  {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding-block: 5px;
   }

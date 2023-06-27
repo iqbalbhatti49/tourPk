@@ -16,8 +16,7 @@ const ServiceProviderHome = () => {
    return (
       <div className={styles.container}>
          <div className={styles.header}>
-            <p className={styles.subHeading}>{`OFFER YOUR SERVICES`}</p>
-            <h1 className={styles.Heading}>Get Started Now</h1>
+            <h1 className={styles.heading}>Offer Your Services Now</h1>
             <p className={styles.description}>
                Welocme to tourPk, a platform where you can offer your services
                to a wide range of tourists for free.
@@ -26,18 +25,14 @@ const ServiceProviderHome = () => {
          <div className={styles.outerFlex}>
             <div>
                <PaymentMethod/>
-               <div>
-                  <div className={styles.flex}>
-                     <div>
-                        <span className={styles.key}>Phone Number : </span>
-                        <br/>
-                        <span className={styles.key}>Email : </span>
-                     </div>
-                     <div>
-                        <span>{user.phoneNumberVerified ? "Verified" : "Unverified"}</span>
-                        <br/>
-                        <span>{user.emailVerified ? "Verified" : "Unverified"}</span>
-                     </div>
+               <div className={styles.flex}>
+                  <h2 className={styles.subHeading}>Payment Method</h2>
+                  <div className={styles.status}>
+                     <span className={styles.key}>Phone Number : </span>
+                     <span>{user.phoneNumberVerified ? "Verified" : "Unverified"}</span>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                     <span className={styles.key}>Email : </span>
+                     <span>{user.emailVerified ? "Verified" : "Unverified"}</span>
                   </div>
                   <div className={styles.btns}>
                      <Link to="/verify">

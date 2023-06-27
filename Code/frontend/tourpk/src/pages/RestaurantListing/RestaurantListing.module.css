@@ -28,11 +28,8 @@
 }
 
 .subHeading {
-    color: var(--primaryColor);
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 4rem;
-}
+    @apply --subHeading;
+  }
 
 .testimonial {
     display: flex;

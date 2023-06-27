@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './OrderReviewItem.module.css';
 
-const OrderReview = ({ imageSrc, title, count, price, discountedPrice, discountApplicability, onIncrease, onDecrease, onRemove }) => {
-   const handleIncrease = () => {
-      onIncrease();
-   };
-
-   const handleDecrease = () => {
-      onDecrease();
-   };
+const OrderReview = ({ imageSrc, title, count, price, discountedPrice, discountApplicability, onRemove }) => {
 
    const handleRemove = () => {
       onRemove();
    };
-
+   
    return (
       <div className={styles.orderReview}>
          <div>
@@ -21,11 +14,6 @@ const OrderReview = ({ imageSrc, title, count, price, discountedPrice, discountA
          </div>
          <div className={styles.info}>
             <p>Title : {title}</p>
-            {/* <div className={styles.count}>
-               <button className={styles.button} onClick={handleDecrease}>-</button>
-               <span className={styles.countValue}>{count}</span>
-               <button className={styles.button} onClick={handleIncrease}>+</button>
-            </div> */}
             <p>Count : {count}</p>
             <p>{discountApplicability}</p>
          </div>

@@ -39,7 +39,7 @@ export const BillingAddress = () => {
 
    return (
       <div className={styles.container}>
-         <p className={styles.heading}>Billing Address</p>
+         <h2 className={styles.subHeading}>Billing Address</h2>
          <div className={styles.form}>
             <FinalForm
                onSubmit={onSubmit}

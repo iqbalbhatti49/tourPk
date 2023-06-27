@@ -21,7 +21,7 @@ export default function BlogMenu(props) {
 
     return (
         <div className={styles.menu}>
-            <h2>Other posts you may like</h2>
+            <h2 className={styles.subHeading}>Other posts you may like</h2>
             {blogs.map((blog, index) => (
                 <BlogCard
                     blog={blog}

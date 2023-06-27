@@ -26,7 +26,7 @@ export default function BookingCard() {
     <>
       {bookings.tourguideBookings && bookings.tourguideBookings.length > 0 && (
         <div>
-          <h2>Tour Guide Bookings</h2>
+          <h2 className={styles.subHeading}>Tour Guide Bookings</h2>
           {bookings.tourguideBookings.map((booking) => (
             <div className={styles.card} key={booking.bookingDate}>
               <img src="../../static/images/booking.png" alt="yy" className={styles.image} />
@@ -48,7 +48,7 @@ export default function BookingCard() {
 
       {bookings.hotelBookings && bookings.hotelBookings.length > 0 && (
         <div>
-          <h2>Hotel Bookings</h2>
+          <h2 className={styles.subHeading}>Hotel Bookings</h2>
           {bookings.hotelBookings.map((booking) => (
             <div className={styles.card} key={booking.startDate}>
               <img src="../../static/images/booking.png" alt="yy" className={styles.image} />
@@ -70,7 +70,7 @@ export default function BookingCard() {
 
       {bookings.travelAgentBookings && bookings.travelAgentBookings.length > 0 && (
         <div>
-          <h2>Travel Agent Bookings</h2>
+          <h2 className={styles.subHeading}>Travel Agent Bookings</h2>
           {bookings.travelAgentBookings.map((booking) => (
             <div className={styles.card} key={booking.bookingDate}>
               <img src="../../static/images/booking.png" alt="yy" className={styles.image} />

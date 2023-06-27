@@ -1,4 +1,4 @@
-@import url("../../styles/variables.css");
+@import "../../styles/variables.css";
 
 .container {
    padding: 0px 5vw 75px 5vw;
@@ -28,10 +28,7 @@
 }
 
 .subHeading {
-   color: var(--primaryColor);
-   font-size: 2rem;
-   font-weight: 700;
-   line-height: 4rem;
+   @applu --subHeading;
 }
 
 .testimonial {

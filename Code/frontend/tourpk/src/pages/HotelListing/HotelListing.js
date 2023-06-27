@@ -124,7 +124,7 @@ export default function HotelListing() {
         <Carousel imageList={data.HotelImages} />
       </div>
       <div>
-        <h3 className={styles.subHeading}>Room Types</h3>
+        <h2 className={styles.subHeading}>Room Types</h2>
         {data.Hotel.Rooms.map((room, index) => {
           return (
             <div className={styles.roomWrapper}>

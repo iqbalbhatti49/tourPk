@@ -9,7 +9,6 @@ const AddTourGuide = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  //Update Tour guide logic
   const searchParams = new URLSearchParams(location.search);
   const isEditMode = searchParams.get('edit') === '1';
   let values, tourGuide, obj;
@@ -80,7 +79,7 @@ const AddTourGuide = () => {
             <FinalForm onSubmit={onSubmit}>
               {({ handleSubmit, values }) => (
                 <form onSubmit={handleSubmit} className={styles.formContainer}>
-                  <h2>Guiding Information</h2>
+                  <h2 className={styles.subHeading}>Guiding Information</h2>
                   <FormField
                     name="experience"
                     label="Experience"
@@ -140,7 +139,7 @@ const AddTourGuide = () => {
                     defaultValue={initialValue.language}
                     renderIcon={() => null}
                   />
-                  <h2>Pricing Information</h2>
+                  <h2 className={styles.subHeading}>Pricing Information</h2>
                   <FormField
                     name="perDayRate"
                     label="Price Per Day (Rs.)"
