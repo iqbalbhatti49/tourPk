@@ -14,14 +14,16 @@ const initialState = {
    phoneNumberVerified: false,
    emailVerified: false
 };
-
 export const login = createAsyncThunk('user/login', async (user) => {
    try {
       const response = await axiosInstance.post('/auth/login', user);
       return response.data;
-   }
-   catch (err) {
-      console.log(err);
+   } catch (err) {
+      if (err.response && err.response.status === 401) {
+         throw new Error("401");
+      } else {
+         throw new Error(err.message);
+      }
    }
 });
 
@@ -29,9 +31,8 @@ export const forgotPassword = createAsyncThunk('user/ForgetPassword', async (ema
    try {
       const response = await axiosInstance.post('/auth/forgetPassword', email);
       return response.data;
-   }
-   catch (err) {
-      console.log(err);
+   } catch (error) {
+      throw error;
    }
 });
 
@@ -40,9 +41,8 @@ export const resetPassword = createAsyncThunk('user/resetPassword', async (value
       const pw = { password: values.password };
       const response = await axiosInstance.post(`/auth/resetPassword/${values.id}/:${values.token}`, pw);
       return response.data;
-   }
-   catch (err) {
-      console.log(err);
+   } catch (error) {
+      throw error;
    }
 });
 
@@ -98,6 +98,10 @@ const userSlice = createSlice({
          state.id = '';
          state.token = null;
          state.role = '';
+         state.phoneNumber = '';
+         state.error = '';
+         state.phoneNumberVerified = false;
+         state.emailVerified = false;
       },
    },
    extraReducers: (builder) => {

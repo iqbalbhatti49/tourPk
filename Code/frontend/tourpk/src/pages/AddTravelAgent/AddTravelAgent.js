@@ -7,6 +7,8 @@ import swal from 'sweetalert';
 
 const AddTravelAgent = () => {
     const userId = useSelector(state => state.user.id);
+    const role = useSelector((state) => state.user.role);
+
     const navigate = useNavigate();
     const location = useLocation();
     const [sections, setSections] = useState([1]);
@@ -104,53 +106,59 @@ const AddTravelAgent = () => {
     };
 
     return (
-        <div id={styles.travelAgentContainer}>
-            <div className={styles.formContainer}>
-                <FinalForm
-                    // initialValues={initialValues}
-                    onSubmit={onSubmit}
-                    subscription={{
-                        submitted: true
-                    }} >
-                    {({ handleSubmit, submitting, values }) => (
-                        <form onSubmit={handleSubmit}>
-                            <div className={styles.formBody}>
-                                <h1>Add Tour Package Details</h1>
-                                <div className={styles.basicInfo}>
-                                    <FormField name="source" label="Tour Starting Point" type="text" placeholder="eg. Lahore" validate={required} theme="light" value={values} defaultValue={initialValue.source} renderIcon={() => null} />
-                                    <FormField name="destination" label="Destination" type="text" placeholder="eg. Hunza Valley" validate={required} theme="light" value={values} defaultValue={initialValue.destination} renderIcon={() => null} />
-                                    <FormField name="daysCount" label="No. of days of tour" type="text" placeholder="eg. 12 days" validate={required} theme="light" value={values} defaultValue={initialValue.daysCount} renderIcon={() => null} />
-                                    <FormField name="packagePrice" label="Base Price (Rs.)" type="number" placeholder="Price without extra services(eg. Rs 5000)" validate={required} theme="light" value={values} defaultValue={initialValue.packagePrice} renderIcon={() => null} />
-                                    <FormField name="hotelDetails" label="Hotel details (if any)" type="text" placeholder="3 days in PC Hnza, 2 days in Serena Karachi..." theme="light" value={values} defaultValue={initialValue.hotelDetails} renderIcon={() => null} />
-                                    <FormField name="foodDetails" label="Food details (if any)" type="text" placeholder="eg. Lunch included, at same hotel/ xyz travelAgent..." theme="light" value={values} defaultValue={initialValue.foodDetails} renderIcon={() => null} />
-                                    <FormField name="transportDetails" label="Transport details (if any)" type="text" placeholder="eg. Departure from xyz Lahore Airport, back from Gilgit Airport..." theme="light" value={values} defaultValue={initialValue.transportDetails} renderIcon={() => null} />
-                                    <FormField name="exclude" label="What's Excluded from package?" type="text" placeholder="eg. Return air ticket, dinner , Personal Expense..." theme="light" value={values} defaultValue={initialValue.exclude} renderIcon={() => null} />
-                                    <div className={styles.itenerary} >
-                                        <h3 className={styles.title}>Itenerary (tour plan details per day)</h3>
-                                        <a href="#" onClick={addSection} id={styles.addIcon} > <IconAdd /> </a>
-                                    </div>
-                                    <div className={styles.form}>
-                                        {sections.map((section, index) => {
-                                            const i = index + 1;
-                                            return (
-                                                <>
-                                                    <FormField name={"day" + i} label={"Day " + i} type="text" validate={required} placeholder={itenerary[index]} theme="light" value={values} defaultValue={isEditMode ? updateInitialValue["day" + i] : ""} renderIcon={() => null} />
-                                                </>
-                                            );
-                                        })}
-                                    </div>
-                                </div>
+        <>
+            {
+                role === "seller" ? (
+                    <div id={styles.travelAgentContainer}>
+                        <div className={styles.formContainer}>
+                            <FinalForm
+                                // initialValues={initialValues}
+                                onSubmit={onSubmit}
+                                subscription={{
+                                    submitted: true
+                                }} >
+                                {({ handleSubmit, submitting, values }) => (
+                                    <form onSubmit={handleSubmit}>
+                                        <div className={styles.formBody}>
+                                            <h1>Add Tour Package Details</h1>
+                                            <div className={styles.basicInfo}>
+                                                <FormField name="source" label="Tour Starting Point" type="text" placeholder="eg. Lahore" validate={required} theme="light" value={values} defaultValue={initialValue.source} renderIcon={() => null} />
+                                                <FormField name="destination" label="Destination" type="text" placeholder="eg. Hunza Valley" validate={required} theme="light" value={values} defaultValue={initialValue.destination} renderIcon={() => null} />
+                                                <FormField name="daysCount" label="No. of days of tour" type="text" placeholder="eg. 12 days" validate={required} theme="light" value={values} defaultValue={initialValue.daysCount} renderIcon={() => null} />
+                                                <FormField name="packagePrice" label="Base Price (Rs.)" type="number" placeholder="Price without extra services(eg. Rs 5000)" validate={required} theme="light" value={values} defaultValue={initialValue.packagePrice} renderIcon={() => null} />
+                                                <FormField name="hotelDetails" label="Hotel details (if any)" type="text" placeholder="3 days in PC Hnza, 2 days in Serena Karachi..." theme="light" value={values} defaultValue={initialValue.hotelDetails} renderIcon={() => null} />
+                                                <FormField name="foodDetails" label="Food details (if any)" type="text" placeholder="eg. Lunch included, at same hotel/ xyz travelAgent..." theme="light" value={values} defaultValue={initialValue.foodDetails} renderIcon={() => null} />
+                                                <FormField name="transportDetails" label="Transport details (if any)" type="text" placeholder="eg. Departure from xyz Lahore Airport, back from Gilgit Airport..." theme="light" value={values} defaultValue={initialValue.transportDetails} renderIcon={() => null} />
+                                                <FormField name="exclude" label="What's Excluded from package?" type="text" placeholder="eg. Return air ticket, dinner , Personal Expense..." theme="light" value={values} defaultValue={initialValue.exclude} renderIcon={() => null} />
+                                                <div className={styles.itenerary} >
+                                                    <h3 className={styles.title}>Itenerary (tour plan details per day)</h3>
+                                                    <a href="#" onClick={addSection} id={styles.addIcon} > <IconAdd /> </a>
+                                                </div>
+                                                <div className={styles.form}>
+                                                    {sections.map((section, index) => {
+                                                        const i = index + 1;
+                                                        return (
+                                                            <>
+                                                                <FormField name={"day" + i} label={"Day " + i} type="text" validate={required} placeholder={itenerary[index]} theme="light" value={values} defaultValue={isEditMode ? updateInitialValue["day" + i] : ""} renderIcon={() => null} />
+                                                            </>
+                                                        );
+                                                    })}
+                                                </div>
+                                            </div>
 
-                            </div>
-                            <Button value="Add TourPackage" type="submit" btnType="submit" />
-                        </form>
-                    )}
-                </FinalForm>
-            </div>
-            <div className={styles.imageContainer}>
-                <img src="https://cdn.pixabay.com/photo/2018/12/15/19/36/fashion-3877510_1280.jpg" alt="" />
-            </div>
-        </div >
+                                        </div>
+                                        <Button value="Add TourPackage" type="submit" btnType="submit" />
+                                    </form>
+                                )}
+                            </FinalForm>
+                        </div>
+                        <div className={styles.imageContainer}>
+                            <img src="https://cdn.pixabay.com/photo/2018/12/15/19/36/fashion-3877510_1280.jpg" alt="" />
+                        </div>
+                    </div >) :
+                    (<img src="../static/images/404.png" alt="" />)
+            }
+        </>
     );
 };
 export default AddTravelAgent;

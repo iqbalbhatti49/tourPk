@@ -1,6 +1,8 @@
 import styles from './ResetPassword.module.css'
-import { Button, FormField, useParams, useNavigate, FinalForm, useDispatch,
-         React, validateEquality, validatePassword, resetPassword } from '../../components'
+import {
+    Button, FormField, useParams, useNavigate, FinalForm, useDispatch,
+    React, validateEquality, validatePassword, resetPassword
+} from '../../components'
 
 export default function ResetPassword() {
     const dispatch = useDispatch();
@@ -19,8 +21,8 @@ export default function ResetPassword() {
             <FinalForm onSubmit={onSubmit} subscription={{ submitted: true }} >
                 {({ handleSubmit }) => (
                     <form onSubmit={handleSubmit}>
-                        <FormField name="Password1" label="Password" type="text" placeholder="New Password" validate={validatePassword} theme="light" renderIcon={() => null} />
-                        <FormField name="Password2" label="Confirm Password" type="text" placeholder="Reset Password" validate={(value, values) => validateEquality(values.Password1, value)} theme="light" renderIcon={() => null} />
+                        <FormField name="Password1" label="Password" type="password" placeholder="New Password" validate={validatePassword} theme="light" renderIcon={() => null} />
+                        <FormField name="Password2" label="Confirm Password" type="password" placeholder="Reset Password" validate={(value, values) => validateEquality(values.Password1, value)} theme="light" renderIcon={() => null} />
                         <div className={styles.addButtonContainer}>
                             <Button value="Reset Password" type="submit" btnType="submit" />
                         </div>

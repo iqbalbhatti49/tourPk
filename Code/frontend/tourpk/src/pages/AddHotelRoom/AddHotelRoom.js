@@ -8,8 +8,8 @@ import {
 const AddHotelRoom = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const aaaaaaa = location.state;
   const userId = useSelector(state => state.user.id); // Id of currently logged in user
+  const role = useSelector((state) => state.user.role);
   const searchParams = new URLSearchParams(location.search);
 
   // Add more rooms logic
@@ -99,8 +99,6 @@ const AddHotelRoom = () => {
     return roomData;
   };
 
-  // ADD LOGIC **********
-
   const onSubmit = async (values) => {
     if (isAddRoomsMode) {
       addMoreRooms(values);
@@ -149,132 +147,136 @@ const AddHotelRoom = () => {
     navigate(`/hotelListing/${roomObj.data}`);
   };
 
-
   return (
     <>
-      <div className={styles.container}>
-        <h1 className={styles.heading}>Add New Room Type</h1>
-        <div className={styles.content}>
-          <div className={styles.formFields}>
-            <FinalForm onSubmit={onSubmit}>
-              {({ handleSubmit, values }) => (
-                <form onSubmit={handleSubmit} className={styles.formContainer}>
-                  <FormField
-                    name="roomType"
-                    label="Room Type"
-                    type="text"
-                    placeholder="Single, Double, Suite"
-                    validate={validateAlpha}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.roomType}
-                    theme="light"
-                  />
-                  <FormField
-                    name="roomsCount"
-                    label="Rooms Count with similar characteristics"
-                    type="number"
-                    placeholder="30"
-                    validate={required}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.roomsCount}
-                    theme="light"
-                  />
+      {
+        role === "seller" ? (
+          <div className={styles.container}>
+            <h1 className={styles.heading}>Add New Room Type</h1>
+            <div className={styles.content}>
+              <div className={styles.formFields}>
+                <FinalForm onSubmit={onSubmit}>
+                  {({ handleSubmit, values }) => (
+                    <form onSubmit={handleSubmit} className={styles.formContainer}>
+                      <FormField
+                        name="roomType"
+                        label="Room Type"
+                        type="text"
+                        placeholder="Single, Double, Suite"
+                        validate={validateAlpha}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.roomType}
+                        theme="light"
+                      />
+                      <FormField
+                        name="roomsCount"
+                        label="Rooms Count with similar characteristics"
+                        type="number"
+                        placeholder="30"
+                        validate={required}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.roomsCount}
+                        theme="light"
+                      />
 
-                  <FormField
-                    name="capacity"
-                    label="Occupancy"
-                    type="number"
-                    placeholder="2 persons"
-                    validate={required}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.capacity}
-                    theme="light"
-                  />
+                      <FormField
+                        name="capacity"
+                        label="Occupancy"
+                        type="number"
+                        placeholder="2 persons"
+                        validate={required}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.capacity}
+                        theme="light"
+                      />
 
-                  <FormField
-                    name="bedConfiguration"
-                    label="Bed Configuration"
-                    type="text"
-                    placeholder="King, Queen, Twin"
-                    validate={validateAlpha}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.bedConfiguration}
-                    theme="light"
-                  />
+                      <FormField
+                        name="bedConfiguration"
+                        label="Bed Configuration"
+                        type="text"
+                        placeholder="King, Queen, Twin"
+                        validate={validateAlpha}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.bedConfiguration}
+                        theme="light"
+                      />
 
-                  <FormField
-                    name="view"
-                    label="View"
-                    type="text"
-                    placeholder="City View, Ocean View"
-                    validate={required}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.view}
-                    theme="light"
-                  />
+                      <FormField
+                        name="view"
+                        label="View"
+                        type="text"
+                        placeholder="City View, Ocean View"
+                        validate={required}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.view}
+                        theme="light"
+                      />
 
-                  <FormField
-                    name="roomSize"
-                    label="Room Size"
-                    type="text"
-                    placeholder="300 sq. ft., 25 sq. m"
-                    validate={required}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.roomSize}
-                    theme="light"
-                  />
+                      <FormField
+                        name="roomSize"
+                        label="Room Size"
+                        type="text"
+                        placeholder="300 sq. ft., 25 sq. m"
+                        validate={required}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.roomSize}
+                        theme="light"
+                      />
 
-                  <FormField
-                    name="description"
-                    label="Room description"
-                    type="text"
-                    placeholder="Amazing ventilation with 3 windows, coffee table area..."
-                    validate={required}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.description}
-                    theme="light"
-                  />
+                      <FormField
+                        name="description"
+                        label="Room description"
+                        type="text"
+                        placeholder="Amazing ventilation with 3 windows, coffee table area..."
+                        validate={required}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.description}
+                        theme="light"
+                      />
 
-                  <FormField
-                    name="smoking"
-                    label="Smoking Policy"
-                    type="text"
-                    placeholder="Smoking, Non-Smoking"
-                    validate={validateAlpha}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.smoking}
-                    theme="light"
-                  />
+                      <FormField
+                        name="smoking"
+                        label="Smoking Policy"
+                        type="text"
+                        placeholder="Smoking, Non-Smoking"
+                        validate={validateAlpha}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.smoking}
+                        theme="light"
+                      />
 
-                  <FormField
-                    name="rentPerNight"
-                    label="Rent per Night (Rs.)"
-                    type="number"
-                    placeholder="Rs. 2000"
-                    validate={required}
-                    renderIcon={() => null}
-                    defaultValue={initialValue.rentPerNight}
-                    theme="light"
-                  />
-                  <RoomAmeneties values={values} updateInitialVal={updateInitialValue} isEditMode={isEditMode} />
-                  <div className={styles.btnDiv}>
-                    <Button
-                      id={styles.signupBtn}
-                      value={"Submit"}
-                      type="primary"
-                      btnType="submit"
-                      width={250}
-                    />
-                  </div>
-                </form>
-              )}
-            </FinalForm>
+                      <FormField
+                        name="rentPerNight"
+                        label="Rent per Night (Rs.)"
+                        type="number"
+                        placeholder="Rs. 2000"
+                        validate={required}
+                        renderIcon={() => null}
+                        defaultValue={initialValue.rentPerNight}
+                        theme="light"
+                      />
+                      <RoomAmeneties values={values} updateInitialVal={updateInitialValue} isEditMode={isEditMode} />
+                      <div className={styles.btnDiv}>
+                        <Button
+                          id={styles.signupBtn}
+                          value={"Submit"}
+                          type="primary"
+                          btnType="submit"
+                          width={250}
+                        />
+                      </div>
+                    </form>
+                  )}
+                </FinalForm>
+              </div>
+              <div className={styles.imageContainer}>
+                <img src="../static/images/hotelDetails.png" alt="FAQs" />
+              </div>
+            </div>
           </div>
-          <div className={styles.imageContainer}>
-            <img src="../static/images/hotelDetails.png" alt="FAQs" />
-          </div>
-        </div>
-      </div>
+        ) :
+          (<img src="../static/images/404.png" alt="" />)
+      }
     </>
   );
 };

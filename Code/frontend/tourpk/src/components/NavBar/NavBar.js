@@ -1,6 +1,6 @@
 import styles from './NavBar.module.css';
-import { Logo, React, Link, useLocation, useDispatch, useSelector, Button, IconAvatar, logout } 
-from "../index";
+import { Logo, React, Link, useLocation, useDispatch, useSelector, Button, IconAvatar, logout }
+   from "../index";
 
 export const NavBar = () => {
    const location = useLocation();
@@ -12,18 +12,17 @@ export const NavBar = () => {
       dispatch(logout());
    }
    const links = {
-      "/bookings" : "Bookings",
-      "/allBlogs" : "Blogs",
-      "/help" : "Contact Us",
+      "/allBlogs": "Blogs",
+      "/help": "Contact Us",
    };
    const touristLinks = {
-      "/" : "Home",
-      "/cities" : "Tourist Attractions",
-      "/services" : "Services",
+      "/": "Home",
+      "/cities": "Tourist Attractions",
+      "/services": "Services",
    }
    const sellerLinks = {
-      "/serviceProvider" : "Home",
-      "/addService" : "Offer Services"
+      "/serviceProvider": "Home",
+      "/addService": "Offer-services"
    }
    return (
       <div className={styles.container}>
@@ -31,14 +30,17 @@ export const NavBar = () => {
             <Logo width={100} height={50} rootClassName="dark" />
             <div className={styles.navLinks}>
                {Object.entries(touristLinks).map(([key, value]) => (
-               role != "seller" && <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
+                  role != "seller" && <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
                ))}
                {Object.entries(sellerLinks).map(([key, value]) => (
-               role == "seller" && <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
+                  role == "seller" && <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
                ))}
                {Object.entries(links).map(([key, value]) => (
-               <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
+                  <Link className={location.pathname === key ? `${styles.navLink} ${styles.active}` : styles.navLink} to={key}>{value}</Link>
                ))}
+               {
+                  isloggedIn ? <Link className={location.pathname === '/bookings' ? `${styles.navLink} ${styles.active}` : styles.navLink} to="/bookings">Bookings</Link> : null
+               }
             </div>
             {
                isloggedIn ? (
