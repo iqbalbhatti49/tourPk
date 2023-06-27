@@ -18,11 +18,8 @@
 }
 
 .description {
-   margin-bottom: 48px;
-   max-width: 570px;
-   line-height: 1.8rem;
-   text-align: center;
-   color: var(--assistColor);
+   @apply --description;
+   max-width: 60%;
 }
 
 .content,

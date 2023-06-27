@@ -2,7 +2,6 @@
 
 .container {
   padding: 0px 5vw 75px 5vw;
-
 }
 
 .header {
@@ -30,10 +29,8 @@
 }
 
 .description {
-  color: var(--assistColor);
-  max-width: 500px;
-  margin: 0px 0px 30px 0px;
-  text-align: center;
+  @apply --description;
+  max-width: 60%;
 }
 
 .plans {

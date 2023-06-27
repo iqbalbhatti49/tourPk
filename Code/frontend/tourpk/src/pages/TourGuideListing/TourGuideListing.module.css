@@ -6,12 +6,8 @@
 }
 
 .heading {
-   max-width: 900px;
-   font-size: 3rem;
-   font-weight: 700;
-   line-height: 4rem;
-   margin-bottom: 24px;
-   margin-top: 0px;
+   @apply --pageHeading;
+   text-align: left;
 }
 
 .header p {
@@ -32,10 +28,7 @@
 }
 
 .testimonial {
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   width: 100%;
+   @apply --testimonial;
 }
 
 .attributes {
@@ -60,22 +53,11 @@
 }
 
 .pricing {
-   display: flex;
-   justify-content: space-between;
-   font-weight: 600;
-   width: 150px;
-   border-radius: 10px;
-   padding: 5px 30px;
-   border: 1px solid var(--assistColor);
+   @apply --pricing;
 }
 
 .booking {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   padding-top: 20px;
-   margin-top: 10px;
+   @apply --booking;
 }
 
 .delete {
@@ -91,10 +73,4 @@
 .iconsBox {
    position: relative;
    width: 110px;
-}
-
-.headingContainer {
-   display: flex;
-   align-items: baseline;
-   justify-content: space-between;
 }

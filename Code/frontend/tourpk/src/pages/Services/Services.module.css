@@ -30,10 +30,16 @@
 }
 
 .description {
-   color: var(--assistColor);
-   max-width: 600px;
-   margin: 0px 0px 30px 0px;
-   text-align: center;
+   @apply --description;
+   max-width: 60%;
+}
+
+.tabCards {
+   @apply --tabCards;
+}
+
+.tabCards a {
+   text-decoration: none;
 }
 
 :global(.react-tabs__tab--selected) {
@@ -49,17 +55,4 @@
 
 :global(.react-tabs__tab:first-child) {
    margin-right: 20px;
-}
-
-.tabCards {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-   padding: 0 5vw;
-}
-
-.tabCards a {
-   text-decoration: none;
 }

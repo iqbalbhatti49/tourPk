@@ -22,7 +22,7 @@ export const NavBar = () => {
    }
    const sellerLinks = {
       "/serviceProvider": "Home",
-      "/addService": "Offer-services"
+      "/addService": "Offer Services"
    }
    return (
       <div className={styles.container}>

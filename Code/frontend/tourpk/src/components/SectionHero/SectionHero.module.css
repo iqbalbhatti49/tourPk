@@ -1,3 +1,5 @@
+@import "../../styles/variables.css";
+
 .container {
    padding: 50px 5vw;
    display: flex;
@@ -27,7 +29,6 @@
 }
 
 .description {
-   max-width: 600px;
-   line-height: 1.8rem;
-   padding-bottom: 24px;
+   @apply --description;
+   text-align: left;
 }

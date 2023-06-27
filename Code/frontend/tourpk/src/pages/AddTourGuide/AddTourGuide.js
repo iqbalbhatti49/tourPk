@@ -1,4 +1,4 @@
-import styles from "./AddTourGuide.module.css";
+import styles from "../AddHotel/AddHotel.module.css";
 import {
   useState, Dropdown, required, useNavigate, FormField,
   React, Button, useSelector, FinalForm, useLocation, axiosInstance, swal

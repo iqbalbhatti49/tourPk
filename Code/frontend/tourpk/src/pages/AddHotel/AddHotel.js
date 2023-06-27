@@ -116,7 +116,7 @@ const AddHotel = () => {
                                                 />
                                             </div>
                                         </form>
-                                    )}
+                                                             )}
                                 </FinalForm>
                             </div>
                             <div className={styles.imageContainer}>

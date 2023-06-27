@@ -1,4 +1,4 @@
-import styles from './AddService.module.css';
+import styles from "../AddHotel/AddHotel.module.css";
 import {
     useState, Dropdown, required, validateURL,
     React, Button, useNavigate, FinalForm, useLocation, axiosInstance, FormField, validateEmail, validatePhone, validateAlpha, useSelector

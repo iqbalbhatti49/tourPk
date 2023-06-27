@@ -20,10 +20,8 @@
 }
 
 .description {
-  color: var(--assistColor);
-  max-width: 60%;
-  margin: 0px 0px 30px 0px;
-  text-align: center;
+  @apply --description;
+  text-align: left;
 }
 
 .imageContainer img {
@@ -57,6 +55,8 @@
   font-size: 50px;
 }
 
+/* specific to add hotel room component */
+
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -76,4 +76,19 @@
 
 .hotelAmeneties>* {
   width: 45%;
+}
+
+/* specific to add service component */
+
+.imgBtn {
+  padding-left: 50px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.serviceType {
+  width: 80%;
 }

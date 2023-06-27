@@ -1,4 +1,5 @@
-import styles from "./HelpAndSupport.module.css";
+import styles from "../AddHotel/AddHotel.module.css";
+import style from "./HelpAndSupport.module.css";
 import {
   FormField, FAQDropdown, useState, Button, Dropdown,
   FinalForm, React, useDispatch, helpRequest, questions
@@ -35,7 +36,7 @@ const HelpAndSupport = () => {
       <div className={styles.container}>
         <div className={styles.header}>
           <h1 className={styles.heading}>Do You Have Questions?</h1>
-          <p className={styles.spacedHeading}>We have answers (well, most of the times!)</p>
+          <p className={style.spacedHeading}>We have answers (well, most of the times!)</p>
           <p className={styles.description}>
             Below you'll find answers to the most common questions you may have about tourpk.
             Also, please feel free to check out our social media pages. If you can't find the
@@ -43,10 +44,10 @@ const HelpAndSupport = () => {
             provided below!
           </p>
         </div>
-        <div className={styles.content}>
+        <div className={style.content}>
           <div>
             <div className={styles.faqContainer}>
-              <div className={styles.faqDropdowns}>
+              <div className={style.faqDropdowns}>
                 <h2 className={styles.subHeading}>Frequently Asked Questions</h2>
                 {questions.map((question, index) => (
                   <FAQDropdown
@@ -87,7 +88,7 @@ const HelpAndSupport = () => {
                       />
 
                       <br /> <br />
-                      <div className={styles.formFields}>
+                      <div className={style.formFields}>
                         <FormField
                           name="username"
                           label="Username"
@@ -152,7 +153,7 @@ const HelpAndSupport = () => {
               </div>
             </div>
           </div>
-          <div className={styles.imageContainer}>
+          <div className={style.imageContainer}>
             <img src="https://www.transparentpng.com/thumb/question-mark/red-question-mark-with-white-person-illustration-transparent-free-Mchpt4.png" alt="FAQs" />
           </div>
         </div>

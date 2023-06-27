@@ -15,7 +15,7 @@ export default function SpotListing() {
 
   const location = useLocation();
   const city = location.state;
-  const img = [{ imageUrl: city.picture }];
+  const img = [{ imageUrl: city.picture || null}];
   const cityFromLocation = (location) => {
     const words = location.split(',');
     const firstWord = words[0].trim();

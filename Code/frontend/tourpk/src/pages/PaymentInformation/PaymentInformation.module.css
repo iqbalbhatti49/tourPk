@@ -10,10 +10,11 @@
     place-items: center;
     padding-top: 50px;
  }
- 
- .header h1 {
-    margin-bottom: 8px;
-    margin-top: 0;
+
+ .heading {
+   @apply --pageHeading;
+   margin-bottom: 8px;
+   margin-top: 0;
  }
  
  .subHeading {

@@ -164,12 +164,8 @@ export default function TourGuideListing() {
                <div>
                   <h2 className={styles.subHeading}>People's Opinion</h2>
                   <Testimonial data={reviews} />
-                  {role == "tourist" && <div className={styles.booking}>
-
-                     <p>Select a date from the given calender to book me and click the button below.</p>
-                     <Button btnType="submit" value="Book Now" handleClick={handleClick} />
-                  </div>}
                </div>
+               {role == "tourist" && <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
             </div>
             <div>
                {reviewCount != 0 ? (
@@ -199,10 +195,14 @@ export default function TourGuideListing() {
                      />
                   </div>
                </div>
+               {role == "tourist" && <div className={styles.booking}>
+
+               <p>Select a date from the given calender to book.</p>
+               <Button btnType="submit" value="Book Now" handleClick={handleClick} />
+               </div>}
             </div>
          </div>
-         {role == "tourist" && <ReviewForm serviceId={data.Service.id} setReview={setreviews} />}
-
+         
       </div>
    );
 }

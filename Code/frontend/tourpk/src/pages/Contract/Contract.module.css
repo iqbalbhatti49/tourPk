@@ -22,9 +22,8 @@
 }
 
 .description {
-   color: var(--assistColor);
-   max-width: 800px;
-   text-align: center;
+   @apply --description;
+   max-width: 65%;
 }
 
 .buttons {
