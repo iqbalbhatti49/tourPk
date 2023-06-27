@@ -16,7 +16,7 @@ const Cities = () => {
          <div className={styles.container}>
             <div className={styles.header}>
                <div>
-                  <h1>Explore Tourist Attraction Cities of Pakistan</h1>
+                  <h1 className={styles.heading}>Explore Tourist Attraction Cities of Pakistan</h1>
                   <p>Life is short and the world is wide. So, better get started. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sollicitudin, nisl nec lacinia lacinia, nisl nisl tincidunt nisl, nec tincidunt nisl lorem nec nisl.
                   </p>
                </div>

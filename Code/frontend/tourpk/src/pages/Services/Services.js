@@ -47,7 +47,7 @@ const Services = () => {
       <div className={styles.container}>
          <div className={styles.header}>
             <p className={styles.subHeading}>{`Our Services`}</p>
-            <h1 className={styles.Heading}>Book What You Want</h1>
+            <h1 className={styles.heading}>Book What You Want</h1>
             <p className={styles.description}>
                Do what you can, with what you have, where you are.Do what you can, with what you have, where you are.Do what you can, with what you have, where you are.
             </p>

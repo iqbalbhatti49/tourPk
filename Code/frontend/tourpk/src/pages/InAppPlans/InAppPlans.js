@@ -85,7 +85,7 @@ const InAppPlans = () => {
           <div className={styles.container}>
             <div className={styles.header}>
               <p className={styles.subHeading}>{`Plans & Pricing`}</p>
-              <h1 className={styles.Heading}>Get Started Now</h1>
+              <h1 className={styles.heading}>Get Started Now</h1>
               <p className={styles.description}>
                 Lorem ipsum dolor sit amet consectetur adipiscing elit dolor
                 posuere vel venenatis eu sit massa volutpat.

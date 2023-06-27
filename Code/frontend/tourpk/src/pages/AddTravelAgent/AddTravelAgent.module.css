@@ -1,3 +1,9 @@
+@import "../../styles/variables.css";
+
+.heading {
+  @apply --pageHeading;
+}
+
 #travelAgentContainer {
     padding: 0vh 12vw;
     margin-top: 45px;

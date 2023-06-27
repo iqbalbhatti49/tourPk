@@ -105,41 +105,43 @@ function AccountVerification() {
         <FinalForm
           onSubmit={verificationStarted ? handleOtpSubmit : handleVerificationSubmit}
           render={({ handleSubmit, values }) => (
-            <form onSubmit={handleSubmit}>
-              {!verificationStarted ? (
-                <div>
-                  <h1 className={styles.heading}>Add Phone Number</h1>
-                  <FormField
-                    name="phoneNumber"
-                    label="Phone Number"
-                    type="text"
-                    placeholder="Enter phone number"
-                    value={phoneNumber}
-                    onChange={handlePhoneNumberChange}
-                    renderIcon={() => null}
-                    labelClass="showLabel"
-                    theme="light"
-                    validate={validatePhoneWithCode}
-                  />
-                </div>
-              ) : (
-                <div>
-                  <h1 className={styles.heading}>OTP Code Verification</h1>
-                  <FormField
-                    name="otpCode"
-                    label="OTP Code"
-                    type="text"
-                    labelClass="showLabel"
-                    theme="light"
-                    placeholder="Enter OTP code"
-                    value={otpCode}
-                    onChange={handleOtpCodeChange}
-                    renderIcon={() => null}
-                  />
-                </div>
-              )}
-              <Button type="submit" btnType="primary" value="Verify" width={250} disabled={isLoading} /> {/* Disable the button when loading */}
-            </form>
+            <div className={styles.wrapper}>
+              <form onSubmit={handleSubmit}>
+                {!verificationStarted ? (
+                  <div>
+                    <h1 className={styles.heading}>Verify Phone Number</h1>
+                    <FormField
+                      name="phoneNumber"
+                      label="Phone Number"
+                      type="text"
+                      placeholder="Enter phone number"
+                      value={phoneNumber}
+                      onChange={handlePhoneNumberChange}
+                      renderIcon={() => null}
+                      labelClass="showLabel"
+                      theme="light"
+                      validate={validatePhoneWithCode}
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <h1 className={styles.heading}>OTP Code Verification</h1>
+                    <FormField
+                      name="otpCode"
+                      label="OTP Code"
+                      type="text"
+                      labelClass="showLabel"
+                      theme="light"
+                      placeholder="Enter OTP code"
+                      value={otpCode}
+                      onChange={handleOtpCodeChange}
+                      renderIcon={() => null}
+                    />
+                  </div>
+                )}
+                <Button type="submit" btnType="primary" value="Verify" width={250} disabled={isLoading} /> {/* Disable the button when loading */}
+              </form>
+            </div>
           )}
         />
         {isLoading && <p>Loading...</p>}

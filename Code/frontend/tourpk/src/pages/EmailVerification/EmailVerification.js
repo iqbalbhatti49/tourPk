@@ -102,14 +102,14 @@ function EmailVerification() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.box}>
+      <div className={styles.wrapper}>
         <FinalForm
           onSubmit={verificationStarted ? handleOtpSubmit : handleVerificationSubmit}
           render={({ handleSubmit, values }) => (
             <form onSubmit={handleSubmit}>
               {!verificationStarted ? (
                 <div>
-                  <h1 className={styles.heading}>Add Email</h1>
+                  <h1 className={styles.heading}>Verify Email</h1>
                   <FormField
                     name="email"
                     label="Email"

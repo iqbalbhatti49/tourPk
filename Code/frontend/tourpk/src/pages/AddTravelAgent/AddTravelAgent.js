@@ -120,7 +120,7 @@ const AddTravelAgent = () => {
                                 {({ handleSubmit, submitting, values }) => (
                                     <form onSubmit={handleSubmit}>
                                         <div className={styles.formBody}>
-                                            <h1>Add Tour Package Details</h1>
+                                            <h1 className={styles.heading}>Add Tour Package Details</h1>
                                             <div className={styles.basicInfo}>
                                                 <FormField name="source" label="Tour Starting Point" type="text" placeholder="eg. Lahore" validate={required} theme="light" value={values} defaultValue={initialValue.source} renderIcon={() => null} />
                                                 <FormField name="destination" label="Destination" type="text" placeholder="eg. Hunza Valley" validate={required} theme="light" value={values} defaultValue={initialValue.destination} renderIcon={() => null} />

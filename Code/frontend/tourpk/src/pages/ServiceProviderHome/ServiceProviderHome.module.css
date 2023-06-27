@@ -11,6 +11,10 @@
     padding-top: 50px;
   }
   
+  .heading {
+    @apply --pageHeading;
+  }
+
   .subHeading {
     @apply --subHeading;
   }

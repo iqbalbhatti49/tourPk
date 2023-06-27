@@ -94,7 +94,7 @@ const AddBlog = () => {
             </form>
             <div className={styles.menu}>
                 <div className={styles.item}>
-                    <h1>Select Category</h1>
+                    <h1 className={styles.heading}>Select Category</h1>
                     {blogCategories.map((cat, index) => {
                         return (
                             <CategoryContainer

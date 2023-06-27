@@ -8,6 +8,10 @@
     @apply --buttonSecondary;
 }
 
+.heading {
+  @apply --pageHeading;
+}
+
 .container {
     @apply --pageContainer;
     display: flex;

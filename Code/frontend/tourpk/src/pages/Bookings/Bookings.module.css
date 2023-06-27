@@ -6,8 +6,8 @@
     padding: 2vh 8vw;
   }
 
-  .heading1 {
-    @apply --headerHeading;
+  .heading {
+    @apply --pageHeading;
   }
 
   .bookingText{

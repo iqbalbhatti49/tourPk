@@ -17,7 +17,7 @@ const Contract = () => {
          <div className={styles.container}>
             <div className={styles.header}>
                <p className={styles.subHeading}>CONTRACT TAILORED TO FIT YOUR NEEDS</p>
-               <h1 className={styles.Heading}>TourPK Service Provider Agreement</h1>
+               <h1 className={styles.heading}>TourPK Service Provider Agreement</h1>
                <p className={styles.description}>
                   This Service Provider Agreement is made and entered into by and between TourPK (the "Company"), and the individual or entity identified below as the Service Provider. By registering for the TourPK website as a Service Provider, Service Provider agrees to be bound by the terms and conditions of this Agreement.
                </p>

@@ -96,14 +96,14 @@
    }
    --pageHeading : {
       color: var(--primaryColor);
-      font-size: 2.3rem;
+      font-size: 3rem;
       text-align:center;
-      line-height:2.5rem;
+      line-height:4rem;
       /* text-transform:sentencecase; */
   }
   --subHeading : {
       margin-bottom: 2rem;
-      color: var(--primaryColor);
+      color: var(--secondaryColor);
       font-size: 1.7rem;
       font-weight: 600;
       line-height: 2rem;

@@ -12,7 +12,8 @@
   padding-block: 50px;
 }
 
-.header h1 {
+.heading {
+  @apply --pageHeading;
   margin-bottom: 8px;
   margin-top: 0;
 }

@@ -9,11 +9,8 @@
 }
 
 .heading {
-  max-width: 900px;
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 4rem;
-  margin-bottom: 24px;
+  @apply --pageHeading;
+  text-align: left;
 }
 
 .flex p {

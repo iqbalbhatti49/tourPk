@@ -4,16 +4,17 @@
    padding: 0 5vw;
 }
 
+.heading {
+  @apply --pageHeading;
+  margin-bottom: 12px;
+   margin-top: 0;
+}
+
 .header {
    display: flex;
    flex-direction: column;
    place-items: center;
    padding: 50px 0px 10px 0px;
-}
-
-.header h1 {
-   margin-bottom: 12px;
-   margin-top: 0;
 }
 
 .subHeading {

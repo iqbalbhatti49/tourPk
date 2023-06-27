@@ -17,7 +17,7 @@ const TravelAgent = () => {
                     {({ handleSubmit, submitting, values }) => (
                         <form onSubmit={handleSubmit}>
                             <div className={styles.formBody}>
-                                <h1>Add Your Restaurant Details</h1>
+                                <h1 className={styles.heading}>Add Your Restaurant Details</h1>
                                 <h3 className={styles.title}>Basic Information</h3>
                                 <div className={styles.basicInfo}>
                                     <FormField name="startTime" label="Opening Time" type="text" placeholder="eg. 9:00 am" validate={required} theme="light" value={values} renderIcon={() => null} />

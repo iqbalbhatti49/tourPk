@@ -35,7 +35,7 @@ const Login = () => {
 
     return (
         <div className={styles.formContainer}>
-            <h1>Login Account</h1>
+            <h1 className={styles.heading}>Login Account</h1>
             <div className={styles.tableContainer}>
                 <div className={styles.formImage}>
                     <img src="https://images.pexels.com/photos/1659438/pexels-photo-1659438.jpeg?auto=compress&cs=tinysrgb&w=600&h=500" alt="" />

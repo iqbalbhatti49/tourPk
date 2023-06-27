@@ -15,9 +15,9 @@
     width: 100%;
 }
 
-.formContainer h1 {
-    @apply --headerHeading;
-    margin-bottom: 25px
+.heading {
+  @apply --pageHeading;
+  margin-bottom: 25px
 }
 
 .tableContainer {
