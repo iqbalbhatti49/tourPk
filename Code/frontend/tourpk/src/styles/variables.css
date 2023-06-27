@@ -119,7 +119,7 @@
   }
   --spacedHeading : {
     letter-spacing: 0.1em;
-    line-height: 10px;
+    line-height: 2rem;
     text-transform: uppercase;
     color: var(--primaryColor);
     font-weight: 600;

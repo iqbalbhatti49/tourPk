@@ -87,7 +87,7 @@ const AddHotel = () => {
                                 <FinalForm onSubmit={onSubmit}>
                                     {({ handleSubmit, values }) => (
                                         <form onSubmit={handleSubmit} className={styles.formContainer}>
-                                            <h2 className={styles.subHeading}>Ameneties You Offer</h2>
+                                            <p className={styles.subHeading}>Ameneties You Offer</p>
                                             <div className={styles.hotelAmeneties}>
                                                 {
                                                     amenities.map((amenity) => (

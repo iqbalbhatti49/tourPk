@@ -35,12 +35,6 @@
   @apply --testimonial;
 }
 
-.map {
-  width: 400px;
-  display: none;
-}
-
-
 .tabs p {
   margin: 2px;
 }

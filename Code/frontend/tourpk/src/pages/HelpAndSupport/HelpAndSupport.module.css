@@ -5,11 +5,6 @@
   @apply --spacedHeading;
 }
 
-input[name="generalField"] {
-  margin-top: 40px;
-  width: 92%;
-}
-
 .faqDropdowns {
   flex-basis: 70%;
 }
@@ -17,12 +12,6 @@ input[name="generalField"] {
 .imageContainer {
   flex-basis: 30%;
 }
-
-.formFields {
-  width: 96%;
-  margin-top: -10px;
-}
-
 
 .content {
   display: flex;

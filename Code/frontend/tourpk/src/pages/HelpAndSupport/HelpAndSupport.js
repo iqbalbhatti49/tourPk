@@ -48,7 +48,7 @@ const HelpAndSupport = () => {
           <div>
             <div className={styles.faqContainer}>
               <div className={style.faqDropdowns}>
-                <h2 className={styles.subHeading}>Frequently Asked Questions</h2>
+                <p className={styles.subHeading}>Frequently Asked Questions</p>
                 {questions.map((question, index) => (
                   <FAQDropdown
                     key={index}
@@ -58,7 +58,7 @@ const HelpAndSupport = () => {
               </div>
             </div>
             <div className={styles.tableContainer}>
-              <h2 className={styles.subHeading}>Still have questions? Fill the form below to contact us</h2>
+              <p className={styles.subHeading}>Still have questions? Fill the form below to contact us</p>
               <div className={styles.quesForm}>
                 <FinalForm
                   onSubmit={onSubmit}
@@ -86,8 +86,7 @@ const HelpAndSupport = () => {
                         renderIcon={() => null}
                         onChange={(selectedOption) => handleChange(selectedOption)}
                       />
-
-                      <br /> <br />
+                      <br />
                       <div className={style.formFields}>
                         <FormField
                           name="username"
@@ -133,7 +132,6 @@ const HelpAndSupport = () => {
                           renderIcon={() => null}
                         />
                       </div>
-
                       <div className={styles.uploadMedia}>
                         <label htmlFor="media-upload">Upload Media:&emsp;&emsp;</label>
                         <input
@@ -145,7 +143,7 @@ const HelpAndSupport = () => {
                           onChange={handleInputChange}
                         />
                       </div>
-
+                      <br /><br />
                       <Button value={"Submit"} type="primary" width={"96%"} btnType="submit" />
                     </form>
                   )}
@@ -153,7 +151,7 @@ const HelpAndSupport = () => {
               </div>
             </div>
           </div>
-          <div className={style.imageContainer}>
+          <div className={styles.imageContainer}>
             <img src="https://www.transparentpng.com/thumb/question-mark/red-question-mark-with-white-person-illustration-transparent-free-Mchpt4.png" alt="FAQs" />
           </div>
         </div>

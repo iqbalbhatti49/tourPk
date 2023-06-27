@@ -21,8 +21,8 @@ const ServiceProviderHome = () => {
                <div className={styles.header}>
                   <h1 className={styles.heading}>Offer Your Services Now</h1>
                   <p className={styles.description}>
-                     Welocme to tourPk, a platform where you can offer your services
-                     to a wide range of tourists for free.
+                  Welcome to tourPk, an innovative platform that allows you to showcase your exceptional services to 
+                  a diverse community of tourists, completely free of charge.
                   </p>
                </div>
                <div className={styles.outerFlex}>

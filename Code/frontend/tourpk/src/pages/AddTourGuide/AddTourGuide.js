@@ -82,7 +82,7 @@ const AddTourGuide = () => {
                 <FinalForm onSubmit={onSubmit}>
                   {({ handleSubmit, values }) => (
                     <form onSubmit={handleSubmit} className={styles.formContainer}>
-                      <h2 className={styles.subHeading}>Guiding Information</h2>
+                      <p className={styles.subHeading}>Guiding Information</p>
                       <FormField
                         name="experience"
                         label="Experience"
@@ -142,7 +142,7 @@ const AddTourGuide = () => {
                         defaultValue={initialValue.language}
                         renderIcon={() => null}
                       />
-                      <h2 className={styles.subHeading}>Pricing Information</h2>
+                      <p className={styles.subHeading}>Pricing Information</p>
                       <FormField
                         name="perDayRate"
                         label="Price Per Day (Rs.)"

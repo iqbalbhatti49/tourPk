@@ -17,6 +17,7 @@
 
   .subHeading {
     @apply --subHeading;
+    text-align: center;
   }
   
   .description {

@@ -87,8 +87,8 @@ const InAppPlans = () => {
               <p className={styles.subHeading}>{`Plans & Pricing`}</p>
               <h1 className={styles.heading}>Get Started Now</h1>
               <p className={styles.description}>
-                Lorem ipsum dolor sit amet consectetur adipiscing elit dolor
-                posuere vel venenatis eu sit massa volutpat.
+              Welcome to tourPk, where we offer diverse plans tailored for individuals, startups, and big companies. 
+              Discover the perfect plan for your needs and make your travel dreams a reality.
               </p>
               <div className={styles.switchWrapper}>
                 <p>Monthly</p>

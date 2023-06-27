@@ -150,7 +150,7 @@ const AddService = () => {
                                     }} >
                                     {({ handleSubmit, values }) => (
                                         <form onSubmit={handleSubmit}>
-                                            <h2 className={styles.subTitle}>About {service}</h2>
+                                            <p className={styles.subHeading}>About {service}</p>
                                             <FormField
                                                 name="name"
                                                 label="Name"
@@ -197,7 +197,7 @@ const AddService = () => {
                                                 renderIcon={() => null}
                                             />
                                             <FormField name="phone" label="Phone no." type="text" placeholder="Your Phone Number" validate={validatePhone} theme="light" defaultValue={initialValue.phone} renderIcon={() => null} />
-                                            <h2 className={styles.subTitle}>Location</h2>
+                                            <p className={styles.subHeading}>Location</p>
                                             <FormField name="city" label="City" type="text" placeholder="Lahore" validate={validateAlpha} theme="light" value={values} defaultValue={initialValue.city} renderIcon={() => null} />
                                             <FormField name="province" label="State/Province" type="text" placeholder="Punjab" validate={validateAlpha} theme="light" value={values} defaultValue={initialValue.province} renderIcon={() => null} />
                                             <FormField name="address" label="Street Address" type="text" placeholder="Street # 1" validate={required} theme="light" value={values} defaultValue={initialValue.address} renderIcon={() => null} />
@@ -213,7 +213,9 @@ const AddService = () => {
                                                 />
 
                                             </div>
-                                            <Button value="Continue" type="submit" btnType="submit" />
+                                            <div className={styles.btn}>
+                                                <Button value="Continue" type="submit" btnType="submit" />
+                                            </div>
                                         </form>
                                     )}
                                 </FinalForm>
