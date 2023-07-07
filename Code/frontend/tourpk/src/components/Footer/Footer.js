@@ -49,11 +49,11 @@ export const Footer = () => {
                         <Link className={styles.navLink} to={key}>{value}</Link>
                      ))}
                      {Object.entries(touristLinks).map(([key, value]) => (
-                        !isLoggedIn && key !== "/paymentInformation" ? (
+                        isLoggedIn && key !== "/paymentInformation" ? (
                            <Link className={styles.navLink} to={key}>{value}</Link>
                         ) : null
                      ))}
-                     {!isLoggedIn && (
+                     {role === "seller" && (
                         <Link className={styles.navLink} to="/contract">Seller Terms</Link>
                      )}
                      {Object.entries(sellerLinks).map(([key, value]) => (
