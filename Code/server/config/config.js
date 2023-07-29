@@ -1,32 +1,32 @@
 module.exports = {
   "development": {
-    "username": "root",
-    "password": "iqra.M012",
+    "username": "tpadmin",
+    "password": "v_HD$}=K,&XTQT",
     // "password": process.env.DB_PASSWORD,
     "database": "tourpk",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "host": "tps.mysql.database.azure.com",
+    "dialect": "mysql"          
   },
   "development": {
-    "username": "root",
-    "password": "iqra.M012",
+    "username": "tpadmin",
+    "password": "v_HD$}=K,&XTQT",
     // "password": process.env.DB_PASSWORD,
     "database": "tourpk",
-    "host": "127.0.0.1",
+    "host": "tps.mysql.database.azure.com",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
+    "username": "tpadmin",
+    "password": "v_HD$}=K,&XTQT",
     "database": "database_test",
-    "host": "127.0.0.1",
+    "host": "tps.mysql.database.azure.com",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
+    "username": "tpadmin",
+    "password": "v_HD$}=K,&XTQT",
     "database": "database_production",
-    "host": "127.0.0.1",
+    "host": "tps.mysql.database.azure.com",
     "dialect": "mysql"
   }
 };
