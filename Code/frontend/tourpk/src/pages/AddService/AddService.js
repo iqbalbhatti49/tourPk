@@ -45,7 +45,6 @@ const AddService = () => {
                 formData.append("file", file);
                 return axiosInstance.post("/upload", formData);
             });
-
             const responses = await Promise.all(uploadPromises);
             const imageUrls = responses.map((res) => res.data);
             return imageUrls;
