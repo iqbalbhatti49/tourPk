@@ -129,7 +129,7 @@ export default function HotelListing() {
           return (
             <div className={styles.roomWrapper}>
               <div className={styles.roomContainer} key={index}>
-              <p className={styles.spacedHeading}>Room Configuration {index + 1}</p>
+                <p className={styles.spacedHeading}>Room Configuration {index + 1}</p>
                 <div className={styles.roomDetails}>
                   {Object.entries(room).map(([key, value]) => (
                     key !== "roomAmenities" && key !== 'HotelId' && key !== 'id' ? (
@@ -141,7 +141,7 @@ export default function HotelListing() {
                   ))}
                 </div>
                 <div>
-                <p className={styles.spacedHeading}>Room Ameneties</p>
+                  <p className={styles.spacedHeading}>Room Ameneties</p>
                   {room.roomAmenities}
                 </div>
               </div>

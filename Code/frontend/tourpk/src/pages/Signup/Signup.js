@@ -19,7 +19,7 @@ const Signup = (props) => {
                 res = await axiosInstance.post("auth/signupAsSeller", values);
             else
                 res = await axiosInstance.post("auth/signupAsTourist", values);
-            form.reset(); 
+            form.reset();
             Object.keys(values).forEach(key => {
                 form.change(key, undefined);
                 form.resetFieldState(key);
@@ -63,7 +63,7 @@ const Signup = (props) => {
                                     <Button id={styles.signupBtn} value={"Sign Up"} type="secondary" width={300} btnType="submit" font={" 600 20px Arial, '' "} />
                                 </div>
                                 {errormsg && <div className={styles.error}>{errormsg}</div>}
-                                <div className={styles.text}>Already have an account? <a href="" className={styles.whiteText}>Login</a></div>
+                                <div className={styles.text}>Already have an account? <a href="/login" className={styles.whiteText}>Login</a></div>
                                 {
                                     props.userType === "tourist" ?
                                         <div className={styles.text}>Are you a Service Seller? <a href="/contract" className={styles.whiteText}>Signup as Seller</a></div>

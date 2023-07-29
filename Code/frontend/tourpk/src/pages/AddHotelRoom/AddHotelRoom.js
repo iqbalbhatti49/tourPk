@@ -1,6 +1,6 @@
 import styles from "../AddHotel/AddHotel.module.css";
 import {
-  required, RoomAmeneties, validateAlpha, axiosInstance, React, FormField,
+  required, RoomAmeneties, validateAlpha, axiosInstance, React, FormField, swal,
   Button, useLocation, useSelector, useNavigate, FinalForm, roomAmenitiess
 }
   from "../../components/index";
@@ -268,12 +268,12 @@ const AddHotelRoom = () => {
                     </form>
                   )}
                 </FinalForm>
-                </div>
-                <div className={styles.imageContainer}>
-                    <img src="../static/images/hotelDetails.png" alt="FAQs" />
-                </div>
+              </div>
+              <div className={styles.imageContainer}>
+                <img src="../static/images/hotelDetails.png" alt="FAQs" />
+              </div>
             </div>
-        </div>
+          </div>
         ) :
           (<img src="../static/images/404.png" alt="" />)
       }

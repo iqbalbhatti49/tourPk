@@ -1,9 +1,8 @@
 import styles from './AddTravelAgent.module.css';
 import {
     useState, itenerary, required, useNavigate, FormField,
-    React, Button, useSelector, FinalForm, useLocation, axiosInstance, IconAdd
+    React, Button, useSelector, FinalForm, useLocation, axiosInstance, IconAdd, swal
 } from "../../components/index";
-import swal from 'sweetalert';
 
 const AddTravelAgent = () => {
     const userId = useSelector(state => state.user.id);
