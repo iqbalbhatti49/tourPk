@@ -9,8 +9,8 @@ module.exports = {
   },
   "development": {
     "username": "root",
-    "password": "iqra.M012",
-    // "password": process.env.DB_PASSWORD,
+    // "password": "iqra.M012",
+    "password": process.env.DB_PASSWORD,
     "database": "tourpk",
     "host": "127.0.0.1",
     "dialect": "mysql"

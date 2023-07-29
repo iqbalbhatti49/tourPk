@@ -29,7 +29,7 @@ export { default as HotelBooking } from "./HotelBooking/HotelBooking"
 export { default as CategoryContainer } from "./CategoryContainer/CategoryContainer";
 export { addBlog, updateBlog } from "../app/features/blogs/blogsSlice";
 export { default as RoomAmeneties } from "./RoomAmeneties/RoomAmeneties";
-export {default as ServicesTabs} from "./ServicesTabs/ServicesTabs"
+export { default as ServicesTabs } from "./ServicesTabs/ServicesTabs"
 export { Logo } from "./Logo/Logo"
 
 //Redux State
@@ -66,20 +66,23 @@ export { default as BlogMenu } from './BlogMenu/BlogMenu';
 export { IconLocation } from "./IconLocation/IconLocation"
 
 //utils
-export { required, validateAlpha, validatePhoneWithCode, validateEquality,
-    mustBeNumber, validateURL, validatePassword, validatePhone, validateEmail, 
+export {
+    required, validateAlpha, validatePhoneWithCode, validateEquality,
+    mustBeNumber, validateURL, validatePassword, validatePhone, validateEmail,
     amenities, roomAmenitiess, mealOptions, featureOptions, itenerary, axiosInstance,
-    questions, getReviewsStats, provinces, agreement, injectStore, ScrollToTop } from '../utils';
+    questions, getReviewsStats, provinces, agreement, injectStore, ScrollToTop
+} from '../utils';
 
 
 //components
 export { Form as FinalForm } from 'react-final-form';
-export { Routes, Route, useNavigationType, Link, useNavigate, useLocation, useParams, BrowserRouter } 
-from 'react-router-dom';
+export { Routes, Route, useNavigationType, Link, useNavigate, useLocation, useParams, BrowserRouter }
+    from 'react-router-dom';
 export { useDispatch, useSelector, Provider } from 'react-redux';
 export { React, useState, useEffect } from 'react';
 export { default as ReactQuill } from "react-quill";
-export { swal } from 'sweetalert';
+import swal from 'sweetalert';
+export { swal };
 export { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 export { default as Switch } from "react-switch";
 export { createRoot } from "react-dom/client";
