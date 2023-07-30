@@ -6,16 +6,15 @@ import styles from './HotelCard.module.css';
 import { getReviewsStats } from '../../utils/FindReviewStats';
 
 export const HotelCard = (props) => {
+   console.log(props);
    const { data, type } = props;
    console.log(data)
    if (type) {
-      const name = data.Service.name;
-      const address = data.Service.address;
+      const { name, address, Reviews } = data.Service;
       const price = (type === "TravelAgent") ? data.packagePrice :
          (type === "TourGuide") ? data.perDayRate : "";
-      const imgesKey = type + "Images"; 
-      const reviews = data.Service.Reviews;
-      const { reviewsCount, ratingAvg } = getReviewsStats(reviews);
+      const imgesKey = type + "Images";
+      const { reviewsCount, ratingAvg } = getReviewsStats(Reviews);
       let img = data[imgesKey][0];
       const { imageUrl } = img;
 

@@ -1,8 +1,9 @@
 import styles from './BlogPage.module.css';
-import { 
+import {
   useState, BlogPost, CommentSection, useParams,
-  React, useEffect, useDispatch, BlogMenu } 
-from "../../components/index";
+  React, useEffect, useDispatch, BlogMenu, fetchBlogById
+}
+  from "../../components/index";
 
 const BlogPage = () => {
   const { id } = useParams();

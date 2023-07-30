@@ -22,7 +22,7 @@ exports.addHotel = async (req, res) => {
     }
     room.HotelId = hotelObj.id;
     const roomObj = await Room.create(room); //4. add in room table
-    res.status(200).json(roomObj.dataValues.id);
+    res.status(200).json(room.HotelId);
 }
 exports.getHotelById = async (req, res) => {
     const id = req.params.id;
