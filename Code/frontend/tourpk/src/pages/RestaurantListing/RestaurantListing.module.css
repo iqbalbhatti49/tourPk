@@ -29,7 +29,7 @@
 
 .subHeading {
     @apply --subHeading;
-  }
+}
 
 .testimonial {
     @apply --testimonial;
@@ -92,12 +92,6 @@
 .contactInfo p {
     min-width: 155px !important;
     max-width: 160px !important;
-}
-
-.attributesContainer {
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 90px;
 }
 
 .delete {

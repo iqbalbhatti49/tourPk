@@ -7,6 +7,20 @@ import {
 } from '../../components';
 
 const AddBlog = () => {
+
+    const quillModules = {
+        toolbar: [
+            ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+            [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+            [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+            [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+            [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+            ['link', 'image'],
+        ]
+    };
+
     let { state } = useLocation();
     const isLoggedIn = useSelector(state => state.user.loggedIn);
     const blogCategories = useSelector((state) => state.blogs.blogCategories);
@@ -76,6 +90,7 @@ const AddBlog = () => {
                         theme="snow"
                         value={value}
                         onChange={setValue}
+                        modules={quillModules}
                     />
                 </div>
                 <div className={styles.publish}>
